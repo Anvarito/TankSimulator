@@ -5,7 +5,7 @@ using UnityEditor;
 namespace ChobiAssets.PTM
 {
 	
-	[ CustomEditor (typeof(Input_Type_Manager_CS))]
+	[ CustomEditor (typeof(InputManager))]
 	public class Input_Type_Manager_CSEditor : Editor
 	{
 

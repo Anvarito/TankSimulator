@@ -15,6 +15,7 @@ namespace ChobiAssets.PTM
 
         // Input Type settings.
         public static int Input_Type = 1;
+        public static InputListener InputListener;
 
         // Camera Rotation settings.
         public static float Camera_Horizontal_Speed = 2.0f;
