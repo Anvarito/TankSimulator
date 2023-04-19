@@ -71,6 +71,15 @@ public partial class @NewControl : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Switch"",
+                    ""type"": ""Button"",
+                    ""id"": ""4d296813-db3b-41d1-b995-595121ceca3b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -227,6 +236,39 @@ public partial class @NewControl : IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d11557f1-3cfb-4f88-8332-8737627388cb"",
+                    ""path"": ""<Gamepad>/dpad"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2d79c0d1-9193-40b6-84ee-2df32eeb64b5"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Switch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ddd831ff-f8f8-4443-94df-82d77ba1fcc3"",
+                    ""path"": ""<Keyboard>/v"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard + Mouse"",
+                    ""action"": ""Switch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -268,6 +310,7 @@ public partial class @NewControl : IInputActionCollection2, IDisposable
         m_Tank_Look = m_Tank.FindAction("Look", throwIfNotFound: true);
         m_Tank_Aim = m_Tank.FindAction("Aim", throwIfNotFound: true);
         m_Tank_ResetTurret = m_Tank.FindAction("ResetTurret", throwIfNotFound: true);
+        m_Tank_Switch = m_Tank.FindAction("Switch", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -332,6 +375,7 @@ public partial class @NewControl : IInputActionCollection2, IDisposable
     private readonly InputAction m_Tank_Look;
     private readonly InputAction m_Tank_Aim;
     private readonly InputAction m_Tank_ResetTurret;
+    private readonly InputAction m_Tank_Switch;
     public struct TankActions
     {
         private @NewControl m_Wrapper;
@@ -341,6 +385,7 @@ public partial class @NewControl : IInputActionCollection2, IDisposable
         public InputAction @Look => m_Wrapper.m_Tank_Look;
         public InputAction @Aim => m_Wrapper.m_Tank_Aim;
         public InputAction @ResetTurret => m_Wrapper.m_Tank_ResetTurret;
+        public InputAction @Switch => m_Wrapper.m_Tank_Switch;
         public InputActionMap Get() { return m_Wrapper.m_Tank; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -365,6 +410,9 @@ public partial class @NewControl : IInputActionCollection2, IDisposable
                 @ResetTurret.started -= m_Wrapper.m_TankActionsCallbackInterface.OnResetTurret;
                 @ResetTurret.performed -= m_Wrapper.m_TankActionsCallbackInterface.OnResetTurret;
                 @ResetTurret.canceled -= m_Wrapper.m_TankActionsCallbackInterface.OnResetTurret;
+                @Switch.started -= m_Wrapper.m_TankActionsCallbackInterface.OnSwitch;
+                @Switch.performed -= m_Wrapper.m_TankActionsCallbackInterface.OnSwitch;
+                @Switch.canceled -= m_Wrapper.m_TankActionsCallbackInterface.OnSwitch;
             }
             m_Wrapper.m_TankActionsCallbackInterface = instance;
             if (instance != null)
@@ -384,6 +432,9 @@ public partial class @NewControl : IInputActionCollection2, IDisposable
                 @ResetTurret.started += instance.OnResetTurret;
                 @ResetTurret.performed += instance.OnResetTurret;
                 @ResetTurret.canceled += instance.OnResetTurret;
+                @Switch.started += instance.OnSwitch;
+                @Switch.performed += instance.OnSwitch;
+                @Switch.canceled += instance.OnSwitch;
             }
         }
     }
@@ -413,5 +464,6 @@ public partial class @NewControl : IInputActionCollection2, IDisposable
         void OnLook(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
         void OnResetTurret(InputAction.CallbackContext context);
+        void OnSwitch(InputAction.CallbackContext context);
     }
 }

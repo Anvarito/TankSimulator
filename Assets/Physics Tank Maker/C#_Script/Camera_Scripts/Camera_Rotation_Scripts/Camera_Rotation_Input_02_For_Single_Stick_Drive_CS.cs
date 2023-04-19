@@ -36,8 +36,12 @@ namespace ChobiAssets.PTM
 
             // Rotation.
             multiplier = Mathf.Lerp(0.1f, 2.0f, rotationScript.Main_Camera.fieldOfView / 15.0f); // Change the rotation speed according to the FOV of the main camera.
-            rotationScript.Horizontal_Input = Input.GetAxis("Horizontal2") * multiplier;
-            rotationScript.Vertical_Input = Input.GetAxis("Vertical2") * multiplier * 0.5f;
+
+            var vertical = General_Settings_CS.InputListener.GetControl().Tank.Look.ReadValue<Vector2>().y;
+            var horizontal = General_Settings_CS.InputListener.GetControl().Tank.Look.ReadValue<Vector2>().x;
+
+            rotationScript.Horizontal_Input = horizontal * multiplier;
+            rotationScript.Vertical_Input = vertical * multiplier * 0.5f;
         }
 
     }

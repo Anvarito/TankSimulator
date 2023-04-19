@@ -35,7 +35,7 @@ namespace ChobiAssets.PTM
         protected Cannon_Fire_Input_00_Base_CS inputScript;
 
         bool isSelected;
-
+        private IEnumerator _reloadRoutine;
 
         void Start()
 		{
@@ -124,11 +124,18 @@ namespace ChobiAssets.PTM
             bodyRigidbody.AddForceAtPosition(-thisTransform.forward * Recoil_Force, thisTransform.position, ForceMode.Impulse);
 
             // Reload.
-            StartCoroutine("Reload");
+            Reload();
         }
 
+        public void Reload()
+        {
+            if (_reloadRoutine != null)
+                StopCoroutine(_reloadRoutine);
 
-        public IEnumerator Reload()
+            _reloadRoutine = ReloadRoutine();
+            StartCoroutine(_reloadRoutine);
+        }
+        private IEnumerator ReloadRoutine()
         { // Called also from "Cannon_Fire_Input_##_###".
             Is_Loaded = false;
             Loading_Count = 0.0f;
