@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas_Message
       objectReference: {fileID: 0}
+    - target: {fileID: 154810, guid: 066aaaf4cfe676a46a38de9ce6b9278b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 22473318, guid: 066aaaf4cfe676a46a38de9ce6b9278b, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -144,7 +148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22473318, guid: 066aaaf4cfe676a46a38de9ce6b9278b, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 22473318, guid: 066aaaf4cfe676a46a38de9ce6b9278b, type: 3}
       propertyPath: m_AnchorMax.x
@@ -409,7 +413,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50, y: 74.59, z: 0}
 --- !u!1 &252983076
 GameObject:
@@ -652,6 +656,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas_Markers
       objectReference: {fileID: 0}
+    - target: {fileID: 157772, guid: 4c05cce6d1b365f4db8a9702c9a100ad, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 22465086, guid: 4c05cce6d1b365f4db8a9702c9a100ad, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -662,7 +670,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22465086, guid: 4c05cce6d1b365f4db8a9702c9a100ad, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 22465086, guid: 4c05cce6d1b365f4db8a9702c9a100ad, type: 3}
       propertyPath: m_AnchorMax.x
@@ -798,7 +806,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &581799544
 PrefabInstance:
@@ -905,7 +913,7 @@ Transform:
   - {fileID: 1736685477}
   - {fileID: 252983077}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &656153478
 GameObject:
@@ -1084,7 +1092,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
@@ -1178,7 +1186,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: 260.9, z: 0}
 --- !u!1001 &868940296
 PrefabInstance:
@@ -1201,7 +1209,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 224449400259082152, guid: 658df433f8bd5ac43ab24a488688f2d7, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 224449400259082152, guid: 658df433f8bd5ac43ab24a488688f2d7, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1598,6 +1606,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas_Reticle
       objectReference: {fileID: 0}
+    - target: {fileID: 145482, guid: 59085f44a027c4b428aa50485223ae5b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 22429590, guid: 59085f44a027c4b428aa50485223ae5b, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1608,7 +1620,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22429590, guid: 59085f44a027c4b428aa50485223ae5b, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 22429590, guid: 59085f44a027c4b428aa50485223ae5b, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2024,7 +2036,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22468160, guid: 4d06e302fc2827f49a80233685137940, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 22468160, guid: 4d06e302fc2827f49a80233685137940, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2329,8 +2341,9 @@ Transform:
   - {fileID: 304456513}
   - {fileID: 1972496935}
   - {fileID: 897588389}
+  - {fileID: 1986016832}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1609983937
 GameObject:
@@ -2446,7 +2459,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4054213518858529652, guid: 8ba9b2f39b3d4494caf37a2f92a71e09, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4054213518858529652, guid: 8ba9b2f39b3d4494caf37a2f92a71e09, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2523,6 +2536,14 @@ PrefabInstance:
     - target: {fileID: 4276478798196292614, guid: 8ba9b2f39b3d4494caf37a2f92a71e09, type: 3}
       propertyPath: m_Name
       value: Canvas_Speed_Indicator
+      objectReference: {fileID: 0}
+    - target: {fileID: 4276478798196292614, guid: 8ba9b2f39b3d4494caf37a2f92a71e09, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4689427270343377863, guid: 8ba9b2f39b3d4494caf37a2f92a71e09, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -101.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ba9b2f39b3d4494caf37a2f92a71e09, type: 3}
@@ -2968,13 +2989,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1986016828}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.337116, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 98.8998, y: -0.2109822, z: 54.44197}
   m_LocalScale: {x: 500, y: 1, z: 500}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_Father: {fileID: 1543469036}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &2000187990 stripped
 Rigidbody:
