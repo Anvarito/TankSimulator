@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Events;
 
 namespace ChobiAssets.PTM
 {
@@ -24,7 +25,6 @@ namespace ChobiAssets.PTM
 
 		// Referred to from "UI_Reloading_Circle_CS".
 		public float Loading_Count;
-		public bool Is_Loaded = true;
 
         Rigidbody bodyRigidbody;
         Transform thisTransform;
@@ -34,9 +34,13 @@ namespace ChobiAssets.PTM
 
         protected Cannon_Fire_Input_00_Base_CS inputScript;
 
-        bool isSelected;
+        private bool _isSelected;
         private IEnumerator _reloadRoutine;
+		private bool _IsLoaded = true;
 
+        public UnityEvent OnReload;
+        public UnityEvent OnEndReload;
+        public UnityEvent OnInit;
         void Start()
 		{
 			Initialize();
@@ -64,6 +68,8 @@ namespace ChobiAssets.PTM
             {
                 inputScript.Prepare(this);
             }
+
+            OnInit?.Invoke();
         }
 
 
@@ -78,11 +84,8 @@ namespace ChobiAssets.PTM
 
                 case 2: // GamePad (Single stick)
                 case 3: // GamePad (Twin stick)
-                    inputScript = gameObject.AddComponent<Cannon_Fire_Input_02_For_Sticks_Drive_CS>();
-                    break;
-
                 case 4: // GamePad (Triggers)
-                    inputScript = gameObject.AddComponent<Cannon_Fire_Input_03_For_Triggers_Drive_CS>();
+                    inputScript = gameObject.AddComponent<Cannon_Fire_Input_02_For_Sticks_Drive_CS>();
                     break;
 
                 case 10: // AI
@@ -94,12 +97,12 @@ namespace ChobiAssets.PTM
 
         void Update()
         {
-            if (Is_Loaded == false)
+            if (_IsLoaded == false)
             {
                 return;
             }
 
-            if (isSelected || inputType == 10)
+            if (_isSelected || inputType == 10)
             { // The tank is selected, or AI.
                 inputScript.Get_Input();
             }
@@ -109,6 +112,10 @@ namespace ChobiAssets.PTM
         public void Fire()
         { // Called from "Cannon_Fire_Input_##_###".
             // Call all the "Bullet_Generator_CS".
+
+            if (!_IsLoaded)
+                return;
+
             for (int i = 0; i < Bullet_Generator_Scripts.Length; i++)
             {
                 Bullet_Generator_Scripts[i].Fire_Linkage(direction);
@@ -127,6 +134,21 @@ namespace ChobiAssets.PTM
             Reload();
         }
 
+        public void SwitchBulletType()
+        {
+            // Switch all bullets.
+            for (int i = 0; i < Bullet_Generator_Scripts.Length; i++)
+            {
+                if (Bullet_Generator_Scripts[i] == null)
+                {
+                    continue;
+                }
+                Bullet_Generator_Scripts[i].Switch_Bullet_Type();
+            }
+
+            Reload();
+        }
+
         public void Reload()
         {
             if (_reloadRoutine != null)
@@ -134,10 +156,12 @@ namespace ChobiAssets.PTM
 
             _reloadRoutine = ReloadRoutine();
             StartCoroutine(_reloadRoutine);
+
+            OnReload?.Invoke();
         }
         private IEnumerator ReloadRoutine()
         { // Called also from "Cannon_Fire_Input_##_###".
-            Is_Loaded = false;
+            _IsLoaded = false;
             Loading_Count = 0.0f;
 
             while (Loading_Count < Reload_Time)
@@ -146,7 +170,9 @@ namespace ChobiAssets.PTM
                 yield return null;
             }
 
-            Is_Loaded = true;
+
+            OnEndReload?.Invoke();
+            _IsLoaded = true;
             Loading_Count = Reload_Time;
 
             // Set direction for twin barrels, 1 = left, 2 = right.
@@ -169,7 +195,7 @@ namespace ChobiAssets.PTM
 
         void Selected(bool isSelected)
         { // Called from "ID_Settings_CS".
-            this.isSelected = isSelected;
+            this._isSelected = isSelected;
         }
 
 

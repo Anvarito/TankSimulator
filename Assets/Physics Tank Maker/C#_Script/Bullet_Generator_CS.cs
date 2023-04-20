@@ -37,7 +37,6 @@ namespace ChobiAssets.PTM
         // Only for AI tank.
         public bool Can_Aim; // Set by "AI_CS", and referred to from "Cannon_Fire_Input_99_AI_CS" script.
 
-
         void Start()
         {
             Initialize();
@@ -52,7 +51,7 @@ namespace ChobiAssets.PTM
             currentBulletType = Initial_Bullet_Type - 1; // (Note.) The "currentBulletType" value is added by 1 soon in the "Switch_Bullet_Type()".
             Switch_Bullet_Type();
         }
-
+        
 
         public void Switch_Bullet_Type()
         { // Called from "Cannon_Fire_Input_##_##" scripts.

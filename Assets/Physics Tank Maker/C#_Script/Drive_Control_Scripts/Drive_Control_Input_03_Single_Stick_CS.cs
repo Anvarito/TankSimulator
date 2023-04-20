@@ -16,7 +16,7 @@ namespace ChobiAssets.PTM
             // Set "horizontal".
             horizontal = General_Settings_CS.InputListener.GetControl().Tank.Move.ReadValue<Vector2>().x;
             horizontal = Mathf.Floor(horizontal * 2) / 2;
-            print(vertical + " ||| " + horizontal);
+            //print(vertical + " ||| " + horizontal);
             // Set the "Stop_Flag", "L_Input_Rate", "R_Input_Rate" and "Turn_Brake_Rate".
             Set_Values();
 		}

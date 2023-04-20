@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System;
 
 namespace ChobiAssets.PTM
 {
@@ -12,78 +13,45 @@ namespace ChobiAssets.PTM
 		 * This script controls the loading circle displyaed while the bullet is reloaded.
 		 * This script works in combination with "Cannon_Fire_CS" in the tank.
 		*/
-
-
-        // User options >>
-        public string Reloading_Circle_Name = "Relocad_Circle";
-        // << User options
-
-
-        Cannon_Fire_CS cannonFireScript;
-        Image reloadingCircle;
-        Image[] reloadingCircleImages;
-        bool imagesEnabled = true;
+        private Cannon_Fire_CS _cannonFireScript;
+        private ReloadingCirclePresenter _reloadingCircle;
 
         bool isSelected;
+        private bool _isLoadeng;
 
-
-        void Start()
+        void Awake()
         {
-            Initialize();
+            _cannonFireScript = GetComponent<Cannon_Fire_CS>();
+            _cannonFireScript.OnInit.AddListener(InitScript);
         }
 
-
-        void Initialize()
+        private void InitScript()
         {
-            // Get the "Cannon_Fire_CS" script in the Cannon_Base.
-            cannonFireScript = GetComponent<Cannon_Fire_CS>();
-            if (cannonFireScript == null)
-            {
-                Debug.LogWarning("'Cannon_Fire_CS' script cannot be found.");
-                Destroy(this);
-                return;
-            }
+            _cannonFireScript.OnInit.RemoveListener(InitScript);
 
-            // Get the bar Images.
-            reloadingCircle = Find_Image(Reloading_Circle_Name);
-            if (reloadingCircle == null)
+            if (_cannonFireScript.inputType == 10)
             {
                 Destroy(this);
-                return;
             }
+            else
+            {
+                _reloadingCircle = FindObjectOfType<ReloadingCirclePresenter>();
 
-            // Get all the child images.
-            reloadingCircleImages = reloadingCircle.GetComponentsInChildren<Image>();
+                _cannonFireScript.OnReload.AddListener(ReloadLaunch);
+                _cannonFireScript.OnEndReload.AddListener(ReloadEnd);
+            }
         }
 
-
-        Image Find_Image(string name)
+        private void ReloadLaunch()
         {
-            // Check the name.
-            if (string.IsNullOrEmpty(name))
-            {
-                return null;
-            }
-
-            // Find the gameobject.
-            GameObject barObject = GameObject.Find(name);
-            if (barObject == null)
-            {
-                Debug.LogWarning("'" + name + "' is not found in the scene.");
-                return null;
-            }
-
-            // Get the Image.
-            Image tempImage = barObject.GetComponent<Image>();
-            if (tempImage == null)
-            {
-                Debug.LogWarning("'" + name + "' does not have an Image in it.");
-                return null;
-            }
-
-            return tempImage;
+            _reloadingCircle.EnableImage(true);
+            _isLoadeng = true;
         }
-
+        private void ReloadEnd()
+        {
+            _reloadingCircle.EnableImage(false);
+            _isLoadeng = false;
+        }
 
         void LateUpdate()
         {
@@ -92,37 +60,15 @@ namespace ChobiAssets.PTM
                 return;
             }
 
-            if (cannonFireScript.Is_Loaded)
+            if (_isLoadeng)
             {
-                Enable_Images(false);
-                return;
-            }
-            else
-            {
-                Enable_Images(true);
-                Control_Circle();
+                FillCircle();
             }
         }
 
-
-        void Enable_Images(bool enabled)
+        void FillCircle()
         {
-            if (imagesEnabled != enabled)
-            {
-                imagesEnabled = enabled;
-
-                // Enable or disable all the images.
-                for (int i = 0; i < reloadingCircleImages.Length; i++)
-                {
-                    reloadingCircleImages[i].enabled = enabled;
-                }
-            }
-        }
-
-
-        void Control_Circle()
-        {
-            reloadingCircle.fillAmount = cannonFireScript.Loading_Count / cannonFireScript.Reload_Time;
+            _reloadingCircle.FillCircle(_cannonFireScript.Loading_Count, _cannonFireScript.Reload_Time);
         }
 
 
@@ -137,7 +83,6 @@ namespace ChobiAssets.PTM
                 if (this.isSelected)
                 { // This tank is selected until now.
                     this.isSelected = false;
-                    Enable_Images(false);
                 }
             }
         }
@@ -145,12 +90,6 @@ namespace ChobiAssets.PTM
 
         void Turret_Destroyed_Linkage()
         { // Called from "Damage_Control_Center_CS".
-
-            // Turn off the image.
-            if (isSelected)
-            {
-                Enable_Images(false);
-            }
 
             Destroy(this);
         }

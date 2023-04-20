@@ -17,7 +17,7 @@ namespace ChobiAssets.PTM
 
         private void SwitchShell(InputAction.CallbackContext obj)
         {
-            cannonFireScript.Reload();
+            cannonFireScript.SwitchBulletType();
         }
 
         private void Fire(InputAction.CallbackContext obj)

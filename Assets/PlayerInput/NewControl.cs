@@ -176,7 +176,7 @@ public partial class @NewControl : IInputActionCollection2, IDisposable
                     ""id"": ""ce02d8cc-2da6-4eae-92fc-572615d00e92"",
                     ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
-                    ""processors"": """",
+                    ""processors"": ""NormalizeVector2,StickDeadzone"",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
