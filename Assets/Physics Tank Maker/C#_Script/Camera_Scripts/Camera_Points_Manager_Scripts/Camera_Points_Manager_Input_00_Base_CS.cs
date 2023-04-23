@@ -4,7 +4,7 @@ using UnityEngine;
 namespace ChobiAssets.PTM
 {
 
-	public class Camera_Points_Manager_Input_00_Base_CS : MonoBehaviour
+	public class Camera_Points_Manager_Input_00_Base_CS
 	{
 
 		protected Camera_Points_Manager_CS managerScript;

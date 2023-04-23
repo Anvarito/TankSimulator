@@ -87,8 +87,9 @@ GameObject:
   - component: {fileID: 22465086}
   - component: {fileID: 22398488}
   - component: {fileID: 114906965070934670}
+  - component: {fileID: 1442603259745270361}
   m_Layer: 5
-  m_Name: Canvas_Markers
+  m_Name: Canvas_ReloadMarker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -161,6 +162,20 @@ MonoBehaviour:
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
   m_PresetInfoIsWorld: 0
+--- !u!114 &1442603259745270361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 157772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33a6ba1448d36374aa7e1ce99f7dbc4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shellImage: {fileID: 114744089678804386}
+  _circleImage: {fileID: 114467028379388584}
 --- !u!1 &1388153396
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,7 +339,6 @@ GameObject:
   - component: {fileID: 224921859974611084}
   - component: {fileID: 222072172423985374}
   - component: {fileID: 114467028379388584}
-  - component: {fileID: 9055244296502017340}
   m_Layer: 5
   m_Name: Relocad_Circle
   m_TagString: Untagged
@@ -391,17 +405,3 @@ MonoBehaviour:
   m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &9055244296502017340
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1812090550165908}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33a6ba1448d36374aa7e1ce99f7dbc4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _shellImage: {fileID: 114744089678804386}
-  _circleImage: {fileID: 114467028379388584}

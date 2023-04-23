@@ -125,7 +125,7 @@ namespace ChobiAssets.PTM
             for (int i = 0; i < idScriptsList.Count; i++)
             {
                 // Check the tank is selected now, or has been dead.
-                if (idScriptsList[i].Is_Selected || markerDictionary[idScriptsList[i]].Root_Transform.tag == "Finish")
+                if (idScriptsList[i].IsSelected || markerDictionary[idScriptsList[i]].Root_Transform.tag == "Finish")
                 {
                     markerDictionary[idScriptsList[i]].Marker_Image.enabled = false;
                     continue;
@@ -142,7 +142,7 @@ namespace ChobiAssets.PTM
                 // Set the enabled and the color, according to the relationship and the AI condition.
                 switch (idScriptsList[i].Relationship)
                 {
-                    case 0: // Friendly.
+                    case ERelationship.TeamA: // Friendly.
                         markerDictionary[idScriptsList[i]].Marker_Image.enabled = true;
                         if (markerDictionary[idScriptsList[i]].AI_Script)
                         { // AI tank.
@@ -166,7 +166,7 @@ namespace ChobiAssets.PTM
                         }
                         break;
 
-                    case 1: // Hostile.
+                    case ERelationship.TeamB: // Hostile.
                         if (markerDictionary[idScriptsList[i]].AI_Script)
                         { // AI tank.
                             // Set the alpha and the scale.
@@ -202,7 +202,7 @@ namespace ChobiAssets.PTM
                         }
                         break;
 
-                    case 2: // Landmark.
+                    case ERelationship.Landmark: // Landmark.
                         markerDictionary[idScriptsList[i]].Marker_Image.enabled = true;
                         markerDictionary[idScriptsList[i]].Marker_Image.color = Landmark_Color;
                         break;

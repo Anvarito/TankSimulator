@@ -85,12 +85,12 @@ namespace ChobiAssets.PTM
             }
 
             // Reload the scene.
-            if (General_Settings_CS.Allow_Reload_Scene && Input.GetKeyDown(General_Settings_CS.Reload_Scene_Key))
-            {
-                Time.timeScale = 1.0f;
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-                return;
-            }
+            //if (General_Settings_CS.Allow_Reload_Scene && Input.GetKeyDown(General_Settings_CS.Reload_Scene_Key))
+            //{
+            //    Time.timeScale = 1.0f;
+            //    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            //    return;
+            //}
 
             // Quit.
             if (General_Settings_CS.Allow_Instant_Quit && Input.GetKeyDown(General_Settings_CS.Quit_Key))

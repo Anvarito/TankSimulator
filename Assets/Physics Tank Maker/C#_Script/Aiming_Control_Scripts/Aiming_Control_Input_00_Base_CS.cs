@@ -4,7 +4,7 @@ using UnityEngine;
 namespace ChobiAssets.PTM
 {
 
-	public class Aiming_Control_Input_00_Base_CS : MonoBehaviour
+	public class Aiming_Control_Input_00_Base_CS
 	{
 
 		protected Aiming_Control_CS aimingScript;

@@ -37,13 +37,13 @@ namespace ChobiAssets.PTM
         public void Receive_Helpers(AI_Headquaters_Helper_CS helperScript)
         { // Called from "AI_Headquaters_Helper_CS", when the tank is spawend.
             // Add the script into the lists according to the relationship.
-            switch (helperScript.ID_Script.Relationship)
+            switch (helperScript.GetRelationship())
             {
-                case 0:
+                case ERelationship.TeamA:
                     Friendly_Tanks_List.Add(helperScript);
                     break;
 
-                case 1:
+                case ERelationship.TeamB:
                     Hostile_Tanks_List.Add(helperScript);
                     break;
             }
@@ -123,13 +123,13 @@ namespace ChobiAssets.PTM
 
         public void Remove_From_List(AI_Headquaters_Helper_CS helperScript)
         { // Called from "AI_Headquaters_Helper_CS", just before the tank is removed.
-            switch (helperScript.ID_Script.Relationship)
+            switch (helperScript.GetRelationship())
             {
-                case 0:
+                case ERelationship.TeamA:
                     Friendly_Tanks_List.Remove(helperScript);
                     break;
 
-                case 1:
+                case ERelationship.TeamB:
                     Hostile_Tanks_List.Remove(helperScript);
                     break;
             }

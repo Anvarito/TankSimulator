@@ -133,7 +133,7 @@ namespace ChobiAssets.PTM
 
         void LateUpdate()
         {
-            if (targetIDScript == null || targetIDScript.Is_Selected == false)
+            if (targetIDScript == null || targetIDScript.IsSelected == false)
             { // The target is removed from the scene, or has not been selected.
                 if (Find_Target() == false)
                 { // The target cannot be found.
@@ -246,7 +246,7 @@ namespace ChobiAssets.PTM
 
             for (int i = 0; i < ID_Manager_CS.Instance.ID_Scripts_List.Count; i++)
             {
-                if (ID_Manager_CS.Instance.ID_Scripts_List[i].Is_Selected)
+                if (ID_Manager_CS.Instance.ID_Scripts_List[i].IsSelected)
                 {
                     targetIDScript = ID_Manager_CS.Instance.ID_Scripts_List[i];
                     var cameraScript = targetIDScript.GetComponentInChildren<Camera_Points_Manager_CS>();

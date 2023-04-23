@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace ChobiAssets.PTM
 {
@@ -9,24 +10,28 @@ namespace ChobiAssets.PTM
 
         bool dPadPressed;
 
+        public override void Prepare(Aiming_Control_CS aimingScript)
+        {
+            base.Prepare(aimingScript);
+            General_Settings_CS.InputListener.GetControl().Tank.ResetTurret.performed += ResetTurret;
+        }
+
+        // Switch the aiming mode.
+        private void ResetTurret(InputAction.CallbackContext obj)
+        {
+            if (aimingScript.Mode == 1)
+            { // Free aiming.
+                aimingScript.Mode = 0; // Lock off.
+            }
+            else
+            {
+                aimingScript.Mode = 1; // Free aiming.
+            }
+            aimingScript.Switch_Mode();
+        }
 
         public override void Get_Input()
         {
-            // Switch the aiming mode.
-            if (Input.GetKeyDown(General_Settings_CS.Aim_Mode_Switch_Pad_Button))
-            {
-                if (aimingScript.Mode == 1)
-                { // Free aiming.
-                    aimingScript.Mode = 0; // Lock off.
-                }
-                else
-                {
-                    aimingScript.Mode = 1; // Free aiming.
-                }
-                aimingScript.Switch_Mode();
-            }
-
-
             // Adjust aiming.
             if (gunCameraScript && gunCameraScript.Gun_Camera.enabled)
             { // The gun camera is enabled now.

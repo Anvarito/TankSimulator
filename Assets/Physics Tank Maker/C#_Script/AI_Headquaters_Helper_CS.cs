@@ -19,7 +19,7 @@ namespace ChobiAssets.PTM
 		// << User options
 
 		// Referred to from "AI_Headquaters_CS".
-		public ID_Settings_CS ID_Script;
+		private ID_Settings_CS _IDScript;
 		public Transform Body_Transform; // Referred to from also "AI_CS".
 		public AI_CS AI_Script;
 
@@ -31,10 +31,14 @@ namespace ChobiAssets.PTM
 			Send_Reference();
 		}
 
+		public ERelationship GetRelationship()
+        {
+			return _IDScript.Relationship;
 
+		}
         void Get_Components()
 		{ // This function is called at the fisrst time, and also when the tank is respawned.
-			ID_Script = GetComponent <ID_Settings_CS>();
+			_IDScript = GetComponent <ID_Settings_CS>();
 			Body_Transform = GetComponentInChildren <Rigidbody>().transform;
 			AI_Script = GetComponentInChildren <AI_CS>();
 		}

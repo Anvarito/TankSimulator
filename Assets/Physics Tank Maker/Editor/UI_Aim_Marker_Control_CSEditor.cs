@@ -9,35 +9,35 @@ namespace ChobiAssets.PTM
 	public class UI_Aim_Marker_Control_CS_CSEditor : Editor
 	{
 	
-		SerializedProperty Aim_Marker_NameProp;
+		//SerializedProperty Aim_Marker_NameProp;
 
 
-		void OnEnable ()
-		{
-			Aim_Marker_NameProp = serializedObject.FindProperty ("Aim_Marker_Name");
-		}
+		//void OnEnable ()
+		//{
+		//	Aim_Marker_NameProp = serializedObject.FindProperty ("Aim_Marker_Name");
+		//}
 
 
-		public override void OnInspectorGUI ()
-		{
-			if (EditorApplication.isPlaying) {
-				return;
-			}
+		//public override void OnInspectorGUI ()
+		//{
+		//	if (EditorApplication.isPlaying) {
+		//		return;
+		//	}
 
-			serializedObject.Update ();
+		//	serializedObject.Update ();
 
-			GUI.backgroundColor = new Color (1.0f, 1.0f, 0.5f, 1.0f);
+		//	GUI.backgroundColor = new Color (1.0f, 1.0f, 0.5f, 1.0f);
 
-			EditorGUILayout.Space ();
-			EditorGUILayout.HelpBox ("Aim Marker settings", MessageType.None, true);
+		//	EditorGUILayout.Space ();
+		//	EditorGUILayout.HelpBox ("Aim Marker settings", MessageType.None, true);
 
-			Aim_Marker_NameProp.stringValue = EditorGUILayout.TextField ("Aim Marker Name", Aim_Marker_NameProp.stringValue);
+		//	Aim_Marker_NameProp.stringValue = EditorGUILayout.TextField ("Aim Marker Name", Aim_Marker_NameProp.stringValue);
 
-			EditorGUILayout.Space ();
-			EditorGUILayout.Space ();
+		//	EditorGUILayout.Space ();
+		//	EditorGUILayout.Space ();
 
-			serializedObject.ApplyModifiedProperties ();
-		}
+		//	serializedObject.ApplyModifiedProperties ();
+		//}
 	
 	}
 

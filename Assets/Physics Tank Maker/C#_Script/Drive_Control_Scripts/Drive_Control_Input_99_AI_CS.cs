@@ -18,7 +18,7 @@ namespace ChobiAssets.PTM
             this.controlScript = controlScript;
 
             // Store the reference to "AI_CS".
-            aiScript = GetComponentInChildren<AI_CS>();
+            aiScript = controlScript.GetComponentInChildren<AI_CS>();
         }
 
 

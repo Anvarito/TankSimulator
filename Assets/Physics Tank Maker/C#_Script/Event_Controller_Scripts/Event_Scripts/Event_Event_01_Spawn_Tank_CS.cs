@@ -102,7 +102,7 @@ namespace ChobiAssets.PTM
             if (idScript)
             {
                 idScript.Tank_ID = eventControllerScript.Tank_ID;
-                idScript.Relationship = eventControllerScript.Relationship;
+                //idScript.Relationship = eventControllerScript.Relationship;
             }
 
             // Overwrite "Respawn_Controller_CS".

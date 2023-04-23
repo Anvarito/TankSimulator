@@ -18,34 +18,34 @@ namespace ChobiAssets.PTM
             }
 
             // Check the trigger.
-            switch (eventControllerScript.Trigger_Setting_Type)
-            {
-                case 1: // "Any hostile tank"
-                    if (idScript.Relationship == 1)
-                    { // Hostile
-                        break;
-                    }
-                    else
-                    {
-                        return;
-                    }
+            //switch (eventControllerScript.Trigger_Setting_Type)
+            //{
+            //    case 1: // "Any hostile tank"
+            //        if (idScript.Relationship == 1)
+            //        { // Hostile
+            //            break;
+            //        }
+            //        else
+            //        {
+            //            return;
+            //        }
 
-                case 2: // "Any friendly tank"
-                    if (idScript.Relationship == 0)
-                    { // Friendly
-                        break;
-                    }
-                    else
-                    {
-                        return;
-                    }
+            //    case 2: // "Any friendly tank"
+            //        if (idScript.Relationship == 0)
+            //        { // Friendly
+            //            break;
+            //        }
+            //        else
+            //        {
+            //            return;
+            //        }
 
-                case 3: // "Any tank"
-                    break;
+            //    case 3: // "Any tank"
+            //        break;
 
-                default:
-                    return;
-            }
+            //    default:
+            //        return;
+            //}
 
             // The "detectedTransform" is the trigger.
             if (eventControllerScript.Trigger_Itself_Flag == true)

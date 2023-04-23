@@ -29,7 +29,7 @@ namespace ChobiAssets.PTM
         public bool reticleAimingFlag; // Controlled from "Aiming_Control_Input_##_###", and referred to from "UI_Aim_Marker_Control_CS".
 
         // For auto-turn.
-        public int Mode; // Referred to from "UI_Aim_Marker_Control_CS". // 0 => Keep the initial positon, 1 => Free aiming,  2 => Locking on.
+        public int Mode = 1; // Referred to from "UI_Aim_Marker_Control_CS". // 0 => Keep the initial positon, 1 => Free aiming,  2 => Locking on.
         Transform rootTransform;
         Rigidbody thisRigidbody;
         public Vector3 Target_Position; // Referred to from "Turret_Horizontal_CS", "Cannon_Vertical_CS", "UI_Aim_Marker_Control_CS", "ReticleWheel_Control_CS".
@@ -51,13 +51,13 @@ namespace ChobiAssets.PTM
         public bool Is_Selected; // Referred to from "UI_HP_Bars_Target_CS".
 
 
-        void Start()
-		{
-			Initialize();
-		}
+  //      void Start()
+		//{
+		//	Initialize();
+		//}
 
 
-        void Initialize()
+        public void Initialize(Aiming_Control_Input_00_Base_CS aimingControl)
 		{
             rootTransform = transform.root;
             thisRigidbody = GetComponent<Rigidbody>();
@@ -78,42 +78,45 @@ namespace ChobiAssets.PTM
             cameraRotationScript = transform.parent.GetComponentInChildren<Camera_Rotation_CS>();
 
             // Set the input script.
-            Set_Input_Script(inputType);
+            inputScript = aimingControl;
 
             // Prepare the input script.
             if (inputScript != null)
             {
                 inputScript.Prepare(this);
             }
+
+            Mode = 1;
+            Switch_Mode();
         }
 
 
-        protected virtual void Set_Input_Script(int type)
-        {
-            switch (type)
-            {
-                case 0: // Mouse + Keyboard (Stepwise)
-                case 1: // Mouse + Keyboard (Pressing)
-                    inputScript = gameObject.AddComponent<Aiming_Control_Input_01_Mouse_Keyboard_CS>();
-                    break;
+        //protected virtual void Set_Input_Script(int type)
+        //{
+        //    switch (type)
+        //    {
+        //        case 0: // Mouse + Keyboard (Stepwise)
+        //        case 1: // Mouse + Keyboard (Pressing)
+        //            inputScript = new Aiming_Control_Input_01_Mouse_Keyboard_CS();
+        //            break;
 
-                case 2: // GamePad (Single stick)
-                    inputScript = gameObject.AddComponent<Aiming_Control_Input_02_For_Single_Stick_Drive_CS>();
-                    break;
+        //        case 2: // GamePad (Single stick)
+        //            inputScript = new Aiming_Control_Input_02_For_Single_Stick_Drive_CS();
+        //            break;
 
-                case 3: // GamePad (Twin sticks)
-                    inputScript = gameObject.AddComponent<Aiming_Control_Input_03_For_Twin_Sticks_Drive_CS>();
-                    break;
+        //        case 3: // GamePad (Twin sticks)
+        //            inputScript = new Aiming_Control_Input_03_For_Twin_Sticks_Drive_CS();
+        //            break;
 
-                case 4: // GamePad (Triggers)
-                    inputScript = gameObject.AddComponent<Aiming_Control_Input_04_For_Triggers_Drive_CS>();
-                    break;
+        //        case 4: // GamePad (Triggers)
+        //            inputScript = new Aiming_Control_Input_04_For_Triggers_Drive_CS();
+        //            break;
 
-                case 10: // AI
-                    // The order is sent from "AI_CS".
-                    break;
-            }
-        }
+        //        case 10: // AI
+        //            // The order is sent from "AI_CS".
+        //            break;
+        //    }
+        //}
 
 
         void Update()
@@ -341,7 +344,7 @@ namespace ChobiAssets.PTM
         }
 
 
-        public void Reticle_Aiming(Vector3 screenPos, int thisRelationship)
+        public void Reticle_Aiming(Vector3 screenPos, ERelationship thisRelationship)
         { // Called from "Aiming_Control_Input_##_###".
 
             // Find a target by casting a sphere from the camera.
@@ -568,7 +571,7 @@ namespace ChobiAssets.PTM
 
         void MainBody_Destroyed_Linkage()
 		{ // Called from "Damage_Control_Center_CS".
-			Destroy (inputScript as Object);
+			//Destroy (inputScript as Object);
 			Destroy (this);
 		}
 

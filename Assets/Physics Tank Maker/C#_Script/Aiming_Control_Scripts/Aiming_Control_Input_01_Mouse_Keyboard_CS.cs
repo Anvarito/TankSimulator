@@ -8,7 +8,7 @@ namespace ChobiAssets.PTM
 	{
 
         protected Gun_Camera_CS gunCameraScript;
-        protected int thisRelationship;
+        protected ERelationship thisRelationship;
 		protected Vector3 screenCenter = Vector3.zero;
 
 
@@ -20,21 +20,21 @@ namespace ChobiAssets.PTM
             aimingScript.Use_Auto_Turn = true;
 
             // Get the "Gun_Camera_CS".
-            gunCameraScript = GetComponentInChildren<Gun_Camera_CS>();
+            //gunCameraScript = GetComponentInChildren<Gun_Camera_CS>();
 
-            // Set the relationship.
-            ID_Settings_CS idScript = GetComponentInParent<ID_Settings_CS>();
-            if (idScript)
-            {
-                thisRelationship = idScript.Relationship;
-            }
+            //// Set the relationship.
+            //ID_Settings_CS idScript = GetComponentInParent<ID_Settings_CS>();
+            //if (idScript)
+            //{
+            //    thisRelationship = idScript.Relationship;
+            //}
 
-            // Set the initial aiming mode.
-            aimingScript.Mode = 1; // Free aiming.
-            aimingScript.Switch_Mode();
+            //// Set the initial aiming mode.
+            //aimingScript.Mode = 1; // Free aiming.
+            //aimingScript.Switch_Mode();
 
-            // Set the initial target position.
-            aimingScript.Target_Position = transform.position + (transform.forward * 128.0f);
+            //// Set the initial target position.
+            //aimingScript.Target_Position = transform.position + (transform.forward * 128.0f);
         }
 
 

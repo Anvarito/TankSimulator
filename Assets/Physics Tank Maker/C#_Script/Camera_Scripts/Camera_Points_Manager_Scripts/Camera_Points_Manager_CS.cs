@@ -47,13 +47,13 @@ namespace ChobiAssets.PTM
         public bool Is_Selected; // Referred to from "RC_Camera_CS".
 
 
-        void Start()
-        {
-            Initialize();
-        }
+        //void Start()
+        //{
+        //    Initialize();
+        //}
 
 
-        void Initialize()
+        public void Initialize(Camera_Points_Manager_Input_00_Base_CS cameraPointControl)
         {
             thisTransform = transform;
 
@@ -82,7 +82,7 @@ namespace ChobiAssets.PTM
             Switch_Camera_Point();
 
             // Set the input script.
-            Set_Input_Script(inputType);
+            inputScript = cameraPointControl;
 
             // Prepare the input script.
             if (inputScript != null)
@@ -95,23 +95,23 @@ namespace ChobiAssets.PTM
         }
 
 
-        protected virtual void Set_Input_Script(int type)
-        {
-            switch (type)
-            {
-                case 0: // Mouse + Keyboard (Stepwise)
-                case 1: // Mouse + Keyboard (Pressing)
-                case 10: // AI.
-                    inputScript = gameObject.AddComponent<Camera_Points_Manager_Input_01_Mouse_CS>();
-                    break;
+        //protected virtual void Set_Input_Script(int type)
+        //{
+        //    switch (type)
+        //    {
+        //        case 0: // Mouse + Keyboard (Stepwise)
+        //        case 1: // Mouse + Keyboard (Pressing)
+        //        case 10: // AI.
+        //            inputScript =  new Camera_Points_Manager_Input_01_Mouse_CS();
+        //            break;
 
-                case 2: // Gamepad (Single stick)
-                case 3: // Gamepad (Twin sticks)
-                case 4: // Gamepad (Triggers)
-                    inputScript = gameObject.AddComponent<Camera_Points_Manager_Input_02_Gamepad_CS>();
-                    break;
-            }
-        }
+        //        case 2: // Gamepad (Single stick)
+        //        case 3: // Gamepad (Twin sticks)
+        //        case 4: // Gamepad (Triggers)
+        //            inputScript = new Camera_Points_Manager_Input_02_Gamepad_CS();
+        //            break;
+        //    }
+        //}
 
 
         void LateUpdate()

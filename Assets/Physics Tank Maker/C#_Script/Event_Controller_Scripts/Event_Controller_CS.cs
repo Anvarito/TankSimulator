@@ -38,7 +38,7 @@ namespace ChobiAssets.PTM
 		// Variables for "ID_Settings_CS".
 		public GameObject Prefab_Object;
 		public int Tank_ID = 1;
-		public int Relationship;
+		public ERelationship Relationship;
 		// Variables for "Respawn_Controller_CS".
 		public int Respawn_Times = 0;
 		public float Auto_Respawn_Interval = 10.0f;

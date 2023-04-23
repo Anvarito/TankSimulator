@@ -3,6 +3,18 @@ using UnityEngine;
 
 namespace ChobiAssets.PTM
 {
+    public enum ERelationship
+    {
+        TeamA,
+        TeamB,
+        Landmark
+    }
+
+    public enum EPlayerType
+    {
+        AI,
+        Player
+    }
 
     [DefaultExecutionOrder(+1)] // (Note.) This script must be executed after all the scripts executed the initializing.
     public class ID_Settings_CS : MonoBehaviour
@@ -15,13 +27,28 @@ namespace ChobiAssets.PTM
 
 
         // User options >>
-        public int Tank_ID = 1; // "0" = Not selectable.
-        public int Relationship;
+        [SerializeField, Range (0, 30)]private int _tankID = 1; // "0" = Not selectable.
+        [SerializeField] private ERelationship _relationship;
+        [SerializeField] private EPlayerType _playerType;
+
+        //[Header("Initilize input scripts")]
         // << User options
-
-
-        public bool Is_Selected; // Referred to from "UI_PosMarker_Control_CS", "RC_Camera_CS".
+        public EPlayerType PlayerType => _playerType;
+        public bool IsSelected { get; private set; } // Referred to from "UI_PosMarker_Control_CS", "RC_Camera_CS".
         int currentID = 1;
+
+        public ERelationship Relationship => _relationship;
+        public int Tank_ID 
+        { 
+            get 
+            { 
+                return _tankID; 
+            }
+            set
+            {
+                Tank_ID = value;
+            }
+        }
 
 
         void Start()
@@ -41,17 +68,19 @@ namespace ChobiAssets.PTM
             }
 
             // Set the "Is_Selected" value.
-            Is_Selected = (Tank_ID == currentID);
+            IsSelected = (Tank_ID == currentID);
 
             // Broadcast whether this tank is selected or not.
             Broadcast_Selection_Condition();
-        }
 
+
+            //_driveControl.Initialize();
+        }
 
         public void Receive_Current_ID(int currentID)
         { // Called from "ID_Manager_CS" in the scene, when the player changes the tank.
             this.currentID = currentID;
-            Is_Selected = (Tank_ID == currentID);
+            IsSelected = (Tank_ID == currentID);
             Broadcast_Selection_Condition();
         }
 
@@ -59,7 +88,7 @@ namespace ChobiAssets.PTM
         void Broadcast_Selection_Condition()
         {
             // Broadcast whether this tank is selected or not to all the children.
-            BroadcastMessage("Selected", Is_Selected, SendMessageOptions.DontRequireReceiver);
+            BroadcastMessage("Selected", IsSelected, SendMessageOptions.DontRequireReceiver);
         }
 
 

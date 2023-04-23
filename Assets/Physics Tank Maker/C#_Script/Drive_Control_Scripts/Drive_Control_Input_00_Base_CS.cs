@@ -4,7 +4,7 @@ using UnityEngine;
 namespace ChobiAssets.PTM
 {
 
-	public class Drive_Control_Input_00_Base_CS : MonoBehaviour
+	public class Drive_Control_Input_00_Base_CS
 	{
 
 		protected Drive_Control_CS controlScript;

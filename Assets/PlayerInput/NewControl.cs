@@ -152,7 +152,7 @@ public partial class @NewControl : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""35ab773c-b9b1-4dbc-9a8c-65e511feb7b2"",
-                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",

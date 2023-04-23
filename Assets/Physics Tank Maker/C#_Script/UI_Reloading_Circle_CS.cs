@@ -13,15 +13,16 @@ namespace ChobiAssets.PTM
 		 * This script controls the loading circle displyaed while the bullet is reloaded.
 		 * This script works in combination with "Cannon_Fire_CS" in the tank.
 		*/
-        private Cannon_Fire_CS _cannonFireScript;
+        [SerializeField] private ReloadingCirclePresenter _reloadMarkerCanvasPrefab;
+        [SerializeField] private Cannon_Fire_CS _cannonFireScript;
+
         private ReloadingCirclePresenter _reloadingCircle;
 
-        bool isSelected;
+        private bool isSelected;
         private bool _isLoadeng;
 
         void Awake()
         {
-            _cannonFireScript = GetComponent<Cannon_Fire_CS>();
             _cannonFireScript.OnInit.AddListener(InitScript);
         }
 
@@ -35,7 +36,7 @@ namespace ChobiAssets.PTM
             }
             else
             {
-                _reloadingCircle = FindObjectOfType<ReloadingCirclePresenter>();
+                _reloadingCircle = Instantiate(_reloadMarkerCanvasPrefab);
 
                 _cannonFireScript.OnReload.AddListener(ReloadLaunch);
                 _cannonFireScript.OnEndReload.AddListener(ReloadEnd);

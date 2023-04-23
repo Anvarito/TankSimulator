@@ -89,13 +89,13 @@ namespace ChobiAssets.PTM
         protected Drive_Control_Input_00_Base_CS inputScript;
 
 
-        void Start()
-        {
-            Initialize();
-        }
+        //void Start()
+        //{
+        //    Initialize();
+        //}
 
 
-        void Initialize()
+        public void Initialize(Drive_Control_Input_00_Base_CS driveControl)
         {
             thisTransform = transform;
             thisRigidbody = GetComponent<Rigidbody>();
@@ -127,7 +127,7 @@ namespace ChobiAssets.PTM
             }
 
             // Set the input script.
-            Set_Input_Script(inputType);
+            inputScript = driveControl;
 
             // Prepare the input script.
             if (inputScript != null)
@@ -137,35 +137,20 @@ namespace ChobiAssets.PTM
         }
 
 
-        protected virtual void Set_Input_Script(int type)
-        {
-            switch (type)
-            {
-                case 0: // Mouse + Keyboard (Stepwise)
-                    inputScript = gameObject.AddComponent<Drive_Control_Input_01_Keyboard_Stepwise_CS>();
-                    break;
+        //protected virtual void Set_Input_Script(EPlayerType type)
+        //{
+        //    switch (type)
+        //    {
 
-                case 1: // Mouse + Keyboard (Pressing)
-                    inputScript = gameObject.AddComponent<Drive_Control_Input_02_Keyboard_Pressing_CS>();
-                    break;
+        //        case EPlayerType.Player: // Gamepad (Single stick)
+        //            inputScript = new Drive_Control_Input_03_Single_Stick_CS();
+        //            break;
 
-                case 2: // Gamepad (Single stick)
-                    inputScript = gameObject.AddComponent<Drive_Control_Input_03_Single_Stick_CS>();
-                    break;
-
-                case 3: // Gamepad (Twin sticks)
-                    inputScript = gameObject.AddComponent<Drive_Control_Input_04_Twin_Sticks_CS>();
-                    break;
-
-                case 4: // Gamepad (Triggers)
-                    inputScript = gameObject.AddComponent<Drive_Control_Input_05_Triggers_CS>();
-                    break;
-
-                case 10: // AI
-                    inputScript = gameObject.AddComponent<Drive_Control_Input_99_AI_CS>();
-                    break;
-            }
-        }
+        //        case EPlayerType.AI: // AI
+        //            inputScript = new Drive_Control_Input_03_Single_Stick_CS();
+        //            break;
+        //    }
+        //}
 
 
         AnimationCurve Create_Curve()
@@ -577,7 +562,7 @@ namespace ChobiAssets.PTM
 
         void MainBody_Destroyed_Linkage()
         { // Called from "Damage_Control_Center_CS".
-            Destroy(inputScript as Object);
+            //Destroy(inputScript as Object);
             Destroy(this);
         }
 

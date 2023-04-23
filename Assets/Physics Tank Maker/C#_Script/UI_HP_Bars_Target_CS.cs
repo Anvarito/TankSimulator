@@ -231,11 +231,11 @@ namespace ChobiAssets.PTM
                 Color color = Color.white;
                 switch (targetIDScript.Relationship)
                 {
-                    case 0: // Friend.
+                    case ERelationship.TeamA: // Friend.
                         color = Friend_Color;
                         break;
 
-                    case 1: // Hostile.
+                    case ERelationship.TeamB: // Hostile.
                         color = Hostile_Color;
                         break;
                 }

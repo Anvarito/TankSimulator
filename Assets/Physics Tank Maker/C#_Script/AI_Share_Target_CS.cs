@@ -15,7 +15,7 @@ namespace ChobiAssets.PTM
 
         public AI_CS AI_Script; // Set by "AI_CS".
 
-        int thisRelationship;
+        ERelationship thisRelationship;
         Aiming_Control_CS commanderAimingScript;
 
 
