@@ -229,7 +229,7 @@ namespace ChobiAssets.PTM
             navMeshObstacle.carvingMoveThreshold = 1.0f;
 
             /// Release the parking brake, and Destroy this script.
-            StartCoroutine("Disable_MainBody_Constraints");
+            StartCoroutine(Disable_MainBody_Constraints());
         }
 
 

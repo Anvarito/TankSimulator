@@ -13,6 +13,7 @@ namespace ChobiAssets.PTM
         public override void Prepare(Aiming_Control_CS aimingScript)
         {
             base.Prepare(aimingScript);
+            gunCameraScript = aimingScript.GetComponentInChildren<Gun_Camera_CS>();
             General_Settings_CS.InputListener.GetControl().Tank.ResetTurret.performed += ResetTurret;
         }
 
@@ -38,8 +39,12 @@ namespace ChobiAssets.PTM
 
                 // Set the adjust angle.
                 var multiplier = Mathf.Lerp(0.05f, 1.0f, Camera.main.fieldOfView / 10.0f); // Set the multiplier according to the FOV.
-                aimingScript.Adjust_Angle.x += Input.GetAxis("Horizontal2") * General_Settings_CS.Aiming_Sensibility * multiplier;
-                aimingScript.Adjust_Angle.y += Input.GetAxis("Vertical2") * General_Settings_CS.Aiming_Sensibility * 0.5f * multiplier;
+
+                var vertical = General_Settings_CS.InputListener.GetControl().Tank.Look.ReadValue<Vector2>().y;
+                var horizontal = General_Settings_CS.InputListener.GetControl().Tank.Look.ReadValue<Vector2>().x;
+
+                aimingScript.Adjust_Angle.x += horizontal * General_Settings_CS.Aiming_Sensibility * multiplier;
+                aimingScript.Adjust_Angle.y += vertical * General_Settings_CS.Aiming_Sensibility * 0.5f * multiplier;
 
                 // Check it is locking-on now.
                 if (aimingScript.Target_Transform)

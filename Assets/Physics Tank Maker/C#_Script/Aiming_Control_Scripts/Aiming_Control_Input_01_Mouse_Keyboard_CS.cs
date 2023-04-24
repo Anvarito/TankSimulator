@@ -20,7 +20,6 @@ namespace ChobiAssets.PTM
             aimingScript.Use_Auto_Turn = true;
 
             // Get the "Gun_Camera_CS".
-            //gunCameraScript = GetComponentInChildren<Gun_Camera_CS>();
 
             //// Set the relationship.
             //ID_Settings_CS idScript = GetComponentInParent<ID_Settings_CS>();

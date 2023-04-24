@@ -80,6 +80,24 @@ public partial class @NewControl : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ZoomIn"",
+                    ""type"": ""Button"",
+                    ""id"": ""6748226c-83a7-47d7-aa47-6ef6ed77614c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ZoomOut"",
+                    ""type"": ""Button"",
+                    ""id"": ""48842d7e-16c9-4639-8305-161235b8ed42"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -269,6 +287,28 @@ public partial class @NewControl : IInputActionCollection2, IDisposable
                     ""action"": ""Switch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f2949622-b1c8-4df0-aae7-8daed692eb63"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""ZoomIn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""55029b1f-1068-49e7-89c7-ad3b43a2ddf8"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""ZoomOut"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -311,6 +351,8 @@ public partial class @NewControl : IInputActionCollection2, IDisposable
         m_Tank_Aim = m_Tank.FindAction("Aim", throwIfNotFound: true);
         m_Tank_ResetTurret = m_Tank.FindAction("ResetTurret", throwIfNotFound: true);
         m_Tank_Switch = m_Tank.FindAction("Switch", throwIfNotFound: true);
+        m_Tank_ZoomIn = m_Tank.FindAction("ZoomIn", throwIfNotFound: true);
+        m_Tank_ZoomOut = m_Tank.FindAction("ZoomOut", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -376,6 +418,8 @@ public partial class @NewControl : IInputActionCollection2, IDisposable
     private readonly InputAction m_Tank_Aim;
     private readonly InputAction m_Tank_ResetTurret;
     private readonly InputAction m_Tank_Switch;
+    private readonly InputAction m_Tank_ZoomIn;
+    private readonly InputAction m_Tank_ZoomOut;
     public struct TankActions
     {
         private @NewControl m_Wrapper;
@@ -386,6 +430,8 @@ public partial class @NewControl : IInputActionCollection2, IDisposable
         public InputAction @Aim => m_Wrapper.m_Tank_Aim;
         public InputAction @ResetTurret => m_Wrapper.m_Tank_ResetTurret;
         public InputAction @Switch => m_Wrapper.m_Tank_Switch;
+        public InputAction @ZoomIn => m_Wrapper.m_Tank_ZoomIn;
+        public InputAction @ZoomOut => m_Wrapper.m_Tank_ZoomOut;
         public InputActionMap Get() { return m_Wrapper.m_Tank; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -413,6 +459,12 @@ public partial class @NewControl : IInputActionCollection2, IDisposable
                 @Switch.started -= m_Wrapper.m_TankActionsCallbackInterface.OnSwitch;
                 @Switch.performed -= m_Wrapper.m_TankActionsCallbackInterface.OnSwitch;
                 @Switch.canceled -= m_Wrapper.m_TankActionsCallbackInterface.OnSwitch;
+                @ZoomIn.started -= m_Wrapper.m_TankActionsCallbackInterface.OnZoomIn;
+                @ZoomIn.performed -= m_Wrapper.m_TankActionsCallbackInterface.OnZoomIn;
+                @ZoomIn.canceled -= m_Wrapper.m_TankActionsCallbackInterface.OnZoomIn;
+                @ZoomOut.started -= m_Wrapper.m_TankActionsCallbackInterface.OnZoomOut;
+                @ZoomOut.performed -= m_Wrapper.m_TankActionsCallbackInterface.OnZoomOut;
+                @ZoomOut.canceled -= m_Wrapper.m_TankActionsCallbackInterface.OnZoomOut;
             }
             m_Wrapper.m_TankActionsCallbackInterface = instance;
             if (instance != null)
@@ -435,6 +487,12 @@ public partial class @NewControl : IInputActionCollection2, IDisposable
                 @Switch.started += instance.OnSwitch;
                 @Switch.performed += instance.OnSwitch;
                 @Switch.canceled += instance.OnSwitch;
+                @ZoomIn.started += instance.OnZoomIn;
+                @ZoomIn.performed += instance.OnZoomIn;
+                @ZoomIn.canceled += instance.OnZoomIn;
+                @ZoomOut.started += instance.OnZoomOut;
+                @ZoomOut.performed += instance.OnZoomOut;
+                @ZoomOut.canceled += instance.OnZoomOut;
             }
         }
     }
@@ -465,5 +523,7 @@ public partial class @NewControl : IInputActionCollection2, IDisposable
         void OnAim(InputAction.CallbackContext context);
         void OnResetTurret(InputAction.CallbackContext context);
         void OnSwitch(InputAction.CallbackContext context);
+        void OnZoomIn(InputAction.CallbackContext context);
+        void OnZoomOut(InputAction.CallbackContext context);
     }
 }

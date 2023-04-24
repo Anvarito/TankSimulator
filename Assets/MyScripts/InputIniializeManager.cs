@@ -12,9 +12,12 @@ public class InputIniializeManager : MonoBehaviour
     [SerializeField] private Gun_Camera_CS _gunCameraControl;
 
     private ID_Settings_CS _iDSettingsCS;
+
     private Drive_Control_Input_00_Base_CS _driveControlType;
     private Aiming_Control_Input_00_Base_CS _aimingControlType;
+    private Gun_Camera_Input_00_Base_CS _gunCameraControlType;
     private Camera_Points_Manager_Input_00_Base_CS _cameraInputType;
+
     private void Awake()
     {
         SetDriveControlVariant();
@@ -32,10 +35,24 @@ public class InputIniializeManager : MonoBehaviour
         else
             Debug.LogError("Aiming_Control_CS is not linked!!!");
 
-        if (_cameraPointsControl != null)
-            _cameraPointsControl.Initialize(_cameraInputType);
-        else if(_cameraPointsControl == null && _iDSettingsCS.PlayerType == EPlayerType.Player)
-            Debug.LogError("Camera_Points_Manager_CS is not linked!!!");
+
+        if (_iDSettingsCS.PlayerType == EPlayerType.Player)
+        {
+            if (_cameraPointsControl != null)
+                _cameraPointsControl.Initialize(_cameraInputType);
+            else
+                Debug.LogError("Camera_Points_Manager_CS is not linked!!!");
+
+            if (_gunCameraControl != null)
+                _gunCameraControl.Initialize(_gunCameraControlType);
+            else
+                Debug.LogError("Gun_Camera_CS is not linked!!!");
+        }
+        else if (_iDSettingsCS.PlayerType == EPlayerType.AI)
+        {
+            if (_cameraPointsControl != null) Destroy(_cameraPointsControl.gameObject);
+            if (_gunCameraControl != null) Destroy(_gunCameraControl.gameObject);
+        }
     }
 
     private void SetDriveControlVariant()
@@ -44,15 +61,17 @@ public class InputIniializeManager : MonoBehaviour
         switch (_iDSettingsCS.PlayerType)
         {
 
-            case EPlayerType.Player: 
+            case EPlayerType.Player:
                 _driveControlType = new Drive_Control_Input_03_Single_Stick_CS();
                 _cameraInputType = new Camera_Points_Manager_Input_02_Gamepad_CS();
+                _gunCameraControlType = new GunCameraInput02_ForSingleStickDrive();
                 _aimingControlType = new Aiming_Control_Input_02_For_Single_Stick_Drive_CS();
                 break;
 
             case EPlayerType.AI:
                 _driveControlType = new Drive_Control_Input_99_AI_CS();
                 _cameraInputType = new Camera_Points_Manager_Input_01_Mouse_CS();
+                _gunCameraControlType = new Gun_Camera_Input_01_Mouse_CS();
                 break;
         }
     }

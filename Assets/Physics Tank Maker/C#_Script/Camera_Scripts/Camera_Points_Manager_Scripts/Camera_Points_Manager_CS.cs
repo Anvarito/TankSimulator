@@ -157,14 +157,14 @@ namespace ChobiAssets.PTM
         }
 
 
-        void Enable_Camera()
+        public void Enable_Camera()
         { // Called from "Gun_Camera_CS".
             Main_Camera.enabled = true;
             Main_AudioListener.enabled = true;
         }
 
 
-        void Disable_Camera()
+        public void Disable_Camera()
         { // Called also from "Gun_Camera_CS".
             Main_Camera.enabled = false;
             Main_AudioListener.enabled = false;

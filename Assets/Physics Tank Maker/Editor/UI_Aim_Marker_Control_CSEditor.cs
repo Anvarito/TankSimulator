@@ -5,7 +5,7 @@ using UnityEditor;
 namespace ChobiAssets.PTM
 {
 
-	[ CustomEditor (typeof(UI_Aim_Marker_Control_CS))]
+	//[ CustomEditor (typeof(AimUIReceiver))]
 	public class UI_Aim_Marker_Control_CS_CSEditor : Editor
 	{
 	

@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 114906965070934670}
   - component: {fileID: 1038600634077210470}
   m_Layer: 5
-  m_Name: Canvas_AimMarkerer 1
+  m_Name: Canvas_AimMarkerer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -8,7 +8,7 @@ namespace ChobiAssets.PTM
 {
 
     [DefaultExecutionOrder(+3)] // (Note.) This script is executed after the main camera is moved, in order to move the marker smoothly.
-    public class UI_Lead_Marker_Control_CS : MonoBehaviour
+    public class LeadMarkerUIReceiver : MonoBehaviour
     {
         /*
 		 * This script is attached to the "MainBody" of the tank with "Aiming_Control_CS".

@@ -6,7 +6,7 @@ using System;
 namespace ChobiAssets.PTM
 {
 
-    public class UI_Reloading_Circle_CS : MonoBehaviour
+    public class ReloadingCircleUIReseiver : MonoBehaviour
     {
         /*
 		 * This script is attached to the "Cannon_Base" in the tank.

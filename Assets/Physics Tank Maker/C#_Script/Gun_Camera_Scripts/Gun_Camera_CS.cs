@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 namespace ChobiAssets.PTM
 {
@@ -39,15 +40,17 @@ namespace ChobiAssets.PTM
         protected Gun_Camera_Input_00_Base_CS inputScript;
 
         bool isSelected;
+        public UnityEvent OnEnableGunCam;
+        public UnityEvent OnDisableGunCam;
+        public UnityEvent<float> OnFOVchange;
+
+        //      void Start()
+        //{
+        //	Initialize();
+        //}
 
 
-        void Start()
-		{
-			Initialize();
-		}
-
-
-        void Initialize()
+        public void Initialize(Gun_Camera_Input_00_Base_CS gunCameraInput)
         {
             thisTransform = transform;
 
@@ -90,7 +93,7 @@ namespace ChobiAssets.PTM
             }
 
             // Set the input script.
-            Set_Input_Script(inputType);
+            inputScript = gunCameraInput;
 
             // Prepare the input script.
             if (inputScript != null)
@@ -100,26 +103,26 @@ namespace ChobiAssets.PTM
         }
 
 
-        protected virtual void Set_Input_Script(int type)
-        {
-            switch (type)
-            {
-                case 0: // Mouse + Keyboard (Stepwise)
-                case 1: // Mouse + Keyboard (Pressing)
-                case 10: // AI.
-                    inputScript = gameObject.AddComponent<Gun_Camera_Input_01_Mouse_CS>();
-                    break;
+        //protected virtual void Set_Input_Script(int type)
+        //{
+        //    switch (type)
+        //    {
+        //        case 0: // Mouse + Keyboard (Stepwise)
+        //        case 1: // Mouse + Keyboard (Pressing)
+        //        case 10: // AI.
+        //            inputScript = gameObject.AddComponent<Gun_Camera_Input_01_Mouse_CS>();
+        //            break;
 
-                case 2: // Gamepad (Single stick)
-                    inputScript = gameObject.AddComponent<Gun_Camera_Input_02_For_Single_Stick_Drive_CS>();
-                    break;
+        //        case 2: // Gamepad (Single stick)
+        //            inputScript = gameObject.AddComponent<Gun_Camera_Input_02_For_Single_Stick_Drive_CS>();
+        //            break;
 
-                case 3: // Gamepad (Twin sticks)
-                case 4: // Gamepad (Triggers)
-                    inputScript = gameObject.AddComponent<Gun_Camera_Input_03_For_Twin_Stick_Drive_CS>();
-                    break;
-            }
-        }
+        //        case 3: // Gamepad (Twin sticks)
+        //        case 4: // Gamepad (Triggers)
+        //            inputScript = gameObject.AddComponent<Gun_Camera_Input_03_For_Twin_Stick_Drive_CS>();
+        //            break;
+        //    }
+        //}
 
 
         void Update()
@@ -162,8 +165,9 @@ namespace ChobiAssets.PTM
                     {
                         lookAtPos = thisTransform.position + (thisTransform.forward * 2048.0f);
                     }
-                    Camera_Manager_Script.SendMessage("Enable_Camera", lookAtPos, SendMessageOptions.DontRequireReceiver);
-
+                    //Camera_Manager_Script.SendMessage("Enable_Camera", lookAtPos, SendMessageOptions.DontRequireReceiver);
+                    Camera_Manager_Script.Enable_Camera();
+                    OnDisableGunCam?.Invoke();
                     // Disable the gun camera.
                     Gun_Camera.enabled = false;
                     thisListener.enabled = false;
@@ -172,9 +176,10 @@ namespace ChobiAssets.PTM
 
                 case 2: // On
                     // Call "Camera_Points_Manager_CS" to disable the main camera.
-                    Camera_Manager_Script.SendMessage("Disable_Camera", SendMessageOptions.DontRequireReceiver);
-                    
+                    //Camera_Manager_Script.SendMessage("Disable_Camera", SendMessageOptions.DontRequireReceiver);
+                    Camera_Manager_Script.Disable_Camera();
                     // Enable the gun camera.
+                    OnEnableGunCam?.Invoke();
                     Gun_Camera.enabled = true;
                     thisListener.enabled = true;
                     this.tag = "MainCamera";
@@ -184,6 +189,8 @@ namespace ChobiAssets.PTM
 
 
         float currentZoomVelocity;
+
+
         void Zoom()
         {
             targetFOV *= 1.0f + Zoom_Input;
@@ -193,6 +200,11 @@ namespace ChobiAssets.PTM
             {
                 currentFOV = Mathf.SmoothDamp(currentFOV, targetFOV, ref currentZoomVelocity, 2.0f * Time.deltaTime);
                 Gun_Camera.fieldOfView = currentFOV;
+
+                var alpha = (Gun_Camera.fieldOfView - Minimum_FOV) / (Maximum_FOV - Minimum_FOV);
+                alpha = 1 - alpha;
+
+                OnFOVchange?.Invoke(alpha);
             }
         }
 

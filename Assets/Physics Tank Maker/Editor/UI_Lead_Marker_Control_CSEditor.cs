@@ -5,7 +5,7 @@ using UnityEditor;
 namespace ChobiAssets.PTM
 {
 
-	[CustomEditor(typeof(UI_Lead_Marker_Control_CS))]
+	//[CustomEditor(typeof(UI_Lead_Marker_Control_CS))]
 	public class UI_Lead_Marker_Control_CS_CSEditor : Editor
 	{
 

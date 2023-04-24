@@ -7,7 +7,7 @@ namespace ChobiAssets.PTM
 {
 
     [DefaultExecutionOrder(+2)] // (Note.) This script is executed after the "Aiming_Control_CS", in order to move the marker smoothly.
-    public class UI_Aim_Marker_Control_CS : MonoBehaviour
+    public class AimMarkerUIReceiver : MonoBehaviour
     {
         /*
 		 * This script is attached to the "MainBody" of the tank.
