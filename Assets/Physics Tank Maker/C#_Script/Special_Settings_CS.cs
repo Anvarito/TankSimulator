@@ -39,11 +39,11 @@ namespace ChobiAssets.PTM
             var damageControlCenterScript = GetComponentInChildren<Damage_Control_Center_CS>();
             if (damageControlCenterScript)
             {
-                damageControlCenterScript.MainBody_HP *= Defence_Multiplier;
-                for (int i = 0; i < damageControlCenterScript.Turret_Props.Length; i++)
-                {
-                    damageControlCenterScript.Turret_Props[i].hitPoints *= Defence_Multiplier;
-                }
+                //damageControlCenterScript.MainBody_HP *= Defence_Multiplier;
+                //for (int i = 0; i < damageControlCenterScript.Turret_Props.Length; i++)
+                //{
+                //    damageControlCenterScript.Turret_Props[i].hitPoints *= Defence_Multiplier;
+                //}
             }
         }
 

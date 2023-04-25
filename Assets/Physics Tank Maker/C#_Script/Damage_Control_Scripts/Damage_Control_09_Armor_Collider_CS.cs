@@ -4,13 +4,13 @@ using UnityEngine;
 namespace ChobiAssets.PTM
 {
 
-    public class Damage_Control_09_Armor_Collider_CS : Damage_Control_00_Base_CS
+    public class Damage_Control_09_Armor_Collider_CS : DamageBase
     {
 
         public float Damage_Multiplier = 1.0f;
 
 
-        Damage_Control_00_Base_CS parentDamageScript;
+        DamageBase parentDamageScript;
 
 
         protected override void Start()
@@ -26,7 +26,7 @@ namespace ChobiAssets.PTM
             }
 
             // Find the "Damage_Control_##_##_CS" script in the parent object.
-            parentDamageScript = transform.parent.GetComponent<Damage_Control_00_Base_CS>();
+            parentDamageScript = transform.parent.GetComponent<DamageBase>();
             if (parentDamageScript == null)
             {
                 Destroy(this.gameObject);

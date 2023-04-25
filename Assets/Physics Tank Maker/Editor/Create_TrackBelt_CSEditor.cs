@@ -495,13 +495,13 @@ namespace ChobiAssets.PTM
 			stabilizerScript.Initial_Pos_Y = pieceObject.transform.localPosition.y;
 			stabilizerScript.Initial_Angles = pieceObject.transform.localEulerAngles;
 			// Damage_Control_02_Physics_Track_Piece_CS
-			var damageScript = pieceObject.AddComponent < Damage_Control_03_Physics_Track_Piece_CS > ();
-			if (direction == "L") { // Left
-				damageScript.Track_Index = 0;
-			}
-			else { // Right
-				damageScript.Track_Index = 1;
-			}
+			//var damageScript = pieceObject.AddComponent < DamagePhisycalTrack > ();
+			//if (direction == "L") { // Left
+			//	damageScript.Track_Index = 0;
+			//}
+			//else { // Right
+			//	damageScript.Track_Index = 1;
+			//}
 			// Static_Track_Setting_CS
 			if (Static_FlagProp.boolValue) {
 				Static_Track_Setting_CS settingScript = pieceObject.AddComponent < Static_Track_Setting_CS > ();

@@ -102,9 +102,9 @@ namespace ChobiAssets.PTM
             }
         }
 
-
         void Control_Bars()
         {
+        /*
             // MainBody
             Body_Bar.fillAmount = damageScript.MainBody_HP / damageScript.Initial_Body_HP;
             if (previousBodyHP != damageScript.MainBody_HP)
@@ -142,8 +142,8 @@ namespace ChobiAssets.PTM
             previousTurretHP = damageScript.Turret_Props[0].hitPoints;
             previousLeftTrackHP = damageScript.Left_Track_HP;
             previousRightTrackHP = damageScript.Right_Track_HP;
+        */
         }
-
 
         IEnumerator Flash(Image[] images, int id)
         {
@@ -170,12 +170,12 @@ namespace ChobiAssets.PTM
         public void Get_Damage_Script(Damage_Control_Center_CS tempDamageScript)
         { // Called from "Damage_Control_Center_CS".
             damageScript = tempDamageScript;
-
+            /*
             // Store the HP values.
             previousBodyHP = damageScript.MainBody_HP;
             previousTurretHP = damageScript.Turret_Props[0].hitPoints;
             previousLeftTrackHP = damageScript.Left_Track_HP;
-            previousRightTrackHP = damageScript.Right_Track_HP;
+            previousRightTrackHP = damageScript.Right_Track_HP;*/
         }
 
     }

@@ -116,12 +116,12 @@ namespace ChobiAssets.PTM
                 Disable_Canvas(true);
                 return;
             }
-
+            /*
             if (targetDamageScript.MainBody_HP <= 0.0f)
             { // The target has been destroyed.
                 Disable_Canvas(true);
                 return;
-            }
+            }*/
 
 
             if (aimingScript.Target_Rigidbody == null)
@@ -216,12 +216,12 @@ namespace ChobiAssets.PTM
             {
                 return;
             }
-
+/*
             // Store the HP values.
             previousBodyHP = targetDamageScript.MainBody_HP;
             previousTurretHP = targetDamageScript.Turret_Props[0].hitPoints;
             previousLeftTrackHP = targetDamageScript.Left_Track_HP;
-            previousRightTrackHP = targetDamageScript.Right_Track_HP;
+            previousRightTrackHP = targetDamageScript.Right_Track_HP;*/
 
             // Set the color.
             var targetIDScript = currentTargetRigidbody.GetComponentInParent<ID_Settings_CS>();
@@ -292,7 +292,7 @@ namespace ChobiAssets.PTM
 
 		void Control_Bars()
 		{
-            // MainBody
+           /* // MainBody
             Body_Bar.fillAmount = targetDamageScript.MainBody_HP / targetDamageScript.Initial_Body_HP;
             if (previousBodyHP != targetDamageScript.MainBody_HP)
             {
@@ -328,7 +328,7 @@ namespace ChobiAssets.PTM
             previousBodyHP = targetDamageScript.MainBody_HP;
             previousTurretHP = targetDamageScript.Turret_Props[0].hitPoints;
             previousLeftTrackHP = targetDamageScript.Left_Track_HP;
-            previousRightTrackHP = targetDamageScript.Right_Track_HP;
+            previousRightTrackHP = targetDamageScript.Right_Track_HP;*/
         }
 
 

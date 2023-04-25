@@ -15,7 +15,7 @@ namespace ChobiAssets.PTM
                 var damageScript = eventControllerScript.Target_Tanks[i].GetComponentInChildren<Damage_Control_Center_CS>();
                 if (damageScript)
                 {
-                    damageScript.Receive_Damage(Mathf.Infinity, 0, 0);
+                    //damageScript.Receive_Damage(Mathf.Infinity, 0, 0);
                 }
             }
 

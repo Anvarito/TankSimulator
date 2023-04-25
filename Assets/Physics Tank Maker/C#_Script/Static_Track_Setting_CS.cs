@@ -204,11 +204,11 @@ namespace ChobiAssets.PTM
             {
                 DestroyImmediate(rigidbody);
             }
-            var damageScript = GetComponent<Damage_Control_03_Physics_Track_Piece_CS>();
-            if (damageScript)
-            {
-                DestroyImmediate(damageScript);
-            }
+            //var damageScript = GetComponent<DamagePhisycalTrack>();
+            //if (damageScript)
+            //{
+            //    DestroyImmediate(damageScript);
+            //}
             var stabilizerScript = GetComponent<Stabilizer_CS>();
             if (stabilizerScript)
             {

@@ -222,12 +222,12 @@ namespace ChobiAssets.PTM
 
 			// Add "Damage_Control_01_Turret_CS" script.
 			if (Use_Damage_ControlProp.boolValue) {
-				var damageScript = newObject.AddComponent <Damage_Control_02_Turret_CS>();
+				var damageScript = newObject.AddComponent <DamageTurret>();
 				// Get the "Turret_Index" value in the "Turret_Base_CS" script.
 				Turret_Base_CS turretScript = thisTransform.parent.GetComponentInChildren <Turret_Base_CS>();
 				if (turretScript) {
 					Turret_IndexProp.intValue = turretScript.Turret_Index;
-					damageScript.Turret_Index = Turret_IndexProp.intValue;
+					//damageScript.Turret_Index = Turret_IndexProp.intValue;
 				}
 			}
 

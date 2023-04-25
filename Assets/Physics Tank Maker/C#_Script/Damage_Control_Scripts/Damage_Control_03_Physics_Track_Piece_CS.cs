@@ -4,7 +4,7 @@ using UnityEngine;
 namespace ChobiAssets.PTM
 {
 
-    public class Damage_Control_03_Physics_Track_Piece_CS : Damage_Control_00_Base_CS
+    public class Damage_Control_03_Physics_Track_Piece_CS : DamageBase
     {
 
         public int Track_Index; // 0 = Left, 1 = Right.
@@ -14,21 +14,22 @@ namespace ChobiAssets.PTM
         { // Called from "Bullet_Control_CS", when the bullet hits this collider.
 
             // Send the damage value to the "Damage_Control_Center_CS".
-            if (centerScript.Receive_Damage(damage, 2, Track_Index) == true)
-            { // type = 2 (Physics_Track piece), index = Track_Index (0 = Left, 1 = Right). true = The track has been destroyed.
+            //if (centerScript.Receive_Damage(damage, 2, Track_Index) == true)
+            //{ // type = 2 (Physics_Track piece), index = Track_Index (0 = Left, 1 = Right). true = The track has been destroyed.
                 
-                // Break the track by removing the HingeJoint.
-                HingeJoint hingeJoint = GetComponent<HingeJoint>();
-                if (hingeJoint)
-                {
-                    Destroy(hingeJoint);
-                }
-                return true;
-            }
-            else
-            { // The track has not been destroyed.
-                return false;
-            }
+            //    // Break the track by removing the HingeJoint.
+            //    HingeJoint hingeJoint = GetComponent<HingeJoint>();
+            //    if (hingeJoint)
+            //    {
+            //        Destroy(hingeJoint);
+            //    }
+            //    return true;
+            //}
+            //else
+            //{ // The track has not been destroyed.
+            //    return false;
+            //}
+            return false;
         }
 
 
@@ -51,7 +52,7 @@ namespace ChobiAssets.PTM
         { // Called when the HingeJoint in this piece has broken physically.
 
             // Send an infinite damage value to the "Damage_Control_Center_CS".
-            centerScript.Receive_Damage(Mathf.Infinity, 2, Track_Index); // type = 2 (Physics_Track piece), index = Track_Index (0 = Left, 1 = Right).
+            //centerScript.Receive_Damage(Mathf.Infinity, 2, Track_Index); // type = 2 (Physics_Track piece), index = Track_Index (0 = Left, 1 = Right).
         }
     }
 

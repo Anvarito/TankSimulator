@@ -4,7 +4,7 @@ using UnityEngine;
 namespace ChobiAssets.PTM
 {
 
-	public class Damage_Control_00_Base_CS : MonoBehaviour
+	public class DamageBase : MonoBehaviour
 	{
 
 		protected Damage_Control_Center_CS centerScript;
