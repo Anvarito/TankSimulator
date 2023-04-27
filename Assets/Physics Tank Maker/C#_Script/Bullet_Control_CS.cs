@@ -115,21 +115,22 @@ namespace ChobiAssets.PTM
                 var damageValue = Attack_Point * Mathf.Pow(hitVelocity / Initial_Velocity, 2.0f) * Mathf.Lerp(0.0f, 1.0f, Mathf.Sqrt(hitAngle / 90.0f)) * Attack_Multiplier;
 
                 // Output for debugging.
-                if (Debug_Flag)
-                {
-                    float tempMultiplier = 1.0f;
-                    Damage_Control_09_Armor_Collider_CS armorColliderScript = hitObject.GetComponent<Damage_Control_09_Armor_Collider_CS>();
-                    if (armorColliderScript)
-                    {
-                        tempMultiplier = armorColliderScript.Damage_Multiplier;
-                    }
-                    Debug.Log("AP Damage " + damageValue * tempMultiplier + " on " + hitObject.name + " (" + (90.0f - hitAngle) + " degrees)");
-                }
+                //if (Debug_Flag)
+                //{
+                //    float tempMultiplier = 1.0f;
+                //    DamageArmorCollider armorColliderScript = hitObject.GetComponent<DamageArmorCollider>();
+                //    if (armorColliderScript)
+                //    {
+                //        tempMultiplier = armorColliderScript.Damage_Multiplier;
+                //    }
+                //    Debug.Log("AP Damage " + damageValue * tempMultiplier + " on " + hitObject.name + " (" + (90.0f - hitAngle) + " degrees)");
+                //}
 
-                // Send the damage value to "Damage_Control_##_##_CS" script.
-                if (damageScript.Get_Damage(damageValue, Type) == true)
+                // Send the damage value to "Damage##" script.
+                if(damageScript.CheckBreackout(damageValue, Type))
                 { // The hit part has been destroyed.
                     // Remove the bullet from the scene.
+                    damageScript.DealDamage(damageValue, Type);
                     Destroy(this.gameObject);
                 }
                 else
@@ -212,7 +213,7 @@ namespace ChobiAssets.PTM
                 if (damageScript != null)
                 { // The collider should be a breakable object.
                     var damageValue = Attack_Point * loss * Attack_Multiplier;
-                    damageScript.Get_Damage(damageValue, Type);
+                    damageScript.DealDamage(damageValue, Type);
                     // Output for debugging.
                     if (Debug_Flag)
                     {

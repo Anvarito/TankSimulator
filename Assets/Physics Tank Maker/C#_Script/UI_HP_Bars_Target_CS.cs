@@ -42,7 +42,7 @@ namespace ChobiAssets.PTM
 		float previousRightTrackHP;
 		int flashCancelID;
 		Rigidbody currentTargetRigidbody;
-		Damage_Control_Center_CS targetDamageScript;
+		DamageManager targetDamageScript;
 
 
         public static UI_HP_Bars_Target_CS Instance;
@@ -211,7 +211,7 @@ namespace ChobiAssets.PTM
             }
 
             // Get the "Damage_Control_Center_CS" in the target.
-            targetDamageScript = currentTargetRigidbody.GetComponentInParent<Damage_Control_Center_CS>();
+            targetDamageScript = currentTargetRigidbody.GetComponentInParent<DamageManager>();
             if (targetDamageScript == null)
             {
                 return;

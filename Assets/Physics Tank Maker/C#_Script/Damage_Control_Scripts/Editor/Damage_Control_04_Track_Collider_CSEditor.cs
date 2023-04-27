@@ -11,16 +11,18 @@ namespace ChobiAssets.PTM
         
         SerializedProperty _initHP;
         SerializedProperty Linked_Piece_ScriptProp;
+        SerializedProperty Damage_treshold;
 
-       // SerializedProperty Has_ChangedProp;
+        // SerializedProperty Has_ChangedProp;
 
 
         void OnEnable()
         {
             _initHP = serializedObject.FindProperty("_InitialTrackHP");
             Linked_Piece_ScriptProp = serializedObject.FindProperty("Linked_Piece_Script");
+            Damage_treshold = serializedObject.FindProperty("_damageThreshold");
 
-           // Has_ChangedProp = serializedObject.FindProperty("Has_Changed");
+            // Has_ChangedProp = serializedObject.FindProperty("Has_Changed");
         }
 
 
@@ -43,6 +45,7 @@ namespace ChobiAssets.PTM
 
             EditorGUILayout.Space ();
             _initHP.floatValue = EditorGUILayout.FloatField("Initital HP", _initHP.floatValue);
+            EditorGUILayout.Slider(Damage_treshold, 0.0f, 1000.0f, "Damage treshold");
             //Linked_Piece_ScriptProp.objectReferenceValue = EditorGUILayout.ObjectField ("Linked Piece", Linked_Piece_ScriptProp.objectReferenceValue, typeof(Static_Track_Piece_CS), true);
             //EditorGUILayout.Space ();
 

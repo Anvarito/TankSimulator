@@ -5,16 +5,18 @@ using UnityEditor;
 namespace ChobiAssets.PTM
 {
 
-	[ CustomEditor (typeof(Damage_Control_09_Armor_Collider_CS))]
+	[ CustomEditor (typeof(DamageAdditionalDamageZone))]
 	public class Damage_Control_09_Armor_Collider_CSEditor : Editor
 	{
 	
 		SerializedProperty Damage_MultiplierProp;
+		SerializedProperty Damage_treshold;
 
 
 		void OnEnable ()
 		{
 			Damage_MultiplierProp = serializedObject.FindProperty ("Damage_Multiplier");
+			Damage_treshold = serializedObject.FindProperty ("_damageThreshold");
 		}
 
 
@@ -27,6 +29,7 @@ namespace ChobiAssets.PTM
 			EditorGUILayout.Space ();
 			EditorGUILayout.HelpBox ("Damage Multiplier settings", MessageType.None, true);
 			EditorGUILayout.Slider (Damage_MultiplierProp, 0.0f, 10.0f, "Damage Multiplier");
+			EditorGUILayout.Slider (Damage_treshold, 0.0f, 1000.0f, "Damage treshold");
 
 
 			EditorGUILayout.Space ();

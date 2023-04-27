@@ -8,8 +8,6 @@ namespace ChobiAssets.PTM
     public struct TurretDamageControlProp
     {
         public Transform turretBaseTransform;
-        public float hitPoints;
-        public float damageThreshold;
         public bool blowOff;
         public float mass;
         public GameObject destroyedEffect;
@@ -18,45 +16,21 @@ namespace ChobiAssets.PTM
     {
 
         [SerializeField] private TurretDamageControlProp _turretProps;
-        public float _initialHP;
-        public UnityEvent OnTurretDestroy;
-        protected override void Start()
-        {
-            base.Start();
-            _initialHP = _turretProps.hitPoints;
-        }
-        public override bool Get_Damage(float damage, int bulletType)
-        { // Called from "Bullet_Control_CS", when the bullet hits this collider.
-          // Send the damage value to the "Damage_Control_Center_CS".
-          // return centerScript.Receive_Damage(damage, 1, Turret_Index); // type = 1 (Turret), index = Turret_ID (0 = Main turret).
-            return Turret_Damaged(damage);
-        }
 
-        bool Turret_Damaged(float damage)
+        public override bool CheckBreackout(float damage, int bulletType)
         {
             if (_turretProps.turretBaseTransform == null)
             { // The turret had already been destroyed.
+                Debug.LogError("turretBaseTransform is null!!!");
                 return false;
             }
-
-            if (damage < _turretProps.damageThreshold)
-            { // Never receive any damage under the threshold value.
-                return false;
-            }
-
-            _turretProps.hitPoints -= damage;
-            if (_turretProps.hitPoints <= 0)
-            {
-                Turret_Destroyed();
-                return true;
-            }
-            return false;
+            return base.CheckBreackout(damage, bulletType);
         }
 
-        void Turret_Destroyed()
+        protected override void ParthDestroy()
         {
-            // Set the HP value to zero.
-            _turretProps.hitPoints = 0.0f;
+            base.ParthDestroy();
+            _hitPoints = 0.0f;
 
             // Create the destroyed effect.
             if (_turretProps.destroyedEffect)
@@ -100,9 +74,9 @@ namespace ChobiAssets.PTM
 
         void Turret_Destroyed_Linkage()
         { // Called from "Damage_Control_Center_CS", when this turret or the parent turret has been destroyed.
-            OnTurretDestroy?.Invoke();
             Destroy(this);
         }
+
     }
 
 }

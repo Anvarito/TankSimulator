@@ -19,7 +19,7 @@ namespace ChobiAssets.PTM
     //}
 
 
-    public class Damage_Control_Center_CS : MonoBehaviour
+    public class DamageManager : MonoBehaviour
     {
         /* 
 		 * This script is attached to the "MainBody" in the tank.
@@ -53,13 +53,15 @@ namespace ChobiAssets.PTM
         // Referred to from "UI_HP_Bars_Self_CS" and "UI_HP_Bars_Target_CS".
         //public float Initial_Body_HP;
         //public float Initial_Turret_HP;
+        [SerializeField] private DamageReciviersSettings _damageReciviersSettings;
+
         [SerializeField] private Rigidbody _mainRigidbody;
         [SerializeField] private List<DamageStatickTrackCollider> _trackColliderDamages;
         [SerializeField] private DamageTurret _turretDamages;
         [SerializeField] private DamageMainBody _mainBodyDamages;
-        Transform bodyTransform;
         AI_CS aiScript;
-        bool isDead;
+
+        private bool isDead;
         private bool _isTrackDestroyed;
 
         void Start()
@@ -70,18 +72,30 @@ namespace ChobiAssets.PTM
 
         void Initialize()
         {
-            bodyTransform = transform;
-
-            foreach(var i in _trackColliderDamages)
-                i.OnTrackDestroyed.AddListener(TrackDestroyed);
-
-            _turretDamages.OnTurretDestroy.AddListener(TurretDestroy);
-            _mainBodyDamages.OnBodyDestroy.AddListener(BodyDestroy);
+            InitializingAllDamageReciviers();
+            SubscribeResiviers();
             // Store the initial HP values for the "UI_HP_Bars_Self_CS" and "UI_HP_Bars_Target_CS".
             //Initial_Body_HP = MainBody_HP;
             //Initial_Turret_HP = Turret_Props[0].hitPoints;
             //Initial_Left_Track_HP = Left_Track_HP;
             //Initial_Right_Track_HP = Right_Track_HP;
+        }
+
+        private void SubscribeResiviers()
+        {
+            foreach (var track in _trackColliderDamages)
+                track.OnDestroyed.AddListener(TrackDestroyed);
+
+            _turretDamages.OnDestroyed.AddListener(TurretDestroy);
+            _mainBodyDamages.OnDestroyed.AddListener(BodyDestroy);
+        }
+        private void InitializingAllDamageReciviers()
+        {
+            foreach (var track in _trackColliderDamages)
+                track.Initialize(_damageReciviersSettings.GetTracksettings());
+
+            _turretDamages.Initialize(_damageReciviersSettings.GetTurretsettings());
+            _mainBodyDamages.Initialize(_damageReciviersSettings.GetBodysettings());
         }
 
         private void BodyDestroy()

@@ -5,7 +5,7 @@ using UnityEditor;
 namespace ChobiAssets.PTM
 {
 
-    [CustomEditor(typeof(Damage_Control_Center_CS))]
+    [CustomEditor(typeof(DamageManager))]
     public class Damage_Control_Center_CSEditor : Editor
     {
         /*

@@ -26,7 +26,7 @@ namespace ChobiAssets.PTM
         // << User options
 
 
-        Damage_Control_Center_CS damageScript;
+        DamageManager damageScript;
         Image[] bodyBarImages;
         Image[] turretBarImages;
         Image[] leftTrackBarImages;
@@ -167,7 +167,7 @@ namespace ChobiAssets.PTM
         }
 
 
-        public void Get_Damage_Script(Damage_Control_Center_CS tempDamageScript)
+        public void Get_Damage_Script(DamageManager tempDamageScript)
         { // Called from "Damage_Control_Center_CS".
             damageScript = tempDamageScript;
             /*

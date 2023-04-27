@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 331844288142114373}
   - component: {fileID: 1127647858160360992}
   - component: {fileID: 398834320}
+  - component: {fileID: 398834321}
   m_Layer: 0
   m_Name: UIReseivers
   m_TagString: Untagged
@@ -92,3 +93,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gunCamera: {fileID: 0}
   _reticleUIPresenterPrefab: {fileID: 3434523930264630701, guid: 59085f44a027c4b428aa50485223ae5b, type: 3}
+--- !u!114 &398834321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1815802135084448772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a0dc27191a71d64da182ac7a747ff3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

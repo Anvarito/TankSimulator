@@ -9,8 +9,7 @@ namespace ChobiAssets.PTM
 
         public int Track_Index; // 0 = Left, 1 = Right.
 
-
-        public override bool Get_Damage(float damage, int bulletType)
+        public override void DealDamage(float damage, int bulletType)
         { // Called from "Bullet_Control_CS", when the bullet hits this collider.
 
             // Send the damage value to the "Damage_Control_Center_CS".
@@ -29,7 +28,6 @@ namespace ChobiAssets.PTM
             //{ // The track has not been destroyed.
             //    return false;
             //}
-            return false;
         }
 
 
@@ -54,6 +52,8 @@ namespace ChobiAssets.PTM
             // Send an infinite damage value to the "Damage_Control_Center_CS".
             //centerScript.Receive_Damage(Mathf.Infinity, 2, Track_Index); // type = 2 (Physics_Track piece), index = Track_Index (0 = Left, 1 = Right).
         }
+
+        
     }
 
 }
