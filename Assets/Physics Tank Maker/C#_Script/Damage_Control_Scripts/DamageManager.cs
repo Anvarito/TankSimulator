@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine.AI;
 using System;
 using System.Collections.Generic;
+using UnityEngine.Events;
 
 namespace ChobiAssets.PTM
 {
@@ -53,16 +54,21 @@ namespace ChobiAssets.PTM
         // Referred to from "UI_HP_Bars_Self_CS" and "UI_HP_Bars_Target_CS".
         //public float Initial_Body_HP;
         //public float Initial_Turret_HP;
+        [SerializeField] private Rigidbody _mainRigidbody;
+
+        [Space(10)]
         [SerializeField] private DamageReciviersSettings _damageReciviersSettings;
 
-        [SerializeField] private Rigidbody _mainRigidbody;
-        [SerializeField] private List<DamageStatickTrackCollider> _trackColliderDamages;
+        [Space(10)]
         [SerializeField] private DamageTurret _turretDamages;
         [SerializeField] private DamageMainBody _mainBodyDamages;
+        [SerializeField] private DamageTrackRecivier _damageTrackRecivier;
+
         AI_CS aiScript;
 
         private bool isDead;
-        private bool _isTrackDestroyed;
+
+        [HideInInspector] public UnityEvent<TrackInfoHolder> OnTrackBreach;
 
         void Start()
 		{
@@ -83,19 +89,21 @@ namespace ChobiAssets.PTM
 
         private void SubscribeResiviers()
         {
-            foreach (var track in _trackColliderDamages)
-                track.OnDestroyed.AddListener(TrackDestroyed);
-
             _turretDamages.OnDestroyed.AddListener(TurretDestroy);
             _mainBodyDamages.OnDestroyed.AddListener(BodyDestroy);
+            _damageTrackRecivier.OnTrackDestroyed.AddListener(TrackDestroyed);
         }
+
+        private void TrackDestroyed(TrackInfoHolder track)
+        {
+            OnTrackBreach?.Invoke(track);
+        }
+
         private void InitializingAllDamageReciviers()
         {
-            foreach (var track in _trackColliderDamages)
-                track.Initialize(_damageReciviersSettings.GetTracksettings());
-
             _turretDamages.Initialize(_damageReciviersSettings.GetTurretsettings());
             _mainBodyDamages.Initialize(_damageReciviersSettings.GetBodysettings());
+            _damageTrackRecivier.Inititalize(_damageReciviersSettings.GetTracksettings());
         }
 
         private void BodyDestroy()
@@ -108,10 +116,7 @@ namespace ChobiAssets.PTM
             isDead = true;
         }
 
-        private void TrackDestroyed()
-        {
-            _isTrackDestroyed = true;
-        }
+        
 
         public bool Receive_Damage(float damage, int type, int index)
         { // Called from "Damage_Control_##_##_CS" scripts in the tank.
@@ -139,20 +144,7 @@ namespace ChobiAssets.PTM
             //        return false;
             //}
         }
-        private void Update()
-        {
-            if (_isTrackDestroyed)
-            {
-                // Check the tank has moved.
-                if (_mainRigidbody.velocity.magnitude <= 0.5f)
-                {
-                    foreach (var track in _trackColliderDamages)
-                        track.StartRepairing();
-
-                    _isTrackDestroyed = false;
-                }
-            }
-        }
+        
 
         //bool MainBody_Damaged(float damage)
         //{

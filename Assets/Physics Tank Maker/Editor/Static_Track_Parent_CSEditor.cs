@@ -9,6 +9,9 @@ namespace ChobiAssets.PTM
 	public class Static_Track_Parent_CSEditor : Editor
 	{
 
+		SerializedProperty _isRepaired;
+		SerializedProperty _repairDuration;
+
 		SerializedProperty Reference_LProp;
 		SerializedProperty Reference_RProp;
 		SerializedProperty Reference_Name_LProp;
@@ -33,6 +36,9 @@ namespace ChobiAssets.PTM
 
         void OnEnable ()
 		{
+			_isRepaired = serializedObject.FindProperty ("_isRepairable");
+			_repairDuration = serializedObject.FindProperty ("_repairDuration");
+
 			Reference_LProp = serializedObject.FindProperty ("Reference_L");
 			Reference_RProp = serializedObject.FindProperty ("Reference_R");
 			Reference_Name_LProp = serializedObject.FindProperty ("Reference_Name_L");
@@ -76,7 +82,15 @@ namespace ChobiAssets.PTM
 			GUI.backgroundColor = new Color (1.0f, 1.0f, 0.5f, 1.0f);
 			serializedObject.Update ();
 
-            EditorGUILayout.Space ();
+			EditorGUILayout.Space();
+			EditorGUILayout.Space();
+			EditorGUILayout.HelpBox("Repair settings", MessageType.None, true);
+
+            _isRepaired.boolValue = EditorGUILayout.Toggle("Is repairable?", _isRepaired.boolValue);
+            if (_isRepaired.boolValue == true)
+                EditorGUILayout.Slider(_repairDuration, 0.0f, 20.0f, "Repair duration");
+
+			EditorGUILayout.Space ();
 			EditorGUILayout.Space ();
 			EditorGUILayout.HelpBox ("Static Track settings", MessageType.None, true);
 			EditorGUILayout.Space ();

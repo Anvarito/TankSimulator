@@ -104,45 +104,45 @@ namespace ChobiAssets.PTM
 
         void Control_Bars()
         {
-        /*
+        
             // MainBody
-            Body_Bar.fillAmount = damageScript.MainBody_HP / damageScript.Initial_Body_HP;
-            if (previousBodyHP != damageScript.MainBody_HP)
-            {
-                flashCancelID = 1;
-                StartCoroutine(Flash(bodyBarImages, 1));
-            }
+            //Body_Bar.fillAmount = damageScript.MainBody_HP / damageScript.Initial_Body_HP;
+            //if (previousBodyHP != damageScript.MainBody_HP)
+            //{
+            //    flashCancelID = 1;
+            //    StartCoroutine(Flash(bodyBarImages, 1));
+            //}
 
-            // Turret
-            Turret_Bar.fillAmount = damageScript.Turret_Props[0].hitPoints / damageScript.Initial_Turret_HP;
-            if (previousTurretHP != damageScript.Turret_Props[0].hitPoints)
-            {
-                flashCancelID = 2;
-                StartCoroutine(Flash(turretBarImages, 2));
-            }
+            //// Turret
+            //Turret_Bar.fillAmount = damageScript.Turret_Props[0].hitPoints / damageScript.Initial_Turret_HP;
+            //if (previousTurretHP != damageScript.Turret_Props[0].hitPoints)
+            //{
+            //    flashCancelID = 2;
+            //    StartCoroutine(Flash(turretBarImages, 2));
+            //}
 
-            // Left Track
-            Left_Track_Bar.fillAmount = damageScript.Left_Track_HP / damageScript.Initial_Left_Track_HP;
-            if (previousLeftTrackHP != damageScript.Left_Track_HP)
-            {
-                flashCancelID = 3;
-                StartCoroutine(Flash(leftTrackBarImages, 3));
-            }
+            //// Left Track
+            //Left_Track_Bar.fillAmount = damageScript.Left_Track_HP / damageScript.Initial_Left_Track_HP;
+            //if (previousLeftTrackHP != damageScript.Left_Track_HP)
+            //{
+            //    flashCancelID = 3;
+            //    StartCoroutine(Flash(leftTrackBarImages, 3));
+            //}
 
-            // Right Track
-            Right_Track_Bar.fillAmount = damageScript.Right_Track_HP / damageScript.Initial_Right_Track_HP;
-            if (previousRightTrackHP != damageScript.Right_Track_HP)
-            {
-                flashCancelID = 4;
-                StartCoroutine(Flash(rightTrackBarImages, 4));
-            }
+            //// Right Track
+            //Right_Track_Bar.fillAmount = damageScript.Right_Track_HP / damageScript.Initial_Right_Track_HP;
+            //if (previousRightTrackHP != damageScript.Right_Track_HP)
+            //{
+            //    flashCancelID = 4;
+            //    StartCoroutine(Flash(rightTrackBarImages, 4));
+            //}
 
-            // Store the HP values.
-            previousBodyHP = damageScript.MainBody_HP;
-            previousTurretHP = damageScript.Turret_Props[0].hitPoints;
-            previousLeftTrackHP = damageScript.Left_Track_HP;
-            previousRightTrackHP = damageScript.Right_Track_HP;
-        */
+            //// Store the HP values.
+            //previousBodyHP = damageScript.MainBody_HP;
+            //previousTurretHP = damageScript.Turret_Props[0].hitPoints;
+            //previousLeftTrackHP = damageScript.Left_Track_HP;
+            //previousRightTrackHP = damageScript.Right_Track_HP;
+        
         }
 
         IEnumerator Flash(Image[] images, int id)

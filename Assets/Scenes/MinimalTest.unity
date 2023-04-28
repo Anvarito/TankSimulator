@@ -748,8 +748,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   _turretProps:
     turretBaseTransform: {fileID: 0}
     blowOff: 0
@@ -1550,8 +1548,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   _turretProps:
     turretBaseTransform: {fileID: 0}
     blowOff: 0
@@ -23036,8 +23032,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 1
 --- !u!54 &5303330567334696110
 Rigidbody:
@@ -24180,8 +24174,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 0
 --- !u!54 &5303330567401769574
 Rigidbody:
@@ -24501,8 +24493,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 0
 --- !u!33 &5303330567424378976
 MeshFilter:
@@ -24726,8 +24716,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 0
 --- !u!54 &5303330567441061914
 Rigidbody:
@@ -24945,8 +24933,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 1
 --- !u!54 &5303330567448244328
 Rigidbody:
@@ -25945,8 +25931,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 0
 --- !u!114 &5303330567466942087
 MonoBehaviour:
@@ -26157,8 +26141,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 0
 --- !u!54 &5303330567469737236
 Rigidbody:
@@ -27065,8 +27047,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 1
 --- !u!114 &5303330567506782871
 MonoBehaviour:
@@ -28758,8 +28738,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 0
 --- !u!54 &5303330567563764334
 Rigidbody:
@@ -29042,8 +29020,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 1
 --- !u!54 &5303330567566883544
 Rigidbody:
@@ -29562,8 +29538,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 0
 --- !u!54 &5303330567586320876
 Rigidbody:
@@ -30106,8 +30080,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 0
 --- !u!54 &5303330567595141590
 Rigidbody:
@@ -30561,8 +30533,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 0
 --- !u!54 &5303330567612011468
 Rigidbody:
@@ -30969,8 +30939,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 1
 --- !u!54 &5303330567627210132
 Rigidbody:
@@ -31481,8 +31449,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 0
 --- !u!54 &5303330567638008494
 Rigidbody:
@@ -31736,8 +31702,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 0
 --- !u!114 &5303330567638539615
 MonoBehaviour:
@@ -31894,8 +31858,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 1
 --- !u!54 &5303330567641328252
 Rigidbody:
@@ -32525,8 +32487,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 0
 --- !u!54 &5303330567664308904
 Rigidbody:
@@ -32726,19 +32686,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4a18f861188bc6439fe141ac0c48bbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageReciviersSettings: {fileID: 11400000, guid: 6556806b57d42a4459fea267f67ef15a, type: 2}
   _mainRigidbody: {fileID: 5303330567665018138}
-  _trackColliderDamages:
-  - {fileID: 5303330568190854695}
-  - {fileID: 5303330567897074170}
-  - {fileID: 5303330567981090476}
-  - {fileID: 5303330569175144831}
-  - {fileID: 5303330568651009742}
-  - {fileID: 5303330568999466107}
-  - {fileID: 5303330568267929727}
-  - {fileID: 5303330568849014966}
+  _damageReciviersSettings: {fileID: 11400000, guid: 6556806b57d42a4459fea267f67ef15a, type: 2}
   _turretDamages: {fileID: 5303330569182638543}
   _mainBodyDamages: {fileID: 5303330567665018144}
+  _damageTrackRecivier: {fileID: 5303330569253906394}
 --- !u!82 &5303330567665018116
 AudioSource:
   m_ObjectHideFlags: 0
@@ -33216,8 +33168,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 1500
-  _damageThreshold: 50
   Destroyed_Effect: {fileID: 100004, guid: d5cf1068eb9224446a79deb00e60a2e5, type: 3}
   Destroyed_Effect_Offset: {x: 0, y: 0, z: 0}
   _additionsDamage:
@@ -33384,8 +33334,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 0
 --- !u!54 &5303330567678897830
 Rigidbody:
@@ -33821,8 +33769,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 0
 --- !u!54 &5303330567700697924
 Rigidbody:
@@ -34887,8 +34833,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 1
 --- !u!114 &5303330567738515391
 MonoBehaviour:
@@ -37205,8 +37149,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 1
 --- !u!114 &5303330567804184893
 MonoBehaviour:
@@ -37301,8 +37243,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 0
 --- !u!54 &5303330567807337906
 Rigidbody:
@@ -37597,8 +37537,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 0
 --- !u!114 &5303330567818365641
 MonoBehaviour:
@@ -38520,8 +38458,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 0
 --- !u!54 &5303330567841549858
 Rigidbody:
@@ -38991,8 +38927,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 0
 --- !u!23 &5303330567868012016
 MeshRenderer:
@@ -39246,8 +39180,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 1
 --- !u!114 &5303330567874614983
 MonoBehaviour:
@@ -39811,8 +39743,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 0
 --- !u!114 &5303330567894350617
 MonoBehaviour:
@@ -40034,8 +39964,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 0
 --- !u!54 &5303330567895598438
 Rigidbody:
@@ -40168,18 +40096,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5303330567897074161}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e821200faca86749b80569ffb6d5b7f, type: 3}
+  m_Script: {fileID: 11500000, guid: e8c37edb1fb22934b8c5821047610c78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnDestroyed:
+  Linked_Piece_Script: {fileID: 5303330568907601199}
+  OnDamaged:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
-  Linked_Piece_Script: {fileID: 5303330568907601199}
-  _InitialTrackHP: 30
-  _repairableTrack: 1
-  _repairDuration: 20
 --- !u!23 &5303330567897074172
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -40702,8 +40625,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 1
 --- !u!114 &5303330567928747845
 MonoBehaviour:
@@ -40933,8 +40854,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 0
 --- !u!114 &5303330567954049953
 MonoBehaviour:
@@ -41337,8 +41256,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 1
 --- !u!114 &5303330567956655103
 MonoBehaviour:
@@ -41540,8 +41457,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 1
 --- !u!54 &5303330567962366902
 Rigidbody:
@@ -42382,8 +42297,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 1
 --- !u!54 &5303330567979383770
 Rigidbody:
@@ -42744,18 +42657,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5303330567981090467}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e821200faca86749b80569ffb6d5b7f, type: 3}
+  m_Script: {fileID: 11500000, guid: e8c37edb1fb22934b8c5821047610c78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnDestroyed:
+  Linked_Piece_Script: {fileID: 5303330567788697074}
+  OnDamaged:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
-  Linked_Piece_Script: {fileID: 5303330567788697074}
-  _InitialTrackHP: 30
-  _repairableTrack: 1
-  _repairDuration: 20
 --- !u!23 &5303330567981090478
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -42990,8 +42898,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 0
 --- !u!54 &5303330567987982444
 Rigidbody:
@@ -43648,8 +43554,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 1
 --- !u!114 &5303330567999933689
 MonoBehaviour:
@@ -43815,8 +43719,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 0
 --- !u!54 &5303330568001764436
 Rigidbody:
@@ -44324,8 +44226,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 1
 --- !u!54 &5303330568009242926
 Rigidbody:
@@ -44818,8 +44718,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 1
 --- !u!114 &5303330568023618969
 MonoBehaviour:
@@ -45066,8 +44964,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 0
 --- !u!54 &5303330568034568236
 Rigidbody:
@@ -45845,8 +45741,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 1
 --- !u!114 &5303330568067993223
 MonoBehaviour:
@@ -46261,8 +46155,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 0
 --- !u!114 &5303330568083688653
 MonoBehaviour:
@@ -46456,8 +46348,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 1
 --- !u!114 &5303330568084995047
 MonoBehaviour:
@@ -48834,8 +48724,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 0
 --- !u!54 &5303330568188060214
 Rigidbody:
@@ -49223,18 +49111,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5303330568190854714}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e821200faca86749b80569ffb6d5b7f, type: 3}
+  m_Script: {fileID: 11500000, guid: e8c37edb1fb22934b8c5821047610c78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnDestroyed:
+  Linked_Piece_Script: {fileID: 5303330567969143937}
+  OnDamaged:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
-  Linked_Piece_Script: {fileID: 5303330567969143937}
-  _InitialTrackHP: 30
-  _repairableTrack: 1
-  _repairDuration: 20
 --- !u!65 &5303330568190854712
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -49728,8 +49611,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 1
 --- !u!114 &5303330568205936667
 MonoBehaviour:
@@ -50813,8 +50694,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 1
 --- !u!54 &5303330568236894306
 Rigidbody:
@@ -51239,18 +51118,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5303330568267929714}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e821200faca86749b80569ffb6d5b7f, type: 3}
+  m_Script: {fileID: 11500000, guid: e8c37edb1fb22934b8c5821047610c78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnDestroyed:
+  Linked_Piece_Script: {fileID: 5303330568182508607}
+  OnDamaged:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
-  Linked_Piece_Script: {fileID: 5303330568182508607}
-  _InitialTrackHP: 30
-  _repairableTrack: 1
-  _repairDuration: 20
 --- !u!4 &5303330568271243760
 Transform:
   m_ObjectHideFlags: 0
@@ -51737,8 +51611,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 1
 --- !u!54 &5303330568285790770
 Rigidbody:
@@ -53337,8 +53209,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 0
 --- !u!114 &5303330568396945719
 MonoBehaviour:
@@ -53466,8 +53336,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 1
 --- !u!114 &5303330568404074183
 MonoBehaviour:
@@ -53900,8 +53768,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 0
 --- !u!54 &5303330568419469878
 Rigidbody:
@@ -56141,8 +56007,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 1
 --- !u!59 &5303330568528674312
 HingeJoint:
@@ -56344,8 +56208,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 0
 --- !u!114 &5303330568528674423
 MonoBehaviour:
@@ -56665,8 +56527,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 1
 --- !u!114 &5303330568535108163
 MonoBehaviour:
@@ -58005,8 +57865,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 1
 --- !u!54 &5303330568579527694
 Rigidbody:
@@ -58963,8 +58821,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 0
 --- !u!114 &5303330568600754583
 MonoBehaviour:
@@ -59663,8 +59519,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 1
 --- !u!114 &5303330568611312895
 MonoBehaviour:
@@ -59821,8 +59675,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 0
 --- !u!54 &5303330568612119418
 Rigidbody:
@@ -60244,8 +60096,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 1
 --- !u!54 &5303330568620891386
 Rigidbody:
@@ -60524,8 +60374,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 0
 --- !u!114 &5303330568627454031
 MonoBehaviour:
@@ -61351,18 +61199,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5303330568651009733}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e821200faca86749b80569ffb6d5b7f, type: 3}
+  m_Script: {fileID: 11500000, guid: e8c37edb1fb22934b8c5821047610c78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnDestroyed:
+  Linked_Piece_Script: {fileID: 5303330567988993441}
+  OnDamaged:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
-  Linked_Piece_Script: {fileID: 5303330567988993441}
-  _InitialTrackHP: 30
-  _repairableTrack: 1
-  _repairDuration: 20
 --- !u!33 &5303330568657922390
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -61527,8 +61370,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 0
 --- !u!54 &5303330568657922414
 Rigidbody:
@@ -62186,8 +62027,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 1
 --- !u!54 &5303330568678410414
 Rigidbody:
@@ -62727,8 +62566,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 0
 --- !u!114 &5303330568700428513
 MonoBehaviour:
@@ -63176,8 +63013,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 1
 --- !u!54 &5303330568722210660
 Rigidbody:
@@ -63663,8 +63498,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 0
 --- !u!54 &5303330568744907004
 Rigidbody:
@@ -64099,8 +63932,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 0
 --- !u!114 &5303330568756582651
 MonoBehaviour:
@@ -65057,8 +64888,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 1
 --- !u!114 &5303330568799085949
 MonoBehaviour:
@@ -65435,8 +65264,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 1
 --- !u!114 &5303330568837972627
 MonoBehaviour:
@@ -66002,18 +65829,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5303330568849014861}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e821200faca86749b80569ffb6d5b7f, type: 3}
+  m_Script: {fileID: 11500000, guid: e8c37edb1fb22934b8c5821047610c78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnDestroyed:
+  Linked_Piece_Script: {fileID: 5303330567968517557}
+  OnDamaged:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
-  Linked_Piece_Script: {fileID: 5303330567968517557}
-  _InitialTrackHP: 30
-  _repairableTrack: 1
-  _repairDuration: 20
 --- !u!33 &5303330568849254546
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -66313,8 +66135,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 0
 --- !u!4 &5303330568853505492
 Transform:
@@ -66658,8 +66478,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 0
 --- !u!114 &5303330568866562731
 MonoBehaviour:
@@ -67248,8 +67066,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 0
 --- !u!54 &5303330568883451558
 Rigidbody:
@@ -68204,8 +68020,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 0
 --- !u!54 &5303330568910567002
 Rigidbody:
@@ -74071,8 +73885,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 1
 --- !u!114 &5303330568960824949
 MonoBehaviour:
@@ -74890,8 +74702,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 1
 --- !u!114 &5303330568988863097
 MonoBehaviour:
@@ -75099,18 +74909,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5303330568999466110}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e821200faca86749b80569ffb6d5b7f, type: 3}
+  m_Script: {fileID: 11500000, guid: e8c37edb1fb22934b8c5821047610c78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnDestroyed:
+  Linked_Piece_Script: {fileID: 5303330567831690972}
+  OnDamaged:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
-  Linked_Piece_Script: {fileID: 5303330567831690972}
-  _InitialTrackHP: 30
-  _repairableTrack: 1
-  _repairDuration: 20
 --- !u!65 &5303330568999466108
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -75315,8 +75120,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 1
 --- !u!54 &5303330569008374182
 Rigidbody:
@@ -76086,8 +75889,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 1
 --- !u!54 &5303330569028263272
 Rigidbody:
@@ -76276,8 +76077,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 0
 --- !u!114 &5303330569037205047
 MonoBehaviour:
@@ -78305,8 +78104,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 1
 --- !u!54 &5303330569124789112
 Rigidbody:
@@ -78826,8 +78623,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 1
 --- !u!114 &5303330569153332067
 MonoBehaviour:
@@ -84337,18 +84132,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5303330569175144818}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e821200faca86749b80569ffb6d5b7f, type: 3}
+  m_Script: {fileID: 11500000, guid: e8c37edb1fb22934b8c5821047610c78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnDestroyed:
+  Linked_Piece_Script: {fileID: 5303330567458542521}
+  OnDamaged:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
-  Linked_Piece_Script: {fileID: 5303330567458542521}
-  _InitialTrackHP: 30
-  _repairableTrack: 1
-  _repairDuration: 20
 --- !u!59 &5303330569182034752
 HingeJoint:
   m_ObjectHideFlags: 0
@@ -84549,8 +84339,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 0
 --- !u!114 &5303330569182034767
 MonoBehaviour:
@@ -84634,8 +84422,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 700
-  _damageThreshold: 0
   _turretProps:
     turretBaseTransform: {fileID: 5303330568284007103}
     blowOff: 1
@@ -84751,8 +84537,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 0
 --- !u!114 &5303330569191238935
 MonoBehaviour:
@@ -84970,8 +84754,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 1
 --- !u!114 &5303330569192874631
 MonoBehaviour:
@@ -86070,8 +85852,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 1
 --- !u!114 &5303330569211286205
 MonoBehaviour:
@@ -87244,6 +87024,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5303330569253906374}
   - component: {fileID: 5303330569253906375}
+  - component: {fileID: 5303330569253906394}
   m_Layer: 0
   m_Name: Static_Track 230412_185058
   m_TagString: Untagged
@@ -87251,6 +87032,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &5303330569253906394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5303330569253906393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bfd97a0233c1c34385bef68b17b8ae9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isRepairable: 1
+  _trackColliders:
+  - {fileID: 5303330568190854695}
+  - {fileID: 5303330567897074170}
+  - {fileID: 5303330567981090476}
+  - {fileID: 5303330569175144831}
+  - {fileID: 5303330568651009742}
+  - {fileID: 5303330568999466107}
+  - {fileID: 5303330568267929727}
+  - {fileID: 5303330568849014966}
 --- !u!136 &5303330569258723216
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -87638,8 +87441,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 1
 --- !u!114 &5303330569270045119
 MonoBehaviour:
@@ -87841,8 +87642,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 1
 --- !u!54 &5303330569274905116
 Rigidbody:
@@ -88137,8 +87936,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 0
 --- !u!1 &5303330569282768513
 GameObject:
@@ -88281,8 +88078,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 1
 --- !u!54 &5303330569285449524
 Rigidbody:
@@ -89060,8 +88855,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 0
 --- !u!114 &5303330569291372373
 MonoBehaviour:
@@ -89804,8 +89597,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 0
 --- !u!114 &5303330569307433631
 MonoBehaviour:
@@ -90007,8 +89798,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 1
 --- !u!54 &5303330569313758968
 Rigidbody:
@@ -90436,8 +90225,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 0
 --- !u!135 &5303330569319430572
 SphereCollider:
@@ -90890,8 +90677,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 1
 --- !u!54 &5303330569332851658
 Rigidbody:
@@ -91617,8 +91402,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 1
 --- !u!114 &5303330569356170035
 MonoBehaviour:
@@ -92592,8 +92375,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 1
 --- !u!54 &5303330569372571386
 Rigidbody:
@@ -93249,8 +93030,6 @@ MonoBehaviour:
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  _hitPoints: 0
-  _damageThreshold: 0
   Track_Index: 1
 --- !u!54 &5303330569394505258
 Rigidbody:
@@ -96088,12 +95867,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43449734ade3ccd4292411b04b86a68a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnDestroyed:
-    m_PersistentCalls:
-      m_Calls: []
-    m_CallsDirty: 1
-  Damage_Multiplier: 3
-  parentDamageScript: {fileID: 0}
 --- !u!114 &5473907918832697194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96331,14 +96104,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab5068dd271bf0e4fabeb840d3f45537, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainRigidbody: {fileID: 0}
-  _trackColliderDamages: []
-  _damageArmorColliders: []
-  _turretDamages: {fileID: 0}
-  _mainBodyDamages: {fileID: 0}
-  aiScript: {fileID: 0}
-  isDead: 0
-  _isTrackDestroyed: 0
 --- !u!114 &5474418110354161996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96432,12 +96197,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43449734ade3ccd4292411b04b86a68a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnDestroyed:
-    m_PersistentCalls:
-      m_Calls: []
-    m_CallsDirty: 1
-  Damage_Multiplier: 3
-  parentDamageScript: {fileID: 0}
 --- !u!114 &5474528794868467148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96520,6 +96279,14 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 398834321, guid: a9b5df4f69716c64393b37cfd9540945, type: 3}
+      propertyPath: _damageControlManager
+      value: 
+      objectReference: {fileID: 5303330567665018114}
+    - target: {fileID: 398834321, guid: a9b5df4f69716c64393b37cfd9540945, type: 3}
+      propertyPath: _ui_HP_Bars_Self_CSprefab
+      value: 
+      objectReference: {fileID: 114719096273676120, guid: 658df433f8bd5ac43ab24a488688f2d7, type: 3}
     - target: {fileID: 291032562192488971, guid: a9b5df4f69716c64393b37cfd9540945, type: 3}
       propertyPath: m_RootOrder
       value: 18

@@ -13,6 +13,8 @@ namespace ChobiAssets.PTM
 
 
         // User options >>
+        
+
         public Transform Reference_L;
         public Transform Reference_R;
         public string Reference_Name_L;
@@ -58,12 +60,14 @@ namespace ChobiAssets.PTM
         float rightAngRate;
         MainBody_Setting_CS bodyScript;
 
+        
 
         void Start()
         {
             Initialize();
         }
 
+       
 
         void Initialize()
         {

@@ -7,11 +7,12 @@ namespace ChobiAssets.PTM
 
 	public abstract class DamageBase : MonoBehaviour, IDamageble
 	{
-		[HideInInspector] public UnityEvent OnDestroyed;
-		[SerializeField] protected float _hitPoints;
+		protected float _hitPoints;
 		protected float _initialHP;
+		protected float _damageThreshold;
 
-		[SerializeField] protected float _damageThreshold;
+		[HideInInspector] public UnityEvent OnDestroyed;
+
 
         public virtual void Initialize(RecivierSettings recivierSettings)
         {

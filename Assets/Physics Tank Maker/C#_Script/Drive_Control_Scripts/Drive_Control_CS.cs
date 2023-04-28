@@ -12,7 +12,7 @@ namespace ChobiAssets.PTM
 		 * This script controls the driving of the tank, such as speed, torque, acceleration and so on.
 		 * This script works in combination with "Drive_Wheel_Parent_CS" in the 'Create_##Wheels objects', and "Drive_Wheel_CS" in the drive wheels.
 		*/
-
+        [SerializeField] private DamageManager _damageManager;
         // User options >>
         public float Torque = 2000.0f;
         public float Max_Speed = 8.0f;
@@ -133,8 +133,11 @@ namespace ChobiAssets.PTM
             if (inputScript != null)
             {
                 inputScript.Prepare(this);
-            }           
+            }
+
+            _damageManager.OnTrackBreach.AddListener(TrackBreach);
         }
+
 
 
         //protected virtual void Set_Input_Script(EPlayerType type)

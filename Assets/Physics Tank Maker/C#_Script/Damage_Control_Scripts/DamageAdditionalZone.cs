@@ -5,13 +5,15 @@ using UnityEngine.Events;
 namespace ChobiAssets.PTM
 {
     [RequireComponent(typeof(MeshRenderer))]
-    public class DamageAdditionalDamageZone : MonoBehaviour, IDamageble
+    public class DamageAdditionalZone : MonoBehaviour, IDamageble
     {
 
         [SerializeField] private float Damage_Multiplier = 1.0f;
         [HideInInspector] public UnityEvent<float, int> OnArmorDamage;
 
         private float _damageThreshold;
+
+        public UnityEvent OnDamaged { get; set; }
 
         //DamageBase parentDamageScript;
         private void Start()

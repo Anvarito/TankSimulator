@@ -14,7 +14,7 @@ namespace ChobiAssets.PTM
         //[SerializeField] private float MainBody_Damage_Threshold = 100.0f;
         [SerializeField] private GameObject Destroyed_Effect;
         [SerializeField] private Vector3 Destroyed_Effect_Offset;
-        [SerializeField] private List<DamageAdditionalDamageZone> _additionsDamage;
+        [SerializeField] private List<DamageAdditionalZone> _additionsDamage;
 
         public override void Initialize(RecivierSettings recivierSettings)
         {
@@ -31,7 +31,7 @@ namespace ChobiAssets.PTM
             {
                 foreach (Transform armor in transform)
                 {
-                    if (armor.TryGetComponent(out DamageAdditionalDamageZone damageReciver))
+                    if (armor.TryGetComponent(out DamageAdditionalZone damageReciver))
                         _additionsDamage.Add(damageReciver);
                 }
             }

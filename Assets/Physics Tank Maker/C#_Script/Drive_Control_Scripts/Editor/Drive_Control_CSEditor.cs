@@ -9,6 +9,8 @@ namespace ChobiAssets.PTM
     public class Drive_Control_CSEditor : Editor
     {
 
+        SerializedProperty _damageManagerLink;
+
         SerializedProperty TorqueProp;
         SerializedProperty Max_SpeedProp;
         SerializedProperty Turn_Brake_DragProp;
@@ -47,6 +49,8 @@ namespace ChobiAssets.PTM
 
         void OnEnable()
         {
+            _damageManagerLink = serializedObject.FindProperty("_damageManager");
+
             TorqueProp = serializedObject.FindProperty("Torque");
             Max_SpeedProp = serializedObject.FindProperty("Max_Speed");
             Turn_Brake_DragProp = serializedObject.FindProperty("Turn_Brake_Drag");
@@ -98,6 +102,8 @@ namespace ChobiAssets.PTM
 
             GUI.backgroundColor = new Color(1.0f, 1.0f, 0.5f, 1.0f);
 
+            EditorGUILayout.HelpBox("Links", MessageType.None, true);
+            _damageManagerLink.objectReferenceValue = EditorGUILayout.ObjectField("Damage manager", _damageManagerLink.objectReferenceValue, typeof(DamageManager), true);
             EditorGUILayout.Space();
             EditorGUILayout.HelpBox("Driving Wheels settings", MessageType.None, true);
             EditorGUILayout.Slider(TorqueProp, 0.0f, 500000.0f, "Torque");

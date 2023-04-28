@@ -5,32 +5,27 @@ using UnityEngine.Events;
 namespace ChobiAssets.PTM
 {
 
-    public class DamageStatickTrackCollider : DamageBase
+    public class TrackPieceDamage : MonoBehaviour, IDamageble
     {
 
         public Static_Track_Piece_CS Linked_Piece_Script; //Linked in editor version of script
 
-        // For editor script.
-        [Header("Collider damage")]
-        [SerializeField] private float _InitialTrackHP = 1000.0f;
+        private bool _isRightSIde = false;
+        private float _damageThreshold;
+        private float _repairDuration;
+        public bool IsRightSide => _isRightSIde;
 
-        [Header("Repairing")]
-        [SerializeField] private bool _repairableTrack = true;
-        [SerializeField] private float _repairDuration = 20.0f;
-
-        private float Track_Repairing_Velocity_Limit = 0.5f;
-        private IEnumerator _repairRoutine;
+        [HideInInspector] public UnityEvent<float, TrackPieceDamage> OnDamaged;
 
         void Awake()
         { // (Note.) The hierarchy must be changed before "Start()", because this gameobject might be inactivated by the "Track_LOD_Control_CS" in the "Start()".
-
             // Change the hierarchy. (Make this Track_Collider a child of the MainBody.)
             transform.parent = transform.parent.parent;
         }
-
-        public override void Initialize(RecivierSettings recivierSettings)
+        public void Initialize(TrackRecivierSettings recivierSettings)
         {
-            base.Initialize(recivierSettings);
+            _damageThreshold = recivierSettings.DamageTreshold;
+            _repairDuration = recivierSettings.RepairingDuration;
             gameObject.layer = Layer_Settings_CS.Armor_Collider_Layer;
             // Make this invisible.
             MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
@@ -38,21 +33,41 @@ namespace ChobiAssets.PTM
             {
                 meshRenderer.enabled = false;
             }
-        }
-        //[ContextMenu("DADA")]
-        //public void DADA()
-        //{
-        //    Get_Damage(60, 1);
-        //}
 
-        protected override void ParthDestroy()
+            SetSide();
+        }
+        private void SetSide()
         {
-            base.ParthDestroy();
-            if (_repairableTrack)
-            {
-                // Check the tank has "Static_Track" or "Scroll_Track".
-                GetComponent<Collider>().enabled = false;
+            if (transform.localPosition.y > 0)
+                _isRightSIde = false;
+            else
+                _isRightSIde = true;
+        }
+
+        public void DealDamage(float damage, int bulletType)
+        {
+            OnDamaged?.Invoke(damage, this);
+        }
+
+        public bool CheckBreackout(float damage, int bulletType)
+        {
+            if (damage < _damageThreshold)
+            { // Never receive any damage under the threshold value.
+                return false;
             }
+
+            return true;
+        }
+
+        [ContextMenu("DADA")]
+        public void DADA()
+        {
+            DealDamage(600000, 1);
+        }
+
+        public void ParthDestroy()
+        {
+            GetComponent<Collider>().enabled = false;
 
             if (Linked_Piece_Script)
             {
@@ -70,34 +85,7 @@ namespace ChobiAssets.PTM
 
         //}
 
-        public void StartRepairing()
-        {
-            if (_repairRoutine == null)
-                StartCoroutine(Track_Repairing_Timer());
-        }
 
-        private IEnumerator Track_Repairing_Timer()
-        {
-            var repairingTimer = 0.0f;
-            while (repairingTimer < _repairDuration)
-            {
-                repairingTimer += Time.deltaTime;
-
-                // Set the HP.
-                _hitPoints = _InitialTrackHP * (repairingTimer / _repairDuration);
-
-                yield return null;
-            }
-
-            //// Check the tank is still alive.
-            //if (isDead)
-            //{
-            //    yield break;
-            //}
-
-            // Repair the tracks.
-            Track_Repaired_Linkage();
-        }
 
 
         //void Track_Repaired(bool isLeft)

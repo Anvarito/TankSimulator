@@ -8,15 +8,19 @@ public class RecivierSettings
 {
     public float MaxHitPoints;
     [Range(0,1000)] public float DamageTreshold;
-} 
-
+}
+[System.Serializable]
+public class TrackRecivierSettings : RecivierSettings
+{
+    [Range(0, 20)] public float RepairingDuration;
+}
 
 [ CreateAssetMenu(fileName = "DamageReciviersSettings", menuName = "ScriptableObjects/DamageReciviersSettings", order = 1)]
 public class DamageReciviersSettings : ScriptableObject
 {
     [SerializeField] private RecivierSettings _turretDamageSettings;
     [SerializeField] private RecivierSettings _bodyDamageSettings;
-    [SerializeField] private RecivierSettings _trackDamageSettings;
+    [SerializeField] private TrackRecivierSettings _trackDamageSettings;
 
     public RecivierSettings GetTurretsettings()
     {
@@ -25,11 +29,11 @@ public class DamageReciviersSettings : ScriptableObject
 
     public RecivierSettings GetBodysettings()
     {
-        return _turretDamageSettings;
+        return _bodyDamageSettings;
     }
 
-    public RecivierSettings GetTracksettings()
+    public TrackRecivierSettings GetTracksettings()
     {
-        return _turretDamageSettings;
+        return _trackDamageSettings;
     }
 }
