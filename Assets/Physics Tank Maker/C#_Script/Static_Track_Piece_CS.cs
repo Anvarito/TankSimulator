@@ -185,6 +185,7 @@ namespace ChobiAssets.PTM
         public void Start_Breaking(float lifeTime)
         { // Called from "Damage_Control_04_Track_Collider_CS" in the Track_Collider.
 
+            Track_Destroyed_Linkage(Is_Left);
             // Reset the rate values in the parent script.
             if (Parent_Script)
             {

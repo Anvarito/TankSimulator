@@ -135,7 +135,11 @@ namespace ChobiAssets.PTM
                 inputScript.Prepare(this);
             }
 
-            _damageManager.OnTrackBreach.AddListener(TrackBreach);
+            //_damageManager.OnTrackBreach.AddListener(TrackBreach);
+        }
+
+        private void TrackBreach(TrackInfoHolder arg0)
+        {
         }
 
 

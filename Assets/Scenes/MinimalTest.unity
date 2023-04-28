@@ -32691,6 +32691,9 @@ MonoBehaviour:
   _turretDamages: {fileID: 5303330569182638543}
   _mainBodyDamages: {fileID: 5303330567665018144}
   _damageTrackRecivier: {fileID: 5303330569253906394}
+  OnTrackBreach:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!82 &5303330567665018116
 AudioSource:
   m_ObjectHideFlags: 0
@@ -32869,6 +32872,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d07bc1cd2cd16004b84860fddab4cc0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damageManager: {fileID: 0}
   Torque: 5000
   Max_Speed: 7
   Turn_Brake_Drag: 200
@@ -58664,7 +58668,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tankID: 1
-  _relationship: 1
+  _relationship: 0
   _playerType: 1
 --- !u!114 &5303330568599459950
 MonoBehaviour:
@@ -87054,6 +87058,9 @@ MonoBehaviour:
   - {fileID: 5303330568999466107}
   - {fileID: 5303330568267929727}
   - {fileID: 5303330568849014966}
+  OnTrackDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!136 &5303330569258723216
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -95496,7 +95503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d33ccf5300c0ed468f266135eca2520, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tankID: 2
+  _tankID: 1
   _relationship: 0
   _playerType: 0
 --- !u!114 &5473222924766841888
@@ -95598,6 +95605,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d07bc1cd2cd16004b84860fddab4cc0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damageManager: {fileID: 0}
   Torque: 5000
   Max_Speed: 20
   Turn_Brake_Drag: 100
