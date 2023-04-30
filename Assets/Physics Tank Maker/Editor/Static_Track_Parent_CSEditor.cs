@@ -36,7 +36,7 @@ namespace ChobiAssets.PTM
 
         void OnEnable ()
 		{
-			_isRepaired = serializedObject.FindProperty ("_isRepairable");
+			//_isRepaired = serializedObject.FindProperty ("_isRepairable");
 			_repairDuration = serializedObject.FindProperty ("_repairDuration");
 
 			Reference_LProp = serializedObject.FindProperty ("Reference_L");
@@ -82,13 +82,13 @@ namespace ChobiAssets.PTM
 			GUI.backgroundColor = new Color (1.0f, 1.0f, 0.5f, 1.0f);
 			serializedObject.Update ();
 
-			EditorGUILayout.Space();
-			EditorGUILayout.Space();
-			EditorGUILayout.HelpBox("Repair settings", MessageType.None, true);
+			//EditorGUILayout.Space();
+			//EditorGUILayout.Space();
+			//EditorGUILayout.HelpBox("Repair settings", MessageType.None, true);
 
-            _isRepaired.boolValue = EditorGUILayout.Toggle("Is repairable?", _isRepaired.boolValue);
-            if (_isRepaired.boolValue == true)
-                EditorGUILayout.Slider(_repairDuration, 0.0f, 20.0f, "Repair duration");
+            //_isRepaired.boolValue = EditorGUILayout.Toggle("Is repairable?", _isRepaired.boolValue);
+            //if (_isRepaired.boolValue == true)
+               // EditorGUILayout.Slider(_repairDuration, 0.0f, 20.0f, "Repair duration");
 
 			EditorGUILayout.Space ();
 			EditorGUILayout.Space ();

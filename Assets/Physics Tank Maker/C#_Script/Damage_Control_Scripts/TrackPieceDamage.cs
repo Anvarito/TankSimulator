@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -74,6 +75,11 @@ namespace ChobiAssets.PTM
                 Linked_Piece_Script.Start_Breaking(_repairDuration);
             }
 
+        }
+
+        public void TrackRestore()
+        {
+            Linked_Piece_Script.TrackRestore();
         }
 
         //private void TrackDestroyed()

@@ -60,6 +60,8 @@ namespace ChobiAssets.PTM
                     Basic_Settings();
                     break;
             }
+
+            print(Front_Transform.name);
         }
 
 
@@ -153,7 +155,7 @@ namespace ChobiAssets.PTM
                 var rearEndPos = Rear_Script.invisiblePos + new Vector3(Half_Length * Mathf.Sin(tempRad), 0.0f, Half_Length * Mathf.Cos(tempRad));
                 tempRad = Front_Script.invisibleAngY * Mathf.Deg2Rad;
                 var frontEndPos = Front_Script.invisiblePos - new Vector3(Half_Length * Mathf.Sin(tempRad), 0.0f, Half_Length * Mathf.Cos(tempRad));
-                
+
                 // Set the position and angle.
                 invisiblePos = Vector3.Lerp(rearEndPos, frontEndPos, 0.5f);
                 invisibleAngY = Mathf.Rad2Deg * Mathf.Atan((frontEndPos.x - rearEndPos.x) / (frontEndPos.z - rearEndPos.z)) + Invert_Angle;
@@ -176,16 +178,16 @@ namespace ChobiAssets.PTM
             var rearEndPos = Rear_Script.invisiblePos + new Vector3(Half_Length * Mathf.Sin(tempRad), 0.0f, Half_Length * Mathf.Cos(tempRad));
             tempRad = Front_Script.invisibleAngY * Mathf.Deg2Rad;
             var frontEndPos = Front_Script.invisiblePos - new Vector3(Half_Length * Mathf.Sin(tempRad), 0.0f, Half_Length * Mathf.Cos(tempRad));
-            
+
             // Set the angle.
             invisibleAngY = Mathf.Rad2Deg * Mathf.Atan((frontEndPos.x - rearEndPos.x) / (frontEndPos.z - rearEndPos.z)) + Invert_Angle;
         }
 
-        
+
         public void Start_Breaking(float lifeTime)
         { // Called from "Damage_Control_04_Track_Collider_CS" in the Track_Collider.
 
-            Track_Destroyed_Linkage(Is_Left);
+            //Track_Destroyed_Linkage(Is_Left);
             // Reset the rate values in the parent script.
             if (Parent_Script)
             {
@@ -194,21 +196,22 @@ namespace ChobiAssets.PTM
             }
 
             // Create the pieces list.
-            var clonePiecesList = new List<GameObject>();
+            var clonePiecesList = new List<Static_Track_Piece_CS>();
             var pieceScript = this;
             for (int i = 0; i < Pieces_Count; i++)
             {
                 // Create the clone piece.
-                var clonePieceObject = Instantiate(pieceScript.gameObject, This_Transform.parent);
+                Static_Track_Piece_CS clonePieceObject = Instantiate(pieceScript, This_Transform.parent);
 
                 // Send message to "Static_Track_Piece_CS", "Track_Joint_CS", "Static_Track_Switch_Mesh_CS".
-                clonePieceObject.BroadcastMessage("Duplicated", SendMessageOptions.DontRequireReceiver);
+                clonePieceObject.Duplicated();
+                pieceScript.Track_Destroyed_Linkage(Is_Left);
 
                 // Add to the list.
                 clonePiecesList.Add(clonePieceObject);
 
                 // Set the life time.
-                Destroy(clonePieceObject, lifeTime);
+                Destroy(clonePieceObject.gameObject, lifeTime);
 
                 // Set the next piece.
                 pieceScript = pieceScript.Front_Script;
@@ -217,7 +220,7 @@ namespace ChobiAssets.PTM
             // Connect the clone pieces by HingeJoint.
             for (int i = 0; i < clonePiecesList.Count - 1; i++)
             {
-                var hingeJoint = clonePiecesList[i].AddComponent<HingeJoint>();
+                var hingeJoint = clonePiecesList[i].gameObject.AddComponent<HingeJoint>();
                 hingeJoint.connectedBody = clonePiecesList[i + 1].GetComponent<Rigidbody>();
                 hingeJoint.anchor = new Vector3(0.0f, 0.0f, Half_Length);
                 hingeJoint.axis = new Vector3(1.0f, 0.0f, 0.0f);
@@ -243,6 +246,15 @@ namespace ChobiAssets.PTM
             isRepairing = true;
         }
 
+        public void TrackRestore()
+        {
+            var pieceScript = this;
+            for (int i = 0; i < Pieces_Count; i++)
+            {
+                pieceScript.Track_Repaired_Linkage(Is_Left);
+                pieceScript = pieceScript.Front_Script;
+            }
+        }
 
         void Track_Repaired_Linkage(bool isLeft)
         { // Called from "Damage_Control_Center_CS".

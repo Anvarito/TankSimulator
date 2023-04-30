@@ -71,26 +71,18 @@ public class DamageTrackRecivier : MonoBehaviour
     {
         TrackInfoHolder currentTrack = trackPiece.IsRightSide ? _rightTrack : _leftTrack;
         currentTrack.DecreaseHP(damage);
-        if (currentTrack.IsBreach())
-        {
-            BreachTrack(currentTrack, trackPiece);
-        }
-    }
-
-    private void BreachTrack(TrackInfoHolder currentTrack, TrackPieceDamage trackPiece)
-    {
-        if (!currentTrack.IsRestoring)
+        if (currentTrack.IsBreach() && !currentTrack.IsRestoring)
         {
             print("BREACH");
             trackPiece.ParthDestroy();
-            StartCoroutine(Track_Repairing_Timer(currentTrack));
+            StartCoroutine(Track_Repairing_Timer(currentTrack, trackPiece));
             currentTrack.StartRestoring();
             OnTrackDestroyed?.Invoke(currentTrack);
             //траки копируются после разрушения
         }
     }
 
-    private IEnumerator Track_Repairing_Timer(TrackInfoHolder currentTrack)
+    private IEnumerator Track_Repairing_Timer(TrackInfoHolder currentTrack, TrackPieceDamage trackPiece)
     {
         var repairingTimer = 0.0f;
         while (repairingTimer < _repairDuration)
@@ -102,7 +94,8 @@ public class DamageTrackRecivier : MonoBehaviour
 
             yield return null;
         }
-
+        trackPiece.TrackRestore();
         currentTrack.RestoreHP();
     }
+
 }
