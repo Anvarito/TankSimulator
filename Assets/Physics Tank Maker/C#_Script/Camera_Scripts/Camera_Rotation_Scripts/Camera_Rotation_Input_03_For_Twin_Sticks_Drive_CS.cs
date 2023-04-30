@@ -21,7 +21,7 @@ namespace ChobiAssets.PTM
             // Look forward.
             if (Input.GetKeyDown(General_Settings_CS.Camera_Look_Forward_Pad_Button))
             {
-                rotationScript.Look_At_Target(bodyTransform.position + bodyTransform.forward * 64.0f);
+                rotationScript.Look_At_Target(rotationScript.BodyTransform.position + rotationScript.BodyTransform.forward * 64.0f);
             }
 
             // Rotation.

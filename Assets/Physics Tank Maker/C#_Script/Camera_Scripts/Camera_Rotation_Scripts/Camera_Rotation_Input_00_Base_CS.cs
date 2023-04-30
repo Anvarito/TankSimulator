@@ -4,7 +4,7 @@ using UnityEngine;
 namespace ChobiAssets.PTM
 {
 
-	public class Camera_Rotation_Input_00_Base_CS : MonoBehaviour
+	public class Camera_Rotation_Input_00_Base_CS
 	{
 
 		protected Camera_Rotation_CS rotationScript;

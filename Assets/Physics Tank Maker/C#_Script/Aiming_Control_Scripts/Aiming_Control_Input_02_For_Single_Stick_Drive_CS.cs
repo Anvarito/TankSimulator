@@ -89,9 +89,9 @@ namespace ChobiAssets.PTM
                 }
                 else
                 {
-                    aimingScript.Turret_Speed_Multiplier += 2.0f * Time.deltaTime;
+                    aimingScript.Turret_Speed_Multiplier += 0.01f * Time.deltaTime;
                 }
-                aimingScript.Turret_Speed_Multiplier = Mathf.Clamp01(aimingScript.Turret_Speed_Multiplier);
+                //aimingScript.Turret_Speed_Multiplier = Mathf.Clamp01(aimingScript.Turret_Speed_Multiplier);
 
                 // Free aiming.
                 if (aimingScript.Mode == 1)

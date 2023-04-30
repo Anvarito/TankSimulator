@@ -26,26 +26,27 @@ namespace ChobiAssets.PTM
         Vector3 targetAngles;
         Vector3 currentAngles;
         Vector3 baseAngles = new Vector3(0.0f, 90.0f, 0.0f);
-        Transform bodyTransform;
         CameraPoint currentCameraPoint;
         int inputType;
 
         protected Camera_Rotation_Input_00_Base_CS inputScript;
-
+        public Transform BodyTransform { get; private set; }
+        public float RotationMultiplier { get; private set; } = 0.8f;
 
         void Awake()
 		{ // (Note.) The "thisTransform" must be prepared before "Start()", because the "Change_Camera_Settings()" function is called at Start().
 			thisTransform = transform;
-		}
+            BodyTransform = transform.root.GetComponentInChildren<Rigidbody>().transform;
+        }
 
 
-        void Start()
-		{
-			Initialize();
-		}
+  //      void Start()
+		//{
+		//	Initialize();
+		//}
 
 
-        void Initialize()
+        public void Initialize(Camera_Rotation_Input_00_Base_CS cameraInputType)
 		{
             targetAngles = thisTransform.eulerAngles;
 
@@ -75,7 +76,8 @@ namespace ChobiAssets.PTM
             }
 
             // Set the input script.
-            Set_Input_Script(inputType);
+            //Set_Input_Script(inputType);
+            inputScript = cameraInputType;
 
             // Prepare the input script.
             if (inputScript != null)
@@ -85,30 +87,30 @@ namespace ChobiAssets.PTM
         }
 
 
-        protected virtual void Set_Input_Script(int type)
-        {
-            switch (type)
-            {
-                case 0: // Mouse + Keyboard (Stepwise)
-                case 1: // Mouse + Keyboard (Pressing)
-                case 10: // AI.
-                    inputScript = gameObject.AddComponent<Camera_Rotation_Input_01_Mouse_CS>();
-                    break;
+        //protected virtual void Set_Input_Script(int type)
+        //{
+        //    switch (type)
+        //    {
+        //        case 0: // Mouse + Keyboard (Stepwise)
+        //        case 1: // Mouse + Keyboard (Pressing)
+        //        case 10: // AI.
+        //            inputScript = gameObject.AddComponent<Camera_Rotation_Input_01_Mouse_CS>();
+        //            break;
 
-                case 2: // Gamepad (Single stick)
-                case 4: // Gamepad (Triggers)
-                    inputScript = gameObject.AddComponent<Camera_Rotation_Input_02_For_Single_Stick_Drive_CS>();
-                    break;
+        //        case 2: // Gamepad (Single stick)
+        //        case 4: // Gamepad (Triggers)
+        //            inputScript = gameObject.AddComponent<Camera_Rotation_Input_02_For_Single_Stick_Drive_CS>();
+        //            break;
 
-                case 3: // Gamepad (Twin sticks)
-                    inputScript = gameObject.AddComponent<Camera_Rotation_Input_03_For_Twin_Sticks_Drive_CS>();
-                    break;
+        //        case 3: // Gamepad (Twin sticks)
+        //            inputScript = gameObject.AddComponent<Camera_Rotation_Input_03_For_Twin_Sticks_Drive_CS>();
+        //            break;
 
-                case 99: // Demo.
-                    inputScript = gameObject.AddComponent<Camera_Rotation_Input_99_Demo_CS>();
-                    break;
-            }
-        }
+        //        case 99: // Demo.
+        //            inputScript = gameObject.AddComponent<Camera_Rotation_Input_99_Demo_CS>();
+        //            break;
+        //    }
+        //}
 
 
         void Update()

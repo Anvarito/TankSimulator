@@ -2823,7 +2823,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1013073667267877563
 GameObject:
   m_ObjectHideFlags: 0
@@ -58715,6 +58715,7 @@ MonoBehaviour:
   _aimingControl: {fileID: 5303330567665018113}
   _cameraPointsControl: {fileID: 5303330568935259610}
   _gunCameraControl: {fileID: 5303330568969516661}
+  _cameraRotation: {fileID: 5303330568935259608}
 --- !u!4 &5303330568600754576
 Transform:
   m_ObjectHideFlags: 0
@@ -95984,6 +95985,7 @@ MonoBehaviour:
   _aimingControl: {fileID: 5474528794868467148}
   _cameraPointsControl: {fileID: 0}
   _gunCameraControl: {fileID: 5473739729776058554}
+  _cameraRotation: {fileID: 0}
 --- !u!114 &5473990079991118964
 MonoBehaviour:
   m_ObjectHideFlags: 0

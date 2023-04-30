@@ -7,13 +7,10 @@ namespace ChobiAssets.PTM
     public class Camera_Rotation_Input_02_For_Single_Stick_Drive_CS : Camera_Rotation_Input_00_Base_CS
     {
 
-        protected Transform bodyTransform;
-
-
         public override void Prepare(Camera_Rotation_CS rotationScript)
         {
             this.rotationScript = rotationScript;
-            bodyTransform = transform.root.GetComponentInChildren<Rigidbody>().transform;
+            
         }
 
 
@@ -31,11 +28,11 @@ namespace ChobiAssets.PTM
             // Look forward.
             if (Input.GetKeyDown(General_Settings_CS.Camera_Look_Forward_Pad_Button))
             {
-                rotationScript.Look_At_Target(bodyTransform.position + bodyTransform.forward * 64.0f);
+                rotationScript.Look_At_Target(rotationScript.BodyTransform.position + rotationScript.BodyTransform.forward * 64.0f);
             }
 
             // Rotation.
-            multiplier = Mathf.Lerp(0.1f, 2.0f, rotationScript.Main_Camera.fieldOfView / 15.0f); // Change the rotation speed according to the FOV of the main camera.
+            multiplier = Mathf.Lerp(0.1f, rotationScript.RotationMultiplier, rotationScript.Main_Camera.fieldOfView / 15.0f); // Change the rotation speed according to the FOV of the main camera.
 
             var vertical = General_Settings_CS.InputListener.GetControl().Tank.Look.ReadValue<Vector2>().y;
             var horizontal = General_Settings_CS.InputListener.GetControl().Tank.Look.ReadValue<Vector2>().x;
