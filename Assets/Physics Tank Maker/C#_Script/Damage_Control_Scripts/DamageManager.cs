@@ -89,9 +89,12 @@ namespace ChobiAssets.PTM
 
         private void SubscribeResiviers()
         {
-            _turretDamages.OnDestroyed.AddListener(TurretDestroy);
-            _mainBodyDamages.OnDestroyed.AddListener(BodyDestroy);
-            _damageTrackRecivier.OnTrackDestroyed.AddListener(TrackDestroyed);
+            if (_turretDamages) _turretDamages.OnDestroyed.AddListener(TurretDestroy);
+            else Debug.LogError("TurretDamages not assigned!!!");
+            if (_mainBodyDamages) _mainBodyDamages.OnDestroyed.AddListener(BodyDestroy);
+            else Debug.LogError("MainBodyDamages not assigned!!!");
+            if (_damageTrackRecivier) _damageTrackRecivier.OnTrackDestroyed.AddListener(TrackDestroyed);
+            else Debug.LogError("DamageTrackRecivier not assigned!!!");
         }
 
         private void TrackDestroyed(TrackInfoHolder track)
@@ -101,9 +104,12 @@ namespace ChobiAssets.PTM
 
         private void InitializingAllDamageReciviers()
         {
-            _turretDamages.Initialize(_damageReciviersSettings.GetTurretsettings());
-            _mainBodyDamages.Initialize(_damageReciviersSettings.GetBodysettings());
-            _damageTrackRecivier.Inititalize(_damageReciviersSettings.GetTracksettings());
+            if (_turretDamages) _turretDamages.Initialize(_damageReciviersSettings.GetTurretsettings());
+            else Debug.LogError("TurretDamages not assigned!!!");
+            if (_mainBodyDamages) _mainBodyDamages.Initialize(_damageReciviersSettings.GetBodysettings());
+            else Debug.LogError("MainBodyDamages not assigned!!!");
+            if(_damageTrackRecivier) _damageTrackRecivier.Inititalize(_damageReciviersSettings.GetTracksettings());
+            else Debug.LogError("DamageTrackRecivier not assigned!!!");
         }
 
         private void BodyDestroy()
