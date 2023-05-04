@@ -462,9 +462,9 @@ namespace ChobiAssets.PTM
 			hingeJoint.connectedBody = thisTransform.Find ("ChildArm_" + direction + "_" + parentNumber).gameObject.GetComponent < Rigidbody > ();
 			// Drive_Wheel_CS
 			Drive_Wheel_CS driveScript = wheelObject.AddComponent <Drive_Wheel_CS> ();
-			driveScript.This_Rigidbody = rigidbody;
-			driveScript.Is_Left = (direction == "L");
-			driveScript.Parent_Script = thisTransform.GetComponent <Drive_Wheel_Parent_CS>();
+			driveScript.SetRigidbody(rigidbody);
+			driveScript.SetSide(direction == "L");
+			//driveScript.Parent_Script = thisTransform.GetComponent <Drive_Wheel_Parent_CS>();
 			// Fix_Shaking_Rotation_CS
 			if (Fit_ST_FlagProp.boolValue == false) { // for Physics Tracks
 				Fix_Shaking_Rotation_CS fixScript = wheelObject.AddComponent <Fix_Shaking_Rotation_CS>();

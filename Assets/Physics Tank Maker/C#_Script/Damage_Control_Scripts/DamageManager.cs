@@ -69,6 +69,7 @@ namespace ChobiAssets.PTM
         private bool isDead;
 
         [HideInInspector] public UnityEvent<TrackInfoHolder> OnTrackBreach;
+        [HideInInspector] public UnityEvent<TrackInfoHolder> OnTrackRestore;
 
         void Start()
 		{
@@ -93,8 +94,18 @@ namespace ChobiAssets.PTM
             else Debug.LogError("TurretDamages not assigned!!!");
             if (_mainBodyDamages) _mainBodyDamages.OnDestroyed.AddListener(BodyDestroy);
             else Debug.LogError("MainBodyDamages not assigned!!!");
-            if (_damageTrackRecivier) _damageTrackRecivier.OnTrackDestroyed.AddListener(TrackDestroyed);
+
+            if (_damageTrackRecivier)
+            {
+                _damageTrackRecivier.OnTrackDestroyed.AddListener(TrackDestroyed);
+                _damageTrackRecivier.OnTrackRestored.AddListener(TrackRestored);
+            }
             else Debug.LogError("DamageTrackRecivier not assigned!!!");
+        }
+
+        private void TrackRestored(TrackInfoHolder rack)
+        {
+            OnTrackRestore?.Invoke(rack);
         }
 
         private void TrackDestroyed(TrackInfoHolder track)

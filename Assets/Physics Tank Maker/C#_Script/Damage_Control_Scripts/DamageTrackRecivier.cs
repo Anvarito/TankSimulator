@@ -53,6 +53,7 @@ public class DamageTrackRecivier : MonoBehaviour
     public float RepairDuration => _repairDuration;
 
     [HideInInspector] public UnityEvent<TrackInfoHolder> OnTrackDestroyed;
+    [HideInInspector] public UnityEvent<TrackInfoHolder> OnTrackRestored;
     public void Inititalize(TrackRecivierSettings recivierSettings)
     {
         _repairDuration = recivierSettings.RepairingDuration;
@@ -94,6 +95,7 @@ public class DamageTrackRecivier : MonoBehaviour
 
             yield return null;
         }
+        OnTrackRestored?.Invoke(currentTrack);
         trackPiece.TrackRestore();
         currentTrack.RestoreHP();
     }

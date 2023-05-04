@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace ChobiAssets.PTM
 {
-
+    [RequireComponent(typeof(Rigidbody))]
     public class Drive_Wheel_CS : MonoBehaviour
     {
         /*
@@ -13,37 +13,34 @@ namespace ChobiAssets.PTM
 		*/
 
         // User options >>
-        public Rigidbody This_Rigidbody;
-        public bool Is_Left;
-        public Drive_Wheel_Parent_CS Parent_Script;
+        [SerializeField] private bool Is_Left;
+        private Rigidbody This_Rigidbody;
+        //public Drive_Wheel_Parent_CS Parent_Script;
         // << User options
+        private void Awake()
+        {
+            This_Rigidbody = GetComponent<Rigidbody>();
+        }
+        public void SetSide(bool value)
+        {
+            Is_Left = value;
+        }
 
+        public void SetRigidbody(Rigidbody rb)
+        {
+            This_Rigidbody = rb;
+        }
 
         float storedSphereColliderRadius;
 
-
-        void FixedUpdate()
+        public Rigidbody GetRigidbody()
         {
-            Control_Rigidbody();
+            return This_Rigidbody;
         }
 
-
-        void Control_Rigidbody()
+        public bool IsLeft()
         {
-            // Set the "maxAngularVelocity" of the rigidbody.
-            This_Rigidbody.maxAngularVelocity = Parent_Script.Max_Angular_Velocity;
-
-            // Set the "angularDrag" of the rigidbody, and add torque to it.
-            if (Is_Left)
-            { // Left
-                This_Rigidbody.angularDrag = Parent_Script.Left_Angular_Drag;
-                This_Rigidbody.AddRelativeTorque(0.0f, Parent_Script.Left_Torque, 0.0f);
-            }
-            else
-            { // Right
-                This_Rigidbody.angularDrag = Parent_Script.Right_Angular_Drag;
-                This_Rigidbody.AddRelativeTorque(0.0f, Parent_Script.Right_Torque, 0.0f);
-            }
+            return Is_Left;
         }
 
 
@@ -58,7 +55,7 @@ namespace ChobiAssets.PTM
         }
 
 
-        void Track_Destroyed_Linkage(bool isLeft)
+        public void Track_Destroyed_Linkage(bool isLeft)
         { // Called from "Damage_Control_Center_CS".
             if (isLeft != Is_Left)
             { // The direction is different.
@@ -80,11 +77,11 @@ namespace ChobiAssets.PTM
             }
 
             // Disable this script.
-            this.enabled = false;
+            //this.enabled = false;
         }
 
 
-        void Track_Repaired_Linkage(bool isLeft)
+        public void Track_Repaired_Linkage(bool isLeft)
         { // Called from "Damage_Control_Center_CS".
             if (isLeft != Is_Left)
             { // The direction is different.
@@ -96,7 +93,7 @@ namespace ChobiAssets.PTM
             sphereCollider.radius = storedSphereColliderRadius;
 
             // Enable this script.
-            this.enabled = true;
+            //this.enabled = true;
         }
 
     }

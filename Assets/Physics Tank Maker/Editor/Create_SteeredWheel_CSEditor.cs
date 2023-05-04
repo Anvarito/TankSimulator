@@ -453,9 +453,9 @@ namespace ChobiAssets.PTM
 			hingeJoint.axis = new Vector3 (0.0f, 1.0f, 0.0f);
 			// Drive_Wheel_CS
 			Drive_Wheel_CS driveScript = wheelObject.AddComponent <Drive_Wheel_CS> ();
-			driveScript.This_Rigidbody = rigidbody;
-			driveScript.Is_Left = (direction == "L");
-			driveScript.Parent_Script = thisTransform.GetComponent <Drive_Wheel_Parent_CS>();
+			driveScript.SetRigidbody(rigidbody);
+			driveScript.SetSide(direction == "L");
+			//driveScript.Parent_Script = thisTransform.GetComponent <Drive_Wheel_Parent_CS>();
 			// Stabilizer_CS
 			Stabilizer_CS stabilizerScript = wheelObject.AddComponent <Stabilizer_CS>();
 			stabilizerScript.This_Transform = wheelObject.transform;

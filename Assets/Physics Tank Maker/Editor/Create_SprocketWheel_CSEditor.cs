@@ -423,9 +423,9 @@ namespace ChobiAssets.PTM
 			hingeJoint.connectedBody = thisTransform.parent.gameObject.GetComponent <Rigidbody>();
 			// Drive_Wheel_CS
 			Drive_Wheel_CS driveScript = gameObject.AddComponent <Drive_Wheel_CS>();
-			driveScript.This_Rigidbody = rigidbody;
-			driveScript.Is_Left = (direction == "L");
-			driveScript.Parent_Script = thisTransform.GetComponent <Drive_Wheel_Parent_CS>();
+			driveScript.SetRigidbody(rigidbody);
+			driveScript.SetSide(direction == "L");
+			//driveScript.Parent_Script = thisTransform.GetComponent <Drive_Wheel_Parent_CS>();
 		}
 
 	}
