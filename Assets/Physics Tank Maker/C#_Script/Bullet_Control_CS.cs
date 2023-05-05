@@ -106,7 +106,7 @@ namespace ChobiAssets.PTM
             }
 
             // Get the "Damage_Control_##_##_CS" script in the hit object.
-            var damageScript = hitObject.GetComponent<DamageBase>();
+            var damageScript = hitObject.GetComponent<DamageRecivierBase>();
             if (damageScript != null)
             { // The hit object has "Damage_Control_##_##_CS" script. >> It should be a breakable object.
 
@@ -209,7 +209,7 @@ namespace ChobiAssets.PTM
                 }
 
                 // Send the damage value to "Damage_Control_##_##_CS" script in the collider.
-                var damageScript = collider.GetComponent<DamageBase>();
+                var damageScript = collider.GetComponent<DamageRecivierBase>();
                 if (damageScript != null)
                 { // The collider should be a breakable object.
                     var damageValue = Attack_Point * loss * Attack_Multiplier;

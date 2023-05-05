@@ -8,7 +8,7 @@ using UnityEngine.Events;
 namespace ChobiAssets.PTM
 {
 
-    public class DamageMainBody : DamageBase
+    public class DamageBodyRecivier : DamageRecivierBase
     {
 
         //[SerializeField] private float MainBody_Damage_Threshold = 100.0f;

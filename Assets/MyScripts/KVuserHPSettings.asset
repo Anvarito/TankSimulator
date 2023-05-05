@@ -21,4 +21,4 @@ MonoBehaviour:
   _trackDamageSettings:
     MaxHitPoints: 300
     DamageTreshold: 50
-    RepairingDuration: 10.75
+    RepairingDuration: 6.8

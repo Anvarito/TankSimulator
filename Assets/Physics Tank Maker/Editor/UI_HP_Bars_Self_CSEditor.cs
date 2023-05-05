@@ -6,7 +6,7 @@ using UnityEngine.UI;
 namespace ChobiAssets.PTM
 {
 
-	[ CustomEditor (typeof(UI_HP_Bars_Self_CS))]
+	[ CustomEditor (typeof(HitPointsUI))]
 	public class UI_HP_Bars_Self_CSEditor : Editor
 	{
 		

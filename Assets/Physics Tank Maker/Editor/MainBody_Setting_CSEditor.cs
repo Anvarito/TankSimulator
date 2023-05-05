@@ -178,12 +178,12 @@ namespace ChobiAssets.PTM
             }
 
             // Add "Damage_Control_00_MainBody_CS" script.
-            var damageScript = thisGameObject.GetComponent<DamageMainBody>();
+            var damageScript = thisGameObject.GetComponent<DamageBodyRecivier>();
             if (Use_Damage_ControlProp.boolValue)
             {
                 if (damageScript == null)
                 {
-                    damageScript = thisGameObject.AddComponent<DamageMainBody>();
+                    damageScript = thisGameObject.AddComponent<DamageBodyRecivier>();
                 }
             }
             else

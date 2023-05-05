@@ -34,7 +34,6 @@ namespace ChobiAssets.PTM
         float maxAngVelocity;
         Drive_Control_CS controlScript;
         private List<Drive_Wheel_CS> _driveWheels = new List<Drive_Wheel_CS>();
-        private DamageManager _damageManager;
 
         void Start()
         {
@@ -46,7 +45,6 @@ namespace ChobiAssets.PTM
         {
             // Get the "Drive_Control_CS".
             controlScript = GetComponentInParent<Drive_Control_CS>();
-            _damageManager = GetComponentInParent<DamageManager>();
 
             foreach(Transform driveWheel in transform)
             {
@@ -58,11 +56,9 @@ namespace ChobiAssets.PTM
             // Set the "maxAngVelocity".
             maxAngVelocity = Mathf.Deg2Rad * ((controlScript.Max_Speed / (2.0f * Radius * Mathf.PI)) * 360.0f);
 
-            _damageManager.OnTrackBreach.AddListener(TrackBreach);
-            _damageManager.OnTrackRestore.AddListener(TrackRestore);
         }
 
-        private void TrackRestore(TrackInfoHolder track)
+        public void DriveRun(TrackDamageRecivier track)
         {
             if (track.IsRightSide)
                 _isRightBroken = false;
@@ -75,7 +71,7 @@ namespace ChobiAssets.PTM
             }
         }
 
-        private void TrackBreach(TrackInfoHolder track)
+        public void DriveBreak(TrackDamageRecivier track)
         {
             if (track.IsRightSide)
                 _isRightBroken = true;

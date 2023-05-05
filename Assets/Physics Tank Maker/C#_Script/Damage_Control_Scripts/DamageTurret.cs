@@ -12,7 +12,7 @@ namespace ChobiAssets.PTM
         public float mass;
         public GameObject destroyedEffect;
     }
-    public class DamageTurret : DamageBase
+    public class DamageTurret : DamageRecivierBase
     {
 
         [SerializeField] private TurretDamageControlProp _turretProps;

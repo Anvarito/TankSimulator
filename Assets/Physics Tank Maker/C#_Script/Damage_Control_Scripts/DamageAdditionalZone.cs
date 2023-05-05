@@ -15,6 +15,8 @@ namespace ChobiAssets.PTM
 
         public UnityEvent OnDamaged { get; set; }
 
+        public float DamageTreshold => _damageThreshold;
+
         //DamageBase parentDamageScript;
         private void Start()
         {

@@ -4,7 +4,7 @@ using UnityEngine;
 namespace ChobiAssets.PTM
 {
 
-    public class Damage_Control_03_Physics_Track_Piece_CS : DamageBase
+    public class Damage_Control_03_Physics_Track_Piece_CS : DamageRecivierBase
     {
 
         public int Track_Index; // 0 = Left, 1 = Right.

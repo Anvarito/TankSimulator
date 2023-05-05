@@ -20,7 +20,7 @@ namespace ChobiAssets.PTM
     //}
 
 
-    public class DamageManager : MonoBehaviour
+    public class DamageReciviersManager : MonoBehaviour
     {
         /* 
 		 * This script is attached to the "MainBody" in the tank.
@@ -61,15 +61,15 @@ namespace ChobiAssets.PTM
 
         [Space(10)]
         [SerializeField] private DamageTurret _turretDamages;
-        [SerializeField] private DamageMainBody _mainBodyDamages;
-        [SerializeField] private DamageTrackRecivier _damageTrackRecivier;
+        [SerializeField] private DamageBodyRecivier _mainBodyDamages;
+        [SerializeField] private TracksHolder _damageTrackRecivier;
 
         AI_CS aiScript;
 
         private bool isDead;
 
-        [HideInInspector] public UnityEvent<TrackInfoHolder> OnTrackBreach;
-        [HideInInspector] public UnityEvent<TrackInfoHolder> OnTrackRestore;
+        [HideInInspector] public UnityEvent<TrackDamageRecivier> OnTrackBreach;
+        [HideInInspector] public UnityEvent<TrackDamageRecivier> OnTrackRestore;
 
         void Start()
 		{
@@ -103,12 +103,12 @@ namespace ChobiAssets.PTM
             else Debug.LogError("DamageTrackRecivier not assigned!!!");
         }
 
-        private void TrackRestored(TrackInfoHolder rack)
+        private void TrackRestored(TrackDamageRecivier rack)
         {
             OnTrackRestore?.Invoke(rack);
         }
 
-        private void TrackDestroyed(TrackInfoHolder track)
+        private void TrackDestroyed(TrackDamageRecivier track)
         {
             OnTrackBreach?.Invoke(track);
         }
@@ -411,11 +411,11 @@ namespace ChobiAssets.PTM
                 return;
             } // This tank is selected.
 
-            // Send this reference to the "UI_HP_Bars_Self_CS" in the scene.
-            if (UI_HP_Bars_Self_CS.Instance)
-            {
-                UI_HP_Bars_Self_CS.Instance.Get_Damage_Script(this);
-            }
+            //// Send this reference to the "UI_HP_Bars_Self_CS" in the scene.
+            //if (UI_HP_Bars_Self_CS.Instance)
+            //{
+            //    UI_HP_Bars_Self_CS.Instance.Get_Damage_Script(this);
+            //}
         }
 
 

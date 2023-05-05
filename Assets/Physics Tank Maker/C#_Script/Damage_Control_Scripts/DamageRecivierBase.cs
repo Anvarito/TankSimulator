@@ -5,7 +5,7 @@ using UnityEngine.Events;
 namespace ChobiAssets.PTM
 {
 
-	public abstract class DamageBase : MonoBehaviour, IDamageble
+	public abstract class DamageRecivierBase : MonoBehaviour, IDamageble
 	{
 		protected float _hitPoints;
 		protected float _initialHP;
@@ -13,6 +13,7 @@ namespace ChobiAssets.PTM
 
 		[HideInInspector] public UnityEvent OnDestroyed;
 
+		public float DamageTreshold => _damageThreshold;
 
         public virtual void Initialize(RecivierSettings recivierSettings)
         {

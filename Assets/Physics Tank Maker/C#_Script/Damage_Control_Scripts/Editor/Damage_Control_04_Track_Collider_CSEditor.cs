@@ -5,7 +5,7 @@ using UnityEditor;
 namespace ChobiAssets.PTM
 {
 
-    [CustomEditor(typeof(TrackPieceDamage))]
+    [CustomEditor(typeof(DamageTrackPieceRecivier))]
     public class Damage_Control_04_Track_Collider_CSEditor : Editor
     {
 
