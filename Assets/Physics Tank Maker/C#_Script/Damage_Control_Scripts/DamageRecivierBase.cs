@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -7,6 +8,7 @@ namespace ChobiAssets.PTM
 
 	public abstract class DamageRecivierBase : MonoBehaviour, IDamageble
 	{
+		[SerializeField] protected List<AdditionalDamageZone> _additionsDamage;
 		public float CurentHP { get; internal set; }
 		public float MaxHP { get; internal set; }
 
@@ -22,10 +24,23 @@ namespace ChobiAssets.PTM
 			CurentHP = recivierSettings.MaxHitPoints;
 			_damageThreshold = recivierSettings.DamageTreshold;
 			   MaxHP = CurentHP;
+
+			if (_additionsDamage.Count != 0)
+			{
+				foreach (var armor in _additionsDamage)
+				{
+					if (armor == null) continue;
+					armor.Initialize(_damageThreshold);
+					armor.OnArmorDamage.AddListener(AdditionalZoneDamaged);
+				}
+			}
 		}
-		protected virtual void Start()
+
+		private void AdditionalZoneDamaged(float damage, int bulletType)
 		{
+			DealDamage(damage, bulletType);
 		}
+
 		[ContextMenu("DamageTest")]
 		public void DADA()
 		{

@@ -5,10 +5,11 @@ using UnityEngine.Events;
 namespace ChobiAssets.PTM
 {
     [RequireComponent(typeof(MeshRenderer))]
-    public class DamageAdditionalZone : MonoBehaviour, IDamageble
+    public class AdditionalDamageZone : MonoBehaviour, IDamageble
     {
 
         [SerializeField] private float Damage_Multiplier = 1.0f;
+        [SerializeField] private bool _isShowVisual = true;
         [HideInInspector] public UnityEvent<float, int> OnArmorDamage;
 
         private float _damageThreshold;
@@ -24,7 +25,7 @@ namespace ChobiAssets.PTM
             MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
             if (meshRenderer)
             {
-                meshRenderer.enabled = false;
+                meshRenderer.enabled = _isShowVisual;
             }
         }
         public void Initialize(float treshold)
