@@ -49,7 +49,7 @@ namespace ChobiAssets.PTM
 		protected Aiming_Control_Input_00_Base_CS inputScript;
 
         public bool Is_Selected; // Referred to from "UI_HP_Bars_Target_CS".
-
+        private bool _isTankDestroyed = false;
 
   //      void Start()
 		//{
@@ -121,7 +121,7 @@ namespace ChobiAssets.PTM
 
         void Update()
 		{
-			if (Is_Selected == false)
+			if (Is_Selected == false || _isTankDestroyed)
             {
 				return;
 			}
@@ -135,6 +135,8 @@ namespace ChobiAssets.PTM
 
         void FixedUpdate()
         {
+            if (_isTankDestroyed)
+                return;
             // Update the target position.
             if (Target_Transform)
             {
@@ -569,10 +571,12 @@ namespace ChobiAssets.PTM
         }
 
 
-        void MainBody_Destroyed_Linkage()
+        public void TankDestroyed()
 		{ // Called from "Damage_Control_Center_CS".
-			//Destroy (inputScript as Object);
-			Destroy (this);
+          //Destroy (inputScript as Object);
+            _isTankDestroyed = true;
+            inputScript.DisableInput();
+            //Destroy (this);
 		}
 
 

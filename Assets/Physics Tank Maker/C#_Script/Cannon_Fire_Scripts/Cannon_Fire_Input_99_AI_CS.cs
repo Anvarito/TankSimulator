@@ -15,19 +15,24 @@ namespace ChobiAssets.PTM
         float waitingCount;
         float aimingCount;
 
-
+        public Cannon_Fire_Input_99_AI_CS(AI_CS aI_CS)
+        {
+            aiScript = aI_CS;
+            SetAIScript();
+        }
         public override void Prepare(Cannon_Fire_CS cannoFireScript)
 		{
 			this.cannonFireScript = cannoFireScript;
-
-			aiScript = transform.root.GetComponentInChildren <AI_CS>();
-			turretScript = GetComponentInParent <Turret_Horizontal_CS>();
-			cannonScript = GetComponent <Cannon_Vertical_CS>();
-			aimingScript = GetComponentInParent <Aiming_Control_CS>();
 		}
 
+        private void SetAIScript()
+        {
+            turretScript = aiScript.Turret_Horizontal_CS;
+            cannonScript = aiScript.Cannon_Vertical_CS;
+            aimingScript = aiScript.Aiming_Control_CS;
+        }
 
-		public override void Get_Input()
+        public override void Get_Input()
 		{
 			// Check the AI gives an oder to fire.
 			if (aiScript.OpenFire_Flag == false)

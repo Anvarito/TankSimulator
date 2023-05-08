@@ -24,5 +24,12 @@ namespace ChobiAssets.PTM
         {
            cannonFireScript.Fire();
         }
+
+        public override void DisableInput()
+        {
+            base.DisableInput();
+            General_Settings_CS.InputListener.GetControl().Tank.Fire.performed -= Fire;
+            General_Settings_CS.InputListener.GetControl().Tank.Switch.performed -= SwitchShell;
+        }
     }
 }

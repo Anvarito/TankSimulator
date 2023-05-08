@@ -20,6 +20,11 @@ namespace ChobiAssets.PTM
 		{
 		}
 
+		public virtual void DisableInput()
+        {
+
+        }
+
 	}
 
 }

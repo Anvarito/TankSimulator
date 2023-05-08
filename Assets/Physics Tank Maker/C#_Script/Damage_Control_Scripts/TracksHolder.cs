@@ -129,11 +129,7 @@ public class TracksHolder : MonoBehaviour
     private void TrackDestroyed(TrackDamageRecivier track)
     {
         OnTrackDestroyed?.Invoke(track);
-
-        foreach(var i in _driveWheels)
-        {
-            i.DriveBreak(track);
-        }
+        DriveBreak(track);
     }
 
     private void TrackRestored(TrackDamageRecivier track)
@@ -144,5 +140,19 @@ public class TracksHolder : MonoBehaviour
         {
             i.DriveRun(track);
         }
+    }
+
+    private void DriveBreak(TrackDamageRecivier track)
+    {
+        foreach (var i in _driveWheels)
+        {
+            i.DriveBreak(track);
+        }
+    }
+
+    public void FullBreak()
+    {
+        DriveBreak(RightTrack);
+        DriveBreak(LeftTrack);
     }
 }

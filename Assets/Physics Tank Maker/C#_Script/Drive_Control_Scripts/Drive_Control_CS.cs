@@ -86,7 +86,7 @@ namespace ChobiAssets.PTM
         bool isSelected;
 
         protected Drive_Control_Input_00_Base_CS inputScript;
-
+        private bool _isTankDestroyed;
 
         //void Start()
         //{
@@ -134,14 +134,7 @@ namespace ChobiAssets.PTM
                 inputScript.Prepare(this);
             }
 
-            //_damageManager.OnTrackBreach.AddListener(TrackBreach);
         }
-
-        private void TrackBreach(TrackDamageRecivier arg0)
-        {
-        }
-
-
 
         //protected virtual void Set_Input_Script(EPlayerType type)
         //{
@@ -170,6 +163,9 @@ namespace ChobiAssets.PTM
 
         void Update()
         {
+            if (_isTankDestroyed)
+                return;
+
             if (isSelected || inputType == 10)
             { // The tank is selected, or AI.
                 inputScript.Drive_Input();
@@ -182,6 +178,8 @@ namespace ChobiAssets.PTM
 
         void FixedUpdate()
         {
+            if (_isTankDestroyed)
+                return;
             // Get the current velocity values;
             Current_Velocity = thisRigidbody.velocity.magnitude;
 
@@ -566,10 +564,12 @@ namespace ChobiAssets.PTM
         }
 
 
-        void MainBody_Destroyed_Linkage()
+        public void TankDestroyed()
         { // Called from "Damage_Control_Center_CS".
             //Destroy(inputScript as Object);
-            Destroy(this);
+            //Destroy(this);
+            _isTankDestroyed = true;
+            Stop_Flag = true;
         }
 
 

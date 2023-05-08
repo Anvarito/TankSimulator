@@ -155,13 +155,18 @@ namespace ChobiAssets.PTM
 
         private void BodyDestroy()
         {
-            isDead = true;
-            OnTankDestroyed?.Invoke();
+            TankDestroyed();
         }
 
         private void TurretDestroy()
         {
+            TankDestroyed();
+        }
+
+        private void TankDestroyed()
+        {
             isDead = true;
+            _damageTrackRecivier.FullBreak();
             OnTankDestroyed?.Invoke();
         }
 

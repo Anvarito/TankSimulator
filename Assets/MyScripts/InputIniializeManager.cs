@@ -6,19 +6,24 @@ using System;
 
 public class InputIniializeManager : MonoBehaviour
 {
-
+    [Header("Main links")]
+    [SerializeField] private ID_Settings_CS _iDSettingsCS;
     [SerializeField] private DamageReciviersManager _damageManager;
 
     [Space(30)]
+    [SerializeField] private AI_CS ai_core_script;
+
+    [Space(30)]
     [SerializeField] private Drive_Control_CS _driveControl;
+    [SerializeField] private Cannon_Fire_CS _fireControl;
     [SerializeField] private Aiming_Control_CS _aimingControl;
     [SerializeField] private Camera_Points_Manager_CS _cameraPointsControl;
     [SerializeField] private Gun_Camera_CS _gunCameraControl;
     [SerializeField] private Camera_Rotation_CS _cameraRotation;
 
-    private ID_Settings_CS _iDSettingsCS;
 
     private Drive_Control_Input_00_Base_CS _driveControlType;
+    private Cannon_Fire_Input_00_Base_CS _fireControlType;
     private Aiming_Control_Input_00_Base_CS _aimingControlType;
     private Gun_Camera_Input_00_Base_CS _gunCameraControlType;
     private Camera_Points_Manager_Input_00_Base_CS _cameraPoinrsType;
@@ -31,21 +36,37 @@ public class InputIniializeManager : MonoBehaviour
         _damageManager.OnTankDestroyed.AddListener(TankDestroyed);
     }
 
+    private void Start()
+    {
+        InititalizeControlls();
+    }
     private void TankDestroyed()
     {
-       // Destroy(_driveControl);
-       // Destroy(_aimingControl);
-       // Destroy(_cameraPointsControl);
-        //_gunCameraControl.TurretDestroy();
-       // Destroy(_cameraRotation);
+        _driveControl.TankDestroyed();
+        _fireControl.TankDestroyed();
+        _aimingControl.TankDestroyed();
+
+        if (_iDSettingsCS.PlayerType == EPlayerType.Player)
+        {
+            _gunCameraControl.TurretDestroyed();
+        }
+        else
+        {
+            ai_core_script.TankDestroyed();
+        }
     }
 
-    private void Start()
+    private void InititalizeControlls()
     {
         if (_driveControl != null)
             _driveControl.Initialize(_driveControlType);
         else
             Debug.LogError("Drive_Control_CS is not linked!!!");
+
+        if (_fireControl != null)
+            _fireControl.Initialize(_fireControlType);
+        else
+            Debug.LogError("Canon_Fire_CS is not linked!!!");
 
         if (_aimingControl != null)
             _aimingControl.Initialize(_aimingControlType);
@@ -70,6 +91,8 @@ public class InputIniializeManager : MonoBehaviour
                 _cameraRotation.Initialize(_cameraInput);
             else
                 Debug.LogError("Aiming_Control_CS is not linked!!!");
+
+
         }
         else if (_iDSettingsCS.PlayerType == EPlayerType.AI)
         {
@@ -78,14 +101,15 @@ public class InputIniializeManager : MonoBehaviour
         }
     }
 
+
     private void SetDriveControlVariant()
     {
-        _iDSettingsCS = GetComponent<ID_Settings_CS>();
         switch (_iDSettingsCS.PlayerType)
         {
 
             case EPlayerType.Player:
                 _driveControlType = new Drive_Control_Input_03_Single_Stick_CS();
+                _fireControlType = new Cannon_Fire_Input_02_For_Sticks_Drive_CS();
                 _cameraPoinrsType = new Camera_Points_Manager_Input_02_Gamepad_CS();
                 _gunCameraControlType = new GunCameraInput02_ForSingleStickDrive();
                 _aimingControlType = new Aiming_Control_Input_02_For_Single_Stick_Drive_CS();
@@ -94,8 +118,8 @@ public class InputIniializeManager : MonoBehaviour
 
             case EPlayerType.AI:
                 _driveControlType = new Drive_Control_Input_99_AI_CS();
-                _cameraPoinrsType = new Camera_Points_Manager_Input_01_Mouse_CS();
-                _gunCameraControlType = new Gun_Camera_Input_01_Mouse_CS();
+                _fireControlType = new Cannon_Fire_Input_99_AI_CS(ai_core_script);
+                _aimingControlType = new Aiming_Control_Input_00_Base_CS();
                 break;
         }
     }

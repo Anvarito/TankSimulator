@@ -31,6 +31,12 @@ namespace ChobiAssets.PTM
             aimingScript.Switch_Mode();
         }
 
+        public override void DisableInput()
+        {
+            base.DisableInput();
+            General_Settings_CS.InputListener.GetControl().Tank.ResetTurret.performed -= ResetTurret;
+        }
+
         public override void Get_Input()
         {
             // Adjust aiming.

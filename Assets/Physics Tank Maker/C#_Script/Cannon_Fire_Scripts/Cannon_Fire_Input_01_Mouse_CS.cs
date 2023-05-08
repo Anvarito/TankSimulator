@@ -14,7 +14,7 @@ namespace ChobiAssets.PTM
         {
             this.cannonFireScript = cannonFireScript;
 
-            turretScript = GetComponentInParent<Turret_Horizontal_CS>();
+            //turretScript = GetComponentInParent<Turret_Horizontal_CS>();
         }
 
 
