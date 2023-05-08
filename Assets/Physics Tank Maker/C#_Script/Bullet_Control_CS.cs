@@ -106,8 +106,8 @@ namespace ChobiAssets.PTM
             }
 
             // Get the "Damage_Control_##_##_CS" script in the hit object.
-            var damageScript = hitObject.GetComponent<DamageRecivierBase>();
-            if (damageScript != null)
+            var damageble = hitObject.GetComponent<IDamageble>();
+            if (damageble != null)
             { // The hit object has "Damage_Control_##_##_CS" script. >> It should be a breakable object.
 
                 // Calculate the hit damage.
@@ -127,10 +127,10 @@ namespace ChobiAssets.PTM
                 //}
 
                 // Send the damage value to "Damage##" script.
-                if(damageScript.CheckBreackout(damageValue, Type))
+                if(damageble.CheckBreackout(damageValue, Type))
                 { // The hit part has been destroyed.
                     // Remove the bullet from the scene.
-                    damageScript.DealDamage(damageValue, Type);
+                    damageble.DealDamage(damageValue, Type);
                     Destroy(this.gameObject);
                 }
                 else
@@ -209,7 +209,7 @@ namespace ChobiAssets.PTM
                 }
 
                 // Send the damage value to "Damage_Control_##_##_CS" script in the collider.
-                var damageScript = collider.GetComponent<DamageRecivierBase>();
+                var damageScript = collider.GetComponent<IDamageble>();
                 if (damageScript != null)
                 { // The collider should be a breakable object.
                     var damageValue = Attack_Point * loss * Attack_Multiplier;

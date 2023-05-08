@@ -7,25 +7,32 @@ using System;
 public class HitPoitsBarUIReceiver : MonoBehaviour
 {
     [SerializeField] private HitPointsUI _ui_HP_Bars_Self_CSprefab;
-    [SerializeField] private TracksHolder _tracksHolder;
+    [SerializeField] private DamageReciviersManager _damageManager;
 
     private HitPointsUI _hitPointsUI;
 
-    private bool _leftTrackBreach = false;
-    private bool _rightTrackBreach = false;
 
     void Start()
     {
         _hitPointsUI = Instantiate(_ui_HP_Bars_Self_CSprefab);
         _hitPointsUI.Initialize();
 
-        _tracksHolder.LeftTrack.OnTrackDamaged.AddListener(TrackDamaged);
-        _tracksHolder.LeftTrack.OnTrackRestored.AddListener(TrackRestore);
-        _tracksHolder.LeftTrack.OnTrackBreached.AddListener(TrackBreach);
+        _damageManager.OnTurretDamaged.AddListener(TurretDamaged);
+        _damageManager.OnBodyDamaged.AddListener(BodyDamaged);
 
-        _tracksHolder.RightTrack.OnTrackDamaged.AddListener(TrackDamaged);
-        _tracksHolder.RightTrack.OnTrackRestored.AddListener(TrackRestore);
-        _tracksHolder.RightTrack.OnTrackBreached.AddListener(TrackBreach);
+        _damageManager.OnTrackDamaged.AddListener(TrackDamaged);
+        _damageManager.OnTrackRestore.AddListener(TrackRestore);
+        _damageManager.OnTrackBreach.AddListener(TrackBreach);
+    }
+
+    private void BodyDamaged(float currentHP, float maxHP)
+    {
+        _hitPointsUI.BodyDamageShow(currentHP, maxHP);
+    }
+
+    private void TurretDamaged(float currentHP, float maxHP)
+    {
+        _hitPointsUI.TurretDamageShow(currentHP, maxHP);
     }
 
     private void TrackDamaged(TrackDamageRecivier track)
@@ -35,20 +42,11 @@ public class HitPoitsBarUIReceiver : MonoBehaviour
 
     private void TrackRestore(TrackDamageRecivier track)
     {
-       
+        _hitPointsUI.TrackRestored(track);
     }
 
     private void TrackBreach(TrackDamageRecivier track)
     {
-        if (track.IsRightSide)
-            _rightTrackBreach = true;
-        else
-            _leftTrackBreach = true;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        _hitPointsUI.TrackBreached(track);
     }
 }

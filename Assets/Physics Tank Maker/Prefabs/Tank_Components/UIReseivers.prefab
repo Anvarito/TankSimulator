@@ -105,3 +105,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a0dc27191a71d64da182ac7a747ff3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _ui_HP_Bars_Self_CSprefab: {fileID: 114719096273676120, guid: 658df433f8bd5ac43ab24a488688f2d7, type: 3}
+  _tracksHolder: {fileID: 0}

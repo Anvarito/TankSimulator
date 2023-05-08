@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ChobiAssets.PTM;
+using System;
 
 public class InputIniializeManager : MonoBehaviour
 {
 
+    [SerializeField] private DamageReciviersManager _damageManager;
+
+    [Space(30)]
     [SerializeField] private Drive_Control_CS _driveControl;
     [SerializeField] private Aiming_Control_CS _aimingControl;
     [SerializeField] private Camera_Points_Manager_CS _cameraPointsControl;
@@ -23,6 +27,17 @@ public class InputIniializeManager : MonoBehaviour
     private void Awake()
     {
         SetDriveControlVariant();
+
+        _damageManager.OnTankDestroyed.AddListener(TankDestroyed);
+    }
+
+    private void TankDestroyed()
+    {
+       // Destroy(_driveControl);
+       // Destroy(_aimingControl);
+       // Destroy(_cameraPointsControl);
+        //_gunCameraControl.TurretDestroy();
+       // Destroy(_cameraRotation);
     }
 
     private void Start()

@@ -7,19 +7,21 @@ namespace ChobiAssets.PTM
 
 	public abstract class DamageRecivierBase : MonoBehaviour, IDamageble
 	{
-		protected float _hitPoints;
-		protected float _initialHP;
+		public float CurentHP { get; internal set; }
+		public float MaxHP { get; internal set; }
+
 		protected float _damageThreshold;
 
 		[HideInInspector] public UnityEvent OnDestroyed;
+		[HideInInspector] public UnityEvent<float, float> OnDamaged;
 
 		public float DamageTreshold => _damageThreshold;
 
         public virtual void Initialize(RecivierSettings recivierSettings)
         {
-			_hitPoints = recivierSettings.MaxHitPoints;
+			CurentHP = recivierSettings.MaxHitPoints;
 			_damageThreshold = recivierSettings.DamageTreshold;
-			   _initialHP = _hitPoints;
+			   MaxHP = CurentHP;
 		}
 		protected virtual void Start()
 		{
@@ -31,8 +33,9 @@ namespace ChobiAssets.PTM
 		}
 		public virtual void DealDamage(float damage, int bulletType)
         {
-			_hitPoints -= damage;
-			if (_hitPoints <= 0)
+			CurentHP -= damage;
+			OnDamaged?.Invoke(CurentHP, MaxHP);
+			if (CurentHP <= 0)
 			{
 				ParthDestroy();
 			}
@@ -40,7 +43,7 @@ namespace ChobiAssets.PTM
 
 		protected virtual void ParthDestroy() 
 		{
-			_hitPoints = 0;
+			CurentHP = 0;
 			OnDestroyed?.Invoke();
 		}
 

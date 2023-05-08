@@ -232,7 +232,7 @@ namespace ChobiAssets.PTM
         }
 
 
-        void Turret_Destroyed_Linkage()
+        public void TurretDestroy()
         { // Called from "Damage_Control_Center_CS".
 
             // Turn off the gun camera. >> Switch to the main camera.

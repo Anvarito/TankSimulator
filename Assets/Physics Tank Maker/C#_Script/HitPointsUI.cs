@@ -25,25 +25,77 @@ namespace ChobiAssets.PTM
         public Image Right_Track_Bar;
         public float Flash_Time = 1.0f;
         // << User options
-
-
-        DamageReciviersManager damageScript;
+        Color initialColor;
+        float previousRightTrackHP;
+        int flashCancelID;
+        //DamageReciviersManager damageScript;
         Image[] bodyBarImages;
         Image[] turretBarImages;
+
+
+        
+
         Image[] leftTrackBarImages;
         Image[] rightTrackBarImages;
         float previousBodyHP;
         float previousTurretHP;
         float previousLeftTrackHP;
 
-        public void TrackDamageShow(TrackDamageRecivier track)
+
+        private void Start()
         {
-            
+            Left_Track_Bar.fillAmount = 1;
+            Right_Track_Bar.fillAmount = 1;
+            Body_Bar.fillAmount = 1;
+            Turret_Bar.fillAmount = 1;
         }
 
-        float previousRightTrackHP;
-        Color initialColor;
-        int flashCancelID;
+        internal void BodyDamageShow(float currentHP, float maxHP)
+        {
+            Body_Bar.fillAmount = currentHP / maxHP;
+        }
+
+        internal void TurretDamageShow(float currentHP, float maxHP)
+        {
+            Turret_Bar.fillAmount = currentHP / maxHP;
+        }
+        public void TrackDamageShow(TrackDamageRecivier track)
+        {
+            if (!track.IsRightSide)
+                Left_Track_Bar.fillAmount = track.CurrentHP / track.MaxHP;
+            else
+                Right_Track_Bar.fillAmount = track.CurrentHP / track.MaxHP;
+        }
+
+        internal void TrackRestored(TrackDamageRecivier track)
+        {
+            if (!track.IsRightSide)
+                Left_Track_Bar.fillAmount = 1;
+            else
+                Right_Track_Bar.fillAmount = 1;
+        }
+
+        internal void TrackBreached(TrackDamageRecivier track)
+        {
+            StartCoroutine(RestoreTrackAnimation(track));
+        }
+
+        private IEnumerator RestoreTrackAnimation(TrackDamageRecivier track)
+        {
+            Image currentTrackImage = track.IsRightSide ? Right_Track_Bar : Left_Track_Bar;
+            float timer = 0;
+            float duration = track.RepairDuration;
+            while (currentTrackImage.fillAmount < 1)
+            {
+                timer += Time.deltaTime;
+                float alpha = timer / duration;
+                currentTrackImage.fillAmount = alpha;
+
+                yield return null;
+            }
+        }
+
+
 
         public void Initialize()
         {
@@ -70,28 +122,28 @@ namespace ChobiAssets.PTM
         }
 
 
-        void LateUpdate()
-        {
-            if (damageScript == null)
-            {
-                Enable_Canvas(false);
-                return;
-            }
+        //void LateUpdate()
+        //{
+        //    if (damageScript == null)
+        //    {
+        //        Enable_Canvas(false);
+        //        return;
+        //    }
 
-            Enable_Canvas(true);
+        //    Enable_Canvas(true);
 
-            // Control the appearance of each bar.
-            Control_Bars();
-        }
+        //    // Control the appearance of each bar.
+        //    Control_Bars();
+        //}
 
 
-        void Enable_Canvas(bool isEnabled)
-        {
-            if (This_Canvas.enabled != isEnabled)
-            {
-                This_Canvas.enabled = isEnabled;
-            }
-        }
+        //void Enable_Canvas(bool isEnabled)
+        //{
+        //    if (This_Canvas.enabled != isEnabled)
+        //    {
+        //        This_Canvas.enabled = isEnabled;
+        //    }
+        //}
 
         void Control_Bars()
         {
@@ -160,7 +212,7 @@ namespace ChobiAssets.PTM
 
         public void Get_Damage_Script(DamageReciviersManager tempDamageScript)
         { // Called from "Damage_Control_Center_CS".
-            damageScript = tempDamageScript;
+            //damageScript = tempDamageScript;
             /*
             // Store the HP values.
             previousBodyHP = damageScript.MainBody_HP;

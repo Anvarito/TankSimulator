@@ -10,8 +10,8 @@ public class TrackDamageRecivier
     public bool IsRightSide { get; private set; }
     public bool IsRestoring { get; private set; }
     public float MaxHP { get; private set; }
+    public float RepairDuration { get; private set; }
 
-    private float _repairDuration;
     private List<DamageTrackPieceRecivier> trackPieceDamages = new List<DamageTrackPieceRecivier>();
 
     public UnityEvent<TrackDamageRecivier> OnTrackDamaged = new UnityEvent<TrackDamageRecivier>();
@@ -21,7 +21,7 @@ public class TrackDamageRecivier
     public TrackDamageRecivier(TrackRecivierSettings recivierSettings, bool isRightSide)
     {
         MaxHP = recivierSettings.MaxHitPoints;
-        _repairDuration = recivierSettings.RepairingDuration;
+        RepairDuration = recivierSettings.RepairingDuration;
         CurrentHP = MaxHP;
         IsRightSide = isRightSide;
     }
@@ -68,7 +68,7 @@ public class TrackDamageRecivier
     {
         IsRestoring = true;
         var repairingTimer = 0.0f;
-        while (repairingTimer < _repairDuration)
+        while (repairingTimer < RepairDuration)
         {
             repairingTimer += Time.deltaTime;
             Debug.Log(repairingTimer);
@@ -84,12 +84,13 @@ public class TrackDamageRecivier
 }
 public class TracksHolder : MonoBehaviour
 {
-    [SerializeField] private bool _isRepairable = true;
+    //[SerializeField] private bool _isRepairable = true;
     [SerializeField] private List<Drive_Wheel_Parent_CS> _driveWheels;
 
     public TrackDamageRecivier RightTrack { get; private set; }
     public TrackDamageRecivier LeftTrack { get; private set; }
 
+    [HideInInspector] public UnityEvent<TrackDamageRecivier> OnTrackDamaged;
     [HideInInspector] public UnityEvent<TrackDamageRecivier> OnTrackDestroyed;
     [HideInInspector] public UnityEvent<TrackDamageRecivier> OnTrackRestored;
     public void Inititalize(TrackRecivierSettings recivierSettings)
@@ -111,11 +112,18 @@ public class TracksHolder : MonoBehaviour
 
         }
 
-        RightTrack.OnTrackRestored.AddListener(TrackRestored);
+        RightTrack.OnTrackDamaged.AddListener(TrackDamaged);
         RightTrack.OnTrackBreached.AddListener(TrackDestroyed);
+        RightTrack.OnTrackRestored.AddListener(TrackRestored);
 
-        LeftTrack.OnTrackRestored.AddListener(TrackRestored);
+        LeftTrack.OnTrackDamaged.AddListener(TrackDamaged);
         LeftTrack.OnTrackBreached.AddListener(TrackDestroyed);
+        LeftTrack.OnTrackRestored.AddListener(TrackRestored);
+    }
+
+    private void TrackDamaged(TrackDamageRecivier track)
+    {
+        OnTrackDamaged?.Invoke(track);
     }
 
     private void TrackDestroyed(TrackDamageRecivier track)

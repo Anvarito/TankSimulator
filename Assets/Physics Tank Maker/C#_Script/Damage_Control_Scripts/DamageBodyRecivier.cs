@@ -23,6 +23,7 @@ namespace ChobiAssets.PTM
             {
                 foreach (var armor in _additionsDamage)
                 {
+                    if (armor == null) continue;
                     armor.Initialize(_damageThreshold);
                     armor.OnArmorDamage.AddListener(AdditionalZoneDamaged);
                 }

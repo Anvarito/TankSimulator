@@ -122,12 +122,12 @@ namespace ChobiAssets.PTM
 
         void FixedUpdate()
         {
-            Control_Rigidbody();
+            ControllDriweWheels();
         }
 
         
 
-        void Control_Rigidbody()
+        void ControllDriweWheels()
         {
             // Set the "maxAngularVelocity" of the rigidbody.
             for (int i = 0; i < _driveWheels.Count; i++)
