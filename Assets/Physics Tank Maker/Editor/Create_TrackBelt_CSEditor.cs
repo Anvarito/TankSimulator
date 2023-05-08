@@ -348,18 +348,13 @@ namespace ChobiAssets.PTM
 			centerPos.z = 0.0f;
 			Vector3 pos;
 			pos.y = DistanceProp.floatValue / 2.0f;
-
-			Transform leftHolder;
-			Transform rightHolder;
-			CreateTrackHolders(out leftHolder, out rightHolder);
-
 			for (int i = 0; i <= 180 / frontAng; i++) {
 				num++;
 				pos.x = frontRad * Mathf.Sin (Mathf.Deg2Rad * (270.0f + (frontAng * i)));
 				pos.x += centerPos.x;
 				pos.z = frontRad * Mathf.Cos (Mathf.Deg2Rad * (270.0f + (frontAng * i)));
-				Create_TrackPiece ("L", new Vector3 (pos.x, pos.y, pos.z), i * frontAng, num, leftHolder);
-				Create_TrackPiece ("R", new Vector3 (pos.x, -pos.y, pos.z), i * frontAng, num, rightHolder);
+				Create_TrackPiece ("L", new Vector3 (pos.x, pos.y, pos.z), i * frontAng, num);
+				Create_TrackPiece ("R", new Vector3 (pos.x, -pos.y, pos.z), i * frontAng, num);
 			}
 			// Create Upper Straight
 			if (bottom != 0.0f) {
@@ -369,8 +364,8 @@ namespace ChobiAssets.PTM
 					num++;
 					pos.x = centerPos.x - (height / NumberProp.intValue * i);
 					pos.z = centerPos.z - (bottom / NumberProp.intValue * i);
-					Create_TrackPiece ("L", new Vector3 (pos.x, pos.y, pos.z), 180.0f + slopeAngle, num, leftHolder);
-					Create_TrackPiece ("R", new Vector3 (pos.x, -pos.y, pos.z), 180.0f + slopeAngle, num, rightHolder);
+					Create_TrackPiece ("L", new Vector3 (pos.x, pos.y, pos.z), 180.0f + slopeAngle, num);
+					Create_TrackPiece ("R", new Vector3 (pos.x, -pos.y, pos.z), 180.0f + slopeAngle, num);
 				}
 			}
 			// Create Rear Arc
@@ -382,8 +377,8 @@ namespace ChobiAssets.PTM
 				pos.x += centerPos.x;
 				pos.z = rearRad * Mathf.Cos (Mathf.Deg2Rad * (90.0f + (rearAng * i)));
 				pos.z += centerPos.z;
-				Create_TrackPiece ("L", new Vector3 (pos.x, pos.y, pos.z), 180.0f + (i * rearAng), num, leftHolder);
-				Create_TrackPiece ("R", new Vector3 (pos.x, -pos.y, pos.z), 180.0f + (i * rearAng), num, rightHolder);
+				Create_TrackPiece ("L", new Vector3 (pos.x, pos.y, pos.z), 180.0f + (i * rearAng), num);
+				Create_TrackPiece ("R", new Vector3 (pos.x, -pos.y, pos.z), 180.0f + (i * rearAng), num);
 			}
 			// Create lower Straight
 			if (bottom != 0.0f) {
@@ -393,44 +388,44 @@ namespace ChobiAssets.PTM
 					num++;
 					pos.x = centerPos.x - (height / NumberProp.intValue * i);
 					pos.z = centerPos.z + (bottom / NumberProp.intValue * i);
-					Create_TrackPiece ("L", new Vector3 (pos.x, pos.y, pos.z), -slopeAngle, num, leftHolder);
-					Create_TrackPiece ("R", new Vector3 (pos.x, -pos.y, pos.z), -slopeAngle, num, rightHolder);
+					Create_TrackPiece ("L", new Vector3 (pos.x, pos.y, pos.z), -slopeAngle, num);
+					Create_TrackPiece ("R", new Vector3 (pos.x, -pos.y, pos.z), -slopeAngle, num);
 				}
 			}
 			//Create Shadow Mesh.
 			if (Use_ShadowMeshProp.boolValue) {
 				for (int i = 0; i < num; i++) {
-					Create_ShadowMesh ("L", i + 1, leftHolder);
-					Create_ShadowMesh ("R", i + 1, rightHolder);
+					Create_ShadowMesh ("L", i + 1);
+					Create_ShadowMesh ("R", i + 1);
 				}
 			}
 			// Create Reinforce Collider.
 			if (SubJoint_TypeProp.intValue != 2) {
 				for (int i = 0; i < num; i++) {
 					if (SubJoint_TypeProp.intValue == 0 || (i + 1) % 2 == 0) {
-						Create_Reinforce ("L", i + 1, leftHolder);
-						Create_Reinforce ("R", i + 1, rightHolder);
+						Create_Reinforce ("L", i + 1);
+						Create_Reinforce ("R", i + 1);
 					}
 				}
 			}
 			// Create Additional Joint.
 			if (Use_JointProp.boolValue) {
 				for (int i = 0; i < num; i++) {
-					Create_Joint ("L", i + 1, leftHolder);
-					Create_Joint ("R", i + 1, rightHolder);
+					Create_Joint ("L", i + 1);
+					Create_Joint ("R", i + 1);
 				}
 			}
 			// Add RigidBody and Joint.
-			Finishing ("L", leftHolder);
-			Finishing ("R",rightHolder);
+			Finishing ("L");
+			Finishing ("R");
 		}
 
 
-		void Create_TrackPiece (string direction, Vector3 position, float angleY, int number, Transform parent)
+		void Create_TrackPiece (string direction, Vector3 position, float angleY, int number)
 		{
 			//Create gameobject & Set transform
 			GameObject pieceObject = new GameObject ("TrackBelt_" + direction + "_" + number);
-			pieceObject.transform.parent = parent;
+			pieceObject.transform.parent = thisTransform;
 			pieceObject.transform.localPosition = position;
 			pieceObject.transform.localRotation = Quaternion.Euler (0.0f, angleY, -90.0f);
 			// Mesh
@@ -517,10 +512,10 @@ namespace ChobiAssets.PTM
 		}
 
 
-		void Create_ShadowMesh (string direction, int number, Transform trackHolder)
+		void Create_ShadowMesh (string direction, int number)
 		{
 			//Create gameobject & Set transform
-			Transform basePiece = trackHolder.Find ("TrackBelt_" + direction + "_" + number);
+			Transform basePiece = thisTransform.Find ("TrackBelt_" + direction + "_" + number);
 			GameObject shadowObject = new GameObject ("ShadowMesh_" + direction + "_" + number);
 			shadowObject.transform.position = basePiece.position;
 			shadowObject.transform.rotation = basePiece.rotation;
@@ -543,10 +538,10 @@ namespace ChobiAssets.PTM
 		}
 
 
-		void Create_Reinforce (string direction, int number, Transform trackHolder)
+		void Create_Reinforce (string direction, int number)
 		{
 			//Create gameobject & Set transform
-			Transform basePiece = trackHolder.Find ("TrackBelt_" + direction + "_" + number);
+			Transform basePiece = thisTransform.Find ("TrackBelt_" + direction + "_" + number);
 			GameObject reinforceObject = new GameObject ("Reinforce_" + direction + "_" + number);
 			reinforceObject.transform.position = basePiece.position;
 			reinforceObject.transform.rotation = basePiece.rotation;
@@ -558,30 +553,14 @@ namespace ChobiAssets.PTM
 			reinforceObject.layer = Layer_Settings_CS.Reinforce_Layer;
         }
 
-		private void CreateTrackHolders(out Transform leftHolder, out Transform rightHolder)
-        {
-			GameObject leftTrackHolder = new GameObject("Left Track");
-			GameObject rightTrackHolder = new GameObject("Right Track");
-			leftTrackHolder.transform.parent = thisTransform;
-			rightTrackHolder.transform.parent = thisTransform;
 
-			leftTrackHolder.transform.localPosition = Vector3.zero;
-			leftTrackHolder.transform.localRotation = Quaternion.identity;
-
-			rightTrackHolder.transform.localPosition = Vector3.zero;
-			rightTrackHolder.transform.localRotation = Quaternion.identity;
-
-			leftHolder = leftTrackHolder.transform;
-			rightHolder = rightTrackHolder.transform;
-		}
-
-		void Create_Joint (string direction, int number, Transform trackHolder)
+		void Create_Joint (string direction, int number)
 		{
 			//Create gameobject & Set transform
-			Transform baseTransform = trackHolder.Find ("TrackBelt_" + direction + "_" + number);
-			Transform frontTransform = trackHolder.Find ("TrackBelt_" + direction + "_" + (number + 1));
+			Transform baseTransform = thisTransform.Find ("TrackBelt_" + direction + "_" + number);
+			Transform frontTransform = thisTransform.Find ("TrackBelt_" + direction + "_" + (number + 1));
 			if (frontTransform == null) {
-				frontTransform = trackHolder.Find ("TrackBelt_" + direction + "_1");
+				frontTransform = thisTransform.Find ("TrackBelt_" + direction + "_1");
 			}
 			GameObject jointObject = new GameObject ("Joint_" + direction + "_" + number);
 			jointObject.transform.parent = baseTransform;
@@ -614,11 +593,11 @@ namespace ChobiAssets.PTM
 		}
 
 
-		void Finishing (string direction, Transform trackHolder)
+		void Finishing (string direction)
 		{
 			// Add RigidBody.
-			for (int i = 1; i <= trackHolder.childCount; i++) {
-				Transform basePiece = trackHolder.Find ("TrackBelt_" + direction + "_" + i);
+			for (int i = 1; i <= thisTransform.childCount; i++) {
+				Transform basePiece = thisTransform.Find ("TrackBelt_" + direction + "_" + i);
 				if (basePiece) {
 					// Add RigidBody.
 					Rigidbody rigidbody = basePiece.gameObject.AddComponent < Rigidbody > ();
@@ -631,18 +610,18 @@ namespace ChobiAssets.PTM
 				}
 			}
 			// Add HingeJoint.
-			for (int i = 1; i <= trackHolder.childCount; i++) {
-				Transform basePiece = trackHolder.Find ("TrackBelt_" + direction + "_" + i);
+			for (int i = 1; i <= thisTransform.childCount; i++) {
+				Transform basePiece = thisTransform.Find ("TrackBelt_" + direction + "_" + i);
 				if (basePiece) {
 					HingeJoint hingeJoint = basePiece.gameObject.AddComponent < HingeJoint > ();
 					hingeJoint.anchor = new Vector3 (0.0f, 0.0f, SpacingProp.floatValue / 2.0f);
 					hingeJoint.axis = new Vector3 (1.0f, 0.0f, 0.0f);
 					hingeJoint.breakForce = BreakForceProp.floatValue;
-					Transform frontPiece = trackHolder.Find ("TrackBelt_" + direction + "_" + (i + 1));
+					Transform frontPiece = thisTransform.Find ("TrackBelt_" + direction + "_" + (i + 1));
 					if (frontPiece) {
 						hingeJoint.connectedBody = frontPiece.GetComponent < Rigidbody > ();
 					} else {
-						frontPiece = trackHolder.Find ("TrackBelt_" + direction + "_1");
+						frontPiece = thisTransform.Find ("TrackBelt_" + direction + "_1");
 						if (frontPiece) {
 							hingeJoint.connectedBody = frontPiece.GetComponent < Rigidbody > ();
 						}
@@ -690,7 +669,7 @@ namespace ChobiAssets.PTM
 		}
 
 
-        void Set_Parent_Script (Static_Track_Parent_CS parentScript)
+		void Set_Parent_Script (Static_Track_Parent_CS parentScript)
 		{
             // Set the values.
             parentScript.Length = SpacingProp.floatValue;
