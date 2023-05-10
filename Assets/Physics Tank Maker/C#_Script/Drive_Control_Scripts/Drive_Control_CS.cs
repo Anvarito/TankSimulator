@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Events;
 
 namespace ChobiAssets.PTM
 {
@@ -524,15 +525,15 @@ namespace ChobiAssets.PTM
         }
 
 
-        void Call_Indicator()
-        {
-            // Call "UI_Speed_Indicator_Control_CS" in the scene.
-            if (UI_Speed_Indicator_Control_CS.Instance)
-            {
-                bool isManual = (General_Settings_CS.Input_Type == 0); // "Mouse + Keyboard (Stepwise)".
-                UI_Speed_Indicator_Control_CS.Instance.Get_Drive_Script(this, isManual, currentStep);
-            }
-        }
+        //void Call_Indicator()
+        //{
+        //    // Call "UI_Speed_Indicator_Control_CS" in the scene.
+        //    if (UI_Speed_Indicator_Control_CS.Instance)
+        //    {
+        //        bool isManual = (General_Settings_CS.Input_Type == 0); // "Mouse + Keyboard (Stepwise)".
+        //        UI_Speed_Indicator_Control_CS.Instance.Get_Drive_Script(this, isManual, currentStep);
+        //    }
+        //}
 
 
         public void Shift_Gear(int currentStep)
@@ -540,10 +541,10 @@ namespace ChobiAssets.PTM
             this.currentStep = currentStep;
 
             // Call "UI_Speed_Indicator_Control_CS" in the scene.
-            if (UI_Speed_Indicator_Control_CS.Instance)
-            {
-                UI_Speed_Indicator_Control_CS.Instance.Get_Current_Step(currentStep);
-            }
+            //if (UI_Speed_Indicator_Control_CS.Instance)
+            //{
+            //    UI_Speed_Indicator_Control_CS.Instance.Get_Current_Step(currentStep);
+            //}
         }
 
 
@@ -557,10 +558,10 @@ namespace ChobiAssets.PTM
         { // Called from "ID_Settings_CS".
             this.isSelected = isSelected;
 
-            if (isSelected)
-            {
-                Call_Indicator();
-            }
+            //if (isSelected)
+            //{
+            //    Call_Indicator();
+            //}
         }
 
 

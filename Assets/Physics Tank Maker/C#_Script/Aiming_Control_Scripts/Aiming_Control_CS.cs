@@ -74,7 +74,7 @@ namespace ChobiAssets.PTM
             }
             else
             {
-                Mode = 0;
+               // Mode = 0;
             }
 
             // Get the "Turret_Horizontal_CS" and "Cannon_Vertical_CS" scripts in the tank.
