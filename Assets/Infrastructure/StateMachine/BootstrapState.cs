@@ -1,3 +1,7 @@
+using Infrastructure.Assets;
+using Infrastructure.Factory;
+using Infrastructure.Services;
+
 namespace Infrastructure.StateMachine
 {
     public class BootstrapState : IState
@@ -12,12 +16,14 @@ namespace Infrastructure.StateMachine
         {
             _gameStateMachine = gameStateMachine;
             _sceneLoader = sceneLoader;
+            
+            RegisterServices();
         }
 
         public void Enter()
         {
             _sceneLoader.Load(Initial, EnterLoadLevelState);
-            RegisterServices();
+            // RegisterServices();
         }
 
         public void Exit()
@@ -26,6 +32,9 @@ namespace Infrastructure.StateMachine
 
         private void RegisterServices()
         {
+            ServiceLocator.Container.RegisterSingle<IAssetLoader>( new AssetLoader());
+            ServiceLocator.Container.RegisterSingle<IInputService>(new InputService());
+            ServiceLocator.Container.RegisterSingle<IGameFactory>(new GameFactory(ServiceLocator.Container.Single<IAssetLoader>()));
         }
 
         private void EnterLoadLevelState() =>
