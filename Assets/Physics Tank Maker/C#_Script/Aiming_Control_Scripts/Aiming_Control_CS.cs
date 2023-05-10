@@ -8,7 +8,7 @@ namespace ChobiAssets.PTM
 
     [DefaultExecutionOrder(+1)] // (Note.) This script is executed after other scripts, in order to detect the target certainly.
     public class Aiming_Control_CS : MonoBehaviour
-	{
+    {
         /*
 		 * This script is attached to the "MainBody" of the tank.
 		 * This script controls the aiming of the tank.
@@ -23,7 +23,7 @@ namespace ChobiAssets.PTM
         int inputType;
         Turret_Horizontal_CS[] turretHorizontalScripts;
         Cannon_Vertical_CS[] cannonVerticalScripts;
-		public bool Use_Auto_Turn; // Referred to from "Turret_Horizontal_CS" and "Cannon_Vertical_CS".
+        public bool Use_Auto_Turn; // Referred to from "Turret_Horizontal_CS" and "Cannon_Vertical_CS".
         public bool Use_Auto_Lead; // Referred to from "Turret_Horizontal_CS".
         public float Aiming_Blur_Multiplier = 1.0f; // Referred to from "Turret_Horizontal_CS".
         public bool reticleAimingFlag; // Controlled from "Aiming_Control_Input_##_###", and referred to from "UI_Aim_Marker_Control_CS".
@@ -46,19 +46,19 @@ namespace ChobiAssets.PTM
         public float Cannon_Turn_Rate; // Referred to from "Cannon_Vertical_CS".
 
 
-		protected Aiming_Control_Input_00_Base_CS inputScript;
+        protected Aiming_Control_Input_00_Base_CS inputScript;
 
         public bool Is_Selected; // Referred to from "UI_HP_Bars_Target_CS".
         private bool _isTankDestroyed = false;
 
-  //      void Start()
-		//{
-		//	Initialize();
-		//}
+        //      void Start()
+        //{
+        //	Initialize();
+        //}
 
 
         public void Initialize(Aiming_Control_Input_00_Base_CS aimingControl)
-		{
+        {
             rootTransform = transform.root;
             thisRigidbody = GetComponent<Rigidbody>();
             Turret_Speed_Multiplier = 1.0f;
@@ -68,8 +68,15 @@ namespace ChobiAssets.PTM
             { // This tank is not an AI tank.
                 inputType = General_Settings_CS.Input_Type;
                 Use_Auto_Lead = General_Settings_CS.Use_Auto_Lead;
+                inputScript = aimingControl;
+                inputScript.Prepare(this);
+                Mode = 1;
             }
-            
+            else
+            {
+                Mode = 0;
+            }
+
             // Get the "Turret_Horizontal_CS" and "Cannon_Vertical_CS" scripts in the tank.
             turretHorizontalScripts = GetComponentsInChildren<Turret_Horizontal_CS>();
             cannonVerticalScripts = GetComponentsInChildren<Cannon_Vertical_CS>();
@@ -77,16 +84,6 @@ namespace ChobiAssets.PTM
             // Get the "Camera_Rotation_CS" script in the tank.
             cameraRotationScript = transform.parent.GetComponentInChildren<Camera_Rotation_CS>();
 
-            // Set the input script.
-            inputScript = aimingControl;
-
-            // Prepare the input script.
-            if (inputScript != null)
-            {
-                inputScript.Prepare(this);
-            }
-
-            Mode = 1;
             Switch_Mode();
         }
 
@@ -120,17 +117,17 @@ namespace ChobiAssets.PTM
 
 
         void Update()
-		{
-			if (Is_Selected == false || _isTankDestroyed)
+        {
+            if (Is_Selected == false || _isTankDestroyed)
             {
-				return;
-			}
+                return;
+            }
 
-			if (inputScript != null)
+            if (inputScript != null)
             {
-				inputScript.Get_Input();
-			}
-		}
+                inputScript.Get_Input();
+            }
+        }
 
 
         void FixedUpdate()
@@ -164,7 +161,7 @@ namespace ChobiAssets.PTM
         }
 
 
-        public void Switch_Mode ()
+        public void Switch_Mode()
         { // Called also from "Aiming_Control_Input_##_###".
             switch (Mode)
             {
@@ -412,7 +409,7 @@ namespace ChobiAssets.PTM
         }
 
 
-        public void Auto_Lock (int direction, int thisRelationship)
+        public void Auto_Lock(int direction, int thisRelationship)
         { // Called from "Aiming_Control_Input_##_###". (0 = Left, 1 = Right, 2 = Front)
 
             // Check the "AI_Headquaters_CS" is set in the scene.
@@ -440,10 +437,11 @@ namespace ChobiAssets.PTM
             {
                 enemyTankList = AI_Headquaters_CS.Instance.Hostile_Tanks_List;
             }
-            else{
+            else
+            {
                 enemyTankList = AI_Headquaters_CS.Instance.Friendly_Tanks_List;
             }
-            
+
             // Find a new target.
             int targetIndex = 0;
             int oppositeTargetIndex = 0;
@@ -500,8 +498,8 @@ namespace ChobiAssets.PTM
         }
 
 
-        IEnumerator Send_Target_Position ()
-		{
+        IEnumerator Send_Target_Position()
+        {
             // Send the target position to the "Camera_Rotation_CS" in the 'Camera_Pivot' object.
             if (cameraRotationScript)
             {
@@ -511,42 +509,42 @@ namespace ChobiAssets.PTM
         }
 
 
-        public void AI_Lock_On (Transform tempTransform)
-		{ // Called from "AI_CS".
-			Target_Transform = tempTransform;
-			Target_Rigidbody = Target_Transform.GetComponent <Rigidbody>();
-			Mode = 2;
-			Switch_Mode ();
-		}
+        public void AI_Lock_On(Transform tempTransform)
+        { // Called from "AI_CS".
+            Target_Transform = tempTransform;
+            Target_Rigidbody = Target_Transform.GetComponent<Rigidbody>();
+            Mode = 2;
+            Switch_Mode();
+        }
 
 
-        public void AI_Lock_Off ()
-		{ // Called from "AI_CS".
-			Target_Transform = null;
+        public void AI_Lock_Off()
+        { // Called from "AI_CS".
+            Target_Transform = null;
             Target_Rigidbody = null;
             Mode = 0;
-			Switch_Mode ();
-		}
+            Switch_Mode();
+        }
 
 
-        public void AI_Random_Offset ()
-		{ // Called from "Cannon_Fire".
+        public void AI_Random_Offset()
+        { // Called from "Cannon_Fire".
 
             // Set the new offset.
-			Vector3 newOffset;
-			newOffset.x = Random.Range (-0.5f, 0.5f);
-			newOffset.y = Random.Range ( 0.0f, 1.0f);
-			newOffset.z = Random.Range (-1.0f, 1.0f);
-			targetOffset = newOffset;
-            
+            Vector3 newOffset;
+            newOffset.x = Random.Range(-0.5f, 0.5f);
+            newOffset.y = Random.Range(0.0f, 1.0f);
+            newOffset.z = Random.Range(-1.0f, 1.0f);
+            targetOffset = newOffset;
+
             // Set the new aiming blur.
             Aiming_Blur_Multiplier = Random.Range(0.5f, 1.5f);
         }
 
 
         void Get_AI_CS(AI_CS aiScript)
-		{ // Called from "AI_CS".
-			inputType = 10;
+        { // Called from "AI_CS".
+            inputType = 10;
             Use_Auto_Turn = true;
             Use_Auto_Lead = true;
             Aiming_Blur_Multiplier = 1.0f;
@@ -572,12 +570,13 @@ namespace ChobiAssets.PTM
 
 
         public void TankDestroyed()
-		{ // Called from "Damage_Control_Center_CS".
+        { // Called from "Damage_Control_Center_CS".
           //Destroy (inputScript as Object);
             _isTankDestroyed = true;
+            if(inputScript != null)
             inputScript.DisableInput();
             //Destroy (this);
-		}
+        }
 
 
         void Pause(bool isPaused)

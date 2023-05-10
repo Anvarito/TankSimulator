@@ -74,7 +74,6 @@ public class InputIniializeManager : MonoBehaviour
             Debug.LogError("Aiming_Control_CS is not linked!!!");
 
 
-
         if (_iDSettingsCS.PlayerType == EPlayerType.Player)
         {
             if (_cameraPointsControl != null)
@@ -91,8 +90,6 @@ public class InputIniializeManager : MonoBehaviour
                 _cameraRotation.Initialize(_cameraInput);
             else
                 Debug.LogError("Aiming_Control_CS is not linked!!!");
-
-
         }
         else if (_iDSettingsCS.PlayerType == EPlayerType.AI)
         {
@@ -119,7 +116,7 @@ public class InputIniializeManager : MonoBehaviour
             case EPlayerType.AI:
                 _driveControlType = new Drive_Control_Input_99_AI_CS();
                 _fireControlType = new Cannon_Fire_Input_99_AI_CS(ai_core_script);
-                _aimingControlType = new Aiming_Control_Input_00_Base_CS();
+                //_aimingControlType = new Aiming_Control_Input_00_Base_CS();
                 break;
         }
     }
