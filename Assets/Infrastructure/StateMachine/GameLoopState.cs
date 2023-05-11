@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace Infrastructure.StateMachine
 {
     public class GameLoopState : IState
@@ -9,11 +11,12 @@ namespace Infrastructure.StateMachine
             _gameStateMachine = gameStateMachine;
         }
 
-        public void Exit()
+        public void Enter()
         {
+            Debug.Log($"Entered {this.GetType().Name}");
         }
 
-        public void Enter()
+        public void Exit()
         {
         }
     }

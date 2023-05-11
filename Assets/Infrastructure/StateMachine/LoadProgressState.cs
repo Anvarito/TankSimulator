@@ -1,6 +1,7 @@
 using Infrastructure.Data;
 using Infrastructure.Services.Progress;
 using Infrastructure.Services.SaveLoad;
+using UnityEngine;
 
 namespace Infrastructure.StateMachine
 {
@@ -20,6 +21,8 @@ namespace Infrastructure.StateMachine
 
         public void Enter()
         {
+            Debug.Log($"Entered {this.GetType().Name}");
+            
             LoadProgressOrCreateNew();
 
             _gameStateMachine.Enter<LoadLevelState, string>(_progressService.Progress.WorldData.PositionOnLevel.Level);

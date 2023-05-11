@@ -25,6 +25,8 @@ namespace Infrastructure.StateMachine
 
         public void Enter(string payload)
         {
+            Debug.Log($"Entered {this.GetType().Name}");
+            
             _gameFactory.CleanUp();
             _sceneLoader.Load(name: payload, OnLoaded);
         }
