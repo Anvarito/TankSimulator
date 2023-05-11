@@ -641,6 +641,7 @@ namespace ChobiAssets.PTM
 			newParentObject.transform.localPosition = thisTransform.localPosition;
 			newParentObject.transform.localRotation = thisTransform.localRotation;
 			Static_Track_Parent_CS parentScript = newParentObject.AddComponent <Static_Track_Parent_CS>();
+			TracksHolder trackHolder = newParentObject.AddComponent <TracksHolder>();
 			Set_Parent_Script (parentScript);
 
 			// Call all the "Static_Track_Setting_CS" in the pieces.

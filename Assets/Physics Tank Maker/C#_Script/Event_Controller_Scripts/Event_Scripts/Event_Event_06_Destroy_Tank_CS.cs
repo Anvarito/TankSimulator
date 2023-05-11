@@ -12,7 +12,7 @@ namespace ChobiAssets.PTM
             for (int i = 0; i < eventControllerScript.Target_Tanks.Length; i++)
             {
                 // Get the "Damage_Control_Center_CS" in the target, and send it infinite damage values.
-                var damageScript = eventControllerScript.Target_Tanks[i].GetComponentInChildren<DamageManager>();
+                var damageScript = eventControllerScript.Target_Tanks[i].GetComponentInChildren<DamageReciviersManager>();
                 if (damageScript)
                 {
                     //damageScript.Receive_Damage(Mathf.Infinity, 0, 0);

@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using System;
 
 namespace ChobiAssets.PTM
 {
@@ -20,16 +22,18 @@ namespace ChobiAssets.PTM
 
 
         // Referred to from "Drive_Wheel_CS".
-        public float Max_Angular_Velocity;
-        public float Left_Angular_Drag;
-        public float Right_Angular_Drag;
-        public float Left_Torque;
-        public float Right_Torque;
+        private float Max_Angular_Velocity;
+        private float Left_Angular_Drag;
+        private float Right_Angular_Drag;
+        private float Left_Torque;
+        private float Right_Torque;
 
+        private bool _isRightBroken;
+        private bool _isLeftBroken;
 
         float maxAngVelocity;
         Drive_Control_CS controlScript;
-
+        private List<Drive_Wheel_CS> _driveWheels = new List<Drive_Wheel_CS>();
 
         void Start()
         {
@@ -42,10 +46,43 @@ namespace ChobiAssets.PTM
             // Get the "Drive_Control_CS".
             controlScript = GetComponentInParent<Drive_Control_CS>();
 
+            foreach(Transform driveWheel in transform)
+            {
+                if(driveWheel.TryGetComponent(out Drive_Wheel_CS drive_Wheel))
+                {
+                    _driveWheels.Add(drive_Wheel);
+                }
+            }
             // Set the "maxAngVelocity".
             maxAngVelocity = Mathf.Deg2Rad * ((controlScript.Max_Speed / (2.0f * Radius * Mathf.PI)) * 360.0f);
+
         }
 
+        public void DriveRun(TrackDamageRecivier track)
+        {
+            if (track.IsRightSide)
+                _isRightBroken = false;
+            else
+                _isLeftBroken = false;
+
+            foreach(var i in _driveWheels)
+            {
+                i.Track_Repaired_Linkage(!track.IsRightSide);
+            }
+        }
+
+        public void DriveBreak(TrackDamageRecivier track)
+        {
+            if (track.IsRightSide)
+                _isRightBroken = true;
+            else
+                _isLeftBroken = true;
+
+            foreach (var i in _driveWheels)
+            {
+                i.Track_Destroyed_Linkage(!track.IsRightSide);
+            }
+        }
 
         void Update()
         {
@@ -83,6 +120,39 @@ namespace ChobiAssets.PTM
             }
         }
 
+        void FixedUpdate()
+        {
+            ControllDriweWheels();
+        }
+
+        
+
+        void ControllDriweWheels()
+        {
+            // Set the "maxAngularVelocity" of the rigidbody.
+            for (int i = 0; i < _driveWheels.Count; i++)
+            {
+                if (_driveWheels[i].IsLeft() && _isLeftBroken
+                    || !_driveWheels[i].IsLeft() && _isRightBroken)
+                    continue;
+
+
+                Rigidbody This_Rigidbody = _driveWheels[i].GetRigidbody();
+                This_Rigidbody.maxAngularVelocity = Max_Angular_Velocity;
+
+                // Set the "angularDrag" of the rigidbody, and add torque to it.
+                if (_driveWheels[i].IsLeft())
+                { // Left
+                    This_Rigidbody.angularDrag = Left_Angular_Drag;
+                    This_Rigidbody.AddRelativeTorque(0.0f, Left_Torque, 0.0f);
+                }
+                else
+                { // Right
+                    This_Rigidbody.angularDrag = Right_Angular_Drag;
+                    This_Rigidbody.AddRelativeTorque(0.0f, Right_Torque, 0.0f);
+                }
+            }
+        }
 
         void MainBody_Destroyed_Linkage()
         { // Called from "Damage_Control_Center_CS".

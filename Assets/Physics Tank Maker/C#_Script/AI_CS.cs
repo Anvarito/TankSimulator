@@ -8,7 +8,7 @@ namespace ChobiAssets.PTM
 	
 	public class AI_CS : MonoBehaviour
 	{
-		/*
+        /*
 		 * This script is attached to the "AI_Core" in the AI tank.
 		 * This script controls the behavior of the AI tank.
 		 * This script works in combination with "AI_Settings_CS" in the top object, and "AI_Hand_CS" in the child object.
@@ -16,9 +16,14 @@ namespace ChobiAssets.PTM
 		*/
 
 
-		// User options >>
-		// Drive settings.
-		public float WayPoint_Radius = 10.0f;
+        // User options >>
+        // Drive settings.
+        [SerializeField] private Turret_Horizontal_CS turret_Horizontal_CS;
+        [SerializeField] private Cannon_Vertical_CS cannon_Vertical_CS;
+        [SerializeField] private Aiming_Control_CS aiming_Control_CS;
+
+
+        public float WayPoint_Radius = 10.0f;
 		public float Pivot_Turn_Angle = 45.0f;
 		public float Min_Target_Angle = 2.5f;
 		public float Min_Turn_Rate = 0.0f;
@@ -93,6 +98,9 @@ namespace ChobiAssets.PTM
         // For navigation.
         Drive_Control_CS driveControlScript;
 
+        public Turret_Horizontal_CS Turret_Horizontal_CS => turret_Horizontal_CS;
+        public Cannon_Vertical_CS Cannon_Vertical_CS => cannon_Vertical_CS;
+        public Aiming_Control_CS Aiming_Control_CS => aiming_Control_CS;
 
         void Awake()
         {
@@ -1039,7 +1047,7 @@ namespace ChobiAssets.PTM
         }
 
 
-        void MainBody_Destroyed_Linkage()
+        public void TankDestroyed()
         { // Called from "Damage_Control_Center_CS".
             Destroy(navAgent.gameObject);
             Destroy(this.gameObject);

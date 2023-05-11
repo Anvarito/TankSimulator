@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Events;
 
 namespace ChobiAssets.PTM
 {
@@ -12,7 +13,6 @@ namespace ChobiAssets.PTM
 		 * This script controls the driving of the tank, such as speed, torque, acceleration and so on.
 		 * This script works in combination with "Drive_Wheel_Parent_CS" in the 'Create_##Wheels objects', and "Drive_Wheel_CS" in the drive wheels.
 		*/
-        [SerializeField] private DamageManager _damageManager;
         // User options >>
         public float Torque = 2000.0f;
         public float Max_Speed = 8.0f;
@@ -87,7 +87,7 @@ namespace ChobiAssets.PTM
         bool isSelected;
 
         protected Drive_Control_Input_00_Base_CS inputScript;
-
+        private bool _isTankDestroyed;
 
         //void Start()
         //{
@@ -135,14 +135,7 @@ namespace ChobiAssets.PTM
                 inputScript.Prepare(this);
             }
 
-            //_damageManager.OnTrackBreach.AddListener(TrackBreach);
         }
-
-        private void TrackBreach(TrackInfoHolder arg0)
-        {
-        }
-
-
 
         //protected virtual void Set_Input_Script(EPlayerType type)
         //{
@@ -171,6 +164,9 @@ namespace ChobiAssets.PTM
 
         void Update()
         {
+            if (_isTankDestroyed)
+                return;
+
             if (isSelected || inputType == 10)
             { // The tank is selected, or AI.
                 inputScript.Drive_Input();
@@ -183,6 +179,8 @@ namespace ChobiAssets.PTM
 
         void FixedUpdate()
         {
+            if (_isTankDestroyed)
+                return;
             // Get the current velocity values;
             Current_Velocity = thisRigidbody.velocity.magnitude;
 
@@ -527,15 +525,15 @@ namespace ChobiAssets.PTM
         }
 
 
-        void Call_Indicator()
-        {
-            // Call "UI_Speed_Indicator_Control_CS" in the scene.
-            if (UI_Speed_Indicator_Control_CS.Instance)
-            {
-                bool isManual = (General_Settings_CS.Input_Type == 0); // "Mouse + Keyboard (Stepwise)".
-                UI_Speed_Indicator_Control_CS.Instance.Get_Drive_Script(this, isManual, currentStep);
-            }
-        }
+        //void Call_Indicator()
+        //{
+        //    // Call "UI_Speed_Indicator_Control_CS" in the scene.
+        //    if (UI_Speed_Indicator_Control_CS.Instance)
+        //    {
+        //        bool isManual = (General_Settings_CS.Input_Type == 0); // "Mouse + Keyboard (Stepwise)".
+        //        UI_Speed_Indicator_Control_CS.Instance.Get_Drive_Script(this, isManual, currentStep);
+        //    }
+        //}
 
 
         public void Shift_Gear(int currentStep)
@@ -543,10 +541,10 @@ namespace ChobiAssets.PTM
             this.currentStep = currentStep;
 
             // Call "UI_Speed_Indicator_Control_CS" in the scene.
-            if (UI_Speed_Indicator_Control_CS.Instance)
-            {
-                UI_Speed_Indicator_Control_CS.Instance.Get_Current_Step(currentStep);
-            }
+            //if (UI_Speed_Indicator_Control_CS.Instance)
+            //{
+            //    UI_Speed_Indicator_Control_CS.Instance.Get_Current_Step(currentStep);
+            //}
         }
 
 
@@ -560,17 +558,19 @@ namespace ChobiAssets.PTM
         { // Called from "ID_Settings_CS".
             this.isSelected = isSelected;
 
-            if (isSelected)
-            {
-                Call_Indicator();
-            }
+            //if (isSelected)
+            //{
+            //    Call_Indicator();
+            //}
         }
 
 
-        void MainBody_Destroyed_Linkage()
+        public void TankDestroyed()
         { // Called from "Damage_Control_Center_CS".
             //Destroy(inputScript as Object);
-            Destroy(this);
+            //Destroy(this);
+            _isTankDestroyed = true;
+            Stop_Flag = true;
         }
 
 

@@ -1,10 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 namespace ChobiAssets.PTM
 {
 
-	public class Cannon_Fire_Input_00_Base_CS : MonoBehaviour
+	public class Cannon_Fire_Input_00_Base_CS
 	{
 
 		protected Cannon_Fire_CS cannonFireScript;
@@ -20,6 +21,10 @@ namespace ChobiAssets.PTM
 		{
 		}
 
-	}
+        public virtual void DisableInput()
+        {
+
+        }
+    }
 
 }

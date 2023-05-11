@@ -44,6 +44,7 @@ namespace ChobiAssets.PTM
         public UnityEvent OnDisableGunCam;
         public UnityEvent<float> OnFOVchange;
 
+        private bool _isTankDestroyed;
         //      void Start()
         //{
         //	Initialize();
@@ -127,7 +128,7 @@ namespace ChobiAssets.PTM
 
         void Update()
         {
-            if (isSelected == false)
+            if (isSelected == false || _isTankDestroyed)
             {
                 return;
             }
@@ -232,7 +233,7 @@ namespace ChobiAssets.PTM
         }
 
 
-        void Turret_Destroyed_Linkage()
+        public void TurretDestroyed()
         { // Called from "Damage_Control_Center_CS".
 
             // Turn off the gun camera. >> Switch to the main camera.
@@ -241,7 +242,8 @@ namespace ChobiAssets.PTM
                 Switch_Mode(1); // Off
             }
 
-            Destroy(this.gameObject);
+            _isTankDestroyed = true;
+            inputScript.DissableInput();
         }
 
 

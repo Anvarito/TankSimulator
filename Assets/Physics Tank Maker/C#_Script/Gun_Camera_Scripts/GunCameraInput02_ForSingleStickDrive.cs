@@ -21,6 +21,16 @@ namespace ChobiAssets.PTM
             General_Settings_CS.InputListener.GetControl().Tank.ZoomOut.canceled += ZoomOutCancel;
         }
 
+        public override void DissableInput()
+        {
+            base.DissableInput();
+            General_Settings_CS.InputListener.GetControl().Tank.Aim.performed -= Aim;
+            General_Settings_CS.InputListener.GetControl().Tank.ZoomIn.performed -= ZoomInStart;
+            General_Settings_CS.InputListener.GetControl().Tank.ZoomIn.canceled -= ZommInCancel;
+            General_Settings_CS.InputListener.GetControl().Tank.ZoomOut.performed -= ZoomOutStart;
+            General_Settings_CS.InputListener.GetControl().Tank.ZoomOut.canceled -= ZoomOutCancel;
+        }
+
         private void ZoomOutCancel(InputAction.CallbackContext obj)
         {
             _isDecreaseView = false;

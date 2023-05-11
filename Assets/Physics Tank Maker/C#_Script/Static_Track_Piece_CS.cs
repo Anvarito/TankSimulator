@@ -42,7 +42,7 @@ namespace ChobiAssets.PTM
         Vector3 currentAngles = new Vector3(0.0f, 0.0f, 270.0f);
         bool isRepairing;
 
-
+        private List<Static_Track_Piece_CS> _clonePiecesList;
         void Start()
         {
             switch (Type)
@@ -184,7 +184,7 @@ namespace ChobiAssets.PTM
         }
 
 
-        public void Start_Breaking(float lifeTime)
+        public void Start_Breaking()
         { // Called from "Damage_Control_04_Track_Collider_CS" in the Track_Collider.
 
             // Reset the rate values in the parent script.
@@ -195,7 +195,7 @@ namespace ChobiAssets.PTM
             }
 
             // Create the pieces list.
-            var clonePiecesList = new List<Static_Track_Piece_CS>();
+            _clonePiecesList = new List<Static_Track_Piece_CS>();
             var pieceScript = this;
             for (int i = 0; i < Pieces_Count; i++)
             {
@@ -207,20 +207,17 @@ namespace ChobiAssets.PTM
                 pieceScript.Track_Destroyed_Linkage(Is_Left);
 
                 // Add to the list.
-                clonePiecesList.Add(clonePieceObject);
-
-                // Set the life time.
-                Destroy(clonePieceObject.gameObject, lifeTime);
+                _clonePiecesList.Add(clonePieceObject);
 
                 // Set the next piece.
                 pieceScript = pieceScript.Front_Script;
             }
 
             // Connect the clone pieces by HingeJoint.
-            for (int i = 0; i < clonePiecesList.Count - 1; i++)
+            for (int i = 0; i < _clonePiecesList.Count - 1; i++)
             {
-                var hingeJoint = clonePiecesList[i].gameObject.AddComponent<HingeJoint>();
-                hingeJoint.connectedBody = clonePiecesList[i + 1].GetComponent<Rigidbody>();
+                var hingeJoint = _clonePiecesList[i].gameObject.AddComponent<HingeJoint>();
+                hingeJoint.connectedBody = _clonePiecesList[i + 1].GetComponent<Rigidbody>();
                 hingeJoint.anchor = new Vector3(0.0f, 0.0f, Half_Length);
                 hingeJoint.axis = new Vector3(1.0f, 0.0f, 0.0f);
                 hingeJoint.breakForce = 100000.0f;
@@ -253,6 +250,9 @@ namespace ChobiAssets.PTM
                 pieceScript.Track_Repaired_Linkage(Is_Left);
                 pieceScript = pieceScript.Front_Script;
             }
+
+            _clonePiecesList.Clear();
+            _clonePiecesList = null;
         }
 
         void Track_Repaired_Linkage(bool isLeft)

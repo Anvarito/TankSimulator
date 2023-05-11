@@ -4,9 +4,9 @@ using System.Collections;
 namespace ChobiAssets.PTM
 {
 
-	public class Bullet_Control_CS : MonoBehaviour
-	{
-		/*
+    public class Bullet_Control_CS : MonoBehaviour
+    {
+        /*
 		 * This script is attached to bullet prefabs.
 		 * This script controls the posture of the bullet, and supports the collision detecting by casting a ray while flying.
 		 * When the bullet hits the target, this script sends the damage value to the "Damage_Control_##_##_CS" script in the hit collider.
@@ -14,34 +14,34 @@ namespace ChobiAssets.PTM
 		*/
 
 
-		// User options >>
-		public int Type; // 0=AP , 1=HE.
-		public Transform This_Transform;
-		public Rigidbody This_Rigidbody;
-		// Only for AP
-		public GameObject Impact_Object;
-		public GameObject Ricochet_Object;
-		// Only for HE
-		public GameObject Explosion_Object;
-		public float Explosion_Force;
-		public float Explosion_Radius;
-		// << User options
+        // User options >>
+        public int Type; // 0=AP , 1=HE.
+        public Transform This_Transform;
+        public Rigidbody This_Rigidbody;
+        // Only for AP
+        public GameObject Impact_Object;
+        public GameObject Ricochet_Object;
+        // Only for HE
+        public GameObject Explosion_Object;
+        public float Explosion_Force;
+        public float Explosion_Radius;
+        // << User options
 
 
-		// Set by "Bullet_Generator_CS".
-		public float Attack_Point;
-		public float Initial_Velocity;
-		public float Life_Time;
-		public float Attack_Multiplier = 1.0f;
-		public bool Debug_Flag = false;
+        // Set by "Bullet_Generator_CS".
+        public float Attack_Point;
+        public float Initial_Velocity;
+        public float Life_Time;
+        public float Attack_Multiplier = 1.0f;
+        public bool Debug_Flag = false;
 
         bool isLiving = true;
 
 
         void Start()
-		{
-			Initialize();
-		}
+        {
+            Initialize();
+        }
 
 
         void Initialize()
@@ -96,6 +96,7 @@ namespace ChobiAssets.PTM
         void AP_Hit_Process(GameObject hitObject, float hitVelocity, Vector3 hitNormal)
         {
             isLiving = false;
+            print(hitObject);
 
             // Set the collision detection mode.
             This_Rigidbody.collisionDetectionMode = CollisionDetectionMode.Discrete;
@@ -106,8 +107,8 @@ namespace ChobiAssets.PTM
             }
 
             // Get the "Damage_Control_##_##_CS" script in the hit object.
-            var damageScript = hitObject.GetComponent<DamageBase>();
-            if (damageScript != null)
+            var damageble = hitObject.GetComponent<IDamageble>();
+            if (damageble != null)
             { // The hit object has "Damage_Control_##_##_CS" script. >> It should be a breakable object.
 
                 // Calculate the hit damage.
@@ -127,10 +128,10 @@ namespace ChobiAssets.PTM
                 //}
 
                 // Send the damage value to "Damage##" script.
-                if(damageScript.CheckBreackout(damageValue, Type))
+                if (damageble.CheckBreackout(damageValue, Type))
                 { // The hit part has been destroyed.
                     // Remove the bullet from the scene.
-                    damageScript.DealDamage(damageValue, Type);
+                    damageble.DealDamage(damageValue, Type);
                     Destroy(this.gameObject);
                 }
                 else
@@ -154,7 +155,7 @@ namespace ChobiAssets.PTM
         }
 
 
-        void HE_Hit_Process ()
+        void HE_Hit_Process()
         {
             isLiving = false;
 
@@ -209,7 +210,7 @@ namespace ChobiAssets.PTM
                 }
 
                 // Send the damage value to "Damage_Control_##_##_CS" script in the collider.
-                var damageScript = collider.GetComponent<DamageBase>();
+                var damageScript = collider.GetComponent<IDamageble>();
                 if (damageScript != null)
                 { // The collider should be a breakable object.
                     var damageValue = Attack_Point * loss * Attack_Multiplier;

@@ -5,49 +5,45 @@ using UnityEngine.Events;
 namespace ChobiAssets.PTM
 {
 
-	public class Cannon_Fire_CS : MonoBehaviour
-	{
-		/*
+    public class Cannon_Fire_CS : MonoBehaviour
+    {
+        /*
 		 * This script is attached to the "Cannon_Base" in the tank.
 		 * This script controls the firining of the tank.
 		 * When firing, this script calls "Bullet_Generator_CS" and "Recoil_Brake_CS" scripts placed under this object in the hierarchy.
 		 * In case of AI tank, this script works in combination with "AI_CS", "Turret_Horizontal_CS", "Cannon_Vertical_CS" and "Aiming_Control_CS".
 		*/
 
-		// User options >>
-		public float Reload_Time = 2.0f;
-		public float Recoil_Force = 5000.0f;
-		// << User options
+        // User options >>
+        public float Reload_Time = 2.0f;
+        public float Recoil_Force = 5000.0f;
+        // << User options
 
 
-		// Set by "inputType_Settings_CS".
-		public int inputType = 0;
+        // Set by "inputType_Settings_CS".
+        public int inputType = 0;
 
-		// Referred to from "UI_Reloading_Circle_CS".
-		public float Loading_Count;
+        // Referred to from "UI_Reloading_Circle_CS".
+        public float Loading_Count;
 
         Rigidbody bodyRigidbody;
         Transform thisTransform;
         int direction = 1; // For twin barrels, 1 = left, 2 = right.
-		public Bullet_Generator_CS[] Bullet_Generator_Scripts; // Referred to from "Cannon_Fire_Input_##_###".
+        public Bullet_Generator_CS[] Bullet_Generator_Scripts; // Referred to from "Cannon_Fire_Input_##_###".
         Recoil_Brake_CS[] recoilScripts;
 
         protected Cannon_Fire_Input_00_Base_CS inputScript;
 
         private bool _isSelected;
         private IEnumerator _reloadRoutine;
-		private bool _IsLoaded = true;
+        private bool _IsLoaded = true;
 
         public UnityEvent OnReload;
         public UnityEvent OnEndReload;
         public UnityEvent OnInit;
-        void Start()
-		{
-			Initialize();
-		}
+        private bool _isDestroyTank;
 
-
-        void Initialize()
+        public void Initialize(Cannon_Fire_Input_00_Base_CS canonFireInputType)
         { // This function must be called in Start() after changing the hierarchy.
             thisTransform = transform;
             Bullet_Generator_Scripts = GetComponentsInChildren<Bullet_Generator_CS>();
@@ -60,8 +56,11 @@ namespace ChobiAssets.PTM
                 inputType = General_Settings_CS.Input_Type;
             }
 
+            //DUMB solved
+
+
             // Set the "inputScript".
-            Set_Input_Script(inputType);
+            inputScript = canonFireInputType;
 
             // Prepare the "inputScript".
             if (inputScript != null)
@@ -72,32 +71,31 @@ namespace ChobiAssets.PTM
             OnInit?.Invoke();
         }
 
+        //protected virtual void Set_Input_Script(int type)
+        //{
+        //    switch (type)
+        //    {
+        //        case 0: // Mouse + Keyboard (Stepwise)
+        //        case 1: // Mouse + Keyboard (Pressing)
+        //            inputScript = gameObject.AddComponent<Cannon_Fire_Input_01_Mouse_CS>();
+        //            break;
 
-        protected virtual void Set_Input_Script(int type)
-        {
-            switch (type)
-            {
-                case 0: // Mouse + Keyboard (Stepwise)
-                case 1: // Mouse + Keyboard (Pressing)
-                    inputScript = gameObject.AddComponent<Cannon_Fire_Input_01_Mouse_CS>();
-                    break;
+        //        case 2: // GamePad (Single stick)
+        //        case 3: // GamePad (Twin stick)
+        //        case 4: // GamePad (Triggers)
+        //            inputScript = gameObject.AddComponent<Cannon_Fire_Input_02_For_Sticks_Drive_CS>();
+        //            break;
 
-                case 2: // GamePad (Single stick)
-                case 3: // GamePad (Twin stick)
-                case 4: // GamePad (Triggers)
-                    inputScript = gameObject.AddComponent<Cannon_Fire_Input_02_For_Sticks_Drive_CS>();
-                    break;
-
-                case 10: // AI
-                    inputScript = gameObject.AddComponent<Cannon_Fire_Input_99_AI_CS>();
-                    break;
-            }
-        }
+        //        case 10: // AI
+        //            inputScript = gameObject.AddComponent<Cannon_Fire_Input_99_AI_CS>();
+        //            break;
+        //    }
+        //}
 
 
         void Update()
         {
-            if (_IsLoaded == false)
+            if (!_IsLoaded || _isDestroyTank)
             {
                 return;
             }
@@ -199,9 +197,12 @@ namespace ChobiAssets.PTM
         }
 
 
-        void Turret_Destroyed_Linkage()
+        public void TankDestroyed()
         { // Called from "Damage_Control_Center_CS".
-            Destroy(this);
+            if (_reloadRoutine != null)
+                StopCoroutine(_reloadRoutine);
+            inputScript.DisableInput();
+            _isDestroyTank = true;
         }
 
 
