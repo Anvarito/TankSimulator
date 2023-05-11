@@ -8,6 +8,7 @@ namespace Infrastructure.Factory
     {
         GameObject CreatePlayer(GameObject at);
         void CreateHud();
+        public void CreateTankController();
         void CreateEnemies(GameObject[] at);
         List<IProgressReader> ProgressReaders { get; }
         List<IProgressWriter> ProgressWriters { get; }

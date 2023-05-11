@@ -51,6 +51,7 @@ namespace Infrastructure.StateMachine
 
         private void InitGameLevel()
         {
+            _gameFactory.CreateTankController();
             _gameFactory.CreatePlayer(at: GameObject.FindWithTag(PlayerInitialPoint));
             _gameFactory.CreateHud();
             _gameFactory.CreateEnemies(at: GameObject.FindGameObjectsWithTag(EnemyInitialPoint));

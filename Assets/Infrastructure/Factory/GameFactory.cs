@@ -19,7 +19,10 @@ namespace Infrastructure.Factory
         }
 
         public GameObject CreatePlayer(GameObject at) =>
-            InstantiateRegistered(AssetPaths.Player, at.transform.position);
+            InstantiateRegistered(AssetPaths.PlayerTank, at.transform.position);
+        
+        public void CreateTankController() =>
+            InstantiateRegistered(AssetPaths.TankController);
 
         public void CreateHud() =>
             InstantiateRegistered(AssetPaths.Hud);
@@ -27,7 +30,7 @@ namespace Infrastructure.Factory
         public void CreateEnemies(GameObject[] at)
         {
             foreach (GameObject point in at)
-                _assetLoader.Instantiate(AssetPaths.Enemy, point.transform.position);
+                _assetLoader.Instantiate(AssetPaths.EnemyTank, point.transform.position);
         }
 
         public void CleanUp()
