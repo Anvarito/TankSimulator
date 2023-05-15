@@ -32,6 +32,9 @@ namespace ChobiAssets.PTM
         public int Mode = 1; // Referred to from "UI_Aim_Marker_Control_CS". // 0 => Keep the initial positon, 1 => Free aiming,  2 => Locking on.
         Transform rootTransform;
         Rigidbody thisRigidbody;
+
+       
+
         public Vector3 Target_Position; // Referred to from "Turret_Horizontal_CS", "Cannon_Vertical_CS", "UI_Aim_Marker_Control_CS", "ReticleWheel_Control_CS".
         public Transform Target_Transform; // Referred to from "UI_Aim_Marker_Control_CS", "UI_HP_Bars_Target_CS".
         Vector3 targetOffset;
@@ -52,11 +55,6 @@ namespace ChobiAssets.PTM
         private bool _isTankDestroyed = false;
 
         private Camera _camera;
-        //      void Start()
-        //{
-        //	Initialize();
-        //}
-
 
         public void Initialize(Aiming_Control_Input_00_Base_CS aimingControl, Camera camera)
         {
@@ -287,12 +285,15 @@ namespace ChobiAssets.PTM
         }
 
 
-        public void Cast_Ray_Free(Vector3 screenPos)
+        public void Cast_Ray_Free()
         { // Called from "Aiming_Control_Input_##_###".
 
             // Find a target by casting a ray from the camera.
             var mainCamera = _camera;
-            var ray = mainCamera.ScreenPointToRay(screenPos);
+            Vector3 screenCenter = Vector2.zero;
+            screenCenter.x = _camera.pixelRect.width * 0.5f;
+            screenCenter.y = _camera.pixelRect.height * (0.5f + General_Settings_CS.Aiming_Offset);
+            var ray = mainCamera.ScreenPointToRay(screenCenter);
             if (Physics.Raycast(ray, out RaycastHit raycastHit, 2048.0f, Layer_Settings_CS.Aiming_Layer_Mask))
             {
                 var colliderTransform = raycastHit.collider.transform;
@@ -340,8 +341,8 @@ namespace ChobiAssets.PTM
             Target_Rigidbody = null;
 
             // Set the position through this tank.
-            screenPos.z = 64.0f;
-            Target_Position = mainCamera.ScreenToWorldPoint(screenPos);
+            screenCenter.z = 64.0f;
+            Target_Position = mainCamera.ScreenToWorldPoint(screenCenter);
         }
 
 

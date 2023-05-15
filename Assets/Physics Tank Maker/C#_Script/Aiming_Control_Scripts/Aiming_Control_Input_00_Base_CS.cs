@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 namespace ChobiAssets.PTM
@@ -25,6 +26,6 @@ namespace ChobiAssets.PTM
 
         }
 
-	}
+    }
 
 }

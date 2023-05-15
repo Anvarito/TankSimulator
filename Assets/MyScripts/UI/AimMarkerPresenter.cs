@@ -11,6 +11,7 @@ public class AimMarkerPresenter : MonoBehaviour
     [SerializeField] private Image _leadMarker;
     private Camera _camera;
     private Aiming_Control_CS _aimingScript;
+
     public void AimMarkerControl()
     {
         // Set the appearance.

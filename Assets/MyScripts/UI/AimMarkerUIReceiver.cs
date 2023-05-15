@@ -42,7 +42,6 @@ namespace ChobiAssets.PTM
                 _aimLeadPresenter = Instantiate(_aimLeadPresenterPrefab);
             }
 
-
             _aimLeadPresenter.Initializing(aimingScript, _camera);
         }
 

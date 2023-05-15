@@ -63764,6 +63764,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2390085117305452652}
     - target: {fileID: 1127647858160360992, guid: a9b5df4f69716c64393b37cfd9540945, type: 3}
+      propertyPath: _camera
+      value: 
+      objectReference: {fileID: 2390085117933263229}
+    - target: {fileID: 1127647858160360992, guid: a9b5df4f69716c64393b37cfd9540945, type: 3}
       propertyPath: _cannonFireScript
       value: 
       objectReference: {fileID: 2390085116953837065}

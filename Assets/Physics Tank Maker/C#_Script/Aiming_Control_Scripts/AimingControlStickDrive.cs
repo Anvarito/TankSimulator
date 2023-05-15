@@ -13,7 +13,7 @@ namespace ChobiAssets.PTM
         private InputAction _resetTurretAction;
         private PlayerInput _playerInput;
         private Camera _camera;
-
+        private Transform _aimMarker;
         public AimingControlStickDrive(PlayerInput playerInput, InputAction resetTurretAction, InputAction lookAction, Camera camera)
         {
             _lookAction = lookAction;
@@ -107,9 +107,9 @@ namespace ChobiAssets.PTM
                     // Try to find a new target.
                     if (Input.GetKey(General_Settings_CS.Turret_Cancel_Pad_Button) == false)
                     {
-                        screenCenter.x = Screen.width * 0.5f;
-                        screenCenter.y = Screen.height * 0.5f;
-                        aimingScript.Reticle_Aiming(screenCenter, thisRelationship);
+                        //screenCenter.x = Screen.width * 0.5f;
+                        //screenCenter.y = Screen.height * 0.5f;
+                        //aimingScript.Reticle_Aiming(screenCenter, thisRelationship);
                     }
 
                     // Control "reticleAimingFlag" in "Aiming_Control_CS".
@@ -141,9 +141,9 @@ namespace ChobiAssets.PTM
                 { // Free aiming.
 
                     // Find the target.
-                    screenCenter.x = _camera.scaledPixelWidth * 0.5f;
-                    screenCenter.y = _camera.scaledPixelHeight * (0.5f + General_Settings_CS.Aiming_Offset);
-                    aimingScript.Cast_Ray_Free(screenCenter);
+                    //screenCenter.x = _camera.pixelRect.width * 0.5f;
+                    //screenCenter.y = _camera.pixelRect.height * (0.5f + General_Settings_CS.Aiming_Offset);
+                    aimingScript.Cast_Ray_Free();
                 }
 
                 // Control "reticleAimingFlag" in "Aiming_Control_CS".

@@ -32,11 +32,11 @@ public class LeadMarkerPresenter : MonoBehaviour
         }
 
         // Check the target is locked on now.
-        if (_aimingScript.Target_Transform == null)
-        { // The target is not locked on.
-            _markerImage.enabled = false;
-            return;
-        }
+        //if (_aimingScript.Target_Transform == null)
+        //{ // The target is not locked on.
+        //    _markerImage.enabled = false;
+        //    return;
+        //}
 
         // Calculate the ballistic.
         var muzzlePos = _bulletGeneratorTransform.position;

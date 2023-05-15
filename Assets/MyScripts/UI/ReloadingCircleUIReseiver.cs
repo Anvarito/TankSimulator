@@ -15,8 +15,9 @@ namespace ChobiAssets.PTM
 		*/
         [SerializeField] private ReloadingCirclePresenter _reloadMarkerCanvasPrefab;
         [SerializeField] private Cannon_Fire_CS _cannonFireScript;
+        [SerializeField] private Camera  _camera;
 
-        private ReloadingCirclePresenter _reloadingCircle;
+        private ReloadingCirclePresenter _reloadingCirclePresenter;
 
         private bool isSelected;
         private bool _isLoadeng;
@@ -28,20 +29,20 @@ namespace ChobiAssets.PTM
 
         private void InitScript()
         {
-            _reloadingCircle = Instantiate(_reloadMarkerCanvasPrefab);
-
+            _reloadingCirclePresenter = Instantiate(_reloadMarkerCanvasPrefab);
+            _reloadingCirclePresenter.Initialized(_camera);
             _cannonFireScript.OnReload.AddListener(ReloadLaunch);
             _cannonFireScript.OnEndReload.AddListener(ReloadEnd);
         }
 
         private void ReloadLaunch()
         {
-            _reloadingCircle.EnableImage(true);
+            _reloadingCirclePresenter.EnableImage(true);
             _isLoadeng = true;
         }
         private void ReloadEnd()
         {
-            _reloadingCircle.EnableImage(false);
+            _reloadingCirclePresenter.EnableImage(false);
             _isLoadeng = false;
         }
 
@@ -60,7 +61,7 @@ namespace ChobiAssets.PTM
 
         void FillCircle()
         {
-            _reloadingCircle.FillCircle(_cannonFireScript.Loading_Count, _cannonFireScript.Reload_Time);
+            _reloadingCirclePresenter.FillCircle(_cannonFireScript.Loading_Count, _cannonFireScript.Reload_Time);
         }
 
 
