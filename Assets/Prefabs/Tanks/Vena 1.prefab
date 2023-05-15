@@ -48137,6 +48137,7 @@ MonoBehaviour:
   _iDSettingsCS: {fileID: 2390085117803253465}
   _damageManager: {fileID: 2390085117309224830}
   _turret_Finishing: {fileID: 2390085118084687408}
+  _camera: {fileID: 2390085117933263229}
   ai_core_script: {fileID: 0}
   _actionAsset: {fileID: -944628639613478452, guid: 2689d64a66172e548b7ef8cd989db6b9, type: 3}
   _driveControl: {fileID: 2390085117309224829}
@@ -63737,6 +63738,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 331844288142114373, guid: a9b5df4f69716c64393b37cfd9540945, type: 3}
+      propertyPath: _camera
+      value: 
+      objectReference: {fileID: 2390085117933263229}
+    - target: {fileID: 331844288142114373, guid: a9b5df4f69716c64393b37cfd9540945, type: 3}
       propertyPath: _aimingScript
       value: 
       objectReference: {fileID: 2390085117309224828}
@@ -63752,6 +63757,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIResivers
       objectReference: {fileID: 0}
+    - target: {fileID: 5048355752775529110, guid: a9b5df4f69716c64393b37cfd9540945, type: 3}
+      propertyPath: _camera
+      value: 
+      objectReference: {fileID: 2390085117933263229}
     - target: {fileID: 5048355752775529110, guid: a9b5df4f69716c64393b37cfd9540945, type: 3}
       propertyPath: aimingScript
       value: 

@@ -144,6 +144,7 @@ namespace ChobiAssets.PTM
             {
                 Target_Position += thisRigidbody.velocity * Time.fixedDeltaTime;
             }
+
         }
 
 

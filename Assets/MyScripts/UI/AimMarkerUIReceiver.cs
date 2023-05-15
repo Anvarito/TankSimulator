@@ -18,6 +18,7 @@ namespace ChobiAssets.PTM
         // User options >>
         [SerializeField] private AimMarkerPresenter _aimLeadPresenterPrefab;
         [SerializeField] private Aiming_Control_CS aimingScript;
+        [SerializeField] private Camera _camera;
         // << User options
         private AimMarkerPresenter _aimLeadPresenter;
         bool isSelected;
@@ -42,7 +43,7 @@ namespace ChobiAssets.PTM
             }
 
 
-            _aimLeadPresenter.Initializing(aimingScript);
+            _aimLeadPresenter.Initializing(aimingScript, _camera);
         }
 
 

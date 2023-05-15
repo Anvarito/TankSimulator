@@ -9,6 +9,7 @@ public class AimMarkerPresenter : MonoBehaviour
 {
     [SerializeField] private Image _aimMarker;
     [SerializeField] private Image _leadMarker;
+    private Camera _camera;
     private Aiming_Control_CS _aimingScript;
     public void AimMarkerControl()
     {
@@ -42,7 +43,7 @@ public class AimMarkerPresenter : MonoBehaviour
             return;
         }
         // Set the marker on the target position.
-        Vector3 currentPosition = Camera.main.WorldToScreenPoint(_aimingScript.Target_Position);
+        Vector3 currentPosition = _camera.WorldToScreenPoint(_aimingScript.Target_Position);
         if (currentPosition.z < 0.0f)
         { // Behind of the camera.
             _aimMarker.enabled = false;
@@ -54,8 +55,9 @@ public class AimMarkerPresenter : MonoBehaviour
         _aimMarker.transform.position = currentPosition;
     }
 
-    internal void Initializing(Aiming_Control_CS aimingScript)
+    internal void Initializing(Aiming_Control_CS aimingScript, Camera camera)
     {
+        _camera = camera;
         _aimingScript = aimingScript;
     }
 }

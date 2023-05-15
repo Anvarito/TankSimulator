@@ -10,12 +10,13 @@ public class LeadMarkerPresenter : MonoBehaviour
     [SerializeField] private Sprite _rightSprite;
     [SerializeField] private Image _markerImage;
     [SerializeField] private float _calculationTime = 2.0f;
-
+    private Camera _camera;
     private Aiming_Control_CS _aimingScript;
     private Bullet_Generator_CS _bullet_Generator_Script;
     private Transform _bulletGeneratorTransform;
-    public void Initializing(Aiming_Control_CS aimingScript, Bullet_Generator_CS bulletGenerator)
+    public void Initializing(Aiming_Control_CS aimingScript, Bullet_Generator_CS bulletGenerator, Camera camera)
     {
+        _camera = camera;
         _aimingScript = aimingScript;
         _bullet_Generator_Script = bulletGenerator;
         _bulletGeneratorTransform = _bullet_Generator_Script.transform;
@@ -83,7 +84,7 @@ public class LeadMarkerPresenter : MonoBehaviour
         }
 
         // Convert the hit point to the screen point.
-        var screenPos = Camera.main.WorldToScreenPoint(currentPos);
+        var screenPos = _camera.WorldToScreenPoint(currentPos);
         if (screenPos.z < 0.0f)
         { // The hit point is behind the camera.
             _markerImage.enabled = false;

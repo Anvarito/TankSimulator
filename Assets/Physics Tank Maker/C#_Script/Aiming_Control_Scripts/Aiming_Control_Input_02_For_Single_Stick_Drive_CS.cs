@@ -12,11 +12,13 @@ namespace ChobiAssets.PTM
         private InputAction _lookAction;
         private InputAction _resetTurretAction;
         private PlayerInput _playerInput;
+        private Camera _camera;
 
-        public Aiming_Control_Input_02_For_Single_Stick_Drive_CS(PlayerInput playerInput, InputAction resetTurretAction, InputAction lookAction)
+        public Aiming_Control_Input_02_For_Single_Stick_Drive_CS(PlayerInput playerInput, InputAction resetTurretAction, InputAction lookAction, Camera camera)
         {
             _lookAction = lookAction;
             _playerInput = playerInput;
+            _camera = camera;
 
             _resetTurretAction = resetTurretAction;
             _playerInput.onActionTriggered += ResetTurret;
@@ -61,7 +63,7 @@ namespace ChobiAssets.PTM
                 { // The gun camera is enabled now.
 
                     // Set the adjust angle.
-                    var multiplier = Mathf.Lerp(0.05f, 1.0f, Camera.main.fieldOfView / 10.0f); // Set the multiplier according to the FOV.
+                    var multiplier = Mathf.Lerp(0.05f, 1.0f, _camera.fieldOfView / 10.0f); // Set the multiplier according to the FOV.
 
                     var vertical = obj.action.ReadValue<Vector2>().y;
                     var horizontal = obj.action.ReadValue<Vector2>().x;

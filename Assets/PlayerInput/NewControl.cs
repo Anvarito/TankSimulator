@@ -114,6 +114,17 @@ public partial class @NewControl : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""8969a1a8-9500-4125-9789-b8019c8be11b"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""d6708f39-c5ed-40ed-95d1-fffeeb43f514"",
                     ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
@@ -137,7 +148,7 @@ public partial class @NewControl : IInputActionCollection2, IDisposable
                 {
                     ""name"": ""up"",
                     ""id"": ""ad22a95e-59bc-45d4-a4e3-a85b3f79fcef"",
-                    ""path"": """",
+                    ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -148,7 +159,7 @@ public partial class @NewControl : IInputActionCollection2, IDisposable
                 {
                     ""name"": ""down"",
                     ""id"": ""77502410-f382-437a-a2ae-1bf9382c8f3a"",
-                    ""path"": """",
+                    ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -159,7 +170,7 @@ public partial class @NewControl : IInputActionCollection2, IDisposable
                 {
                     ""name"": ""left"",
                     ""id"": ""73a154d2-02bc-4afc-9bad-5f88b3e6b3c0"",
-                    ""path"": """",
+                    ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -170,7 +181,7 @@ public partial class @NewControl : IInputActionCollection2, IDisposable
                 {
                     ""name"": ""right"",
                     ""id"": ""4c9da6c6-e80f-4861-9101-0e46e0fcde3e"",
-                    ""path"": """",
+                    ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -191,8 +202,30 @@ public partial class @NewControl : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""4ad08297-b9d4-4b6f-ad7c-b1137224cf6f"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""5ad9662a-e703-4ff7-94e0-26408403146a"",
                     ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""697f1041-0dd3-4618-9f14-0c3ab37227aa"",
+                    ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -215,6 +248,17 @@ public partial class @NewControl : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""9717dda8-d8b7-4e81-8936-875f313caa08"",
                     ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Switch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dad6d16a-386c-4a2d-a0de-3684ab78297b"",
+                    ""path"": ""<Keyboard>/v"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
