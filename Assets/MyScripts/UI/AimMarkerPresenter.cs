@@ -52,12 +52,17 @@ public class AimMarkerPresenter : MonoBehaviour
         {
             currentPosition.z = 128.0f;
         }
-        //_aimMarker.transform.position = currentPosition;
+        //Vector3 screenCenter = new Vector3(0,0, currentPosition.z);
+        //screenCenter.x = _camera.scaledPixelWidth * 0.5f;
+        //screenCenter.y = _camera.scaledPixelHeight * (0.5f + General_Settings_CS.Aiming_Offset);
+        //_aimMarker.transform.position = screenCenter;
     }
 
     internal void Initializing(Aiming_Control_CS aimingScript, Camera camera)
     {
         _camera = camera;
         _aimingScript = aimingScript;
+        GetComponent<Canvas>().worldCamera = camera;
+        GetComponent<Canvas>().planeDistance = 1;
     }
 }

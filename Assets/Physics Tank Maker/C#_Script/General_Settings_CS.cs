@@ -33,7 +33,7 @@ namespace ChobiAssets.PTM
         // Aim settings.
         public static bool Use_Auto_Lead = false;
         public static float Aiming_Sensibility = 0.2f;
-        public static float Aiming_Offset = 0.1f;
+        public static float Aiming_Offset = 0.25f;
 
         // Gun Camera settings.
         public static bool Gun_Camera_While_Pressing = false;

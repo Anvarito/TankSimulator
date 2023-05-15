@@ -39142,7 +39142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _turretProps:
     DamageTurret: {fileID: 2390085118084687407}
-    Barel: {fileID: 0}
+    Barel: {fileID: 7330346399324089948}
     Canon: {fileID: 7471637565198150437}
     Turret: {fileID: 9014432172848964395}
     blowOff: 1

@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 namespace ChobiAssets.PTM
 {
 
-    public class Aiming_Control_Input_02_For_Single_Stick_Drive_CS : Aiming_Control_Input_01_Mouse_Keyboard_CS
+    public class AimingControlStickDrive : Aiming_Control_Input_01_Mouse_Keyboard_CS
     {
 
         bool dPadPressed;
@@ -14,7 +14,7 @@ namespace ChobiAssets.PTM
         private PlayerInput _playerInput;
         private Camera _camera;
 
-        public Aiming_Control_Input_02_For_Single_Stick_Drive_CS(PlayerInput playerInput, InputAction resetTurretAction, InputAction lookAction, Camera camera)
+        public AimingControlStickDrive(PlayerInput playerInput, InputAction resetTurretAction, InputAction lookAction, Camera camera)
         {
             _lookAction = lookAction;
             _playerInput = playerInput;
@@ -141,8 +141,8 @@ namespace ChobiAssets.PTM
                 { // Free aiming.
 
                     // Find the target.
-                    screenCenter.x = Screen.width * 0.5f;
-                    screenCenter.y = Screen.height * (0.5f + General_Settings_CS.Aiming_Offset);
+                    screenCenter.x = _camera.scaledPixelWidth * 0.5f;
+                    screenCenter.y = _camera.scaledPixelHeight * (0.5f + General_Settings_CS.Aiming_Offset);
                     aimingScript.Cast_Ray_Free(screenCenter);
                 }
 
