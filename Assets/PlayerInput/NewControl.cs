@@ -24,7 +24,7 @@ public partial class @NewControl : IInputActionCollection2, IDisposable
     ""name"": ""NewControl"",
     ""maps"": [
         {
-            ""name"": ""Tank"",
+            ""name"": ""TankMovement"",
             ""id"": ""e4796219-1cad-496a-897d-d0c400502c1e"",
             ""actions"": [
                 {
@@ -41,7 +41,7 @@ public partial class @NewControl : IInputActionCollection2, IDisposable
                     ""type"": ""Value"",
                     ""id"": ""6f909e3e-cd23-4710-a8ea-5eef9d22c19c"",
                     ""expectedControlType"": ""Vector2"",
-                    ""processors"": ""StickDeadzone(max=1)"",
+                    ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
                 },
@@ -103,106 +103,29 @@ public partial class @NewControl : IInputActionCollection2, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""a6c4af6c-b454-45d6-b94a-f98e85e666d8"",
+                    ""id"": ""12965938-19ac-4800-8fb0-55ca8855961d"",
                     ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Gamepad"",
+                    ""groups"": """",
                     ""action"": ""Fire"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""e76f22a6-e7f1-49c8-84bf-8e12a11df066"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard + Mouse"",
-                    ""action"": ""Fire"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""8df65dc2-9c0d-41d7-8095-c7ae7115ea15"",
-                    ""path"": ""<Gamepad>/rightStick"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Look"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""03e3bbed-9f97-4c98-8601-cec06b680223"",
-                    ""path"": ""<Mouse>/delta"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard + Mouse"",
-                    ""action"": ""Look"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""c919a8b4-64ba-418f-91d1-2d0e9797fe42"",
-                    ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard + Mouse"",
-                    ""action"": ""Aim"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""60990b23-4c6b-4d01-9057-dde81db17cb4"",
-                    ""path"": ""<Gamepad>/leftShoulder"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Aim"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""35ab773c-b9b1-4dbc-9a8c-65e511feb7b2"",
-                    ""path"": ""<Gamepad>/buttonWest"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""ResetTurret"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""1a6f69b6-3654-44c2-a73c-9dffc294416f"",
-                    ""path"": ""<Mouse>/middleButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard + Mouse"",
-                    ""action"": ""ResetTurret"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""ce02d8cc-2da6-4eae-92fc-572615d00e92"",
+                    ""id"": ""d6708f39-c5ed-40ed-95d1-fffeeb43f514"",
                     ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
-                    ""processors"": ""NormalizeVector2,StickDeadzone"",
-                    ""groups"": ""Gamepad"",
+                    ""processors"": """",
+                    ""groups"": """",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""2D Vector"",
-                    ""id"": ""9e9d06f1-185c-4338-802d-69f5650e5c6a"",
+                    ""name"": ""WASD"",
+                    ""id"": ""cfc447df-9362-44ff-b59b-df629278f0d0"",
                     ""path"": ""2DVector"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -213,99 +136,110 @@ public partial class @NewControl : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""up"",
-                    ""id"": ""03284423-cace-4f3c-986f-6a089874c39a"",
-                    ""path"": ""<Keyboard>/w"",
+                    ""id"": ""ad22a95e-59bc-45d4-a4e3-a85b3f79fcef"",
+                    ""path"": """",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard + Mouse"",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
                     ""name"": ""down"",
-                    ""id"": ""55673a22-f40c-45ce-bcd5-a380c2b311cf"",
-                    ""path"": ""<Keyboard>/s"",
+                    ""id"": ""77502410-f382-437a-a2ae-1bf9382c8f3a"",
+                    ""path"": """",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard + Mouse"",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
                     ""name"": ""left"",
-                    ""id"": ""86bdb62e-c1c4-4b4d-8098-a6af4428f263"",
-                    ""path"": ""<Keyboard>/a"",
+                    ""id"": ""73a154d2-02bc-4afc-9bad-5f88b3e6b3c0"",
+                    ""path"": """",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard + Mouse"",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
                     ""name"": ""right"",
-                    ""id"": ""f9008254-cd16-48b9-b570-b29455edfa04"",
-                    ""path"": ""<Keyboard>/d"",
+                    ""id"": ""4c9da6c6-e80f-4861-9101-0e46e0fcde3e"",
+                    ""path"": """",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard + Mouse"",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
                     ""name"": """",
-                    ""id"": ""d11557f1-3cfb-4f88-8332-8737627388cb"",
-                    ""path"": ""<Gamepad>/dpad"",
+                    ""id"": ""3ccc8de2-a65d-428d-ba7c-a6cb4b309cf4"",
+                    ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Move"",
+                    ""groups"": """",
+                    ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""2d79c0d1-9193-40b6-84ee-2df32eeb64b5"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""id"": ""5ad9662a-e703-4ff7-94e0-26408403146a"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Gamepad"",
+                    ""groups"": """",
+                    ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b8fc3357-26e3-4d80-9cf8-70713da55963"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ResetTurret"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9717dda8-d8b7-4e81-8936-875f313caa08"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
                     ""action"": ""Switch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""ddd831ff-f8f8-4443-94df-82d77ba1fcc3"",
-                    ""path"": ""<Keyboard>/v"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard + Mouse"",
-                    ""action"": ""Switch"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""f2949622-b1c8-4df0-aae7-8daed692eb63"",
+                    ""id"": ""0e204b0f-6441-4dfa-965c-43ddb84f5b77"",
                     ""path"": ""<Gamepad>/buttonNorth"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Gamepad"",
+                    ""groups"": """",
                     ""action"": ""ZoomIn"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""55029b1f-1068-49e7-89c7-ad3b43a2ddf8"",
+                    ""id"": ""776aa821-b7bb-43f0-93f3-abe1b7746b69"",
                     ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Gamepad"",
+                    ""groups"": """",
                     ""action"": ""ZoomOut"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -313,46 +247,18 @@ public partial class @NewControl : IInputActionCollection2, IDisposable
             ]
         }
     ],
-    ""controlSchemes"": [
-        {
-            ""name"": ""Gamepad"",
-            ""bindingGroup"": ""Gamepad"",
-            ""devices"": [
-                {
-                    ""devicePath"": ""<XboxOneGamepadAndroid>"",
-                    ""isOptional"": false,
-                    ""isOR"": false
-                }
-            ]
-        },
-        {
-            ""name"": ""Keyboard + Mouse"",
-            ""bindingGroup"": ""Keyboard + Mouse"",
-            ""devices"": [
-                {
-                    ""devicePath"": ""<Keyboard>"",
-                    ""isOptional"": true,
-                    ""isOR"": false
-                },
-                {
-                    ""devicePath"": ""<Mouse>"",
-                    ""isOptional"": true,
-                    ""isOR"": false
-                }
-            ]
-        }
-    ]
+    ""controlSchemes"": []
 }");
-        // Tank
-        m_Tank = asset.FindActionMap("Tank", throwIfNotFound: true);
-        m_Tank_Fire = m_Tank.FindAction("Fire", throwIfNotFound: true);
-        m_Tank_Move = m_Tank.FindAction("Move", throwIfNotFound: true);
-        m_Tank_Look = m_Tank.FindAction("Look", throwIfNotFound: true);
-        m_Tank_Aim = m_Tank.FindAction("Aim", throwIfNotFound: true);
-        m_Tank_ResetTurret = m_Tank.FindAction("ResetTurret", throwIfNotFound: true);
-        m_Tank_Switch = m_Tank.FindAction("Switch", throwIfNotFound: true);
-        m_Tank_ZoomIn = m_Tank.FindAction("ZoomIn", throwIfNotFound: true);
-        m_Tank_ZoomOut = m_Tank.FindAction("ZoomOut", throwIfNotFound: true);
+        // TankMovement
+        m_TankMovement = asset.FindActionMap("TankMovement", throwIfNotFound: true);
+        m_TankMovement_Fire = m_TankMovement.FindAction("Fire", throwIfNotFound: true);
+        m_TankMovement_Move = m_TankMovement.FindAction("Move", throwIfNotFound: true);
+        m_TankMovement_Look = m_TankMovement.FindAction("Look", throwIfNotFound: true);
+        m_TankMovement_Aim = m_TankMovement.FindAction("Aim", throwIfNotFound: true);
+        m_TankMovement_ResetTurret = m_TankMovement.FindAction("ResetTurret", throwIfNotFound: true);
+        m_TankMovement_Switch = m_TankMovement.FindAction("Switch", throwIfNotFound: true);
+        m_TankMovement_ZoomIn = m_TankMovement.FindAction("ZoomIn", throwIfNotFound: true);
+        m_TankMovement_ZoomOut = m_TankMovement.FindAction("ZoomOut", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -409,64 +315,64 @@ public partial class @NewControl : IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // Tank
-    private readonly InputActionMap m_Tank;
-    private ITankActions m_TankActionsCallbackInterface;
-    private readonly InputAction m_Tank_Fire;
-    private readonly InputAction m_Tank_Move;
-    private readonly InputAction m_Tank_Look;
-    private readonly InputAction m_Tank_Aim;
-    private readonly InputAction m_Tank_ResetTurret;
-    private readonly InputAction m_Tank_Switch;
-    private readonly InputAction m_Tank_ZoomIn;
-    private readonly InputAction m_Tank_ZoomOut;
-    public struct TankActions
+    // TankMovement
+    private readonly InputActionMap m_TankMovement;
+    private ITankMovementActions m_TankMovementActionsCallbackInterface;
+    private readonly InputAction m_TankMovement_Fire;
+    private readonly InputAction m_TankMovement_Move;
+    private readonly InputAction m_TankMovement_Look;
+    private readonly InputAction m_TankMovement_Aim;
+    private readonly InputAction m_TankMovement_ResetTurret;
+    private readonly InputAction m_TankMovement_Switch;
+    private readonly InputAction m_TankMovement_ZoomIn;
+    private readonly InputAction m_TankMovement_ZoomOut;
+    public struct TankMovementActions
     {
         private @NewControl m_Wrapper;
-        public TankActions(@NewControl wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Fire => m_Wrapper.m_Tank_Fire;
-        public InputAction @Move => m_Wrapper.m_Tank_Move;
-        public InputAction @Look => m_Wrapper.m_Tank_Look;
-        public InputAction @Aim => m_Wrapper.m_Tank_Aim;
-        public InputAction @ResetTurret => m_Wrapper.m_Tank_ResetTurret;
-        public InputAction @Switch => m_Wrapper.m_Tank_Switch;
-        public InputAction @ZoomIn => m_Wrapper.m_Tank_ZoomIn;
-        public InputAction @ZoomOut => m_Wrapper.m_Tank_ZoomOut;
-        public InputActionMap Get() { return m_Wrapper.m_Tank; }
+        public TankMovementActions(@NewControl wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Fire => m_Wrapper.m_TankMovement_Fire;
+        public InputAction @Move => m_Wrapper.m_TankMovement_Move;
+        public InputAction @Look => m_Wrapper.m_TankMovement_Look;
+        public InputAction @Aim => m_Wrapper.m_TankMovement_Aim;
+        public InputAction @ResetTurret => m_Wrapper.m_TankMovement_ResetTurret;
+        public InputAction @Switch => m_Wrapper.m_TankMovement_Switch;
+        public InputAction @ZoomIn => m_Wrapper.m_TankMovement_ZoomIn;
+        public InputAction @ZoomOut => m_Wrapper.m_TankMovement_ZoomOut;
+        public InputActionMap Get() { return m_Wrapper.m_TankMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(TankActions set) { return set.Get(); }
-        public void SetCallbacks(ITankActions instance)
+        public static implicit operator InputActionMap(TankMovementActions set) { return set.Get(); }
+        public void SetCallbacks(ITankMovementActions instance)
         {
-            if (m_Wrapper.m_TankActionsCallbackInterface != null)
+            if (m_Wrapper.m_TankMovementActionsCallbackInterface != null)
             {
-                @Fire.started -= m_Wrapper.m_TankActionsCallbackInterface.OnFire;
-                @Fire.performed -= m_Wrapper.m_TankActionsCallbackInterface.OnFire;
-                @Fire.canceled -= m_Wrapper.m_TankActionsCallbackInterface.OnFire;
-                @Move.started -= m_Wrapper.m_TankActionsCallbackInterface.OnMove;
-                @Move.performed -= m_Wrapper.m_TankActionsCallbackInterface.OnMove;
-                @Move.canceled -= m_Wrapper.m_TankActionsCallbackInterface.OnMove;
-                @Look.started -= m_Wrapper.m_TankActionsCallbackInterface.OnLook;
-                @Look.performed -= m_Wrapper.m_TankActionsCallbackInterface.OnLook;
-                @Look.canceled -= m_Wrapper.m_TankActionsCallbackInterface.OnLook;
-                @Aim.started -= m_Wrapper.m_TankActionsCallbackInterface.OnAim;
-                @Aim.performed -= m_Wrapper.m_TankActionsCallbackInterface.OnAim;
-                @Aim.canceled -= m_Wrapper.m_TankActionsCallbackInterface.OnAim;
-                @ResetTurret.started -= m_Wrapper.m_TankActionsCallbackInterface.OnResetTurret;
-                @ResetTurret.performed -= m_Wrapper.m_TankActionsCallbackInterface.OnResetTurret;
-                @ResetTurret.canceled -= m_Wrapper.m_TankActionsCallbackInterface.OnResetTurret;
-                @Switch.started -= m_Wrapper.m_TankActionsCallbackInterface.OnSwitch;
-                @Switch.performed -= m_Wrapper.m_TankActionsCallbackInterface.OnSwitch;
-                @Switch.canceled -= m_Wrapper.m_TankActionsCallbackInterface.OnSwitch;
-                @ZoomIn.started -= m_Wrapper.m_TankActionsCallbackInterface.OnZoomIn;
-                @ZoomIn.performed -= m_Wrapper.m_TankActionsCallbackInterface.OnZoomIn;
-                @ZoomIn.canceled -= m_Wrapper.m_TankActionsCallbackInterface.OnZoomIn;
-                @ZoomOut.started -= m_Wrapper.m_TankActionsCallbackInterface.OnZoomOut;
-                @ZoomOut.performed -= m_Wrapper.m_TankActionsCallbackInterface.OnZoomOut;
-                @ZoomOut.canceled -= m_Wrapper.m_TankActionsCallbackInterface.OnZoomOut;
+                @Fire.started -= m_Wrapper.m_TankMovementActionsCallbackInterface.OnFire;
+                @Fire.performed -= m_Wrapper.m_TankMovementActionsCallbackInterface.OnFire;
+                @Fire.canceled -= m_Wrapper.m_TankMovementActionsCallbackInterface.OnFire;
+                @Move.started -= m_Wrapper.m_TankMovementActionsCallbackInterface.OnMove;
+                @Move.performed -= m_Wrapper.m_TankMovementActionsCallbackInterface.OnMove;
+                @Move.canceled -= m_Wrapper.m_TankMovementActionsCallbackInterface.OnMove;
+                @Look.started -= m_Wrapper.m_TankMovementActionsCallbackInterface.OnLook;
+                @Look.performed -= m_Wrapper.m_TankMovementActionsCallbackInterface.OnLook;
+                @Look.canceled -= m_Wrapper.m_TankMovementActionsCallbackInterface.OnLook;
+                @Aim.started -= m_Wrapper.m_TankMovementActionsCallbackInterface.OnAim;
+                @Aim.performed -= m_Wrapper.m_TankMovementActionsCallbackInterface.OnAim;
+                @Aim.canceled -= m_Wrapper.m_TankMovementActionsCallbackInterface.OnAim;
+                @ResetTurret.started -= m_Wrapper.m_TankMovementActionsCallbackInterface.OnResetTurret;
+                @ResetTurret.performed -= m_Wrapper.m_TankMovementActionsCallbackInterface.OnResetTurret;
+                @ResetTurret.canceled -= m_Wrapper.m_TankMovementActionsCallbackInterface.OnResetTurret;
+                @Switch.started -= m_Wrapper.m_TankMovementActionsCallbackInterface.OnSwitch;
+                @Switch.performed -= m_Wrapper.m_TankMovementActionsCallbackInterface.OnSwitch;
+                @Switch.canceled -= m_Wrapper.m_TankMovementActionsCallbackInterface.OnSwitch;
+                @ZoomIn.started -= m_Wrapper.m_TankMovementActionsCallbackInterface.OnZoomIn;
+                @ZoomIn.performed -= m_Wrapper.m_TankMovementActionsCallbackInterface.OnZoomIn;
+                @ZoomIn.canceled -= m_Wrapper.m_TankMovementActionsCallbackInterface.OnZoomIn;
+                @ZoomOut.started -= m_Wrapper.m_TankMovementActionsCallbackInterface.OnZoomOut;
+                @ZoomOut.performed -= m_Wrapper.m_TankMovementActionsCallbackInterface.OnZoomOut;
+                @ZoomOut.canceled -= m_Wrapper.m_TankMovementActionsCallbackInterface.OnZoomOut;
             }
-            m_Wrapper.m_TankActionsCallbackInterface = instance;
+            m_Wrapper.m_TankMovementActionsCallbackInterface = instance;
             if (instance != null)
             {
                 @Fire.started += instance.OnFire;
@@ -496,26 +402,8 @@ public partial class @NewControl : IInputActionCollection2, IDisposable
             }
         }
     }
-    public TankActions @Tank => new TankActions(this);
-    private int m_GamepadSchemeIndex = -1;
-    public InputControlScheme GamepadScheme
-    {
-        get
-        {
-            if (m_GamepadSchemeIndex == -1) m_GamepadSchemeIndex = asset.FindControlSchemeIndex("Gamepad");
-            return asset.controlSchemes[m_GamepadSchemeIndex];
-        }
-    }
-    private int m_KeyboardMouseSchemeIndex = -1;
-    public InputControlScheme KeyboardMouseScheme
-    {
-        get
-        {
-            if (m_KeyboardMouseSchemeIndex == -1) m_KeyboardMouseSchemeIndex = asset.FindControlSchemeIndex("Keyboard + Mouse");
-            return asset.controlSchemes[m_KeyboardMouseSchemeIndex];
-        }
-    }
-    public interface ITankActions
+    public TankMovementActions @TankMovement => new TankMovementActions(this);
+    public interface ITankMovementActions
     {
         void OnFire(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);

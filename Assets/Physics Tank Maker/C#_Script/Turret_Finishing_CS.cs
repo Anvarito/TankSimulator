@@ -13,7 +13,6 @@ namespace ChobiAssets.PTM
 
 
         // User options >>
-        public bool Multiple_barrels_Flag = false;
         public bool Child_Flag = false;
         public Transform Parent_Transform;
         // << User options
@@ -23,20 +22,6 @@ namespace ChobiAssets.PTM
         Transform turretBase;
         Transform cannonBase;
         Transform barrelBase;
-
-
-        void Awake()
-        { // These function must be called before "Start()".
-            thisTransform = transform;
-            if (Multiple_barrels_Flag == true)
-            {
-                Multiple_Barrels();
-            }
-            else
-            {
-                Single_Barrel();
-            }
-        }
 
 
         void Single_Barrel()
@@ -58,33 +43,6 @@ namespace ChobiAssets.PTM
         }
 
 
-        void Multiple_Barrels()
-        {
-            turretBase = thisTransform.Find("Turret_Base");
-            cannonBase = thisTransform.Find("Cannon_Base");
-            if (turretBase && cannonBase)
-            {
-                // Change the hierarchy.
-                cannonBase.parent = turretBase;
-            }
-            else
-            {
-                Error_Message();
-            }
-
-            var childCount = thisTransform.childCount;
-            for (int i = 0; i < childCount; i++)
-            {
-                barrelBase = thisTransform.Find("Barrel_Base");
-                if (barrelBase)
-                {
-                    // Change the hierarchy.
-                    barrelBase.parent = cannonBase;
-                }
-            }
-
-            Finishing();
-        }
 
 
         void Finishing()
@@ -95,24 +53,24 @@ namespace ChobiAssets.PTM
             }
         }
 
+        public void Launch()
+        {
+            thisTransform = transform;
+            Single_Barrel();
 
-        void Start()
-        { // Called only when this turret is a child turret.
-
-            // Change the hierarchy of the child turret.
-            if (Parent_Transform)
-            {
-                thisTransform.parent = Parent_Transform.Find("Turret_Base");
-            }
-            else
-            {
-                Debug.LogError("'Parent_Transform' for the child Turret is not assigned.");
-            }
+            //// Change the hierarchy of the child turret.
+            //if (Parent_Transform)
+            //{
+            //    thisTransform.parent = Parent_Transform;
+            //}
+            //else
+            //{
+            //    Debug.LogError("'Parent_Transform' for the child Turret is not assigned.");
+            //}
 
             Destroy(this);
         }
-
-
+      
         void Error_Message()
         {
             Debug.LogError("'Turret_Finishing_CS' could not change the hierarchy of the turret.");

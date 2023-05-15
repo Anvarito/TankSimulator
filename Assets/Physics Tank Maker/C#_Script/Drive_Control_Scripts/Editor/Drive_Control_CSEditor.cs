@@ -102,8 +102,8 @@ namespace ChobiAssets.PTM
 
             GUI.backgroundColor = new Color(1.0f, 1.0f, 0.5f, 1.0f);
 
-           // EditorGUILayout.HelpBox("Links", MessageType.None, true);
-            //_damageManagerLink.objectReferenceValue = EditorGUILayout.ObjectField("Damage manager", _damageManagerLink.objectReferenceValue, typeof(DamageReciviersManager), true);
+            // EditorGUILayout.HelpBox("Links", MessageType.None, true);
+            //CanonFireProp.objectReferenceValue = EditorGUILayout.ObjectField("Canon fire script", CanonFireProp.objectReferenceValue, typeof(Cannon_Fire_CS), true);
             EditorGUILayout.Space();
             EditorGUILayout.HelpBox("Driving Wheels settings", MessageType.None, true);
             EditorGUILayout.Slider(TorqueProp, 0.0f, 500000.0f, "Torque");

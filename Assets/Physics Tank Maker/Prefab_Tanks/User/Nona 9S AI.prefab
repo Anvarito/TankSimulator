@@ -11852,8 +11852,8 @@ MonoBehaviour:
   Max_Engine_Pitch: 2
   Min_Engine_Volume: 0.5
   Max_Engine_Volume: 1
-  Left_Reference_Rigidbody: {fileID: 0}
-  Right_Reference_Rigidbody: {fileID: 0}
+  Left_Reference_Rigidbody: {fileID: 7928491569709373170}
+  Right_Reference_Rigidbody: {fileID: 7928491569616620519}
   Reference_Name_L: RoadWheel_L_3
   Reference_Name_R: RoadWheel_R_3
   Reference_Parent_Name_L: Create_RoadWheel
@@ -61107,7 +61107,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _turretProps:
     DamageTurret: {fileID: 7928491569644340566}
-    turretBaseTransform: {fileID: 7928491568481281009}
+    Barel: {fileID: 7928491568825586432}
+    Canon: {fileID: 7928491569054588449}
+    Turret: {fileID: 7928491569403712874}
     blowOff: 1
     mass: 200
     destroyedEffect: {fileID: 100004, guid: 2fe457cefafcb1242b30f81a15f53360, type: 3}
@@ -71878,7 +71880,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tankID: 1
-  _relationship: 1
+  _relationship: 0
   _playerType: 0
 --- !u!114 &7928491569894066951
 MonoBehaviour:
@@ -71945,7 +71947,7 @@ MonoBehaviour:
   WayPoint_Pack: {fileID: 0}
   Patrol_Type: 0
   Follow_Target: {fileID: 0}
-  No_Attack: 0
+  No_Attack: 1
   Breakthrough: 0
   Commander: {fileID: 0}
   Visibility_Radius: 512

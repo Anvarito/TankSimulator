@@ -13,6 +13,7 @@ namespace ChobiAssets.PTM
 		*/
 
 
+        [SerializeField] private Aiming_Control_CS aimingScript;
         // User options >>
         public float Max_Elevation = 13.0f;
         public float Max_Depression = 7.0f;
@@ -26,7 +27,6 @@ namespace ChobiAssets.PTM
 
         Transform thisTransform;
         Transform turretBaseTransform;
-        Aiming_Control_CS aimingScript;
         bool isTurning;
         bool isTracking;
         float angleX;
@@ -47,7 +47,6 @@ namespace ChobiAssets.PTM
         { // This function must be called in Start() after changing the hierarchy.
             thisTransform = transform;
             turretBaseTransform = thisTransform.parent;
-            aimingScript = GetComponentInParent<Aiming_Control_CS>();
             currentLocalAngles = thisTransform.localEulerAngles;
             angleX = currentLocalAngles.x;
             Max_Elevation = angleX - Max_Elevation;

@@ -9,32 +9,67 @@ namespace ChobiAssets.PTM
     {
 
         bool dPadPressed;
+        private InputAction _lookAction;
+        private InputAction _resetTurretAction;
+        private PlayerInput _playerInput;
+
+        public Aiming_Control_Input_02_For_Single_Stick_Drive_CS(PlayerInput playerInput, InputAction resetTurretAction, InputAction lookAction)
+        {
+            _lookAction = lookAction;
+            _playerInput = playerInput;
+
+            _resetTurretAction = resetTurretAction;
+            _playerInput.onActionTriggered += ResetTurret;
+            _playerInput.onActionTriggered += Rotated;
+        }
+
 
         public override void Prepare(Aiming_Control_CS aimingScript)
         {
             base.Prepare(aimingScript);
             gunCameraScript = aimingScript.GetComponentInChildren<Gun_Camera_CS>();
-            General_Settings_CS.InputListener.GetControl().Tank.ResetTurret.performed += ResetTurret;
         }
 
         // Switch the aiming mode.
         private void ResetTurret(InputAction.CallbackContext obj)
         {
-            if (aimingScript.Mode == 1)
-            { // Free aiming.
-                aimingScript.Mode = 0; // Lock off.
-            }
-            else
+            if (_resetTurretAction.name == obj.action.name)
             {
-                aimingScript.Mode = 1; // Free aiming.
+                if (aimingScript.Mode == 1)
+                { // Free aiming.
+                    aimingScript.Mode = 0; // Lock off.
+                }
+                else
+                {
+                    aimingScript.Mode = 1; // Free aiming.
+                }
+                aimingScript.Switch_Mode();
             }
-            aimingScript.Switch_Mode();
         }
 
         public override void DisableInput()
         {
             base.DisableInput();
-            General_Settings_CS.InputListener.GetControl().Tank.ResetTurret.performed -= ResetTurret;
+            _playerInput.onActionTriggered -= ResetTurret;
+        }
+
+        private void Rotated(InputAction.CallbackContext obj)
+        {
+            if (_lookAction.name == obj.action.name)
+            {
+                if (gunCameraScript && gunCameraScript.Gun_Camera.enabled)
+                { // The gun camera is enabled now.
+
+                    // Set the adjust angle.
+                    var multiplier = Mathf.Lerp(0.05f, 1.0f, Camera.main.fieldOfView / 10.0f); // Set the multiplier according to the FOV.
+
+                    var vertical = obj.action.ReadValue<Vector2>().y;
+                    var horizontal = obj.action.ReadValue<Vector2>().x;
+
+                    aimingScript.Adjust_Angle.x += horizontal * General_Settings_CS.Aiming_Sensibility * multiplier;
+                    aimingScript.Adjust_Angle.y += vertical * General_Settings_CS.Aiming_Sensibility * 0.5f * multiplier;
+                }
+            }
         }
 
         public override void Get_Input()
@@ -43,14 +78,14 @@ namespace ChobiAssets.PTM
             if (gunCameraScript && gunCameraScript.Gun_Camera.enabled)
             { // The gun camera is enabled now.
 
-                // Set the adjust angle.
-                var multiplier = Mathf.Lerp(0.05f, 1.0f, Camera.main.fieldOfView / 10.0f); // Set the multiplier according to the FOV.
+                //// Set the adjust angle.
+                //var multiplier = Mathf.Lerp(0.05f, 1.0f, Camera.main.fieldOfView / 10.0f); // Set the multiplier according to the FOV.
 
-                var vertical = General_Settings_CS.InputListener.GetControl().Tank.Look.ReadValue<Vector2>().y;
-                var horizontal = General_Settings_CS.InputListener.GetControl().Tank.Look.ReadValue<Vector2>().x;
+                //var vertical = _lookAction.ReadValue<Vector2>().y;
+                //var horizontal = _lookAction.ReadValue<Vector2>().x;
 
-                aimingScript.Adjust_Angle.x += horizontal * General_Settings_CS.Aiming_Sensibility * multiplier;
-                aimingScript.Adjust_Angle.y += vertical * General_Settings_CS.Aiming_Sensibility * 0.5f * multiplier;
+                //aimingScript.Adjust_Angle.x += horizontal * General_Settings_CS.Aiming_Sensibility * multiplier;
+                //aimingScript.Adjust_Angle.y += vertical * General_Settings_CS.Aiming_Sensibility * 0.5f * multiplier;
 
                 // Check it is locking-on now.
                 if (aimingScript.Target_Transform)

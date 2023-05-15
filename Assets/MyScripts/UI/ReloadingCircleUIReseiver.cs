@@ -21,26 +21,17 @@ namespace ChobiAssets.PTM
         private bool isSelected;
         private bool _isLoadeng;
 
-        void Awake()
+        private void Start()
         {
-            _cannonFireScript.OnInit.AddListener(InitScript);
+            InitScript();
         }
 
         private void InitScript()
         {
-            _cannonFireScript.OnInit.RemoveListener(InitScript);
+            _reloadingCircle = Instantiate(_reloadMarkerCanvasPrefab);
 
-            if (_cannonFireScript.inputType == 10)
-            {
-                Destroy(this);
-            }
-            else
-            {
-                _reloadingCircle = Instantiate(_reloadMarkerCanvasPrefab);
-
-                _cannonFireScript.OnReload.AddListener(ReloadLaunch);
-                _cannonFireScript.OnEndReload.AddListener(ReloadEnd);
-            }
+            _cannonFireScript.OnReload.AddListener(ReloadLaunch);
+            _cannonFireScript.OnEndReload.AddListener(ReloadEnd);
         }
 
         private void ReloadLaunch()

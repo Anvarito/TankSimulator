@@ -51,18 +51,19 @@ namespace ChobiAssets.PTM
         public bool Is_Selected; // Referred to from "UI_HP_Bars_Target_CS".
         private bool _isTankDestroyed = false;
 
+        private Camera _camera;
         //      void Start()
         //{
         //	Initialize();
         //}
 
 
-        public void Initialize(Aiming_Control_Input_00_Base_CS aimingControl)
+        public void Initialize(Aiming_Control_Input_00_Base_CS aimingControl, Camera camera)
         {
             rootTransform = transform.root;
             thisRigidbody = GetComponent<Rigidbody>();
             Turret_Speed_Multiplier = 1.0f;
-
+            _camera = camera;
             // Get the input type.
             if (inputType != 10)
             { // This tank is not an AI tank.
@@ -209,7 +210,7 @@ namespace ChobiAssets.PTM
         { // Called from "Aiming_Control_Input_##_###".
 
             // Find a target by casting a ray from the camera.
-            var mainCamera = Camera.main;
+            var mainCamera = _camera;
             var ray = mainCamera.ScreenPointToRay(screenPos);
             if (Physics.Raycast(ray, out RaycastHit raycastHit, 2048.0f, Layer_Settings_CS.Aiming_Layer_Mask))
             {
@@ -289,7 +290,7 @@ namespace ChobiAssets.PTM
         { // Called from "Aiming_Control_Input_##_###".
 
             // Find a target by casting a ray from the camera.
-            var mainCamera = Camera.main;
+            var mainCamera = _camera;
             var ray = mainCamera.ScreenPointToRay(screenPos);
             if (Physics.Raycast(ray, out RaycastHit raycastHit, 2048.0f, Layer_Settings_CS.Aiming_Layer_Mask))
             {
@@ -347,7 +348,7 @@ namespace ChobiAssets.PTM
         { // Called from "Aiming_Control_Input_##_###".
 
             // Find a target by casting a sphere from the camera.
-            var ray = Camera.main.ScreenPointToRay(screenPos);
+            var ray = _camera.ScreenPointToRay(screenPos);
             var raycastHits = Physics.SphereCastAll(ray, spherecastRadius, 2048.0f, Layer_Settings_CS.Aiming_Layer_Mask);
             for (int i = 0; i < raycastHits.Length; i++)
             {
@@ -420,7 +421,7 @@ namespace ChobiAssets.PTM
 
             // Get the base angle to detect the new target.
             float baseAng;
-            var mainCamera = Camera.main;
+            var mainCamera = _camera;
             if (direction != 2 && Target_Transform)
             {
                 Vector3 currentLocalPos = mainCamera.transform.InverseTransformPoint(Target_Position);

@@ -13,7 +13,9 @@ namespace ChobiAssets.PTM
 		 * When firing, this script calls "Bullet_Generator_CS" and "Recoil_Brake_CS" scripts placed under this object in the hierarchy.
 		 * In case of AI tank, this script works in combination with "AI_CS", "Turret_Horizontal_CS", "Cannon_Vertical_CS" and "Aiming_Control_CS".
 		*/
-
+        [SerializeField] private Recoil_Brake_CS _recoil_Brake_CS;
+        [SerializeField] private Bullet_Generator_CS _bullet_Generator_Script;
+        public Bullet_Generator_CS Bullet_Generator_Script => _bullet_Generator_Script;
         // User options >>
         public float Reload_Time = 2.0f;
         public float Recoil_Force = 5000.0f;
@@ -29,8 +31,6 @@ namespace ChobiAssets.PTM
         Rigidbody bodyRigidbody;
         Transform thisTransform;
         int direction = 1; // For twin barrels, 1 = left, 2 = right.
-        public Bullet_Generator_CS[] Bullet_Generator_Scripts; // Referred to from "Cannon_Fire_Input_##_###".
-        Recoil_Brake_CS[] recoilScripts;
 
         protected Cannon_Fire_Input_00_Base_CS inputScript;
 
@@ -40,14 +40,21 @@ namespace ChobiAssets.PTM
 
         public UnityEvent OnReload;
         public UnityEvent OnEndReload;
-        public UnityEvent OnInit;
+        public UnityEvent<Vector3, Vector3> OnRecoil;
         private bool _isDestroyTank;
+
 
         public void Initialize(Cannon_Fire_Input_00_Base_CS canonFireInputType)
         { // This function must be called in Start() after changing the hierarchy.
             thisTransform = transform;
-            Bullet_Generator_Scripts = GetComponentsInChildren<Bullet_Generator_CS>();
-            recoilScripts = thisTransform.parent.GetComponentsInChildren<Recoil_Brake_CS>();
+
+            if (_recoil_Brake_CS) _recoil_Brake_CS.Initialize();
+            else Debug.LogError("Recoil_Brake_CS not assigned");
+
+            if (_bullet_Generator_Script) _bullet_Generator_Script.Initialize();
+            else Debug.LogError("Bullet_Generator_CS not assigned");
+
+
             bodyRigidbody = GetComponentInParent<Rigidbody>();
 
             // Get the input type.
@@ -68,7 +75,6 @@ namespace ChobiAssets.PTM
                 inputScript.Prepare(this);
             }
 
-            OnInit?.Invoke();
         }
 
         //protected virtual void Set_Input_Script(int type)
@@ -114,19 +120,14 @@ namespace ChobiAssets.PTM
             if (!_IsLoaded)
                 return;
 
-            for (int i = 0; i < Bullet_Generator_Scripts.Length; i++)
-            {
-                Bullet_Generator_Scripts[i].Fire_Linkage(direction);
-            }
+            _bullet_Generator_Script.Fire_Linkage(direction);
 
             // Call all the "Recoil_Brake_CS".
-            for (int i = 0; i < recoilScripts.Length; i++)
-            {
-                recoilScripts[i].Fire_Linkage(direction);
-            }
+            _recoil_Brake_CS.Fire_Linkage(direction);
+
 
             // Add recoil shock force to the MainBody.
-            bodyRigidbody.AddForceAtPosition(-thisTransform.forward * Recoil_Force, thisTransform.position, ForceMode.Impulse);
+            OnRecoil?.Invoke(-thisTransform.forward * Recoil_Force, thisTransform.position);
 
             // Reload.
             Reload();
@@ -134,16 +135,7 @@ namespace ChobiAssets.PTM
 
         public void SwitchBulletType()
         {
-            // Switch all bullets.
-            for (int i = 0; i < Bullet_Generator_Scripts.Length; i++)
-            {
-                if (Bullet_Generator_Scripts[i] == null)
-                {
-                    continue;
-                }
-                Bullet_Generator_Scripts[i].Switch_Bullet_Type();
-            }
-
+            _bullet_Generator_Script.Switch_Bullet_Type();
             Reload();
         }
 

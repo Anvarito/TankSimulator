@@ -33,21 +33,11 @@ namespace ChobiAssets.PTM
         public Transform BodyTransform { get; private set; }
         public float RotationMultiplier { get; private set; } = 0.8f;
 
-        void Awake()
-		{ // (Note.) The "thisTransform" must be prepared before "Start()", because the "Change_Camera_Settings()" function is called at Start().
-			thisTransform = transform;
-            BodyTransform = transform.root.GetComponentInChildren<Rigidbody>().transform;
-        }
-
-
-  //      void Start()
-		//{
-		//	Initialize();
-		//}
-
-
         public void Initialize(Camera_Rotation_Input_00_Base_CS cameraInputType)
 		{
+			thisTransform = transform;
+            BodyTransform = transform.root.GetComponentInChildren<Rigidbody>().transform;
+
             targetAngles = thisTransform.eulerAngles;
 
             // Get the input type.

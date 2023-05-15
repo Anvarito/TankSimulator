@@ -15,9 +15,12 @@ namespace ChobiAssets.PTM
 		SerializedProperty Speed_MagProp;
 		SerializedProperty Acceleration_TimeProp;
 		SerializedProperty Deceleration_TimeProp;
+		SerializedProperty aimingProp;
 
 		void OnEnable ()
 		{
+			aimingProp = serializedObject.FindProperty("aimingScript");
+
 			Limit_FlagProp = serializedObject.FindProperty ("Limit_Flag");
 			Max_RightProp = serializedObject.FindProperty ("Max_Right");
 			Max_LeftProp = serializedObject.FindProperty ("Max_Left");
@@ -30,7 +33,8 @@ namespace ChobiAssets.PTM
 		{
 			GUI.backgroundColor = new Color (1.0f, 1.0f, 0.5f, 1.0f);
 			serializedObject.Update ();
-		
+			aimingProp.objectReferenceValue = EditorGUILayout.ObjectField("Aiming control", aimingProp.objectReferenceValue, typeof(Aiming_Control_CS), true);
+
 			EditorGUILayout.Space ();
 			EditorGUILayout.Space ();
 			EditorGUILayout.HelpBox ("Turret Rotation settings", MessageType.None, true);

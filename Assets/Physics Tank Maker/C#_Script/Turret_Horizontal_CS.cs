@@ -12,6 +12,7 @@ namespace ChobiAssets.PTM
 		 * This script works in combination with "Aiming_Control_CS" in the MainBody.
 		*/
 
+        [SerializeField] private Aiming_Control_CS aimingScript;
 
         // User options >>
         public bool Limit_Flag;
@@ -26,7 +27,6 @@ namespace ChobiAssets.PTM
 
         Transform thisTransform;
         Transform parentTransform;
-        Aiming_Control_CS aimingScript;
         bool isTurning;
         bool isTracking;
         float angleY;
@@ -47,7 +47,6 @@ namespace ChobiAssets.PTM
         { // This function must be called in Start() after changing the hierarchy.
             thisTransform = transform;
             parentTransform = thisTransform.parent;
-            aimingScript = GetComponentInParent<Aiming_Control_CS>();
             currentLocalAngles = thisTransform.localEulerAngles;
             angleY = currentLocalAngles.y;
             Max_Right = angleY + Max_Right;

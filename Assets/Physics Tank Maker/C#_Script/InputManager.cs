@@ -27,7 +27,6 @@ namespace ChobiAssets.PTM
         // User options >>
         public int Input_Type = 1;
         public bool Show_Cursor_Forcibly = false;
-        private InputListener _inputListener;
         // << User options
 
 
@@ -40,7 +39,6 @@ namespace ChobiAssets.PTM
                 return;
             } // There is no "Option_Manager_CS" in the scene.
 
-            _inputListener = gameObject.AddComponent<InputListener>();
             // Overwrite the values in "General_Settings_CS".
             Overwrite_General_Settings();
         }
@@ -50,7 +48,7 @@ namespace ChobiAssets.PTM
         {
             // Overwrite the values in "General_Settings_CS".
             General_Settings_CS.Input_Type = Input_Type;
-            General_Settings_CS.InputListener = _inputListener;
+            //General_Settings_CS.InputListener = _inputListener;
         }
 
 

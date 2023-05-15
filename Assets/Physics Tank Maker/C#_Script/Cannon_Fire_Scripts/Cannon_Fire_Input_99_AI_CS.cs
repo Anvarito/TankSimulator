@@ -4,10 +4,10 @@ using UnityEngine;
 namespace ChobiAssets.PTM
 {
 
-	public class Cannon_Fire_Input_99_AI_CS : Cannon_Fire_Input_00_Base_CS
-	{
+    public class Cannon_Fire_Input_99_AI_CS : Cannon_Fire_Input_00_Base_CS
+    {
 
-		AI_CS aiScript;
+        AI_CS aiScript;
         Turret_Horizontal_CS turretScript;
         Cannon_Vertical_CS cannonScript;
         Aiming_Control_CS aimingScript;
@@ -21,9 +21,9 @@ namespace ChobiAssets.PTM
             SetAIScript();
         }
         public override void Prepare(Cannon_Fire_CS cannoFireScript)
-		{
-			this.cannonFireScript = cannoFireScript;
-		}
+        {
+            this.cannonFireScript = cannoFireScript;
+        }
 
         private void SetAIScript()
         {
@@ -33,32 +33,29 @@ namespace ChobiAssets.PTM
         }
 
         public override void Get_Input()
-		{
-			// Check the AI gives an oder to fire.
-			if (aiScript.OpenFire_Flag == false)
+        {
+            // Check the AI gives an oder to fire.
+            if (aiScript.OpenFire_Flag == false)
             { // The AI does not give an oder to fire.
-				return;
-			}
+                return;
+            }
 
             // Check the turret and the cannon are ready to fire.
             if (turretScript.Is_Ready && cannonScript.Is_Ready)
             { // The turret and the cannon are ready to fire.
                 if (aiScript.Direct_Fire == true)
                 { // The tank aims a target directly.
-                    // Check all the "Bullet_Generator" in the children can aim the target.
-                    for (int i = 0; i < cannonFireScript.Bullet_Generator_Scripts.Length; i++)
-                    {
-                        if (cannonFireScript.Bullet_Generator_Scripts[i].Can_Aim == false)
-                        { // At least one of the "Bullet_Generator" in the children cannot aim the target.
-                            // Change the aiming offset.
-                            obstacleCount += Time.deltaTime;
-                            if (obstacleCount > 1.0f)
-                            {
-                                obstacleCount = 0.0f;
-                                aimingScript.AI_Random_Offset();
-                            }
-                            return;
+
+                    if (cannonFireScript.Bullet_Generator_Script.Can_Aim == false)
+                    { // At least one of the "Bullet_Generator" in the children cannot aim the target.
+                      // Change the aiming offset.
+                        obstacleCount += Time.deltaTime;
+                        if (obstacleCount > 1.0f)
+                        {
+                            obstacleCount = 0.0f;
+                            aimingScript.AI_Random_Offset();
                         }
+                        return;
                     }
                     // All the "Bullet_Generator" in the children can aim the target.
                     obstacleCount = 0.0f;
@@ -93,6 +90,6 @@ namespace ChobiAssets.PTM
 
         }
 
-	}
+    }
 
 }
