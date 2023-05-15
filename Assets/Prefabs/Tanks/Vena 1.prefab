@@ -48055,6 +48055,7 @@ GameObject:
   - component: {fileID: 2390085117803253464}
   - component: {fileID: 2390085117803253463}
   - component: {fileID: 2390085117803253462}
+  - component: {fileID: 4063288021130268033}
   m_Layer: 0
   m_Name: Vena 1
   m_TagString: Untagged
@@ -48137,7 +48138,7 @@ MonoBehaviour:
   _iDSettingsCS: {fileID: 2390085117803253465}
   _damageManager: {fileID: 2390085117309224830}
   _turret_Finishing: {fileID: 2390085118084687408}
-  _camera: {fileID: 2390085117933263229}
+  _cameraViewSetup: {fileID: 4063288021130268033}
   ai_core_script: {fileID: 0}
   _actionAsset: {fileID: -944628639613478452, guid: 2689d64a66172e548b7ef8cd989db6b9, type: 3}
   _driveControl: {fileID: 2390085117309224829}
@@ -48146,6 +48147,19 @@ MonoBehaviour:
   _cameraPointsControl: {fileID: 2390085117121659291}
   _gunCameraControl: {fileID: 2390085116967680089}
   _cameraRotation: {fileID: 2390085117121659288}
+--- !u!114 &4063288021130268033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2390085117803253461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e56933014164034ab28d988cc694323, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _camera: {fileID: 2390085117933263229}
 --- !u!1 &2390085117807239153
 GameObject:
   m_ObjectHideFlags: 0

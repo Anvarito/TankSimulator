@@ -39,7 +39,7 @@ public class AimMarkerPresenter : MonoBehaviour
         if (_aimingScript.reticleAimingFlag)
         {
             // Set the marker at the center of the screen.
-            _aimMarker.transform.position = new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, 128.0f);
+            //_aimMarker.transform.position = new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, 128.0f);
             return;
         }
         // Set the marker on the target position.
@@ -52,7 +52,7 @@ public class AimMarkerPresenter : MonoBehaviour
         {
             currentPosition.z = 128.0f;
         }
-        _aimMarker.transform.position = currentPosition;
+        //_aimMarker.transform.position = currentPosition;
     }
 
     internal void Initializing(Aiming_Control_CS aimingScript, Camera camera)

@@ -22,6 +22,12 @@ public class PlayerSpawner : MonoBehaviour
 
             TankInputInitializer player = Instantiate(playerPrefab, PlayerSpawns[i].position, PlayerSpawns[i].rotation);
             player.InitializePlayer(playerConfigs[i].Input);
+
+
+            //Layout rect
+            Vector2 position = new Vector2(0, 0.5f * i);
+            Vector2 scale = new Vector2(1, 1.0f / playerConfigs.Length);
+            player.GetComponent<CameraViewSetup>().SetupLayoutScreen(position, scale);
         }
 
     }
