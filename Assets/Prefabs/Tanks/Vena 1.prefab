@@ -63696,13 +63696,25 @@ PrefabInstance:
     m_TransformParent: {fileID: 2390085117309224818}
     m_Modifications:
     - target: {fileID: 398834320, guid: a9b5df4f69716c64393b37cfd9540945, type: 3}
+      propertyPath: _camera
+      value: 
+      objectReference: {fileID: 2390085117933263229}
+    - target: {fileID: 398834320, guid: a9b5df4f69716c64393b37cfd9540945, type: 3}
       propertyPath: _gunCamera
       value: 
       objectReference: {fileID: 2390085116967680089}
     - target: {fileID: 398834321, guid: a9b5df4f69716c64393b37cfd9540945, type: 3}
+      propertyPath: _camera
+      value: 
+      objectReference: {fileID: 2390085117933263229}
+    - target: {fileID: 398834321, guid: a9b5df4f69716c64393b37cfd9540945, type: 3}
       propertyPath: _damageManager
       value: 
       objectReference: {fileID: 2390085117309224830}
+    - target: {fileID: 1224471283, guid: a9b5df4f69716c64393b37cfd9540945, type: 3}
+      propertyPath: _camera
+      value: 
+      objectReference: {fileID: 2390085117933263229}
     - target: {fileID: 1224471283, guid: a9b5df4f69716c64393b37cfd9540945, type: 3}
       propertyPath: _drive_Control_CS
       value: 

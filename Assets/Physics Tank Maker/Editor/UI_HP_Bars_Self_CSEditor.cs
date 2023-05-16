@@ -9,7 +9,7 @@ namespace ChobiAssets.PTM
 	[ CustomEditor (typeof(HitPointsUI))]
 	public class UI_HP_Bars_Self_CSEditor : Editor
 	{
-		
+		/*
 		SerializedProperty This_CanvasProp;
 		SerializedProperty Bars_Parent_TransformProp;
 		SerializedProperty Body_BarProp;
@@ -58,7 +58,7 @@ namespace ChobiAssets.PTM
 			EditorGUILayout.Space ();
 
 			serializedObject.ApplyModifiedProperties ();
-		}
+		}*/
 	
 	}
 

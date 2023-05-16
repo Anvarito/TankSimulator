@@ -16,6 +16,7 @@ namespace ChobiAssets.PTM
 		// User options >>
 		[SerializeField] private Gun_Camera_CS _gunCamera;
 		[SerializeField] private ReticleUIPresenter _reticleUIPresenterPrefab;
+		[SerializeField] private Camera _camera;
 		private ReticleUIPresenter _reticleUIPresenter;
         // << User options
 
@@ -32,6 +33,7 @@ namespace ChobiAssets.PTM
             }
 
             _reticleUIPresenter = Instantiate(_reticleUIPresenterPrefab);
+            _reticleUIPresenter.Initing(_camera);
 
             _gunCamera.OnEnableGunCam.AddListener(EnableCamera);
             _gunCamera.OnDisableGunCam.AddListener(DisableCamera);

@@ -47,6 +47,7 @@ namespace ChobiAssets.PTM
         // For manual-turn.
         public float Turret_Turn_Rate; // Referred to from "Turret_Horizontal_CS".
         public float Cannon_Turn_Rate; // Referred to from "Cannon_Vertical_CS".
+        Vector3 screenCenter = Vector2.zero;
 
 
         protected Aiming_Control_Input_00_Base_CS inputScript;
@@ -84,9 +85,15 @@ namespace ChobiAssets.PTM
             cameraRotationScript = transform.parent.GetComponentInChildren<Camera_Rotation_CS>();
 
             Switch_Mode();
+
+            SetAimingPoint();
         }
 
-
+        private void SetAimingPoint()
+        {
+            screenCenter.x = _camera.pixelRect.width * 0.5f;
+            screenCenter.y = _camera.pixelRect.height * (0.5f + General_Settings_CS.Aiming_Offset);
+        }
         //protected virtual void Set_Input_Script(int type)
         //{
         //    switch (type)
@@ -284,15 +291,13 @@ namespace ChobiAssets.PTM
             }
         }
 
-
+        
         public void Cast_Ray_Free()
         { // Called from "Aiming_Control_Input_##_###".
 
             // Find a target by casting a ray from the camera.
             var mainCamera = _camera;
-            Vector3 screenCenter = Vector2.zero;
-            screenCenter.x = _camera.pixelRect.width * 0.5f;
-            screenCenter.y = _camera.pixelRect.height * (0.5f + General_Settings_CS.Aiming_Offset);
+            
             var ray = mainCamera.ScreenPointToRay(screenCenter);
             if (Physics.Raycast(ray, out RaycastHit raycastHit, 2048.0f, Layer_Settings_CS.Aiming_Layer_Mask))
             {

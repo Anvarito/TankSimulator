@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,5 +22,11 @@ public class ReticleUIPresenter : MonoBehaviour
     {
         float newZ = Mathf.Lerp(0, 180, alpha);
         _RangefinderImage.rotation = Quaternion.Euler(new Vector3(0,0, newZ));
+    }
+
+    internal void Initing(Camera camera)
+    {
+        GetComponent<Canvas>().worldCamera = camera;
+        GetComponent<Canvas>().planeDistance = 1;
     }
 }
