@@ -60,7 +60,6 @@ namespace ChobiAssets.PTM
                     break;
             }
 
-            print(Front_Transform.name);
         }
 
 

@@ -3,30 +3,44 @@
 namespace ChobiAssets.PTM
 {
 
-	public class Cannon_Fire_Input_02_For_Sticks_Drive_CS : Cannon_Fire_Input_00_Base_CS
-	{
+    public class Cannon_Fire_Input_02_For_Sticks_Drive_CS : Cannon_Fire_Input_00_Base_CS
+    {
+        private InputAction _fireAction;
+        private InputAction _switchShelActionl;
+        private PlayerInput _playerInput;
+        public Cannon_Fire_Input_02_For_Sticks_Drive_CS(PlayerInput playerInput, InputAction fireAction, InputAction switchShell)
+        {
+            _fireAction = fireAction;
+            _switchShelActionl = switchShell;
+            _playerInput = playerInput;
+
+            _playerInput.onActionTriggered += Fire;
+            _playerInput.onActionTriggered += SwitchShell;
+        }
         public override void Prepare(Cannon_Fire_CS cannonFireScript)
         {
             base.Prepare(cannonFireScript);
-            General_Settings_CS.InputListener.GetControl().Tank.Fire.performed += Fire;
-            General_Settings_CS.InputListener.GetControl().Tank.Switch.performed += SwitchShell;
+
         }
 
         private void SwitchShell(InputAction.CallbackContext obj)
         {
-            cannonFireScript.SwitchBulletType();
+            if (_switchShelActionl.name == obj.action.name)
+                cannonFireScript.SwitchBulletType();
         }
 
         private void Fire(InputAction.CallbackContext obj)
         {
-           cannonFireScript.Fire();
+            if (_fireAction.name == obj.action.name)
+            cannonFireScript.Fire();
         }
 
         public override void DisableInput()
         {
             base.DisableInput();
-            General_Settings_CS.InputListener.GetControl().Tank.Fire.performed -= Fire;
-            General_Settings_CS.InputListener.GetControl().Tank.Switch.performed -= SwitchShell;
+
+            _playerInput.onActionTriggered -= Fire;
+            _playerInput.onActionTriggered -= SwitchShell;
         }
     }
 }

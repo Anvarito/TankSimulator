@@ -5,7 +5,7 @@ public class HitPoitsBarUIReceiver : MonoBehaviour
 {
     [SerializeField] private HitPointsUI _ui_HP_Bars_Self_CSprefab;
     [SerializeField] private DamageReciviersManager _damageManager;
-
+    [SerializeField] private Camera _camera;
     private HitPointsUI _hitPointsUI;
 
 
@@ -13,6 +13,8 @@ public class HitPoitsBarUIReceiver : MonoBehaviour
     {
         _hitPointsUI = Instantiate(_ui_HP_Bars_Self_CSprefab);
         _hitPointsUI.Initialize();
+        _hitPointsUI.GetComponent<Canvas>().worldCamera = _camera;
+        _hitPointsUI.GetComponent<Canvas>().planeDistance = 1;
 
         _damageManager.OnTurretDamaged.AddListener(TurretDamaged);
         _damageManager.OnBodyDamaged.AddListener(BodyDamaged);

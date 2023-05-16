@@ -2,7 +2,7 @@
     "name": "NewControl",
     "maps": [
         {
-            "name": "Tank",
+            "name": "TankMovement",
             "id": "e4796219-1cad-496a-897d-d0c400502c1e",
             "actions": [
                 {
@@ -19,7 +19,7 @@
                     "type": "Value",
                     "id": "6f909e3e-cd23-4710-a8ea-5eef9d22c19c",
                     "expectedControlType": "Vector2",
-                    "processors": "StickDeadzone(max=1)",
+                    "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
                 },
@@ -81,106 +81,40 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "a6c4af6c-b454-45d6-b94a-f98e85e666d8",
+                    "id": "12965938-19ac-4800-8fb0-55ca8855961d",
                     "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad",
+                    "groups": "",
                     "action": "Fire",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "e76f22a6-e7f1-49c8-84bf-8e12a11df066",
+                    "id": "8969a1a8-9500-4125-9789-b8019c8be11b",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard + Mouse",
+                    "groups": "",
                     "action": "Fire",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "8df65dc2-9c0d-41d7-8095-c7ae7115ea15",
-                    "path": "<Gamepad>/rightStick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Look",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "03e3bbed-9f97-4c98-8601-cec06b680223",
-                    "path": "<Mouse>/delta",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard + Mouse",
-                    "action": "Look",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "c919a8b4-64ba-418f-91d1-2d0e9797fe42",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard + Mouse",
-                    "action": "Aim",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "60990b23-4c6b-4d01-9057-dde81db17cb4",
-                    "path": "<Gamepad>/leftShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Aim",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "35ab773c-b9b1-4dbc-9a8c-65e511feb7b2",
-                    "path": "<Gamepad>/buttonWest",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "ResetTurret",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "1a6f69b6-3654-44c2-a73c-9dffc294416f",
-                    "path": "<Mouse>/middleButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard + Mouse",
-                    "action": "ResetTurret",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ce02d8cc-2da6-4eae-92fc-572615d00e92",
+                    "id": "d6708f39-c5ed-40ed-95d1-fffeeb43f514",
                     "path": "<Gamepad>/leftStick",
                     "interactions": "",
-                    "processors": "NormalizeVector2,StickDeadzone",
-                    "groups": "Gamepad",
+                    "processors": "",
+                    "groups": "",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "2D Vector",
-                    "id": "9e9d06f1-185c-4338-802d-69f5650e5c6a",
+                    "name": "WASD",
+                    "id": "cfc447df-9362-44ff-b59b-df629278f0d0",
                     "path": "2DVector",
                     "interactions": "",
                     "processors": "",
@@ -191,99 +125,143 @@
                 },
                 {
                     "name": "up",
-                    "id": "03284423-cace-4f3c-986f-6a089874c39a",
+                    "id": "ad22a95e-59bc-45d4-a4e3-a85b3f79fcef",
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard + Mouse",
+                    "groups": "Gamepad",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "down",
-                    "id": "55673a22-f40c-45ce-bcd5-a380c2b311cf",
+                    "id": "77502410-f382-437a-a2ae-1bf9382c8f3a",
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard + Mouse",
+                    "groups": "Gamepad",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "left",
-                    "id": "86bdb62e-c1c4-4b4d-8098-a6af4428f263",
+                    "id": "73a154d2-02bc-4afc-9bad-5f88b3e6b3c0",
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard + Mouse",
+                    "groups": "Gamepad",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "right",
-                    "id": "f9008254-cd16-48b9-b570-b29455edfa04",
+                    "id": "4c9da6c6-e80f-4861-9101-0e46e0fcde3e",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard + Mouse",
+                    "groups": "Gamepad",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "",
-                    "id": "d11557f1-3cfb-4f88-8332-8737627388cb",
-                    "path": "<Gamepad>/dpad",
+                    "id": "3ccc8de2-a65d-428d-ba7c-a6cb4b309cf4",
+                    "path": "<Gamepad>/rightStick",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Move",
+                    "groups": "",
+                    "action": "Look",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "2d79c0d1-9193-40b6-84ee-2df32eeb64b5",
-                    "path": "<Gamepad>/rightShoulder",
+                    "id": "4ad08297-b9d4-4b6f-ad7c-b1137224cf6f",
+                    "path": "<Mouse>/delta",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad",
+                    "groups": "",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5ad9662a-e703-4ff7-94e0-26408403146a",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "697f1041-0dd3-4618-9f14-0c3ab37227aa",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b8fc3357-26e3-4d80-9cf8-70713da55963",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ResetTurret",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9717dda8-d8b7-4e81-8936-875f313caa08",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "Switch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "ddd831ff-f8f8-4443-94df-82d77ba1fcc3",
+                    "id": "dad6d16a-386c-4a2d-a0de-3684ab78297b",
                     "path": "<Keyboard>/v",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard + Mouse",
+                    "groups": "",
                     "action": "Switch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "f2949622-b1c8-4df0-aae7-8daed692eb63",
+                    "id": "0e204b0f-6441-4dfa-965c-43ddb84f5b77",
                     "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad",
+                    "groups": "",
                     "action": "ZoomIn",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "55029b1f-1068-49e7-89c7-ad3b43a2ddf8",
+                    "id": "776aa821-b7bb-43f0-93f3-abe1b7746b69",
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad",
+                    "groups": "",
                     "action": "ZoomOut",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -291,33 +269,5 @@
             ]
         }
     ],
-    "controlSchemes": [
-        {
-            "name": "Gamepad",
-            "bindingGroup": "Gamepad",
-            "devices": [
-                {
-                    "devicePath": "<XboxOneGamepadAndroid>",
-                    "isOptional": false,
-                    "isOR": false
-                }
-            ]
-        },
-        {
-            "name": "Keyboard + Mouse",
-            "bindingGroup": "Keyboard + Mouse",
-            "devices": [
-                {
-                    "devicePath": "<Keyboard>",
-                    "isOptional": true,
-                    "isOR": false
-                },
-                {
-                    "devicePath": "<Mouse>",
-                    "isOptional": true,
-                    "isOR": false
-                }
-            ]
-        }
-    ]
+    "controlSchemes": []
 }

@@ -95,7 +95,6 @@ namespace ChobiAssets.PTM
         void AP_Hit_Process(GameObject hitObject, float hitVelocity, Vector3 hitNormal)
         {
             isLiving = false;
-            print(hitObject);
 
             // Set the collision detection mode.
             This_Rigidbody.collisionDetectionMode = CollisionDetectionMode.Discrete;

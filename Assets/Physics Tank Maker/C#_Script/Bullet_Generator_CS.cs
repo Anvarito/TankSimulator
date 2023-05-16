@@ -37,13 +37,8 @@ namespace ChobiAssets.PTM
         // Only for AI tank.
         public bool Can_Aim; // Set by "AI_CS", and referred to from "Cannon_Fire_Input_99_AI_CS" script.
 
-        void Start()
-        {
-            Initialize();
-        }
 
-
-        void Initialize()
+        public void Initialize()
         {
             thisTransform = transform;
 

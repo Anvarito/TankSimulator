@@ -13,7 +13,7 @@ namespace ChobiAssets.PTM
 
         // Input Type settings.
         public static int Input_Type = 1;
-        public static InputListener InputListener;
+        //public static InputControlHolder InputListener;
 
         // Camera Rotation settings.
         public static float Camera_Horizontal_Speed = 2.0f;
@@ -31,7 +31,7 @@ namespace ChobiAssets.PTM
         // Aim settings.
         public static bool Use_Auto_Lead = false;
         public static float Aiming_Sensibility = 0.2f;
-        public static float Aiming_Offset = 0.1f;
+        public static float Aiming_Offset = 0.25f;
 
         // Gun Camera settings.
         public static bool Gun_Camera_While_Pressing = false;

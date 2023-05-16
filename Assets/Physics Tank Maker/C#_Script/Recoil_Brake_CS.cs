@@ -25,14 +25,7 @@ namespace ChobiAssets.PTM
         Transform thisTransform;
         Vector3 initialLocalPosition;
 
-
-        void Start()
-        {
-            Initialize();
-        }
-
-
-        void Initialize()
+        public void Initialize()
         { // This function must be called in Start() after changing the hierarchy.
             thisTransform = transform;
             initialLocalPosition = thisTransform.localPosition;
@@ -62,7 +55,7 @@ namespace ChobiAssets.PTM
 
             if (Barrel_Type == 0 || Barrel_Type == direction)
             { // Single barrel, or the same direction.
-                StartCoroutine("Recoil_Brake");
+                StartCoroutine(Recoil_Brake());
             }
         }
 
@@ -72,7 +65,7 @@ namespace ChobiAssets.PTM
             isReady = false;
 
             var count = 0.0f;
-            Vector3 currentLocalPosition = initialLocalPosition;
+            Vector3 currentLocalPosition = thisTransform.localPosition;
             while (count < Total_Time)
             {
                 var rate = Motion_Curve.Evaluate(count / Total_Time);

@@ -3,23 +3,37 @@
 namespace ChobiAssets.PTM
 {
 
-	public class Drive_Control_Input_03_Single_Stick_CS : Drive_Control_Input_02_Keyboard_Pressing_CS
+    public class Drive_Control_Input_03_Single_Stick_CS : Drive_Control_Input_02_Keyboard_Pressing_CS
     {
-		
-		public override void Drive_Input()
-		{
-            // Set "vertical".
-            vertical = General_Settings_CS.InputListener.GetControl().Tank.Move.ReadValue<Vector2>().y;
-            vertical = Mathf.Clamp(vertical, -0.5f, 1.0f);
-            vertical = Mathf.Ceil(vertical * 2) / 2;
-            // Set "horizontal".
-            horizontal = General_Settings_CS.InputListener.GetControl().Tank.Move.ReadValue<Vector2>().x;
-            horizontal = Mathf.Floor(horizontal * 2) / 2;
-            //print(vertical + " ||| " + horizontal);
-            // Set the "Stop_Flag", "L_Input_Rate", "R_Input_Rate" and "Turn_Brake_Rate".
-            Set_Values();
-		}
+        private InputAction _moveAction;
+        private PlayerInput _playerInput;
+        public Drive_Control_Input_03_Single_Stick_CS(PlayerInput playerInput, InputAction moveAction)
+        {
+            _moveAction = moveAction;
+            _playerInput = playerInput;
 
+            _playerInput.onActionTriggered += Moved;
+        }
+
+        private void Moved(InputAction.CallbackContext obj)
+        {
+            if (_moveAction.name == obj.action.name)
+            {
+                vertical = obj.action.ReadValue<Vector2>().y;
+                vertical = Mathf.Clamp(vertical, -0.5f, 1.0f);
+                vertical = Mathf.Ceil(vertical * 2) / 2;
+                // Set "horizontal".
+                horizontal = obj.action.ReadValue<Vector2>().x;
+                horizontal = Mathf.Floor(horizontal * 2) / 2;
+                Set_Values();
+            }
+        }
+
+        //Dont delete
+        public override void Drive_Input()
+        {
+            
+        }
 
         protected override void Brake_Turn()
         {
@@ -36,8 +50,8 @@ namespace ChobiAssets.PTM
 
             // Set the "Turn_Brake_Rate".
             controlScript.Turn_Brake_Rate = horizontal;
-		}
+        }
 
-	}
+    }
 
 }

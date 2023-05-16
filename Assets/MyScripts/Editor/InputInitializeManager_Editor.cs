@@ -4,10 +4,12 @@ using ChobiAssets.PTM;
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(InputIniializeManager))]
+[CustomEditor(typeof(TankInputInitializer))]
 public class InputInitializeManager_Editor : Editor
 {
+    /*
     SerializedProperty IDSettings_prop;
+    SerializedProperty _actionMapProp;
     SerializedProperty DamageManager_prop;
     SerializedProperty AI_CS_prop;
     SerializedProperty Drive_Control_CS_prop;
@@ -22,6 +24,7 @@ public class InputInitializeManager_Editor : Editor
     {
         IDSettings_prop = serializedObject.FindProperty("_iDSettingsCS");
         DamageManager_prop = serializedObject.FindProperty("_damageManager");
+        _actionMapProp = serializedObject.FindProperty("_actionMap");
         AI_CS_prop = serializedObject.FindProperty("ai_core_script");
         Drive_Control_CS_prop = serializedObject.FindProperty("_driveControl");
         Cannon_Fire_CS_prop = serializedObject.FindProperty("_fireControl");
@@ -55,6 +58,8 @@ public class InputInitializeManager_Editor : Editor
         IDSettings_prop.objectReferenceValue = EditorGUILayout.ObjectField("ID Settings", IDSettings_prop.objectReferenceValue, typeof(ID_Settings_CS), true);
         DamageManager_prop.objectReferenceValue = EditorGUILayout.ObjectField("Damage reciviers manager", DamageManager_prop.objectReferenceValue, typeof(DamageReciviersManager), true);
 
+        _actionMapProp.objectReferenceValue = EditorGUILayout.ObjectField("Player imput", _actionMapProp.objectReferenceValue, typeof(UnityEngine.InputSystem.InputActionMap), true);
+
         EditorGUILayout.Space();
         if (_iD_Settings_CS.PlayerType == EPlayerType.AI)
         {
@@ -74,5 +79,5 @@ public class InputInitializeManager_Editor : Editor
         Cannon_Fire_CS_prop.objectReferenceValue = EditorGUILayout.ObjectField("Canon FIre", Cannon_Fire_CS_prop.objectReferenceValue, typeof(Cannon_Fire_CS), true);
 
         serializedObject.ApplyModifiedProperties();
-    }
+    }*/
 }

@@ -16,8 +16,6 @@ namespace ChobiAssets.PTM
 
 
         // User options >>
-        public Canvas This_Canvas;
-        public Transform Bars_Parent_Transform;
         public Image Body_Bar;
         public Image Turret_Bar;
         public Image Left_Track_Bar;
@@ -98,18 +96,6 @@ namespace ChobiAssets.PTM
 
         public void Initialize()
         {
-            if (This_Canvas == null)
-            {
-                This_Canvas = GetComponent<Canvas>();
-            }
-
-            if (Bars_Parent_Transform == null)
-            {
-                Debug.LogWarning("'Bars_Parent_Transform'' is not assigned in '" + this.name + "'.");
-                Destroy(this);
-                return;
-            }
-
             // Store the initial color.
             initialColor = Body_Bar.color;
 

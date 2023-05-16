@@ -13,7 +13,6 @@ namespace ChobiAssets.PTM
 		 * This script works in combination with "Drive_Control_CS" in the tank.
 		*/
 
-
         // User options >>
         [SerializeField] Text Speed_Text = default;
         // << User options

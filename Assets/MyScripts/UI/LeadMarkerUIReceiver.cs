@@ -15,6 +15,7 @@ namespace ChobiAssets.PTM
         [SerializeField] private LeadMarkerPresenter _leadMarkerPresenterPrefab;
         [SerializeField] private Aiming_Control_CS _aimingScript;
         [SerializeField] private Bullet_Generator_CS _bulletGenerator;
+        [SerializeField] private Camera _camera;
         // << User options
         private LeadMarkerPresenter _leadMarkerPresenter;
 
@@ -37,7 +38,7 @@ namespace ChobiAssets.PTM
             if (_leadMarkerPresenterPrefab != null)
             {
                 _leadMarkerPresenter = Instantiate(_leadMarkerPresenterPrefab);
-                _leadMarkerPresenter.Initializing(_aimingScript, _bulletGenerator);
+                _leadMarkerPresenter.Initializing(_aimingScript, _bulletGenerator, _camera);
             }
             else
             {

@@ -7,49 +7,61 @@ namespace ChobiAssets.PTM
     {
         private bool _isDecreaseView;
         private bool _isEncreaseView;
-
-        public override void Prepare(Gun_Camera_CS gunCameraScript)
+        private InputAction _aimAction, _zoomIn , _zoomOut;
+        private PlayerInput _playerInput;
+        public GunCameraInput02_ForSingleStickDrive(PlayerInput playerInput, InputAction aimAction, InputAction zoomIn , InputAction zoomOut )
         {
-            base.Prepare(gunCameraScript);
-            General_Settings_CS.InputListener.GetControl().Tank.Aim.performed += Aim;
-            General_Settings_CS.InputListener.GetControl().Tank.ZoomIn.performed += ZoomInStart;
-            General_Settings_CS.InputListener.GetControl().Tank.ZoomIn.canceled += ZommInCancel;
-            General_Settings_CS.InputListener.GetControl().Tank.ZoomOut.performed += ZoomOutStart;
-            General_Settings_CS.InputListener.GetControl().Tank.ZoomOut.canceled += ZoomOutCancel;
+            _aimAction = aimAction;
+            _zoomIn = zoomIn;
+            _zoomOut = zoomOut;
+            _playerInput = playerInput;
+
+            playerInput.onActionTriggered += Aim;
+            playerInput.onActionTriggered += ZoomInStart;
+            playerInput.onActionTriggered += ZommInCancel;
+            playerInput.onActionTriggered += ZoomOutStart;
+            playerInput.onActionTriggered += ZoomOutCancel;
         }
 
         public override void DissableInput()
         {
             base.DissableInput();
-            General_Settings_CS.InputListener.GetControl().Tank.Aim.performed -= Aim;
-            General_Settings_CS.InputListener.GetControl().Tank.ZoomIn.performed -= ZoomInStart;
-            General_Settings_CS.InputListener.GetControl().Tank.ZoomIn.canceled -= ZommInCancel;
-            General_Settings_CS.InputListener.GetControl().Tank.ZoomOut.performed -= ZoomOutStart;
-            General_Settings_CS.InputListener.GetControl().Tank.ZoomOut.canceled -= ZoomOutCancel;
+            _playerInput.onActionTriggered += Aim;
+            _playerInput.onActionTriggered += ZoomInStart;
+            _playerInput.onActionTriggered += ZommInCancel;
+            _playerInput.onActionTriggered += ZoomOutStart;
+            _playerInput.onActionTriggered += ZoomOutCancel;
         }
 
-        private void ZoomOutCancel(InputAction.CallbackContext obj)
+        private void ZoomInStart(InputAction.CallbackContext obj)
         {
-            _isDecreaseView = false;
+            if(obj.action.name == _zoomIn.name && obj.performed)
+            _isEncreaseView = true;
         }
+
 
         private void ZommInCancel(InputAction.CallbackContext obj)
         {
+            if(obj.action.name == _zoomIn.name && obj.canceled)
             _isEncreaseView = false;
         }
 
         private void ZoomOutStart(InputAction.CallbackContext obj)
         {
+            if(obj.action.name == _zoomOut.name && obj.performed)
             _isDecreaseView = true;
         }
-
-        private void ZoomInStart(InputAction.CallbackContext obj)
+        private void ZoomOutCancel(InputAction.CallbackContext obj)
         {
-            _isEncreaseView = true;
+            if(obj.action.name == _zoomOut.name && obj.canceled)
+            _isDecreaseView = false;
         }
 
         private void Aim(InputAction.CallbackContext obj)
         {
+            if (obj.action != _aimAction)
+                return;
+
             if (gunCameraScript.Gun_Camera.enabled)
             { // The gun camera is enabled.
                 gunCameraScript.Switch_Mode(1); // Off

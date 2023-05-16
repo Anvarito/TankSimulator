@@ -16,9 +16,12 @@ namespace ChobiAssets.PTM
 		SerializedProperty Deceleration_TimeProp;
 		SerializedProperty Upper_CourseProp;
 
+		SerializedProperty aimingProp;
 
-		void  OnEnable ()
+
+		void OnEnable ()
 		{
+			aimingProp = serializedObject.FindProperty ("aimingScript");
 			Max_ElevationProp = serializedObject.FindProperty ("Max_Elevation");
 			Max_DepressionProp = serializedObject.FindProperty ("Max_Depression");
 			Speed_MagProp = serializedObject.FindProperty ("Speed_Mag");
@@ -32,7 +35,7 @@ namespace ChobiAssets.PTM
 		{
 			GUI.backgroundColor = new Color (1.0f, 1.0f, 0.5f, 1.0f);
 			serializedObject.Update ();
-		
+			aimingProp.objectReferenceValue = EditorGUILayout.ObjectField("Aiming control", aimingProp.objectReferenceValue, typeof(Aiming_Control_CS), true);
 			EditorGUILayout.Space ();
 			EditorGUILayout.Space ();
 			EditorGUILayout.HelpBox ("Cannon Elevation settings", MessageType.None, true);
