@@ -1,5 +1,6 @@
 using UnityEngine;
 using ChobiAssets.PTM;
+using UnityEngine.InputSystem;
 
 public class TankInputInitializer : MonoBehaviour
 {
