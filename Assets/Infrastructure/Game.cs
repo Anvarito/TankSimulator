@@ -1,3 +1,4 @@
+using Infrastructure.Factory.Compose;
 using Infrastructure.Services;
 using Infrastructure.StateMachine;
 
@@ -6,11 +7,11 @@ namespace Infrastructure
     public class Game
     {
         public readonly GameStateMachine GameStateMachine;
-        private ICoroutineRunner _coroutineRunner;
 
         public Game(ICoroutineRunner coroutineRunner)
         {
-            GameStateMachine = new GameStateMachine(new SceneLoader(coroutineRunner), ServiceLocator.Container);
+            ServiceLocator serviceLocator = ServiceLocator.Container;
+            GameStateMachine = new GameStateMachine(new SceneLoader(coroutineRunner), serviceLocator, coroutineRunner);
         }
     }
 }

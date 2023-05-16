@@ -1,9 +1,8 @@
-using System;
 using Infrastructure.Services;
 using Infrastructure.Services.SaveLoad;
 using UnityEngine;
 
-namespace Infrastructure
+namespace Infrastructure.TestMono
 {
     public class SaveTrigger : MonoBehaviour
     {

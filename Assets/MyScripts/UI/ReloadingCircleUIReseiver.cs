@@ -1,7 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
-using UnityEngine.UI;
-using System;
 
 namespace ChobiAssets.PTM
 {
@@ -19,11 +16,12 @@ namespace ChobiAssets.PTM
         private ReloadingCirclePresenter _reloadingCircle;
 
         private bool isSelected;
+
         private bool _isLoadeng;
 
         void Awake()
         {
-            _cannonFireScript.OnInit.AddListener(InitScript);
+            
         }
 
         private void InitScript()
@@ -43,11 +41,20 @@ namespace ChobiAssets.PTM
             }
         }
 
+        public void Initialize(Cannon_Fire_CS partsCannonFire)
+        {
+            _cannonFireScript = partsCannonFire;
+            isSelected = true;
+            
+            _cannonFireScript.OnInit.AddListener(InitScript);
+        }
+
         private void ReloadLaunch()
         {
             _reloadingCircle.EnableImage(true);
             _isLoadeng = true;
         }
+
         private void ReloadEnd()
         {
             _reloadingCircle.EnableImage(false);
@@ -100,7 +107,6 @@ namespace ChobiAssets.PTM
         { // Called from "Game_Controller_CS".
             this.enabled = !isPaused;
         }
-
     }
 
 }

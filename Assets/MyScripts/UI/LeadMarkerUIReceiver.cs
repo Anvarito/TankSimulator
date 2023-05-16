@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
-using UnityEngine.UI;
-
-using System.Collections.Generic;
+﻿using UnityEngine;
 
 namespace ChobiAssets.PTM
 {
@@ -31,13 +27,13 @@ namespace ChobiAssets.PTM
                 Debug.LogError("'Aiming_Control_CS' cannot be found in the MainBody.");
                 Destroy(this);
             }
+
             if (_bulletGenerator == null)
             {
                 Debug.LogError("'Bullet_Generator_CS' cannot be found. The cannon cannot get the bullet velocity.");
                 Destroy(this);
                 return;
             }
-
             if (_leadMarkerPresenterPrefab != null)
             {
                 _leadMarkerPresenter = Instantiate(_leadMarkerPresenterPrefab);
@@ -60,6 +56,13 @@ namespace ChobiAssets.PTM
             }
 
             _leadMarkerPresenter.MarkerControl();
+        }
+
+        public void Initialize(Aiming_Control_CS partsAiming, Bullet_Generator_CS partsBulletGenerator)
+        {
+            _aimingScript = partsAiming;
+            _bulletGenerator = partsBulletGenerator;
+            isSelected = true;
         }
 
         void Selected(bool isSelected)
@@ -96,7 +99,6 @@ namespace ChobiAssets.PTM
         { // Called from "Game_Controller_CS".
             this.enabled = !isPaused;
         }
-
     }
 
 }

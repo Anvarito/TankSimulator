@@ -1,7 +1,6 @@
 using Infrastructure.Services;
-using UnityEngine;
 
-namespace Infrastructure.Factory
+namespace Infrastructure.Factory.Base
 {
     public interface IFactory : IService
     {

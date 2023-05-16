@@ -1,6 +1,8 @@
 using System.Reflection;
 using Infrastructure.Assets;
 using Infrastructure.Factory;
+using Infrastructure.Factory.Base;
+using Infrastructure.Factory.Compose;
 using Infrastructure.Services;
 using Infrastructure.Services.Input;
 using Infrastructure.Services.Progress;
@@ -44,12 +46,18 @@ namespace Infrastructure.StateMachine
 
         private void RegisterServices()
         {
+            
             _services.RegisterSingle<IProgressService>(new ProgressService());
             _services.RegisterSingle<IAssetLoader>( new AssetLoader());
             _services.RegisterSingle<IInputService>(new InputService());
-            _services.RegisterSingle<IGameFactory>(new GameFactory(_services.Single<IAssetLoader>()));
+            
+            _services.RegisterSingle<IFactories>(new Factories());
+            _services.Single<IFactories>().Add<IPlayerFactory>(new PlayerFactory(_services.Single<IAssetLoader>()));
+            _services.Single<IFactories>().Add<IEnemyFactory>(new EnemyFactory(_services.Single<IAssetLoader>()));
+            
+            
             _services.RegisterSingle<ISaveLoadService>(new SaveLoadService(_services.Single<IProgressService>(),
-                _services.Single<IGameFactory>()));
+                _services.Single<IFactories>()));
         }
 
         private static void ClearLog()

@@ -6,5 +6,6 @@ namespace Infrastructure
     public interface ICoroutineRunner
     {
         Coroutine StartCoroutine(IEnumerator loadScene);
+        void StopCoroutine(Coroutine coroutine);
     }
 }

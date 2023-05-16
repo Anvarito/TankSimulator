@@ -7,12 +7,32 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7616089149737037171, guid: 2e5f5944b70f9224f91d7c8be621ac33, type: 3}
+      propertyPath: Agent_Distance
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7616089149737037171, guid: 2e5f5944b70f9224f91d7c8be621ac33, type: 3}
+      propertyPath: Min_Speed_Rate
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7616089149737037171, guid: 2e5f5944b70f9224f91d7c8be621ac33, type: 3}
+      propertyPath: WayPoint_Radius
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7616089149737037171, guid: 2e5f5944b70f9224f91d7c8be621ac33, type: 3}
+      propertyPath: Agent_Additional_Distance
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 7928491569894066946, guid: 2e5f5944b70f9224f91d7c8be621ac33, type: 3}
       propertyPath: m_Name
       value: AI Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 7928491569894066948, guid: 2e5f5944b70f9224f91d7c8be621ac33, type: 3}
       propertyPath: No_Attack
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7928491569894066948, guid: 2e5f5944b70f9224f91d7c8be621ac33, type: 3}
+      propertyPath: Patrol_Type
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7928491569894066948, guid: 2e5f5944b70f9224f91d7c8be621ac33, type: 3}

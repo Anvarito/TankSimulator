@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 
 namespace ChobiAssets.PTM
@@ -20,7 +18,14 @@ namespace ChobiAssets.PTM
         [SerializeField] private Aiming_Control_CS aimingScript;
         // << User options
         private AimMarkerPresenter _aimLeadPresenter;
+
         bool isSelected;
+
+        public void Initialize(Aiming_Control_CS partsAiming)
+        {
+            aimingScript = partsAiming;
+            isSelected = true;
+        }
 
 
         void Start()
@@ -91,7 +96,6 @@ namespace ChobiAssets.PTM
         { // Called from "Game_Controller_CS".
             this.enabled = !isPaused;
         }
-
     }
 
 }

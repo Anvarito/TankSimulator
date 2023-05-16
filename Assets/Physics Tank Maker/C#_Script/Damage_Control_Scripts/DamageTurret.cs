@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
-using UnityEngine.Events;
-
-namespace ChobiAssets.PTM
+﻿namespace ChobiAssets.PTM
 {
     
     public class DamageTurret : DamageRecivierBase

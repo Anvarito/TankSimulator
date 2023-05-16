@@ -1,4 +1,3 @@
-using System;
 using Infrastructure.Data;
 using Infrastructure.Services;
 using Infrastructure.Services.Input;
@@ -6,7 +5,7 @@ using Infrastructure.Services.Progress;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Infrastructure
+namespace Infrastructure.TestMono
 {
     public class PlayerMover : MonoBehaviour, IProgressWriter
     {
@@ -21,7 +20,7 @@ namespace Infrastructure
 
         private void Update()
         {
-            controller.Move(MoveVector() * (5 * Time.deltaTime));
+            controller.Move(MoveVector() * (5 * Time.deltaTime)); 
         }
 
         public void UpdateProgress(PlayerProgress progress)

@@ -1,6 +1,6 @@
-using Infrastructure.Factory;
+using Infrastructure.Factory.Base;
+using Infrastructure.Factory.Compose;
 using Infrastructure.Services.Progress;
-using Infrastructure.Services.SaveLoad;
 using UnityEngine;
 
 namespace Infrastructure.StateMachine
@@ -12,22 +12,26 @@ namespace Infrastructure.StateMachine
 
         private readonly GameStateMachine _gameStateMachine;
         private readonly SceneLoader _sceneLoader;
-        private readonly IGameFactory _gameFactory;
+        private readonly IEnemyFactory _enemyFactory;
+        private readonly IPlayerFactory _playerFactory;
         private readonly IProgressService _progressService;
 
-        public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, IGameFactory gameFactory, IProgressService progressService)
+        public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, IFactories factories)
         {
             _gameStateMachine = gameStateMachine;
             _sceneLoader = sceneLoader;
-            _gameFactory = gameFactory;
-            _progressService = progressService;
+
+            _playerFactory = factories.Single<IPlayerFactory>();
+            _enemyFactory = factories.Single<IEnemyFactory>();
         }
 
         public void Enter(string payload)
         {
             Debug.Log($"Entered {this.GetType().Name}");
             
-            _gameFactory.CleanUp();
+            _playerFactory.CleanUp();
+            _enemyFactory.CleanUp();
+            
             _sceneLoader.Load(name: payload, OnLoaded);
         }
 
@@ -45,16 +49,21 @@ namespace Infrastructure.StateMachine
 
         private void InformProgressReaders()
         {
-            foreach (IProgressReader progress in _gameFactory.ProgressReaders) 
+            foreach (IProgressReader progress in _playerFactory.ProgressReaders) 
+                progress.LoadProgress(_progressService.Progress);
+            
+            foreach (IProgressReader progress in _enemyFactory.ProgressReaders) 
                 progress.LoadProgress(_progressService.Progress);
         }
 
         private void InitGameLevel()
         {
-            _gameFactory.CreateTankController();
-            _gameFactory.CreatePlayer(at: GameObject.FindWithTag(PlayerInitialPoint));
-            _gameFactory.CreateHud();
-            _gameFactory.CreateEnemies(at: GameObject.FindGameObjectsWithTag(EnemyInitialPoint));
+            _enemyFactory.CreateTankController();
+            _enemyFactory.CreateEnemies(at: GameObject.FindGameObjectsWithTag(EnemyInitialPoint));
+            
+            _playerFactory.CreatePlayer(at: GameObject.FindWithTag(PlayerInitialPoint));
+            _playerFactory.CreateTankUiSpawner(_playerFactory.PlayerParts);
+            _playerFactory.CreateHud();
         }
     }
 }

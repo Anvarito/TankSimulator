@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
-
-namespace ChobiAssets.PTM
+﻿namespace ChobiAssets.PTM
 {
     public class Camera_Zoom_Input_03_For_Triggers_Drive_CS
     {

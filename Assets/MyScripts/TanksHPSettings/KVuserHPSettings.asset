@@ -17,7 +17,7 @@ MonoBehaviour:
     DamageTreshold: 300
   _bodyDamageSettings:
     MaxHitPoints: 750
-    DamageTreshold: 150
+    DamageTreshold: 300
   _trackDamageSettings:
     MaxHitPoints: 300
     DamageTreshold: 50

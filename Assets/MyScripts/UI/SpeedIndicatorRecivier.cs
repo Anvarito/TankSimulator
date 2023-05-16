@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using ChobiAssets.PTM;
 public class SpeedIndicatorRecivier : MonoBehaviour
@@ -16,5 +14,10 @@ public class SpeedIndicatorRecivier : MonoBehaviour
     private void Update()
     {
         _speedIndicatorUI.Update_Speed_Text((int)_drive_Control_CS.Current_Velocity);
+    }
+
+    public void Initialize(Drive_Control_CS partsDriveControl)
+    {
+        _drive_Control_CS = partsDriveControl;
     }
 }

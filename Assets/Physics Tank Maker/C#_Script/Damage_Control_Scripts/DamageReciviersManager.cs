@@ -1,13 +1,8 @@
 ﻿using UnityEngine;
-using System.Collections;
-using UnityEngine.AI;
-using System;
-using System.Collections.Generic;
 using UnityEngine.Events;
 
 namespace ChobiAssets.PTM
 {
-
     //[ System.Serializable]
     //public struct TurretDamageControlProp
     //{
@@ -55,17 +50,15 @@ namespace ChobiAssets.PTM
         //public float Initial_Body_HP;
         //public float Initial_Turret_HP;
 
-        [Space(10)]
-        [SerializeField] private DamageReciviersSettings _damageReciviersSettings;
+        [Space(10)] [SerializeField] private DamageReciviersSettings _damageReciviersSettings;
 
-        [Space(10)]
-        [SerializeField] private DamageTurret _turretDamages;
+        [Space(10)] [SerializeField] private DamageTurret _turretDamages;
         [SerializeField] private DamageBodyRecivier _mainBodyDamages;
         [SerializeField] private TracksHolder _damageTrackRecivier;
 
         AI_CS aiScript;
 
-        private bool isDead;
+        // private bool isDead;
 
         [HideInInspector] public UnityEvent<float, float> OnTurretDamaged;
         [HideInInspector] public UnityEvent<float, float> OnBodyDamaged;
@@ -91,6 +84,7 @@ namespace ChobiAssets.PTM
             //Initial_Left_Track_HP = Left_Track_HP;
             //Initial_Right_Track_HP = Right_Track_HP;
         }
+
         private void InitializingAllDamageReciviers()
         {
             if (_turretDamages) _turretDamages.Initialize(_damageReciviersSettings.GetTurretsettings());
@@ -100,6 +94,7 @@ namespace ChobiAssets.PTM
             if (_damageTrackRecivier) _damageTrackRecivier.Inititalize(_damageReciviersSettings.GetTracksettings());
             else Debug.LogError("DamageTrackRecivier not assigned!!!");
         }
+
         private void SubscribeResiviers()
         {
             if (_turretDamages)
@@ -113,7 +108,6 @@ namespace ChobiAssets.PTM
             {
                 _mainBodyDamages.OnDamaged.AddListener(BodyDamage);
                 _mainBodyDamages.OnDestroyed.AddListener(BodyDestroy);
-
             }
             else Debug.LogError("MainBodyDamages not assigned!!!");
 
@@ -130,6 +124,7 @@ namespace ChobiAssets.PTM
         {
             OnBodyDamaged?.Invoke(currentHP, maxHP);
         }
+
         private void TurretDamage(float currentHP, float maxHP)
         {
             OnTurretDamaged?.Invoke(currentHP, maxHP);
@@ -151,7 +146,6 @@ namespace ChobiAssets.PTM
             OnTrackBreach?.Invoke(track);
         }
 
-        
 
         private void BodyDestroy()
         {
@@ -165,17 +159,18 @@ namespace ChobiAssets.PTM
 
         private void TankDestroyed()
         {
-            isDead = true;
+            // isDead = true;
             _damageTrackRecivier.FullBreak();
             OnTankDestroyed?.Invoke();
         }
 
 
-
         public bool Receive_Damage(float damage, int type, int index)
-        { // Called from "Damage_Control_##_##_CS" scripts in the tank.
+        {
+            // Called from "Damage_Control_##_##_CS" scripts in the tank.
             if (aiScript)
-            { // AI tank.
+            {
+                // AI tank.
                 // Call "AI_CS" to disable the dead angle.
                 aiScript.StartCoroutine("Wake_Up_Timer");
             }
@@ -442,7 +437,8 @@ namespace ChobiAssets.PTM
 
 
         void Selected(bool isSelected)
-        { // Called from "ID_Settings_CS".
+        {
+            // Called from "ID_Settings_CS".
             if (isSelected == false)
             {
                 return;
@@ -457,10 +453,9 @@ namespace ChobiAssets.PTM
 
 
         void Get_AI_CS(AI_CS aiScript)
-        { // Called from "AI_CS".
+        {
+            // Called from "AI_CS".
             this.aiScript = aiScript;
         }
-
     }
-
 }

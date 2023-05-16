@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
-using UnityEngine.UI;
 
 namespace ChobiAssets.PTM
 {
@@ -36,6 +34,12 @@ namespace ChobiAssets.PTM
             _gunCamera.OnEnableGunCam.AddListener(EnableCamera);
             _gunCamera.OnDisableGunCam.AddListener(DisableCamera);
             _gunCamera.OnFOVchange.AddListener(FOVchange);
+        }
+
+        public void Initialize(Gun_Camera_CS partsGunCamera)
+        {
+            _gunCamera = partsGunCamera;
+            isSelected = true;
         }
 
         private void FOVchange(float alpha)
@@ -88,7 +92,6 @@ namespace ChobiAssets.PTM
         { // Called from "Game_Controller_CS".
             this.enabled = !isPaused;
         }
-
     }
 
 }

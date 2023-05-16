@@ -3,34 +3,18 @@ using Infrastructure.Assets;
 using Infrastructure.Services.Progress;
 using UnityEngine;
 
-namespace Infrastructure.Factory
+namespace Infrastructure.Factory.Base
 {
-    public class GameFactory : IGameFactory
+    public abstract class GameFactory : IGameFactory
     {
-        private readonly IAssetLoader _assetLoader;
-        private IGameFactory _gameFactoryImplementation;
-
         public List<IProgressReader> ProgressReaders { get; } = new List<IProgressReader>();
         public List<IProgressWriter> ProgressWriters { get; } = new List<IProgressWriter>();
+        
+        protected readonly IAssetLoader _assetLoader;
 
-        public GameFactory(IAssetLoader assetLoader)
+        protected GameFactory(IAssetLoader assetLoader)
         {
             _assetLoader = assetLoader;
-        }
-
-        public GameObject CreatePlayer(GameObject at) =>
-            InstantiateRegistered(AssetPaths.PlayerTank, at.transform.position);
-        
-        public void CreateTankController() =>
-            InstantiateRegistered(AssetPaths.TankController);
-
-        public void CreateHud() =>
-            InstantiateRegistered(AssetPaths.Hud);
-
-        public void CreateEnemies(GameObject[] at)
-        {
-            foreach (GameObject point in at)
-                _assetLoader.Instantiate(AssetPaths.EnemyTank, point.transform.position);
         }
 
         public void CleanUp()
@@ -38,15 +22,15 @@ namespace Infrastructure.Factory
             ProgressReaders.Clear();
             ProgressWriters.Clear();
         }
-
-        private GameObject InstantiateRegistered(string path, Vector3 position)
+        
+        protected GameObject InstantiateRegistered(string path, Vector3 position)
         {
             GameObject gameObject = _assetLoader.Instantiate(path, at: position);
             RegisterProgressWatchers(gameObject);
             return gameObject;
         }
 
-        private GameObject InstantiateRegistered(string path)
+        protected GameObject InstantiateRegistered(string path)
         {
             GameObject gameObject = _assetLoader.Instantiate(path);
             RegisterProgressWatchers(gameObject);

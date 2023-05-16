@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using ChobiAssets.PTM;
-using System;
 
 public class HitPoitsBarUIReceiver : MonoBehaviour
 {
@@ -23,6 +20,11 @@ public class HitPoitsBarUIReceiver : MonoBehaviour
         _damageManager.OnTrackDamaged.AddListener(TrackDamaged);
         _damageManager.OnTrackRestore.AddListener(TrackRestore);
         _damageManager.OnTrackBreach.AddListener(TrackBreach);
+    }
+
+    public void Initialize(DamageReciviersManager partsDamageReceiver)
+    {
+        _damageManager = partsDamageReceiver;
     }
 
     private void BodyDamaged(float currentHP, float maxHP)
