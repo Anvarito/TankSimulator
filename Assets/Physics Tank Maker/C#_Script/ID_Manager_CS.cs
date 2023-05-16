@@ -89,63 +89,63 @@ namespace ChobiAssets.PTM
         }
 
 
-        void Update()
-        {
-            Select_Tank();
-        }
+        //void Update()
+        //{
+        //    Select_Tank();
+        //}
 
 
-        void Select_Tank()
-        {
-            // Change the current ID to "1".
-            if (Input.GetKeyDown(General_Settings_CS.Select_Default_Tank_Key))
-            {
-                if (usedIDList[0] == true)
-                {
-                    currentID = 1;
-                    Broadcast_Current_ID();
-                }
-                return;
-            }
+        //void Select_Tank()
+        //{
+        //    // Change the current ID to "1".
+        //    if (Input.GetKeyDown(General_Settings_CS.Select_Default_Tank_Key))
+        //    {
+        //        if (usedIDList[0] == true)
+        //        {
+        //            currentID = 1;
+        //            Broadcast_Current_ID();
+        //        }
+        //        return;
+        //    }
 
-            // Increase the current ID.
-            if (Input.GetKeyDown(General_Settings_CS.Increase_ID_Key))
-            {
-                for (int i = 0; i < usedIDList.Count; i++)
-                {
-                    currentID += 1;
-                    if (currentID > usedIDList.Count)
-                    {
-                        currentID = 1;
-                    }
-                    if (usedIDList[currentID - 1] == true)
-                    {
-                        Broadcast_Current_ID();
-                        break;
-                    }
-                }
-                return;
-            }
+        //    // Increase the current ID.
+        //    if (Input.GetKeyDown(General_Settings_CS.Increase_ID_Key))
+        //    {
+        //        for (int i = 0; i < usedIDList.Count; i++)
+        //        {
+        //            currentID += 1;
+        //            if (currentID > usedIDList.Count)
+        //            {
+        //                currentID = 1;
+        //            }
+        //            if (usedIDList[currentID - 1] == true)
+        //            {
+        //                Broadcast_Current_ID();
+        //                break;
+        //            }
+        //        }
+        //        return;
+        //    }
 
-            // Decrease the current ID.
-            if (Input.GetKeyDown(General_Settings_CS.Decrease_ID_Key))
-            {
-                for (int i = 0; i < usedIDList.Count; i++)
-                {
-                    currentID -= 1;
-                    if (currentID < 1)
-                    {
-                        currentID = usedIDList.Count;
-                    }
-                    if (usedIDList[currentID - 1] == true)
-                    {
-                        Broadcast_Current_ID();
-                        break;
-                    }
-                }
-                return;
-            }
-        }
+        //    // Decrease the current ID.
+        //    if (Input.GetKeyDown(General_Settings_CS.Decrease_ID_Key))
+        //    {
+        //        for (int i = 0; i < usedIDList.Count; i++)
+        //        {
+        //            currentID -= 1;
+        //            if (currentID < 1)
+        //            {
+        //                currentID = usedIDList.Count;
+        //            }
+        //            if (usedIDList[currentID - 1] == true)
+        //            {
+        //                Broadcast_Current_ID();
+        //                break;
+        //            }
+        //        }
+        //        return;
+        //    }
+        //}
 
 
         void Broadcast_Current_ID()

@@ -9,10 +9,10 @@ namespace ChobiAssets.PTM
 
         public override void Get_Input()
         {
-            if (Input.GetKeyDown(General_Settings_CS.Camera_Switch_Key))
-            {
-                managerScript.Switch_Camera_Point();
-            }
+            //if (Input.GetKeyDown(General_Settings_CS.Camera_Switch_Key))
+            //{
+            //    managerScript.Switch_Camera_Point();
+            //}
 		}
 
 	}

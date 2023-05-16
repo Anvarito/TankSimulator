@@ -56,7 +56,7 @@ namespace ChobiAssets.PTM
         public void Initialize(Camera_Points_Manager_Input_00_Base_CS cameraPointControl)
         {
             thisTransform = transform;
-
+            Main_Camera.name += transform.root.name;
             // Get the input type.
             if (inputType != 10)
             { // This tank is not an AI tank.
@@ -64,11 +64,11 @@ namespace ChobiAssets.PTM
             }
 
             // Get the main camera.
-            if (Main_Camera == null)
-            {
-                Main_Camera = GetComponentInChildren<Camera>();
-            }
-            Main_Camera.tag = "MainCamera";
+            //if (Main_Camera == null)
+            //{
+            //    Main_Camera = GetComponentInChildren<Camera>();
+            //}
+            //Main_Camera.tag = "MainCamera";
             cameraTransform = Main_Camera.transform;
             cameraTPVLocalPos = cameraTransform.localPosition;
 

@@ -18,39 +18,39 @@ namespace ChobiAssets.PTM
         public override void Drive_Input()
         {
             // Set "vertical".
-            if (Input.GetKeyDown(General_Settings_CS.Drive_Up_Key) && speedStep < forwardStepCount)
-            { // Forward
-                speedStep += 1;
-                controlScript.Shift_Gear(speedStep);
-            }
-            else if (Input.GetKeyDown(General_Settings_CS.Drive_Down_Key) && speedStep > -reverseStepCount)
-            { // Backward
-                speedStep -= 1;
-                controlScript.Shift_Gear(speedStep);
-            }
-            else if (Input.GetKeyDown(General_Settings_CS.Drive_Brake_Key) && speedStep != 0)
-            { // Stop
-                speedStep = 0;
-                controlScript.Shift_Gear(speedStep);
-            }
-            vertical = (1.0f / forwardStepCount) * speedStep;
+            //if (Input.GetKeyDown(General_Settings_CS.Drive_Up_Key) && speedStep < forwardStepCount)
+            //{ // Forward
+            //    speedStep += 1;
+            //    controlScript.Shift_Gear(speedStep);
+            //}
+            //else if (Input.GetKeyDown(General_Settings_CS.Drive_Down_Key) && speedStep > -reverseStepCount)
+            //{ // Backward
+            //    speedStep -= 1;
+            //    controlScript.Shift_Gear(speedStep);
+            //}
+            //else if (Input.GetKeyDown(General_Settings_CS.Drive_Brake_Key) && speedStep != 0)
+            //{ // Stop
+            //    speedStep = 0;
+            //    controlScript.Shift_Gear(speedStep);
+            //}
+            //vertical = (1.0f / forwardStepCount) * speedStep;
 
-            // Set "horizontal".
-            if (Input.GetKey(General_Settings_CS.Drive_Left_Key))
-            { // Left
-                horizontal = -1.0f;
-            }
-            else if (Input.GetKey(General_Settings_CS.Drive_Right_Key))
-            { // Right
-                horizontal = 1.0f;
-            }
-            else
-            { // No turn.
-                horizontal = 0.0f;
-            }
+            //// Set "horizontal".
+            //if (Input.GetKey(General_Settings_CS.Drive_Left_Key))
+            //{ // Left
+            //    horizontal = -1.0f;
+            //}
+            //else if (Input.GetKey(General_Settings_CS.Drive_Right_Key))
+            //{ // Right
+            //    horizontal = 1.0f;
+            //}
+            //else
+            //{ // No turn.
+            //    horizontal = 0.0f;
+            //}
 
-            // Control the brake.
-            controlScript.Apply_Brake = Input.GetKey(General_Settings_CS.Drive_Brake_Key);
+            //// Control the brake.
+            //controlScript.Apply_Brake = Input.GetKey(General_Settings_CS.Drive_Brake_Key);
 
             // Set the "Stop_Flag", "L_Input_Rate", "R_Input_Rate" and "Turn_Brake_Rate".
             Set_Values();

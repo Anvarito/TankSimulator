@@ -10,14 +10,14 @@ namespace ChobiAssets.PTM
 		public override void Get_Input()
 		{
             var inputValue = 0.0f;
-            if (Input.GetKey(General_Settings_CS.Camera_Zoom_In_Pad_Button))
-            {
-                inputValue = -1.0f;
-            }
-            else if (Input.GetKey(General_Settings_CS.Camera_Zoom_Out_Pad_Button))
-            {
-                inputValue = 1.0f;
-            }
+            //if (Input.GetKey(General_Settings_CS.Camera_Zoom_In_Pad_Button))
+            //{
+            //    inputValue = -1.0f;
+            //}
+            //else if (Input.GetKey(General_Settings_CS.Camera_Zoom_Out_Pad_Button))
+            //{
+            //    inputValue = 1.0f;
+            //}
 
             zoomScript.Zoom_Input = inputValue * 0.05f;
         }

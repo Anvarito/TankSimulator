@@ -99,15 +99,15 @@ namespace ChobiAssets.PTM
         }
 
 
-        void Prepare_Removing()
-        { // Called from "Respawn_Controller_CS", just before the tank is removed.
+        //void Prepare_Removing()
+        //{ // Called from "Respawn_Controller_CS", just before the tank is removed.
 
-            // Send message to the "Game_Controller" with "ID_Manager_CS" in the scene to remove this tank from the lists.
-            if (ID_Manager_CS.Instance)
-            {
-                ID_Manager_CS.Instance.SendMessage("Remove_ID", this, SendMessageOptions.DontRequireReceiver);
-            }
-        }
+        //    // Send message to the "Game_Controller" with "ID_Manager_CS" in the scene to remove this tank from the lists.
+        //    if (ID_Manager_CS.Instance)
+        //    {
+        //        ID_Manager_CS.Instance.SendMessage("Remove_ID", this, SendMessageOptions.DontRequireReceiver);
+        //    }
+        //}
 
     }
 

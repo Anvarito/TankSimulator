@@ -9,13 +9,24 @@ namespace ChobiAssets.PTM
     {
         private InputAction _lookAction;
         private PlayerInput _playerInput;
+        private InputAction _resetTurretAction;
 
-        public Camera_Rotation_Input_02_For_Single_Stick_Drive_CS(PlayerInput playerInput, InputAction lookAction)
+        public Camera_Rotation_Input_02_For_Single_Stick_Drive_CS(PlayerInput playerInput, InputAction lookAction, InputAction resetTurretAction)
         {
             _lookAction = lookAction;
             _playerInput = playerInput;
-
+            _resetTurretAction = resetTurretAction;
             _playerInput.onActionTriggered += Rotate;
+            _playerInput.onActionTriggered += ResetTurret;
+        }
+
+        private void ResetTurret(InputAction.CallbackContext obj)
+        {
+            if (_resetTurretAction.name == obj.action.name)
+            {
+                // Look forward.
+                rotationScript.Look_At_Target(rotationScript.BodyTransform.position + rotationScript.BodyTransform.forward * 64.0f);
+            }
         }
 
         private void Rotate(InputAction.CallbackContext obj)
@@ -29,12 +40,6 @@ namespace ChobiAssets.PTM
                     rotationScript.Horizontal_Input = 0.0f;
                     rotationScript.Vertical_Input = 0.0f;
                     return;
-                }
-
-                // Look forward.
-                if (Input.GetKeyDown(General_Settings_CS.Camera_Look_Forward_Pad_Button))
-                {
-                    rotationScript.Look_At_Target(rotationScript.BodyTransform.position + rotationScript.BodyTransform.forward * 64.0f);
                 }
 
                 // Rotation.

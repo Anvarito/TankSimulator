@@ -25,12 +25,12 @@ namespace ChobiAssets.PTM
         void Start()
         {
             // Get the reticle image in the scene.
-            if (_gunCamera == null || _reticleUIPresenterPrefab == null)
-            {
-                Destroy(this);
-                Debug.LogError("Reticle control is missing links!!!");
-                return;
-            }
+            //if (_gunCamera == null || _reticleUIPresenterPrefab == null)
+            //{
+            //    Destroy(this);
+            //    Debug.LogError("Reticle control is missing links!!!");
+            //    return;
+            //}
 
             _reticleUIPresenter = Instantiate(_reticleUIPresenterPrefab);
             _reticleUIPresenter.Initing(_camera);
