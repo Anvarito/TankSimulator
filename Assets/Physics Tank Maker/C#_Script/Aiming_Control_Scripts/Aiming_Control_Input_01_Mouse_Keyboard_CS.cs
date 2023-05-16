@@ -38,7 +38,7 @@ namespace ChobiAssets.PTM
 
         public override void Get_Input()
 		{
-            // Switch the aiming mode.
+           /* // Switch the aiming mode.
             if (Input.GetKeyDown(General_Settings_CS.Aim_Mode_Switch_Key))
             {
                 if (aimingScript.Mode == 0 || aimingScript.Mode == 2)
@@ -121,7 +121,7 @@ namespace ChobiAssets.PTM
                 // Control "reticleAimingFlag" in "Aiming_Control_CS".
                 aimingScript.reticleAimingFlag = false;
             }
-
+            */
             
             /*
             // Left lock on.

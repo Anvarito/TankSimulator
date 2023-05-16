@@ -12,7 +12,6 @@ namespace ChobiAssets.PTM
         private InputAction _resetTurretAction;
         private PlayerInput _playerInput;
         private Camera _camera;
-        private Transform _aimMarker;
         public AimingControlStickDrive(PlayerInput playerInput, InputAction resetTurretAction, InputAction lookAction, Camera camera)
         {
             _lookAction = lookAction;
