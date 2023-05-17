@@ -33,7 +33,7 @@ public class TankInputInitializer : MonoBehaviour
     private PlayerInput _playerInput;
     private NewControl _newControl;
 
-    public void InitializePlayer(PlayerInput playerInput)
+    public void InitializeInput(PlayerInput playerInput)
     {
         _playerInput = playerInput;
         _newControl = new NewControl();

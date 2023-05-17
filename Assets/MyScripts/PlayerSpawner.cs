@@ -27,7 +27,7 @@ public class PlayerSpawner : MonoBehaviour
             player.GetComponent<CameraViewSetup>().SetupLayoutScreen(playerConfigs[i].PlayerIndex, playerConfigs.Length);
             player.GetComponent<CameraViewSetup>().SetScreenAimPointByIndex(playerConfigs[i].PlayerIndex, playerConfigs.Length);
 
-            player.InitializePlayer(playerConfigs[i].Input);
+            player.InitializeInput(playerConfigs[i].Input);
         }
 
     }
