@@ -10,5 +10,6 @@ namespace Infrastructure.Assets
         public const string TankController = "General/Game_Controller";
         public const string EnemyTank = "General/AI Enemy";
         public const string TankUiSpawner = "General/UIResivers";
+        public static string MainMenu = "General/MainMenu";
     }
 }

@@ -22,6 +22,8 @@ namespace Infrastructure.StateMachine
                 [typeof(GameLoopState)] = new GameLoopState(this, coroutineRunner,serviceLocator.Single<IFactories>()),
                 [typeof(VictoryState)] = new VictoryState(this, serviceLocator.Single<IFactories>()),
                 [typeof(GameOverState)] = new GameOverState(this),
+                [typeof(MenuState)] = new MenuState(this,sceneLoader,serviceLocator.Single<IProgressService>(),serviceLocator.Single<IFactories>()),
+                [typeof(SetupPlayersState)] = new SetupPlayersState(this,sceneLoader,serviceLocator.Single<IFactories>()),
             };
         }
 

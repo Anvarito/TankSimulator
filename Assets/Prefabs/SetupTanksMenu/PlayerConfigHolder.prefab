@@ -73,7 +73,7 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 1
-  m_DefaultControlScheme: Gamepad
-  m_DefaultActionMap: Tank
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: e4796219-1cad-496a-897d-d0c400502c1e
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}

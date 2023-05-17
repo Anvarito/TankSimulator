@@ -25,7 +25,7 @@ namespace Infrastructure.StateMachine
             
             LoadProgressOrCreateNew();
 
-            _gameStateMachine.Enter<LoadLevelState, string>(_progressService.Progress.WorldData.PositionOnLevel.Level);
+            _gameStateMachine.Enter<MenuState>();
         }
 
         public void Exit()

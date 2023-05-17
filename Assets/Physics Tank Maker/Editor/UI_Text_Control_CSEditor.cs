@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEditor;
-using UnityEngine.UI;
 
 namespace ChobiAssets.PTM
 {

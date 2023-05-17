@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using ChobiAssets.PTM;
 using Infrastructure.Services.Progress;
+using Infrastructure.StateMachine;
 using Infrastructure.TestMono;
 using UnityEngine;
 
@@ -21,8 +22,10 @@ namespace Infrastructure.Factory.Base
         GameObject CreatePlayer(GameObject at);
         void CreateTankUiSpawner(PlayerUiParts gameFactoryPlayerUiParts);
         void CreateHud();
-        
-        
+
+
+        MainMenuUIHelper MainMenuUIHelper { get; }
+        GameObject CreateMainMenu();
     }
 
     public interface IEnemyFactory : IGameFactory

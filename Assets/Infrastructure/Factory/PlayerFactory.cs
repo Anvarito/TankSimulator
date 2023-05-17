@@ -1,8 +1,8 @@
 using ChobiAssets.PTM;
 using Infrastructure.Assets;
 using Infrastructure.Factory.Base;
+using Infrastructure.StateMachine;
 using Infrastructure.TestMono;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Infrastructure.Factory
@@ -10,9 +10,11 @@ namespace Infrastructure.Factory
     public class PlayerFactory : GameFactory, IPlayerFactory
     {
         public PlayerUiParts PlayerParts { get; } = new PlayerUiParts();
+        public MainMenuUIHelper MainMenuUIHelper { get; private set; }
         public GameOverBoard GameBoard => _gameOverBoard;
 
         private GameOverBoard _gameOverBoard;
+
 
         public PlayerFactory(IAssetLoader assetLoader) : base(assetLoader)
         {
@@ -24,12 +26,21 @@ namespace Infrastructure.Factory
         public void CreateTankUiSpawner(PlayerUiParts parts) =>
             InitializeUiWatchers(parts, uiSpawner: InstantiateRegistered(AssetPaths.TankUiSpawner));
 
-        public void CreateHud() => 
+        public void CreateHud() =>
             _gameOverBoard = InstantiateRegistered(AssetPaths.Hud).GetComponentInChildren<GameOverBoard>();
+
+        public GameObject CreateMainMenu() => 
+            RegisterMainMenuUIHelper(InstantiateRegistered(AssetPaths.MainMenu));
 
 
         private GameObject InstantiateRegisterTank(GameObject at) =>
             RegisterUiWatchers(InstantiateRegistered(AssetPaths.PlayerTank, at.transform.position));
+
+        private GameObject RegisterMainMenuUIHelper(GameObject mainMenu)
+        {
+            MainMenuUIHelper = mainMenu.GetComponentInChildren<MainMenuUIHelper>();
+            return mainMenu;
+        }
 
         private GameObject RegisterUiWatchers(GameObject gameObject)
         {

@@ -1,7 +1,4 @@
-﻿using UnityEngine;
-using System.Collections;
-using UnityEditor;
-using UnityEngine.UI;
+﻿using UnityEditor;
 
 namespace ChobiAssets.PTM
 {

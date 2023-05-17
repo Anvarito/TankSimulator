@@ -83,4 +83,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main.unity
     guid: c7340772ec16ede439ea344c9422e711
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 4d4f9fdc5a41ed24f97b1176f64c75ba
+  - enabled: 1
+    path: Assets/Scenes/SetupTankRoman.unity
+    guid: 80a05e4355086eb4bb0d485fe7695453
+  - enabled: 1
+    path: Assets/Scenes/MinimalTest.unity
+    guid: a0dee0841ec281845a14fbcf468359e9
   m_configObjects: {}
