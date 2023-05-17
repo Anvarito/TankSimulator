@@ -16,7 +16,7 @@ namespace ChobiAssets.PTM
 		*/
 
         // User options >>
-        public CameraViewSetup _cameraView;
+        [SerializeField] private CameraViewSetup _cameraView;
         public float OpenFire_Angle = 180.0f;
         // << User options
 

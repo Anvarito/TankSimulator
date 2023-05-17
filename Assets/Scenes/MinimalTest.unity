@@ -376,6 +376,7 @@ MonoBehaviour:
   _listTanks:
   - {fileID: 2390085117803253462, guid: 93f4521b77fb41f4b950efc27434f0d8, type: 3}
   - {fileID: 2390085117803253462, guid: 86895dc63c6d6d647aa59f8af70f9afc, type: 3}
+  - {fileID: 1083484181407159629, guid: 796fe3cf48c7b6e43bb8abe2e8b462c8, type: 3}
   PlayerSpawns:
   - {fileID: 34675483}
   - {fileID: 558587776}

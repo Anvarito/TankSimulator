@@ -12,14 +12,10 @@ public class TankInputInitializer : MonoBehaviour
     [SerializeField] private DamageReciviersManager _damageManager;
     [SerializeField] private Turret_Finishing_CS _turret_Finishing;
 
-    private PlayerInput _playerInput;
-    private NewControl _newControl;
-
     [Space(30)]
     [SerializeField] private AI_CS ai_core_script;
 
     [Space(30)]
-    [SerializeField] private InputActionAsset _actionAsset;
     [SerializeField] private Drive_Control_CS _driveControl;
     [SerializeField] private Cannon_Fire_CS _fireControl;
     [SerializeField] private Aiming_Control_CS _aimingControl;
@@ -27,13 +23,15 @@ public class TankInputInitializer : MonoBehaviour
     [SerializeField] private Gun_Camera_CS _gunCameraControl;
     [SerializeField] private Camera_Rotation_CS _cameraRotation;
 
-
     private Drive_Control_Input_00_Base_CS _driveControlType;
     private Cannon_Fire_Input_00_Base_CS _fireControlType;
     private Aiming_Control_Input_00_Base_CS _aimingControlType;
     private Gun_Camera_Input_00_Base_CS _gunCameraControlType;
     private Camera_Points_Manager_Input_00_Base_CS _cameraPoinrsType;
     private Camera_Rotation_Input_00_Base_CS _cameraInput;
+
+    private PlayerInput _playerInput;
+    private NewControl _newControl;
 
     public void InitializePlayer(PlayerInput playerInput)
     {

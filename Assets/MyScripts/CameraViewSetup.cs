@@ -7,9 +7,11 @@ public class CameraViewSetup : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] private Camera _camera;
     private Vector2 _aimPosition; 
-    public void SetupLayoutScreen(Vector2 position, Vector2 size)
+    public void SetupLayoutScreen(int playerIndex, int maxPlayer)
     {
-        _camera.rect = new Rect(position, size);
+        Vector2 position = new Vector2(0, 0.5f * playerIndex);
+        Vector2 scale = new Vector2(1, 1.0f / maxPlayer);
+        _camera.rect = new Rect(position, scale);
     }
 
     public Camera GetCamera()

@@ -25,7 +25,7 @@ namespace ChobiAssets.PTM
             serializedObject.Update();
 
             GUI.backgroundColor = new Color(1.0f, 1.0f, 0.5f, 1.0f);
-            CamViewProp.objectReferenceValue = EditorGUILayout.ObjectField("Camera view setup", CamViewProp.objectReferenceValue, typeof(CameraViewSetup), false);
+            CamViewProp.objectReferenceValue = EditorGUILayout.ObjectField("Camera view setup", CamViewProp.objectReferenceValue, typeof(CameraViewSetup), true);
             EditorGUILayout.Space();
             EditorGUILayout.HelpBox("Aiming settings", MessageType.None, true);
             EditorGUILayout.Slider(OpenFire_AngleProp, 1.0f, 360.0f, "Open Fire Angle");

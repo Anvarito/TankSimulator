@@ -51,6 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _aimLeadPresenterPrefab: {fileID: 1038600634077210470, guid: 6f83dcb8e09e2774088922a846c0ead4, type: 3}
   aimingScript: {fileID: 0}
+  _camera: {fileID: 0}
 --- !u!114 &331844288142114373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,6 +67,7 @@ MonoBehaviour:
   _leadMarkerPresenterPrefab: {fileID: 2735223905454046662, guid: 247687aca8c20d64bbc37f0d98866465, type: 3}
   _aimingScript: {fileID: 0}
   _bulletGenerator: {fileID: 0}
+  _camera: {fileID: 0}
 --- !u!114 &1127647858160360992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,6 +82,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _reloadMarkerCanvasPrefab: {fileID: 1442603259745270361, guid: 4c05cce6d1b365f4db8a9702c9a100ad, type: 3}
   _cannonFireScript: {fileID: 0}
+  _camera: {fileID: 0}
 --- !u!114 &398834320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,6 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gunCamera: {fileID: 0}
   _reticleUIPresenterPrefab: {fileID: 3434523930264630701, guid: 59085f44a027c4b428aa50485223ae5b, type: 3}
+  _camera: {fileID: 0}
 --- !u!114 &398834321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,6 +112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ui_HP_Bars_Self_CSprefab: {fileID: 114719096273676120, guid: 658df433f8bd5ac43ab24a488688f2d7, type: 3}
   _damageManager: {fileID: 0}
+  _camera: {fileID: 0}
 --- !u!114 &1224471283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,5 +125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbb5d0741e60e974aa51391a70922706, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _camera: {fileID: 0}
   _speedIndicatorUIPrefab: {fileID: 4276478798196292613, guid: 8ba9b2f39b3d4494caf37a2f92a71e09, type: 3}
   _drive_Control_CS: {fileID: 0}
