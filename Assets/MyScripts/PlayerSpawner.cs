@@ -20,11 +20,12 @@ public class PlayerSpawner : MonoBehaviour
             playerPrefab = _listTanks[playerConfigs[i].TankIndex];
 
             TankInputInitializer player = Instantiate(playerPrefab, PlayerSpawns[i].position, PlayerSpawns[i].rotation);
-
+            player.transform.name += Random.Range(0, 10000);
             //Layout rect
             Vector2 position = new Vector2(0, 0.5f * i);
             Vector2 scale = new Vector2(1, 1.0f / playerConfigs.Length);
             player.GetComponent<CameraViewSetup>().SetupLayoutScreen(position, scale);
+            player.GetComponent<CameraViewSetup>().SetScreenAimPointByIndex(playerConfigs[i].PlayerIndex, playerConfigs.Length);
 
             player.InitializePlayer(playerConfigs[i].Input);
         }

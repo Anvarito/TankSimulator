@@ -18,6 +18,7 @@ public class LeadMarkerPresenter : MonoBehaviour
         _aimingScript = aimingScript;
         _bullet_Generator_Script = bulletGenerator;
         _bulletGeneratorTransform = _bullet_Generator_Script.transform;
+
     }
     public void MarkerControl()
     {
@@ -39,6 +40,7 @@ public class LeadMarkerPresenter : MonoBehaviour
         // Calculate the ballistic.
         var muzzlePos = _bulletGeneratorTransform.position;
         var targetDir = _aimingScript.Target_Position - muzzlePos;
+        Debug.DrawRay(muzzlePos, targetDir, Color.red, 100);
         var targetBase = Vector2.Distance(Vector2.zero, new Vector2(targetDir.x, targetDir.z));
         var bulletVelocity = _bulletGeneratorTransform.forward * _bullet_Generator_Script.Current_Bullet_Velocity;
         if (_aimingScript.Target_Rigidbody)

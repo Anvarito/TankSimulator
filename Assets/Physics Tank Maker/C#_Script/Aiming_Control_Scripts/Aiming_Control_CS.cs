@@ -16,9 +16,9 @@ namespace ChobiAssets.PTM
 		*/
 
         // User options >>
+        public CameraViewSetup _cameraView;
         public float OpenFire_Angle = 180.0f;
         // << User options
-
 
         int inputType;
         Turret_Horizontal_CS[] turretHorizontalScripts;
@@ -33,7 +33,7 @@ namespace ChobiAssets.PTM
         Transform rootTransform;
         Rigidbody thisRigidbody;
 
-       
+
 
         public Vector3 Target_Position; // Referred to from "Turret_Horizontal_CS", "Cannon_Vertical_CS", "UI_Aim_Marker_Control_CS", "ReticleWheel_Control_CS".
         public Transform Target_Transform; // Referred to from "UI_Aim_Marker_Control_CS", "UI_HP_Bars_Target_CS".
@@ -47,7 +47,7 @@ namespace ChobiAssets.PTM
         // For manual-turn.
         public float Turret_Turn_Rate; // Referred to from "Turret_Horizontal_CS".
         public float Cannon_Turn_Rate; // Referred to from "Cannon_Vertical_CS".
-        Vector3 screenCenter = Vector2.zero;
+        Vector3 screenAimPoint = Vector2.zero;
 
 
         protected Aiming_Control_Input_00_Base_CS inputScript;
@@ -55,26 +55,31 @@ namespace ChobiAssets.PTM
         public bool Is_Selected; // Referred to from "UI_HP_Bars_Target_CS".
         private bool _isTankDestroyed = false;
 
-        private Camera _camera;
-
-        public void Initialize(Aiming_Control_Input_00_Base_CS aimingControl, Camera camera)
+        public Camera CameraMain { get { return _cameraView.GetCamera(); } }
+        public void Initialize(Aiming_Control_Input_00_Base_CS aimingControl)
         {
+
             rootTransform = transform.root;
             thisRigidbody = GetComponent<Rigidbody>();
             Turret_Speed_Multiplier = 1.0f;
-            _camera = camera;
             // Get the input type.
             if (inputType != 10)
             { // This tank is not an AI tank.
                 inputType = General_Settings_CS.Input_Type;
-                Use_Auto_Lead = General_Settings_CS.Use_Auto_Lead;
+                Use_Auto_Lead = false;
                 inputScript = aimingControl;
                 inputScript.Prepare(this);
                 Mode = 1;
+                if (_cameraView == null)
+                {
+                    Debug.LogError("CameraViewSetup not assigned!");
+                }
+
+                screenAimPoint = _cameraView.GetAimPosition();
             }
             else
             {
-               // Mode = 0;
+                // Mode = 0;
             }
 
             // Get the "Turret_Horizontal_CS" and "Cannon_Vertical_CS" scripts in the tank.
@@ -86,41 +91,7 @@ namespace ChobiAssets.PTM
 
             Switch_Mode();
 
-            SetAimingPoint();
         }
-
-        private void SetAimingPoint()
-        {
-            screenCenter.x = _camera.pixelRect.width * 0.5f;
-            screenCenter.y = _camera.pixelRect.height * (0.5f + General_Settings_CS.Aiming_Offset);
-        }
-        //protected virtual void Set_Input_Script(int type)
-        //{
-        //    switch (type)
-        //    {
-        //        case 0: // Mouse + Keyboard (Stepwise)
-        //        case 1: // Mouse + Keyboard (Pressing)
-        //            inputScript = new Aiming_Control_Input_01_Mouse_Keyboard_CS();
-        //            break;
-
-        //        case 2: // GamePad (Single stick)
-        //            inputScript = new Aiming_Control_Input_02_For_Single_Stick_Drive_CS();
-        //            break;
-
-        //        case 3: // GamePad (Twin sticks)
-        //            inputScript = new Aiming_Control_Input_03_For_Twin_Sticks_Drive_CS();
-        //            break;
-
-        //        case 4: // GamePad (Triggers)
-        //            inputScript = new Aiming_Control_Input_04_For_Triggers_Drive_CS();
-        //            break;
-
-        //        case 10: // AI
-        //            // The order is sent from "AI_CS".
-        //            break;
-        //    }
-        //}
-
 
         void Update()
         {
@@ -216,7 +187,7 @@ namespace ChobiAssets.PTM
         { // Called from "Aiming_Control_Input_##_###".
 
             // Find a target by casting a ray from the camera.
-            var mainCamera = _camera;
+            var mainCamera = CameraMain;
             var ray = mainCamera.ScreenPointToRay(screenPos);
             if (Physics.Raycast(ray, out RaycastHit raycastHit, 2048.0f, Layer_Settings_CS.Aiming_Layer_Mask))
             {
@@ -291,14 +262,13 @@ namespace ChobiAssets.PTM
             }
         }
 
-        
         public void Cast_Ray_Free()
         { // Called from "Aiming_Control_Input_##_###".
 
             // Find a target by casting a ray from the camera.
-            var mainCamera = _camera;
-            
-            var ray = mainCamera.ScreenPointToRay(screenCenter);
+
+            var ray = CameraMain.ScreenPointToRay(screenAimPoint);
+            //if (Physics.Raycast(ray, out RaycastHit raycastHit, 2048.0f, Layer_Settings_CS.Aiming_Layer_Mask))
             if (Physics.Raycast(ray, out RaycastHit raycastHit, 2048.0f, Layer_Settings_CS.Aiming_Layer_Mask))
             {
                 var colliderTransform = raycastHit.collider.transform;
@@ -317,13 +287,13 @@ namespace ChobiAssets.PTM
                             Target_Transform = colliderTransform;
 
                             // Set the offset from the pivot.
-                            targetOffset = Target_Transform.InverseTransformPoint(raycastHit.point);
-                            if (Target_Transform.localScale != Vector3.one)
-                            { // The hit collider should be an "Armor_Collider".
-                                targetOffset.x *= Target_Transform.localScale.x;
-                                targetOffset.y *= Target_Transform.localScale.y;
-                                targetOffset.z *= Target_Transform.localScale.z;
-                            }
+                            //targetOffset = Target_Transform.InverseTransformPoint(raycastHit.point);
+                            //if (Target_Transform.localScale != Vector3.one)
+                            //{ // The hit collider should be an "Armor_Collider".
+                            //    targetOffset.x *= Target_Transform.localScale.x;
+                            //    targetOffset.y *= Target_Transform.localScale.y;
+                            //    targetOffset.z *= Target_Transform.localScale.z;
+                            //}
 
                             // Store the rigidbody of the target.
                             Target_Rigidbody = raycastHit.rigidbody;
@@ -344,10 +314,9 @@ namespace ChobiAssets.PTM
             // Clear the target.
             Target_Transform = null;
             Target_Rigidbody = null;
-
             // Set the position through this tank.
-            screenCenter.z = 64.0f;
-            Target_Position = mainCamera.ScreenToWorldPoint(screenCenter);
+            screenAimPoint.z = 64.0f;
+            Target_Position = CameraMain.ScreenToWorldPoint(screenAimPoint);
         }
 
 
@@ -355,7 +324,7 @@ namespace ChobiAssets.PTM
         { // Called from "Aiming_Control_Input_##_###".
 
             // Find a target by casting a sphere from the camera.
-            var ray = _camera.ScreenPointToRay(screenPos);
+            var ray = CameraMain.ScreenPointToRay(screenPos);
             var raycastHits = Physics.SphereCastAll(ray, spherecastRadius, 2048.0f, Layer_Settings_CS.Aiming_Layer_Mask);
             for (int i = 0; i < raycastHits.Length; i++)
             {
@@ -428,7 +397,7 @@ namespace ChobiAssets.PTM
 
             // Get the base angle to detect the new target.
             float baseAng;
-            var mainCamera = _camera;
+            var mainCamera = CameraMain;
             if (direction != 2 && Target_Transform)
             {
                 Vector3 currentLocalPos = mainCamera.transform.InverseTransformPoint(Target_Position);
@@ -564,16 +533,16 @@ namespace ChobiAssets.PTM
         { // Called from "ID_Settings_CS".
             this.Is_Selected = isSelected;
 
-            if (isSelected == false)
-            {
-                return;
-            } // This tank is selected.
+            //if (isSelected == false)
+            //{
+            //    return;
+            //} // This tank is selected.
 
-            // Send this reference to the "UI_HP_Bars_Target_CS" in the scene.
-            if (UI_HP_Bars_Target_CS.Instance)
-            {
-                UI_HP_Bars_Target_CS.Instance.Get_Aiming_Script(this);
-            }
+            //// Send this reference to the "UI_HP_Bars_Target_CS" in the scene.
+            //if (UI_HP_Bars_Target_CS.Instance)
+            //{
+            //    UI_HP_Bars_Target_CS.Instance.Get_Aiming_Script(this);
+            //}
         }
 
 
@@ -581,8 +550,8 @@ namespace ChobiAssets.PTM
         { // Called from "Damage_Control_Center_CS".
           //Destroy (inputScript as Object);
             _isTankDestroyed = true;
-            if(inputScript != null)
-            inputScript.DisableInput();
+            if (inputScript != null)
+                inputScript.DisableInput();
             //Destroy (this);
         }
 

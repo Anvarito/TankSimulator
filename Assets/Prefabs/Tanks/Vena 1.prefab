@@ -33031,7 +33031,7 @@ GameObject:
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2390085116967680086
 Transform:
   m_ObjectHideFlags: 0
@@ -39042,7 +39042,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33d529722d730504e8756f43f8747a93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _cameraView: {fileID: 4063288021130268033}
   OpenFire_Angle: 180
+  modUp: 1
   Use_Auto_Turn: 0
   Use_Auto_Lead: 0
   Aiming_Blur_Multiplier: 1
@@ -48101,7 +48103,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2390085117803253461}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 22dca8629d95c6f478624296b3d36497, type: 3}
   m_Name: 
@@ -48138,7 +48140,6 @@ MonoBehaviour:
   _iDSettingsCS: {fileID: 2390085117803253465}
   _damageManager: {fileID: 2390085117309224830}
   _turret_Finishing: {fileID: 2390085118084687408}
-  _cameraViewSetup: {fileID: 4063288021130268033}
   ai_core_script: {fileID: 0}
   _actionAsset: {fileID: -944628639613478452, guid: 2689d64a66172e548b7ef8cd989db6b9, type: 3}
   _driveControl: {fileID: 2390085117309224829}
@@ -50668,7 +50669,7 @@ GameObject:
   - component: {fileID: 2390085117933263230}
   m_Layer: 0
   m_Name: Main Camera
-  m_TagString: MainCamera
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

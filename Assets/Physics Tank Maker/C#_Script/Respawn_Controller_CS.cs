@@ -49,31 +49,31 @@ namespace ChobiAssets.PTM
         }
 
 
-        void Update()
-        {
-            if (isSelected == false)
-            {
-                return;
-            }
+        //void Update()
+        //{
+        //    if (isSelected == false)
+        //    {
+        //        return;
+        //    }
 
-            if (General_Settings_CS.Allow_Manual_Respawn)
-            {
-                Manual_Respawn();
-            }
-        }
+        //    if (General_Settings_CS.Allow_Manual_Respawn)
+        //    {
+        //        Manual_Respawn();
+        //    }
+        //}
 
 
-        void Manual_Respawn()
-        {
-            // Respawn the tank Manually.
-            if (Input.GetKeyDown(General_Settings_CS.Respawn_Key))
-            {
-                if (Respawn_Times > 0 && isAutoRespawning == false)
-                {
-                    Respawn();
-                }
-            }
-        }
+        //void Manual_Respawn()
+        //{
+        //    // Respawn the tank Manually.
+        //    if (Input.GetKeyDown(General_Settings_CS.Respawn_Key))
+        //    {
+        //        if (Respawn_Times > 0 && isAutoRespawning == false)
+        //        {
+        //            Respawn();
+        //        }
+        //    }
+        //}
 
 
         void Respawn()

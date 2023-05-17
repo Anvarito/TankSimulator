@@ -11,15 +11,13 @@ namespace ChobiAssets.PTM
         private InputAction _lookAction;
         private InputAction _resetTurretAction;
         private PlayerInput _playerInput;
-        private Camera _camera;
-        public AimingControlStickDrive(PlayerInput playerInput, InputAction resetTurretAction, InputAction lookAction, Camera camera)
+        public AimingControlStickDrive(PlayerInput playerInput, InputAction resetTurretAction, InputAction lookAction)
         {
             _lookAction = lookAction;
             _playerInput = playerInput;
-            _camera = camera;
 
             _resetTurretAction = resetTurretAction;
-            _playerInput.onActionTriggered += ResetTurret;
+           //_playerInput.onActionTriggered += ResetTurret;
             _playerInput.onActionTriggered += Rotated;
         }
 
@@ -61,7 +59,7 @@ namespace ChobiAssets.PTM
                 { // The gun camera is enabled now.
 
                     // Set the adjust angle.
-                    var multiplier = Mathf.Lerp(0.05f, 1.0f, _camera.fieldOfView / 10.0f); // Set the multiplier according to the FOV.
+                    var multiplier = Mathf.Lerp(0.05f, 1.0f, aimingScript.CameraMain.fieldOfView / 10.0f); // Set the multiplier according to the FOV.
 
                     var vertical = obj.action.ReadValue<Vector2>().y;
                     var horizontal = obj.action.ReadValue<Vector2>().x;
@@ -91,10 +89,10 @@ namespace ChobiAssets.PTM
                 if (aimingScript.Target_Transform)
                 { // Now locking-on the target.
                     // Cancel the lock-on.
-                    if (Input.GetKeyDown(General_Settings_CS.Turret_Cancel_Pad_Button))
+                    //if (Input.GetKeyDown(General_Settings_CS.Turret_Cancel_Pad_Button))
                     {
-                        aimingScript.Target_Transform = null;
-                        aimingScript.Target_Rigidbody = null;
+                        //aimingScript.Target_Transform = null;
+                        //aimingScript.Target_Rigidbody = null;
                     }
 
                     // Control "reticleAimingFlag" in "Aiming_Control_CS".
@@ -103,7 +101,7 @@ namespace ChobiAssets.PTM
                 else
                 { // Now not locking-on.
                     // Try to find a new target.
-                    if (Input.GetKey(General_Settings_CS.Turret_Cancel_Pad_Button) == false)
+                    //if (Input.GetKey(General_Settings_CS.Turret_Cancel_Pad_Button) == false)
                     {
                         //screenCenter.x = Screen.width * 0.5f;
                         //screenCenter.y = Screen.height * 0.5f;
@@ -124,11 +122,11 @@ namespace ChobiAssets.PTM
                 aimingScript.Adjust_Angle = Vector3.zero;
 
                 // Stop the turret and cannon rotation while pressing the cancel button. >> Only the camera rotates.
-                if (Input.GetKey(General_Settings_CS.Turret_Cancel_Pad_Button))
-                {
-                    aimingScript.Turret_Speed_Multiplier -= 2.0f * Time.deltaTime;
-                }
-                else
+               // if (Input.GetKey(General_Settings_CS.Turret_Cancel_Pad_Button))
+               // {
+               //     aimingScript.Turret_Speed_Multiplier -= 2.0f * Time.deltaTime;
+               // }
+               // else
                 {
                     aimingScript.Turret_Speed_Multiplier += 0.01f * Time.deltaTime;
                 }
