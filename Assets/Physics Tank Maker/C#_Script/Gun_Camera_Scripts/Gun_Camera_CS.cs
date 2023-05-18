@@ -66,7 +66,7 @@ namespace ChobiAssets.PTM
             {
                 Gun_Camera = GetComponent<Camera>();
             }
-            Gun_Camera.rect = new Rect(0.0f, 0.0f, 1.0f, 1.0f);
+            //Gun_Camera.rect = new Rect(0.0f, 0.0f, 1.0f, 1.0f);
             Gun_Camera.enabled = false;
             Gun_Camera.fieldOfView = Maximum_FOV;
             currentFOV = Gun_Camera.fieldOfView;

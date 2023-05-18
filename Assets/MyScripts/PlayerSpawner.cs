@@ -5,12 +5,12 @@ using UnityEngine;
 public class PlayerSpawner : MonoBehaviour
 {
 
-    [SerializeField] private List<TankInputInitializer> _listTanks;
+    [SerializeField] private List<PlayerInputInitializer> _listTanks;
 
     [SerializeField]
     private Transform[] PlayerSpawns;
 
-    private TankInputInitializer playerPrefab;
+    private PlayerInputInitializer playerPrefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,21 +20,16 @@ public class PlayerSpawner : MonoBehaviour
         {
             playerPrefab = _listTanks[playerConfigs[i].TankIndex];
 
-            TankInputInitializer player = Instantiate(playerPrefab, PlayerSpawns[i].position, PlayerSpawns[i].rotation);
+            PlayerInputInitializer player = Instantiate(playerPrefab, PlayerSpawns[i].position, PlayerSpawns[i].rotation);
             player.transform.name += Random.Range(0, 10000);
 
             //Layout rect
             player.GetComponent<CameraViewSetup>().SetupLayoutScreen(playerConfigs[i].PlayerIndex, playerConfigs.Length);
-            player.GetComponent<CameraViewSetup>().SetScreenAimPointByIndex(playerConfigs[i].PlayerIndex, playerConfigs.Length);
+            player.GetComponent<CameraViewSetup>().SetScreenAimPoint(playerConfigs[i].PlayerIndex, playerConfigs.Length);
 
-            player.InitializeInput(playerConfigs[i].Input);
+            player.SetPlayerInput(playerConfigs[i].Input);
+            player.Initialize();
         }
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
 
     }
 }

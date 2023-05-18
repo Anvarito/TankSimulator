@@ -62,7 +62,7 @@ namespace ChobiAssets.PTM
 
         private void Aim(InputAction.CallbackContext obj)
         {
-            if (obj.action != _aimAction)
+            if (obj.action.name != _aimAction.name)
                 return;
 
             if (gunCameraScript.Gun_Camera.enabled)

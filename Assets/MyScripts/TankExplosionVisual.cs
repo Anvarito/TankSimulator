@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [System.Serializable]
-public struct TurretDamageControlProp
+public class TurretDamageControlProp
 {
     public DamageTurret DamageTurret;
 

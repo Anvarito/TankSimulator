@@ -6,6 +6,8 @@ public class CameraViewSetup : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private Camera _camera;
+    [SerializeField] private Camera _gunCamera;
+
     private Vector2 _aimPosition; 
     public void SetupLayoutScreen(int playerIndex, int maxPlayer)
     {
@@ -19,7 +21,7 @@ public class CameraViewSetup : MonoBehaviour
         return _camera;
     }
 
-    public void SetScreenAimPointByIndex(int playerIndex, int maxPlayers)
+    public void SetScreenAimPoint(int playerIndex, int maxPlayers)
     {
         _aimPosition.x = _camera.pixelRect.width * 0.5f;
 

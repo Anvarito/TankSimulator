@@ -4,7 +4,7 @@ using ChobiAssets.PTM;
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(TankInputInitializer))]
+[CustomEditor(typeof(PlayerInputInitializer))]
 public class InputInitializeManager_Editor : Editor
 {
     /*
