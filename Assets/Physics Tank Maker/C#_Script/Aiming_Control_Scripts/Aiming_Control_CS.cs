@@ -315,15 +315,16 @@ namespace ChobiAssets.PTM
             Target_Transform = null;
             Target_Rigidbody = null;
             // Set the position through this tank.
-            screenAimPoint.z = 64.0f;
+            screenAimPoint.z = 1000.0f;
             Target_Position = CameraMain.ScreenToWorldPoint(screenAimPoint);
         }
 
 
-        public void Reticle_Aiming(Vector3 screenPos, ERelationship thisRelationship)
+        public void Reticle_Aiming(ERelationship thisRelationship)
         { // Called from "Aiming_Control_Input_##_###".
 
             // Find a target by casting a sphere from the camera.
+            var screenPos = _cameraView.GetReticleAimPosition();
             var ray = CameraMain.ScreenPointToRay(screenPos);
             var raycastHits = Physics.SphereCastAll(ray, spherecastRadius, 2048.0f, Layer_Settings_CS.Aiming_Layer_Mask);
             for (int i = 0; i < raycastHits.Length; i++)

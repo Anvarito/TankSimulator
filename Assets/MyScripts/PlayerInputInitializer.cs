@@ -54,11 +54,11 @@ public class PlayerInputInitializer : InputInitializerBase
 
     protected override void SetypControlsByType()
     {
-        _driveControlType = new Drive_Control_Input_03_Single_Stick_CS(_playerInput, _newControl.TankMovement.Move);
-        _fireControlType = new Cannon_Fire_Input_02_For_Sticks_Drive_CS(_playerInput, _newControl.TankMovement.Fire, _newControl.TankMovement.Switch);
-        _gunCameraControlType = new GunCameraInput02_ForSingleStickDrive(_playerInput, _newControl.TankMovement.Aim, _newControl.TankMovement.ZoomIn, _newControl.TankMovement.ZoomOut);
-        _aimingControlType = new AimingControlStickDrive(_playerInput, _newControl.TankMovement.ResetTurret, _newControl.TankMovement.Look);
-        _cameraInput = new Camera_Rotation_Input_02_For_Single_Stick_Drive_CS(_playerInput, _newControl.TankMovement.Look, _newControl.TankMovement.ResetTurret);
-        _cameraPoinrsType = new Camera_Points_Manager_Input_02_Gamepad_CS();
+        _driveControlType            = new Drive_Control_Input_03_Single_Stick_CS               (_playerInput, _newControl.TankMovement.Move);
+        _fireControlType             = new Cannon_Fire_Input_02_For_Sticks_Drive_CS             (_playerInput, _newControl.TankMovement.Fire, _newControl.TankMovement.Switch);
+        _gunCameraControlType        = new GunCameraInput02_ForSingleStickDrive                 (_playerInput, _newControl.TankMovement.Aim, _newControl.TankMovement.ZoomIn, _newControl.TankMovement.ZoomOut);
+        _aimingControlType           = new AimingControlStickDrive                              (_playerInput, _newControl.TankMovement.ResetTurret, _newControl.TankMovement.Look);
+        _cameraInput                 = new Camera_Rotation_Input_02_For_Single_Stick_Drive_CS   (_playerInput, _newControl.TankMovement.Look, _newControl.TankMovement.ResetTurret);
+        _cameraPoinrsType            = new Camera_Points_Manager_Input_02_Gamepad_CS();
     }
 }

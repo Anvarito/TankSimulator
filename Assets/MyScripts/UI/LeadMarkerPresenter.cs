@@ -11,16 +11,19 @@ public class LeadMarkerPresenter : MonoBehaviour
     [SerializeField] private Image _markerImage;
     [SerializeField] private float _calculationTime = 2.0f;
     private Camera _camera;
+    private Camera _gunCamera;
     private Aiming_Control_CS _aimingScript;
     private Bullet_Generator_CS _bullet_Generator_Script;
     private Transform _bulletGeneratorTransform;
-    public void Initializing(Aiming_Control_CS aimingScript, Bullet_Generator_CS bulletGenerator, Camera camera)
+    public void Initializing(Aiming_Control_CS aimingScript, Bullet_Generator_CS bulletGenerator, Camera camera, Camera gunCam)
     {
+        _gunCamera = gunCam;
         _camera = camera;
         _aimingScript = aimingScript;
         _bullet_Generator_Script = bulletGenerator;
         _bulletGeneratorTransform = _bullet_Generator_Script.transform;
 
+        _markerImage.sprite = _rightSprite;
     }
     public void MarkerControl()
     {
@@ -86,7 +89,8 @@ public class LeadMarkerPresenter : MonoBehaviour
         }
 
         // Convert the hit point to the screen point.
-        var screenPos = _camera.WorldToScreenPoint(currentPos);
+        Camera camera = _aimingScript.CameraMain.enabled ? _camera : _gunCamera;
+        var screenPos = camera.WorldToScreenPoint(currentPos);
         if (screenPos.z < 0.0f)
         { // The hit point is behind the camera.
             _markerImage.enabled = false;
@@ -103,19 +107,18 @@ public class LeadMarkerPresenter : MonoBehaviour
         { // The bullet will hit something.
             if (isTank)
             { // The hit object has a rigidbody.
-              //markerImage.color = Color.red;
-                _markerImage.sprite = _rightSprite;
+                _markerImage.color = Color.red;
+               // _markerImage.sprite = _rightSprite;
             }
             else
             { // The hit object has no rigidbody.
-              //markerImage.color = Color.white;
-                _markerImage.sprite = _wrongSprite;
+                _markerImage.color = Color.white;
+                //_markerImage.sprite = _wrongSprite;
             }
         }
         else
         { // The bullet will not hit anything.
           //markerImage.color = Color.gray;
-            _markerImage.sprite = _wrongSprite;
         }
     }
 }
