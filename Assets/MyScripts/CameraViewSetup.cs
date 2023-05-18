@@ -9,11 +9,13 @@ public class CameraViewSetup : MonoBehaviour
     [SerializeField] private Camera _gunCamera;
 
     private Vector2 _aimPosition; 
+    private Vector2 _aimReticlePosition; 
     public void SetupLayoutScreen(int playerIndex, int maxPlayer)
     {
         Vector2 position = new Vector2(0, 0.5f * playerIndex);
         Vector2 scale = new Vector2(1, 1.0f / maxPlayer);
         _camera.rect = new Rect(position, scale);
+        _gunCamera.rect = new Rect(position, scale);
     }
 
     public Camera GetCamera()
@@ -30,10 +32,18 @@ public class CameraViewSetup : MonoBehaviour
         float positionHeight = workArea * playerIndex + heightKoeff;
 
         _aimPosition.y = positionHeight;
-    }
 
+        heightKoeff = workArea * 0.5f;
+        positionHeight = workArea * playerIndex + heightKoeff;
+
+        _aimReticlePosition.y = positionHeight;
+    }
     public Vector2 GetAimPosition()
     {
         return _aimPosition;
+    }
+    public Vector2 GetReticleAimPosition()
+    {
+        return _aimReticlePosition;
     }
 }
