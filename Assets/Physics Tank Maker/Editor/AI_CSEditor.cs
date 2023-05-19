@@ -11,6 +11,7 @@ namespace ChobiAssets.PTM
 		SerializedProperty turretScript;
 		SerializedProperty cannonScript;
 		SerializedProperty aimingScript;
+		SerializedProperty damageRecProp;
 
 		SerializedProperty WayPoint_RadiusProp;
 		SerializedProperty Pivot_Turn_AngleProp;
@@ -36,6 +37,7 @@ namespace ChobiAssets.PTM
 			turretScript = serializedObject.FindProperty("turret_Horizontal_CS");
 			cannonScript = serializedObject.FindProperty("cannon_Vertical_CS");
 			aimingScript = serializedObject.FindProperty("aiming_Control_CS");
+			damageRecProp = serializedObject.FindProperty("_damageReciviersManager");
 
 			WayPoint_RadiusProp = serializedObject.FindProperty ("WayPoint_Radius");
 			Pivot_Turn_AngleProp = serializedObject.FindProperty ("Pivot_Turn_Angle");
@@ -66,6 +68,7 @@ namespace ChobiAssets.PTM
 			turretScript.objectReferenceValue = EditorGUILayout.ObjectField ("Turret_Horizontal_CS script", turretScript.objectReferenceValue, typeof(Turret_Horizontal_CS), true);
 			cannonScript.objectReferenceValue = EditorGUILayout.ObjectField ("Cannon_Vertical_CS script", cannonScript.objectReferenceValue, typeof(Cannon_Vertical_CS), true);
 			aimingScript.objectReferenceValue = EditorGUILayout.ObjectField ("Aiming_Control_CS script", aimingScript.objectReferenceValue, typeof(Aiming_Control_CS), true);
+			damageRecProp.objectReferenceValue = EditorGUILayout.ObjectField ("DamageReciviersManager script", damageRecProp.objectReferenceValue, typeof(DamageReciviersManager), true);
 
 			EditorGUILayout.Space ();
 			EditorGUILayout.HelpBox ("Drive settings", MessageType.None, true);

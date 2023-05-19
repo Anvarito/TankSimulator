@@ -20,7 +20,7 @@ public class InputInitializerBase : MonoBehaviour
 
     public virtual void Initialize()
     {
-        _turret_Finishing.Launch();
+        _turret_Finishing.Assembling();
 
         SetypControlsByType();
 

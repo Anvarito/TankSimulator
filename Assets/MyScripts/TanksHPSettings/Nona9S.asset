@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a18ab2382110c648ae2e7969d3b88d5, type: 3}
-  m_Name: KVuserHPSettings
+  m_Name: Nona9S
   m_EditorClassIdentifier: 
   _turretDamageSettings:
     MaxHitPoints: 1500

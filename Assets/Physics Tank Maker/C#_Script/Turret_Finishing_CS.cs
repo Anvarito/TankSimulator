@@ -53,7 +53,7 @@ namespace ChobiAssets.PTM
             }
         }
 
-        public void Launch()
+        public void Assembling()
         {
             thisTransform = transform;
             Single_Barrel();

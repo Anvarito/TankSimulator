@@ -21,6 +21,7 @@ namespace ChobiAssets.PTM
         [SerializeField] private Turret_Horizontal_CS turret_Horizontal_CS;
         [SerializeField] private Cannon_Vertical_CS cannon_Vertical_CS;
         [SerializeField] private Aiming_Control_CS aiming_Control_CS;
+        [SerializeField] private DamageReciviersManager _damageReciviersManager;
 
 
         public float WayPoint_Radius = 10.0f;
@@ -37,7 +38,7 @@ namespace ChobiAssets.PTM
 		public GameObject Obstacle_Prefab;
 		public float Stuck_Count = 2.0f; // Referred to from "AI_Hand"
 		// Combat settings.
-		public float Fire_Angle = 2.0f; // Referred to from "Aiming_Control_CS".
+		public float Fire_Angle = 0.0f; // Referred to from "Aiming_Control_CS".
 		public bool Direct_Fire = true; // Referred to from "Cannon_Fire_CS".
 		public float Fire_Count = 0.5f; // Referred to from "Cannon_Fire_CS".
 		// << User options
@@ -106,8 +107,11 @@ namespace ChobiAssets.PTM
         {
             // Broadcast this reference to all the tank parts from the top object.
             transform.parent.parent.BroadcastMessage("Get_AI_CS", this, SendMessageOptions.DontRequireReceiver);
-        }
 
+            _damageReciviersManager.OnBodyDamaged.AddListener(TankDamaged);
+            _damageReciviersManager.OnTurretDamaged.AddListener(TankDamaged);
+            _damageReciviersManager.OnTrackDamaged.AddListener(TrackDamaged);
+        }
 
         void Start()
 		{
@@ -381,7 +385,7 @@ namespace ChobiAssets.PTM
             }
 
             // Detect the target.
-            Vector3 targetPosition = Target_Transform.position + (Target_Transform.up * targetUpperOffset);
+            Vector3 targetPosition = Target_Transform.position /*+ (Target_Transform.up * targetUpperOffset)*/;
             targetDistance = Vector3.Distance(eyeTransform.position, targetPosition);
             if (targetDistance < Settings_Script.Visibility_Radius || Wakeful_Flag || Is_Sharing_Target)
             { // The target is within the "Visibility_Radius", or right after being shot.
@@ -471,7 +475,14 @@ namespace ChobiAssets.PTM
                 return true;
             }
         }
-
+        private void TrackDamaged(TrackDamageRecivier arg0)
+        {
+            StartCoroutine(Wake_Up_Timer());
+        }
+        private void TankDamaged(float arg0, float arg1)
+        {
+            StartCoroutine(Wake_Up_Timer());
+        }
 
         public IEnumerator Wake_Up_Timer()
         { // Called from "Damage_Control_Center_CS", when the AI tank is attacked.

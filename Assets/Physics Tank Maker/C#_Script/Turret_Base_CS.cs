@@ -31,6 +31,7 @@ namespace ChobiAssets.PTM
 
 		public GameObject Damage_Effect_Object; // for old versions.
 
+		public Transform TurretMesh;
 
         // For editor script.
         public bool Has_Changed;
@@ -38,7 +39,7 @@ namespace ChobiAssets.PTM
 
         void Start ()
 		{
-			Destroy (this);
+			//Destroy (this);
 		}
 
 	}

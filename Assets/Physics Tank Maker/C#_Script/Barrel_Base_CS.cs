@@ -35,9 +35,12 @@ namespace ChobiAssets.PTM
         public bool Has_Changed;
 
 
+		public Transform BarrelMesh;
+
+
         void Start()
         {
-            Destroy(this);
+            //Destroy(this);
         }
     }
 

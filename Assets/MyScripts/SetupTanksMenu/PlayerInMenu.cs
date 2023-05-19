@@ -32,8 +32,6 @@ public class PlayerInMenu : MonoBehaviour
 
     public InputSystemUIInputModule GetInputSystemUIInput => _inputSystemUIInput;
 
-    
-
     // Update is called once per frame
     void Update()
     {
@@ -53,7 +51,6 @@ public class PlayerInMenu : MonoBehaviour
         readyButton.interactable = true;
         menuPanel.SetActive(false);
         readyButton.Select();
-        
     }
 
     //Call from unity event in inspector

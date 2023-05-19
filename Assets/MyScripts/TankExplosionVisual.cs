@@ -9,9 +9,9 @@ public class TurretDamageControlProp
 {
     public DamageTurret DamageTurret;
 
-    public Transform Barel;
-    public Transform Canon;
-    public Transform Turret;
+    public Barrel_Base_CS Barel;
+    public Cannon_Base_CS Canon;
+    public Turret_Base_CS Turret;
 
     public bool blowOff;
     public float mass;
@@ -51,10 +51,8 @@ public class TankExplosionVisual : MonoBehaviour
     private void TurretDestroyProcess()
     {
         // Create the destroyed effect.
-        if (_turretProps.destroyedEffect)
-        {
-            Instantiate(_turretProps.destroyedEffect, _turretProps.Turret.position, _turretProps.Turret.rotation, _turretProps.Turret);
-        }
+
+            Instantiate(_turretProps.destroyedEffect, _turretProps.Turret.TurretMesh.position, _turretProps.Turret.TurretMesh.rotation, _turretProps.Turret.TurretMesh);
 
         // Send Message to "Damage_Control_01_Turret_CS", "Turret_Horizontal_CS", "Cannon_Vertical_CS", "Cannon_Fire_CS", "Gun_Camera_CS", "Recoil_Brake_CS", "Sound_Control_Motor_CS".
         //_turretProps.turretBaseTransform.BroadcastMessage("Turret_Destroyed_Linkage", SendMessageOptions.DontRequireReceiver);
@@ -66,22 +64,22 @@ public class TankExplosionVisual : MonoBehaviour
 
     private void BlowOffTurret()
     {
-        _turretProps.Turret.parent = null;
-        _turretProps.Turret.gameObject.layer = 0;
-        Rigidbody turretRigidbody = _turretProps.Turret.gameObject.AddComponent<Rigidbody>();
+        _turretProps.Turret.TurretMesh.parent = null;
+        _turretProps.Turret.TurretMesh.gameObject.layer = 0;
+        Rigidbody turretRigidbody = _turretProps.Turret.TurretMesh.gameObject.AddComponent<Rigidbody>();
 
-        _turretProps.Barel.parent = turretRigidbody.transform;
-        _turretProps.Barel.gameObject.layer = 0;
-        _turretProps.Canon.parent = turretRigidbody.transform;
-        _turretProps.Canon.gameObject.layer = 0;
+        _turretProps.Barel.BarrelMesh.parent = turretRigidbody.transform;
+        _turretProps.Barel.BarrelMesh.gameObject.layer = 0;
+        _turretProps.Canon.CanonMesh.parent = turretRigidbody.transform;
+        _turretProps.Canon.CanonMesh.gameObject.layer = 0;
 
         turretRigidbody.mass = _turretProps.mass;
         Vector3 addForceOffset;
         addForceOffset.x = Random.Range(-4.0f, 4.0f);
         addForceOffset.y = 0.0f;
         addForceOffset.z = Random.Range(-4.0f, 4.0f);
-        turretRigidbody.AddForceAtPosition(_turretProps.Turret.up * Random.Range(_turretProps.mass * 5.0f, _turretProps.mass * 15.0f), _turretProps.Turret.position + addForceOffset, ForceMode.Impulse);
-        _turretProps.Turret.parent = null;
+        turretRigidbody.AddForceAtPosition(_turretProps.Turret.TurretMesh.up * Random.Range(_turretProps.mass * 5.0f, _turretProps.mass * 15.0f), _turretProps.Turret.TurretMesh.position + addForceOffset, ForceMode.Impulse);
+        _turretProps.Turret.TurretMesh.parent = null;
         // Change the hierarchy.
         //Turret_Props[index].turretBaseTransform.parent = bodyTransform.parent; // Make it a child of the top object.
     }

@@ -7,6 +7,13 @@ namespace ChobiAssets.PTM
     
     public class DamageTurret : DamageRecivierBase
     {
+        public override void Initialize(RecivierSettings recivierSettings)
+        {
+            if(_additionsDamage.Count == 0)
+            _additionsDamage.AddRange(transform.GetComponentsInChildren<AdditionalDamageZone>());
+
+            base.Initialize(recivierSettings);
+        }
         protected override void ParthDestroy()
         {
             base.ParthDestroy();

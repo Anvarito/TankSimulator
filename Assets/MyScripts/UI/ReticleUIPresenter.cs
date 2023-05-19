@@ -21,7 +21,7 @@ public class ReticleUIPresenter : MonoBehaviour
     public void SetRangefinder(float alpha)
     {
         float newZ = Mathf.Lerp(0, 180, alpha);
-        _RangefinderImage.rotation = Quaternion.Euler(new Vector3(0,0, newZ));
+        _RangefinderImage.localRotation = Quaternion.Euler(new Vector3(_RangefinderImage.localRotation.x, _RangefinderImage.localRotation.y, newZ));
     }
 
     internal void Initing(Camera camera)

@@ -131,6 +131,7 @@ namespace ChobiAssets.PTM
                 { // The hit part has been destroyed.
                     // Remove the bullet from the scene.
                     damageble.DealDamage(damageValue, Type);
+                    Instantiate(Impact_Object, This_Transform.position, Quaternion.identity);
                     Destroy(this.gameObject);
                 }
                 else
