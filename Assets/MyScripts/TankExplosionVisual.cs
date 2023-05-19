@@ -67,10 +67,13 @@ public class TankExplosionVisual : MonoBehaviour
     private void BlowOffTurret()
     {
         _turretProps.Turret.parent = null;
+        _turretProps.Turret.gameObject.layer = 0;
         Rigidbody turretRigidbody = _turretProps.Turret.gameObject.AddComponent<Rigidbody>();
 
         _turretProps.Barel.parent = turretRigidbody.transform;
+        _turretProps.Barel.gameObject.layer = 0;
         _turretProps.Canon.parent = turretRigidbody.transform;
+        _turretProps.Canon.gameObject.layer = 0;
 
         turretRigidbody.mass = _turretProps.mass;
         Vector3 addForceOffset;

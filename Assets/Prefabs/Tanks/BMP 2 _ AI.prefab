@@ -1099,9 +1099,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _turretProps:
     DamageTurret: {fileID: 2568345801834562411}
-    Barel: {fileID: 0}
+    Barel: {fileID: 8522519614775778947}
     Canon: {fileID: 5226597870439794980}
-    Turret: {fileID: 0}
+    Turret: {fileID: 2060021422671946815}
     blowOff: 1
     mass: 200
     destroyedEffect: {fileID: 100004, guid: 2fe457cefafcb1242b30f81a15f53360, type: 3}
