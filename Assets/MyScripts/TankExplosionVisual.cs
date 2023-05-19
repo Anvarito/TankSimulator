@@ -65,6 +65,7 @@ public class TankExplosionVisual : MonoBehaviour
     private void BlowOffTurret()
     {
         _turretProps.Turret.TurretMesh.parent = null;
+        _turretProps.Turret.TurretMesh.tag = Layer_Settings_CS.FinishTag;
         _turretProps.Turret.TurretMesh.gameObject.layer = 0;
         Rigidbody turretRigidbody = _turretProps.Turret.TurretMesh.gameObject.AddComponent<Rigidbody>();
 

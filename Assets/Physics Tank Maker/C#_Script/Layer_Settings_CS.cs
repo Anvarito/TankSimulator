@@ -21,6 +21,7 @@ namespace ChobiAssets.PTM
         public const int Anti_Slipping_Layer_Mask = ~((1 << 2) + (1 << Reinforce_Layer) + (1 << Body_Layer) + (1 << Extra_Collider_Layer)); // Ignore "Layer 2(Ignore Ray)", "Reinforce_Layer", "Body_Layer", "Extra_Collider_Layer".
         public const int Detect_Body_Layer_Mask = 1 << Body_Layer; // Hit only "Body_Layer". (Used for detecting a tank)
 
+        public const string FinishTag = "Finish";
 
         public static void Layers_Collision_Settings()
         {
