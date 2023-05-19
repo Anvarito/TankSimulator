@@ -1,7 +1,6 @@
 using ChobiAssets.PTM;
 using Infrastructure.Assets;
 using Infrastructure.Factory.Base;
-using Infrastructure.StateMachine;
 using Infrastructure.TestMono;
 using UnityEngine;
 

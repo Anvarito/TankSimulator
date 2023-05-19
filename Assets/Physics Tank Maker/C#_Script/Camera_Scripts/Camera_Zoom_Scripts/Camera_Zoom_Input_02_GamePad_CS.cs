@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace ChobiAssets.PTM
+﻿namespace ChobiAssets.PTM
 {
 
 	public class Camera_Zoom_Input_02_GamePad_CS : Camera_Zoom_Input_00_Base_CS

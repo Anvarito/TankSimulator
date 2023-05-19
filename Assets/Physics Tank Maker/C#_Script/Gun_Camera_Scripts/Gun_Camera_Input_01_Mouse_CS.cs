@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace ChobiAssets.PTM
+﻿namespace ChobiAssets.PTM
 {
 
 	public class Gun_Camera_Input_01_Mouse_CS : Gun_Camera_Input_00_Base_CS

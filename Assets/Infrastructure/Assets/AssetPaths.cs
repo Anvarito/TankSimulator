@@ -11,5 +11,9 @@ namespace Infrastructure.Assets
         public const string EnemyTank = "General/AI Enemy";
         public const string TankUiSpawner = "General/UIResivers";
         public static string MainMenu = "General/MainMenu";
+        public static string PlayerInput = "Infrastructure/PlayerInput";
+        public static string PlayerInputManager = "Infrastructure/PlayerInputManager";
+        public static string PlsPressButtonPanel = "General/PleasePress";
+        public static string PlayerInMenu = "General/PlayerInMenu";
     }
 }

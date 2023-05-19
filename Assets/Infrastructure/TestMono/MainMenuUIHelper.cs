@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace Infrastructure.StateMachine
+namespace Infrastructure.TestMono
 {
     public class MainMenuUIHelper : MonoBehaviour
     {

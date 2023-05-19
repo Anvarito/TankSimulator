@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using ChobiAssets.PTM;
 using Infrastructure.Services.Progress;
-using Infrastructure.StateMachine;
 using Infrastructure.TestMono;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Infrastructure.Factory.Base
 {
@@ -33,5 +33,13 @@ namespace Infrastructure.Factory.Base
         List<DamageReciviersManager> EnemyDamageManagers { get; }
         void CreateEnemies(GameObject[] at);
         public void CreateTankController();
+    }
+    
+    internal interface IInputFactory : IGameFactory
+    {
+        GameObject CreatePlayerInputManager();
+        PlayerInputManager PlayerInputManager { get; }
+        void AngarCanvas();
+        void CretePleasePressButtonPanel();
     }
 }

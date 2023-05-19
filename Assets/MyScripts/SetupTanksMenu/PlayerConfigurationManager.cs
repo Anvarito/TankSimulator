@@ -27,20 +27,20 @@ public class PlayerConfigurationManager : MonoBehaviour
             playerConfigs = new List<PlayerConfiguration>();
         }
 
-        _playerInputManager.onPlayerJoined += HandlePlayerJoin;
+        // _playerInputManager.onPlayerJoined += HandlePlayerJoin;
     }
 
-    public void HandlePlayerJoin(PlayerInput pi)
-    {
-        Debug.Log("player joined " + pi.playerIndex);
-        pi.transform.SetParent(transform);
-        pi.GetComponent<PlayerConfigHolder>().Initialized(_mainCanvas);
-
-        if (!playerConfigs.Any(p => p.PlayerIndex == pi.playerIndex))
-        {
-            playerConfigs.Add(new PlayerConfiguration(pi));
-        }
-    }
+    // public void HandlePlayerJoin(PlayerInput pi)
+    // {
+    //     Debug.Log("player joined " + pi.playerIndex);
+    //     pi.transform.SetParent(transform);
+    //     pi.GetComponent<PlayerConfigHolder>().Initialized(_mainCanvas.transform);
+    //
+    //     if (!playerConfigs.Any(p => p.PlayerIndex == pi.playerIndex))
+    //     {
+    //         playerConfigs.Add(new PlayerConfiguration(pi));
+    //     }
+    // }
 
     public List<PlayerConfiguration> GetPlayerConfigs()
     {

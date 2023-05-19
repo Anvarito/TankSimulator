@@ -8,12 +8,13 @@ namespace Infrastructure
     public class SceneLoader
     {
         private readonly ICoroutineRunner _coroutineRunner;
+        private Coroutine _currentCoroutine;
 
         public SceneLoader(ICoroutineRunner coroutineRunner) =>
             _coroutineRunner = coroutineRunner;
 
         public void Load(string name, Action onLoaded = null) =>
-            _coroutineRunner.StartCoroutine(LoadScene(name, onLoaded));
+            _currentCoroutine = _coroutineRunner.StartCoroutine(LoadScene(name, onLoaded));
 
         private IEnumerator LoadScene(string sceneName, Action onLoaded = null)
         {
@@ -30,5 +31,8 @@ namespace Infrastructure
 
             onLoaded?.Invoke();
         }
+
+        public void CancelLoading() => 
+            _coroutineRunner.StopCoroutine(_currentCoroutine);
     }
 }

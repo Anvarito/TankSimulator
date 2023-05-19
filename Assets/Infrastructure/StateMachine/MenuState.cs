@@ -1,7 +1,10 @@
 using Infrastructure.Factory.Base;
 using Infrastructure.Factory.Compose;
+using Infrastructure.Services.Input;
 using Infrastructure.Services.Progress;
+using Infrastructure.TestMono;
 using UnityEngine;
+using UnityEngine.InputSystem.UI;
 
 namespace Infrastructure.StateMachine
 {
@@ -12,15 +15,16 @@ namespace Infrastructure.StateMachine
         
         private readonly GameStateMachine _gameStateMachine;
         private readonly SceneLoader _sceneLoader;
+        private readonly IInputService _inputService;
         private readonly IProgressService _progressService;
         private readonly IPlayerFactory _playerFactory;
 
 
-        public MenuState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, IProgressService progressService, IFactories factories)
+        public MenuState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, IInputService inputService, IFactories factories)
         {
             _gameStateMachine = gameStateMachine;
             _sceneLoader = sceneLoader;
-            _progressService = progressService;
+            _inputService = inputService;
             _playerFactory = factories.Single<IPlayerFactory>();
         }
 
@@ -41,6 +45,8 @@ namespace Infrastructure.StateMachine
         {
             _playerFactory.CreateMainMenu();
             RegisterButtonsEvents(_playerFactory.MainMenuUIHelper);
+            _inputService.ConnectToInputs(_playerFactory.MainMenuUIHelper.GetComponentInChildren<InputSystemUIInputModule>());
+            
         }
 
         private void RegisterButtonsEvents(MainMenuUIHelper mainMenu)

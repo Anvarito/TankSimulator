@@ -6,9 +6,9 @@ public class PlayerConfigHolder : MonoBehaviour
     [SerializeField] private PlayerInMenu playerSetupMenuPrefab;
     [SerializeField] private PlayerInput input;
 
-    public void Initialized(Canvas mainCanvas)
+    public void Initialized(Transform mainCanvas)
     {
-        PlayerInMenu playerMenu = Instantiate(playerSetupMenuPrefab, mainCanvas.transform);
+        PlayerInMenu playerMenu = Instantiate(playerSetupMenuPrefab, mainCanvas);
         input.uiInputModule = playerMenu.GetInputSystemUIInput;
         playerMenu.SetPlayerIndex(input.playerIndex);
     }

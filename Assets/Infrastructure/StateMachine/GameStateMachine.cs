@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Infrastructure.Factory.Compose;
 using Infrastructure.Services;
+using Infrastructure.Services.Input;
 using Infrastructure.Services.Progress;
 using Infrastructure.Services.SaveLoad;
 
@@ -22,8 +23,9 @@ namespace Infrastructure.StateMachine
                 [typeof(GameLoopState)] = new GameLoopState(this, coroutineRunner,serviceLocator.Single<IFactories>()),
                 [typeof(VictoryState)] = new VictoryState(this, serviceLocator.Single<IFactories>()),
                 [typeof(GameOverState)] = new GameOverState(this),
-                [typeof(MenuState)] = new MenuState(this,sceneLoader,serviceLocator.Single<IProgressService>(),serviceLocator.Single<IFactories>()),
+                [typeof(MenuState)] = new MenuState(this,sceneLoader,serviceLocator.Single<IInputService>(),serviceLocator.Single<IFactories>()),
                 [typeof(SetupPlayersState)] = new SetupPlayersState(this,sceneLoader,serviceLocator.Single<IFactories>()),
+                [typeof(SetupFirstInputState)] = new SetupFirstInputState(this,sceneLoader,serviceLocator.Single<IInputService>(),serviceLocator.Single<IFactories>()),
             };
         }
 
@@ -51,5 +53,11 @@ namespace Infrastructure.StateMachine
         {
             return _states[typeof(TState)] as TState;
         }
+
+        public bool InSetupPlayersState() => 
+            _activeState is SetupPlayersState;
+
+        public bool InSetupInputState() => 
+            _activeState is SetupFirstInputState;
     }
 }

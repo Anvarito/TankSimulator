@@ -1,9 +1,11 @@
-using UnityEngine;
+using System;
+using UnityEngine.InputSystem.UI;
 
 namespace Infrastructure.Services.Input
 {
     public interface IInputService : IService
     {
-        Vector2 Move { get; }
+        void ConnectToInputs(InputSystemUIInputModule uiInputModule);
+        Action OnPlayerJoined { get; set; }
     }
 }

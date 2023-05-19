@@ -92,4 +92,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MinimalTest.unity
     guid: a0dee0841ec281845a14fbcf468359e9
+  - enabled: 1
+    path: Assets/Scenes/Intro.unity
+    guid: b01da1db86126814bafc97632524543a
   m_configObjects: {}

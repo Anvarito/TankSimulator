@@ -14,7 +14,7 @@ namespace Infrastructure.StateMachine
     public class BootstrapState : IState
     {
         private const string Initial = "Initial";
-        
+
         private readonly GameStateMachine _gameStateMachine;
         private readonly SceneLoader _sceneLoader;
         private readonly ServiceLocator _services;
@@ -32,7 +32,7 @@ namespace Infrastructure.StateMachine
         {
             ClearLog();
             Debug.Log($"Entered {this.GetType().Name}");
-            
+
             _sceneLoader.Load(Initial, EnterLoadLevelState);
             // RegisterServices();
         }
@@ -42,20 +42,21 @@ namespace Infrastructure.StateMachine
         }
 
         private void EnterLoadLevelState() =>
-            _gameStateMachine.Enter<LoadProgressState>();
+            _gameStateMachine.Enter<SetupFirstInputState>();
 
         private void RegisterServices()
         {
-            
             _services.RegisterSingle<IProgressService>(new ProgressService());
-            _services.RegisterSingle<IAssetLoader>( new AssetLoader());
-            _services.RegisterSingle<IInputService>(new InputService());
-            
+            _services.RegisterSingle<IAssetLoader>(new AssetLoader());
+
             _services.RegisterSingle<IFactories>(new Factories());
             _services.Single<IFactories>().Add<IPlayerFactory>(new PlayerFactory(_services.Single<IAssetLoader>()));
             _services.Single<IFactories>().Add<IEnemyFactory>(new EnemyFactory(_services.Single<IAssetLoader>()));
-            
-            
+            _services.Single<IFactories>().Add<IInputFactory>(new InputFactory(_services.Single<IAssetLoader>()));
+
+            _services.RegisterSingle<IInputService>(new InputService(_gameStateMachine,
+                _services.Single<IFactories>()));
+
             _services.RegisterSingle<ISaveLoadService>(new SaveLoadService(_services.Single<IProgressService>(),
                 _services.Single<IFactories>()));
         }
