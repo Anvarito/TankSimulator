@@ -41,5 +41,7 @@ namespace Infrastructure.Factory.Base
         PlayerInputManager PlayerInputManager { get; }
         void AngarCanvas();
         void CretePleasePressButtonPanel();
+        GameObject CreateTankPickerUI(Transform parent);
+        Transform CreatePickerCanvas();
     }
 }

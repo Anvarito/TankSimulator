@@ -24,7 +24,7 @@ namespace Infrastructure.StateMachine
                 [typeof(VictoryState)] = new VictoryState(this, serviceLocator.Single<IFactories>()),
                 [typeof(GameOverState)] = new GameOverState(this),
                 [typeof(MenuState)] = new MenuState(this,sceneLoader,serviceLocator.Single<IInputService>(),serviceLocator.Single<IFactories>()),
-                [typeof(SetupPlayersState)] = new SetupPlayersState(this,sceneLoader,serviceLocator.Single<IFactories>()),
+                [typeof(SetupPlayersState)] = new SetupPlayersState(this,sceneLoader,serviceLocator.Single<IInputService>(),serviceLocator.Single<IFactories>()),
                 [typeof(SetupFirstInputState)] = new SetupFirstInputState(this,sceneLoader,serviceLocator.Single<IInputService>(),serviceLocator.Single<IFactories>()),
             };
         }

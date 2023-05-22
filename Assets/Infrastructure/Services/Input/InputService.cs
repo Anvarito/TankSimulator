@@ -23,6 +23,7 @@ namespace Infrastructure.Services.Input
         private readonly IInputFactory _inputFactory;
         private readonly Transform _choseCanvas;
         private PlayerInputManager _inputManager;
+        private static int currentIndex = 0;
 
         public InputService(GameStateMachine gameStateMachine, IFactories factories)
         {
@@ -34,13 +35,26 @@ namespace Infrastructure.Services.Input
             _inputManager.onPlayerJoined += HandlePlayerJoin;
         }
 
-        public void ConnectToInputs(InputSystemUIInputModule uiInputModule)
+        public void ConnectToInputs(InputSystemUIInputModule uiInputModule, bool individually = false)
         {
-            foreach (PlayerConfiguration playerConfig in _playerConfigs)
+            if (individually)
             {
-                playerConfig.Input.uiInputModule = uiInputModule;
+                if (NextPlayerExist()) ResetPlayerIndex();
+                _playerConfigs[currentIndex].Input.uiInputModule = uiInputModule;
+                currentIndex += 1;
+            }
+            else
+            {
+                foreach (PlayerConfiguration playerConfig in _playerConfigs)
+                {
+                    playerConfig.Input.uiInputModule = uiInputModule;
+                }
             }
         }
+
+        public void ResetPlayerIndex() => 
+            currentIndex = 0;
+
 
         private void HandlePlayerJoin(PlayerInput pi)
         {
@@ -61,8 +75,11 @@ namespace Infrastructure.Services.Input
         }
 
         private bool CanAddPlayer() =>
-            _gameStateMachine.InSetupInputState() && _playerConfigs.Count < 1 ||
-            _gameStateMachine.InSetupPlayersState();
+            (_gameStateMachine.InSetupInputState() && _playerConfigs.Count < 1) ||
+            (_gameStateMachine.InSetupPlayersState() && _playerConfigs.Count < 2);
+
+        private bool NextPlayerExist() => 
+            currentIndex + 1 > _playerConfigs.Count;
     }
 
 

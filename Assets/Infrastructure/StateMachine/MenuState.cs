@@ -65,7 +65,7 @@ namespace Infrastructure.StateMachine
         {
             Debug.Log("Continue button pressed");
             // if (_progressService.Progress.StateType is GameLoopState)
-            _gameStateMachine.Enter<LoadLevelState,string>(_progressService.Progress.WorldData.PositionOnLevel.Level);
+            // _gameStateMachine.Enter<LoadLevelState,string>(_progressService.Progress.WorldData.PositionOnLevel.Level);
         }
 
         private void StartNewGame() => 

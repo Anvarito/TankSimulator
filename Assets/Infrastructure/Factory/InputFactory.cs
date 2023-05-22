@@ -7,22 +7,32 @@ namespace Infrastructure.Factory
 {
     public class InputFactory : GameFactory, IInputFactory
     {
+        public PlayerInputManager PlayerInputManager { get; }
+
         public InputFactory(IAssetLoader assetLoader) : base(assetLoader)
         {
         }
 
-        public GameObject CreatePlayerInputManager() => 
+        public GameObject CreatePlayerInputManager() =>
             _assetLoader.Instantiate(AssetPaths.PlayerInputManager);
-        
-        
-        public PlayerInputManager PlayerInputManager { get; }
+
 
         public void AngarCanvas()
         {
             Debug.Log("Spawned canvas");
         }
 
-        public void CretePleasePressButtonPanel() => 
+        public void CretePleasePressButtonPanel() =>
             _assetLoader.Instantiate(AssetPaths.PlsPressButtonPanel);
+
+        public Transform CreatePickerCanvas() =>
+            _assetLoader.Instantiate(AssetPaths.TankPickerCanvas).transform;
+
+        public GameObject CreateTankPickerUI(Transform parent)
+        {
+            GameObject tankPicker = _assetLoader.Instantiate(AssetPaths.PlayerInMenu);
+            tankPicker.transform.SetParent(parent);
+            return tankPicker;
+        }
     }
 }

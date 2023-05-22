@@ -15,5 +15,6 @@ namespace Infrastructure.Assets
         public static string PlayerInputManager = "Infrastructure/PlayerInputManager";
         public static string PlsPressButtonPanel = "General/PleasePress";
         public static string PlayerInMenu = "General/PlayerInMenu";
+        public static string TankPickerCanvas = "General/TankPicker";
     }
 }

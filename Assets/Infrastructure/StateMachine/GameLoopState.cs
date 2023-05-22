@@ -65,10 +65,8 @@ namespace Infrastructure.StateMachine
             if (IsEnemiesDestroyed()) _gameStateMachine.Enter<VictoryState,float>(_enemyDestroyed * _pointForEnemy);
         }
 
-        private bool IsEnemiesDestroyed()
-        {
-            return ++_enemyDestroyed == _enemyFactory.EnemyDamageManagers.Count;
-        }
+        private bool IsEnemiesDestroyed() => 
+            ++_enemyDestroyed == _enemyFactory.EnemyDamageManagers.Count;
 
         private void RegisterDamageManagers()
         {
