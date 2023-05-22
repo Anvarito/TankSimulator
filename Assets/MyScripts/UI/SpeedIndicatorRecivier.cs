@@ -12,8 +12,7 @@ public class SpeedIndicatorRecivier : MonoBehaviour
     private void Start()
     {
         _speedIndicatorUI = Instantiate(_speedIndicatorUIPrefab);
-        _speedIndicatorUI.GetComponent<Canvas>().worldCamera = _camera;
-        _speedIndicatorUI.GetComponent<Canvas>().planeDistance = 1;
+        _speedIndicatorUI.InitialCanvas(_camera);
     }
 
     private void Update()

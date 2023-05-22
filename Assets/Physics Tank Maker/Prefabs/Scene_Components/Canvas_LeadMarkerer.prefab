@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c681b48f2a52994194026913994bcb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canvas: {fileID: 22398488}
   _wrongSprite: {fileID: 21300000, guid: b5a982e15443f254eb8df527bd4d8866, type: 3}
   _rightSprite: {fileID: 21300000, guid: df4de02c14ed4104687638608a92042c, type: 3}
   _markerImage: {fileID: 1388153398}

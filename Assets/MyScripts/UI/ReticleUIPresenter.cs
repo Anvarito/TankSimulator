@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ReticleUIPresenter : MonoBehaviour
+public class ReticleUIPresenter : UIPresenterBase
 {
     [SerializeField] private Image _reticleImage;
     [SerializeField] private RectTransform _RangefinderImage;
@@ -26,7 +26,7 @@ public class ReticleUIPresenter : MonoBehaviour
 
     internal void Initing(Camera camera)
     {
-        GetComponent<Canvas>().worldCamera = camera;
-        GetComponent<Canvas>().planeDistance = 1;
+        _canvas.worldCamera = camera;
+        _canvas.planeDistance = 1;
     }
 }

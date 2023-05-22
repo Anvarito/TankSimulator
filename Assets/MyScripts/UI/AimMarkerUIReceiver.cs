@@ -57,6 +57,11 @@ namespace ChobiAssets.PTM
                 _aimLeadPresenter.AimMarkerControl();
         }
 
+        private void DestroyTank()
+        {
+            Destroy(_aimLeadPresenter);
+        }
+
         void Selected(bool isSelected)
         { // Called from "ID_Settings_CS".
             if (isSelected)

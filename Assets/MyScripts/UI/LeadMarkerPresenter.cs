@@ -4,7 +4,7 @@ using ChobiAssets.PTM;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LeadMarkerPresenter : MonoBehaviour
+public class LeadMarkerPresenter : UIPresenterBase
 {
     [SerializeField] private Sprite _wrongSprite;
     [SerializeField] private Sprite _rightSprite;
@@ -15,17 +15,15 @@ public class LeadMarkerPresenter : MonoBehaviour
     private Aiming_Control_CS _aimingScript;
     private Bullet_Generator_CS _bullet_Generator_Script;
     private Transform _bulletGeneratorTransform;
-    public void Initializing(Aiming_Control_CS aimingScript, Bullet_Generator_CS bulletGenerator, Camera camera, Camera gunCam)
+    public void Initializing(Aiming_Control_CS aimingScript, Bullet_Generator_CS bulletGenerator)
     {
-        _gunCamera = gunCam;
-        _camera = camera;
         _aimingScript = aimingScript;
         _bullet_Generator_Script = bulletGenerator;
         _bulletGeneratorTransform = _bullet_Generator_Script.transform;
 
         _markerImage.sprite = _rightSprite;
     }
-    public void MarkerControl()
+    public void MarkerControl(Camera currentCamera)
     {
         // Check the aiming mode.
         switch (_aimingScript.Mode)
@@ -89,8 +87,7 @@ public class LeadMarkerPresenter : MonoBehaviour
         }
 
         // Convert the hit point to the screen point.
-        Camera camera = _aimingScript.CameraMain.enabled ? _camera : _gunCamera;
-        var screenPos = camera.WorldToScreenPoint(currentPos);
+        var screenPos = currentCamera.WorldToScreenPoint(currentPos);
         if (screenPos.z < 0.0f)
         { // The hit point is behind the camera.
             _markerImage.enabled = false;

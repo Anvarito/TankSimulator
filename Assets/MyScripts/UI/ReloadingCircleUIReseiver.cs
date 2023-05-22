@@ -15,7 +15,7 @@ namespace ChobiAssets.PTM
 		*/
         [SerializeField] private ReloadingCirclePresenter _reloadMarkerCanvasPrefab;
         [SerializeField] private Cannon_Fire_CS _cannonFireScript;
-        [SerializeField] private Camera  _camera;
+        [SerializeField] private CameraViewSetup  _cameraSetup;
 
         private ReloadingCirclePresenter _reloadingCirclePresenter;
 
@@ -30,7 +30,7 @@ namespace ChobiAssets.PTM
         private void InitScript()
         {
             _reloadingCirclePresenter = Instantiate(_reloadMarkerCanvasPrefab);
-            _reloadingCirclePresenter.Initialized(_camera);
+            _reloadingCirclePresenter.InitialCanvas(_cameraSetup.GetCamera());
             _cannonFireScript.OnReload.AddListener(ReloadLaunch);
             _cannonFireScript.OnEndReload.AddListener(ReloadEnd);
         }
@@ -61,6 +61,8 @@ namespace ChobiAssets.PTM
 
         void FillCircle()
         {
+            Camera currentCamera = _cameraSetup.GetCamera().enabled ? _cameraSetup.GetCamera() : _cameraSetup.GetGunCamera();
+            _reloadingCirclePresenter.SetCurrentCamera(currentCamera);
             _reloadingCirclePresenter.FillCircle(_cannonFireScript.Loading_Count, _cannonFireScript.Reload_Time);
         }
 

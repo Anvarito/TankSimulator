@@ -87994,6 +87994,10 @@ PrefabInstance:
       propertyPath: _gunCamera
       value: 
       objectReference: {fileID: 5869663220578190904}
+    - target: {fileID: 398834320, guid: a9b5df4f69716c64393b37cfd9540945, type: 3}
+      propertyPath: _cameraSetup
+      value: 
+      objectReference: {fileID: 1083484181407159624}
     - target: {fileID: 398834321, guid: a9b5df4f69716c64393b37cfd9540945, type: 3}
       propertyPath: _camera
       value: 
@@ -88002,6 +88006,10 @@ PrefabInstance:
       propertyPath: _damageManager
       value: 
       objectReference: {fileID: 1083484181796028779}
+    - target: {fileID: 398834321, guid: a9b5df4f69716c64393b37cfd9540945, type: 3}
+      propertyPath: _ui_HP_Bars_Self_CSprefab
+      value: 
+      objectReference: {fileID: 5902823271639062800, guid: 658df433f8bd5ac43ab24a488688f2d7, type: 3}
     - target: {fileID: 1224471283, guid: a9b5df4f69716c64393b37cfd9540945, type: 3}
       propertyPath: _camera
       value: 
@@ -88063,6 +88071,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5869663220578190905}
     - target: {fileID: 331844288142114373, guid: a9b5df4f69716c64393b37cfd9540945, type: 3}
+      propertyPath: _cameraSetup
+      value: 
+      objectReference: {fileID: 1083484181407159624}
+    - target: {fileID: 331844288142114373, guid: a9b5df4f69716c64393b37cfd9540945, type: 3}
       propertyPath: _aimingScript
       value: 
       objectReference: {fileID: 1083484181796028777}
@@ -88074,6 +88086,10 @@ PrefabInstance:
       propertyPath: _camera
       value: 
       objectReference: {fileID: 5869663220618537880}
+    - target: {fileID: 1127647858160360992, guid: a9b5df4f69716c64393b37cfd9540945, type: 3}
+      propertyPath: _cameraSetup
+      value: 
+      objectReference: {fileID: 1083484181407159624}
     - target: {fileID: 1127647858160360992, guid: a9b5df4f69716c64393b37cfd9540945, type: 3}
       propertyPath: _cannonFireScript
       value: 

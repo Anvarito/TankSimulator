@@ -6,7 +6,7 @@ using UnityEngine.UI;
 namespace ChobiAssets.PTM
 {
 	
-	public class UI_Speed_Indicator_Control_CS : MonoBehaviour
+	public class UI_Speed_Indicator_Control_CS : UIPresenterBase
 	{
         /*
 		 * This script is attached to the "Canvas_Speed_Indicator" in the scene.
@@ -18,7 +18,6 @@ namespace ChobiAssets.PTM
         [SerializeField] Text Speed_Text = default;
         // << User options
         const string textFormat = "{0} km/h";
-        Drive_Control_CS driveScript;
 
         public void Update_Speed_Text(int currentSpeed)
         {

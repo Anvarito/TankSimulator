@@ -19,11 +19,10 @@ namespace ChobiAssets.PTM
         [SerializeField] private LeadMarkerPresenter _leadMarkerPresenterPrefab;
         [SerializeField] private Aiming_Control_CS _aimingScript;
         [SerializeField] private Bullet_Generator_CS _bulletGenerator;
-        [SerializeField] private Camera _camera;
-        [SerializeField] private Camera _gunCamera;
+        [SerializeField] private CameraViewSetup _cameraSetup;
         // << User options
         private LeadMarkerPresenter _leadMarkerPresenter;
-
+        private Camera _currentCamera;
         bool isSelected;
 
         void Start()
@@ -43,7 +42,8 @@ namespace ChobiAssets.PTM
             if (_leadMarkerPresenterPrefab != null)
             {
                 _leadMarkerPresenter = Instantiate(_leadMarkerPresenterPrefab);
-                _leadMarkerPresenter.Initializing(_aimingScript, _bulletGenerator, _camera, _gunCamera);
+                _leadMarkerPresenter.InitialCanvas(_cameraSetup.GetCamera());
+                _leadMarkerPresenter.Initializing(_aimingScript, _bulletGenerator);
             }
             else
             {
@@ -61,7 +61,8 @@ namespace ChobiAssets.PTM
                 return;
             }
 
-            _leadMarkerPresenter.MarkerControl();
+            _currentCamera = _cameraSetup.GetCamera().enabled ? _cameraSetup.GetCamera() : _cameraSetup.GetGunCamera();
+            _leadMarkerPresenter.MarkerControl(_currentCamera);
         }
 
         void Selected(bool isSelected)

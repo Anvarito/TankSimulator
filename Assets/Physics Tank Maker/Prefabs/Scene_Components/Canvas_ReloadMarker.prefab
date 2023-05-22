@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33a6ba1448d36374aa7e1ce99f7dbc4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canvas: {fileID: 22398488}
   _shellImage: {fileID: 114744089678804386}
   _circleImage: {fileID: 114467028379388584}
 --- !u!1 &1134337661926986

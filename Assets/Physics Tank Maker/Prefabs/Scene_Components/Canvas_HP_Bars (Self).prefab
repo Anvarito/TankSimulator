@@ -971,7 +971,7 @@ GameObject:
   - component: {fileID: 224449400259082152}
   - component: {fileID: 223152506053135928}
   - component: {fileID: 114816663256750720}
-  - component: {fileID: 114719096273676120}
+  - component: {fileID: 5902823271639062800}
   m_Layer: 5
   m_Name: Canvas_HP_Bars (Self)
   m_TagString: Untagged
@@ -1044,7 +1044,7 @@ MonoBehaviour:
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
   m_PresetInfoIsWorld: 0
---- !u!114 &114719096273676120
+--- !u!114 &5902823271639062800
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1053,9 +1053,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1980162067488986}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9591f2bbda6fe5f4389d388020f8167d, type: 3}
+  m_Script: {fileID: 11500000, guid: 86ad481534a59854a9ac568ddb7706f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canvas: {fileID: 223152506053135928}
   Body_Bar: {fileID: 114109849538181702}
   Turret_Bar: {fileID: 114040042976553754}
   Left_Track_Bar: {fileID: 114512179905415618}

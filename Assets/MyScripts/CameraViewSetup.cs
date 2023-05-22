@@ -22,7 +22,10 @@ public class CameraViewSetup : MonoBehaviour
     {
         return _camera;
     }
-
+    public Camera GetGunCamera()
+    {
+        return _gunCamera;
+    }
     public void SetScreenAimPoint(int playerIndex, int maxPlayers)
     {
         _aimPosition.x = _camera.pixelRect.width * 0.5f;

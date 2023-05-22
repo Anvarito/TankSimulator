@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2057aaa4b2b9c2844a4db2114f22dc1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canvas: {fileID: 22390564}
   _reticleImage: {fileID: 11459280}
   _RangefinderImage: {fileID: 22400970}
 --- !u!1 &153324
@@ -202,7 +203,7 @@ RectTransform:
   m_GameObject: {fileID: 178544}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.03, y: 1.03, z: 1.03}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 22463932}

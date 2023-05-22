@@ -7,7 +7,7 @@ namespace ChobiAssets.PTM
 {
 
     [RequireComponent(typeof(Canvas))]
-    public class HitPointsUI : MonoBehaviour
+    public class HitPointsUIPresenter : UIPresenterBase
     {
         /*
 		 * This script is attached to the "Canvas_HP_Bars (Self)" in the scene.
@@ -38,15 +38,6 @@ namespace ChobiAssets.PTM
         float previousBodyHP;
         float previousTurretHP;
         float previousLeftTrackHP;
-
-
-        private void Start()
-        {
-            Left_Track_Bar.fillAmount = 1;
-            Right_Track_Bar.fillAmount = 1;
-            Body_Bar.fillAmount = 1;
-            Turret_Bar.fillAmount = 1;
-        }
 
         internal void BodyDamageShow(float currentHP, float maxHP)
         {
@@ -93,10 +84,9 @@ namespace ChobiAssets.PTM
             }
         }
 
-
-
-        public void Initialize()
+        public override void InitialCanvas(Camera camera)
         {
+            base.InitialCanvas(camera);
             // Store the initial color.
             initialColor = Body_Bar.color;
 
@@ -105,8 +95,12 @@ namespace ChobiAssets.PTM
             turretBarImages = Turret_Bar.GetComponentsInChildren<Image>();
             leftTrackBarImages = Left_Track_Bar.GetComponentsInChildren<Image>();
             rightTrackBarImages = Right_Track_Bar.GetComponentsInChildren<Image>();
-        }
 
+            Left_Track_Bar.fillAmount = 1;
+            Right_Track_Bar.fillAmount = 1;
+            Body_Bar.fillAmount = 1;
+            Turret_Bar.fillAmount = 1;
+        }
 
         //void LateUpdate()
         //{
