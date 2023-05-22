@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _turretDamageSettings:
     MaxHitPoints: 500
-    DamageTreshold: 0
+    DamageTreshold: 50
   _bodyDamageSettings:
     MaxHitPoints: 500
-    DamageTreshold: 0
+    DamageTreshold: 50
   _trackDamageSettings:
     MaxHitPoints: 300
     DamageTreshold: 50

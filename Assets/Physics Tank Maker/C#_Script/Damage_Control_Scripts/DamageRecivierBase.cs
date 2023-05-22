@@ -65,6 +65,7 @@ namespace ChobiAssets.PTM
 
 		public virtual bool CheckBreackout(float damage, int bulletType)
 		{
+			print(damage);
 			if (damage < _damageThreshold)
 			{ // Never receive any damage under the threshold value.
 				return false;

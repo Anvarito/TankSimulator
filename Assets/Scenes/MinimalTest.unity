@@ -600,7 +600,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _listTanks:
-  - {fileID: 385186885549718994, guid: 86895dc63c6d6d647aa59f8af70f9afc, type: 3}
+  - {fileID: 3326594026425357029, guid: dcc7f43e94a1eca4cbaa46afe9ed756f, type: 3}
   - {fileID: 2210357918623600962, guid: a97ad69972532674a9f12328d1502b48, type: 3}
   - {fileID: 3923912547275812969, guid: 796fe3cf48c7b6e43bb8abe2e8b462c8, type: 3}
   PlayerSpawns:
