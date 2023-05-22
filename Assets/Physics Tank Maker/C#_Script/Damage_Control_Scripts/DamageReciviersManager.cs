@@ -162,7 +162,7 @@ namespace ChobiAssets.PTM
         private void TankDestroyed()
         {
             isDead = true;
-            _damageTrackRecivier.FullBreak();
+            if(_damageTrackRecivier) _damageTrackRecivier.FullBreak();
             OnTankDestroyed?.Invoke();
         }
 
