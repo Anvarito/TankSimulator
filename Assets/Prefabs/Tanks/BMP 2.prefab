@@ -2377,8 +2377,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b98d7cb425166c44876ff90824ccf4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damageReciviersManager: {fileID: 2257801135510657006}
   _turretProps:
-    DamageTurret: {fileID: 2257801135817406143}
     Barel: {fileID: 2257801136288365311}
     Canon: {fileID: 2257801136948326040}
     Turret: {fileID: 2257801136947666719}
@@ -2386,7 +2386,6 @@ MonoBehaviour:
     mass: 200
     destroyedEffect: {fileID: 100004, guid: 2fe457cefafcb1242b30f81a15f53360, type: 3}
   _bodyExplosionProps:
-    DamageBodyRecivier: {fileID: 2257801135510657001}
     Destroyed_Effect: {fileID: 100004, guid: d5cf1068eb9224446a79deb00e60a2e5, type: 3}
     Destroyed_Effect_Offset: {x: 0, y: 0, z: 0}
 --- !u!82 &2257801135510656999

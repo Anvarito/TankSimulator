@@ -39301,8 +39301,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b98d7cb425166c44876ff90824ccf4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damageReciviersManager: {fileID: 2390085117309224830}
   _turretProps:
-    DamageTurret: {fileID: 2390085118084687407}
     Barel: {fileID: 2390085116539759215}
     Canon: {fileID: 2390085116953837064}
     Turret: {fileID: 2390085116945829775}
@@ -39310,7 +39310,6 @@ MonoBehaviour:
     mass: 200
     destroyedEffect: {fileID: 100004, guid: 2fe457cefafcb1242b30f81a15f53360, type: 3}
   _bodyExplosionProps:
-    DamageBodyRecivier: {fileID: 2390085117309224825}
     Destroyed_Effect: {fileID: 100004, guid: d5cf1068eb9224446a79deb00e60a2e5, type: 3}
     Destroyed_Effect_Offset: {x: 0, y: 0, z: 0}
 --- !u!82 &2390085117309224823
@@ -48213,7 +48212,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2390085117803253466}
   - component: {fileID: 2390085117803253465}
-  - component: {fileID: 2390085117803253464}
   - component: {fileID: 2390085117803253463}
   - component: {fileID: 888106702470947652}
   - component: {fileID: 385186885549718994}
@@ -48255,20 +48253,6 @@ MonoBehaviour:
   _tankID: 1
   _relationship: 0
   _playerType: 1
---- !u!114 &2390085117803253464
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2390085117803253461}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22dca8629d95c6f478624296b3d36497, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Attack_Multiplier: 1
-  Defence_Multiplier: 1
 --- !u!114 &2390085117803253463
 MonoBehaviour:
   m_ObjectHideFlags: 0

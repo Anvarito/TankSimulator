@@ -85,11 +85,6 @@ namespace ChobiAssets.PTM
         {
             InitializingAllDamageReciviers();
             SubscribeResiviers();
-            // Store the initial HP values for the "UI_HP_Bars_Self_CS" and "UI_HP_Bars_Target_CS".
-            //Initial_Body_HP = MainBody_HP;
-            //Initial_Turret_HP = Turret_Props[0].hitPoints;
-            //Initial_Left_Track_HP = Left_Track_HP;
-            //Initial_Right_Track_HP = Right_Track_HP;
         }
         private void InitializingAllDamageReciviers()
         {
@@ -150,17 +145,18 @@ namespace ChobiAssets.PTM
         {
             OnTrackBreach?.Invoke(track);
         }
-
         
 
         private void BodyDestroy()
         {
             TankDestroyed();
+            _mainBodyDamages.OnDestroyed.RemoveListener(BodyDestroy);
         }
 
         private void TurretDestroy()
         {
             TankDestroyed();
+            _turretDamages.OnDestroyed.RemoveListener(TurretDestroy);
         }
 
         private void TankDestroyed()
@@ -169,8 +165,6 @@ namespace ChobiAssets.PTM
             _damageTrackRecivier.FullBreak();
             OnTankDestroyed?.Invoke();
         }
-
-
 
         public bool Receive_Damage(float damage, int type, int index)
         { // Called from "Damage_Control_##_##_CS" scripts in the tank.

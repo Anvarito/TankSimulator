@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: BMP2
   m_EditorClassIdentifier: 
   _turretDamageSettings:
-    MaxHitPoints: 1500
+    MaxHitPoints: 500
     DamageTreshold: 0
   _bodyDamageSettings:
-    MaxHitPoints: 750
+    MaxHitPoints: 500
     DamageTreshold: 0
   _trackDamageSettings:
     MaxHitPoints: 300

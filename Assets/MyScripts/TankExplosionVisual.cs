@@ -7,8 +7,6 @@ using UnityEngine.AI;
 [System.Serializable]
 public class TurretDamageControlProp
 {
-    public DamageTurret DamageTurret;
-
     public Barrel_Base_CS Barel;
     public Cannon_Base_CS Canon;
     public Turret_Base_CS Turret;
@@ -20,19 +18,18 @@ public class TurretDamageControlProp
 [System.Serializable]
 public struct BodyExplosionProp
 {
-    public DamageBodyRecivier DamageBodyRecivier;
     public GameObject Destroyed_Effect;
     public Vector3 Destroyed_Effect_Offset;
 }
 public class TankExplosionVisual : MonoBehaviour
 {
+    [SerializeField] private DamageReciviersManager _damageReciviersManager;
     [SerializeField] private TurretDamageControlProp _turretProps;
     [SerializeField] private BodyExplosionProp _bodyExplosionProps;
 
     void Start()
     {
-        _turretProps.DamageTurret.OnDestroyed.AddListener(TankDestroy);
-        _bodyExplosionProps.DamageBodyRecivier.OnDestroyed.AddListener(TankDestroy);
+        _damageReciviersManager.OnTankDestroyed.AddListener(TankDestroy);
     }
 
     private void TankDestroy()

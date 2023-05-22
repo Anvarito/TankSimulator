@@ -30,6 +30,8 @@ public class InputInitializerBase : MonoBehaviour
 
     protected virtual void TankDestroyed()
     {
+        transform.tag = Layer_Settings_CS.FinishTag;
+
         _driveControl.TankDestroyed();
         _fireControl.TankDestroyed();
         _aimingControl.TankDestroyed();
