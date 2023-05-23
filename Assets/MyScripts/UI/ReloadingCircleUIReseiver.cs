@@ -6,54 +6,54 @@ using System;
 namespace ChobiAssets.PTM
 {
 
-    public class ReloadingCircleUIReseiver : MonoBehaviour
+    public class ReloadingCircleUIReseiver : UIRecivierBase
     {
         /*
 		 * This script is attached to the "Cannon_Base" in the tank.
 		 * This script controls the loading circle displyaed while the bullet is reloaded.
 		 * This script works in combination with "Cannon_Fire_CS" in the tank.
 		*/
-        [SerializeField] private ReloadingCirclePresenter _reloadMarkerCanvasPrefab;
         [SerializeField] private Cannon_Fire_CS _cannonFireScript;
-        [SerializeField] private CameraViewSetup  _cameraSetup;
 
         private ReloadingCirclePresenter _reloadingCirclePresenter;
 
-        private bool isSelected;
-        private bool _isLoadeng;
+        private bool _isRun;
 
-        private void Start()
+        protected override void Subscribes()
         {
-            InitScript();
-        }
-
-        private void InitScript()
-        {
-            _reloadingCirclePresenter = Instantiate(_reloadMarkerCanvasPrefab);
-            _reloadingCirclePresenter.InitialCanvas(_cameraSetup.GetCamera());
+            base.Subscribes();
             _cannonFireScript.OnReload.AddListener(ReloadLaunch);
             _cannonFireScript.OnEndReload.AddListener(ReloadEnd);
         }
 
+        protected override void SwitchCamera(EActiveCameraType activeCamera)
+        {
+            base.SwitchCamera(activeCamera);
+            Camera currentCamera = activeCamera == EActiveCameraType.GunCamera ? _cameraSetup.GetGunCamera() : _cameraSetup.GetCamera();
+            _reloadingCirclePresenter.SetCurrentCamera(currentCamera);
+        }
+
+        protected override void InstantiateCanvas()
+        {
+            base.InstantiateCanvas();
+            _reloadingCirclePresenter = Instantiate(_uiPrefab) as ReloadingCirclePresenter;
+            _reloadingCirclePresenter.InitialCanvas(_cameraSetup.GetCamera());
+        }
+       
         private void ReloadLaunch()
         {
             _reloadingCirclePresenter.EnableImage(true);
-            _isLoadeng = true;
+            _isRun = true;
         }
         private void ReloadEnd()
         {
             _reloadingCirclePresenter.EnableImage(false);
-            _isLoadeng = false;
+            _isRun = false;
         }
 
         void LateUpdate()
         {
-            if (isSelected == false)
-            {
-                return;
-            }
-
-            if (_isLoadeng)
+            if (_isRun && _reloadingCirclePresenter != null)
             {
                 FillCircle();
             }
@@ -61,40 +61,13 @@ namespace ChobiAssets.PTM
 
         void FillCircle()
         {
-            Camera currentCamera = _cameraSetup.GetCamera().enabled ? _cameraSetup.GetCamera() : _cameraSetup.GetGunCamera();
-            _reloadingCirclePresenter.SetCurrentCamera(currentCamera);
             _reloadingCirclePresenter.FillCircle(_cannonFireScript.Loading_Count, _cannonFireScript.Reload_Time);
         }
 
-
-        void Selected(bool isSelected)
-        { // Called from "ID_Settings_CS".
-            if (isSelected)
-            {
-                this.isSelected = true;
-            }
-            else
-            {
-                if (this.isSelected)
-                { // This tank is selected until now.
-                    this.isSelected = false;
-                }
-            }
+        protected override void DestroyUI()
+        {
+            Destroy(_reloadingCirclePresenter.gameObject);
         }
-
-
-        void Turret_Destroyed_Linkage()
-        { // Called from "Damage_Control_Center_CS".
-
-            Destroy(this);
-        }
-
-
-        void Pause(bool isPaused)
-        { // Called from "Game_Controller_CS".
-            this.enabled = !isPaused;
-        }
-
     }
 
 }

@@ -8,12 +8,17 @@ public class UIPresenterBase : MonoBehaviour
 
     public virtual void InitialCanvas(Camera camera)
     {
-        _canvas.worldCamera = camera;
+        SetCamera(camera);
         _canvas.planeDistance = 1;
     }
 
     public virtual void DestroyCanvas()
     {
         Destroy(gameObject);
+    }
+
+    public virtual void SetCamera(Camera camera)
+    {
+        _canvas.worldCamera = camera;
     }
 }

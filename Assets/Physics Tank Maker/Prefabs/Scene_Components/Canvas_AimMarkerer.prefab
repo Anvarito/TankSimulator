@@ -172,5 +172,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eae3083714acfa245aa1a5f587aabc2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canvas: {fileID: 22398488}
   _aimMarker: {fileID: 11443366}
   _leadMarker: {fileID: 0}

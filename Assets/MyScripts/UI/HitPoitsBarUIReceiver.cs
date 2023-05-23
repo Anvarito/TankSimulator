@@ -4,27 +4,28 @@ using UnityEngine;
 using ChobiAssets.PTM;
 using System;
 
-public class HitPoitsBarUIReceiver : MonoBehaviour
+public class HitPoitsBarUIReceiver : UIRecivierBase
 {
-    [SerializeField] private HitPointsUIPresenter _ui_HP_Bars_Self_CSprefab;
-    [SerializeField] private DamageReciviersManager _damageManager;
-    [SerializeField] private Camera _camera;
     private HitPointsUIPresenter _hitPointsUI;
 
-
-    void Start()
+    protected override void Subscribes()
     {
-        _hitPointsUI = Instantiate(_ui_HP_Bars_Self_CSprefab);
-        _hitPointsUI.InitialCanvas(_camera);
+        base.Subscribes();
+        _damageRecivierManager.OnTurretDamaged.AddListener(TurretDamaged);
+        _damageRecivierManager.OnBodyDamaged.AddListener(BodyDamaged);
 
-        _damageManager.OnTurretDamaged.AddListener(TurretDamaged);
-        _damageManager.OnBodyDamaged.AddListener(BodyDamaged);
-
-        _damageManager.OnTrackDamaged.AddListener(TrackDamaged);
-        _damageManager.OnTrackRestore.AddListener(TrackRestore);
-        _damageManager.OnTrackBreach.AddListener(TrackBreach);
+        _damageRecivierManager.OnTrackDamaged.AddListener(TrackDamaged);
+        _damageRecivierManager.OnTrackRestore.AddListener(TrackRestore);
+        _damageRecivierManager.OnTrackBreach.AddListener(TrackBreach);
     }
 
+    protected override void InstantiateCanvas()
+    {
+        base.InstantiateCanvas();
+        _hitPointsUI = Instantiate(_uiPrefab) as HitPointsUIPresenter;
+        _hitPointsUI.InitialCanvas(_cameraSetup.GetCamera());
+    }
+    
     private void BodyDamaged(float currentHP, float maxHP)
     {
         _hitPointsUI.BodyDamageShow(currentHP, maxHP);
@@ -48,5 +49,10 @@ public class HitPoitsBarUIReceiver : MonoBehaviour
     private void TrackBreach(TrackDamageRecivier track)
     {
         _hitPointsUI.TrackBreached(track);
+    }
+
+    protected override void DestroyUI()
+    {
+        Destroy(_hitPointsUI.gameObject);
     }
 }

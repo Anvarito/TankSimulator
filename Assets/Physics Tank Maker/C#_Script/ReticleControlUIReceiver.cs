@@ -1,43 +1,42 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System;
 
 namespace ChobiAssets.PTM
 {
 
 
-	public class ReticleControlUIReceiver : MonoBehaviour
-	{
-		/*
+    public class ReticleControlUIReceiver : UIRecivierBase
+    {
+        /*
 		 * This script is attached to the "Gun_Camera" under the "Barrel_Base" in the tank.
 		 * This script controls the reticle image displayed in the gun camera.
 		*/
 
-		// User options >>
-		[SerializeField] private Gun_Camera_CS _gunCamera;
-		[SerializeField] private ReticleUIPresenter _reticleUIPresenterPrefab;
-		[SerializeField] private CameraViewSetup  _cameraSetup;
-		private ReticleUIPresenter _reticleUIPresenter;
+        // User options >>
+        private ReticleUIPresenter _reticleUIPresenter;
         // << User options
-
-        bool isSelected;
-
-        void Start()
+        protected override void InstantiateCanvas()
         {
-            // Get the reticle image in the scene.
-            //if (_gunCamera == null || _reticleUIPresenterPrefab == null)
-            //{
-            //    Destroy(this);
-            //    Debug.LogError("Reticle control is missing links!!!");
-            //    return;
-            //}
+            base.InstantiateCanvas();
+            _reticleUIPresenter = Instantiate(_uiPrefab) as ReticleUIPresenter;
+            _reticleUIPresenter.InitialCanvas(_cameraSetup.GetGunCamera());
+        }
 
-            _reticleUIPresenter = Instantiate(_reticleUIPresenterPrefab);
-            _reticleUIPresenter.Initing(_cameraSetup.GetGunCamera());
-
-            _gunCamera.OnEnableGunCam.AddListener(EnableCamera);
-            _gunCamera.OnDisableGunCam.AddListener(DisableCamera);
+        protected override void Subscribes()
+        {
+            base.Subscribes();
             _gunCamera.OnFOVchange.AddListener(FOVchange);
+        }
+
+        protected override void SwitchCamera(EActiveCameraType activeCamera)
+        {
+            base.SwitchCamera(activeCamera);
+            if (activeCamera == EActiveCameraType.MainCamera)
+            {
+                _reticleUIPresenter.SetRangefinder(0);
+            }
         }
 
         private void FOVchange(float alpha)
@@ -45,53 +44,10 @@ namespace ChobiAssets.PTM
             _reticleUIPresenter.SetRangefinder(alpha);
         }
 
-        private void DisableCamera()
+        protected override void DestroyUI()
         {
-            _reticleUIPresenter.DisableReticle();
-            _reticleUIPresenter.SetRangefinder(0);
+            Destroy(_reticleUIPresenter.gameObject);
         }
-
-        private void EnableCamera()
-        {
-            _reticleUIPresenter.EnableReticle();
-        }
-
-        void Selected(bool isSelected)
-        { // Called from "ID_Settings_CS".
-            if (isSelected)
-            {
-                this.isSelected = true;
-            }
-            else
-            {
-                if (this.isSelected)
-                { // This tank is selected until now.
-                    this.isSelected = false;
-                    //reticleImage.enabled = false;
-                }
-            }
-        }
-
-
-        void Turret_Destroyed_Linkage()
-        { // Called from "Damage_Control_Center_CS".
-
-            // Turn off the image.
-            if (isSelected)
-            {
-                //reticleImage.enabled = false;
-            }
-
-            Destroy(this);
-        }
-
-
-        void Pause(bool isPaused)
-        { // Called from "Game_Controller_CS".
-            this.enabled = !isPaused;
-        }
-
     }
-
 }
 

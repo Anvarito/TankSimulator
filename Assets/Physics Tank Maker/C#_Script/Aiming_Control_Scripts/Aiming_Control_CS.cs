@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
-
+using UnityEngine.Events;
 
 namespace ChobiAssets.PTM
 {
@@ -54,6 +54,7 @@ namespace ChobiAssets.PTM
 
         public bool Is_Selected; // Referred to from "UI_HP_Bars_Target_CS".
         private bool _isTankDestroyed = false;
+        public UnityEvent OnSwitchMode;
 
         public Camera CameraMain { get { return _cameraView.GetCamera(); } }
         public void Initialize(Aiming_Control_Input_00_Base_CS aimingControl)
@@ -180,6 +181,8 @@ namespace ChobiAssets.PTM
                     }
                     break;
             }
+
+            OnSwitchMode?.Invoke();
         }
 
 

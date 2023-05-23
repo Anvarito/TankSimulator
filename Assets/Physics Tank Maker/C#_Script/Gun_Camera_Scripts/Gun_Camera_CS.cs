@@ -6,9 +6,15 @@ using UnityEngine.Events;
 namespace ChobiAssets.PTM
 {
 
+    public enum EActiveCameraType
+    {
+        MainCamera,
+        GunCamera,
+        Other
+    }
+
 	[ RequireComponent (typeof(Camera))]
 	[ RequireComponent (typeof(AudioListener))]
-
 	public class Gun_Camera_CS : MonoBehaviour
 	{
 		/*
@@ -40,11 +46,12 @@ namespace ChobiAssets.PTM
         protected Gun_Camera_Input_00_Base_CS inputScript;
 
         bool isSelected;
-        public UnityEvent OnEnableGunCam;
-        public UnityEvent OnDisableGunCam;
+        //public UnityEvent OnEnableGunCam;
+        //public UnityEvent OnDisableGunCam;
         public UnityEvent<float> OnFOVchange;
 
         private bool _isTankDestroyed;
+        public UnityEvent<EActiveCameraType> OnSwitchCamera;
         //      void Start()
         //{
         //	Initialize();
@@ -142,50 +149,61 @@ namespace ChobiAssets.PTM
         }
 
 
-        public void Switch_Mode(int mode)
+        public void Switch_Mode(EActiveCameraType mode)
         { // Called from "Gun_Camera_Input_##_###".
+            if (_isTankDestroyed)
+            {
+                DisableGunCamera();
+                return;
+            }
+
             switch (mode)
             {
-                case 0: // Not selected.
-                    // Disable the gun camera.
-                    Gun_Camera.enabled = false;
-                    thisListener.enabled = false;
-                    this.tag = "Untagged";
+                case EActiveCameraType.Other: // Not selected.
+                    DisableGunCamera();
                     break;
 
-                case 1: // Off
+                case EActiveCameraType.MainCamera: // Off
                     // Call "Camera_Points_Manager_CS" to enable the main camera.
                     // Call "Camera_Rotation_CS" to point the camera in the same direction. 
-                    Vector3 lookAtPos;
-                    var ray = new Ray(thisTransform.position, thisTransform.forward);
-                    if (Physics.Raycast(ray, out RaycastHit raycastHit, 2048.0f, Layer_Settings_CS.Aiming_Layer_Mask))
-                    {
-                        lookAtPos = raycastHit.point;
-                    }
-                    else
-                    {
-                        lookAtPos = thisTransform.position + (thisTransform.forward * 2048.0f);
-                    }
+                    //Vector3 lookAtPos;
+                    //var ray = new Ray(thisTransform.position, thisTransform.forward);
+                    //if (Physics.Raycast(ray, out RaycastHit raycastHit, 2048.0f, Layer_Settings_CS.Aiming_Layer_Mask))
+                    //{
+                    //    lookAtPos = raycastHit.point;
+                    //}
+                    //else
+                    //{
+                    //    lookAtPos = thisTransform.position + (thisTransform.forward * 2048.0f);
+                    //}
                     //Camera_Manager_Script.SendMessage("Enable_Camera", lookAtPos, SendMessageOptions.DontRequireReceiver);
                     Camera_Manager_Script.Enable_Camera();
-                    OnDisableGunCam?.Invoke();
-                    // Disable the gun camera.
-                    Gun_Camera.enabled = false;
-                    thisListener.enabled = false;
-                    this.tag = "Untagged";
+                    DisableGunCamera();
                     break;
 
-                case 2: // On
+                case EActiveCameraType.GunCamera: // On
                     // Call "Camera_Points_Manager_CS" to disable the main camera.
                     //Camera_Manager_Script.SendMessage("Disable_Camera", SendMessageOptions.DontRequireReceiver);
                     Camera_Manager_Script.Disable_Camera();
-                    // Enable the gun camera.
-                    OnEnableGunCam?.Invoke();
-                    Gun_Camera.enabled = true;
-                    thisListener.enabled = true;
-                    this.tag = "MainCamera";
+                    EnableGunCamera();
                     break;
             }
+
+            OnSwitchCamera?.Invoke(mode);
+        }
+
+        private void EnableGunCamera()
+        {
+            Gun_Camera.enabled = true;
+            thisListener.enabled = true;
+            this.tag = "MainCamera";
+        }
+
+        private void DisableGunCamera()
+        {
+            Gun_Camera.enabled = false;
+            thisListener.enabled = false;
+            this.tag = "Untagged";
         }
 
 
@@ -239,7 +257,7 @@ namespace ChobiAssets.PTM
             // Turn off the gun camera. >> Switch to the main camera.
             if (isSelected)
             {
-                Switch_Mode(1); // Off
+                Switch_Mode(EActiveCameraType.MainCamera); // Off
             }
 
             _isTankDestroyed = true;

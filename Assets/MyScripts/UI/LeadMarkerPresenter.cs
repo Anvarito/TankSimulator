@@ -10,28 +10,16 @@ public class LeadMarkerPresenter : UIPresenterBase
     [SerializeField] private Sprite _rightSprite;
     [SerializeField] private Image _markerImage;
     [SerializeField] private float _calculationTime = 2.0f;
-    private Camera _camera;
-    private Camera _gunCamera;
-    private Aiming_Control_CS _aimingScript;
-    private Bullet_Generator_CS _bullet_Generator_Script;
-    private Transform _bulletGeneratorTransform;
-    public void Initializing(Aiming_Control_CS aimingScript, Bullet_Generator_CS bulletGenerator)
-    {
-        _aimingScript = aimingScript;
-        _bullet_Generator_Script = bulletGenerator;
-        _bulletGeneratorTransform = _bullet_Generator_Script.transform;
 
+    public override void InitialCanvas(Camera camera)
+    {
+        base.InitialCanvas(camera);
         _markerImage.sprite = _rightSprite;
     }
-    public void MarkerControl(Camera currentCamera)
+
+    public void MarkerControl(Vector3 targetPosition, Rigidbody targetRigidbody, Transform buletGeneratorTransform, float bulletVelocity)
     {
-        // Check the aiming mode.
-        switch (_aimingScript.Mode)
-        {
-            case 0: // Keep the initial positon.
-                _markerImage.enabled = false;
-                return;
-        }
+        
 
         // Check the target is locked on now.
         //if (_aimingScript.Target_Transform == null)
@@ -39,17 +27,16 @@ public class LeadMarkerPresenter : UIPresenterBase
         //    _markerImage.enabled = false;
         //    return;
         //}
-
         // Calculate the ballistic.
-        var muzzlePos = _bulletGeneratorTransform.position;
-        var targetDir = _aimingScript.Target_Position - muzzlePos;
+        var muzzlePos = buletGeneratorTransform.position;
+        var targetDir = targetPosition - muzzlePos;
         Debug.DrawRay(muzzlePos, targetDir, Color.red, 100);
         var targetBase = Vector2.Distance(Vector2.zero, new Vector2(targetDir.x, targetDir.z));
-        var bulletVelocity = _bulletGeneratorTransform.forward * _bullet_Generator_Script.Current_Bullet_Velocity;
-        if (_aimingScript.Target_Rigidbody)
+        var velocity = buletGeneratorTransform.forward * bulletVelocity;
+        if (targetRigidbody)
         { // The target has a rigidbody.
           // Reduce the target's velocity to help the lead-shooting.
-            bulletVelocity -= _aimingScript.Target_Rigidbody.velocity;
+            velocity -= targetRigidbody.velocity;
         }
         var isHit = false;
         var isTank = false;
@@ -59,7 +46,7 @@ public class LeadMarkerPresenter : UIPresenterBase
         while (count < _calculationTime)
         {
             // Get the current position.
-            var virtualPos = bulletVelocity * count;
+            var virtualPos = velocity * count;
             virtualPos.y -= 0.5f * -Physics.gravity.y * Mathf.Pow(count, 2.0f);
             currentPos = virtualPos + muzzlePos;
 
@@ -87,7 +74,7 @@ public class LeadMarkerPresenter : UIPresenterBase
         }
 
         // Convert the hit point to the screen point.
-        var screenPos = currentCamera.WorldToScreenPoint(currentPos);
+        var screenPos = _canvas.worldCamera.WorldToScreenPoint(currentPos);
         if (screenPos.z < 0.0f)
         { // The hit point is behind the camera.
             _markerImage.enabled = false;
@@ -116,6 +103,16 @@ public class LeadMarkerPresenter : UIPresenterBase
         else
         { // The bullet will not hit anything.
           //markerImage.color = Color.gray;
+        }
+    }
+
+    internal void SwitchMode(int mode)
+    {
+        switch (mode)
+        {
+            case 0: // Keep the initial positon.
+                _markerImage.enabled = false;
+                break;
         }
     }
 }

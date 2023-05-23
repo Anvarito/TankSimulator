@@ -3,12 +3,13 @@ using UnityEngine;
 using UnityEngine.UI;
 
 using System.Collections.Generic;
+using System;
 
 namespace ChobiAssets.PTM
 {
 
     [DefaultExecutionOrder(+3)] // (Note.) This script is executed after the main camera is moved, in order to move the marker smoothly.
-    public class LeadMarkerUIReceiver : MonoBehaviour
+    public class LeadMarkerUIReceiver : UIRecivierBase
     {
         /*
 		 * This script is attached to the "MainBody" of the tank with "Aiming_Control_CS".
@@ -16,90 +17,57 @@ namespace ChobiAssets.PTM
 		*/
 
         // User options >>
-        [SerializeField] private LeadMarkerPresenter _leadMarkerPresenterPrefab;
-        [SerializeField] private Aiming_Control_CS _aimingScript;
         [SerializeField] private Bullet_Generator_CS _bulletGenerator;
-        [SerializeField] private CameraViewSetup _cameraSetup;
         // << User options
         private LeadMarkerPresenter _leadMarkerPresenter;
         private Camera _currentCamera;
-        bool isSelected;
 
-        void Start()
+        protected override void Subscribes()
         {
-            if (_aimingScript == null)
+            base.Subscribes();
+            _aimingControl.OnSwitchMode.AddListener(AimingModeSwitch);
+        }
+        protected override void InstantiateCanvas()
+        {
+            base.InstantiateCanvas();
+            if (_aimingControl == null)
             {
                 Debug.LogError("'Aiming_Control_CS' cannot be found in the MainBody.");
-                Destroy(this);
             }
             if (_bulletGenerator == null)
             {
                 Debug.LogError("'Bullet_Generator_CS' cannot be found. The cannon cannot get the bullet velocity.");
-                Destroy(this);
-                return;
             }
 
-            if (_leadMarkerPresenterPrefab != null)
-            {
-                _leadMarkerPresenter = Instantiate(_leadMarkerPresenterPrefab);
-                _leadMarkerPresenter.InitialCanvas(_cameraSetup.GetCamera());
-                _leadMarkerPresenter.Initializing(_aimingScript, _bulletGenerator);
-            }
-            else
-            {
-                Debug.LogError("'_leadMarkerPresenterPrefab' cannot be found!!!");
-                Destroy(this);
-                return;
-            }
+            _leadMarkerPresenter = Instantiate(_uiPrefab) as LeadMarkerPresenter;
+            _leadMarkerPresenter.InitialCanvas(_cameraSetup.GetCamera());
+        }
+        
+        private void AimingModeSwitch()
+        {
+            _leadMarkerPresenter.SwitchMode(_aimingControl.Mode);
         }
 
+        protected override void SwitchCamera(EActiveCameraType activeCamera)
+        {
+            base.SwitchCamera(activeCamera);
+            _currentCamera = activeCamera == EActiveCameraType.GunCamera ? _cameraSetup.GetGunCamera() : _cameraSetup.GetCamera();
+            _leadMarkerPresenter.SetCamera(_currentCamera);
+        }
 
         void LateUpdate()
         {
-            if (isSelected == false)
-            {
+            if (_leadMarkerPresenter == null || _aimingControl.Mode == 0)
                 return;
-            }
 
-            _currentCamera = _cameraSetup.GetCamera().enabled ? _cameraSetup.GetCamera() : _cameraSetup.GetGunCamera();
-            _leadMarkerPresenter.MarkerControl(_currentCamera);
+            _leadMarkerPresenter.MarkerControl(_aimingControl.Target_Position, _aimingControl.Target_Rigidbody, _bulletGenerator.transform, _bulletGenerator.Current_Bullet_Velocity);
         }
 
-        void Selected(bool isSelected)
-        { // Called from "ID_Settings_CS".
-            if (isSelected)
-            {
-                this.isSelected = true;
-            }
-            else
-            {
-                if (this.isSelected)
-                { // This tank is selected until now.
-                    this.isSelected = false;
-                   // markerImage.enabled = false;
-                }
-            }
+        protected override void DestroyUI()
+        {
+            Destroy(_leadMarkerPresenter.gameObject);
+            _aimingControl.OnSwitchMode.RemoveListener(AimingModeSwitch);
         }
-
-
-        void MainBody_Destroyed_Linkage()
-        { // Called from "Damage_Control_Center_CS".
-
-            // Turn off the marker.
-            if (isSelected)
-            {
-                //markerImage.enabled = false;
-            }
-
-            Destroy(this);
-        }
-
-
-        void Pause(bool isPaused)
-        { // Called from "Game_Controller_CS".
-            this.enabled = !isPaused;
-        }
-
     }
 
 }

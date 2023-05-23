@@ -9,24 +9,9 @@ public class ReticleUIPresenter : UIPresenterBase
     [SerializeField] private Image _reticleImage;
     [SerializeField] private RectTransform _RangefinderImage;
 
-    public void EnableReticle()
-    {
-        _reticleImage.gameObject.SetActive(true);
-    }
-    public void DisableReticle()
-    {
-        _reticleImage.gameObject.SetActive(false);
-    }
-
     public void SetRangefinder(float alpha)
     {
         float newZ = Mathf.Lerp(0, 180, alpha);
         _RangefinderImage.localRotation = Quaternion.Euler(new Vector3(_RangefinderImage.localRotation.x, _RangefinderImage.localRotation.y, newZ));
-    }
-
-    internal void Initing(Camera camera)
-    {
-        _canvas.worldCamera = camera;
-        _canvas.planeDistance = 1;
     }
 }

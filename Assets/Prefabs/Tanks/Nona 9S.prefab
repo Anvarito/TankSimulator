@@ -70847,6 +70847,9 @@ MonoBehaviour:
   Turret_Turn_Rate: 0
   Cannon_Turn_Rate: 0
   Is_Selected: 0
+  OnSwitchMode:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1083484181796028779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87480,13 +87483,10 @@ MonoBehaviour:
   Maximum_FOV: 10
   inputType: 0
   Zoom_Input: 0
-  OnEnableGunCam:
-    m_PersistentCalls:
-      m_Calls: []
-  OnDisableGunCam:
-    m_PersistentCalls:
-      m_Calls: []
   OnFOVchange:
+    m_PersistentCalls:
+      m_Calls: []
+  OnSwitchCamera:
     m_PersistentCalls:
       m_Calls: []
 --- !u!20 &5869663220578190905
@@ -88018,6 +88018,22 @@ PrefabInstance:
       propertyPath: _drive_Control_CS
       value: 
       objectReference: {fileID: 1083484181796028769}
+    - target: {fileID: 288517704285420636, guid: a9b5df4f69716c64393b37cfd9540945, type: 3}
+      propertyPath: _gunCamera
+      value: 
+      objectReference: {fileID: 5869663220578190904}
+    - target: {fileID: 288517704285420636, guid: a9b5df4f69716c64393b37cfd9540945, type: 3}
+      propertyPath: _cameraSetup
+      value: 
+      objectReference: {fileID: 1083484181407159624}
+    - target: {fileID: 288517704285420636, guid: a9b5df4f69716c64393b37cfd9540945, type: 3}
+      propertyPath: _aiming_Control
+      value: 
+      objectReference: {fileID: 1083484181796028777}
+    - target: {fileID: 288517704285420636, guid: a9b5df4f69716c64393b37cfd9540945, type: 3}
+      propertyPath: _damageRecivierManager
+      value: 
+      objectReference: {fileID: 1083484181796028779}
     - target: {fileID: 291032562192488971, guid: a9b5df4f69716c64393b37cfd9540945, type: 3}
       propertyPath: m_RootOrder
       value: 0

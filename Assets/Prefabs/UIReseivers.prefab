@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 398834320}
   - component: {fileID: 398834321}
   - component: {fileID: 1224471283}
+  - component: {fileID: 288517704285420636}
   m_Layer: 0
   m_Name: UIReseivers
   m_TagString: Untagged
@@ -49,9 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48e30e3d340b19146a58c4fc0038d4a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _aimLeadPresenterPrefab: {fileID: 1038600634077210470, guid: 6f83dcb8e09e2774088922a846c0ead4, type: 3}
-  aimingScript: {fileID: 0}
-  _camera: {fileID: 0}
+  _uiPrefab: {fileID: 1038600634077210470, guid: 6f83dcb8e09e2774088922a846c0ead4, type: 3}
 --- !u!114 &331844288142114373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,10 +63,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ba1337d5d159b445a17e35cb149ca44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _leadMarkerPresenterPrefab: {fileID: 2735223905454046662, guid: 247687aca8c20d64bbc37f0d98866465, type: 3}
-  _aimingScript: {fileID: 0}
+  _uiPrefab: {fileID: 2735223905454046662, guid: 247687aca8c20d64bbc37f0d98866465, type: 3}
   _bulletGenerator: {fileID: 0}
-  _camera: {fileID: 0}
 --- !u!114 &1127647858160360992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,9 +77,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 254a24b799359c345a456bb62136e7fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _reloadMarkerCanvasPrefab: {fileID: 1442603259745270361, guid: 4c05cce6d1b365f4db8a9702c9a100ad, type: 3}
+  _uiPrefab: {fileID: 1442603259745270361, guid: 4c05cce6d1b365f4db8a9702c9a100ad, type: 3}
   _cannonFireScript: {fileID: 0}
-  _camera: {fileID: 0}
 --- !u!114 &398834320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95,9 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82b6b4ec2726f6546ba4ce3cea72633e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gunCamera: {fileID: 0}
-  _reticleUIPresenterPrefab: {fileID: 3434523930264630701, guid: 59085f44a027c4b428aa50485223ae5b, type: 3}
-  _camera: {fileID: 0}
+  _uiPrefab: {fileID: 3434523930264630701, guid: 59085f44a027c4b428aa50485223ae5b, type: 3}
 --- !u!114 &398834321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,9 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a0dc27191a71d64da182ac7a747ff3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ui_HP_Bars_Self_CSprefab: {fileID: 114719096273676120, guid: 658df433f8bd5ac43ab24a488688f2d7, type: 3}
-  _damageManager: {fileID: 0}
-  _camera: {fileID: 0}
+  _uiPrefab: {fileID: 5902823271639062800, guid: 658df433f8bd5ac43ab24a488688f2d7, type: 3}
 --- !u!114 &1224471283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,6 +117,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbb5d0741e60e974aa51391a70922706, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _camera: {fileID: 0}
-  _speedIndicatorUIPrefab: {fileID: 4276478798196292613, guid: 8ba9b2f39b3d4494caf37a2f92a71e09, type: 3}
+  _uiPrefab: {fileID: 4276478798196292613, guid: 8ba9b2f39b3d4494caf37a2f92a71e09, type: 3}
   _drive_Control_CS: {fileID: 0}
+--- !u!114 &288517704285420636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1815802135084448772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4883390a091239408f6ca8044a939b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _uiReciviers: []
+  _damageRecivierManager: {fileID: 0}
+  _gunCamera: {fileID: 0}
+  _cameraSetup: {fileID: 0}
+  _aiming_Control: {fileID: 0}

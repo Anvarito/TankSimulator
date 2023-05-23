@@ -29,6 +29,8 @@ namespace ChobiAssets.PTM
 
 
         // User options >>
+        [SerializeField] private CameraViewSetup _cameraViewSetup;
+        [SerializeField] private ID_Settings_CS _selfIdSetting;
         public GameObject Marker_Prefab;
         public string Canvas_Name = "Canvas_Markers";
         public Color Friend_Color = Color.blue;
@@ -49,15 +51,10 @@ namespace ChobiAssets.PTM
         CanvasScaler canvasScaler;
         Quaternion leftRot = Quaternion.Euler(new Vector3(0.0f, 0.0f, -90.0f));
         Quaternion rightRot = Quaternion.Euler(new Vector3(0.0f, 0.0f, 90.0f));
+        private float _resolutionOffset;
+        private Camera _mainCamera;
 
-
-        void Awake()
-        { // This function must be exected before "Start()", because the Canvas is required in "Receive_ID_Script()" called in "Start()".
-            Initialize();
-        }
-
-
-        void Initialize()
+        public void Initialize()
         {
             // Check the prefab.
             if (Marker_Prefab == null)
@@ -75,6 +72,7 @@ namespace ChobiAssets.PTM
                 return;
             }
 
+
             // Get the canvas.
             var canvasObject = GameObject.Find(Canvas_Name);
             if (canvasObject)
@@ -88,26 +86,37 @@ namespace ChobiAssets.PTM
                 return;
             }
             canvasScaler = canvas.GetComponent<CanvasScaler>();
+
+            _resolutionOffset = Screen.width / canvasScaler.referenceResolution.x;
+            _mainCamera = _cameraViewSetup.GetCamera();
+
+            //temp!!! Add all units in list
+            idScriptsList.AddRange(FindObjectsOfType<ID_Settings_CS>());
+            foreach (var idScript in idScriptsList)
+            {
+                Receive_ID_Script(idScript);
+            }
         }
 
 
-        void Receive_ID_Script(ID_Settings_CS idScript)
+
+        public void AddNewActor(ID_Settings_CS newActor)
+        {
+            idScriptsList.Add(newActor);
+        }
+
+        void Receive_ID_Script(ID_Settings_CS newActor)
         { // Called from "ID_Settings_CS" in tanks in the scene, when the tank is spawned.
-
-            // Add the "ID_Settings_CS" to the list.
-            idScriptsList.Add(idScript);
-
-            // Create a new marker object.
+          // Create a new marker object.
             var markerObject = Instantiate(Marker_Prefab, canvas.transform);
-
             // Add the components to the dictionary.
             var newProp = new Position_Marker_Prop();
             newProp.Marker_Image = markerObject.GetComponent<Image>();
             newProp.Marker_Transform = newProp.Marker_Image.transform;
-            newProp.Root_Transform = idScript.transform.root;
-            newProp.Body_Transform = idScript.GetComponentInChildren<Rigidbody>().transform;
-            newProp.AI_Script = idScript.GetComponentInChildren<AI_CS>();
-            markerDictionary.Add(idScript, newProp);
+            newProp.Root_Transform = newActor.transform;
+            newProp.Body_Transform = newActor.GetComponentInChildren<Rigidbody>().transform;
+            newProp.AI_Script = newActor.GetComponentInChildren<AI_CS>();
+            markerDictionary.Add(newActor, newProp);
         }
 
 
@@ -119,15 +128,15 @@ namespace ChobiAssets.PTM
 
         void Control_Markers()
         {
-            var mainCamera = Camera.main;
-            var resolutionOffset = Screen.width / canvasScaler.referenceResolution.x;
-
             for (int i = 0; i < idScriptsList.Count; i++)
             {
                 // Check the tank is selected now, or has been dead.
-                if (idScriptsList[i].IsSelected || markerDictionary[idScriptsList[i]].Root_Transform.tag == "Finish")
+                Position_Marker_Prop currentMarkerProp;
+                if (idScriptsList[i].tag == Layer_Settings_CS.FinishTag && markerDictionary.TryGetValue(idScriptsList[i], out currentMarkerProp))
                 {
-                    markerDictionary[idScriptsList[i]].Marker_Image.enabled = false;
+                    currentMarkerProp.Marker_Image.enabled = false;
+                    markerDictionary.Remove(idScriptsList[i]);
+                    idScriptsList.RemoveAt(i);
                     continue;
                 }
 
@@ -140,99 +149,34 @@ namespace ChobiAssets.PTM
                 }
 
                 // Set the enabled and the color, according to the relationship and the AI condition.
-                switch (idScriptsList[i].Relationship)
-                {
-                    case ERelationship.TeamA: // Friendly.
-                        markerDictionary[idScriptsList[i]].Marker_Image.enabled = true;
-                        if (markerDictionary[idScriptsList[i]].AI_Script)
-                        { // AI tank.
-                            // Set the alpha.
-                            switch (markerDictionary[idScriptsList[i]].AI_Script.Action_Type)
-                            {
-                                case 0: // Defensive.
-                                    Friend_Color.a = Defensive_Alpha;
-                                    break;
+                bool isAlly = _selfIdSetting.Relationship == idScriptsList[i].Relationship;
 
-                                case 1: // Offensive.
-                                    Friend_Color.a = Offensive_Alpha;
-                                    break;
-                            }
-                            markerDictionary[idScriptsList[i]].Marker_Image.color = Friend_Color;
-                        }
-                        else
-                        { // Not AI tank.
-                            markerDictionary[idScriptsList[i]].Marker_Image.enabled = Show_Always;
-                            markerDictionary[idScriptsList[i]].Marker_Image.color = Friend_Color;
-                        }
-                        break;
-
-                    case ERelationship.TeamB: // Hostile.
-                        if (markerDictionary[idScriptsList[i]].AI_Script)
-                        { // AI tank.
-                            // Set the alpha and the scale.
-                            switch (markerDictionary[idScriptsList[i]].AI_Script.Action_Type)
-                            {
-                                case 0: // Defensive.
-                                    if (Show_Always)
-                                    { // The marker is always displayed.
-                                        markerDictionary[idScriptsList[i]].Marker_Image.enabled = true;
-                                        Hostile_Color.a = Defensive_Alpha;
-                                        markerDictionary[idScriptsList[i]].Marker_Image.color = Hostile_Color;
-                                        markerDictionary[idScriptsList[i]].Marker_Transform.localScale = Vector3.one;
-                                    }
-                                    else
-                                    { // The marker is not displayed when the AI is defensive.
-                                        markerDictionary[idScriptsList[i]].Marker_Image.enabled = false;
-                                    }
-                                    break;
-
-                                case 1: // Offensive.
-                                    markerDictionary[idScriptsList[i]].Marker_Image.enabled = true;
-                                    // Set the alpha.
-                                    Hostile_Color.a = Offensive_Alpha;
-                                    markerDictionary[idScriptsList[i]].Marker_Image.color = Hostile_Color;
-                                    markerDictionary[idScriptsList[i]].Marker_Transform.localScale = Vector3.one * 1.5f;
-                                    break;
-                            }
-                        }
-                        else
-                        { // Not AI tank.
-                            markerDictionary[idScriptsList[i]].Marker_Image.enabled = Show_Always;
-                            markerDictionary[idScriptsList[i]].Marker_Image.color = Hostile_Color;
-                        }
-                        break;
-
-                    case ERelationship.Landmark: // Landmark.
-                        markerDictionary[idScriptsList[i]].Marker_Image.enabled = true;
-                        markerDictionary[idScriptsList[i]].Marker_Image.color = Landmark_Color;
-                        break;
-                }
-                if (markerDictionary[idScriptsList[i]].Marker_Image.enabled == false)
-                {
-                    continue;
-                }
+                markerDictionary[idScriptsList[i]].Marker_Image.enabled = Show_Always;
+                markerDictionary[idScriptsList[i]].Marker_Transform.localScale = Vector3.one * 1.5f;
+                markerDictionary[idScriptsList[i]].Marker_Image.color = isAlly ? Friend_Color : Hostile_Color;
+                Hostile_Color.a = Offensive_Alpha;
 
                 // Calculate the position and rotation.
-                var dist = Vector3.Distance(mainCamera.transform.position, markerDictionary[idScriptsList[i]].Body_Transform.position);
-                var currentPos = mainCamera.WorldToScreenPoint(markerDictionary[idScriptsList[i]].Body_Transform.position);
+                var dist = Vector3.Distance(_mainCamera.transform.position, markerDictionary[idScriptsList[i]].Body_Transform.position);
+                var currentPos = _mainCamera.WorldToScreenPoint(markerDictionary[idScriptsList[i]].Body_Transform.position);
                 if (currentPos.z > 0.0f)
                 { // In front of the camera.
                     currentPos.z = 100.0f;
                     if (currentPos.x < Side_Offset)
                     { // Over the left end.
-                        currentPos.x = Side_Offset * resolutionOffset;
+                        currentPos.x = Side_Offset * _resolutionOffset;
                         currentPos.y = Screen.height * Mathf.Lerp(0.2f, 0.9f, dist / 500.0f);
                         markerDictionary[idScriptsList[i]].Marker_Transform.localRotation = leftRot;
                     }
                     else if (currentPos.x > (Screen.width - Side_Offset))
                     { // Over the right end.
-                        currentPos.x = Screen.width - (Side_Offset * resolutionOffset);
+                        currentPos.x = Screen.width - (Side_Offset * _resolutionOffset);
                         currentPos.y = Screen.height * Mathf.Lerp(0.2f, 0.9f, dist / 500.0f);
                         markerDictionary[idScriptsList[i]].Marker_Transform.localRotation = rightRot;
                     }
                     else
                     { // Within the screen.
-                        currentPos.y = Screen.height - (Upper_Offset * resolutionOffset);
+                        currentPos.y = Screen.height - (Upper_Offset * _resolutionOffset);
                         markerDictionary[idScriptsList[i]].Marker_Transform.localRotation = Quaternion.identity;
                     }
                 }
@@ -241,20 +185,20 @@ namespace ChobiAssets.PTM
                     currentPos.z = -100.0f;
                     if (currentPos.x > (Screen.width - Side_Offset))
                     { // Over the left end.
-                        currentPos.x = Side_Offset * resolutionOffset;
+                        currentPos.x = Side_Offset * _resolutionOffset;
                         currentPos.y = Screen.height * Mathf.Lerp(0.2f, 0.9f, dist / 500.0f);
                         markerDictionary[idScriptsList[i]].Marker_Transform.localRotation = leftRot;
                     }
                     else if (currentPos.x < Side_Offset)
                     { // Over the right end.
-                        currentPos.x = Screen.width - (Side_Offset * resolutionOffset);
+                        currentPos.x = Screen.width - (Side_Offset * _resolutionOffset);
                         currentPos.y = Screen.height * Mathf.Lerp(0.2f, 0.9f, dist / 500.0f);
                         markerDictionary[idScriptsList[i]].Marker_Transform.localRotation = rightRot;
                     }
                     else
                     { // Within the screen.
                         currentPos.x = Screen.width - currentPos.x;
-                        currentPos.y = (Bottom_Offset * resolutionOffset);
+                        currentPos.y = (Bottom_Offset * _resolutionOffset);
                         markerDictionary[idScriptsList[i]].Marker_Transform.localRotation = Quaternion.identity;
                     }
                 }

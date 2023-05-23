@@ -7,7 +7,7 @@ namespace ChobiAssets.PTM
 {
 
     [DefaultExecutionOrder(+2)] // (Note.) This script is executed after the "Aiming_Control_CS", in order to move the marker smoothly.
-    public class AimMarkerUIReceiver : MonoBehaviour
+    public class AimMarkerUIReceiver : UIRecivierBase
     {
         /*
 		 * This script is attached to the "MainBody" of the tank.
@@ -15,88 +15,44 @@ namespace ChobiAssets.PTM
          * This script works in combination with "Aiming_Control_CS" in the tank.
 		*/
 
-        // User options >>
-        [SerializeField] private AimMarkerPresenter _aimLeadPresenterPrefab;
-        [SerializeField] private Aiming_Control_CS aimingScript;
-        [SerializeField] private Camera _camera;
-        // << User options
         private AimMarkerPresenter _aimLeadPresenter;
-        bool isSelected;
 
-
-        void Start()
+        protected override void InstantiateCanvas()
         {
+            base.InstantiateCanvas();
             // Get the "Aiming_Control_CS" in the tank.
-            if (aimingScript == null)
+            if (_aimingControl == null)
             {
                 Debug.LogWarning("'Aiming_Control_CS' cannot be found in the MainBody.");
-                Destroy(this);
             }
             // Get the marker image in the scene.
-            if (_aimLeadPresenterPrefab == null)
+            if (_uiPrefab == null)
             {
-                return;
-            }
-            else
-            {
-                _aimLeadPresenter = Instantiate(_aimLeadPresenterPrefab);
+                Debug.LogWarning("'AimMarkerPresenter' cannot be found in the MainBody.");
             }
 
-            _aimLeadPresenter.Initializing(aimingScript, _camera);
+            _aimLeadPresenter = Instantiate(_uiPrefab) as AimMarkerPresenter;
+            _aimLeadPresenter.InitialCanvas(_cameraSetup.GetCamera());
+            _aimLeadPresenter.ChangeVisibleMarker(true);
         }
-
 
         void Update()
         {
-            if (isSelected == false)
-            {
-                return;
-            }
-
             if (_aimLeadPresenter != null)
-                _aimLeadPresenter.AimMarkerControl();
+            {
+                _aimLeadPresenter.ChangeColorMarker(_aimingControl.Target_Rigidbody);
+            }
         }
 
-        private void DestroyTank()
+        protected override void SwitchCamera(EActiveCameraType activeCamera)
+        {
+            base.SwitchCamera(activeCamera);
+            _aimLeadPresenter.ChangeVisibleMarker(activeCamera == EActiveCameraType.MainCamera);
+        }
+
+        protected override void DestroyUI()
         {
             Destroy(_aimLeadPresenter);
         }
-
-        void Selected(bool isSelected)
-        { // Called from "ID_Settings_CS".
-            if (isSelected)
-            {
-                this.isSelected = true;
-            }
-            else
-            {
-                if (this.isSelected)
-                { // This tank is selected until now.
-                    this.isSelected = false;
-                    //markerImage.enabled = false;
-                }
-            }
-        }
-
-
-        void MainBody_Destroyed_Linkage()
-        { // Called from "Damage_Control_Center_CS".
-
-            // Turn off the marker.
-            if (isSelected)
-            {
-                //markerImage.enabled = false;
-            }
-
-            Destroy(this);
-        }
-
-
-        void Pause(bool isPaused)
-        { // Called from "Game_Controller_CS".
-            this.enabled = !isPaused;
-        }
-
     }
-
 }
