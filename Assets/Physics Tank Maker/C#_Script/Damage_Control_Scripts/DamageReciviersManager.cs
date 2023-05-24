@@ -150,12 +150,14 @@ namespace ChobiAssets.PTM
         private void BodyDestroy()
         {
             _mainBodyDamages.OnDestroyed.RemoveListener(BodyDestroy);
+            _turretDamages.OnDestroyed.RemoveListener(TurretDestroy);
             TankDestroyed();
         }
 
         private void TurretDestroy()
         {
             _turretDamages.OnDestroyed.RemoveListener(TurretDestroy);
+            _mainBodyDamages.OnDestroyed.RemoveListener(BodyDestroy);
             TankDestroyed();
         }
 

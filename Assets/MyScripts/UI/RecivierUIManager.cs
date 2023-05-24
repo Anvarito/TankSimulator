@@ -25,6 +25,6 @@ public class RecivierUIManager : MonoBehaviour
                 recivier.InitialUIRecivier(_damageRecivierManager, _gunCamera, _cameraSetup, _aiming_Control);
         }
 
-        _UI_Position_Marker_Control_CS.Initialize(_cameraSetup, _selfID, _gunCamera);
+        _UI_Position_Marker_Control_CS.Initialize(_selfID);
     }
 }

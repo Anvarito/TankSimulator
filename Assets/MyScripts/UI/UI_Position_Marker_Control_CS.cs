@@ -19,7 +19,7 @@ namespace ChobiAssets.PTM
 
 
     [DefaultExecutionOrder(+2)] // (Note.) This script is executed after the "Camera_Points_Manager_CS", in order to move the marker smoothly.
-    public class UI_Position_Marker_Control_CS : MonoBehaviour
+    public class UI_Position_Marker_Control_CS : UIRecivierBase
     {
         /*
 		 * This script is attached to the top object of the tank.
@@ -40,14 +40,13 @@ namespace ChobiAssets.PTM
 
         private float Upper_Offset = 3;
         private Camera _mainCamera;
-        private CameraViewSetup _cameraViewSetup;
         private ID_Settings_CS _selfIdSetting;
         private Canvas _canvas;
 
         Plane[] _cameraPlanes;
 
 
-        public void Initialize(CameraViewSetup cameraViewSetup, ID_Settings_CS iD_Settings_CS, Gun_Camera_CS gun_Camera_CS)
+        public void Initialize(ID_Settings_CS iD_Settings_CS)
         {
             // Check the prefab.
             if (Marker_Prefab == null)
@@ -57,24 +56,30 @@ namespace ChobiAssets.PTM
                 return;
             }
 
-            gun_Camera_CS.OnSwitchCamera.AddListener(CameraSwitch);
-            _cameraViewSetup = cameraViewSetup;
             _selfIdSetting = iD_Settings_CS;
-            _mainCamera = _cameraViewSetup.GetCamera();
-
-            // Set the canvas.
-            SetCanvas();
+            _mainCamera = _cameraSetup.GetCamera();
 
             StartCoroutine(SearchAllUits());
         }
 
-        private void CameraSwitch(EActiveCameraType typeCamera)
+        protected override void InstantiateCanvas()
         {
+            base.InstantiateCanvas();
+            Canvas canvas = new GameObject("MARKER POSITION CANVAS").AddComponent<Canvas>();
+            _canvas = canvas;
+            _canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+            _canvas.gameObject.AddComponent<CanvasScaler>().uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+            _canvas.GetComponent<CanvasScaler>().referenceResolution = new Vector2(1920, 1080);
+        }
+
+        protected override void SwitchCamera(EActiveCameraType activeCamera)
+        {
+            base.SwitchCamera(activeCamera);
             foreach (var i in _driveControlList)
             {
                 var imageGO = _markerDictionary[i].ArrowImage;
                 if (imageGO != null)
-                    imageGO.enabled = typeCamera == EActiveCameraType.MainCamera;
+                    imageGO.enabled = activeCamera == EActiveCameraType.MainCamera;
             }
         }
 
@@ -90,15 +95,6 @@ namespace ChobiAssets.PTM
                 _driveControlList.Add(currentActor);
                 Receive_ID_Script(idScript, currentActor);
             }
-        }
-
-        private void SetCanvas()
-        {
-            Canvas canvas = new GameObject("MARKER POSITION CANVAS").AddComponent<Canvas>();
-            _canvas = canvas;
-            _canvas.renderMode = RenderMode.ScreenSpaceOverlay;
-            _canvas.gameObject.AddComponent<CanvasScaler>().uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-            _canvas.GetComponent<CanvasScaler>().referenceResolution = new Vector2(1920, 1080);
         }
 
         void Receive_ID_Script(ID_Settings_CS idSetting, Drive_Control_CS driveControl)
@@ -119,9 +115,16 @@ namespace ChobiAssets.PTM
 
         void LateUpdate()
         {
+            if (_canvas == null)
+                return;
+
             Control_Markers();
         }
 
+        protected override void DestroyUI()
+        {
+            Destroy(_canvas.gameObject); //Destroy todo
+        }
 
         void Control_Markers()
         {
@@ -141,7 +144,7 @@ namespace ChobiAssets.PTM
                     continue;
                 }
 
-                Vector3 playerToEnemy = (currentActor.transform.position + Vector3.up * Upper_Offset) - transform.position;
+                Vector3 playerToEnemy = (currentActor.transform.position + Vector3.up * Upper_Offset) - (transform.position + Vector3.up * Upper_Offset);
                 Ray ray = new Ray(transform.position, playerToEnemy.normalized);
                 _cameraPlanes = GeometryUtility.CalculateFrustumPlanes(_mainCamera);
 
