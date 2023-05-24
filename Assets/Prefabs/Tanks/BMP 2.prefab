@@ -50604,6 +50604,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIResivers
       objectReference: {fileID: 0}
+    - target: {fileID: 1815802135084448772, guid: a9b5df4f69716c64393b37cfd9540945, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9b5df4f69716c64393b37cfd9540945, type: 3}
 --- !u!4 &1971634050817270839 stripped

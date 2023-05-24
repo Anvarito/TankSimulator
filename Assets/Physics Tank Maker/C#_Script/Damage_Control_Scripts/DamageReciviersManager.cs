@@ -145,26 +145,28 @@ namespace ChobiAssets.PTM
         {
             OnTrackBreach?.Invoke(track);
         }
-        
+
 
         private void BodyDestroy()
         {
-            _mainBodyDamages.OnDestroyed.RemoveListener(BodyDestroy);
-            _turretDamages.OnDestroyed.RemoveListener(TurretDestroy);
             TankDestroyed();
         }
 
         private void TurretDestroy()
         {
-            _turretDamages.OnDestroyed.RemoveListener(TurretDestroy);
-            _mainBodyDamages.OnDestroyed.RemoveListener(BodyDestroy);
             TankDestroyed();
         }
 
         private void TankDestroyed()
         {
             isDead = true;
-            if(_damageTrackRecivier) _damageTrackRecivier.FullBreak();
+            if (_damageTrackRecivier) _damageTrackRecivier.FullBreak();
+
+            _turretDamages.OnDestroyed.RemoveListener(TurretDestroy);
+            _mainBodyDamages.OnDestroyed.RemoveListener(BodyDestroy);
+            _turretDamages.OnDamaged.RemoveListener(TurretDamage);
+            _mainBodyDamages.OnDamaged.RemoveListener(BodyDamage);
+
             OnTankDestroyed?.Invoke();
         }
 

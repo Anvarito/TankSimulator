@@ -14,6 +14,7 @@ namespace ChobiAssets.PTM
         public Transform Marker_Transform;
         public Transform Root_Transform;
         public Transform Body_Transform;
+        public Collider Body_collider;
         public AI_CS AI_Script;
     }
 
@@ -38,7 +39,7 @@ namespace ChobiAssets.PTM
         private List<Drive_Control_CS> _driveControlList = new List<Drive_Control_CS>();
         private Dictionary<Drive_Control_CS, Position_Marker_Prop> _markerDictionary = new Dictionary<Drive_Control_CS, Position_Marker_Prop>();
 
-        private float Upper_Offset = 3;
+        private float Upper_Offset = 2f;
         private Camera _mainCamera;
         private ID_Settings_CS _selfIdSetting;
         private Canvas _canvas;
@@ -105,6 +106,7 @@ namespace ChobiAssets.PTM
             newProp.Marker_Transform = newProp.ArrowImage.transform;
             newProp.Root_Transform = idSetting.transform;
             newProp.Body_Transform = idSetting.GetComponentInChildren<Rigidbody>().transform;
+            newProp.Body_collider = newProp.Body_Transform.GetComponent<Collider>();
             newProp.AI_Script = idSetting.GetComponentInChildren<AI_CS>();
             _markerDictionary.Add(driveControl, newProp);
             VisualizeMarker(newProp, idSetting.Relationship);
@@ -144,7 +146,8 @@ namespace ChobiAssets.PTM
                     continue;
                 }
 
-                Vector3 playerToEnemy = (currentActor.transform.position + Vector3.up * Upper_Offset) - (transform.position + Vector3.up * Upper_Offset);
+                Vector3 playerToEnemy = (currentActor.transform.position + Vector3.up * Upper_Offset) - transform.position;
+                Debug.DrawLine(transform.position, currentActor.transform.position + Vector3.up * Upper_Offset, Color.white);
                 Ray ray = new Ray(transform.position, playerToEnemy.normalized);
                 _cameraPlanes = GeometryUtility.CalculateFrustumPlanes(_mainCamera);
 
@@ -164,7 +167,11 @@ namespace ChobiAssets.PTM
                 }
 
                 minDistance = Mathf.Clamp(minDistance, 0, playerToEnemy.magnitude);
-                Vector3 worlsPoint = ray.GetPoint(minDistance);
+                if (GeometryUtility.TestPlanesAABB(_cameraPlanes, currentMarkerProp.Body_collider.bounds))
+                {
+                    indexPlane = -1;
+                }
+                 Vector3 worlsPoint = ray.GetPoint(minDistance);
                 currentMarkerProp.ArrowImage.rectTransform.position = _mainCamera.WorldToScreenPoint(worlsPoint);
                 currentMarkerProp.ArrowImage.transform.localRotation = SetRotationByIndex(indexPlane);
             }
