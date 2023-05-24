@@ -7,7 +7,12 @@ using UnityEngine.UI;
 
 public class AimMarkerPresenter : UIPresenterBase
 {
-    [SerializeField] private Image _aimMarker;
+    private Image _aimMarker;
+
+    public void SetLinks(Image aimMarker)
+    {
+        _aimMarker = aimMarker;
+    }
 
     public void ChangeVisibleMarker(bool show)
     {

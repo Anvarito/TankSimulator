@@ -4,12 +4,11 @@ using UnityEngine;
 using ChobiAssets.PTM;
 using System;
 
+
+
 public abstract class UIRecivierBase : MonoBehaviour
 {
-    [Header("Canvas prefab")]
-    [SerializeField] protected UIPresenterBase _uiPrefab;
-    [Space(10)]
-
+    protected ColorsHolder _colorsHolder;
     protected DamageReciviersManager _damageRecivierManager;
     protected Gun_Camera_CS _gunCamera;
     protected CameraViewSetup _cameraSetup;
@@ -19,12 +18,13 @@ public abstract class UIRecivierBase : MonoBehaviour
     {
         
     }
-    public void InitialUIRecivier(DamageReciviersManager damageRecivierManager, Gun_Camera_CS gunCamera, CameraViewSetup cameraSetup, Aiming_Control_CS aimingControl)
+    public void InitialUIRecivier(DamageReciviersManager damageRecivierManager, Gun_Camera_CS gunCamera, CameraViewSetup cameraSetup, Aiming_Control_CS aimingControl, ColorsHolder colorsHolder)
     {
         _damageRecivierManager = damageRecivierManager;
         _gunCamera = gunCamera;
         _cameraSetup = cameraSetup;
         _aimingControl = aimingControl;
+        _colorsHolder = colorsHolder;
 
         Subscribes();
 

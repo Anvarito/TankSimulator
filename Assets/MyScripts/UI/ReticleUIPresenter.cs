@@ -6,9 +6,12 @@ using UnityEngine.UI;
 
 public class ReticleUIPresenter : UIPresenterBase
 {
-    [SerializeField] private Image _reticleImage;
     [SerializeField] private RectTransform _RangefinderImage;
 
+    public void SetLinks(RectTransform rengaFinder)
+    {
+        _RangefinderImage = rengaFinder;
+    }
     public void SetRangefinder(float alpha)
     {
         float newZ = Mathf.Lerp(0, 180, alpha);

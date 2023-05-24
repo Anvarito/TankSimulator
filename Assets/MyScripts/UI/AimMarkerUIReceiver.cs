@@ -15,6 +15,7 @@ namespace ChobiAssets.PTM
          * This script works in combination with "Aiming_Control_CS" in the tank.
 		*/
 
+        [SerializeField] private Sprite _aimMarker;
         private AimMarkerPresenter _aimLeadPresenter;
 
         protected override void InstantiateCanvas()
@@ -25,14 +26,25 @@ namespace ChobiAssets.PTM
             {
                 Debug.LogWarning("'Aiming_Control_CS' cannot be found in the MainBody.");
             }
-            // Get the marker image in the scene.
-            if (_uiPrefab == null)
-            {
-                Debug.LogWarning("'AimMarkerPresenter' cannot be found in the MainBody.");
-            }
 
-            _aimLeadPresenter = Instantiate(_uiPrefab) as AimMarkerPresenter;
-            _aimLeadPresenter.InitialCanvas(_cameraSetup.GetCamera());
+            Canvas canvas = new GameObject("AimMarkerCanvas").AddComponent<Canvas>();
+            canvas.renderMode = RenderMode.ScreenSpaceCamera;
+            canvas.planeDistance = 1;
+            canvas.worldCamera = _cameraSetup.GetCamera();
+            canvas.gameObject.AddComponent<CanvasScaler>().uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+            canvas.GetComponent<CanvasScaler>().referenceResolution = new Vector2(1920, 1080);
+            _aimLeadPresenter = canvas.gameObject.AddComponent<AimMarkerPresenter>();
+
+            Image aimMarker = new GameObject("AimMarker").AddComponent<Image>();
+            aimMarker.transform.parent = canvas.transform;
+            aimMarker.sprite = _aimMarker;
+            aimMarker.rectTransform.localPosition = Vector3.zero;
+            aimMarker.rectTransform.anchorMin = new Vector2(0.5f, 0.75f);
+            aimMarker.rectTransform.anchorMax = new Vector2(0.5f, 0.75f);
+            aimMarker.rectTransform.localScale = Vector3.one;
+            aimMarker.rectTransform.sizeDelta = new Vector2(48, 48);
+
+            _aimLeadPresenter.SetLinks(aimMarker);
             _aimLeadPresenter.ChangeVisibleMarker(true);
         }
 

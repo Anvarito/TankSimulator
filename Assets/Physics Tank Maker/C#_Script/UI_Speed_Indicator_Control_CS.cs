@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 namespace ChobiAssets.PTM
 {
-	
-	public class UI_Speed_Indicator_Control_CS : UIPresenterBase
-	{
+
+    public class UI_Speed_Indicator_Control_CS : UIPresenterBase
+    {
         /*
 		 * This script is attached to the "Canvas_Speed_Indicator" in the scene.
 		 * This script controls the texts for displaying the current selected tank speed.
@@ -15,8 +15,14 @@ namespace ChobiAssets.PTM
 		*/
 
         // User options >>
-        [SerializeField] Text Speed_Text = default;
+        private Text Speed_Text = default;
         // << User options
+
+        public void SetLinks(Text text)
+        {
+            Speed_Text = text;
+        }
+
         const string textFormat = "{0} km/h";
 
         public void Update_Speed_Text(int currentSpeed)

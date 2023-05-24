@@ -14940,6 +14940,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1681998902911476717}
     - target: {fileID: 288517704285420636, guid: a9b5df4f69716c64393b37cfd9540945, type: 3}
+      propertyPath: _selfID
+      value: 
+      objectReference: {fileID: 1681998902222452678}
+    - target: {fileID: 288517704285420636, guid: a9b5df4f69716c64393b37cfd9540945, type: 3}
       propertyPath: _gunCamera
       value: 
       objectReference: {fileID: 5272551407678563508}

@@ -6,15 +6,12 @@ using UnityEngine.UI;
 
 public class LeadMarkerPresenter : UIPresenterBase
 {
-    [SerializeField] private Sprite _wrongSprite;
-    [SerializeField] private Sprite _rightSprite;
     [SerializeField] private Image _markerImage;
-    [SerializeField] private float _calculationTime = 2.0f;
+    private float _calculationTime = 2.0f;
 
-    public override void InitialCanvas(Camera camera)
+    public void SetLinks(Image markerImage)
     {
-        base.InitialCanvas(camera);
-        _markerImage.sprite = _rightSprite;
+        _markerImage = markerImage;
     }
 
     public void MarkerControl(Vector3 targetPosition, Rigidbody targetRigidbody, Transform buletGeneratorTransform, float bulletVelocity)

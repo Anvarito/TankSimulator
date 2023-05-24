@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class UIPresenterBase : MonoBehaviour
 {
-    [SerializeField] protected Canvas _canvas;
+    protected Canvas _canvas;
 
-    public virtual void InitialCanvas(Camera camera)
+    public virtual void InitialCanvas(Canvas canvas, Camera camera)
     {
-        SetCamera(camera);
+        _canvas = canvas;
         _canvas.planeDistance = 1;
+        SetCamera(camera);
     }
 
     public virtual void DestroyCanvas()

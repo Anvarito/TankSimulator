@@ -65,7 +65,7 @@ namespace ChobiAssets.PTM
         protected override void InstantiateCanvas()
         {
             base.InstantiateCanvas();
-            Canvas canvas = new GameObject("MARKER POSITION CANVAS").AddComponent<Canvas>();
+            Canvas canvas = new GameObject("MarkerPositionCanvas").AddComponent<Canvas>();
             _canvas = canvas;
             _canvas.renderMode = RenderMode.ScreenSpaceOverlay;
             _canvas.gameObject.AddComponent<CanvasScaler>().uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
