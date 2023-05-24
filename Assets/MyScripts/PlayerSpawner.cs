@@ -30,8 +30,7 @@ public class PlayerSpawner : MonoBehaviour
             player.SetPlayerInput(playerConfigs[i].Input);
             player.Initialize();
 
-            player.GetComponentInChildren<UI_Position_Marker_Control_CS>().Initialize();
+            player.GetComponentInChildren<RecivierUIManager>().Initialize();
         }
-
     }
 }

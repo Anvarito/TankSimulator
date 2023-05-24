@@ -50529,6 +50529,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2257801135510657005}
     - target: {fileID: 288517704285420636, guid: a9b5df4f69716c64393b37cfd9540945, type: 3}
+      propertyPath: _selfID
+      value: 
+      objectReference: {fileID: 2257801135016402505}
+    - target: {fileID: 288517704285420636, guid: a9b5df4f69716c64393b37cfd9540945, type: 3}
       propertyPath: _gunCamera
       value: 
       objectReference: {fileID: 2257801136934381769}
@@ -50572,6 +50576,10 @@ PrefabInstance:
       propertyPath: _uiReciviers.Array.data[5]
       value: 
       objectReference: {fileID: 6438474992152022186}
+    - target: {fileID: 288517704285420636, guid: a9b5df4f69716c64393b37cfd9540945, type: 3}
+      propertyPath: _UI_Position_Marker_Control_CS
+      value: 
+      objectReference: {fileID: 4713451948404591603}
     - target: {fileID: 291032562192488971, guid: a9b5df4f69716c64393b37cfd9540945, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -50647,18 +50655,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ca8656fe17314f43af84994cdcff66a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cameraViewSetup: {fileID: 440694184205999377}
-  _selfIdSetting: {fileID: 2257801135016402505}
-  Marker_Prefab: {fileID: 4139543119692944381, guid: a4525308ffcef7349a11370be40c1641, type: 3}
-  Canvas_Name: Canvas_Markers
-  Friend_Color: {r: 0, g: 0, b: 1, a: 1}
-  Hostile_Color: {r: 1, g: 0, b: 0, a: 1}
-  Landmark_Color: {r: 0, g: 1, b: 0, a: 1}
-  Defensive_Alpha: 0.25
-  Offensive_Alpha: 1
-  Upper_Offset: 96
-  Side_Offset: 96
-  Bottom_Offset: 120
+  _canvasPrefab: {fileID: 8712267885090667707, guid: 9ea52667a18009241a58e94026ab0769, type: 3}
+  Marker_Prefab: {fileID: 4930967606792265021, guid: a4525308ffcef7349a11370be40c1641, type: 3}
+  Friend_Color: {r: 0, g: 0, b: 1, a: 0.4627451}
+  Hostile_Color: {r: 1, g: 0, b: 0, a: 0.4745098}
   Show_Always: 1
 --- !u!114 &1221434185058213916 stripped
 MonoBehaviour:

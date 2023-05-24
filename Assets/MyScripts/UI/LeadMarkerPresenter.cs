@@ -30,7 +30,6 @@ public class LeadMarkerPresenter : UIPresenterBase
         // Calculate the ballistic.
         var muzzlePos = buletGeneratorTransform.position;
         var targetDir = targetPosition - muzzlePos;
-        Debug.DrawRay(muzzlePos, targetDir, Color.red, 100);
         var targetBase = Vector2.Distance(Vector2.zero, new Vector2(targetDir.x, targetDir.z));
         var velocity = buletGeneratorTransform.forward * bulletVelocity;
         if (targetRigidbody)

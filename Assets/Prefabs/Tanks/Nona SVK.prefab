@@ -10358,6 +10358,7 @@ GameObject:
   - component: {fileID: 1681998902911476718}
   - component: {fileID: 1681998902911476710}
   - component: {fileID: 1681998902911476719}
+  - component: {fileID: 6033490812632086906}
   - component: {fileID: 1681998902911476712}
   - component: {fileID: 1681998902911476713}
   - component: {fileID: 1681998902911476714}
@@ -10705,6 +10706,20 @@ MonoBehaviour:
   _bodyExplosionProps:
     Destroyed_Effect: {fileID: 100004, guid: d5cf1068eb9224446a79deb00e60a2e5, type: 3}
     Destroyed_Effect_Offset: {x: 0, y: 0, z: 0}
+--- !u!114 &6033490812632086906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1681998902911476706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b1f5216de1f2c4408f9856a9dda032e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cannon_Fire_CS: {fileID: 1681998902220402030}
+  _targetRigidbody: {fileID: 1681998902911476704}
 --- !u!82 &1681998902911476712
 AudioSource:
   m_ObjectHideFlags: 0

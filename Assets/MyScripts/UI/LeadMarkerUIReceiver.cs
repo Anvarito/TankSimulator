@@ -30,15 +30,6 @@ namespace ChobiAssets.PTM
         protected override void InstantiateCanvas()
         {
             base.InstantiateCanvas();
-            if (_aimingControl == null)
-            {
-                Debug.LogError("'Aiming_Control_CS' cannot be found in the MainBody.");
-            }
-            if (_bulletGenerator == null)
-            {
-                Debug.LogError("'Bullet_Generator_CS' cannot be found. The cannon cannot get the bullet velocity.");
-            }
-
             _leadMarkerPresenter = Instantiate(_uiPrefab) as LeadMarkerPresenter;
             _leadMarkerPresenter.InitialCanvas(_cameraSetup.GetCamera());
         }

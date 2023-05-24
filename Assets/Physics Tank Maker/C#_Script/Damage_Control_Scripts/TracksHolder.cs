@@ -59,7 +59,6 @@ public class TrackDamageRecivier
 
     private void RestoreHP()
     {
-        Debug.Log("Restore");
         IsRestoring = false;
         CurrentHP = MaxHP;
     }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using ChobiAssets.PTM;
@@ -11,14 +12,19 @@ public class RecivierUIManager : MonoBehaviour
     [SerializeField] private Gun_Camera_CS _gunCamera;
     [SerializeField] private CameraViewSetup _cameraSetup;
     [SerializeField] private Aiming_Control_CS _aiming_Control;
-    private void Awake()
+    [SerializeField] private UI_Position_Marker_Control_CS _UI_Position_Marker_Control_CS;
+    [SerializeField] private ID_Settings_CS _selfID;
+
+    internal void Initialize()
     {
         _uiReciviers.AddRange(GetComponents<UIRecivierBase>());
 
         foreach (var recivier in _uiReciviers)
         {
-            if(recivier.enabled == true)
-            recivier.InitialUIRecivier(_damageRecivierManager, _gunCamera, _cameraSetup, _aiming_Control);
+            if (recivier.enabled == true)
+                recivier.InitialUIRecivier(_damageRecivierManager, _gunCamera, _cameraSetup, _aiming_Control);
         }
+
+        _UI_Position_Marker_Control_CS.Initialize(_cameraSetup, _selfID, _gunCamera);
     }
 }

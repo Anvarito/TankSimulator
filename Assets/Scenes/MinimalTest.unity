@@ -469,6 +469,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BMP 2 _ AI (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 2568345801542200209, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2568345801542200214, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
       propertyPath: WayPoint_Pack
       value: 
@@ -794,6 +798,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BMP 2 _ AI (25)
       objectReference: {fileID: 0}
+    - target: {fileID: 2568345801542200209, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2568345801542200214, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
       propertyPath: WayPoint_Pack
       value: 
@@ -1044,6 +1052,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BMP 2 _ AI (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 2568345801542200209, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2568345801542200214, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
       propertyPath: WayPoint_Pack
       value: 
@@ -1241,6 +1253,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BMP 2 _ AI (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 2568345801542200209, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2568345801542200214, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
       propertyPath: WayPoint_Pack
       value: 
@@ -1437,6 +1453,10 @@ PrefabInstance:
     - target: {fileID: 2568345801542200209, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
       propertyPath: m_Name
       value: BMP 2 _ AI (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2568345801542200209, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2568345801542200214, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
       propertyPath: WayPoint_Pack
@@ -1666,6 +1686,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BMP 2 _ AI (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 2568345801542200209, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2568345801542200214, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
       propertyPath: WayPoint_Pack
       value: 
@@ -1862,6 +1886,10 @@ PrefabInstance:
     - target: {fileID: 2568345801542200209, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
       propertyPath: m_Name
       value: BMP 2 _ AI (26)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2568345801542200209, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2568345801542200214, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
       propertyPath: WayPoint_Pack
@@ -2309,6 +2337,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BMP 2 _ AI (29)
       objectReference: {fileID: 0}
+    - target: {fileID: 2568345801542200209, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2568345801542200214, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
       propertyPath: WayPoint_Pack
       value: 
@@ -2568,6 +2600,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BMP 2 _ AI (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 2568345801542200209, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2568345801542200214, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
       propertyPath: WayPoint_Pack
       value: 
@@ -2764,6 +2800,10 @@ PrefabInstance:
     - target: {fileID: 2568345801542200209, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
       propertyPath: m_Name
       value: BMP 2 _ AI (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2568345801542200209, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2568345801542200214, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
       propertyPath: WayPoint_Pack
@@ -2962,6 +3002,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BMP 2 _ AI (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 2568345801542200209, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2568345801542200214, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
       propertyPath: WayPoint_Pack
       value: 
@@ -3159,6 +3203,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BMP 2 _ AI (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 2568345801542200209, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2568345801542200214, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
       propertyPath: WayPoint_Pack
       value: 
@@ -3355,6 +3403,10 @@ PrefabInstance:
     - target: {fileID: 2568345801542200209, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
       propertyPath: m_Name
       value: BMP 2 _ AI (24)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2568345801542200209, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2568345801542200214, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
       propertyPath: WayPoint_Pack
@@ -3588,6 +3640,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BMP 2 _ AI (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 2568345801542200209, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2568345801542200214, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
       propertyPath: WayPoint_Pack
       value: 
@@ -3816,6 +3872,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BMP 2 _ AI (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 2568345801542200209, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2568345801542200214, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
       propertyPath: WayPoint_Pack
       value: 
@@ -4013,6 +4073,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BMP 2 _ AI (28)
       objectReference: {fileID: 0}
+    - target: {fileID: 2568345801542200209, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2568345801542200214, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
       propertyPath: WayPoint_Pack
       value: 
@@ -4209,6 +4273,10 @@ PrefabInstance:
     - target: {fileID: 2568345801542200209, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
       propertyPath: m_Name
       value: BMP 2 _ AI (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2568345801542200209, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2568345801542200214, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
       propertyPath: WayPoint_Pack
@@ -4505,6 +4573,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BMP 2 _ AI (22)
       objectReference: {fileID: 0}
+    - target: {fileID: 2568345801542200209, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2568345801542200214, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
       propertyPath: WayPoint_Pack
       value: 
@@ -4701,6 +4773,10 @@ PrefabInstance:
     - target: {fileID: 2568345801542200209, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
       propertyPath: m_Name
       value: BMP 2 _ AI (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2568345801542200209, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2568345801542200214, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
       propertyPath: WayPoint_Pack
@@ -4899,6 +4975,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BMP 2 _ AI (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 2568345801542200209, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2568345801542200214, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
       propertyPath: WayPoint_Pack
       value: 
@@ -5095,6 +5175,10 @@ PrefabInstance:
     - target: {fileID: 2568345801542200209, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
       propertyPath: m_Name
       value: BMP 2 _ AI (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2568345801542200209, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2568345801542200214, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
       propertyPath: WayPoint_Pack
@@ -5293,6 +5377,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BMP 2 _ AI (31)
       objectReference: {fileID: 0}
+    - target: {fileID: 2568345801542200209, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2568345801542200214, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
       propertyPath: WayPoint_Pack
       value: 
@@ -5489,6 +5577,10 @@ PrefabInstance:
     - target: {fileID: 2568345801542200209, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
       propertyPath: m_Name
       value: BMP 2 _ AI (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2568345801542200209, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2568345801542200214, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
       propertyPath: WayPoint_Pack
@@ -5687,6 +5779,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BMP 2 _ AI (30)
       objectReference: {fileID: 0}
+    - target: {fileID: 2568345801542200209, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2568345801542200214, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
       propertyPath: WayPoint_Pack
       value: 
@@ -5883,6 +5979,10 @@ PrefabInstance:
     - target: {fileID: 2568345801542200209, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
       propertyPath: m_Name
       value: BMP 2 _ AI (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2568345801542200209, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2568345801542200214, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
       propertyPath: WayPoint_Pack
@@ -6134,6 +6234,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BMP 2 _ AI (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 2568345801542200209, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2568345801542200214, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
       propertyPath: WayPoint_Pack
       value: 
@@ -6330,6 +6434,10 @@ PrefabInstance:
     - target: {fileID: 2568345801542200209, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
       propertyPath: m_Name
       value: BMP 2 _ AI (27)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2568345801542200209, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2568345801542200214, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
       propertyPath: WayPoint_Pack
@@ -6528,6 +6636,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BMP 2 _ AI (23)
       objectReference: {fileID: 0}
+    - target: {fileID: 2568345801542200209, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2568345801542200214, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
       propertyPath: WayPoint_Pack
       value: 
@@ -6708,7 +6820,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1917113781}
   m_Layer: 0
-  m_Name: ===TeamSeparate===
+  m_Name: ===TeamSeparator===
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6755,6 +6867,10 @@ PrefabInstance:
     - target: {fileID: 2568345801542200209, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
       propertyPath: m_Name
       value: BMP 2 _ AI (32)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2568345801542200209, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2568345801542200214, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
       propertyPath: WayPoint_Pack
@@ -6953,6 +7069,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BMP 2 _ AI (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 2568345801542200209, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2568345801542200214, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
       propertyPath: WayPoint_Pack
       value: 
@@ -7150,6 +7270,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BMP 2 _ AI (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2568345801542200209, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2568345801542200214, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
       propertyPath: WayPoint_Pack
       value: 
@@ -7346,6 +7470,10 @@ PrefabInstance:
     - target: {fileID: 2568345801542200209, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
       propertyPath: m_Name
       value: BMP 2 _ AI (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2568345801542200209, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2568345801542200214, guid: 8aaf76bc4c2c05142a5f990196d5a1d0, type: 3}
       propertyPath: WayPoint_Pack
