@@ -8,6 +8,7 @@ public class LeadMarkerPresenter : UIPresenterBase
 {
     [SerializeField] private Image _markerImage;
     private float _calculationTime = 2.0f;
+    public Transform TargetTransform { get; private set; }
 
     public void SetLinks(Image markerImage)
     {
@@ -55,8 +56,17 @@ public class LeadMarkerPresenter : UIPresenterBase
                 { // The target has a rigidbody, and it is living.
                     //print(raycastHit.rigidbody.transform.name);
                     isTank = true;
+                    TargetTransform = raycastHit.transform;
+                }
+                else
+                {
+                    TargetTransform = null;
                 }
                 break;
+            }
+            else
+            {
+                TargetTransform = null;
             }
 
             // Check the ray has exceeded the target.

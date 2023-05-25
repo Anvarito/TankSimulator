@@ -37,6 +37,7 @@ namespace ChobiAssets.PTM
 
         public Vector3 Target_Position; // Referred to from "Turret_Horizontal_CS", "Cannon_Vertical_CS", "UI_Aim_Marker_Control_CS", "ReticleWheel_Control_CS".
         public Transform Target_Transform; // Referred to from "UI_Aim_Marker_Control_CS", "UI_HP_Bars_Target_CS".
+        public Transform TargetAimHook; // Referred to from "UI_Aim_Marker_Control_CS", "UI_HP_Bars_Target_CS".
         Vector3 targetOffset;
         public Rigidbody Target_Rigidbody; // Referred to from "Turret_Horizontal_CS".
         public Vector3 Adjust_Angle; // Referred to from "Turret_Horizontal_CS" and "Cannon_Vertical_CS".
@@ -56,7 +57,6 @@ namespace ChobiAssets.PTM
         private bool _isTankDestroyed = false;
         public UnityEvent OnSwitchMode;
 
-        public Camera CameraMain { get { return _cameraView.GetCamera(); } }
         public void Initialize(Aiming_Control_Input_00_Base_CS aimingControl)
         {
 
@@ -185,7 +185,7 @@ namespace ChobiAssets.PTM
             OnSwitchMode?.Invoke();
         }
 
-
+        /*
         public void Cast_Ray_Lock(Vector3 screenPos)
         { // Called from "Aiming_Control_Input_##_###".
 
@@ -264,18 +264,19 @@ namespace ChobiAssets.PTM
                 return;
             }
         }
-
-        public void Cast_Ray_Free()
+        */
+        public void Cast_Ray_Free(bool isGunCam)
         { // Called from "Aiming_Control_Input_##_###".
 
             // Find a target by casting a ray from the camera.
-
-            var ray = CameraMain.ScreenPointToRay(screenAimPoint);
+            Camera currentCamera = isGunCam ? _cameraView.GetGunCamera() : _cameraView.GetCamera();
+            screenAimPoint = isGunCam ? _cameraView.GetReticleAimPosition() : _cameraView.GetAimPosition();
+            var ray = currentCamera.ScreenPointToRay(screenAimPoint);
             //if (Physics.Raycast(ray, out RaycastHit raycastHit, 2048.0f, Layer_Settings_CS.Aiming_Layer_Mask))
             if (Physics.Raycast(ray, out RaycastHit raycastHit, 2048.0f, Layer_Settings_CS.Aiming_Layer_Mask))
             {
                 var colliderTransform = raycastHit.collider.transform;
-
+                Debug.DrawLine(ray.origin, raycastHit.point, Color.red);
                 // Check the hit collider is not a part of itself.
                 if (colliderTransform.root != rootTransform)
                 {
@@ -288,6 +289,15 @@ namespace ChobiAssets.PTM
                         {
                             // Set the hit collider as the target.
                             Target_Transform = colliderTransform;
+                            Target_Rigidbody = raycastHit.rigidbody;
+                            Target_Position = raycastHit.point;
+                            TargetAimHook = colliderTransform;
+                            //if (isGunCam)
+                            //{
+                            //    targetOffset = Vector3.zero;
+                            //    targetOffset.y = 0.5f;
+                            //    Adjust_Angle = Vector3.zero;
+                            //}
 
                             // Set the offset from the pivot.
                             //targetOffset = Target_Transform.InverseTransformPoint(raycastHit.point);
@@ -299,10 +309,8 @@ namespace ChobiAssets.PTM
                             //}
 
                             // Store the rigidbody of the target.
-                            Target_Rigidbody = raycastHit.rigidbody;
 
                             // Store the hit point.
-                            Target_Position = raycastHit.point;
 
                             return;
                         }
@@ -317,73 +325,77 @@ namespace ChobiAssets.PTM
             // Clear the target.
             Target_Transform = null;
             Target_Rigidbody = null;
+            TargetAimHook = null;
             // Set the position through this tank.
             screenAimPoint.z = 1000.0f;
-            Target_Position = CameraMain.ScreenToWorldPoint(screenAimPoint);
+            Target_Position = currentCamera.ScreenToWorldPoint(screenAimPoint);
         }
 
+        public void ReticleAim()
+        {
+            var screenPos = _cameraView.GetReticleAimPosition();
+            var ray = _cameraView.GetGunCamera().ScreenPointToRay(screenPos);
+            //var raycastHits = Physics.SphereCastAll(ray, spherecastRadius, 2048.0f, Layer_Settings_CS.Aiming_Layer_Mask);
+            if (Physics.Raycast(ray, out RaycastHit hitInfo, 2048.0f, Layer_Settings_CS.Aiming_Layer_Mask))
+            {
+                var colliderTransform = hitInfo.collider.transform;
+                Debug.DrawLine(ray.origin, hitInfo.point, Color.red);
+                // Check the hit collider is not a part of itself.
+                if (colliderTransform.root != rootTransform
+                    && hitInfo.rigidbody != null
+                    && colliderTransform.root.tag != "Finish")
+                {
+
+                    // Set the hit object as a new target.
+                    TargetAimHook = hitInfo.transform;
+
+                }
+                else
+                {
+                    TargetAimHook = null;
+                }
+            }
+            else
+            {
+                TargetAimHook = null;
+            }
+        }
 
         public void Reticle_Aiming()
         { // Called from "Aiming_Control_Input_##_###".
 
             // Find a target by casting a sphere from the camera.
             var screenPos = _cameraView.GetReticleAimPosition();
-            var ray = CameraMain.ScreenPointToRay(screenPos);
-            var raycastHits = Physics.SphereCastAll(ray, spherecastRadius, 2048.0f, Layer_Settings_CS.Aiming_Layer_Mask);
-            for (int i = 0; i < raycastHits.Length; i++)
+            var ray = _cameraView.GetGunCamera().ScreenPointToRay(screenPos);
+            //var raycastHits = Physics.SphereCastAll(ray, spherecastRadius, 2048.0f, Layer_Settings_CS.Aiming_Layer_Mask);
+            if (Physics.Raycast(ray, out RaycastHit hitInfo, 2048.0f, Layer_Settings_CS.Aiming_Layer_Mask))
             {
-                Transform colliderTransform = raycastHits[i].collider.transform;
-
+                var colliderTransform = hitInfo.collider.transform;
+                Debug.DrawLine(ray.origin, hitInfo.point, Color.red);
                 // Check the hit collider is not a part of itself.
-                if (colliderTransform.root == rootTransform)
+                if (colliderTransform.root != rootTransform
+                    && hitInfo.rigidbody != null
+                    && colliderTransform.root.tag != "Finish")
                 {
-                    continue;
-                }
 
-                // Check the hit object has a rigidbody.
-                // (Note.) When the hit collider has no rigidbody, and its parent has a rigidbody, then the parent's rigidbody is set as 'RaycastHit.rigidbody'.
-                var targetRigidbody = raycastHits[i].rigidbody;
-                if (targetRigidbody == null)
+                    // Set the hit object as a new target.
+                    Target_Transform = hitInfo.transform;
+                    Target_Rigidbody = hitInfo.rigidbody;
+                    Target_Position = hitInfo.point;
+
+                }
+                else
                 {
-                    continue;
+                    Target_Transform = null;
+                    Target_Rigidbody = null;
+                    Target_Position = _cameraView.GetGunCamera().ScreenToWorldPoint(screenPos);
                 }
+            }
+            //targetOffset = Vector3.zero;
+            //targetOffset.y = 0.5f;
+            //Adjust_Angle = Vector3.zero;
+        } // New target cannot be found.
 
-                // Check the target is a MainBody. 
-                if (targetRigidbody.gameObject.layer != Layer_Settings_CS.Body_Layer)
-                {
-                    continue;
-                }
-
-                // Check the hit object is not a destroyed tank.
-                if (colliderTransform.root.tag == "Finish")
-                {
-                    continue;
-                }
-
-                // Check the relationship.
-                
-
-                // Check the obstacle.
-                if (Physics.Linecast(ray.origin, raycastHits[i].point, out RaycastHit raycastHit, Layer_Settings_CS.Aiming_Layer_Mask))
-                {
-                    // Check the obstacle is not a part of itself.
-                    if (raycastHit.transform.root != rootTransform)
-                    {
-                        continue;
-                    }
-                }
-
-                // Set the hit object as a new target.
-                Target_Transform = raycastHits[i].transform;
-                targetOffset = Vector3.zero;
-                targetOffset.y = 0.5f;
-                Target_Rigidbody = targetRigidbody;
-                Target_Position = raycastHits[i].point;
-                Adjust_Angle = Vector3.zero;
-                return;
-
-            } // New target cannot be found.
-        }
 
 
         public void Auto_Lock(int direction, int thisRelationship)
@@ -397,7 +409,7 @@ namespace ChobiAssets.PTM
 
             // Get the base angle to detect the new target.
             float baseAng;
-            var mainCamera = CameraMain;
+            var mainCamera = _cameraView.GetGunCamera();
             if (direction != 2 && Target_Transform)
             {
                 Vector3 currentLocalPos = mainCamera.transform.InverseTransformPoint(Target_Position);
@@ -562,5 +574,6 @@ namespace ChobiAssets.PTM
         }
 
     }
-
 }
+
+

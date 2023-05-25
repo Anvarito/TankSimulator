@@ -19,7 +19,6 @@ namespace ChobiAssets.PTM
         {
             _lookAction = lookAction;
             _playerInput = playerInput;
-
             _resetTurretAction = resetTurretAction;
             //_playerInput.onActionTriggered += ResetTurret;
             _playerInput.onActionTriggered += Rotated;
@@ -79,14 +78,19 @@ namespace ChobiAssets.PTM
             { // The gun camera is enabled now.
 
                 // Set the adjust angle.
-                var multiplier = Mathf.Lerp(0.05f, 1.0f, Camera.main.fieldOfView / 10.0f); // Set the multiplier according to the FOV.
+                var multiplier = Mathf.Lerp(0.05f, 1.0f, gunCameraScript.Gun_Camera.fieldOfView / 10.0f); // Set the multiplier according to the FOV.
 
                 var vertical = _rotateValueAction.ReadValue<Vector2>().y;
                 var horizontal = _rotateValueAction.ReadValue<Vector2>().x;
 
-                aimingScript.Adjust_Angle.x += horizontal * General_Settings_CS.Aiming_Sensibility * multiplier;
-                aimingScript.Adjust_Angle.y += vertical * General_Settings_CS.Aiming_Sensibility * 0.5f * multiplier;
-                aimingScript.Reticle_Aiming();
+
+                if (vertical != 0 || horizontal != 0)
+                {
+                    aimingScript.Adjust_Angle.x += horizontal * General_Settings_CS.Aiming_Sensibility * multiplier;
+                    aimingScript.Adjust_Angle.y += vertical * General_Settings_CS.Aiming_Sensibility * 0.5f * multiplier;
+                }
+                aimingScript.ReticleAim();
+
                 // Check it is locking-on now.
                 if (aimingScript.Target_Transform)
                 { // Now locking-on the target.
@@ -140,7 +144,7 @@ namespace ChobiAssets.PTM
                     // Find the target.
                     //screenCenter.x = _camera.pixelRect.width * 0.5f;
                     //screenCenter.y = _camera.pixelRect.height * (0.5f + General_Settings_CS.Aiming_Offset);
-                    aimingScript.Cast_Ray_Free();
+                    aimingScript.Cast_Ray_Free(false);
                 }
 
                 // Control "reticleAimingFlag" in "Aiming_Control_CS".

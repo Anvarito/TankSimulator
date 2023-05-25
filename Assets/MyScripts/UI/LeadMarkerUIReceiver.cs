@@ -23,6 +23,10 @@ namespace ChobiAssets.PTM
         private LeadMarkerPresenter _leadMarkerPresenter;
         private Camera _currentCamera;
 
+        public Transform GetTargetTransform()
+        {
+            return _leadMarkerPresenter.TargetTransform;
+        }
         protected override void Subscribes()
         {
             base.Subscribes();

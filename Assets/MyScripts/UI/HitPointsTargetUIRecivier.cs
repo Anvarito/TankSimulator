@@ -7,7 +7,9 @@ using UnityEngine;
 public class HitPointsTargetUIRecivier : UIRecivierBase
 {
     [SerializeField] private HitPointsTargetUIPresenter _hitPointsTargetUIprefab;
+    [SerializeField] private LeadMarkerUIReceiver _leadMarkerResivier;
     private HitPointsTargetUIPresenter _hitPointsTargetUI;
+    private EActiveCameraType _currentCameraType;
 
     private DamageReciviersManager _targetDamageReciviers;
     private Transform _targetTransform;
@@ -23,21 +25,22 @@ public class HitPointsTargetUIRecivier : UIRecivierBase
     protected override void SwitchCamera(EActiveCameraType activeCamera)
     {
         base.SwitchCamera(activeCamera);
+        _currentCameraType = activeCamera;
         _hitPointsTargetUI.SetCamera(activeCamera == EActiveCameraType.GunCamera ? _cameraSetup.GetGunCamera() : _cameraSetup.GetCamera());
     }
 
     private void Update()
     {
-        if (_aimingControl.Target_Transform != null)
+        var aimTransform = _currentCameraType == EActiveCameraType.GunCamera ?  _leadMarkerResivier.GetTargetTransform() : _aimingControl.TargetAimHook;
+        if (aimTransform != null)
         {
-            if (_targetTransform != _aimingControl.Target_Transform)
+            if (_targetTransform != aimTransform)
             {
                 if (_targetDamageReciviers)
                     Unsubscribe();
 
-                _targetTransform = _aimingControl.Target_Transform;
-                _targetDamageReciviers = _aimingControl.Target_Transform.GetComponentInParent<DamageReciviersManager>();
-                //_targetDamageReciviers = _aimingControl.Target_Transform.GetComponent<DamageReciviersManager>();
+                _targetTransform = aimTransform;
+                _targetDamageReciviers = aimTransform.GetComponentInParent<DamageReciviersManager>();
                 _targetRelationship = _targetTransform.GetComponentInParent<ID_Settings_CS>().Relationship;
 
                 Subcribe();

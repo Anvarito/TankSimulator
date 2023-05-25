@@ -39,6 +39,7 @@ public class CameraViewSetup : MonoBehaviour
         heightKoeff = workArea * 0.5f;
         positionHeight = workArea * playerIndex + heightKoeff;
 
+        _aimReticlePosition.x = _gunCamera.pixelRect.width * 0.5f;
         _aimReticlePosition.y = positionHeight;
     }
     public Vector2 GetAimPosition()

@@ -2287,6 +2287,7 @@ MonoBehaviour:
   Mode: 0
   Target_Position: {x: 0, y: 0, z: 0}
   Target_Transform: {fileID: 0}
+  TargetAimHook: {fileID: 0}
   Target_Rigidbody: {fileID: 0}
   Adjust_Angle: {x: 0, y: 0, z: 0}
   Turret_Speed_Multiplier: 0
@@ -50613,6 +50614,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6740176055343302917, guid: a9b5df4f69716c64393b37cfd9540945, type: 3}
+      propertyPath: _leadMarkerResivier
+      value: 
+      objectReference: {fileID: 2003997058167128185}
+    - target: {fileID: 6740176055343302917, guid: a9b5df4f69716c64393b37cfd9540945, type: 3}
       propertyPath: _hitPointsTargetUIprefab
       value: 
       objectReference: {fileID: 114579197361180434, guid: a025a74fd8b47854688c77fa9728a595, type: 3}
@@ -50623,3 +50628,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 291032562192488971, guid: a9b5df4f69716c64393b37cfd9540945, type: 3}
   m_PrefabInstance: {fileID: 2257801136550002236}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2003997058167128185 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 331844288142114373, guid: a9b5df4f69716c64393b37cfd9540945, type: 3}
+  m_PrefabInstance: {fileID: 2257801136550002236}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ba1337d5d159b445a17e35cb149ca44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
