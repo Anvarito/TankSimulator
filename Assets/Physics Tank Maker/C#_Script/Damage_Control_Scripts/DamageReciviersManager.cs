@@ -76,6 +76,10 @@ namespace ChobiAssets.PTM
 
         [HideInInspector] public UnityEvent OnTankDestroyed;
 
+        public DamageTurret TurretDamageRecivier => _turretDamages;
+        public DamageBodyRecivier BodyDamageRecivier => _mainBodyDamages;
+        public TracksHolder TrackDamageRecivier => _damageTrackRecivier;
+
         private void Awake()
         {
             Initialize();

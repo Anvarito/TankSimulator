@@ -53,6 +53,7 @@ public class LeadMarkerPresenter : UIPresenterBase
                 isHit = true;
                 if (raycastHit.rigidbody && raycastHit.transform.root.tag != "Finish")
                 { // The target has a rigidbody, and it is living.
+                    //print(raycastHit.rigidbody.transform.name);
                     isTank = true;
                 }
                 break;

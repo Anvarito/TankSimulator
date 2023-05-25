@@ -6,10 +6,10 @@ using UnityEngine.UI;
 namespace ChobiAssets.PTM
 {
 
-	[ CustomEditor (typeof(UI_HP_Bars_Target_CS))]
+	[ CustomEditor (typeof(HitPointsTargetUIPresenter))]
 	public class UI_HP_Bars_Target_CSEditor : Editor
 	{
-
+		/*
 		SerializedProperty This_CanvasProp;
 		SerializedProperty This_Canvas_ScalerProp;
 		SerializedProperty Bars_Parent_TransformProp;
@@ -70,7 +70,7 @@ namespace ChobiAssets.PTM
 			EditorGUILayout.Space ();
 
 			serializedObject.ApplyModifiedProperties ();
-		}
+		}*/
 	
 	}
 

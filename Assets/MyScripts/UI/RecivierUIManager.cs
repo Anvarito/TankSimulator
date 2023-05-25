@@ -28,9 +28,7 @@ public class RecivierUIManager : MonoBehaviour
         foreach (var recivier in _uiReciviers)
         {
             if (recivier.enabled == true)
-                recivier.InitialUIRecivier(_damageRecivierManager, _gunCamera, _cameraSetup, _aiming_Control, _colorsHolder);
+                recivier.InitialUIRecivier(_damageRecivierManager, _gunCamera, _cameraSetup, _aiming_Control, _colorsHolder, _selfID);
         }
-
-        _UI_Position_Marker_Control_CS.Initialize(_selfID);
     }
 }

@@ -460,7 +460,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerInputManager: {fileID: 9206351266532878258}
   _mainCanvas: {fileID: 2090148189}
-  MaxPlayers: 2
+  MaxPlayers: 1
 --- !u!4 &3400171599550695696
 Transform:
   m_ObjectHideFlags: 0
@@ -489,7 +489,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_NotificationBehavior: 3
-  m_MaxPlayerCount: 2
+  m_MaxPlayerCount: 1
   m_AllowJoining: 1
   m_JoinBehavior: 0
   m_PlayerJoinedEvent:

@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 398834321}
   - component: {fileID: 1224471283}
   - component: {fileID: 4713451948404591603}
+  - component: {fileID: 6740176055343302917}
   - component: {fileID: 288517704285420636}
   m_Layer: 0
   m_Name: UIReseivers
@@ -138,6 +139,18 @@ MonoBehaviour:
   Friend_Color: {r: 0, g: 0, b: 1, a: 0.4627451}
   Hostile_Color: {r: 1, g: 0, b: 0, a: 0.4745098}
   Show_Always: 1
+--- !u!114 &6740176055343302917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1815802135084448772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b167d792a9e3154ba23e334eba5fc9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &288517704285420636
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -86,7 +86,7 @@ namespace ChobiAssets.PTM
 
                 aimingScript.Adjust_Angle.x += horizontal * General_Settings_CS.Aiming_Sensibility * multiplier;
                 aimingScript.Adjust_Angle.y += vertical * General_Settings_CS.Aiming_Sensibility * 0.5f * multiplier;
-
+                aimingScript.Reticle_Aiming();
                 // Check it is locking-on now.
                 if (aimingScript.Target_Transform)
                 { // Now locking-on the target.
@@ -107,7 +107,6 @@ namespace ChobiAssets.PTM
                     {
                         //screenCenter.x = Screen.width * 0.5f;
                         //screenCenter.y = Screen.height * 0.5f;
-                        aimingScript.Reticle_Aiming(thisRelationship);
                     }
 
                     // Control "reticleAimingFlag" in "Aiming_Control_CS".

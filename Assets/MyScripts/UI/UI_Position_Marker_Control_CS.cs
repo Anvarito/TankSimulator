@@ -41,15 +41,20 @@ namespace ChobiAssets.PTM
 
         private float Upper_Offset = 2f;
         private Camera _mainCamera;
-        private ID_Settings_CS _selfIdSetting;
         private Canvas _canvas;
 
         Plane[] _cameraPlanes;
 
-
-        public void Initialize(ID_Settings_CS iD_Settings_CS)
+        protected override void InstantiateCanvas()
         {
-            // Check the prefab.
+            base.InstantiateCanvas();
+
+            Canvas canvas = new GameObject("MarkerPositionCanvas").AddComponent<Canvas>();
+            _canvas = canvas;
+            _canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+            _canvas.gameObject.AddComponent<CanvasScaler>().uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+            _canvas.GetComponent<CanvasScaler>().referenceResolution = new Vector2(1920, 1080);
+
             if (Marker_Prefab == null)
             {
                 Debug.LogWarning("'Prefab for 'Position Maker' is not assigned.");
@@ -57,20 +62,10 @@ namespace ChobiAssets.PTM
                 return;
             }
 
-            _selfIdSetting = iD_Settings_CS;
             _mainCamera = _cameraSetup.GetCamera();
 
             StartCoroutine(SearchAllUits());
-        }
 
-        protected override void InstantiateCanvas()
-        {
-            base.InstantiateCanvas();
-            Canvas canvas = new GameObject("MarkerPositionCanvas").AddComponent<Canvas>();
-            _canvas = canvas;
-            _canvas.renderMode = RenderMode.ScreenSpaceOverlay;
-            _canvas.gameObject.AddComponent<CanvasScaler>().uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-            _canvas.GetComponent<CanvasScaler>().referenceResolution = new Vector2(1920, 1080);
         }
 
         protected override void SwitchCamera(EActiveCameraType activeCamera)
@@ -90,7 +85,7 @@ namespace ChobiAssets.PTM
             //temp!!! Add all units in list
             foreach (var idScript in FindObjectsOfType<ID_Settings_CS>())
             {
-                if (idScript == _selfIdSetting)
+                if (idScript == _IDSettings)
                     continue;
                 Drive_Control_CS currentActor = idScript.GetComponentInChildren<Drive_Control_CS>();
                 _driveControlList.Add(currentActor);
@@ -189,7 +184,7 @@ namespace ChobiAssets.PTM
 
         private void VisualizeMarker(Position_Marker_Prop currentMarkerProp, ERelationship relationship)
         {
-            bool isAlly = _selfIdSetting.Relationship == relationship;
+            bool isAlly = _IDSettings.Relationship == relationship;
             currentMarkerProp.ArrowImage.enabled = Show_Always;
             currentMarkerProp.Marker_Transform.localScale = Vector3.one * 1.5f;
             currentMarkerProp.ArrowImage.color = isAlly ? Friend_Color : Hostile_Color;

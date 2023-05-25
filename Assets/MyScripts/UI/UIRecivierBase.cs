@@ -13,18 +13,20 @@ public abstract class UIRecivierBase : MonoBehaviour
     protected Gun_Camera_CS _gunCamera;
     protected CameraViewSetup _cameraSetup;
     protected Aiming_Control_CS _aimingControl;
+    protected ID_Settings_CS _IDSettings;
 
     private void Start()
     {
         
     }
-    public void InitialUIRecivier(DamageReciviersManager damageRecivierManager, Gun_Camera_CS gunCamera, CameraViewSetup cameraSetup, Aiming_Control_CS aimingControl, ColorsHolder colorsHolder)
+    public void InitialUIRecivier(DamageReciviersManager damageRecivierManager, Gun_Camera_CS gunCamera, CameraViewSetup cameraSetup, Aiming_Control_CS aimingControl, ColorsHolder colorsHolder, ID_Settings_CS IDSettings)
     {
         _damageRecivierManager = damageRecivierManager;
         _gunCamera = gunCamera;
         _cameraSetup = cameraSetup;
         _aimingControl = aimingControl;
         _colorsHolder = colorsHolder;
+        _IDSettings = IDSettings;
 
         Subscribes();
 

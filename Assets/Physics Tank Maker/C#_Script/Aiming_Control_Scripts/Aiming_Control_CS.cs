@@ -323,7 +323,7 @@ namespace ChobiAssets.PTM
         }
 
 
-        public void Reticle_Aiming(ERelationship thisRelationship)
+        public void Reticle_Aiming()
         { // Called from "Aiming_Control_Input_##_###".
 
             // Find a target by casting a sphere from the camera.
@@ -361,11 +361,7 @@ namespace ChobiAssets.PTM
                 }
 
                 // Check the relationship.
-                var idScript = raycastHits[i].transform.GetComponentInParent<ID_Settings_CS>();
-                if (idScript && idScript.Relationship == thisRelationship)
-                {
-                    continue;
-                }
+                
 
                 // Check the obstacle.
                 if (Physics.Linecast(ray.origin, raycastHits[i].point, out RaycastHit raycastHit, Layer_Settings_CS.Aiming_Layer_Mask))
