@@ -665,7 +665,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AP_Bullet_Prefab: {fileID: 1459669234869594, guid: 15599cac06feb654b9e218710f17eec3, type: 3}
   HE_Bullet_Prefab: {fileID: 1360658493073096, guid: 042b25eed676ba345b2ac5f839be0f90, type: 3}
-  MuzzleFire_Object: {fileID: 100004, guid: 51356c04fbf7569429b6b11b12e1accc, type: 3}
+  MuzzleFire_Object: {fileID: 11400000, guid: 51356c04fbf7569429b6b11b12e1accc, type: 3}
   Attack_Point: 750
   Attack_Point_HE: 100
   Initial_Velocity: 500
@@ -10602,6 +10602,7 @@ MonoBehaviour:
   Mode: 0
   Target_Position: {x: 0, y: 0, z: 0}
   Target_Transform: {fileID: 0}
+  TargetAimHook: {fileID: 0}
   Target_Rigidbody: {fileID: 0}
   Adjust_Angle: {x: 0, y: 0, z: 0}
   Turret_Speed_Multiplier: 0
@@ -10702,7 +10703,7 @@ MonoBehaviour:
     Turret: {fileID: 1681998904035794741}
     blowOff: 1
     mass: 200
-    destroyedEffect: {fileID: 100004, guid: 2fe457cefafcb1242b30f81a15f53360, type: 3}
+    destroyedEffect: {fileID: 11400004, guid: 2fe457cefafcb1242b30f81a15f53360, type: 3}
   _bodyExplosionProps:
     Destroyed_Effect: {fileID: 100004, guid: d5cf1068eb9224446a79deb00e60a2e5, type: 3}
     Destroyed_Effect_Offset: {x: 0, y: 0, z: 0}
@@ -11486,7 +11487,7 @@ GameObject:
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1681998904182074185
 Transform:
   m_ObjectHideFlags: 0
@@ -11518,8 +11519,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Min_Engine_Pitch: 1
   Max_Engine_Pitch: 2
-  Min_Engine_Volume: 0.5
-  Max_Engine_Volume: 1
+  Min_Engine_Volume: 0.3
+  Max_Engine_Volume: 0.6
   Left_Reference_Rigidbody: {fileID: 0}
   Right_Reference_Rigidbody: {fileID: 0}
   Reference_Name_L: RoadWheel_L_3
@@ -11528,7 +11529,7 @@ MonoBehaviour:
   Reference_Parent_Name_R: Create_RoadWheel
   Left_Velocity: 0
   Right_Velocity: 0
-  Has_Changed: 0
+  Has_Changed: 1
 --- !u!82 &1681998904182074184
 AudioSource:
   m_ObjectHideFlags: 0
@@ -11541,7 +11542,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 152276e7f391445468f04b1f6cfd5829, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -13134,7 +13135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Main_Camera: {fileID: 5272551407620393236}
-  Main_AudioListener: {fileID: 5272551407620393225}
+  Main_AudioListener: {fileID: 0}
   Camera_Points_Num: 1
   Camera_Points:
   - Camera_Point: {fileID: 4560263541963908861}
@@ -13213,7 +13214,6 @@ GameObject:
   - component: {fileID: 5272551407620393231}
   - component: {fileID: 5272551407620393236}
   - component: {fileID: 5272551407620393224}
-  - component: {fileID: 5272551407620393225}
   - component: {fileID: 5272551407620393226}
   - component: {fileID: 5272551407620393227}
   m_Layer: 0
@@ -13289,14 +13289,6 @@ Behaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5272551407620393237}
   m_Enabled: 1
---- !u!81 &5272551407620393225
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5272551407620393237}
-  m_Enabled: 1
 --- !u!114 &5272551407620393226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13337,7 +13329,6 @@ GameObject:
   - component: {fileID: 5272551407678563511}
   - component: {fileID: 5272551407678563508}
   - component: {fileID: 5272551407678563509}
-  - component: {fileID: 5272551407678563510}
   m_Layer: 0
   m_Name: Gun_Camera
   m_TagString: Untagged
@@ -13427,14 +13418,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &5272551407678563510
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5272551407678563504}
-  m_Enabled: 0
 --- !u!1 &5420654707549056898
 GameObject:
   m_ObjectHideFlags: 0

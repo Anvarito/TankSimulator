@@ -23,8 +23,7 @@ namespace ChobiAssets.PTM
         Light thisLight;
         AudioSource audioSource;
 
-
-        void Start()
+        private void Start()
         {
             // Get the ParticleSystem.
             if (This_ParticleSystem == null)
@@ -40,33 +39,33 @@ namespace ChobiAssets.PTM
             }
 
             // Get the AudioSource.
-            audioSource = GetComponent<AudioSource>();
-            if (audioSource)
-            {
-                // Setup the AudioSource.
-                audioSource.playOnAwake = false;
-                var mainCamera = Camera.main;
-                if (mainCamera)
-                {
-                    // Get the distance to the camera.
-                    var dist = Vector3.Distance(transform.position, mainCamera.transform.position);
-                    if (Use_Random_Pitch)
-                    {
-                        // Change the pitch randomly.
-                        audioSource.pitch = Random.Range(Random_Pitch_Min, Random_Pitch_Max);
-                    }
-                    else
-                    {
-                        // Change the pitch according to the distance to the camera. 
-                        audioSource.pitch = Mathf.Lerp(1.0f, 0.1f, dist / audioSource.maxDistance);
-                    }
+            //audioSource = GetComponent<AudioSource>();
+           // audioSource.Play();
+            //if (audioSource)
+            //{
+            //    // Setup the AudioSource.
+            //    audioSource.playOnAwake = false;
+            //    var mainCamera = camera;
+            //    if (mainCamera)
+            //    {
+            //        // Get the distance to the camera.
+            //        var dist = Vector3.Distance(transform.position, mainCamera.transform.position);
+            //        if (Use_Random_Pitch)
+            //        {
+            //            // Change the pitch randomly.
+            //            audioSource.pitch = Random.Range(Random_Pitch_Min, Random_Pitch_Max);
+            //        }
+            //        else
+            //        {
+            //            // Change the pitch according to the distance to the camera. 
+            //            audioSource.pitch = Mathf.Lerp(1.0f, 0.1f, dist / audioSource.maxDistance);
+            //        }
 
-                    // Delay playing the sound according to the distance to the camera. 
-                    audioSource.PlayDelayed(dist / 340.29f * Time.timeScale);
-                }
-            }
+            //        // Delay playing the sound according to the distance to the camera. 
+            //        audioSource.PlayDelayed(dist / 340.29f * Time.timeScale);
+            //    }
+            //}
         }
-
 
         void Update()
         {

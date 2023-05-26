@@ -65,7 +65,7 @@ namespace ChobiAssets.PTM
         {
             CurentHP -= damage;
             OnDamaged?.Invoke(CurentHP, MaxHP);
-            print(damage);
+            //print(damage);
             if (CurentHP <= 0)
             {
                 ParthDestroy();

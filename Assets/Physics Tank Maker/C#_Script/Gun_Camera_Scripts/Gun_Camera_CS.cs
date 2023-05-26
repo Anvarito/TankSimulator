@@ -14,7 +14,6 @@ namespace ChobiAssets.PTM
     }
 
 	[ RequireComponent (typeof(Camera))]
-	[ RequireComponent (typeof(AudioListener))]
 	public class Gun_Camera_CS : MonoBehaviour
 	{
 		/*
@@ -80,12 +79,12 @@ namespace ChobiAssets.PTM
             targetFOV = currentFOV;
 
             // Get the AudioListener.
-            thisListener = GetComponent<AudioListener>();
-            if (thisListener == null)
-            {
-                thisListener = gameObject.AddComponent<AudioListener>();
-            }
-            thisListener.enabled = false;
+            //thisListener = GetComponent<AudioListener>();
+            //if (thisListener == null)
+            //{
+            //    thisListener = gameObject.AddComponent<AudioListener>();
+            //}
+            //thisListener.enabled = false;
             this.tag = "Untagged";
 
             // Get the "Camera_Points_Manager_CS" script in the tank.
@@ -195,14 +194,14 @@ namespace ChobiAssets.PTM
         private void EnableGunCamera()
         {
             Gun_Camera.enabled = true;
-            thisListener.enabled = true;
+            thisListener = gameObject.AddComponent<AudioListener>();
             this.tag = "MainCamera";
         }
 
         private void DisableGunCamera()
         {
             Gun_Camera.enabled = false;
-            thisListener.enabled = false;
+            Destroy(thisListener);
             this.tag = "Untagged";
         }
 

@@ -151,6 +151,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b167d792a9e3154ba23e334eba5fc9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _hitPointsTargetUIprefab: {fileID: 114579197361180434, guid: a025a74fd8b47854688c77fa9728a595, type: 3}
+  _leadMarkerResivier: {fileID: 331844288142114373}
 --- !u!114 &288517704285420636
 MonoBehaviour:
   m_ObjectHideFlags: 0

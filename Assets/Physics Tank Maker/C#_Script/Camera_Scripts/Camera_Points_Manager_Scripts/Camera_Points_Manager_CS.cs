@@ -160,14 +160,14 @@ namespace ChobiAssets.PTM
         public void Enable_Camera()
         { // Called from "Gun_Camera_CS".
             Main_Camera.enabled = true;
-            Main_AudioListener.enabled = true;
+            Main_AudioListener = Main_Camera.gameObject.AddComponent<AudioListener>();
         }
 
 
         public void Disable_Camera()
         { // Called also from "Gun_Camera_CS".
             Main_Camera.enabled = false;
-            Main_AudioListener.enabled = false;
+            Destroy(Main_AudioListener);
         }
 
 

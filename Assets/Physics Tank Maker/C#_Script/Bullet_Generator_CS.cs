@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 namespace ChobiAssets.PTM
 {
@@ -15,7 +16,7 @@ namespace ChobiAssets.PTM
         // User options >>
         public GameObject AP_Bullet_Prefab;
         public GameObject HE_Bullet_Prefab;
-        public GameObject MuzzleFire_Object;
+        public Particle_Control_CS MuzzleFire_Object;
         public float Attack_Point = 500.0f;
         public float Attack_Point_HE = 500.0f;
         public float Initial_Velocity = 500.0f;
@@ -37,7 +38,6 @@ namespace ChobiAssets.PTM
         // Only for AI tank.
         public bool Can_Aim; // Set by "AI_CS", and referred to from "Cannon_Fire_Input_99_AI_CS" script.
 
-
         public void Initialize()
         {
             thisTransform = transform;
@@ -46,7 +46,6 @@ namespace ChobiAssets.PTM
             currentBulletType = Initial_Bullet_Type - 1; // (Note.) The "currentBulletType" value is added by 1 soon in the "Switch_Bullet_Type()".
             Switch_Bullet_Type();
         }
-        
 
         public void Switch_Bullet_Type()
         { // Called from "Cannon_Fire_Input_##_##" scripts.

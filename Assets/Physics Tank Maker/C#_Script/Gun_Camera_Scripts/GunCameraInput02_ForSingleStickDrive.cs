@@ -31,11 +31,11 @@ namespace ChobiAssets.PTM
         public override void DissableInput()
         {
             base.DissableInput();
-            _playerInput.onActionTriggered += Aim;
-            _playerInput.onActionTriggered += ZoomInStart;
-            _playerInput.onActionTriggered += ZommInCancel;
-            _playerInput.onActionTriggered += ZoomOutStart;
-            _playerInput.onActionTriggered += ZoomOutCancel;
+            _playerInput.onActionTriggered -= Aim;
+            _playerInput.onActionTriggered -= ZoomInStart;
+            _playerInput.onActionTriggered -= ZommInCancel;
+            _playerInput.onActionTriggered -= ZoomOutStart;
+            _playerInput.onActionTriggered -= ZoomOutCancel;
         }
 
         private void ZoomInStart(InputAction.CallbackContext obj)
@@ -64,15 +64,15 @@ namespace ChobiAssets.PTM
 
         private void Aim(InputAction.CallbackContext obj)
         {
-            if (obj.action.name != _aimAction.name)
-                return;
+            if (obj.action.name == _aimAction.name && obj.performed)
+            {
+                _isMainCamera = !_isMainCamera;
 
-            _isMainCamera = !_isMainCamera;
-
-            if (!_isMainCamera)
-                gunCameraScript.Switch_Mode(EActiveCameraType.GunCamera);
-            else
-                gunCameraScript.Switch_Mode(EActiveCameraType.MainCamera);
+                if (!_isMainCamera)
+                    gunCameraScript.Switch_Mode(EActiveCameraType.GunCamera);
+                else
+                    gunCameraScript.Switch_Mode(EActiveCameraType.MainCamera);
+            }
         }
 
         public override void Get_Input()

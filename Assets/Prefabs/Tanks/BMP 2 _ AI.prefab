@@ -774,12 +774,16 @@ MonoBehaviour:
   Mode: 0
   Target_Position: {x: 0, y: 0, z: 0}
   Target_Transform: {fileID: 0}
+  TargetAimHook: {fileID: 0}
   Target_Rigidbody: {fileID: 0}
   Adjust_Angle: {x: 0, y: 0, z: 0}
   Turret_Speed_Multiplier: 0
   Turret_Turn_Rate: 0
   Cannon_Turn_Rate: 0
   Is_Selected: 0
+  OnSwitchMode:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2568345801201787450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -871,7 +875,7 @@ MonoBehaviour:
     Turret: {fileID: 2568345802968967883}
     blowOff: 1
     mass: 200
-    destroyedEffect: {fileID: 100004, guid: 2fe457cefafcb1242b30f81a15f53360, type: 3}
+    destroyedEffect: {fileID: 11400004, guid: 2fe457cefafcb1242b30f81a15f53360, type: 3}
   _bodyExplosionProps:
     Destroyed_Effect: {fileID: 100004, guid: d5cf1068eb9224446a79deb00e60a2e5, type: 3}
     Destroyed_Effect_Offset: {x: 0, y: 0, z: 0}
@@ -9497,7 +9501,7 @@ GameObject:
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2568345802428755187
 Transform:
   m_ObjectHideFlags: 0
@@ -9529,17 +9533,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Min_Engine_Pitch: 1
   Max_Engine_Pitch: 2
-  Min_Engine_Volume: 0.5
-  Max_Engine_Volume: 1
-  Left_Reference_Rigidbody: {fileID: 0}
-  Right_Reference_Rigidbody: {fileID: 0}
+  Min_Engine_Volume: 0.3
+  Max_Engine_Volume: 0.6
+  Left_Reference_Rigidbody: {fileID: 7600529117420600283}
+  Right_Reference_Rigidbody: {fileID: 7600529118178477868}
   Reference_Name_L: RoadWheel_L_3
   Reference_Name_R: RoadWheel_R_3
   Reference_Parent_Name_L: Create_RoadWheel
   Reference_Parent_Name_R: Create_RoadWheel
   Left_Velocity: 0
   Right_Velocity: 0
-  Has_Changed: 0
+  Has_Changed: 1
 --- !u!82 &2568345802428755196
 AudioSource:
   m_ObjectHideFlags: 0
@@ -9552,7 +9556,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 152276e7f391445468f04b1f6cfd5829, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -16800,7 +16804,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AP_Bullet_Prefab: {fileID: 1055734019764122, guid: 06e872d6e74e60e47a59021b222d6004, type: 3}
   HE_Bullet_Prefab: {fileID: 1198614396222948, guid: aacf1aa0ae879f44e9f19d7609a5ab38, type: 3}
-  MuzzleFire_Object: {fileID: 100002, guid: 463c64347cd672d4cb95634df70a9a42, type: 3}
+  MuzzleFire_Object: {fileID: 11400000, guid: 463c64347cd672d4cb95634df70a9a42, type: 3}
   Attack_Point: 75
   Attack_Point_HE: 75
   Initial_Velocity: 500

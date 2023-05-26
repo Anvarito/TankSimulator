@@ -13,7 +13,7 @@ public class TurretDamageControlProp
 
     public bool blowOff;
     public float mass;
-    public GameObject destroyedEffect;
+    public Particle_Control_CS destroyedEffect;
 }
 [System.Serializable]
 public struct BodyExplosionProp
