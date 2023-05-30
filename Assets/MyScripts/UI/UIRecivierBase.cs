@@ -8,6 +8,8 @@ using System;
 
 public abstract class UIRecivierBase : MonoBehaviour
 {
+    [SerializeField] protected UIPresenterBase _presenterPrefab;
+
     protected ColorsHolder _colorsHolder;
     protected DamageReciviersManager _damageRecivierManager;
     protected Gun_Camera_CS _gunCamera;

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 11419630}
   - component: {fileID: 3434523930264630701}
   m_Layer: 5
-  m_Name: Canvas_Reticle
+  m_Name: ReticlePresenter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

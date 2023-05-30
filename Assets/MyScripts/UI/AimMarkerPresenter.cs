@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class AimMarkerPresenter : UIPresenterBase
 {
-    private Image _aimMarker;
+    [SerializeField] private Image _aimMarker;
 
     public void SetLinks(Image aimMarker)
     {

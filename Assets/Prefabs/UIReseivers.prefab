@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48e30e3d340b19146a58c4fc0038d4a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _aimMarker: {fileID: 21300000, guid: 722c940d8551dd240859c2a2ec1ce194, type: 3}
+  _presenterPrefab: {fileID: 1038600634077210470, guid: 6f83dcb8e09e2774088922a846c0ead4, type: 3}
 --- !u!114 &331844288142114373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,8 +65,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ba1337d5d159b445a17e35cb149ca44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _presenterPrefab: {fileID: 2735223905454046662, guid: 247687aca8c20d64bbc37f0d98866465, type: 3}
   _bulletGenerator: {fileID: 0}
-  _leadSprite: {fileID: 21300000, guid: df4de02c14ed4104687638608a92042c, type: 3}
 --- !u!114 &1127647858160360992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,9 +79,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 254a24b799359c345a456bb62136e7fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _presenterPrefab: {fileID: 1442603259745270361, guid: 4c05cce6d1b365f4db8a9702c9a100ad, type: 3}
   _cannonFireScript: {fileID: 0}
-  _shellSprite: {fileID: 21300000, guid: 64507792cdc9356439a3501718a92a85, type: 3}
-  _circleSprite: {fileID: 21300000, guid: 585f94867791fa043a060437c6b1cb40, type: 3}
 --- !u!114 &398834320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,8 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82b6b4ec2726f6546ba4ce3cea72633e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _reticleSprite: {fileID: 21300000, guid: e05563aa2ddbaf0479d8749183aee13f, type: 3}
-  _rengeSprite: {fileID: 21300000, guid: 8e7b62b9f5521334c9f4291c10a56e4e, type: 3}
+  _presenterPrefab: {fileID: 3434523930264630701, guid: 59085f44a027c4b428aa50485223ae5b, type: 3}
 --- !u!114 &398834321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,7 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a0dc27191a71d64da182ac7a747ff3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hpBar: {fileID: 5902823271639062800, guid: 658df433f8bd5ac43ab24a488688f2d7, type: 3}
+  _presenterPrefab: {fileID: 5902823271639062800, guid: 658df433f8bd5ac43ab24a488688f2d7, type: 3}
 --- !u!114 &1224471283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,8 +119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbb5d0741e60e974aa51391a70922706, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _presenterPrefab: {fileID: 4276478798196292613, guid: 8ba9b2f39b3d4494caf37a2f92a71e09, type: 3}
   _drive_Control_CS: {fileID: 0}
-  _font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &4713451948404591603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ca8656fe17314f43af84994cdcff66a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Marker_Prefab: {fileID: 4930967606792265021, guid: a4525308ffcef7349a11370be40c1641, type: 3}
+  _presenterPrefab: {fileID: 6651287836362072409, guid: 8c642c3a9320fd6489ab4cd2f4144227, type: 3}
   Friend_Color: {r: 0, g: 0, b: 1, a: 0.4627451}
   Hostile_Color: {r: 1, g: 0, b: 0, a: 0.4745098}
   Show_Always: 1
@@ -151,7 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b167d792a9e3154ba23e334eba5fc9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hitPointsTargetUIprefab: {fileID: 114579197361180434, guid: a025a74fd8b47854688c77fa9728a595, type: 3}
+  _presenterPrefab: {fileID: 114579197361180434, guid: a025a74fd8b47854688c77fa9728a595, type: 3}
   _leadMarkerResivier: {fileID: 331844288142114373}
 --- !u!114 &288517704285420636
 MonoBehaviour:

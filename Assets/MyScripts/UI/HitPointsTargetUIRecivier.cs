@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class HitPointsTargetUIRecivier : UIRecivierBase
 {
-    [SerializeField] private HitPointsTargetUIPresenter _hitPointsTargetUIprefab;
     [SerializeField] private LeadMarkerUIReceiver _leadMarkerResivier;
     private HitPointsTargetUIPresenter _hitPointsTargetUI;
     private EActiveCameraType _currentCameraType;
@@ -17,8 +16,9 @@ public class HitPointsTargetUIRecivier : UIRecivierBase
     protected override void InstantiateCanvas()
     {
         base.InstantiateCanvas();
-        _hitPointsTargetUI = Instantiate(_hitPointsTargetUIprefab);
-        _hitPointsTargetUI.InitialCanvas(_hitPointsTargetUI.GetComponent<Canvas>(), _cameraSetup.GetCamera());
+        _hitPointsTargetUI = Instantiate(_presenterPrefab) as HitPointsTargetUIPresenter;
+        _hitPointsTargetUI.InitialCanvas();
+        _hitPointsTargetUI.SetCamera(_cameraSetup.GetCamera());
         _hitPointsTargetUI.Hide();
     }
 
@@ -31,7 +31,7 @@ public class HitPointsTargetUIRecivier : UIRecivierBase
 
     private void Update()
     {
-        var aimTransform = _currentCameraType == EActiveCameraType.GunCamera ?  _leadMarkerResivier.GetTargetTransform() : _aimingControl.TargetAimHook;
+        Transform aimTransform = _currentCameraType == EActiveCameraType.GunCamera ?  _leadMarkerResivier.GetTargetTransform() : _aimingControl.TargetAimHook;
         if (aimTransform != null)
         {
             if (_targetTransform != aimTransform)

@@ -5,7 +5,7 @@ using UnityEditor;
 namespace ChobiAssets.PTM
 {
 
-	[ CustomEditor (typeof(UI_Position_Marker_Control_CS))]
+	[ CustomEditor (typeof(PositionActorsMarkerRecivier))]
 	public class UI_Position_Marker_Control_CSEditor : Editor
 	{
 		/*

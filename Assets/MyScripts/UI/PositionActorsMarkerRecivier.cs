@@ -20,7 +20,7 @@ namespace ChobiAssets.PTM
 
 
     [DefaultExecutionOrder(+2)] // (Note.) This script is executed after the "Camera_Points_Manager_CS", in order to move the marker smoothly.
-    public class UI_Position_Marker_Control_CS : UIRecivierBase
+    public class PositionActorsMarkerRecivier : UIRecivierBase
     {
         /*
 		 * This script is attached to the top object of the tank.
@@ -30,7 +30,6 @@ namespace ChobiAssets.PTM
 
 
         // User options >>
-        [SerializeField] private ActorPointerUIHelper Marker_Prefab;
         [SerializeField] private Color Friend_Color = Color.blue;
         [SerializeField] private Color Hostile_Color = Color.red;
         [SerializeField] private bool Show_Always = true;
@@ -39,30 +38,21 @@ namespace ChobiAssets.PTM
         private List<Drive_Control_CS> _driveControlList = new List<Drive_Control_CS>();
         private Dictionary<Drive_Control_CS, Position_Marker_Prop> _markerDictionary = new Dictionary<Drive_Control_CS, Position_Marker_Prop>();
 
-        private float Upper_Offset = 2f;
         private Camera _mainCamera;
+        private ActorPointerUIHelper _markerCanvasUIHelper;
         private Canvas _canvas;
 
+        private float Upper_Offset = 2f;
         Plane[] _cameraPlanes;
 
         protected override void InstantiateCanvas()
         {
             base.InstantiateCanvas();
-
-            Canvas canvas = new GameObject("MarkerPositionCanvas").AddComponent<Canvas>();
-            _canvas = canvas;
-            _canvas.renderMode = RenderMode.ScreenSpaceOverlay;
-            _canvas.gameObject.AddComponent<CanvasScaler>().uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-            _canvas.GetComponent<CanvasScaler>().referenceResolution = new Vector2(1920, 1080);
-
-            if (Marker_Prefab == null)
-            {
-                Debug.LogWarning("'Prefab for 'Position Maker' is not assigned.");
-                Destroy(this);
-                return;
-            }
-
+            _markerCanvasUIHelper = Instantiate(_presenterPrefab) as ActorPointerUIHelper;
+            _markerCanvasUIHelper.InitialCanvas();
             _mainCamera = _cameraSetup.GetCamera();
+            _markerCanvasUIHelper.SetCamera(_mainCamera);
+            _canvas = _markerCanvasUIHelper.GetCanvas();
 
             StartCoroutine(SearchAllUits());
 
@@ -95,9 +85,9 @@ namespace ChobiAssets.PTM
 
         void Receive_ID_Script(ID_Settings_CS idSetting, Drive_Control_CS driveControl)
         {
-            var markerObject = Instantiate(Marker_Prefab, _canvas.transform);
-            var newProp = new Position_Marker_Prop();
-            newProp.ArrowImage = markerObject.ArrowImage;
+            Image arrowImage = Instantiate(_markerCanvasUIHelper.ArrowImage, _canvas.transform);
+            Position_Marker_Prop newProp = new Position_Marker_Prop();
+            newProp.ArrowImage = arrowImage;
             newProp.Marker_Transform = newProp.ArrowImage.transform;
             newProp.Root_Transform = idSetting.transform;
             newProp.Body_Transform = idSetting.GetComponentInChildren<Rigidbody>().transform;

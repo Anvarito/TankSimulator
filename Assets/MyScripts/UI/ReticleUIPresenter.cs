@@ -8,10 +8,6 @@ public class ReticleUIPresenter : UIPresenterBase
 {
     [SerializeField] private RectTransform _RangefinderImage;
 
-    public void SetLinks(RectTransform rengaFinder)
-    {
-        _RangefinderImage = rengaFinder;
-    }
     public void SetRangefinder(float alpha)
     {
         float newZ = Mathf.Lerp(0, 180, alpha);

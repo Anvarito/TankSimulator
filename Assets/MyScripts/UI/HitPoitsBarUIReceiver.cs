@@ -7,7 +7,6 @@ using System;
 public class HitPoitsBarUIReceiver : UIRecivierBase
 {
 
-    [SerializeField] private HitPointsUIPresenter _hpBar;
     private HitPointsUIPresenter _hitPointsUI;
 
     protected override void Subscribes()
@@ -24,8 +23,9 @@ public class HitPoitsBarUIReceiver : UIRecivierBase
     protected override void InstantiateCanvas()
     {
         base.InstantiateCanvas();
-        _hitPointsUI = Instantiate(_hpBar);
-        _hitPointsUI.InitialCanvas(_hitPointsUI.GetComponent<Canvas>(), _cameraSetup.GetCamera());
+        _hitPointsUI = Instantiate(_presenterPrefab) as HitPointsUIPresenter;
+        _hitPointsUI.InitialCanvas();
+        _hitPointsUI.SetCamera(_cameraSetup.GetCamera());
     }
     
     private void BodyDamaged(float currentHP, float maxHP)

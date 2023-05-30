@@ -10,11 +10,6 @@ public class LeadMarkerPresenter : UIPresenterBase
     private float _calculationTime = 2.0f;
     public Transform TargetTransform { get; private set; }
 
-    public void SetLinks(Image markerImage)
-    {
-        _markerImage = markerImage;
-    }
-
     public void MarkerControl(Vector3 targetPosition, Rigidbody targetRigidbody, Transform buletGeneratorTransform, float bulletVelocity)
     {
         

@@ -84,9 +84,9 @@ namespace ChobiAssets.PTM
             }
         }
 
-        public override void InitialCanvas(Canvas canvas, Camera camera)
+        public override void InitialCanvas()
         {
-            base.InitialCanvas(canvas, camera);
+            base.InitialCanvas();
             // Store the initial color.
             initialColor = Body_Bar.color;
 

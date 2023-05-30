@@ -205,7 +205,7 @@ GameObject:
   - component: {fileID: 114485976511507930}
   - component: {fileID: 114579197361180434}
   m_Layer: 5
-  m_Name: Canvas_HP_Bars (Target)
+  m_Name: TargetHitPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -288,6 +288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2bfba60a9901d643a52a852b53b3698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canvas: {fileID: 223885725137696790}
   This_Canvas: {fileID: 223885725137696790}
   This_Canvas_Scaler: {fileID: 114485976511507930}
   Bars_Parent_Transform: {fileID: 224545295140477946}

@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 4276478798196292613}
   - component: {fileID: 665184148}
   m_Layer: 5
-  m_Name: Canvas_Speed_Indicator
+  m_Name: SpeedIndicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e94df73dad3c5a540aa57d6339b07bcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canvas: {fileID: 4055172850105111268}
   Speed_Text: {fileID: 893505415496724266}
 --- !u!82 &665184148
 AudioSource:

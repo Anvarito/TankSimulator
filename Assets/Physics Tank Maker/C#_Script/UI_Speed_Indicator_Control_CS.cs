@@ -15,13 +15,8 @@ namespace ChobiAssets.PTM
 		*/
 
         // User options >>
-        private Text Speed_Text = default;
+        [SerializeField] private Text Speed_Text = default;
         // << User options
-
-        public void SetLinks(Text text)
-        {
-            Speed_Text = text;
-        }
 
         const string textFormat = "{0} km/h";
 
