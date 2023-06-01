@@ -131,7 +131,7 @@ namespace ChobiAssets.PTM
                 }
 
                 Vector3 playerToEnemy = (currentActor.transform.position + Vector3.up * Upper_Offset) - transform.position;
-                Debug.DrawLine(transform.position, currentActor.transform.position + Vector3.up * Upper_Offset, Color.white);
+                //Debug.DrawLine(transform.position, currentActor.transform.position + Vector3.up * Upper_Offset, Color.white);
                 Ray ray = new Ray(transform.position, playerToEnemy.normalized);
                 _cameraPlanes = GeometryUtility.CalculateFrustumPlanes(_mainCamera);
 
@@ -158,7 +158,7 @@ namespace ChobiAssets.PTM
                  Vector3 worlsPoint = ray.GetPoint(minDistance);
 
                 currentMarkerProp.ArrowImage.rectTransform.position = _mainCamera.WorldToScreenPoint(worlsPoint);
-
+                //Debug.DrawLine(new Vector3(_mainCamera.pixelHeight / 2, _mainCamera.pixelWidth / 2), currentMarkerProp.ArrowImage.rectTransform.position, Color.blue);
                 //var screenPoint = _mainCamera.WorldToScreenPoint(worlsPoint);
                 //RectTransformUtility.ScreenPointToLocalPointInRectangle(_canvasRect, screenPoint, _mainCamera, out localPoint);
                 //currentMarkerProp.ArrowImage.rectTransform.anchoredPosition = localPoint;

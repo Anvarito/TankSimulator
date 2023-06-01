@@ -27,7 +27,13 @@ public class HitPoitsBarUIReceiver : UIRecivierBase
         _hitPointsUI.InitialCanvas();
         _hitPointsUI.SetCamera(_cameraSetup.GetCamera());
     }
-    
+
+    protected override void SwitchCamera(EActiveCameraType activeCamera)
+    {
+        base.SwitchCamera(activeCamera);
+        _hitPointsUI.SetCamera(activeCamera == EActiveCameraType.GunCamera ? _cameraSetup.GetGunCamera() : _cameraSetup.GetCamera());
+    }
+
     private void BodyDamaged(float currentHP, float maxHP)
     {
         _hitPointsUI.BodyDamageShow(currentHP, maxHP);
