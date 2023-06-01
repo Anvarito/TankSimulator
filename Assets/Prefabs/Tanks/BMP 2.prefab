@@ -2127,14 +2127,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Torque: 5000
-  Max_Speed: 36.3
-  Turn_Brake_Drag: 5000
-  Switch_Direction_Lag: 1.82
+  Max_Speed: 15.3
+  Turn_Brake_Drag: 100
+  Switch_Direction_Lag: 0.5
   Allow_Pivot_Turn: 0
   Pivot_Turn_Rate: 0.3
   Acceleration_Flag: 1
-  Acceleration_Time: 1.3
-  Deceleration_Time: 0.5
+  Acceleration_Time: 6
+  Deceleration_Time: 3
   Acceleration_Curve:
     serializedVersion: 2
     m_Curve:
@@ -2218,11 +2218,11 @@ MonoBehaviour:
   Parking_Brake_Velocity: 0.5
   Parking_Brake_Angular_Velocity: 0.1
   Use_AntiSlip: 1
-  Ray_Distance: 1.5
-  AntiSlip_Min_Speed: 32
-  AntiSlip_Max_Speed: 64
+  Ray_Distance: 1.2
+  AntiSlip_Min_Speed: 2
+  AntiSlip_Max_Speed: 32
   Use_Downforce: 1
-  Downforce: 75000
+  Downforce: 25000
   Downforce_Curve:
     serializedVersion: 2
     m_Curve:
@@ -2247,7 +2247,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  Sync_Speed_Rate: 1
+  Sync_Speed_Rate: 0
   Actual_Speed_Offset_Rate: 1
   Actual_Speed_Tolerance_Rate: 0.2
   Support_Turning: 1

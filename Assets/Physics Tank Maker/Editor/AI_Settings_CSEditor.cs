@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace ChobiAssets.PTM
 {
-
+	
 	[ CustomEditor (typeof(AI_Settings_CS))]
 	public class AI_Settings_CSEditor : Editor
 	{
