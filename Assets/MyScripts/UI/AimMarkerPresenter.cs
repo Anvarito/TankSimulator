@@ -2,46 +2,40 @@ using ChobiAssets.PTM;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AimMarkerPresenter : MonoBehaviour
+public class AimMarkerPresenter : UIPresenterBase
 {
     [SerializeField] private Image _aimMarker;
-    [SerializeField] private Image _leadMarker;
-    private Camera _camera;
-    private Aiming_Control_CS _aimingScript;
 
-    public void AimMarkerControl()
+    public void SetLinks(Image aimMarker)
+    {
+        _aimMarker = aimMarker;
+    }
+
+    public void ChangeVisibleMarker(bool show)
     {
         // Set the appearance.
-        switch (_aimingScript.Mode)
-        {
-            case 0: // Keep the initial positon.
-                _aimMarker.enabled = false;
-                return;
+        _aimMarker.enabled = show;
+    }
 
-            case 1: // Free aiming.
-            case 2: // Locking on.
-                _aimMarker.enabled = true;
-                if (_aimingScript.Target_Transform)
-                {
-                    _aimMarker.color = Color.red;
-                }
-                else
-                {
-                    _aimMarker.color = Color.white;
-                }
-                break;
-        }
+    public void ChangeColorMarker(bool hasTarget)
+    {
+        _aimMarker.color = hasTarget ? Color.red : Color.white;
+    }
+    /*
+    public void AimMarkerControl(Vector3 targetPosition)
+    {
+        
 
         // Set the position.
         // Check the player is finding a target using the gun camera now.
-        if (_aimingScript.reticleAimingFlag)
-        {
-            // Set the marker at the center of the screen.
-            //_aimMarker.transform.position = new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, 128.0f);
-            return;
-        }
+        //if (_aimingScript.reticleAimingFlag)
+        //{
+        //    // Set the marker at the center of the screen.
+        //    //_aimMarker.transform.position = new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, 128.0f);
+        //    return;
+        //}
         // Set the marker on the target position.
-        Vector3 currentPosition = _camera.WorldToScreenPoint(_aimingScript.Target_Position);
+        Vector3 currentPosition = _camera.WorldToScreenPoint(targetPosition);
         if (currentPosition.z < 0.0f)
         { // Behind of the camera.
             _aimMarker.enabled = false;
@@ -55,12 +49,5 @@ public class AimMarkerPresenter : MonoBehaviour
         //screenCenter.y = _camera.scaledPixelHeight * (0.5f + General_Settings_CS.Aiming_Offset);
         //_aimMarker.transform.position = screenCenter;
     }
-
-    internal void Initializing(Aiming_Control_CS aimingScript, Camera camera)
-    {
-        _camera = camera;
-        _aimingScript = aimingScript;
-        GetComponent<Canvas>().worldCamera = camera;
-        GetComponent<Canvas>().planeDistance = 1;
-    }
+    */
 }

@@ -9,6 +9,7 @@ namespace ChobiAssets.PTM
 	{
 	
 		SerializedProperty Part_MeshProp;
+		SerializedProperty GameObjProp;
 
 		SerializedProperty Colliders_NumProp;
 		SerializedProperty Colliders_MeshProp;
@@ -34,6 +35,7 @@ namespace ChobiAssets.PTM
 		void  OnEnable ()
 		{
 			Part_MeshProp = serializedObject.FindProperty ("Part_Mesh");
+			GameObjProp = serializedObject.FindProperty("CanonMesh");
 
 			Colliders_NumProp = serializedObject.FindProperty ("Colliders_Num");
 			Colliders_MeshProp = serializedObject.FindProperty ("Colliders_Mesh");
@@ -79,7 +81,7 @@ namespace ChobiAssets.PTM
             serializedObject.Update();
 
             GUI.backgroundColor = new Color (1.0f, 1.0f, 0.5f, 1.0f);
-
+			GameObjProp.objectReferenceValue = EditorGUILayout.ObjectField("Canon game object", GameObjProp.objectReferenceValue, typeof(GameObject), true);
 			EditorGUILayout.Space ();
 			EditorGUILayout.Space ();
 			EditorGUILayout.HelpBox ("Fold out above 'Transform' window when you move this object.", MessageType.Warning, true);
@@ -230,6 +232,8 @@ namespace ChobiAssets.PTM
 					childTransforms [i].transform.parent = newObject.transform;
 				}
 			}
+
+			GameObjProp.objectReferenceValue = newObject.transform;
 		}
 
 	}

@@ -7,7 +7,6 @@ namespace ChobiAssets.PTM
 	{
 
         protected Gun_Camera_CS gunCameraScript;
-        protected ERelationship thisRelationship;
 		protected Vector3 screenCenter = Vector3.zero;
 
 

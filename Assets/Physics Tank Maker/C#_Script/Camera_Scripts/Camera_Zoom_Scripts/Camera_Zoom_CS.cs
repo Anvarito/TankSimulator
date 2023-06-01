@@ -4,7 +4,6 @@ namespace ChobiAssets.PTM
 {
 
     [RequireComponent(typeof(Camera))]
-    [RequireComponent(typeof(AudioListener))]
 
     public class Camera_Zoom_CS : MonoBehaviour
     {

@@ -30,11 +30,12 @@ namespace ChobiAssets.PTM
 
         // For editor script.
         public bool Has_Changed;
+		public Transform CanonMesh;
 
 
-        void Start()
+		void Start()
         {
-            Destroy(this);
+            //Destroy(this);
         }
 
     }

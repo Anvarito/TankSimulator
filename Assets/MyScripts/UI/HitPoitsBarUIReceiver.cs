@@ -1,27 +1,34 @@
 using UnityEngine;
 using ChobiAssets.PTM;
 
-public class HitPoitsBarUIReceiver : MonoBehaviour
+public class HitPoitsBarUIReceiver : UIRecivierBase
 {
-    [SerializeField] private HitPointsUI _ui_HP_Bars_Self_CSprefab;
-    [SerializeField] private DamageReciviersManager _damageManager;
-    [SerializeField] private Camera _camera;
-    private HitPointsUI _hitPointsUI;
 
+    private HitPointsUIPresenter _hitPointsUI;
 
-    void Start()
+    protected override void Subscribes()
     {
-        _hitPointsUI = Instantiate(_ui_HP_Bars_Self_CSprefab);
-        _hitPointsUI.Initialize();
-        _hitPointsUI.GetComponent<Canvas>().worldCamera = _camera;
-        _hitPointsUI.GetComponent<Canvas>().planeDistance = 1;
+        base.Subscribes();
+        _damageRecivierManager.OnTurretDamaged.AddListener(TurretDamaged);
+        _damageRecivierManager.OnBodyDamaged.AddListener(BodyDamaged);
 
-        _damageManager.OnTurretDamaged.AddListener(TurretDamaged);
-        _damageManager.OnBodyDamaged.AddListener(BodyDamaged);
+        _damageRecivierManager.OnTrackDamaged.AddListener(TrackDamaged);
+        _damageRecivierManager.OnTrackRestore.AddListener(TrackRestore);
+        _damageRecivierManager.OnTrackBreach.AddListener(TrackBreach);
+    }
 
-        _damageManager.OnTrackDamaged.AddListener(TrackDamaged);
-        _damageManager.OnTrackRestore.AddListener(TrackRestore);
-        _damageManager.OnTrackBreach.AddListener(TrackBreach);
+    protected override void InstantiateCanvas()
+    {
+        base.InstantiateCanvas();
+        _hitPointsUI = Instantiate(_presenterPrefab) as HitPointsUIPresenter;
+        _hitPointsUI.InitialCanvas();
+        _hitPointsUI.SetCamera(_cameraSetup.GetCamera());
+    }
+
+    protected override void SwitchCamera(EActiveCameraType activeCamera)
+    {
+        base.SwitchCamera(activeCamera);
+        _hitPointsUI.SetCamera(activeCamera == EActiveCameraType.GunCamera ? _cameraSetup.GetGunCamera() : _cameraSetup.GetCamera());
     }
 
     public void Initialize(DamageReciviersManager partsDamageReceiver)
@@ -52,5 +59,10 @@ public class HitPoitsBarUIReceiver : MonoBehaviour
     private void TrackBreach(TrackDamageRecivier track)
     {
         _hitPointsUI.TrackBreached(track);
+    }
+
+    protected override void DestroyUI()
+    {
+        Destroy(_hitPointsUI.gameObject);
     }
 }

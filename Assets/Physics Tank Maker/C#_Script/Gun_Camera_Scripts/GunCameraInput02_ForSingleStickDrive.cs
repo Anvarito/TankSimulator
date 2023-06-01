@@ -7,9 +7,11 @@ namespace ChobiAssets.PTM
     {
         private bool _isDecreaseView;
         private bool _isEncreaseView;
-        private InputAction _aimAction, _zoomIn , _zoomOut;
+        private InputAction _aimAction, _zoomIn, _zoomOut;
         private PlayerInput _playerInput;
-        public GunCameraInput02_ForSingleStickDrive(PlayerInput playerInput, InputAction aimAction, InputAction zoomIn , InputAction zoomOut )
+
+        private bool _isMainCamera = true;
+        public GunCameraInput02_ForSingleStickDrive(PlayerInput playerInput, InputAction aimAction, InputAction zoomIn, InputAction zoomOut)
         {
             _aimAction = aimAction;
             _zoomIn = zoomIn;
@@ -26,49 +28,47 @@ namespace ChobiAssets.PTM
         public override void DissableInput()
         {
             base.DissableInput();
-            _playerInput.onActionTriggered += Aim;
-            _playerInput.onActionTriggered += ZoomInStart;
-            _playerInput.onActionTriggered += ZommInCancel;
-            _playerInput.onActionTriggered += ZoomOutStart;
-            _playerInput.onActionTriggered += ZoomOutCancel;
+            _playerInput.onActionTriggered -= Aim;
+            _playerInput.onActionTriggered -= ZoomInStart;
+            _playerInput.onActionTriggered -= ZommInCancel;
+            _playerInput.onActionTriggered -= ZoomOutStart;
+            _playerInput.onActionTriggered -= ZoomOutCancel;
         }
 
         private void ZoomInStart(InputAction.CallbackContext obj)
         {
-            if(obj.action.name == _zoomIn.name && obj.performed)
-            _isEncreaseView = true;
+            if (obj.action.name == _zoomIn.name && obj.performed)
+                _isEncreaseView = true;
         }
 
 
         private void ZommInCancel(InputAction.CallbackContext obj)
         {
-            if(obj.action.name == _zoomIn.name && obj.canceled)
-            _isEncreaseView = false;
+            if (obj.action.name == _zoomIn.name && obj.canceled)
+                _isEncreaseView = false;
         }
 
         private void ZoomOutStart(InputAction.CallbackContext obj)
         {
-            if(obj.action.name == _zoomOut.name && obj.performed)
-            _isDecreaseView = true;
+            if (obj.action.name == _zoomOut.name && obj.performed)
+                _isDecreaseView = true;
         }
         private void ZoomOutCancel(InputAction.CallbackContext obj)
         {
-            if(obj.action.name == _zoomOut.name && obj.canceled)
-            _isDecreaseView = false;
+            if (obj.action.name == _zoomOut.name && obj.canceled)
+                _isDecreaseView = false;
         }
 
         private void Aim(InputAction.CallbackContext obj)
         {
-            if (obj.action != _aimAction)
-                return;
+            if (obj.action.name == _aimAction.name && obj.performed)
+            {
+                _isMainCamera = !_isMainCamera;
 
-            if (gunCameraScript.Gun_Camera.enabled)
-            { // The gun camera is enabled.
-                gunCameraScript.Switch_Mode(1); // Off
-            }
-            else
-            { // The gun camera is disabled.
-                gunCameraScript.Switch_Mode(2); // On
+                if (!_isMainCamera)
+                    gunCameraScript.Switch_Mode(EActiveCameraType.GunCamera);
+                else
+                    gunCameraScript.Switch_Mode(EActiveCameraType.MainCamera);
             }
         }
 

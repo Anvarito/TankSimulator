@@ -1,10 +1,15 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
+using UnityEngine.UI;
+
+using System.Collections.Generic;
+using System;
 
 namespace ChobiAssets.PTM
 {
 
     [DefaultExecutionOrder(+3)] // (Note.) This script is executed after the main camera is moved, in order to move the marker smoothly.
-    public class LeadMarkerUIReceiver : MonoBehaviour
+    public class LeadMarkerUIReceiver : UIRecivierBase
     {
         /*
 		 * This script is attached to the "MainBody" of the tank with "Aiming_Control_CS".
@@ -12,93 +17,70 @@ namespace ChobiAssets.PTM
 		*/
 
         // User options >>
-        [SerializeField] private LeadMarkerPresenter _leadMarkerPresenterPrefab;
-        [SerializeField] private Aiming_Control_CS _aimingScript;
         [SerializeField] private Bullet_Generator_CS _bulletGenerator;
-        [SerializeField] private Camera _camera;
         // << User options
+        private Camera _currentCamera;
         private LeadMarkerPresenter _leadMarkerPresenter;
 
-        bool isSelected;
-
-        void Start()
+        public Transform GetTargetTransform()
         {
-            if (_aimingScript == null)
-            {
-                Debug.LogError("'Aiming_Control_CS' cannot be found in the MainBody.");
-                Destroy(this);
-            }
+            return _leadMarkerPresenter.TargetTransform;
+        }
+        protected override void Subscribes()
+        {
+            base.Subscribes();
+            _aimingControl.OnSwitchMode.AddListener(AimingModeSwitch);
+        }
+        protected override void InstantiateCanvas()
+        {
+            base.InstantiateCanvas();
+            //_leadMarkerPresenter = Instantiate(_uiPrefab) as LeadMarkerPresenter;
+            //_leadMarkerPresenter.InitialCanvas(_cameraSetup.GetCamera());
 
-            if (_bulletGenerator == null)
-            {
-                Debug.LogError("'Bullet_Generator_CS' cannot be found. The cannon cannot get the bullet velocity.");
-                Destroy(this);
-                return;
-            }
-            if (_leadMarkerPresenterPrefab != null)
-            {
-                _leadMarkerPresenter = Instantiate(_leadMarkerPresenterPrefab);
-                _leadMarkerPresenter.Initializing(_aimingScript, _bulletGenerator, _camera);
-            }
-            else
-            {
-                Debug.LogError("'_leadMarkerPresenterPrefab' cannot be found!!!");
-                Destroy(this);
-                return;
-            }
+            //Canvas canvas = new GameObject("LeadMarkerCanvas").AddComponent<Canvas>();
+            //canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+            //canvas.gameObject.AddComponent<CanvasScaler>().uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+            //canvas.GetComponent<CanvasScaler>().referenceResolution = new Vector2(1920, 1080);
+            //_leadMarkerPresenterPrefab = canvas.gameObject.AddComponent<LeadMarkerPresenter>();
+
+            //Image leadMarker = new GameObject("LeadMarker").AddComponent<Image>();
+            //leadMarker.transform.parent = canvas.transform;
+            //leadMarker.sprite = _leadSprite;
+            //leadMarker.rectTransform.localPosition = Vector3.zero;
+            //leadMarker.rectTransform.anchorMin = new Vector2(0.5f, 0.5f);
+            //leadMarker.rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
+            //leadMarker.rectTransform.localScale = Vector3.one;
+            //leadMarker.rectTransform.sizeDelta = new Vector2(24, 24);
+
+            _leadMarkerPresenter = Instantiate(_presenterPrefab) as LeadMarkerPresenter;
+            _leadMarkerPresenter.InitialCanvas();
+            _leadMarkerPresenter.SetCamera(_cameraSetup.GetCamera());
+        }
+        
+        private void AimingModeSwitch()
+        {
+            _leadMarkerPresenter.SwitchMode(_aimingControl.Mode);
         }
 
+        protected override void SwitchCamera(EActiveCameraType activeCamera)
+        {
+            base.SwitchCamera(activeCamera);
+            _currentCamera = activeCamera == EActiveCameraType.GunCamera ? _cameraSetup.GetGunCamera() : _cameraSetup.GetCamera();
+            _leadMarkerPresenter.SetCamera(_currentCamera);
+        }
 
         void LateUpdate()
         {
-            if (isSelected == false)
-            {
+            if (_leadMarkerPresenter == null || _aimingControl.Mode == 0)
                 return;
-            }
 
-            _leadMarkerPresenter.MarkerControl();
+            _leadMarkerPresenter.MarkerControl(_aimingControl.Target_Position, _aimingControl.Target_Rigidbody, _bulletGenerator.transform, _bulletGenerator.Current_Bullet_Velocity);
         }
 
-        public void Initialize(Aiming_Control_CS partsAiming, Bullet_Generator_CS partsBulletGenerator)
+        protected override void DestroyUI()
         {
-            _aimingScript = partsAiming;
-            _bulletGenerator = partsBulletGenerator;
-            isSelected = true;
-        }
-
-        void Selected(bool isSelected)
-        { // Called from "ID_Settings_CS".
-            if (isSelected)
-            {
-                this.isSelected = true;
-            }
-            else
-            {
-                if (this.isSelected)
-                { // This tank is selected until now.
-                    this.isSelected = false;
-                   // markerImage.enabled = false;
-                }
-            }
-        }
-
-
-        void MainBody_Destroyed_Linkage()
-        { // Called from "Damage_Control_Center_CS".
-
-            // Turn off the marker.
-            if (isSelected)
-            {
-                //markerImage.enabled = false;
-            }
-
-            Destroy(this);
-        }
-
-
-        void Pause(bool isPaused)
-        { // Called from "Game_Controller_CS".
-            this.enabled = !isPaused;
+            Destroy(_leadMarkerPresenter.gameObject);
+            _aimingControl.OnSwitchMode.RemoveListener(AimingModeSwitch);
         }
     }
 

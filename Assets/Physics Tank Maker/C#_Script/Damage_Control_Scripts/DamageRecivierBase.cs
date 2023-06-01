@@ -5,72 +5,92 @@ using UnityEngine.Events;
 namespace ChobiAssets.PTM
 {
 
-	public abstract class DamageRecivierBase : MonoBehaviour, IDamageble
-	{
-		[SerializeField] protected List<AdditionalDamageZone> _additionsDamage;
-		public float CurentHP { get; internal set; }
-		public float MaxHP { get; internal set; }
+    public abstract class DamageRecivierBase : MonoBehaviour, IDamageble
+    {
+        [SerializeField] protected List<AdditionalDamageZone> _additionsDamage;
+        public float CurentHP { get; internal set; }
+        public float MaxHP { get; internal set; }
 
-		protected float _damageThreshold;
+        protected float _damageThreshold;
 
-		[HideInInspector] public UnityEvent OnDestroyed;
-		[HideInInspector] public UnityEvent<float, float> OnDamaged;
+        [HideInInspector] public UnityEvent OnDestroyed;
+        [HideInInspector] public UnityEvent<float, float> OnDamaged;
 
-		public float DamageTreshold => _damageThreshold;
+        public float DamageTreshold => _damageThreshold;
 
         public virtual void Initialize(RecivierSettings recivierSettings)
         {
-			CurentHP = recivierSettings.MaxHitPoints;
-			_damageThreshold = recivierSettings.DamageTreshold;
-			   MaxHP = CurentHP;
+            CurentHP = recivierSettings.MaxHitPoints;
+            _damageThreshold = recivierSettings.DamageTreshold;
+            MaxHP = CurentHP;
 
-			if (_additionsDamage.Count != 0)
-			{
-				foreach (var armor in _additionsDamage)
-				{
-					if (armor == null) continue;
-					armor.Initialize(_damageThreshold);
-					armor.OnArmorDamage.AddListener(AdditionalZoneDamaged);
-				}
-			}
-		}
+            if (_additionsDamage.Count != 0)
+            {
+                Subscribe();
+            }
+        }
 
-		private void AdditionalZoneDamaged(float damage, int bulletType)
-		{
-			DealDamage(damage, bulletType);
-		}
-
-		[ContextMenu("DamageTest")]
-		public void DADA()
-		{
-			DealDamage(100000000, 0);
-		}
-		public virtual void DealDamage(float damage, int bulletType)
+        private void Subscribe()
         {
-			CurentHP -= damage;
-			OnDamaged?.Invoke(CurentHP, MaxHP);
-			if (CurentHP <= 0)
-			{
-				ParthDestroy();
-			}
-		}
+            foreach (var armor in _additionsDamage)
+            {
+                if (armor == null) continue;
+                armor.Initialize(_damageThreshold);
+                armor.OnArmorDamage.AddListener(AdditionalZoneDamaged);
+            }
+        }
 
-		protected virtual void ParthDestroy() 
-		{
-			CurentHP = 0;
-			OnDestroyed?.Invoke();
-		}
+        private void Unsubscribe()
+        {
+            foreach (var armor in _additionsDamage)
+            {
+                if (armor == null) continue;
+                armor.Initialize(_damageThreshold);
+                armor.OnArmorDamage.RemoveListener(AdditionalZoneDamaged);
+            }
+        }
 
-		public virtual bool CheckBreackout(float damage, int bulletType)
-		{
-			if (damage < _damageThreshold)
-			{ // Never receive any damage under the threshold value.
-				return false;
-			}
+        private void AdditionalZoneDamaged(float damage, int bulletType)
+        {
+            DealDamage(damage, bulletType);
+        }
 
-			return true;
-		}
+        [ContextMenu("DamageTest")]
+        public void DADA()
+        {
+            DealDamage(100000000, 0);
+        }
+        public virtual void DealDamage(float damage, int bulletType)
+        {
+            CurentHP -= damage;
+            OnDamaged?.Invoke(CurentHP, MaxHP);
+            //print(damage);
+            if (CurentHP <= 0)
+            {
+                ParthDestroy();
+            }
+        }
 
-	}
+        protected virtual void ParthDestroy()
+        {
+            CurentHP = 0;
+            Unsubscribe();
+            OnDestroyed?.Invoke();
+        }
+
+        public virtual bool CheckBreackout(float damage, int bulletType)
+        {
+            if (CurentHP <= 0)
+                return false;
+
+            if (damage < _damageThreshold)
+            { // Never receive any damage under the threshold value.
+                return false;
+            }
+
+            return true;
+        }
+
+    }
 
 }

@@ -8,6 +8,7 @@ namespace ChobiAssets.PTM
     public class Turret_Base_CSEditor : Editor
     {
 
+        SerializedProperty GameObjProp;
         SerializedProperty Part_MeshProp;
 
         SerializedProperty Colliders_NumProp;
@@ -33,6 +34,7 @@ namespace ChobiAssets.PTM
 
         void OnEnable()
         {
+            GameObjProp = serializedObject.FindProperty("TurretMesh");
             Part_MeshProp = serializedObject.FindProperty("Part_Mesh");
 
             Colliders_NumProp = serializedObject.FindProperty("Colliders_Num");
@@ -79,7 +81,7 @@ namespace ChobiAssets.PTM
             serializedObject.Update();
 
             GUI.backgroundColor = new Color(1.0f, 1.0f, 0.5f, 1.0f);
-
+            GameObjProp.objectReferenceValue = EditorGUILayout.ObjectField("Turret game object", GameObjProp.objectReferenceValue, typeof(GameObject), true);
             EditorGUILayout.Space();
             EditorGUILayout.Space();
             EditorGUILayout.HelpBox("Fold out above 'Transform' window when you move this object.", MessageType.Warning, true);
@@ -222,6 +224,9 @@ namespace ChobiAssets.PTM
                 meshCollider.convex = true;
             }
 
+            // Add additionsl zone.
+            newObject.AddComponent<AdditionalDamageZone>();
+            GameObjProp.objectReferenceValue = newObject.transform;
             // Add "Damage_Control_01_Turret_CS" script.
             //if (Use_Damage_ControlProp.boolValue)
             //{

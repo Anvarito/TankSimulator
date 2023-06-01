@@ -51,6 +51,9 @@ namespace ChobiAssets.PTM
             Max_Right = angleY + Max_Right;
             Max_Left = angleY - Max_Left;
 
+            if(aimingScript == null)
+                Debug.LogError("Aimming script not assigned!");
+
             // Get the "Bullet_Generator_CS".
             if (Bullet_Generator_Script == null)
             {

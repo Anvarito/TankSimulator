@@ -1,64 +1,95 @@
 ﻿using UnityEngine;
+using System.Collections;
+using UnityEngine.UI;
+using System;
 
 namespace ChobiAssets.PTM
 {
 
-    public class ReloadingCircleUIReseiver : MonoBehaviour
+    public class ReloadingCircleUIReseiver : UIRecivierBase
     {
         /*
 		 * This script is attached to the "Cannon_Base" in the tank.
 		 * This script controls the loading circle displyaed while the bullet is reloaded.
 		 * This script works in combination with "Cannon_Fire_CS" in the tank.
 		*/
-        [SerializeField] private ReloadingCirclePresenter _reloadMarkerCanvasPrefab;
         [SerializeField] private Cannon_Fire_CS _cannonFireScript;
-        [SerializeField] private Camera  _camera;
 
         private ReloadingCirclePresenter _reloadingCirclePresenter;
 
-        private bool isSelected;
+        private bool _isRun;
 
-        private bool _isLoadeng;
-
-        private void Start()
+        protected override void Subscribes()
         {
-            InitScript();
-        }
-
-        private void InitScript()
-        {
-            _reloadingCirclePresenter = Instantiate(_reloadMarkerCanvasPrefab);
-            _reloadingCirclePresenter.Initialized(_camera);
-            _cannonFireScript.OnReload.AddListener(ReloadLaunch);
+            base.Subscribes();
+            _cannonFireScript.OnReload.AddListener(ReloadLaunch) ;
             _cannonFireScript.OnEndReload.AddListener(ReloadEnd);
         }
 
-        public void Initialize(Cannon_Fire_CS partsCannonFire)
+        protected override void SwitchCamera(EActiveCameraType activeCamera)
         {
-            _cannonFireScript = partsCannonFire;
-            isSelected = true;
+            base.SwitchCamera(activeCamera);
+            Camera currentCamera = activeCamera == EActiveCameraType.GunCamera ? _cameraSetup.GetGunCamera() : _cameraSetup.GetCamera();
+            _reloadingCirclePresenter.SetCamera(currentCamera);
         }
 
+        protected override void InstantiateCanvas()
+        {
+            base.InstantiateCanvas();
+            //_reloadingCirclePresenter = Instantiate(_uiPrefab) as ReloadingCirclePresenter;
+            //_reloadingCirclePresenter.InitialCanvas(_cameraSetup.GetCamera());
+
+            //Canvas canvas = new GameObject("ReloadingCircleCanvas").AddComponent<Canvas>();
+            //canvas.renderMode = RenderMode.ScreenSpaceCamera;
+            //canvas.planeDistance = 1;
+            //canvas.worldCamera = _cameraSetup.GetCamera();
+            //canvas.gameObject.AddComponent<CanvasScaler>().uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+            //canvas.GetComponent<CanvasScaler>().referenceResolution = new Vector2(1920, 1080);
+            //_reloadingCirclePresenter = canvas.gameObject.AddComponent<ReloadingCirclePresenter>();
+
+            //Image reloadCIrcle = new GameObject("ReloadingCircle").AddComponent<Image>();
+            //reloadCIrcle.transform.parent = canvas.transform;
+            //reloadCIrcle.sprite = _circleSprite;
+            //reloadCIrcle.rectTransform.localPosition = new Vector3(50, 50, 0);
+            //reloadCIrcle.rectTransform.pivot = Vector2.zero;
+            //reloadCIrcle.rectTransform.anchorMin = Vector2.zero;
+            //reloadCIrcle.rectTransform.anchorMax = Vector2.zero;
+            //reloadCIrcle.rectTransform.localScale = Vector3.one;
+            //reloadCIrcle.rectTransform.sizeDelta = new Vector2(96, 96);
+            //reloadCIrcle.color = _colorsHolder.secondaryColor;
+
+            //reloadCIrcle.type = Image.Type.Filled;
+            //reloadCIrcle.fillOrigin = (int)Image.Origin360.Top;
+
+            //Image shell = new GameObject("Shell").AddComponent<Image>();
+            //shell.transform.parent = reloadCIrcle.transform;
+            //shell.sprite = _shellSprite;
+            //shell.rectTransform.localPosition = new Vector3(50, 50, 0);
+            //shell.rectTransform.anchorMin = new Vector2(0.5f, 0.5f);
+            //shell.rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
+            //shell.rectTransform.localScale = Vector3.one;
+            //shell.rectTransform.sizeDelta = new Vector2(96, 96);
+            //shell.color = _colorsHolder.secondaryColor;
+
+            _reloadingCirclePresenter = Instantiate(_presenterPrefab) as ReloadingCirclePresenter;
+            _reloadingCirclePresenter.InitialCanvas();
+            _reloadingCirclePresenter.SetCamera(_cameraSetup.GetCamera());
+        }
+       
         private void ReloadLaunch()
         {
             _reloadingCirclePresenter.EnableImage(true);
-            _isLoadeng = true;
+            _isRun = true;
         }
-
         private void ReloadEnd()
         {
             _reloadingCirclePresenter.EnableImage(false);
-            _isLoadeng = false;
+            _isRun = false;
         }
 
         void LateUpdate()
         {
-            if (isSelected == false)
-            {
-                return;
-            }
-
-            if (_isLoadeng)
+            if (_isRun && _reloadingCirclePresenter != null)
             {
                 FillCircle();
             }
@@ -69,33 +100,9 @@ namespace ChobiAssets.PTM
             _reloadingCirclePresenter.FillCircle(_cannonFireScript.Loading_Count, _cannonFireScript.Reload_Time);
         }
 
-
-        void Selected(bool isSelected)
-        { // Called from "ID_Settings_CS".
-            if (isSelected)
-            {
-                this.isSelected = true;
-            }
-            else
-            {
-                if (this.isSelected)
-                { // This tank is selected until now.
-                    this.isSelected = false;
-                }
-            }
-        }
-
-
-        void Turret_Destroyed_Linkage()
-        { // Called from "Damage_Control_Center_CS".
-
-            Destroy(this);
-        }
-
-
-        void Pause(bool isPaused)
-        { // Called from "Game_Controller_CS".
-            this.enabled = !isPaused;
+        protected override void DestroyUI()
+        {
+            Destroy(_reloadingCirclePresenter.gameObject);
         }
     }
 

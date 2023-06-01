@@ -1,6 +1,6 @@
 using UnityEditor;
 
-[CustomEditor(typeof(TankInputInitializer))]
+[CustomEditor(typeof(PlayerInputInitializer))]
 public class InputInitializeManager_Editor : Editor
 {
     /*

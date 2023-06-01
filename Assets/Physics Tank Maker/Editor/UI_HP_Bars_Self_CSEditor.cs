@@ -3,7 +3,7 @@
 namespace ChobiAssets.PTM
 {
 
-	[ CustomEditor (typeof(HitPointsUI))]
+	[ CustomEditor (typeof(HitPointsUIPresenter))]
 	public class UI_HP_Bars_Self_CSEditor : Editor
 	{
 		/*

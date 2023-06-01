@@ -4,10 +4,10 @@ using UnityEditor;
 namespace ChobiAssets.PTM
 {
 
-	[ CustomEditor (typeof(UI_Position_Marker_Control_CS))]
+	[ CustomEditor (typeof(PositionActorsMarkerRecivier))]
 	public class UI_Position_Marker_Control_CSEditor : Editor
 	{
-
+		/*
         SerializedProperty Marker_PrefabProp;
         SerializedProperty Canvas_NameProp;
         SerializedProperty Friend_ColorProp;
@@ -45,7 +45,7 @@ namespace ChobiAssets.PTM
 
 			EditorGUILayout.Space ();
 			EditorGUILayout.HelpBox ("Position Marker settings", MessageType.None, true);
-            Marker_PrefabProp.objectReferenceValue = EditorGUILayout.ObjectField("Marker Prefab", Marker_PrefabProp.objectReferenceValue, typeof(GameObject), false);
+            Marker_PrefabProp.objectReferenceValue = EditorGUILayout.ObjectField("Marker Prefab", Marker_PrefabProp.objectReferenceValue, typeof(GameObject), true);
             Canvas_NameProp.stringValue = EditorGUILayout.TextField("Canvas Name", Canvas_NameProp.stringValue);
             Friend_ColorProp.colorValue = EditorGUILayout.ColorField("Friend Color", Friend_ColorProp.colorValue);
 			Hostile_ColorProp.colorValue = EditorGUILayout.ColorField("Hostile Color", Hostile_ColorProp.colorValue);
@@ -61,7 +61,7 @@ namespace ChobiAssets.PTM
 			EditorGUILayout.Space ();
 
 			serializedObject.ApplyModifiedProperties ();
-		}
+		}*/
 	
 	}
 

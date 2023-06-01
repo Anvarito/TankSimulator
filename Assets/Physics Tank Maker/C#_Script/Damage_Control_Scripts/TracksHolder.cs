@@ -59,7 +59,6 @@ public class TrackDamageRecivier
 
     private void RestoreHP()
     {
-        Debug.Log("Restore");
         IsRestoring = false;
         CurrentHP = MaxHP;
     }
@@ -71,7 +70,6 @@ public class TrackDamageRecivier
         while (repairingTimer < RepairDuration)
         {
             repairingTimer += Time.deltaTime;
-            Debug.Log(repairingTimer);
             // Set the HP.
             //currentTrack.CurrentHP = _initialHP * (repairingTimer / _repairDuration);
 

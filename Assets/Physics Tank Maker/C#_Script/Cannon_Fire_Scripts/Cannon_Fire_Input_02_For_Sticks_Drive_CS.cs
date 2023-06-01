@@ -8,6 +8,8 @@ namespace ChobiAssets.PTM
         private InputAction _fireAction;
         private InputAction _switchShelActionl;
         private PlayerInput _playerInput;
+
+        private bool _fireBegin = false;
         public Cannon_Fire_Input_02_For_Sticks_Drive_CS(PlayerInput playerInput, InputAction fireAction, InputAction switchShell)
         {
             _fireAction = fireAction;
@@ -32,9 +34,16 @@ namespace ChobiAssets.PTM
         private void Fire(InputAction.CallbackContext obj)
         {
             if (_fireAction.name == obj.action.name)
-            cannonFireScript.Fire();
+            {
+                _fireBegin = obj.performed;
+            }
         }
 
+        public override void Get_Input()
+        {
+            if (_fireBegin)
+                cannonFireScript.Fire();
+        }
         public override void DisableInput()
         {
             base.DisableInput();

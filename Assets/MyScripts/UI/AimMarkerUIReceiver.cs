@@ -1,11 +1,13 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
+using UnityEngine.UI;
 
 
 namespace ChobiAssets.PTM
 {
 
     [DefaultExecutionOrder(+2)] // (Note.) This script is executed after the "Aiming_Control_CS", in order to move the marker smoothly.
-    public class AimMarkerUIReceiver : MonoBehaviour
+    public class AimMarkerUIReceiver : UIRecivierBase
     {
         /*
 		 * This script is attached to the "MainBody" of the tank.
@@ -13,89 +15,57 @@ namespace ChobiAssets.PTM
          * This script works in combination with "Aiming_Control_CS" in the tank.
 		*/
 
-        // User options >>
-        [SerializeField] private AimMarkerPresenter _aimLeadPresenterPrefab;
-        [SerializeField] private Aiming_Control_CS aimingScript;
-        [SerializeField] private Camera _camera;
-        // << User options
-        private AimMarkerPresenter _aimLeadPresenter;
+        private AimMarkerPresenter _aimPresenter;
 
-        bool isSelected;
-
-        public void Initialize(Aiming_Control_CS partsAiming)
+        protected override void InstantiateCanvas()
         {
-            aimingScript = partsAiming;
-            isSelected = true;
+            base.InstantiateCanvas();
+            //// Get the "Aiming_Control_CS" in the tank.
+            //if (_aimingControl == null)
+            //{
+            //    Debug.LogWarning("'Aiming_Control_CS' cannot be found in the MainBody.");
+            //}
+
+            //Canvas canvas = new GameObject("AimMarkerCanvas").AddComponent<Canvas>();
+            //canvas.renderMode = RenderMode.ScreenSpaceCamera;
+            //canvas.planeDistance = 1;
+            //canvas.worldCamera = _cameraSetup.GetCamera();
+            //canvas.gameObject.AddComponent<CanvasScaler>().uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+            //canvas.GetComponent<CanvasScaler>().referenceResolution = new Vector2(1920, 1080);
+            //_aimLeadPresenter = canvas.gameObject.AddComponent<AimMarkerPresenter>();
+
+            //Image aimMarker = new GameObject("AimMarker").AddComponent<Image>();
+            //aimMarker.transform.parent = canvas.transform;
+            //aimMarker.sprite = _aimMarker;
+            //aimMarker.rectTransform.localPosition = Vector3.zero;
+            //aimMarker.rectTransform.anchorMin = new Vector2(0.5f, 0.75f);
+            //aimMarker.rectTransform.anchorMax = new Vector2(0.5f, 0.75f);
+            //aimMarker.rectTransform.localScale = Vector3.one;
+            //aimMarker.rectTransform.sizeDelta = new Vector2(48, 48);
+
+            _aimPresenter = Instantiate(_presenterPrefab) as AimMarkerPresenter;
+            _aimPresenter.InitialCanvas();
+            _aimPresenter.SetCamera(_cameraSetup.GetCamera());
+            _aimPresenter.ChangeVisibleMarker(true);
         }
-
-
-        void Start()
-        {
-            // Get the "Aiming_Control_CS" in the tank.
-            if (aimingScript == null)
-            {
-                Debug.LogWarning("'Aiming_Control_CS' cannot be found in the MainBody.");
-                Destroy(this);
-            }
-            // Get the marker image in the scene.
-            if (_aimLeadPresenterPrefab == null)
-            {
-                return;
-            }
-            else
-            {
-                _aimLeadPresenter = Instantiate(_aimLeadPresenterPrefab);
-            }
-
-            _aimLeadPresenter.Initializing(aimingScript, _camera);
-        }
-
 
         void Update()
         {
-            if (isSelected == false)
+            if (_aimPresenter != null)
             {
-                return;
-            }
-
-            if (_aimLeadPresenter != null)
-                _aimLeadPresenter.AimMarkerControl();
-        }
-
-        void Selected(bool isSelected)
-        { // Called from "ID_Settings_CS".
-            if (isSelected)
-            {
-                this.isSelected = true;
-            }
-            else
-            {
-                if (this.isSelected)
-                { // This tank is selected until now.
-                    this.isSelected = false;
-                    //markerImage.enabled = false;
-                }
+                _aimPresenter.ChangeColorMarker(_aimingControl.Target_Rigidbody);
             }
         }
 
-
-        void MainBody_Destroyed_Linkage()
-        { // Called from "Damage_Control_Center_CS".
-
-            // Turn off the marker.
-            if (isSelected)
-            {
-                //markerImage.enabled = false;
-            }
-
-            Destroy(this);
+        protected override void SwitchCamera(EActiveCameraType activeCamera)
+        {
+            base.SwitchCamera(activeCamera);
+            _aimPresenter.ChangeVisibleMarker(activeCamera == EActiveCameraType.MainCamera);
         }
 
-
-        void Pause(bool isPaused)
-        { // Called from "Game_Controller_CS".
-            this.enabled = !isPaused;
+        protected override void DestroyUI()
+        {
+            Destroy(_aimPresenter);
         }
     }
-
 }
