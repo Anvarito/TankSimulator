@@ -18,7 +18,6 @@ public class RecivierUIManager : MonoBehaviour
     [SerializeField] private Gun_Camera_CS _gunCamera;
     [SerializeField] private CameraViewSetup _cameraSetup;
     [SerializeField] private Aiming_Control_CS _aiming_Control;
-    [SerializeField] private PositionActorsMarkerRecivier _UI_Position_Marker_Control_CS;
     [SerializeField] private ID_Settings_CS _selfID;
     [SerializeField] private ColorsHolder _colorsHolder;
     internal void Initialize()

@@ -15,7 +15,6 @@ namespace ChobiAssets.PTM
         public Transform Root_Transform;
         public Transform Body_Transform;
         public Collider Body_collider;
-        public AI_CS AI_Script;
     }
 
 
@@ -44,6 +43,7 @@ namespace ChobiAssets.PTM
 
         private float Upper_Offset = 2f;
         Plane[] _cameraPlanes;
+        private Vector2 localPoint;
 
         protected override void InstantiateCanvas()
         {
@@ -51,7 +51,7 @@ namespace ChobiAssets.PTM
             _markerCanvasUIHelper = Instantiate(_presenterPrefab) as ActorPointerUIHelper;
             _markerCanvasUIHelper.InitialCanvas();
             _mainCamera = _cameraSetup.GetCamera();
-            _markerCanvasUIHelper.SetCamera(_mainCamera);
+            //_markerCanvasUIHelper.SetCamera(_mainCamera);
             _canvas = _markerCanvasUIHelper.GetCanvas();
 
             StartCoroutine(SearchAllUits());
@@ -92,7 +92,6 @@ namespace ChobiAssets.PTM
             newProp.Root_Transform = idSetting.transform;
             newProp.Body_Transform = idSetting.GetComponentInChildren<Rigidbody>().transform;
             newProp.Body_collider = newProp.Body_Transform.GetComponent<Collider>();
-            newProp.AI_Script = idSetting.GetComponentInChildren<AI_CS>();
             _markerDictionary.Add(driveControl, newProp);
             VisualizeMarker(newProp, idSetting.Relationship);
 
@@ -100,7 +99,7 @@ namespace ChobiAssets.PTM
         }
 
 
-        void LateUpdate()
+        void Update()
         {
             if (_canvas == null)
                 return;
@@ -157,10 +156,31 @@ namespace ChobiAssets.PTM
                     indexPlane = -1;
                 }
                  Vector3 worlsPoint = ray.GetPoint(minDistance);
+
                 currentMarkerProp.ArrowImage.rectTransform.position = _mainCamera.WorldToScreenPoint(worlsPoint);
-                currentMarkerProp.ArrowImage.transform.localRotation = SetRotationByIndex(indexPlane);
+
+                //var screenPoint = _mainCamera.WorldToScreenPoint(worlsPoint);
+                //RectTransformUtility.ScreenPointToLocalPointInRectangle(_canvasRect, screenPoint, _mainCamera, out localPoint);
+                //currentMarkerProp.ArrowImage.rectTransform.anchoredPosition = localPoint;
+
+                //Vector2 adjustedPosition = _mainCamera.WorldToScreenPoint(worlsPoint);
+
+                //adjustedPosition.x *= _canvasRect.rect.width / (float)_mainCamera.pixelWidth;
+                //adjustedPosition.y *= _canvasRect.rect.height / (float)_mainCamera.pixelHeight;
+
+                //// set it
+                //currentMarkerProp.ArrowImage.rectTransform.anchoredPosition = adjustedPosition;
+
+                currentMarkerProp.ArrowImage.rectTransform.localRotation = SetRotationByIndex(indexPlane);
             }
         }
+
+        public static Vector2 GetRelativePosOfWorldPoint(Vector3 worldPoint, Camera camera)
+        {
+            Vector3 screenPoint = camera.WorldToScreenPoint(worldPoint);
+            return new Vector2(screenPoint.x / camera.pixelWidth, screenPoint.y / camera.pixelHeight);
+        }
+
         private Quaternion SetRotationByIndex(int index)
         {
             int zRot = 0;
