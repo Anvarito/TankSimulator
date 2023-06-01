@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using ChobiAssets.PTM;
+using Infrastructure.Factory;
 using Infrastructure.Factory.Base;
 using Infrastructure.Factory.Compose;
 using UnityEngine;
@@ -70,8 +71,9 @@ namespace Infrastructure.StateMachine
 
         private void RegisterDamageManagers()
         {
-            _playerFactory.PlayerParts.DamageReceiver.OnTankDestroyed.AddListener(PlayerDestroyed);
-
+            foreach (PlayerUiParts part in _playerFactory.PlayerParts)
+                part.DamageReceiver.OnTankDestroyed.AddListener(PlayerDestroyed);
+            
             foreach (DamageReciviersManager enemyDamageManager in _enemyFactory.EnemyDamageManagers)
             {
                 enemyDamageManager.OnTankDestroyed.AddListener(EnemyDestroyed);
@@ -80,7 +82,8 @@ namespace Infrastructure.StateMachine
 
         private void UnregisterDamageManagers()
         {
-            _playerFactory.PlayerParts.DamageReceiver.OnTankDestroyed.RemoveListener(PlayerDestroyed);
+            foreach (PlayerUiParts part in _playerFactory.PlayerParts)
+                part.DamageReceiver.OnTankDestroyed.RemoveListener(PlayerDestroyed);
 
             foreach (DamageReciviersManager enemyDamageManager in _enemyFactory.EnemyDamageManagers)
             {

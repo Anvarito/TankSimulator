@@ -16,11 +16,11 @@ namespace Infrastructure.Factory.Base
 
     public interface IPlayerFactory : IGameFactory
     {
-        PlayerUiParts PlayerParts { get; }
+        List<PlayerUiParts> PlayerParts { get; }
         GameOverBoard GameBoard { get; }
 
-        GameObject CreatePlayer(GameObject at);
-        void CreateTankUiSpawner(PlayerUiParts gameFactoryPlayerUiParts);
+        void CreatePlayers(GameObject[] at);
+        void CreateTankUiSpawners();
         void CreateHud();
 
 
@@ -37,9 +37,9 @@ namespace Infrastructure.Factory.Base
     
     internal interface IInputFactory : IGameFactory
     {
-        GameObject CreatePlayerInputManager();
+        List<TankPickerUIHelper> TankPickerUIHelpers { get; }
         PlayerInputManager PlayerInputManager { get; }
-        void AngarCanvas();
+        GameObject CreatePlayerInputManager();
         void CretePleasePressButtonPanel();
         GameObject CreateTankPickerUI(Transform parent);
         Transform CreatePickerCanvas();

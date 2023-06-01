@@ -16,9 +16,9 @@ namespace Infrastructure.Services.Input
     public class InputService : IInputService
     {
         public Action OnPlayerJoined { get; set; }
+        public List<PlayerConfiguration> PlayerConfigs { get; } = new List<PlayerConfiguration>();
 
         private readonly GameStateMachine _gameStateMachine;
-        private List<PlayerConfiguration> _playerConfigs = new List<PlayerConfiguration>();
 
         private readonly IInputFactory _inputFactory;
         private readonly Transform _choseCanvas;
@@ -35,19 +35,20 @@ namespace Infrastructure.Services.Input
             _inputManager.onPlayerJoined += HandlePlayerJoin;
         }
 
-        public void ConnectToInputs(InputSystemUIInputModule uiInputModule, bool individually = false)
+        public void ConnectToInputs(GameObject uiInputModule, bool individually = false)
         {
             if (individually)
             {
                 if (NextPlayerExist()) ResetPlayerIndex();
-                _playerConfigs[currentIndex].Input.uiInputModule = uiInputModule;
+                PlayerConfigs[currentIndex].Input.uiInputModule = uiInputModule.GetComponentInChildren<InputSystemUIInputModule>();
+                uiInputModule.GetComponentInChildren<TankPickerUIHelper>().Construct(PlayerConfigs[currentIndex]);
                 currentIndex += 1;
             }
             else
             {
-                foreach (PlayerConfiguration playerConfig in _playerConfigs)
+                foreach (PlayerConfiguration playerConfig in PlayerConfigs)
                 {
-                    playerConfig.Input.uiInputModule = uiInputModule;
+                    playerConfig.Input.uiInputModule = uiInputModule.GetComponentInChildren<InputSystemUIInputModule>();
                 }
             }
         }
@@ -67,7 +68,7 @@ namespace Infrastructure.Services.Input
             }
             else
             {
-                _playerConfigs.Add(new PlayerConfiguration(pi));
+                PlayerConfigs.Add(new PlayerConfiguration(pi));
                 pi.transform.parent = _inputManager.transform;
                 OnPlayerJoined?.Invoke();
                 Debug.Log("Player joined");
@@ -75,11 +76,11 @@ namespace Infrastructure.Services.Input
         }
 
         private bool CanAddPlayer() =>
-            (_gameStateMachine.InSetupInputState() && _playerConfigs.Count < 1) ||
-            (_gameStateMachine.InSetupPlayersState() && _playerConfigs.Count < 2);
+            (_gameStateMachine.InSetupInputState() && PlayerConfigs.Count < 1) ||
+            (_gameStateMachine.InSetupPlayersState() && PlayerConfigs.Count < 2);
 
         private bool NextPlayerExist() => 
-            currentIndex + 1 > _playerConfigs.Count;
+            currentIndex + 1 > PlayerConfigs.Count;
     }
 
 
@@ -87,7 +88,9 @@ namespace Infrastructure.Services.Input
     {
         public PlayerInput Input { get; private set; }
         public int PlayerIndex { get; private set; }
-        public bool isReady { get; set; }
+
+        public bool IsReady { get; set; }
+        
         public int TankIndex { get; set; }
 
         public PlayerConfiguration(PlayerInput pi)

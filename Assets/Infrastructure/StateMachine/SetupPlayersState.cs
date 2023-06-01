@@ -1,9 +1,8 @@
-using System;
+using System.Linq;
 using Infrastructure.Factory.Base;
 using Infrastructure.Factory.Compose;
 using Infrastructure.Services.Input;
 using UnityEngine;
-using UnityEngine.InputSystem.UI;
 
 namespace Infrastructure.StateMachine
 {
@@ -14,7 +13,8 @@ namespace Infrastructure.StateMachine
         private readonly IInputService _inputService;
         private readonly IInputFactory _inputFactory;
 
-        public SetupPlayersState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, IInputService inputService, IFactories factories)
+        public SetupPlayersState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, IInputService inputService,
+            IFactories factories)
         {
             _gameStateMachine = gameStateMachine;
             _sceneLoader = sceneLoader;
@@ -25,20 +25,19 @@ namespace Infrastructure.StateMachine
         public void Enter(string sceneName)
         {
             Debug.Log($"Entered {this.GetType().Name}");
-            
+
             _sceneLoader.Load(sceneName, onLoad);
         }
 
         public void Exit()
         {
-            
         }
 
         private void onLoad()
         {
             Transform canvas = _inputFactory.CreatePickerCanvas();
             _inputService.ResetPlayerIndex();
-            
+
             CreatePicker(canvas);
             _inputService.OnPlayerJoined += () =>
                 CreatePicker(canvas);
@@ -47,9 +46,34 @@ namespace Infrastructure.StateMachine
         private void CreatePicker(Transform canvas)
         {
             GameObject tankPickerUI = _inputFactory.CreateTankPickerUI(canvas);
-            InputSystemUIInputModule inputModule = tankPickerUI.GetComponentInChildren<InputSystemUIInputModule>();
-            _inputService.ConnectToInputs(inputModule,individually: true);
+            _inputService.ConnectToInputs(tankPickerUI, individually: true);
+
+            _inputFactory.TankPickerUIHelpers.Last().OnFirstTank += PickFirstTank;
+            _inputFactory.TankPickerUIHelpers.Last().OnSecondTank += PickSecondTank;
         }
 
+        private void PickSecondTank(Infrastructure.Services.Input.PlayerConfiguration playerConfiguration)
+        {
+            playerConfiguration.IsReady = true;
+            playerConfiguration.TankIndex = 1;
+
+            EnterNextStateIfReady();
+        }
+
+        private void PickFirstTank(Infrastructure.Services.Input.PlayerConfiguration playerConfiguration)
+        {
+            playerConfiguration.IsReady = true;
+            playerConfiguration.TankIndex = 0;
+
+            EnterNextStateIfReady();
+        }
+
+        private void EnterNextStateIfReady()
+        {
+            if (AllReady()) _gameStateMachine.Enter<LoadLevelState,string>("Main");
+        }
+
+        private bool AllReady() => 
+            _inputService.PlayerConfigs.All(x => x.IsReady);
     }
 }

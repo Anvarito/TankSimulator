@@ -1,11 +1,10 @@
-using System.Reflection;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Infrastructure.TestMono
 {
-    public class MainMenuUIHelper : MonoBehaviour
+    public class MainMenuUIHelper : UIHelper 
     {
         [SerializeField] private Button _continueButton;
         [SerializeField] private Button _newGameButton;
@@ -20,13 +19,5 @@ namespace Infrastructure.TestMono
         public UnityEvent OnInfoButtonPress => _infoButton.onClick;
         public UnityEvent OnTrainButtonPress => _trainButton.onClick;
         public UnityEvent OnExitButtonPress => _exitButton.onClick;
-
-        // https://stackoverflow.com/questions/6394921/get-fields-with-reflection
-        private void Start()
-        {
-            foreach (FieldInfo field in this.GetType().GetFields(BindingFlags.Instance | BindingFlags.NonPublic))
-                if (field.GetValue(this) == null)
-                    Debug.LogWarning($"{field.Name} missing");
-        }
     }
 }

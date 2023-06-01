@@ -1125,7 +1125,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Player Ready!
+  m_text: Player not ready!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1152,10 +1152,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
+  m_fontSize: 21.1
   m_fontSizeBase: 24
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -1349,6 +1349,7 @@ GameObject:
   - component: {fileID: 4923053166398874292}
   - component: {fileID: 5408649583523710490}
   - component: {fileID: 103303837348725841}
+  - component: {fileID: 7526422784938722493}
   m_Layer: 5
   m_Name: PlayerInMenu
   m_TagString: Untagged
@@ -1438,3 +1439,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &7526422784938722493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8499241509828038173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 413740d98fd0b2748bf101b883e8b4ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _firstTankButton: {fileID: 7750555134576024671}
+  _secondTankButton: {fileID: 6242448635569042529}
+  _readyText: {fileID: 246089611620794764}

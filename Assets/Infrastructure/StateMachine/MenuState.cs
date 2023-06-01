@@ -4,7 +4,6 @@ using Infrastructure.Services.Input;
 using Infrastructure.Services.Progress;
 using Infrastructure.TestMono;
 using UnityEngine;
-using UnityEngine.InputSystem.UI;
 
 namespace Infrastructure.StateMachine
 {
@@ -45,7 +44,7 @@ namespace Infrastructure.StateMachine
         {
             _playerFactory.CreateMainMenu();
             RegisterButtonsEvents(_playerFactory.MainMenuUIHelper);
-            _inputService.ConnectToInputs(_playerFactory.MainMenuUIHelper.GetComponentInChildren<InputSystemUIInputModule>());
+            _inputService.ConnectToInputs(_playerFactory.MainMenuUIHelper.gameObject);
             
         }
 

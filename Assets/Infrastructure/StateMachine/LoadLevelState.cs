@@ -1,3 +1,4 @@
+using System.Linq;
 using Infrastructure.Factory.Base;
 using Infrastructure.Factory.Compose;
 using Infrastructure.Services.Progress;
@@ -38,7 +39,7 @@ namespace Infrastructure.StateMachine
         private void OnLoaded()
         {
             InitGameLevel();
-            InformProgressReaders();
+            // InformProgressReaders();
             
             _gameStateMachine.Enter<GameLoopState>();
         }
@@ -60,9 +61,11 @@ namespace Infrastructure.StateMachine
         {
             _enemyFactory.CreateTankController();
             _enemyFactory.CreateEnemies(at: GameObject.FindGameObjectsWithTag(EnemyInitialPoint));
+
+            var playerPoints = GameObject.FindGameObjectsWithTag(PlayerInitialPoint);
             
-            _playerFactory.CreatePlayer(at: GameObject.FindWithTag(PlayerInitialPoint));
-            _playerFactory.CreateTankUiSpawner(_playerFactory.PlayerParts);
+            _playerFactory.CreatePlayers(at: playerPoints);
+            _playerFactory.CreateTankUiSpawners();
             _playerFactory.CreateHud();
         }
     }
