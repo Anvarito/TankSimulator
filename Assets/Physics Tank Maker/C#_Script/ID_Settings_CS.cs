@@ -50,6 +50,10 @@ namespace ChobiAssets.PTM
             }
         }
 
+        public void SetRelationship(EPlayerType relationType)
+        {
+            _playerType = relationType;
+        }
 
         void Start()
         {

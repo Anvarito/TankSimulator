@@ -34,14 +34,14 @@ namespace ChobiAssets.PTM
         public float Current_Bullet_Velocity; // Referred to from "Turret_Horizontal_CS", "Cannon_Vertical_CS", "UI_Lead_Marker_Control_CS".
         int currentBulletType;
         Transform thisTransform;
-
+        private ID_Settings_CS _selfID;
         // Only for AI tank.
         public bool Can_Aim; // Set by "AI_CS", and referred to from "Cannon_Fire_Input_99_AI_CS" script.
 
         public void Initialize()
         {
             thisTransform = transform;
-
+            _selfID = GetComponentInParent<ID_Settings_CS>();
             // Switch the bullet type at the first time.
             currentBulletType = Initial_Bullet_Type - 1; // (Note.) The "currentBulletType" value is added by 1 soon in the "Switch_Bullet_Type()".
             Switch_Bullet_Type();
@@ -100,6 +100,7 @@ namespace ChobiAssets.PTM
                         yield break;
                     }
                     bulletObject = Instantiate(AP_Bullet_Prefab, thisTransform.position + (thisTransform.forward * Offset), thisTransform.rotation).GetComponent<Bullet_Control_CS>();
+                    bulletObject.Initialize(_selfID);
                     attackPoint = Attack_Point;
                     break;
 
@@ -117,6 +118,7 @@ namespace ChobiAssets.PTM
                     yield break;
             }
 
+
             // Set values of "Bullet_Control_CS" in the bullet.
             bulletObject.Attack_Point = attackPoint;
             bulletObject.Initial_Velocity = Current_Bullet_Velocity;
@@ -129,6 +131,7 @@ namespace ChobiAssets.PTM
 
             // Set the layer.
             bulletObject.gameObject.layer = Layer_Settings_CS.Bullet_Layer;
+                    bulletObject.Initialize(_selfID);
 
             // Shoot.
             yield return new WaitForFixedUpdate();

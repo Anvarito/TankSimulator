@@ -41,7 +41,7 @@ public abstract class UIRecivierBase : MonoBehaviour
     }
     protected virtual void Subscribes()
     {
-        _damageRecivierManager.OnTankDestroyed.AddListener(DestroyUI);
+        _damageRecivierManager.OnTankDestroyed.AddListener(TankDestroyed);
         _gunCamera.OnSwitchCamera.AddListener(SwitchCamera);
     }
 
@@ -49,6 +49,9 @@ public abstract class UIRecivierBase : MonoBehaviour
     protected virtual void SwitchCamera(EActiveCameraType activeCamera)
     {
     }
-
+    private void TankDestroyed(ID_Settings_CS bulletInitiatorID)
+    {
+        DestroyUI();
+    }
     protected abstract void DestroyUI();
 }

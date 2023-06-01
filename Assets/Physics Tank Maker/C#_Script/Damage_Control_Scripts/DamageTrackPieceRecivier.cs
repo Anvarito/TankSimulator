@@ -42,14 +42,14 @@ namespace ChobiAssets.PTM
         [ContextMenu("Damage")]
         private void DADA()
         {
-            DealDamage(1000, 1);
+            DealDamage(1000, null);
         }
-        public void DealDamage(float damage, int bulletType)
+        public void DealDamage(float damage, ID_Settings_CS bulletLauncherID)
         {
             OnDamaged?.Invoke(damage, this);
         }
 
-        public bool CheckBreackout(float damage, int bulletType)
+        public bool CheckBreackout(float damage)
         {
             if (damage < DamageTreshold)
             { // Never receive any damage under the threshold value.

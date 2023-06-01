@@ -14,7 +14,7 @@ namespace ChobiAssets.PTM
 
         protected float _damageThreshold;
 
-        [HideInInspector] public UnityEvent OnDestroyed;
+        [HideInInspector] public UnityEvent<ID_Settings_CS> OnDestroyed;
         [HideInInspector] public UnityEvent<float, float> OnDamaged;
 
         public float DamageTreshold => _damageThreshold;
@@ -51,35 +51,35 @@ namespace ChobiAssets.PTM
             }
         }
 
-        private void AdditionalZoneDamaged(float damage, int bulletType)
+        private void AdditionalZoneDamaged(float damage, ID_Settings_CS bulletLauncherID)
         {
-            DealDamage(damage, bulletType);
+            DealDamage(damage, bulletLauncherID);
         }
 
         [ContextMenu("DamageTest")]
         public void DADA()
         {
-            DealDamage(100000000, 0);
+            DealDamage(100000000, null);
         }
-        public virtual void DealDamage(float damage, int bulletType)
+        public virtual void DealDamage(float damage, ID_Settings_CS bulletLauncherID)
         {
             CurentHP -= damage;
             OnDamaged?.Invoke(CurentHP, MaxHP);
             //print(damage);
             if (CurentHP <= 0)
             {
-                ParthDestroy();
+                ParthDestroy(bulletLauncherID);
             }
         }
 
-        protected virtual void ParthDestroy()
+        protected virtual void ParthDestroy(ID_Settings_CS bulletLauncherID)
         {
             CurentHP = 0;
             Unsubscribe();
-            OnDestroyed?.Invoke();
+            OnDestroyed?.Invoke(bulletLauncherID);
         }
 
-        public virtual bool CheckBreackout(float damage, int bulletType)
+        public virtual bool CheckBreackout(float damage)
         {
             if (CurentHP <= 0)
                 return false;
