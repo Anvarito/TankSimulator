@@ -150,6 +150,11 @@ namespace ChobiAssets.PTM
             }
         }
 
+        internal void Launch()
+        {
+            Vector3 currentVelocity = transform.forward * Initial_Velocity;
+            This_Rigidbody.velocity = currentVelocity;
+        }
 
         void HE_Hit_Process()
         {

@@ -2126,7 +2126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d07bc1cd2cd16004b84860fddab4cc0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Torque: 5000
+  Torque: 15000
   Max_Speed: 15.3
   Turn_Brake_Drag: 100
   Switch_Direction_Lag: 0.5
