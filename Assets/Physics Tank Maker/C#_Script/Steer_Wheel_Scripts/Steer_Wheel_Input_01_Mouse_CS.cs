@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
-
-namespace ChobiAssets.PTM
+﻿namespace ChobiAssets.PTM
 {
 
     public class Steer_Wheel_Input_01_Mouse_CS : Steer_Wheel_Input_00_Base_CS

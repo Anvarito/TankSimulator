@@ -10,15 +10,23 @@ public class HitPointsTargetUIRecivier : UIRecivierBase
     private HitPointsTargetUIPresenter _hitPointsTargetUI;
     private EActiveCameraType _currentCameraType;
 
+    private Aiming_Control_CS _aimingControl;
     private DamageReciviersManager _targetDamageReciviers;
     private Transform _targetTransform;
-    private ERelationship _targetRelationship;
+    public void Init(Aiming_Control_CS aimingControl, Gun_Camera_CS gunCamera, CameraViewSetup cameraSetup)
+    {
+        _gunCamera = gunCamera;
+        _cameraSetup = cameraSetup;
+
+        _aimingControl = aimingControl;
+
+        InitialUIRecivier();
+    }
+
     protected override void InstantiateCanvas()
     {
         base.InstantiateCanvas();
-        _hitPointsTargetUI = Instantiate(_presenterPrefab) as HitPointsTargetUIPresenter;
-        _hitPointsTargetUI.InitialCanvas();
-        _hitPointsTargetUI.SetCamera(_cameraSetup.GetCamera());
+        _hitPointsTargetUI = _spawnedPresenter as HitPointsTargetUIPresenter;
         _hitPointsTargetUI.Hide();
     }
 
@@ -41,11 +49,8 @@ public class HitPointsTargetUIRecivier : UIRecivierBase
 
                 _targetTransform = aimTransform;
                 _targetDamageReciviers = aimTransform.GetComponentInParent<DamageReciviersManager>();
-                _targetRelationship = _targetTransform.GetComponentInParent<ID_Settings_CS>().Relationship;
 
                 Subcribe();
-
-                _hitPointsTargetUI.Show(_targetTransform, _targetRelationship == _IDSettings.Relationship);
 
                 float alphaBodyHP = _targetDamageReciviers.BodyDamageRecivier.CurentHP / _targetDamageReciviers.BodyDamageRecivier.MaxHP;
                 float alphaTurretHP = _targetDamageReciviers.TurretDamageRecivier.CurentHP / _targetDamageReciviers.TurretDamageRecivier.MaxHP;
@@ -53,10 +58,6 @@ public class HitPointsTargetUIRecivier : UIRecivierBase
                 float alphaLTrackHP = _targetDamageReciviers.TrackDamageRecivier.LeftTrack.CurrentHP / _targetDamageReciviers.TrackDamageRecivier.LeftTrack.MaxHP;
 
                 _hitPointsTargetUI.Refresh(alphaBodyHP, alphaTurretHP, alphaRTrackHP, alphaLTrackHP);
-            }
-            else
-            {
-                _hitPointsTargetUI.Show(_targetTransform, _targetRelationship == _IDSettings.Relationship);
             }
         }
         else

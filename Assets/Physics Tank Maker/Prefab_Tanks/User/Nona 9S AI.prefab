@@ -61085,8 +61085,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42df0aafd3b50aa42b26340f0263228c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _additionsDamage:
-  - {fileID: 0}
+  _additionsDamage: []
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []

@@ -17,11 +17,22 @@ namespace ChobiAssets.PTM
 		*/
 
         // User options >>
-        [SerializeField] private Bullet_Generator_CS _bulletGenerator;
         // << User options
         private Camera _currentCamera;
+        private Bullet_Generator_CS _bulletGenerator;
+        private Aiming_Control_CS _aimingControl;
+
         private LeadMarkerPresenter _leadMarkerPresenter;
 
+        public void Init(Aiming_Control_CS aimingControl, Bullet_Generator_CS bulletGenerator, Gun_Camera_CS gunCamera, CameraViewSetup cameraSetup)
+        {
+            _bulletGenerator = bulletGenerator;
+            _aimingControl = aimingControl;
+            _gunCamera = gunCamera;
+            _cameraSetup = cameraSetup;
+
+            InitialUIRecivier();
+        }
         public Transform GetTargetTransform()
         {
             return _leadMarkerPresenter.TargetTransform;
@@ -34,27 +45,8 @@ namespace ChobiAssets.PTM
         protected override void InstantiateCanvas()
         {
             base.InstantiateCanvas();
-            //_leadMarkerPresenter = Instantiate(_uiPrefab) as LeadMarkerPresenter;
-            //_leadMarkerPresenter.InitialCanvas(_cameraSetup.GetCamera());
 
-            //Canvas canvas = new GameObject("LeadMarkerCanvas").AddComponent<Canvas>();
-            //canvas.renderMode = RenderMode.ScreenSpaceOverlay;
-            //canvas.gameObject.AddComponent<CanvasScaler>().uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-            //canvas.GetComponent<CanvasScaler>().referenceResolution = new Vector2(1920, 1080);
-            //_leadMarkerPresenterPrefab = canvas.gameObject.AddComponent<LeadMarkerPresenter>();
-
-            //Image leadMarker = new GameObject("LeadMarker").AddComponent<Image>();
-            //leadMarker.transform.parent = canvas.transform;
-            //leadMarker.sprite = _leadSprite;
-            //leadMarker.rectTransform.localPosition = Vector3.zero;
-            //leadMarker.rectTransform.anchorMin = new Vector2(0.5f, 0.5f);
-            //leadMarker.rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
-            //leadMarker.rectTransform.localScale = Vector3.one;
-            //leadMarker.rectTransform.sizeDelta = new Vector2(24, 24);
-
-            _leadMarkerPresenter = Instantiate(_presenterPrefab) as LeadMarkerPresenter;
-            _leadMarkerPresenter.InitialCanvas();
-            _leadMarkerPresenter.SetCamera(_cameraSetup.GetCamera());
+            _leadMarkerPresenter = _spawnedPresenter as LeadMarkerPresenter;
         }
         
         private void AimingModeSwitch()
@@ -79,7 +71,6 @@ namespace ChobiAssets.PTM
 
         protected override void DestroyUI()
         {
-            Destroy(_leadMarkerPresenter.gameObject);
             _aimingControl.OnSwitchMode.RemoveListener(AimingModeSwitch);
         }
     }

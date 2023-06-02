@@ -1,31 +1,33 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using ChobiAssets.PTM;
-using System;
 
 public class HitPoitsBarUIReceiver : UIRecivierBase
 {
 
     private HitPointsUIPresenter _hitPointsUI;
-
+    private DamageReciviersManager _damageManager;
     protected override void Subscribes()
     {
         base.Subscribes();
-        _damageRecivierManager.OnTurretDamaged.AddListener(TurretDamaged);
-        _damageRecivierManager.OnBodyDamaged.AddListener(BodyDamaged);
+        _damageManager.OnTurretDamaged.AddListener(TurretDamaged);
+        _damageManager.OnBodyDamaged.AddListener(BodyDamaged);
 
-        _damageRecivierManager.OnTrackDamaged.AddListener(TrackDamaged);
-        _damageRecivierManager.OnTrackRestore.AddListener(TrackRestore);
-        _damageRecivierManager.OnTrackBreach.AddListener(TrackBreach);
+        _damageManager.OnTrackDamaged.AddListener(TrackDamaged);
+        _damageManager.OnTrackRestore.AddListener(TrackRestore);
+        _damageManager.OnTrackBreach.AddListener(TrackBreach);
     }
+    public void Init(DamageReciviersManager damageManager, Gun_Camera_CS gunCamera, CameraViewSetup cameraSetup)
+    {
+        _damageManager = damageManager;
+        _gunCamera = gunCamera;
+        _cameraSetup = cameraSetup;
 
+        InitialUIRecivier();
+    }
     protected override void InstantiateCanvas()
     {
         base.InstantiateCanvas();
-        _hitPointsUI = Instantiate(_presenterPrefab) as HitPointsUIPresenter;
-        _hitPointsUI.InitialCanvas();
-        _hitPointsUI.SetCamera(_cameraSetup.GetCamera());
+        _hitPointsUI = _spawnedPresenter as HitPointsUIPresenter;
     }
 
     protected override void SwitchCamera(EActiveCameraType activeCamera)

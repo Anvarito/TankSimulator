@@ -16,36 +16,22 @@ namespace ChobiAssets.PTM
 		*/
 
         private AimMarkerPresenter _aimPresenter;
+        private Aiming_Control_CS _aimingControl;
+
+        public void Init(Aiming_Control_CS aimingControl, Gun_Camera_CS gunCamera, CameraViewSetup cameraSetup)
+        { 
+            _aimingControl = aimingControl;
+            _gunCamera = gunCamera;
+            _cameraSetup = cameraSetup;
+
+            InitialUIRecivier();
+        }
 
         protected override void InstantiateCanvas()
         {
             base.InstantiateCanvas();
-            //// Get the "Aiming_Control_CS" in the tank.
-            //if (_aimingControl == null)
-            //{
-            //    Debug.LogWarning("'Aiming_Control_CS' cannot be found in the MainBody.");
-            //}
 
-            //Canvas canvas = new GameObject("AimMarkerCanvas").AddComponent<Canvas>();
-            //canvas.renderMode = RenderMode.ScreenSpaceCamera;
-            //canvas.planeDistance = 1;
-            //canvas.worldCamera = _cameraSetup.GetCamera();
-            //canvas.gameObject.AddComponent<CanvasScaler>().uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-            //canvas.GetComponent<CanvasScaler>().referenceResolution = new Vector2(1920, 1080);
-            //_aimLeadPresenter = canvas.gameObject.AddComponent<AimMarkerPresenter>();
-
-            //Image aimMarker = new GameObject("AimMarker").AddComponent<Image>();
-            //aimMarker.transform.parent = canvas.transform;
-            //aimMarker.sprite = _aimMarker;
-            //aimMarker.rectTransform.localPosition = Vector3.zero;
-            //aimMarker.rectTransform.anchorMin = new Vector2(0.5f, 0.75f);
-            //aimMarker.rectTransform.anchorMax = new Vector2(0.5f, 0.75f);
-            //aimMarker.rectTransform.localScale = Vector3.one;
-            //aimMarker.rectTransform.sizeDelta = new Vector2(48, 48);
-
-            _aimPresenter = Instantiate(_presenterPrefab) as AimMarkerPresenter;
-            _aimPresenter.InitialCanvas();
-            _aimPresenter.SetCamera(_cameraSetup.GetCamera());
+            _aimPresenter = _spawnedPresenter as AimMarkerPresenter;
             _aimPresenter.ChangeVisibleMarker(true);
         }
 

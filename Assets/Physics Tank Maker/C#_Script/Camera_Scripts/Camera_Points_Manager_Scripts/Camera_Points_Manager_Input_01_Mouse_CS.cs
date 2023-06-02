@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
-
-namespace ChobiAssets.PTM
+﻿namespace ChobiAssets.PTM
 {
 
 	public class Camera_Points_Manager_Input_01_Mouse_CS : Camera_Points_Manager_Input_00_Base_CS

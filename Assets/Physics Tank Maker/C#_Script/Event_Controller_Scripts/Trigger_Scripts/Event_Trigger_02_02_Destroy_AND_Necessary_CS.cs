@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace ChobiAssets.PTM
+﻿namespace ChobiAssets.PTM
 {
 
     public class Event_Trigger_02_02_Destroy_AND_Necessary_CS : Event_Trigger_02_00_Destroy_Base_CS

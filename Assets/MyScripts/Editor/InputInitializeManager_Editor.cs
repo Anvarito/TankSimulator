@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using ChobiAssets.PTM;
 using UnityEditor;
-using UnityEngine;
 
 [CustomEditor(typeof(PlayerInputInitializer))]
 public class InputInitializeManager_Editor : Editor

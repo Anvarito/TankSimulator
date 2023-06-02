@@ -9,39 +9,25 @@ using System;
 public abstract class UIRecivierBase : MonoBehaviour
 {
     [SerializeField] protected UIPresenterBase _presenterPrefab;
+     protected UIPresenterBase _spawnedPresenter;
 
-    protected ColorsHolder _colorsHolder;
-    protected DamageReciviersManager _damageRecivierManager;
     protected Gun_Camera_CS _gunCamera;
     protected CameraViewSetup _cameraSetup;
-    protected Aiming_Control_CS _aimingControl;
-    protected ID_Settings_CS _IDSettings;
 
-    private void Start()
+    protected void InitialUIRecivier()
     {
-        
-    }
-    public void InitialUIRecivier(DamageReciviersManager damageRecivierManager, Gun_Camera_CS gunCamera, CameraViewSetup cameraSetup, Aiming_Control_CS aimingControl, ColorsHolder colorsHolder, ID_Settings_CS IDSettings)
-    {
-        _damageRecivierManager = damageRecivierManager;
-        _gunCamera = gunCamera;
-        _cameraSetup = cameraSetup;
-        _aimingControl = aimingControl;
-        _colorsHolder = colorsHolder;
-        _IDSettings = IDSettings;
-
         Subscribes();
-
         InstantiateCanvas();
     }
 
     protected virtual void InstantiateCanvas()
     {
-
+        _spawnedPresenter = Instantiate(_presenterPrefab);
+        _spawnedPresenter.InitialCanvas();
+        _spawnedPresenter.SetCamera(_cameraSetup.GetCamera());
     }
     protected virtual void Subscribes()
     {
-        _damageRecivierManager.OnTankDestroyed.AddListener(TankDestroyed);
         _gunCamera.OnSwitchCamera.AddListener(SwitchCamera);
     }
 
@@ -49,8 +35,12 @@ public abstract class UIRecivierBase : MonoBehaviour
     protected virtual void SwitchCamera(EActiveCameraType activeCamera)
     {
     }
-    private void TankDestroyed(ID_Settings_CS bulletInitiatorID)
+    public void PlayerDestoryed()
     {
+        Destroy(_spawnedPresenter.gameObject);
+
+        _gunCamera.OnSwitchCamera.RemoveListener(SwitchCamera);
+
         DestroyUI();
     }
     protected abstract void DestroyUI();

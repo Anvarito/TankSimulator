@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ChobiAssets.PTM;
@@ -30,7 +29,7 @@ public class PlayerSpawner : MonoBehaviour
             player.SetPlayerInput(playerConfigs[i].Input);
             player.Initialize();
 
-            player.GetComponentInChildren<RecivierUIManager>().Initialize();
+            //player.GetComponentInChildren<RecivierUIManager>().Initialize();
         }
     }
 }

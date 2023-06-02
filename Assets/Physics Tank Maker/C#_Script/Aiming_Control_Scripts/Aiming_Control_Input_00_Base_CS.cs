@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections;
-using UnityEngine;
-
-namespace ChobiAssets.PTM
+﻿namespace ChobiAssets.PTM
 {
 
 	public class Aiming_Control_Input_00_Base_CS

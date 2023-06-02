@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
-
-namespace ChobiAssets.PTM
+﻿namespace ChobiAssets.PTM
 {
 
     public class Gun_Camera_Input_03_For_Twin_Stick_Drive_CS : Gun_Camera_Input_00_Base_CS

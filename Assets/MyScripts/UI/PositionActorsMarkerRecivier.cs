@@ -44,14 +44,22 @@ namespace ChobiAssets.PTM
         private float Upper_Offset = 2f;
         Plane[] _cameraPlanes;
         private Vector2 localPoint;
+        private ID_Settings_CS _IDSettings;
+        private List<ID_Settings_CS> _enemysID;
 
+        public void Init(ID_Settings_CS IDSettings, List<ID_Settings_CS> enemysID, Gun_Camera_CS gunCamera, CameraViewSetup cameraSetup)
+        {
+            _gunCamera = gunCamera;
+            _cameraSetup = cameraSetup;
+            _IDSettings = IDSettings;
+            _enemysID = enemysID;
+
+            InitialUIRecivier();
+        }
         protected override void InstantiateCanvas()
         {
             base.InstantiateCanvas();
-            _markerCanvasUIHelper = Instantiate(_presenterPrefab) as ActorPointerUIHelper;
-            _markerCanvasUIHelper.InitialCanvas();
-            _mainCamera = _cameraSetup.GetCamera();
-            //_markerCanvasUIHelper.SetCamera(_mainCamera);
+            _markerCanvasUIHelper = _spawnedPresenter as ActorPointerUIHelper;
             _canvas = _markerCanvasUIHelper.GetCanvas();
 
             StartCoroutine(SearchAllUits());
@@ -73,10 +81,8 @@ namespace ChobiAssets.PTM
         {
             yield return null;
             //temp!!! Add all units in list
-            foreach (var idScript in FindObjectsOfType<ID_Settings_CS>())
+            foreach (var idScript in _enemysID)
             {
-                if (idScript == _IDSettings)
-                    continue;
                 Drive_Control_CS currentActor = idScript.GetComponentInChildren<Drive_Control_CS>();
                 _driveControlList.Add(currentActor);
                 Receive_ID_Script(idScript, currentActor);

@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
-
-namespace ChobiAssets.PTM
+﻿namespace ChobiAssets.PTM
 {
 
     public class RC_Camera_Input_02_For_Single_Stick_Drive_CS : RC_Camera_Input_00_Base_CS
