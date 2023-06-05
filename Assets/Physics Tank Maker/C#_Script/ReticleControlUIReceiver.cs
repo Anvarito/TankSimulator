@@ -28,7 +28,6 @@ namespace ChobiAssets.PTM
 
         protected override void DestroyUI()
         {
-            throw new NotImplementedException();
         }
 
         protected override void InstantiateCanvas()
@@ -36,6 +35,7 @@ namespace ChobiAssets.PTM
             base.InstantiateCanvas();
 
             _reticleUIPresenter = _spawnedPresenter as ReticleUIPresenter;
+            _reticleUIPresenter.SetCamera(_cameraSetup.GetGunCamera());
         }
 
         protected override void Subscribes()

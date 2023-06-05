@@ -54,6 +54,8 @@ namespace ChobiAssets.PTM
             _IDSettings = IDSettings;
             _enemysID = enemysID;
 
+            _mainCamera = _cameraSetup.GetCamera();
+
             InitialUIRecivier();
         }
         protected override void InstantiateCanvas()

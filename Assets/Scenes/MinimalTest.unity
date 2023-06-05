@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028392, g: 0.22571497, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028471, g: 0.22571439, b: 0.3069231, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -163,8 +163,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 27319493}
+  - component: {fileID: 27319494}
   m_Layer: 0
-  m_Name: PlayerPoint
+  m_Name: PlayerPointTeamA
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -178,13 +179,28 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 27319492}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 492, y: 13.040001, z: 1599.6}
+  m_LocalPosition: {x: 427.70218, y: -419.20346, z: 2093.645}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_Father: {fileID: 1917113781}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &27319494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 27319492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57aba011a4d044246b9ab977769d03df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Relationship: 0
+  ActorType: 1
+  WayPointsPack: {fileID: 0}
 --- !u!1 &34593046
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,8 +304,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 34675483}
+  - component: {fileID: 34675484}
   m_Layer: 0
-  m_Name: PlayerPoint
+  m_Name: PlayerPointTeamB
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -303,13 +320,28 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 34675482}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -355.1, y: 13.040001, z: 1659.5}
+  m_LocalPosition: {x: -419.39783, y: -419.20346, z: 2153.545}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_Father: {fileID: 1917113781}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &34675484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 34675482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57aba011a4d044246b9ab977769d03df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Relationship: 1
+  ActorType: 1
+  WayPointsPack: {fileID: 0}
 --- !u!1 &35726020
 GameObject:
   m_ObjectHideFlags: 0
@@ -668,8 +700,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 216882294}
+  - component: {fileID: 216882295}
   m_Layer: 0
-  m_Name: EnemyInitialPoint
+  m_Name: EnemyInitialPointTeamA
   m_TagString: EnemyInitialPoint
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -682,14 +715,29 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 216882293}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 474, y: 15.5, z: 1748.2}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 409.70218, y: -416.74347, z: 2242.2449}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_Father: {fileID: 1917113781}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &216882295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216882293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57aba011a4d044246b9ab977769d03df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Relationship: 0
+  ActorType: 0
+  WayPointsPack: {fileID: 709130564}
 --- !u!1 &225158452
 GameObject:
   m_ObjectHideFlags: 0
@@ -699,8 +747,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 225158453}
+  - component: {fileID: 225158454}
   m_Layer: 0
-  m_Name: EnemyInitialPoint
+  m_Name: EnemyInitialPointTeamB
   m_TagString: EnemyInitialPoint
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -713,14 +762,29 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 225158452}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -307.5, y: 15.5, z: 1664.9}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -371.79782, y: -416.74347, z: 2158.945}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 43
+  m_Father: {fileID: 1917113781}
+  m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &225158454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 225158452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57aba011a4d044246b9ab977769d03df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Relationship: 1
+  ActorType: 0
+  WayPointsPack: {fileID: 418249665}
 --- !u!1 &234024368
 GameObject:
   m_ObjectHideFlags: 0
@@ -761,8 +825,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 243990025}
+  - component: {fileID: 243990026}
   m_Layer: 0
-  m_Name: EnemyInitialPoint
+  m_Name: EnemyInitialPointTeamB
   m_TagString: EnemyInitialPoint
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -775,14 +840,29 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 243990024}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -310.2, y: 15.5, z: 1933.7}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -374.49783, y: -416.74347, z: 2427.7449}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 34
+  m_Father: {fileID: 1917113781}
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &243990026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243990024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57aba011a4d044246b9ab977769d03df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Relationship: 1
+  ActorType: 0
+  WayPointsPack: {fileID: 711458774}
 --- !u!1 &264637926
 GameObject:
   m_ObjectHideFlags: 0
@@ -792,8 +872,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 264637927}
+  - component: {fileID: 264637928}
   m_Layer: 0
-  m_Name: EnemyInitialPoint
+  m_Name: EnemyInitialPointTeamB
   m_TagString: EnemyInitialPoint
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -806,14 +887,29 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 264637926}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -322.30002, y: 15.5, z: 1886}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -386.59784, y: -416.74347, z: 2380.045}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 41
+  m_Father: {fileID: 1917113781}
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &264637928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264637926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57aba011a4d044246b9ab977769d03df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Relationship: 1
+  ActorType: 0
+  WayPointsPack: {fileID: 711458774}
 --- !u!1 &280633543
 GameObject:
   m_ObjectHideFlags: 0
@@ -854,8 +950,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 319794061}
+  - component: {fileID: 319794062}
   m_Layer: 0
-  m_Name: EnemyInitialPoint
+  m_Name: EnemyInitialPointTeamB
   m_TagString: EnemyInitialPoint
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -868,14 +965,29 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 319794060}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -279.4, y: 15.5, z: 1693.4}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -343.6978, y: -416.74347, z: 2187.445}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 49
+  m_Father: {fileID: 1917113781}
+  m_RootOrder: 35
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &319794062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 319794060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57aba011a4d044246b9ab977769d03df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Relationship: 1
+  ActorType: 0
+  WayPointsPack: {fileID: 418249665}
 --- !u!1 &347037662
 GameObject:
   m_ObjectHideFlags: 0
@@ -1013,8 +1125,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 369535863}
+  - component: {fileID: 369535864}
   m_Layer: 0
-  m_Name: EnemyInitialPoint
+  m_Name: EnemyInitialPointTeamA
   m_TagString: EnemyInitialPoint
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1027,14 +1140,29 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 369535862}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 444.5, y: 15.5, z: 1794}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 394.1, y: -416.74347, z: 2352.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 26
+  m_Father: {fileID: 1917113781}
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &369535864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 369535862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57aba011a4d044246b9ab977769d03df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Relationship: 0
+  ActorType: 0
+  WayPointsPack: {fileID: 1708811674}
 --- !u!1 &382808799
 GameObject:
   m_ObjectHideFlags: 0
@@ -1075,8 +1203,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 394686974}
+  - component: {fileID: 394686975}
   m_Layer: 0
-  m_Name: EnemyInitialPoint
+  m_Name: EnemyInitialPointTeamA
   m_TagString: EnemyInitialPoint
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1089,14 +1218,29 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 394686973}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 487.2, y: 15.5, z: 1829.1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 422.9022, y: -416.74347, z: 2323.145}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 31
+  m_Father: {fileID: 1917113781}
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &394686975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394686973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57aba011a4d044246b9ab977769d03df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Relationship: 0
+  ActorType: 0
+  WayPointsPack: {fileID: 1708811674}
 --- !u!1 &399280271
 GameObject:
   m_ObjectHideFlags: 0
@@ -1146,7 +1290,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &404649916
 GameObject:
@@ -1157,8 +1301,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 404649917}
+  - component: {fileID: 404649918}
   m_Layer: 0
-  m_Name: EnemyInitialPoint
+  m_Name: EnemyInitialPointTeamB
   m_TagString: EnemyInitialPoint
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1171,14 +1316,29 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 404649916}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -316.80002, y: 15.5, z: 1911.5}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -381.09784, y: -416.74347, z: 2405.545}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 38
+  m_Father: {fileID: 1917113781}
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &404649918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404649916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57aba011a4d044246b9ab977769d03df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Relationship: 1
+  ActorType: 0
+  WayPointsPack: {fileID: 711458774}
 --- !u!1 &418249665
 GameObject:
   m_ObjectHideFlags: 0
@@ -1194,7 +1354,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &418249666
 Transform:
   m_ObjectHideFlags: 0
@@ -1203,7 +1363,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 418249665}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 574, y: 12.9, z: 1793}
+  m_LocalPosition: {x: 116.89343, y: -174.35573, z: 228.01709}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1218,8 +1378,8 @@ Transform:
   - {fileID: 1484977995}
   - {fileID: 63728463}
   - {fileID: 234024369}
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_Father: {fileID: 765939636}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &423490813
 GameObject:
@@ -1292,8 +1452,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 504163257}
+  - component: {fileID: 504163258}
   m_Layer: 0
-  m_Name: EnemyInitialPoint
+  m_Name: EnemyInitialPointTeamA
   m_TagString: EnemyInitialPoint
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1306,14 +1467,29 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 504163256}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 480.7, y: 15.5, z: 1723.8}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 416.4022, y: -416.74347, z: 2217.845}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_Father: {fileID: 1917113781}
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &504163258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 504163256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57aba011a4d044246b9ab977769d03df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Relationship: 0
+  ActorType: 0
+  WayPointsPack: {fileID: 709130564}
 --- !u!1 &538015218
 GameObject:
   m_ObjectHideFlags: 0
@@ -1385,8 +1561,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 558587776}
+  - component: {fileID: 558587777}
   m_Layer: 0
-  m_Name: PlayerPoint
+  m_Name: PlayerPointTeamB
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1400,13 +1577,28 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 558587775}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -354.7, y: 13.04, z: 1919.1}
+  m_LocalPosition: {x: -418.99783, y: -419.20346, z: 2413.145}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_Father: {fileID: 1917113781}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &558587777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558587775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57aba011a4d044246b9ab977769d03df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Relationship: 1
+  ActorType: 1
+  WayPointsPack: {fileID: 0}
 --- !u!114 &588384970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1434,8 +1626,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 594112569}
+  - component: {fileID: 594112570}
   m_Layer: 0
-  m_Name: EnemyInitialPoint
+  m_Name: EnemyInitialPointTeamB
   m_TagString: EnemyInitialPoint
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1448,14 +1641,29 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 594112568}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -281.2, y: 15.5, z: 1917}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -345.49783, y: -416.74347, z: 2411.045}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 40
+  m_Father: {fileID: 1917113781}
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &594112570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 594112568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57aba011a4d044246b9ab977769d03df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Relationship: 1
+  ActorType: 0
+  WayPointsPack: {fileID: 711458774}
 --- !u!4 &599384842
 Transform:
   m_ObjectHideFlags: 0
@@ -1470,7 +1678,7 @@ Transform:
   m_Children:
   - {fileID: 2009898241264549203}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &599686954
 GameObject:
@@ -1493,7 +1701,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &600846211
 GameObject:
   m_ObjectHideFlags: 0
@@ -1586,7 +1794,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &620760736
 GameObject:
@@ -1628,8 +1836,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 633758787}
+  - component: {fileID: 633758788}
   m_Layer: 0
-  m_Name: EnemyInitialPoint
+  m_Name: EnemyInitialPointTeamA
   m_TagString: EnemyInitialPoint
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1642,14 +1851,29 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 633758786}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 492.2, y: 15.5, z: 1759.3}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 427.9022, y: -416.74347, z: 2253.345}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_Father: {fileID: 1917113781}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &633758788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 633758786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57aba011a4d044246b9ab977769d03df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Relationship: 0
+  ActorType: 0
+  WayPointsPack: {fileID: 709130564}
 --- !u!1 &636083443
 GameObject:
   m_ObjectHideFlags: 0
@@ -1659,8 +1883,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 636083444}
+  - component: {fileID: 636083445}
   m_Layer: 0
-  m_Name: EnemyInitialPoint
+  m_Name: EnemyInitialPointTeamB
   m_TagString: EnemyInitialPoint
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1673,14 +1898,29 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 636083443}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -304.3, y: 15.5, z: 1684.4}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -368.5978, y: -416.74347, z: 2178.445}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 42
+  m_Father: {fileID: 1917113781}
+  m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &636083445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 636083443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57aba011a4d044246b9ab977769d03df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Relationship: 1
+  ActorType: 0
+  WayPointsPack: {fileID: 418249665}
 --- !u!1 &654897252
 GameObject:
   m_ObjectHideFlags: 0
@@ -1690,8 +1930,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 654897253}
+  - component: {fileID: 654897254}
   m_Layer: 0
-  m_Name: EnemyInitialPoint
+  m_Name: EnemyInitialPointTeamB
   m_TagString: EnemyInitialPoint
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1704,14 +1945,29 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 654897252}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -283.10004, y: 15.5, z: 1942.8}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -347.39786, y: -416.74347, z: 2436.845}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 37
+  m_Father: {fileID: 1917113781}
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &654897254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654897252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57aba011a4d044246b9ab977769d03df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Relationship: 1
+  ActorType: 0
+  WayPointsPack: {fileID: 711458774}
 --- !u!1 &656489719
 GameObject:
   m_ObjectHideFlags: 0
@@ -1814,8 +2070,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 676805097}
+  - component: {fileID: 676805098}
   m_Layer: 0
-  m_Name: EnemyInitialPoint
+  m_Name: EnemyInitialPointTeamA
   m_TagString: EnemyInitialPoint
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1828,82 +2085,29 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 676805096}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 502.1, y: 15.5, z: 1776.7}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 437.8022, y: -416.74347, z: 2270.7449}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 20
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &706940412
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 706940415}
-  - component: {fileID: 706940414}
-  - component: {fileID: 706940413}
-  m_Layer: 0
-  m_Name: EventSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &706940413
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 706940412}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
---- !u!114 &706940414
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 706940412}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 10
---- !u!4 &706940415
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 706940412}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1917113781}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &676805098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 676805096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57aba011a4d044246b9ab977769d03df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Relationship: 0
+  ActorType: 0
+  WayPointsPack: {fileID: 709130564}
 --- !u!1 &709130564
 GameObject:
   m_ObjectHideFlags: 0
@@ -1919,7 +2123,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &709130565
 Transform:
   m_ObjectHideFlags: 0
@@ -1927,8 +2131,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 709130564}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -241.6, y: 12.9, z: 1847}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -698.70654, y: -174.35573, z: 282.0171}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1944,8 +2148,8 @@ Transform:
   - {fileID: 423490814}
   - {fileID: 662458081}
   - {fileID: 620760737}
-  m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_Father: {fileID: 765939636}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &711458774
 GameObject:
@@ -1962,7 +2166,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &711458775
 Transform:
   m_ObjectHideFlags: 0
@@ -1971,7 +2175,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 711458774}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 574, y: 12.9, z: 1793}
+  m_LocalPosition: {x: 116.89343, y: -174.35573, z: 228.01709}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1986,8 +2190,8 @@ Transform:
   - {fileID: 977594137}
   - {fileID: 1301993818}
   - {fileID: 94282117}
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_Father: {fileID: 765939636}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &755282126
 GameObject:
@@ -1998,8 +2202,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 755282127}
+  - component: {fileID: 755282128}
   m_Layer: 0
-  m_Name: EnemyInitialPoint
+  m_Name: EnemyInitialPointTeamA
   m_TagString: EnemyInitialPoint
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -2012,13 +2217,63 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 755282126}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 503.2, y: 15.5, z: 1825}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 438.9022, y: -416.74347, z: 2319.045}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
+  m_Father: {fileID: 1917113781}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &755282128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755282126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57aba011a4d044246b9ab977769d03df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Relationship: 0
+  ActorType: 0
+  WayPointsPack: {fileID: 1708811674}
+--- !u!1 &765939635
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 765939636}
+  m_Layer: 0
+  m_Name: ===WayPointPacks===
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &765939636
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 765939635}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 457.10657, y: 187.25572, z: 1564.9829}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 418249666}
+  - {fileID: 711458775}
+  - {fileID: 1708811675}
+  - {fileID: 709130565}
   m_Father: {fileID: 0}
-  m_RootOrder: 29
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &781996234
 GameObject:
@@ -2029,8 +2284,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 781996235}
+  - component: {fileID: 781996236}
   m_Layer: 0
-  m_Name: EnemyInitialPoint
+  m_Name: EnemyInitialPointTeamB
   m_TagString: EnemyInitialPoint
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -2043,14 +2299,29 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 781996234}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -318.7, y: 15.5, z: 1679.0001}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -382.99783, y: -416.74347, z: 2173.0452}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 47
+  m_Father: {fileID: 1917113781}
+  m_RootOrder: 33
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &781996236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 781996234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57aba011a4d044246b9ab977769d03df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Relationship: 1
+  ActorType: 0
+  WayPointsPack: {fileID: 418249665}
 --- !u!1 &786344308
 GameObject:
   m_ObjectHideFlags: 0
@@ -2363,7 +2634,7 @@ Transform:
   - {fileID: 656489720}
   - {fileID: 176956242}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &959813603
 GameObject:
@@ -2529,8 +2800,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1040355577}
+  - component: {fileID: 1040355578}
   m_Layer: 0
-  m_Name: EnemyInitialPoint
+  m_Name: EnemyInitialPointTeamB
   m_TagString: EnemyInitialPoint
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -2543,14 +2815,29 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1040355576}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -289.3, y: 15.5, z: 1676.0001}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -353.5978, y: -416.74347, z: 2170.0452}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 45
+  m_Father: {fileID: 1917113781}
+  m_RootOrder: 31
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1040355578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1040355576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57aba011a4d044246b9ab977769d03df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Relationship: 1
+  ActorType: 0
+  WayPointsPack: {fileID: 418249665}
 --- !u!1 &1102948297
 GameObject:
   m_ObjectHideFlags: 0
@@ -2560,8 +2847,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1102948298}
+  - component: {fileID: 1102948299}
   m_Layer: 0
-  m_Name: EnemyInitialPoint
+  m_Name: EnemyInitialPointTeamB
   m_TagString: EnemyInitialPoint
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -2574,14 +2862,29 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1102948297}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -300.8, y: 15.5, z: 1640.5001}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -365.0978, y: -416.74347, z: 2134.5452}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 44
+  m_Father: {fileID: 1917113781}
+  m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1102948299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102948297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57aba011a4d044246b9ab977769d03df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Relationship: 1
+  ActorType: 0
+  WayPointsPack: {fileID: 418249665}
 --- !u!1 &1110945721
 GameObject:
   m_ObjectHideFlags: 0
@@ -2679,7 +2982,7 @@ Transform:
   m_Children:
   - {fileID: 671055408442046928}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1147234968
 GameObject:
@@ -2814,8 +3117,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1305295467}
+  - component: {fileID: 1305295468}
   m_Layer: 0
-  m_Name: EnemyInitialPoint
+  m_Name: EnemyInitialPointTeamA
   m_TagString: EnemyInitialPoint
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -2828,14 +3132,29 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1305295466}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 504.3, y: 15.5, z: 1737.7}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 440.00217, y: -416.74347, z: 2231.7449}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_Father: {fileID: 1917113781}
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1305295468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305295466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57aba011a4d044246b9ab977769d03df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Relationship: 0
+  ActorType: 0
+  WayPointsPack: {fileID: 709130564}
 --- !u!1 &1311090619
 GameObject:
   m_ObjectHideFlags: 0
@@ -2845,8 +3164,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1311090620}
+  - component: {fileID: 1311090621}
   m_Layer: 0
-  m_Name: EnemyInitialPoint
+  m_Name: EnemyInitialPointTeamA
   m_TagString: EnemyInitialPoint
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -2859,14 +3179,29 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1311090619}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 467.6, y: 15.5, z: 1819.5}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 403.3022, y: -416.74347, z: 2313.545}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 30
+  m_Father: {fileID: 1917113781}
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1311090621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1311090619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57aba011a4d044246b9ab977769d03df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Relationship: 0
+  ActorType: 0
+  WayPointsPack: {fileID: 1708811674}
 --- !u!1 &1325968397
 GameObject:
   m_ObjectHideFlags: 0
@@ -2876,8 +3211,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1325968398}
+  - component: {fileID: 1325968399}
   m_Layer: 0
-  m_Name: EnemyInitialPoint
+  m_Name: EnemyInitialPointTeamB
   m_TagString: EnemyInitialPoint
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -2890,14 +3226,29 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1325968397}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -305.2, y: 15.5, z: 1899.1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -369.49783, y: -416.74347, z: 2393.145}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 36
+  m_Father: {fileID: 1917113781}
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1325968399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1325968397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57aba011a4d044246b9ab977769d03df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Relationship: 1
+  ActorType: 0
+  WayPointsPack: {fileID: 711458774}
 --- !u!1 &1346310840
 GameObject:
   m_ObjectHideFlags: 0
@@ -2907,8 +3258,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1346310841}
+  - component: {fileID: 1346310842}
   m_Layer: 0
-  m_Name: EnemyInitialPoint
+  m_Name: EnemyInitialPointTeamB
   m_TagString: EnemyInitialPoint
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -2921,14 +3273,29 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1346310840}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -328.5, y: 15.5, z: 1647.5001}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -392.79782, y: -416.74347, z: 2141.5452}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 46
+  m_Father: {fileID: 1917113781}
+  m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1346310842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1346310840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57aba011a4d044246b9ab977769d03df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Relationship: 1
+  ActorType: 0
+  WayPointsPack: {fileID: 418249665}
 --- !u!1 &1350877279
 GameObject:
   m_ObjectHideFlags: 0
@@ -2969,8 +3336,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1372604484}
+  - component: {fileID: 1372604485}
   m_Layer: 0
-  m_Name: EnemyInitialPoint
+  m_Name: EnemyInitialPointTeamA
   m_TagString: EnemyInitialPoint
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -2983,14 +3351,29 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1372604483}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 479.2, y: 15.5, z: 1807.1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 414.5, y: -416.74347, z: 2358.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 28
+  m_Father: {fileID: 1917113781}
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1372604485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1372604483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57aba011a4d044246b9ab977769d03df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Relationship: 0
+  ActorType: 0
+  WayPointsPack: {fileID: 1708811674}
 --- !u!1 &1417543389
 GameObject:
   m_ObjectHideFlags: 0
@@ -3062,8 +3445,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1446733029}
+  - component: {fileID: 1446733030}
   m_Layer: 0
-  m_Name: EnemyInitialPoint
+  m_Name: EnemyInitialPointTeamA
   m_TagString: EnemyInitialPoint
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -3076,14 +3460,29 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1446733028}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 453, y: 15.5, z: 1730.8}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 388.70218, y: -416.74347, z: 2224.845}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_Father: {fileID: 1917113781}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1446733030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1446733028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57aba011a4d044246b9ab977769d03df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Relationship: 0
+  ActorType: 0
+  WayPointsPack: {fileID: 709130564}
 --- !u!1 &1475638253
 GameObject:
   m_ObjectHideFlags: 0
@@ -3345,7 +3744,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 484084, guid: 9a6102a113f13fc43b188bdbe9a806a4, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 484084, guid: 9a6102a113f13fc43b188bdbe9a806a4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3398,8 +3797,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1686308201}
+  - component: {fileID: 1686308202}
   m_Layer: 0
-  m_Name: EnemyInitialPoint
+  m_Name: EnemyInitialPointTeamA
   m_TagString: EnemyInitialPoint
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -3412,14 +3812,29 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1686308200}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 474.2, y: 15.5, z: 1841.7}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 409.9022, y: -416.74347, z: 2335.7449}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 32
+  m_Father: {fileID: 1917113781}
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1686308202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1686308200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57aba011a4d044246b9ab977769d03df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Relationship: 0
+  ActorType: 0
+  WayPointsPack: {fileID: 1708811674}
 --- !u!1 &1698879115
 GameObject:
   m_ObjectHideFlags: 0
@@ -3429,8 +3844,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1698879116}
+  - component: {fileID: 1698879117}
   m_Layer: 0
-  m_Name: EnemyInitialPoint
+  m_Name: EnemyInitialPointTeamB
   m_TagString: EnemyInitialPoint
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -3443,14 +3859,29 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1698879115}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -285.80002, y: 15.5, z: 1893.4}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -350.09784, y: -416.74347, z: 2387.445}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 35
+  m_Father: {fileID: 1917113781}
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1698879117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1698879115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57aba011a4d044246b9ab977769d03df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Relationship: 1
+  ActorType: 0
+  WayPointsPack: {fileID: 711458774}
 --- !u!1 &1708811674
 GameObject:
   m_ObjectHideFlags: 0
@@ -3466,7 +3897,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1708811675
 Transform:
   m_ObjectHideFlags: 0
@@ -3474,8 +3905,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1708811674}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -241.6, y: 12.9, z: 1847}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -698.70654, y: -174.35573, z: 282.0171}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3491,8 +3922,8 @@ Transform:
   - {fileID: 538015219}
   - {fileID: 1475638254}
   - {fileID: 879153993}
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_Father: {fileID: 765939636}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1825100363
 GameObject:
@@ -3600,8 +4031,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1851896942}
+  - component: {fileID: 1851896943}
   m_Layer: 0
-  m_Name: EnemyInitialPoint
+  m_Name: EnemyInitialPointTeamA
   m_TagString: EnemyInitialPoint
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -3614,14 +4046,29 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1851896941}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 501.3, y: 15.5, z: 1850.8}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 437.00217, y: -416.74347, z: 2344.845}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 33
+  m_Father: {fileID: 1917113781}
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1851896943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1851896941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57aba011a4d044246b9ab977769d03df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Relationship: 0
+  ActorType: 0
+  WayPointsPack: {fileID: 1708811674}
 --- !u!1 &1862860564
 GameObject:
   m_ObjectHideFlags: 0
@@ -3631,8 +4078,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1862860565}
+  - component: {fileID: 1862860566}
   m_Layer: 0
-  m_Name: PlayerPoint
+  m_Name: PlayerPointTeamA
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -3646,13 +4094,28 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1862860564}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 492.39996, y: 13.04, z: 2008.1}
+  m_LocalPosition: {x: 428.10214, y: -419.20346, z: 2502.145}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_Father: {fileID: 1917113781}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1862860566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1862860564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57aba011a4d044246b9ab977769d03df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Relationship: 0
+  ActorType: 1
+  WayPointsPack: {fileID: 0}
 --- !u!1 &1884567342
 GameObject:
   m_ObjectHideFlags: 0
@@ -3743,9 +4206,45 @@ Transform:
   m_LocalPosition: {x: 64.29782, y: 432.24347, z: -494.04498}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 34675483}
+  - {fileID: 558587776}
+  - {fileID: 27319493}
+  - {fileID: 1862860565}
+  - {fileID: 2040344557}
+  - {fileID: 633758787}
+  - {fileID: 676805097}
+  - {fileID: 216882294}
+  - {fileID: 1967466575}
+  - {fileID: 1446733029}
+  - {fileID: 1305295467}
+  - {fileID: 504163257}
+  - {fileID: 369535863}
+  - {fileID: 1971175966}
+  - {fileID: 1372604484}
+  - {fileID: 755282127}
+  - {fileID: 1311090620}
+  - {fileID: 394686974}
+  - {fileID: 1686308201}
+  - {fileID: 1851896942}
+  - {fileID: 243990025}
+  - {fileID: 1698879116}
+  - {fileID: 1325968398}
+  - {fileID: 654897253}
+  - {fileID: 404649917}
+  - {fileID: 1937449829}
+  - {fileID: 594112569}
+  - {fileID: 264637927}
+  - {fileID: 636083444}
+  - {fileID: 225158453}
+  - {fileID: 1102948298}
+  - {fileID: 1040355577}
+  - {fileID: 1346310841}
+  - {fileID: 781996235}
+  - {fileID: 2088790034}
+  - {fileID: 319794061}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1917113782
 MonoBehaviour:
@@ -3759,44 +4258,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ed30385b98d10d459337a4f6dfdd215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyPoints:
-  - {fileID: 2040344556}
-  - {fileID: 633758786}
-  - {fileID: 676805096}
-  - {fileID: 216882293}
-  - {fileID: 1967466574}
-  - {fileID: 1446733028}
-  - {fileID: 1305295466}
-  - {fileID: 504163256}
-  - {fileID: 369535862}
-  - {fileID: 1971175965}
-  - {fileID: 1372604483}
-  - {fileID: 755282126}
-  - {fileID: 1311090619}
-  - {fileID: 394686973}
-  - {fileID: 1686308200}
-  - {fileID: 1851896941}
-  - {fileID: 243990024}
-  - {fileID: 1698879115}
-  - {fileID: 1325968397}
-  - {fileID: 654897252}
-  - {fileID: 404649916}
-  - {fileID: 1937449828}
-  - {fileID: 594112568}
-  - {fileID: 264637926}
-  - {fileID: 636083443}
-  - {fileID: 225158452}
-  - {fileID: 1102948297}
-  - {fileID: 1040355576}
-  - {fileID: 1346310840}
-  - {fileID: 781996234}
-  - {fileID: 2088790033}
-  - {fileID: 319794060}
-  _playerPoints:
-  - {fileID: 34675482}
-  - {fileID: 558587775}
-  - {fileID: 27319492}
-  - {fileID: 1862860564}
+  _spawnPoints:
+  - {fileID: 34675484}
+  - {fileID: 558587777}
+  - {fileID: 27319494}
+  - {fileID: 1862860566}
+  - {fileID: 2040344558}
+  - {fileID: 633758788}
+  - {fileID: 676805098}
+  - {fileID: 216882295}
+  - {fileID: 1967466576}
+  - {fileID: 1446733030}
+  - {fileID: 1305295468}
+  - {fileID: 504163258}
+  - {fileID: 369535864}
+  - {fileID: 1971175967}
+  - {fileID: 1372604485}
+  - {fileID: 755282128}
+  - {fileID: 1311090621}
+  - {fileID: 394686975}
+  - {fileID: 1686308202}
+  - {fileID: 1851896943}
+  - {fileID: 243990026}
+  - {fileID: 1698879117}
+  - {fileID: 1325968399}
+  - {fileID: 654897254}
+  - {fileID: 404649918}
+  - {fileID: 1937449830}
+  - {fileID: 594112570}
+  - {fileID: 264637928}
+  - {fileID: 636083445}
+  - {fileID: 225158454}
+  - {fileID: 1102948299}
+  - {fileID: 1040355578}
+  - {fileID: 1346310842}
+  - {fileID: 781996236}
+  - {fileID: 2088790035}
+  - {fileID: 319794062}
 --- !u!1 &1937449828
 GameObject:
   m_ObjectHideFlags: 0
@@ -3806,8 +4304,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1937449829}
+  - component: {fileID: 1937449830}
   m_Layer: 0
-  m_Name: EnemyInitialPoint
+  m_Name: EnemyInitialPointTeamB
   m_TagString: EnemyInitialPoint
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -3820,14 +4319,29 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1937449828}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -297.2, y: 15.5, z: 1921.1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -361.49783, y: -416.74347, z: 2415.145}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 39
+  m_Father: {fileID: 1917113781}
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1937449830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1937449828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57aba011a4d044246b9ab977769d03df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Relationship: 1
+  ActorType: 0
+  WayPointsPack: {fileID: 711458774}
 --- !u!1 &1967466574
 GameObject:
   m_ObjectHideFlags: 0
@@ -3837,8 +4351,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1967466575}
+  - component: {fileID: 1967466576}
   m_Layer: 0
-  m_Name: EnemyInitialPoint
+  m_Name: EnemyInitialPointTeamA
   m_TagString: EnemyInitialPoint
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -3851,14 +4366,29 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1967466574}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 477.2, y: 15.5, z: 1767.7}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 412.9022, y: -416.74347, z: 2261.7449}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_Father: {fileID: 1917113781}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1967466576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1967466574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57aba011a4d044246b9ab977769d03df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Relationship: 0
+  ActorType: 0
+  WayPointsPack: {fileID: 709130564}
 --- !u!1 &1971175965
 GameObject:
   m_ObjectHideFlags: 0
@@ -3868,8 +4398,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1971175966}
+  - component: {fileID: 1971175967}
   m_Layer: 0
-  m_Name: EnemyInitialPoint
+  m_Name: EnemyInitialPointTeamA
   m_TagString: EnemyInitialPoint
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -3882,14 +4413,29 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1971175965}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 498.6, y: 15.5, z: 1801.4}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 436.7, y: -416.74347, z: 2366.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 27
+  m_Father: {fileID: 1917113781}
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1971175967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1971175965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57aba011a4d044246b9ab977769d03df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Relationship: 0
+  ActorType: 0
+  WayPointsPack: {fileID: 1708811674}
 --- !u!1 &1984892919
 GameObject:
   m_ObjectHideFlags: 0
@@ -3930,8 +4476,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2040344557}
+  - component: {fileID: 2040344558}
   m_Layer: 0
-  m_Name: EnemyInitialPoint
+  m_Name: EnemyInitialPointTeamA
   m_TagString: EnemyInitialPoint
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -3944,14 +4491,29 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2040344556}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 462.8, y: 15.5, z: 1762.3}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 398.50217, y: -416.74347, z: 2256.345}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_Father: {fileID: 1917113781}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2040344558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2040344556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57aba011a4d044246b9ab977769d03df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Relationship: 0
+  ActorType: 0
+  WayPointsPack: {fileID: 709130564}
 --- !u!1 &2088790033
 GameObject:
   m_ObjectHideFlags: 0
@@ -3961,8 +4523,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2088790034}
+  - component: {fileID: 2088790035}
   m_Layer: 0
-  m_Name: EnemyInitialPoint
+  m_Name: EnemyInitialPointTeamB
   m_TagString: EnemyInitialPoint
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -3975,14 +4538,29 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2088790033}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -277.2, y: 15.5, z: 1654.4}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -341.49783, y: -416.74347, z: 2148.445}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 48
+  m_Father: {fileID: 1917113781}
+  m_RootOrder: 34
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2088790035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088790033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57aba011a4d044246b9ab977769d03df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Relationship: 1
+  ActorType: 0
+  WayPointsPack: {fileID: 418249665}
 --- !u!1 &2092405742
 GameObject:
   m_ObjectHideFlags: 0
@@ -5168,103 +5746,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1001 &3742831858860221348
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 8160426220315655820, guid: 8c642c3a9320fd6489ab4cd2f4144227, type: 3}
-      propertyPath: m_Pivot.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8160426220315655820, guid: 8c642c3a9320fd6489ab4cd2f4144227, type: 3}
-      propertyPath: m_Pivot.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8160426220315655820, guid: 8c642c3a9320fd6489ab4cd2f4144227, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8160426220315655820, guid: 8c642c3a9320fd6489ab4cd2f4144227, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8160426220315655820, guid: 8c642c3a9320fd6489ab4cd2f4144227, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8160426220315655820, guid: 8c642c3a9320fd6489ab4cd2f4144227, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8160426220315655820, guid: 8c642c3a9320fd6489ab4cd2f4144227, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8160426220315655820, guid: 8c642c3a9320fd6489ab4cd2f4144227, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8160426220315655820, guid: 8c642c3a9320fd6489ab4cd2f4144227, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8160426220315655820, guid: 8c642c3a9320fd6489ab4cd2f4144227, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8160426220315655820, guid: 8c642c3a9320fd6489ab4cd2f4144227, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8160426220315655820, guid: 8c642c3a9320fd6489ab4cd2f4144227, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8160426220315655820, guid: 8c642c3a9320fd6489ab4cd2f4144227, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8160426220315655820, guid: 8c642c3a9320fd6489ab4cd2f4144227, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8160426220315655820, guid: 8c642c3a9320fd6489ab4cd2f4144227, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8160426220315655820, guid: 8c642c3a9320fd6489ab4cd2f4144227, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8160426220315655820, guid: 8c642c3a9320fd6489ab4cd2f4144227, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8160426220315655820, guid: 8c642c3a9320fd6489ab4cd2f4144227, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8160426220315655820, guid: 8c642c3a9320fd6489ab4cd2f4144227, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8160426220315655820, guid: 8c642c3a9320fd6489ab4cd2f4144227, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8160426220315655820, guid: 8c642c3a9320fd6489ab4cd2f4144227, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8216836430599445088, guid: 8c642c3a9320fd6489ab4cd2f4144227, type: 3}
-      propertyPath: m_Name
-      value: PositionActorsPresenter
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 8c642c3a9320fd6489ab4cd2f4144227, type: 3}
 --- !u!114 &5164856137741566393
 MonoBehaviour:
   m_ObjectHideFlags: 0

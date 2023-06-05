@@ -3,6 +3,7 @@ using Infrastructure.Factory.Base;
 using Infrastructure.Factory.Compose;
 using Infrastructure.Services.Progress;
 using UnityEngine;
+using ChobiAssets.PTM;
 
 namespace Infrastructure.StateMachine
 {
@@ -59,14 +60,24 @@ namespace Infrastructure.StateMachine
 
         private void InitGameLevel()
         {
-            _enemyFactory.CreateTankController();
-            _enemyFactory.CreateEnemies(at: GameObject.FindGameObjectsWithTag(EnemyInitialPoint));
+            TeamSeparator teamSeparator = Object.FindObjectOfType<TeamSeparator>();
 
-            var playerPoints = GameObject.FindGameObjectsWithTag(PlayerInitialPoint);
-            
-            _playerFactory.CreatePlayers(at: playerPoints);
-            _playerFactory.CreateTankUiSpawners();
+            CreateEnemys(teamSeparator);
+
+            CreatePlayers(teamSeparator);
+        }
+
+        private void CreatePlayers(TeamSeparator teamSeparator)
+        {
+            _playerFactory.CreatePlayers(at: teamSeparator.GetPoint(EPlayerType.Player, ERelationship.TeamA).transform.position);
+            _playerFactory.CreateTankUiSpawners(_enemyFactory.EnemyDamageManagers);
             _playerFactory.CreateHud();
+        }
+
+        private void CreateEnemys(TeamSeparator teamSeparator)
+        {
+            _enemyFactory.CreateGameController();
+            _enemyFactory.CreateEnemies(teamSeparator);
         }
     }
 }

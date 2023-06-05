@@ -21,25 +21,30 @@ namespace Infrastructure.Factory
 
         private List<ID_Settings_CS> _enemysID = new List<ID_Settings_CS>();
 
-        public PlayerFactory(IAssetLoader assetLoader, IInputService inputService, List<DamageReciviersManager> enemyDamageManagers) : base(assetLoader)
+        public PlayerFactory(IAssetLoader assetLoader, IInputService inputService) : base(assetLoader)
         {
             _inputService = inputService;
 
-            for(int i = 0; i < enemyDamageManagers.Count; i ++)
+        }
+
+        public void CreatePlayers(Vector3 at)
+        {
+            //at = Shuffle(at);
+            foreach (Services.Input.PlayerConfiguration config in _inputService.PlayerConfigs)
             {
-                _enemysID.Add(enemyDamageManagers[i].GetComponentInParent<ID_Settings_CS>());
+                GameObject player = InstantiateRegistered(AssetPaths.PlayerTank, at);
+                PlayerParts.Add(RegisterUiWatchers(player));
+                InitedRegisteredTank(player, config);
             }
         }
 
-        public void CreatePlayers(GameObject[] at)
+        public void CreateTankUiSpawners(List<DamageReciviersManager> enemyDamageManagers)
         {
-            at = Shuffle(at);
-            foreach (Services.Input.PlayerConfiguration config in _inputService.PlayerConfigs)
-                PlayerParts.Add(InstantiateRegisterTank(at[config.PlayerIndex]));
-        }
+            for (int i = 0; i < enemyDamageManagers.Count; i++)
+            {
+                _enemysID.Add(enemyDamageManagers[i].GetComponentInParent<ID_Settings_CS>());
+            }
 
-        public void CreateTankUiSpawners()
-        {
             foreach (PlayerUiParts part in PlayerParts)
                 InitializeUiWatchers(part, InstantiateRegistered(AssetPaths.TankUiSpawner));
         }
@@ -51,8 +56,15 @@ namespace Infrastructure.Factory
             RegisterMainMenuUIHelper(InstantiateRegistered(AssetPaths.MainMenu));
 
 
-        private PlayerUiParts InstantiateRegisterTank(GameObject at) =>
-            RegisterUiWatchers(InstantiateRegistered(AssetPaths.PlayerTank, at.transform.position));
+        private void InitedRegisteredTank(GameObject playerTank, Services.Input.PlayerConfiguration config)
+        {
+            int playerCount = _inputService.PlayerConfigs.Count;
+            playerTank.GetComponent<CameraViewSetup>().SetupLayoutScreen(config.PlayerIndex, playerCount);
+            playerTank.GetComponent<CameraViewSetup>().SetScreenAimPoint(config.PlayerIndex, playerCount);
+
+            playerTank.GetComponent<PlayerInputInitializer>().SetPlayerInput(config.Input);
+            playerTank.GetComponent<PlayerInputInitializer>().Initialize();
+        }
 
         private GameObject RegisterMainMenuUIHelper(GameObject mainMenu)
         {
@@ -80,17 +92,17 @@ namespace Infrastructure.Factory
             recivierUIManager.Initialize(parts.Aiming, parts.BulletGenerator, parts.CannonFire, parts.GunCamera, parts.DamageReceiver, parts.DriveControl, parts.CameraView, _enemysID, parts.IdSettings);
         }
 
-        private GameObject[] Shuffle(GameObject[] at)
-        {
-            var random = new Random();
-            for (int i = at.Length - 1; i >= 1; i--)
-            {
-                int j = random.Next(i + 1);
+        //private GameObject[] Shuffle(GameObject[] at)
+        //{
+        //    var random = new Random();
+        //    for (int i = at.Length - 1; i >= 1; i--)
+        //    {
+        //        int j = random.Next(i + 1);
 
-                (at[j], at[i]) = (at[i], at[j]);
-            }
+        //        (at[j], at[i]) = (at[i], at[j]);
+        //    }
 
-            return at;
-        }
+        //    return at;
+        //}
     }
 }

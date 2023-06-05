@@ -49,9 +49,9 @@ namespace ChobiAssets.PTM
             }
         }
 
-        public void SetRelationship(EPlayerType relationType)
+        public void SetRelationship(ERelationship relationType)
         {
-            _playerType = relationType;
+            _relationship = relationType;
         }
 
         void Start()

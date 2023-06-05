@@ -17332,10 +17332,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bf096aa492a60d4294da7eb275793a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turret_Horizontal_CS: {fileID: 0}
-  cannon_Vertical_CS: {fileID: 0}
-  aiming_Control_CS: {fileID: 0}
-  _damageReciviersManager: {fileID: 0}
+  turret_Horizontal_CS: {fileID: 2568345802968967882}
+  cannon_Vertical_CS: {fileID: 2568345802966473539}
+  aiming_Control_CS: {fileID: 2568345801201787448}
+  _damageReciviersManager: {fileID: 2568345801201787450}
   WayPoint_Radius: 10
   Pivot_Turn_Angle: 45
   Min_Target_Angle: 2.5
