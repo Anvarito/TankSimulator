@@ -19,7 +19,7 @@ namespace Infrastructure.Factory.Base
         List<PlayerUiParts> PlayerParts { get; }
         GameOverBoard GameBoard { get; }
 
-        void CreatePlayers(Vector3 at);
+        void CreatePlayers(TeamSeparator separator);
         void CreateTankUiSpawners(List<DamageReciviersManager> enemyDamageList);
         void CreateHud();
 

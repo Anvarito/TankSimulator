@@ -27,12 +27,12 @@ namespace Infrastructure.Factory
 
         }
 
-        public void CreatePlayers(Vector3 at)
+        public void CreatePlayers(TeamSeparator teamSeparator)
         {
             //at = Shuffle(at);
             foreach (Services.Input.PlayerConfiguration config in _inputService.PlayerConfigs)
             {
-                GameObject player = InstantiateRegistered(AssetPaths.PlayerTank, at);
+                GameObject player = InstantiateRegistered(AssetPaths.PlayerTank, teamSeparator.GetPoint(EPlayerType.Player, ERelationship.TeamA).transform.position);
                 PlayerParts.Add(RegisterUiWatchers(player));
                 InitedRegisteredTank(player, config);
             }

@@ -27,6 +27,7 @@ public class HitPointsTargetUIRecivier : UIRecivierBase
     {
         base.InstantiateCanvas();
         _hitPointsTargetUI = _spawnedPresenter as HitPointsTargetUIPresenter;
+        _hitPointsTargetUI.SetCamera(_cameraSetup.GetCamera());
         _hitPointsTargetUI.Hide();
     }
 
@@ -46,6 +47,8 @@ public class HitPointsTargetUIRecivier : UIRecivierBase
             {
                 if (_targetDamageReciviers)
                     Unsubscribe();
+
+                _hitPointsTargetUI.Show(aimTransform);
 
                 _targetTransform = aimTransform;
                 _targetDamageReciviers = aimTransform.GetComponentInParent<DamageReciviersManager>();

@@ -24,18 +24,6 @@ public class RecivierUIManager : MonoBehaviour
 
     [Space(10)]
     [SerializeField] private ColorsHolder _colorsHolder;
-
-    private DamageReciviersManager _damageRecivierManager;
-    private Gun_Camera_CS _gunCamera;
-    private CameraViewSetup _cameraSetup;
-    private Aiming_Control_CS _aiming_Control;
-    private ID_Settings_CS _selfID;
-    private Cannon_Fire_CS _cannonFire;
-    private Bullet_Generator_CS _bulletGenerator;
-    private Drive_Control_CS _driveControl;
-    private List<ID_Settings_CS> _enemysID;
-    private ID_Settings_CS _idSettings;
-
     internal void Initialize(Aiming_Control_CS aiming,
         Bullet_Generator_CS bulletGenerator,
         Cannon_Fire_CS cannonFire,
@@ -46,19 +34,16 @@ public class RecivierUIManager : MonoBehaviour
         List<ID_Settings_CS> enemysID,
         ID_Settings_CS idSettings)
     {
-        _aiming_Control = aiming;
-        _cameraSetup = cameraView;
-        _damageRecivierManager = damageReceiver;
-        _gunCamera = gunCamera;
-        _cannonFire = cannonFire;
-        _bulletGenerator = bulletGenerator;
-        _driveControl = driveControl;
-        _enemysID = enemysID;
-        _idSettings = idSettings;
+        _aimMarkerRecivier.Init(aiming, gunCamera, cameraView);
+        _leadMarkerRecivier.Init(aiming, bulletGenerator, gunCamera, cameraView);
+        _reloadingRecivier.Init(cannonFire, gunCamera, cameraView);
+        _reticleRecivier.Init(gunCamera, cameraView);
+        _hitPointsRecivier.Init(damageReceiver, gunCamera, cameraView);
+        _speedRecivier.Init(driveControl, gunCamera, cameraView);
+        _positionActorsRecivier.Init(idSettings, enemysID, gunCamera, cameraView);
+        _hitPointsTargetRecivier.Init(aiming, gunCamera, cameraView);
 
-        _damageRecivierManager.OnTankDestroyed.AddListener(TankDestroyed);
-
-        InitAllReciviers();
+        damageReceiver.OnTankDestroyed.AddListener(TankDestroyed);
     }
 
     private void TankDestroyed(ID_Settings_CS killerID)
@@ -71,17 +56,5 @@ public class RecivierUIManager : MonoBehaviour
         _speedRecivier.PlayerDestoryed();
         _positionActorsRecivier.PlayerDestoryed();
         _hitPointsTargetRecivier.PlayerDestoryed();
-    }
-
-    private void InitAllReciviers()
-    {
-        _aimMarkerRecivier.Init(_aiming_Control, _gunCamera, _cameraSetup);
-        _leadMarkerRecivier.Init(_aiming_Control, _bulletGenerator, _gunCamera, _cameraSetup);
-        _reloadingRecivier.Init(_cannonFire, _gunCamera, _cameraSetup);
-        _reticleRecivier.Init(_gunCamera, _cameraSetup);
-        _hitPointsRecivier.Init(_damageRecivierManager, _gunCamera, _cameraSetup);
-        _speedRecivier.Init(_driveControl, _gunCamera, _cameraSetup);
-        _positionActorsRecivier.Init(_idSettings, _enemysID, _gunCamera, _cameraSetup);
-        _hitPointsTargetRecivier.Init(_aiming_Control, _gunCamera, _cameraSetup);
     }
 }

@@ -69,9 +69,9 @@ namespace Infrastructure.StateMachine
 
         private void CreatePlayers(TeamSeparator teamSeparator)
         {
-            _playerFactory.CreatePlayers(at: teamSeparator.GetPoint(EPlayerType.Player, ERelationship.TeamA).transform.position);
+            _playerFactory.CreatePlayers(teamSeparator);
             _playerFactory.CreateTankUiSpawners(_enemyFactory.EnemyDamageManagers);
-            _playerFactory.CreateHud();
+            //_playerFactory.CreateHud();
         }
 
         private void CreateEnemys(TeamSeparator teamSeparator)

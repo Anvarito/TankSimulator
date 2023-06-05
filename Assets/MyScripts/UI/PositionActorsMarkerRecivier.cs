@@ -54,17 +54,22 @@ namespace ChobiAssets.PTM
             _IDSettings = IDSettings;
             _enemysID = enemysID;
 
-            _mainCamera = _cameraSetup.GetCamera();
+            StartCoroutine(EWE());
+        }
 
+        private IEnumerator EWE()
+        {
+            yield return null;
             InitialUIRecivier();
         }
         protected override void InstantiateCanvas()
         {
-            base.InstantiateCanvas();
+            _spawnedPresenter = Instantiate(_presenterPrefab);
             _markerCanvasUIHelper = _spawnedPresenter as ActorPointerUIHelper;
             _canvas = _markerCanvasUIHelper.GetCanvas();
+            _mainCamera = _cameraSetup.GetCamera();
 
-            StartCoroutine(SearchAllUits());
+            AddAllUnits();
 
         }
 
@@ -79,10 +84,8 @@ namespace ChobiAssets.PTM
             }
         }
 
-        private IEnumerator SearchAllUits()
+        private void AddAllUnits()
         {
-            yield return null;
-            //temp!!! Add all units in list
             foreach (var idScript in _enemysID)
             {
                 Drive_Control_CS currentActor = idScript.GetComponentInChildren<Drive_Control_CS>();
@@ -164,8 +167,9 @@ namespace ChobiAssets.PTM
                     indexPlane = -1;
                 }
                  Vector3 worlsPoint = ray.GetPoint(minDistance);
-
-                currentMarkerProp.ArrowImage.rectTransform.position = _mainCamera.WorldToScreenPoint(worlsPoint);
+                Vector3 finalPos = _mainCamera.WorldToScreenPoint(worlsPoint);
+                finalPos.z = 0;
+                currentMarkerProp.ArrowImage.rectTransform.position = finalPos;
                 //Debug.DrawLine(new Vector3(_mainCamera.pixelHeight / 2, _mainCamera.pixelWidth / 2), currentMarkerProp.ArrowImage.rectTransform.position, Color.blue);
                 //var screenPoint = _mainCamera.WorldToScreenPoint(worlsPoint);
                 //RectTransformUtility.ScreenPointToLocalPointInRectangle(_canvasRect, screenPoint, _mainCamera, out localPoint);
