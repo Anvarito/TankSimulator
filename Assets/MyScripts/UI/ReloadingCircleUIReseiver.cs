@@ -25,7 +25,6 @@ namespace ChobiAssets.PTM
             _cannonFireScript = cannonFireScript;
             _gunCamera = gunCamera;
             _cameraSetup = cameraSetup;
-            _reloadingCirclePresenter.EnableImage(false);
             InitialUIRecivier();
         }
         protected override void Subscribes()
@@ -48,6 +47,7 @@ namespace ChobiAssets.PTM
         {
             base.InstantiateCanvas();
             _reloadingCirclePresenter = _spawnedPresenter as ReloadingCirclePresenter;
+            _reloadingCirclePresenter.EnableImage(false);
         }
        
         private void ReloadLaunch()
