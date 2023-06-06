@@ -20,6 +20,7 @@ public class RecivierUIManager : MonoBehaviour
     [SerializeField] private Aiming_Control_CS _aiming_Control;
     [SerializeField] private ID_Settings_CS _selfID;
     [SerializeField] private ColorsHolder _colorsHolder;
+    
     internal void Initialize()
     {
         _uiReciviers.AddRange(GetComponents<UIRecivierBase>());

@@ -31,10 +31,10 @@ public class HitPoitsBarUIReceiver : UIRecivierBase
         _hitPointsUI.SetCamera(activeCamera == EActiveCameraType.GunCamera ? _cameraSetup.GetGunCamera() : _cameraSetup.GetCamera());
     }
 
-    public void Initialize(DamageReciviersManager partsDamageReceiver)
-    {
-        _damageManager = partsDamageReceiver;
-    }
+    // public void Initialize(DamageReciviersManager partsDamageReceiver)
+    // {
+    //     _damageManager = partsDamageReceiver;
+    // }
 
     private void BodyDamaged(float currentHP, float maxHP)
     {

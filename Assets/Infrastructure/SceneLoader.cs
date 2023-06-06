@@ -32,7 +32,9 @@ namespace Infrastructure
             onLoaded?.Invoke();
         }
 
-        public void CancelLoading() => 
-            _coroutineRunner.StopCoroutine(_currentCoroutine);
+        public void CancelLoading()
+        {
+            if (_currentCoroutine != null) _coroutineRunner.StopCoroutine(_currentCoroutine);
+        }
     }
 }

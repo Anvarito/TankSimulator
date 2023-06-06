@@ -10,6 +10,7 @@ namespace Infrastructure.Assets
         public const string TankController = "General/Game_Controller";
         public const string EnemyTank = "General/AI Enemy";
         public const string TankUiSpawner = "General/UIResivers";
+        public const string PlayerNewTank = "General/VenaNew";
         public static string MainMenu = "General/MainMenu";
         public static string PlayerInput = "Infrastructure/PlayerInput";
         public static string PlayerInputManager = "Infrastructure/PlayerInputManager";

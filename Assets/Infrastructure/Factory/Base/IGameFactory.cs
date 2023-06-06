@@ -20,7 +20,6 @@ namespace Infrastructure.Factory.Base
         GameOverBoard GameBoard { get; }
 
         void CreatePlayers(GameObject[] at);
-        void CreateTankUiSpawners();
         void CreateHud();
 
 

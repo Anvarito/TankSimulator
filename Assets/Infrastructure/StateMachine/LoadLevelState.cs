@@ -65,7 +65,6 @@ namespace Infrastructure.StateMachine
             var playerPoints = GameObject.FindGameObjectsWithTag(PlayerInitialPoint);
             
             _playerFactory.CreatePlayers(at: playerPoints);
-            _playerFactory.CreateTankUiSpawners();
             _playerFactory.CreateHud();
         }
     }

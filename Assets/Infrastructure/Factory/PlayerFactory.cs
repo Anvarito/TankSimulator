@@ -29,13 +29,7 @@ namespace Infrastructure.Factory
         {
             at = Shuffle(at);
             foreach (Services.Input.PlayerConfiguration config in _inputService.PlayerConfigs)
-                PlayerParts.Add(InstantiateRegisterTank(at[config.PlayerIndex]));
-        }
-
-        public void CreateTankUiSpawners()
-        {
-            foreach (PlayerUiParts part in PlayerParts)
-                InitializeUiWatchers(part, InstantiateRegistered(AssetPaths.TankUiSpawner));
+                PlayerParts.Add(InstantiateRegisterTank(at[config.PlayerIndex], config));
         }
 
         public void CreateHud() =>
@@ -45,8 +39,12 @@ namespace Infrastructure.Factory
             RegisterMainMenuUIHelper(InstantiateRegistered(AssetPaths.MainMenu));
 
 
-        private PlayerUiParts InstantiateRegisterTank(GameObject at) =>
-            RegisterUiWatchers(InstantiateRegistered(AssetPaths.PlayerTank, at.transform.position));
+        private PlayerUiParts InstantiateRegisterTank(GameObject at, Services.Input.PlayerConfiguration config)
+        {
+            GameObject tank = InstantiateRegistered(AssetPaths.PlayerNewTank, at.transform.position);
+            SetupTank(tank,config);
+            return RegisterUiWatchers(tank);
+        }
 
         private GameObject RegisterMainMenuUIHelper(GameObject mainMenu)
         {
@@ -66,14 +64,17 @@ namespace Infrastructure.Factory
             return player;
         }
 
-        private void InitializeUiWatchers(PlayerUiParts parts, GameObject uiSpawner)
+        private void SetupTank(GameObject tank, Services.Input.PlayerConfiguration config)
         {
-            uiSpawner.GetComponent<AimMarkerUIReceiver>().Initialize(parts.Aiming);
-            uiSpawner.GetComponent<LeadMarkerUIReceiver>().Initialize(parts.Aiming, parts.BulletGenerator);
-            uiSpawner.GetComponent<ReloadingCircleUIReseiver>().Initialize(parts.CannonFire);
-            uiSpawner.GetComponent<ReticleControlUIReceiver>().Initialize(parts.GunCamera);
-            uiSpawner.GetComponent<HitPoitsBarUIReceiver>().Initialize(parts.DamageReceiver);
-            uiSpawner.GetComponent<SpeedIndicatorRecivier>().Initialize(parts.DriveControl);
+            PlayerInputInitializer player = tank.GetComponentInChildren<PlayerInputInitializer>(); 
+            
+            player.GetComponent<CameraViewSetup>().SetupLayoutScreen(config.PlayerIndex, PlayerParts.Count);
+            player.GetComponent<CameraViewSetup>().SetScreenAimPoint(config.PlayerIndex, PlayerParts.Count);
+
+            player.SetPlayerInput(config.Input);
+            player.Initialize();
+
+            player.GetComponentInChildren<RecivierUIManager>().Initialize();
         }
 
         private GameObject[] Shuffle(GameObject[] at)
