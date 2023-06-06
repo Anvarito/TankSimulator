@@ -14,20 +14,26 @@ namespace Infrastructure.Factory
         {
         }
 
-        public void CreateEnemies(GameObject[] at) =>
-            InstantiateRegistered(at);
+        public void CreateEnemies(TeamSeparator teamSeparator) =>
+            InstantiateRegistered(teamSeparator);
 
-        public void CreateTankController() =>
+        public void CreateGameController() =>
             InstantiateRegistered(AssetPaths.TankController);
 
-        private void InstantiateRegistered(GameObject[] at)
+        private void InstantiateRegistered(TeamSeparator teamSeparator)
         {
-            foreach (GameObject point in at)
+            for(int i = 0; i < teamSeparator.EnemysCount(); i ++)
             {
-                GameObject enemy = _assetLoader.Instantiate(AssetPaths.EnemyTank, point.transform.position);
+                ERelationship relationship = i % 2 == 0 ? ERelationship.TeamA : ERelationship.TeamB;
+                SpawnPoint spawnPoint = teamSeparator.GetPoint(EPlayerType.AI, relationship);
+                Vector3 point = spawnPoint.transform.position;
+
+                GameObject enemy = _assetLoader.Instantiate(AssetPaths.Enemy, point);
+                ID_Settings_CS enemyID = enemy.GetComponentInChildren<ID_Settings_CS>();
+                enemyID.SetRelationship(relationship);
                 EnemyDamageManagers.Add(enemy.GetComponentInChildren<DamageReciviersManager>());
                 
-                enemy.GetComponentInChildren<AI_Settings_CS>().WayPoint_Pack = point;
+                enemy.GetComponentInChildren<AI_Settings_CS>().WayPoint_Pack = spawnPoint.WayPointsPack;
             }
         }
     }

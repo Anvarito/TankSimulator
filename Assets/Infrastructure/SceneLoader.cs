@@ -34,7 +34,8 @@ namespace Infrastructure
 
         public void CancelLoading()
         {
-            if (_currentCoroutine != null) _coroutineRunner.StopCoroutine(_currentCoroutine);
+            if (_currentCoroutine != null)
+                _coroutineRunner.StopCoroutine(_currentCoroutine);
         }
     }
 }

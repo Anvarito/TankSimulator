@@ -44,17 +44,32 @@ namespace ChobiAssets.PTM
         private float Upper_Offset = 2f;
         Plane[] _cameraPlanes;
         private Vector2 localPoint;
+        private ID_Settings_CS _IDSettings;
+        private List<ID_Settings_CS> _enemysID;
 
+        public void Init(ID_Settings_CS IDSettings, List<ID_Settings_CS> enemysID, Gun_Camera_CS gunCamera, CameraViewSetup cameraSetup)
+        {
+            _gunCamera = gunCamera;
+            _cameraSetup = cameraSetup;
+            _IDSettings = IDSettings;
+            _enemysID = enemysID;
+
+            StartCoroutine(EWE());
+        }
+
+        private IEnumerator EWE()
+        {
+            yield return null;
+            InitialUIRecivier();
+        }
         protected override void InstantiateCanvas()
         {
-            base.InstantiateCanvas();
-            _markerCanvasUIHelper = Instantiate(_presenterPrefab) as ActorPointerUIHelper;
-            _markerCanvasUIHelper.InitialCanvas();
-            _mainCamera = _cameraSetup.GetCamera();
-            //_markerCanvasUIHelper.SetCamera(_mainCamera);
+            _spawnedPresenter = Instantiate(_presenterPrefab);
+            _markerCanvasUIHelper = _spawnedPresenter as ActorPointerUIHelper;
             _canvas = _markerCanvasUIHelper.GetCanvas();
+            _mainCamera = _cameraSetup.GetCamera();
 
-            StartCoroutine(SearchAllUits());
+            AddAllUnits();
 
         }
 
@@ -69,14 +84,10 @@ namespace ChobiAssets.PTM
             }
         }
 
-        private IEnumerator SearchAllUits()
+        private void AddAllUnits()
         {
-            yield return null;
-            //temp!!! Add all units in list
-            foreach (var idScript in FindObjectsOfType<ID_Settings_CS>())
+            foreach (var idScript in _enemysID)
             {
-                if (idScript == _IDSettings)
-                    continue;
                 Drive_Control_CS currentActor = idScript.GetComponentInChildren<Drive_Control_CS>();
                 _driveControlList.Add(currentActor);
                 Receive_ID_Script(idScript, currentActor);
@@ -130,9 +141,12 @@ namespace ChobiAssets.PTM
                     continue;
                 }
 
-                Vector3 playerToEnemy = (currentActor.transform.position + Vector3.up * Upper_Offset) - transform.position;
-                //Debug.DrawLine(transform.position, currentActor.transform.position + Vector3.up * Upper_Offset, Color.white);
-                Ray ray = new Ray(transform.position, playerToEnemy.normalized);
+                Vector3 pointPlayer = _gunCamera.transform.position;
+                Vector3 pointEnemy = currentActor.transform.position + Vector3.up * Upper_Offset;
+
+                Vector3 playerToEnemy = pointEnemy - pointPlayer;
+                Debug.DrawLine(pointPlayer, pointEnemy, Color.white);
+                Ray ray = new Ray(pointPlayer, playerToEnemy.normalized);
                 _cameraPlanes = GeometryUtility.CalculateFrustumPlanes(_mainCamera);
 
                 float minDistance = float.MaxValue;
@@ -156,8 +170,9 @@ namespace ChobiAssets.PTM
                     indexPlane = -1;
                 }
                  Vector3 worlsPoint = ray.GetPoint(minDistance);
-
-                currentMarkerProp.ArrowImage.rectTransform.position = _mainCamera.WorldToScreenPoint(worlsPoint);
+                Vector3 finalPos = _mainCamera.WorldToScreenPoint(worlsPoint);
+                finalPos.z = 0;
+                currentMarkerProp.ArrowImage.rectTransform.position = finalPos;
                 //Debug.DrawLine(new Vector3(_mainCamera.pixelHeight / 2, _mainCamera.pixelWidth / 2), currentMarkerProp.ArrowImage.rectTransform.position, Color.blue);
                 //var screenPoint = _mainCamera.WorldToScreenPoint(worlsPoint);
                 //RectTransformUtility.ScreenPointToLocalPointInRectangle(_canvasRect, screenPoint, _mainCamera, out localPoint);

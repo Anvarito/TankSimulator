@@ -49,6 +49,10 @@ namespace ChobiAssets.PTM
             }
         }
 
+        public void SetRelationship(ERelationship relationType)
+        {
+            _relationship = relationType;
+        }
 
         void Start()
         {

@@ -17,40 +17,24 @@ namespace ChobiAssets.PTM
         // User options >>
         private ReticleUIPresenter _reticleUIPresenter;
         // << User options
+
+        public void Init( Gun_Camera_CS gunCamera, CameraViewSetup cameraSetup)
+        {
+            _gunCamera = gunCamera;
+            _cameraSetup = cameraSetup;
+
+            InitialUIRecivier();
+        }
+
+        protected override void DestroyUI()
+        {
+        }
+
         protected override void InstantiateCanvas()
         {
             base.InstantiateCanvas();
 
-            //Canvas canvas = new GameObject("ReticleCanvas").AddComponent<Canvas>();
-            //canvas.renderMode = RenderMode.ScreenSpaceCamera;
-            //canvas.planeDistance = 1;
-            //canvas.worldCamera = _cameraSetup.GetGunCamera();
-            //canvas.gameObject.AddComponent<CanvasScaler>().uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-            //canvas.GetComponent<CanvasScaler>().referenceResolution = new Vector2(1920, 1080);
-            //_reticleUIPresenter = canvas.gameObject.AddComponent<ReticleUIPresenter>();
-
-            //Image reticle = new GameObject("Reticle").AddComponent<Image>();
-            //reticle.transform.parent = canvas.transform;
-            //reticle.sprite = _reticleSprite;
-            //reticle.rectTransform.localPosition = Vector3.zero;
-            //reticle.rectTransform.anchorMin = Vector2.zero;
-            //reticle.rectTransform.anchorMax = Vector2.one;
-            //reticle.rectTransform.localScale = Vector3.one;
-            //reticle.rectTransform.sizeDelta = Vector3.zero;
-            //reticle.preserveAspect = true;
-
-            //Image rangefinder = new GameObject("Rangefinder").AddComponent<Image>();
-            //rangefinder.transform.parent = reticle.transform;
-            //rangefinder.sprite = _rengeSprite;
-            //rangefinder.rectTransform.localPosition = new Vector3(0, 0, 0);
-            //rangefinder.rectTransform.anchorMin = new Vector2(0, 0);
-            //rangefinder.rectTransform.anchorMax = new Vector2(1, 1);
-            //rangefinder.rectTransform.localScale = new Vector3(0.68f, 0.68f, 0.68f);
-            //rangefinder.rectTransform.sizeDelta = new Vector2(0, 0);
-            //rangefinder.preserveAspect = true;
-
-            _reticleUIPresenter = Instantiate(_presenterPrefab) as ReticleUIPresenter;
-            _reticleUIPresenter.InitialCanvas();
+            _reticleUIPresenter = _spawnedPresenter as ReticleUIPresenter;
             _reticleUIPresenter.SetCamera(_cameraSetup.GetGunCamera());
         }
 
@@ -72,11 +56,6 @@ namespace ChobiAssets.PTM
         private void FOVchange(float alpha)
         {
             _reticleUIPresenter.SetRangefinder(alpha);
-        }
-
-        protected override void DestroyUI()
-        {
-            Destroy(_reticleUIPresenter.gameObject);
         }
     }
 }

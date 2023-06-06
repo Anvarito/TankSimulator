@@ -66,7 +66,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _presenterPrefab: {fileID: 2735223905454046662, guid: 247687aca8c20d64bbc37f0d98866465, type: 3}
-  _bulletGenerator: {fileID: 0}
 --- !u!114 &1127647858160360992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,7 +79,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _presenterPrefab: {fileID: 1442603259745270361, guid: 4c05cce6d1b365f4db8a9702c9a100ad, type: 3}
-  _cannonFireScript: {fileID: 0}
 --- !u!114 &398834320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,7 +118,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _presenterPrefab: {fileID: 4276478798196292613, guid: 8ba9b2f39b3d4494caf37a2f92a71e09, type: 3}
-  _drive_Control_CS: {fileID: 0}
 --- !u!114 &4713451948404591603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,12 +160,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4883390a091239408f6ca8044a939b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageRecivierManager: {fileID: 0}
-  _gunCamera: {fileID: 0}
-  _cameraSetup: {fileID: 0}
-  _aiming_Control: {fileID: 0}
-  _UI_Position_Marker_Control_CS: {fileID: 4713451948404591603}
-  _selfID: {fileID: 0}
+  _aimMarkerRecivier: {fileID: 5048355752775529110}
+  _leadMarkerRecivier: {fileID: 331844288142114373}
+  _reloadingRecivier: {fileID: 1127647858160360992}
+  _reticleRecivier: {fileID: 398834320}
+  _hitPointsRecivier: {fileID: 398834321}
+  _speedRecivier: {fileID: 1224471283}
+  _positionActorsRecivier: {fileID: 4713451948404591603}
+  _hitPointsTargetRecivier: {fileID: 6740176055343302917}
   _colorsHolder:
     mainColor: {r: 1, g: 1, b: 1, a: 1}
     secondaryColor: {r: 0, g: 0.003921569, b: 1, a: 0.77254903}

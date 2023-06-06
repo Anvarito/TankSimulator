@@ -63,7 +63,7 @@ namespace ChobiAssets.PTM
             _isShow = false;
         }
 
-        internal void Show(Transform targetTransform, bool isAlly)
+        internal void Show(Transform targetTransform)
         {
             _targetTansform = targetTransform;
             Bars_Parent_Transform.gameObject.SetActive(true);

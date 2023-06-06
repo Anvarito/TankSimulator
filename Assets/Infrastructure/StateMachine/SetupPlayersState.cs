@@ -12,7 +12,7 @@ namespace Infrastructure.StateMachine
         private readonly SceneLoader _sceneLoader;
         private readonly IInputService _inputService;
         private readonly IInputFactory _inputFactory;
-
+        private readonly string LevelName = "MinimalTest";
         public SetupPlayersState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, IInputService inputService,
             IFactories factories)
         {
@@ -70,7 +70,7 @@ namespace Infrastructure.StateMachine
 
         private void EnterNextStateIfReady()
         {
-            if (AllReady()) _gameStateMachine.Enter<LoadLevelState,string>("Main");
+            if (AllReady()) _gameStateMachine.Enter<LoadLevelState,string>(LevelName);
         }
 
         private bool AllReady() => 

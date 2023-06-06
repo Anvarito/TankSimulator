@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Scenes/Initial.unity.meta
-guid: b3c0dce3cb9559842b1a98fb7451751a
-========
-guid: afce8553bfb1b0742a9102b8d57ed082
+<<<<<<<< HEAD:Assets/Models/Bmp_2.meta
+guid: 4a8071aa433544a48ab1e9cbfae1ef96
 folderAsset: yes
->>>>>>>> Anvar:Assets/Models/Bmp_2.meta
+========
+guid: b3c0dce3cb9559842b1a98fb7451751a
+>>>>>>>> Roman:Assets/Scenes/Initial.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

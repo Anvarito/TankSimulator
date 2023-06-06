@@ -10,9 +10,10 @@
 
             base.Initialize(recivierSettings);
         }
-        protected override void ParthDestroy()
+
+        protected override void ParthDestroy(ID_Settings_CS bulletLauncherID)
         {
-            base.ParthDestroy();
+            base.ParthDestroy(bulletLauncherID);
             Turret_Destroyed_Linkage();
         }
 

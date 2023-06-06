@@ -9,7 +9,7 @@ namespace ChobiAssets.PTM
 
         [SerializeField] private float Damage_Multiplier = 1.0f;
         [SerializeField] private bool _isShowVisual = true;
-        [HideInInspector] public UnityEvent<float, int> OnArmorDamage;
+        [HideInInspector] public UnityEvent<float, ID_Settings_CS> OnArmorDamage;
 
         private float _damageThreshold;
 
@@ -39,19 +39,19 @@ namespace ChobiAssets.PTM
             //}
         }
 
-        public void DealDamage(float damage, int bulletType)
+        public void DealDamage(float damage, ID_Settings_CS bulletLauncherID)
         { // Called from "Bullet_Control_CS".
 
             // Apply the multiplier.
-            if (bulletType == 0)
-            { // AP
-                damage *= Damage_Multiplier;
-            }
+            //if (bulletType == 0)
+            //{ // AP
+            //    damage *= Damage_Multiplier;
+            //}
 
-            OnArmorDamage?.Invoke(damage, bulletType);
+            OnArmorDamage?.Invoke(damage, bulletLauncherID);
         }
 
-        public bool CheckBreackout(float damage, int bulletType)
+        public bool CheckBreackout(float damage)
         {
             if (damage < _damageThreshold)
             { // Never receive any damage under the threshold value.

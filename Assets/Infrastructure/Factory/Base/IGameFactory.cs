@@ -19,7 +19,8 @@ namespace Infrastructure.Factory.Base
         List<PlayerUiParts> PlayerParts { get; }
         GameOverBoard GameBoard { get; }
 
-        void CreatePlayers(GameObject[] at);
+        void CreatePlayers(TeamSeparator separator);
+        void CreateTankUiSpawners(List<DamageReciviersManager> enemyDamageList);
         void CreateHud();
 
 
@@ -30,8 +31,8 @@ namespace Infrastructure.Factory.Base
     public interface IEnemyFactory : IGameFactory
     {
         List<DamageReciviersManager> EnemyDamageManagers { get; }
-        void CreateEnemies(GameObject[] at);
-        public void CreateTankController();
+        void CreateEnemies(TeamSeparator separator);
+        public void CreateGameController();
     }
     
     internal interface IInputFactory : IGameFactory

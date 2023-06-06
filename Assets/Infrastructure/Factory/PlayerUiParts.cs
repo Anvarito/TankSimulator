@@ -10,5 +10,7 @@ namespace Infrastructure.Factory
         public Gun_Camera_CS GunCamera { get; set; }
         public DamageReciviersManager DamageReceiver { get; set; }
         public Drive_Control_CS DriveControl { get; set; }
+        public CameraViewSetup CameraView { get; set; }
+        public ID_Settings_CS IdSettings{ get; set; }
     }
 }

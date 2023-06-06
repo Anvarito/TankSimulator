@@ -53,7 +53,7 @@ namespace Infrastructure.StateMachine
             GameOver();
         }
 
-        private void PlayerDestroyed()
+        private void PlayerDestroyed(ID_Settings_CS _killerID)
         {
             GameOver();
         }
@@ -61,7 +61,7 @@ namespace Infrastructure.StateMachine
         private void GameOver() => 
             _gameStateMachine.Enter<GameOverState>();
 
-        private void EnemyDestroyed()
+        private void EnemyDestroyed(ID_Settings_CS _killerID)
         {
             if (IsEnemiesDestroyed()) _gameStateMachine.Enter<VictoryState,float>(_enemyDestroyed * _pointForEnemy);
         }

@@ -4,29 +4,7 @@
     public class Damage_Control_03_Physics_Track_Piece_CS : DamageRecivierBase
     {
 
-        public int Track_Index; // 0 = Left, 1 = Right.
-
-        public override void DealDamage(float damage, int bulletType)
-        { // Called from "Bullet_Control_CS", when the bullet hits this collider.
-
-            // Send the damage value to the "Damage_Control_Center_CS".
-            //if (centerScript.Receive_Damage(damage, 2, Track_Index) == true)
-            //{ // type = 2 (Physics_Track piece), index = Track_Index (0 = Left, 1 = Right). true = The track has been destroyed.
-                
-            //    // Break the track by removing the HingeJoint.
-            //    HingeJoint hingeJoint = GetComponent<HingeJoint>();
-            //    if (hingeJoint)
-            //    {
-            //        Destroy(hingeJoint);
-            //    }
-            //    return true;
-            //}
-            //else
-            //{ // The track has not been destroyed.
-            //    return false;
-            //}
-        }
-
+        public int Track_Index; // 0 = Left, 1 = Right
 
         void Track_Destroyed_Linkage(bool isLeft)
         { // Called from "Damage_Control_Center_CS", when the track has broken.

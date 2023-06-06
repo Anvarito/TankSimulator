@@ -26,6 +26,7 @@ namespace ChobiAssets.PTM
         public float Explosion_Radius;
         // << User options
 
+        private ID_Settings_CS _bulletLauncherID;
 
         // Set by "Bullet_Generator_CS".
         public float Attack_Point;
@@ -37,13 +38,7 @@ namespace ChobiAssets.PTM
         bool isLiving = true;
 
 
-        void Start()
-        {
-            Initialize();
-        }
-
-
-        void Initialize()
+        public void Initialize(ID_Settings_CS bulletLauncherID)
         {
             if (This_Transform == null)
             {
@@ -54,10 +49,11 @@ namespace ChobiAssets.PTM
                 This_Rigidbody = GetComponent<Rigidbody>();
             }
 
+            _bulletLauncherID = bulletLauncherID;
             // Set the collision detection mode.
             This_Rigidbody.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
 
-            Destroy(this.gameObject, Life_Time);
+            //Destroy(this.gameObject, Life_Time);
         }
 
 
@@ -126,10 +122,10 @@ namespace ChobiAssets.PTM
                 //}
 
                 // Send the damage value to "Damage##" script.
-                if (damageble.CheckBreackout(damageValue, Type))
+                if (damageble.CheckBreackout(damageValue))
                 { // The hit part has been destroyed.
                     // Remove the bullet from the scene.
-                    damageble.DealDamage(damageValue, Type);
+                    damageble.DealDamage(damageValue, _bulletLauncherID);
                     Instantiate(Impact_Object, This_Transform.position, Quaternion.identity);
                     Destroy(this.gameObject);
                 }
@@ -153,6 +149,11 @@ namespace ChobiAssets.PTM
             }
         }
 
+        internal void Launch()
+        {
+            Vector3 currentVelocity = transform.forward * Initial_Velocity;
+            This_Rigidbody.velocity = currentVelocity;
+        }
 
         void HE_Hit_Process()
         {
@@ -213,7 +214,7 @@ namespace ChobiAssets.PTM
                 if (damageScript != null)
                 { // The collider should be a breakable object.
                     var damageValue = Attack_Point * loss * Attack_Multiplier;
-                    damageScript.DealDamage(damageValue, Type);
+                    damageScript.DealDamage(damageValue, _bulletLauncherID);
                     // Output for debugging.
                     if (Debug_Flag)
                     {

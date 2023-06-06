@@ -25,9 +25,9 @@ public class PlayerInputInitializer : InputInitializerBase
         _newControl = new NewControl();
     }
 
-    protected override void TankDestroyed()
+    protected override void TankDestroyed(ID_Settings_CS bulletInitiatorID)
     {
-        base.TankDestroyed();
+        base.TankDestroyed(bulletInitiatorID);
         _gunCameraControl.TurretDestroyed();
     }
 

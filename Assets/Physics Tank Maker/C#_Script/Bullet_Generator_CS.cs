@@ -34,14 +34,14 @@ namespace ChobiAssets.PTM
         public float Current_Bullet_Velocity; // Referred to from "Turret_Horizontal_CS", "Cannon_Vertical_CS", "UI_Lead_Marker_Control_CS".
         int currentBulletType;
         Transform thisTransform;
-
+        private ID_Settings_CS _selfID;
         // Only for AI tank.
         public bool Can_Aim; // Set by "AI_CS", and referred to from "Cannon_Fire_Input_99_AI_CS" script.
 
         public void Initialize()
         {
             thisTransform = transform;
-
+            _selfID = GetComponentInParent<ID_Settings_CS>();
             // Switch the bullet type at the first time.
             currentBulletType = Initial_Bullet_Type - 1; // (Note.) The "currentBulletType" value is added by 1 soon in the "Switch_Bullet_Type()".
             Switch_Bullet_Type();
@@ -68,19 +68,17 @@ namespace ChobiAssets.PTM
             }
         }
 
-
         public void Fire_Linkage(int direction)
         { // Called from "Cannon_Fire_CS".
             if (Barrel_Type == 0 || Barrel_Type == direction)
             { // Single barrel, or the same direction.
 
                 // Generate the bullet and shoot it.
-                StartCoroutine("Generate_Bullet");
+                StartCoroutine(Generate_Bullet());
             }
         }
 
-
-        IEnumerator Generate_Bullet()
+        private IEnumerator Generate_Bullet()
         {
             // Generate the muzzle fire.
             if (MuzzleFire_Object)
@@ -117,6 +115,7 @@ namespace ChobiAssets.PTM
                     yield break;
             }
 
+
             // Set values of "Bullet_Control_CS" in the bullet.
             bulletObject.Attack_Point = attackPoint;
             bulletObject.Initial_Velocity = Current_Bullet_Velocity;
@@ -125,16 +124,15 @@ namespace ChobiAssets.PTM
             bulletObject.Debug_Flag = Debug_Flag;
 
             // Set the tag.
-            bulletObject.tag = "Finish"; // (Note.) The ray cast for aiming does not hit any object with "Finish" tag.
+            bulletObject.tag = Layer_Settings_CS.FinishTag; // (Note.) The ray cast for aiming does not hit any object with "Finish" tag.
 
             // Set the layer.
             bulletObject.gameObject.layer = Layer_Settings_CS.Bullet_Layer;
+            bulletObject.Initialize(_selfID);
 
             // Shoot.
             yield return new WaitForFixedUpdate();
-            Rigidbody rigidbody = bulletObject.GetComponent<Rigidbody>();
-            Vector3 currentVelocity = bulletObject.transform.forward * Current_Bullet_Velocity;
-            rigidbody.velocity = currentVelocity;
+            bulletObject.Launch();
         }
 
     }

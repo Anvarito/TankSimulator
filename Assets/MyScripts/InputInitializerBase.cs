@@ -28,7 +28,7 @@ public class InputInitializerBase : MonoBehaviour
         InititalizeControlls();
     }
 
-    protected virtual void TankDestroyed()
+    protected virtual void TankDestroyed(ID_Settings_CS bulletInitiatorID)
     {
         transform.tag = Layer_Settings_CS.FinishTag;
 
