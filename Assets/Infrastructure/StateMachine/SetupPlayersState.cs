@@ -8,11 +8,13 @@ namespace Infrastructure.StateMachine
 {
     public class SetupPlayersState : IPayloadedState<string>
     {
+        private const string LevelName = "MinimalTest";
+        
         private readonly GameStateMachine _gameStateMachine;
         private readonly SceneLoader _sceneLoader;
         private readonly IInputService _inputService;
         private readonly IInputFactory _inputFactory;
-        private readonly string LevelName = "MinimalTest";
+
         public SetupPlayersState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, IInputService inputService,
             IFactories factories)
         {
