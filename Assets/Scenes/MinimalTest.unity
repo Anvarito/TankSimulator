@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028471, g: 0.22571439, b: 0.3069231, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028392, g: 0.22571497, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3506,8 +3506,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnPoints:
+  - {fileID: 34675484}
+  - {fileID: 558587777}
   - {fileID: 27319494}
+  - {fileID: 1862860566}
   - {fileID: 2040344558}
+  - {fileID: 633758788}
+  - {fileID: 676805098}
+  - {fileID: 216882295}
+  - {fileID: 1967466576}
+  - {fileID: 1446733030}
+  - {fileID: 1305295468}
+  - {fileID: 504163258}
+  - {fileID: 369535864}
+  - {fileID: 1971175967}
+  - {fileID: 1372604485}
+  - {fileID: 755282128}
+  - {fileID: 1311090621}
+  - {fileID: 394686975}
+  - {fileID: 1686308202}
+  - {fileID: 1851896943}
+  - {fileID: 243990026}
+  - {fileID: 1698879117}
+  - {fileID: 1325968399}
+  - {fileID: 654897254}
+  - {fileID: 404649918}
+  - {fileID: 1937449830}
+  - {fileID: 594112570}
+  - {fileID: 264637928}
+  - {fileID: 636083445}
+  - {fileID: 225158454}
+  - {fileID: 1102948299}
+  - {fileID: 1040355578}
+  - {fileID: 1346310842}
+  - {fileID: 781996236}
+  - {fileID: 2088790035}
+  - {fileID: 319794062}
 --- !u!1 &1937449828
 GameObject:
   m_ObjectHideFlags: 0

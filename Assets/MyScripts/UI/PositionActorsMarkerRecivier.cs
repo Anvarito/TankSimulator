@@ -141,9 +141,12 @@ namespace ChobiAssets.PTM
                     continue;
                 }
 
-                Vector3 playerToEnemy = (currentActor.transform.position + Vector3.up * Upper_Offset) - transform.position;
-                //Debug.DrawLine(transform.position, currentActor.transform.position + Vector3.up * Upper_Offset, Color.white);
-                Ray ray = new Ray(transform.position, playerToEnemy.normalized);
+                Vector3 pointPlayer = _gunCamera.transform.position;
+                Vector3 pointEnemy = currentActor.transform.position + Vector3.up * Upper_Offset;
+
+                Vector3 playerToEnemy = pointEnemy - pointPlayer;
+                Debug.DrawLine(pointPlayer, pointEnemy, Color.white);
+                Ray ray = new Ray(pointPlayer, playerToEnemy.normalized);
                 _cameraPlanes = GeometryUtility.CalculateFrustumPlanes(_mainCamera);
 
                 float minDistance = float.MaxValue;
