@@ -145,7 +145,7 @@ namespace ChobiAssets.PTM
                 Vector3 pointEnemy = currentActor.transform.position + Vector3.up * Upper_Offset;
 
                 Vector3 playerToEnemy = pointEnemy - pointPlayer;
-                Debug.DrawLine(pointPlayer, pointEnemy, Color.white);
+                //Debug.DrawLine(pointPlayer, pointEnemy, Color.white);
                 Ray ray = new Ray(pointPlayer, playerToEnemy.normalized);
                 _cameraPlanes = GeometryUtility.CalculateFrustumPlanes(_mainCamera);
 
