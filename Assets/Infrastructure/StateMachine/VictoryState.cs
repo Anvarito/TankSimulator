@@ -1,5 +1,6 @@
 using Infrastructure.Factory.Base;
 using Infrastructure.Factory.Compose;
+using Infrastructure.Services.Input;
 using UnityEngine;
 
 namespace Infrastructure.StateMachine
@@ -8,6 +9,7 @@ namespace Infrastructure.StateMachine
     {
         private readonly GameStateMachine _gameStateMachine;
         private readonly IPlayerFactory _playerFactory;
+        private readonly IInputService _inputService;
 
         public VictoryState(GameStateMachine gameStateMachine,IFactories factories)
         {
@@ -21,6 +23,14 @@ namespace Infrastructure.StateMachine
             
             _playerFactory.GameBoard.ShowVictory(score);
             _playerFactory.GameBoard.OnPressContinue += Continue;
+
+            SetupMenu();
+        }
+
+        private void SetupMenu()
+        {
+            _inputService.ConnectToInputs(_playerFactory.GameBoard.transform.root.gameObject, true);
+
         }
 
         private void Continue() => 
