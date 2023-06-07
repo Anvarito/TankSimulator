@@ -18,15 +18,16 @@ namespace Infrastructure.StateMachine
         private readonly ICoroutineRunner _coroutineRunner;
         private readonly IPlayerFactory _playerFactory;
         private readonly IEnemyFactory _enemyFactory;
-        
+
         private int _enemyDestroyed;
+        private int _playerDestroyed;
         private Coroutine _gameTimeCoroutine;
 
         public GameLoopState(GameStateMachine gameStateMachine, ICoroutineRunner coroutineRunner, IFactories factories)
         {
             _gameStateMachine = gameStateMachine;
             _coroutineRunner = coroutineRunner;
-            
+
             _playerFactory = factories.Single<IPlayerFactory>();
             _enemyFactory = factories.Single<IEnemyFactory>();
         }
@@ -43,7 +44,7 @@ namespace Infrastructure.StateMachine
         public void Exit()
         {
             UnregisterDamageManagers();
-            
+
             _coroutineRunner.StopCoroutine(_gameTimeCoroutine);
         }
 
@@ -55,25 +56,27 @@ namespace Infrastructure.StateMachine
 
         private void PlayerDestroyed(ID_Settings_CS _killerID)
         {
-            GameOver();
+            if (++_playerDestroyed >= _playerFactory.PlayerParts.Count)
+                GameOver();
         }
 
-        private void GameOver() => 
+        private void GameOver() =>
             _gameStateMachine.Enter<GameOverState, float>(_enemyDestroyed * _pointForEnemy);
+
 
         private void EnemyDestroyed(ID_Settings_CS _killerID)
         {
-            if (IsEnemiesDestroyed()) _gameStateMachine.Enter<VictoryState,float>(_enemyDestroyed * _pointForEnemy);
+            if (IsEnemiesDestroyed()) _gameStateMachine.Enter<VictoryState, float>(_enemyDestroyed * _pointForEnemy);
         }
 
-        private bool IsEnemiesDestroyed() => 
+        private bool IsEnemiesDestroyed() =>
             ++_enemyDestroyed == _enemyFactory.EnemyDamageManagers.Count;
 
         private void RegisterDamageManagers()
         {
             foreach (PlayerUiParts part in _playerFactory.PlayerParts)
                 part.DamageReceiver.OnTankDestroyed.AddListener(PlayerDestroyed);
-            
+
             foreach (DamageReciviersManager enemyDamageManager in _enemyFactory.EnemyDamageManagers)
             {
                 enemyDamageManager.OnTankDestroyed.AddListener(EnemyDestroyed);
