@@ -48,19 +48,19 @@ namespace Infrastructure.StateMachine
             GameObject tankPickerUI = _inputFactory.CreateTankPickerUI(canvas);
             _inputService.ConnectToInputs(tankPickerUI, individually: true);
 
-            _inputFactory.TankPickerUIHelpers.Last().OnFirstTank += PickFirstTank;
-            _inputFactory.TankPickerUIHelpers.Last().OnSecondTank += PickSecondTank;
+            _inputFactory.TankPickerUIHelpers.Last().OnTankChoise.AddListener(PickTank);
+            //_inputFactory.TankPickerUIHelpers.Last().OnSecondTank += PickSecondTank;
         }
 
-        private void PickSecondTank(Infrastructure.Services.Input.PlayerConfiguration playerConfiguration)
-        {
-            playerConfiguration.IsReady = true;
-            playerConfiguration.TankIndex = 1;
+        //private void PickSecondTank(Infrastructure.Services.Input.PlayerConfiguration playerConfiguration)
+        //{
+        //    playerConfiguration.IsReady = true;
+        //    playerConfiguration.TankIndex = 1;
 
-            EnterNextStateIfReady();
-        }
+        //    EnterNextStateIfReady();
+        //}
 
-        private void PickFirstTank(Infrastructure.Services.Input.PlayerConfiguration playerConfiguration)
+        private void PickTank(Infrastructure.Services.Input.PlayerConfiguration playerConfiguration)
         {
             playerConfiguration.IsReady = true;
             playerConfiguration.TankIndex = 0;
