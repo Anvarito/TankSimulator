@@ -21,8 +21,8 @@ namespace Infrastructure.StateMachine
         {
             Debug.Log($"Entered {this.GetType().Name}");
             
-            _playerFactory.GameBoard.ShowVictory(score);
-            _playerFactory.GameBoard.OnPressContinue += Continue;
+            _playerFactory.GameBoard.ShowVictoryPanel(score);
+            _playerFactory.GameBoard.OnPressContinue += Menu;
 
             SetupMenu();
         }
@@ -33,12 +33,12 @@ namespace Infrastructure.StateMachine
 
         }
 
-        private void Continue() => 
+        private void Menu() => 
             _gameStateMachine.Enter<MenuState>();
 
         public void Exit()
         {
-            _playerFactory.GameBoard.OnPressContinue -= Continue;
+            _playerFactory.GameBoard.OnPressContinue -= Menu;
         }
     }
 }

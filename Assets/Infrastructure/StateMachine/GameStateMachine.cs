@@ -22,7 +22,7 @@ namespace Infrastructure.StateMachine
                 [typeof(LoadProgressState)] = new LoadProgressState(this, serviceLocator.Single<IProgressService>(), serviceLocator.Single<ISaveLoadService>()), 
                 [typeof(GameLoopState)] = new GameLoopState(this, coroutineRunner,serviceLocator.Single<IFactories>()),
                 [typeof(VictoryState)] = new VictoryState(this, serviceLocator.Single<IFactories>()),
-                [typeof(GameOverState)] = new GameOverState(this),
+                [typeof(GameOverState)] = new GameOverState(this, serviceLocator.Single<IFactories>()),
                 [typeof(MenuState)] = new MenuState(this,sceneLoader,serviceLocator.Single<IInputService>(),serviceLocator.Single<IFactories>()),
                 [typeof(SetupPlayersState)] = new SetupPlayersState(this,sceneLoader,serviceLocator.Single<IInputService>(),serviceLocator.Single<IFactories>()),
                 [typeof(SetupFirstInputState)] = new SetupFirstInputState(this,sceneLoader,serviceLocator.Single<IInputService>(),serviceLocator.Single<IFactories>()),

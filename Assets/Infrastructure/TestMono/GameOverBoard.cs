@@ -21,6 +21,8 @@ namespace Infrastructure.TestMono
         [Header("Colors")]
         [SerializeField] private Color _colorPanelVictory;
         [SerializeField] private Color _colorHeaderVictory;
+
+
         [SerializeField] private Color _colorPanelDefeat;
         [SerializeField] private Color _colorHeaderlDefeat;
 
@@ -43,12 +45,24 @@ namespace Infrastructure.TestMono
             OnPressContinue?.Invoke();
         }
 
-        public void ShowVictory(float score)
+        public void ShowVictoryPanel(float score)
         {
             Debug.Log($"Score: {score}");
             _mainPanel.gameObject.SetActive(true);
             _headerText.text = "Победа!";
+            _headerText.color = _colorHeaderVictory;
             _mainPanel.color = _colorPanelVictory;
+            _scoreText.text = _originText + "\n" + score;
+        }
+
+
+        internal void ShowDefeatPanel(float score)
+        {
+            Debug.Log($"Score: {score}");
+            _mainPanel.gameObject.SetActive(true);
+            _headerText.text = "Поражение!";
+            _headerText.color = _colorHeaderlDefeat;
+            _mainPanel.color = _colorPanelDefeat;
             _scoreText.text = _originText + "\n" + score;
         }
 
