@@ -72,7 +72,7 @@ namespace Infrastructure.StateMachine
 
         private void EnterNextStateIfReady()
         {
-            if (AllReady()) _gameStateMachine.Enter<LoadLevelState,string>(LevelName);
+            if (AllReady()) _gameStateMachine.Enter<ChooseLevelModeState>();
         }
 
         private bool AllReady() => 

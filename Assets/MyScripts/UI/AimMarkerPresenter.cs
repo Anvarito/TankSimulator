@@ -1,4 +1,3 @@
-using ChobiAssets.PTM;
 using UnityEngine;
 using UnityEngine.UI;
 

@@ -1,6 +1,4 @@
-using UnityEngine;
 using ChobiAssets.PTM;
-using UnityEngine.UI;
 
 public class SpeedIndicatorRecivier : UIRecivierBase
 {

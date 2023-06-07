@@ -26,17 +26,17 @@ namespace Infrastructure.StateMachine
             Debug.Log($"Entered {this.GetType().Name}");
             
             _sceneLoader.Load(Intro,onLoad);
-            _inputService.OnPlayerJoined += EnterLoadProgressState;
+            _inputService.OnPlayerJoined += EnterChooseLevelModeState;
         }
 
 
         public void Exit()
         {
             _sceneLoader.CancelLoading();
-            _inputService.OnPlayerJoined -= EnterLoadProgressState;
+            _inputService.OnPlayerJoined -= EnterChooseLevelModeState;
         }
 
-        private void EnterLoadProgressState() => 
+        private void EnterChooseLevelModeState() => 
             _gameStateMachine.Enter<LoadProgressState>();
         private void onLoad() => 
             _inputFactory.CretePleasePressButtonPanel();

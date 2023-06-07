@@ -1,4 +1,3 @@
-using UnityEngine;
 using ChobiAssets.PTM;
 
 public class HitPoitsBarUIReceiver : UIRecivierBase

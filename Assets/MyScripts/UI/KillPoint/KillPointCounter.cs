@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using ChobiAssets.PTM;
-using System;
 
 public class KillPointCounter : MonoBehaviour
 {

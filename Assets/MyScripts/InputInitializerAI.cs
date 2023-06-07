@@ -1,6 +1,4 @@
 using ChobiAssets.PTM;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class InputInitializerAI : InputInitializerBase
