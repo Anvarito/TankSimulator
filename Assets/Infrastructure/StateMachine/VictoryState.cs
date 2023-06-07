@@ -29,12 +29,12 @@ namespace Infrastructure.StateMachine
 
         private void SetupMenu()
         {
-            _inputService.ConnectToInputs(_playerFactory.GameBoard.transform.root.gameObject, true);
+            //_inputService.ConnectToInputs(_playerFactory.GameBoard.transform.root.gameObject, true);
 
         }
 
         private void Continue() => 
-            _gameStateMachine.Enter<BootstrapState>();
+            _gameStateMachine.Enter<MenuState>();
 
         public void Exit()
         {

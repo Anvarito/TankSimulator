@@ -6,7 +6,20 @@ using UnityEngine;
 public class TeamSeparator : MonoBehaviour
 {
     // Start is called before the first frame update
-    public List<SpawnPoint> _spawnPoints;
+    private List<SpawnPoint> _spawnPoints = new List<SpawnPoint>();
+
+    private void Awake()
+    {
+        foreach (Transform i in transform)
+        {
+            if(i.TryGetComponent(out SpawnPoint spawnPoint))
+            {
+                if(spawnPoint.gameObject.activeInHierarchy)
+                _spawnPoints.Add(spawnPoint);
+            }
+        }
+    }
+
     public int EnemysCount()
     {
         int count = 0;

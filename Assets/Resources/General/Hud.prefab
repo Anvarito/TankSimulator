@@ -130,7 +130,7 @@ Canvas:
   m_GameObject: {fileID: 814525490791349838}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -374,7 +374,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 1293074407474059233}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -496,7 +496,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 7319209373451131852}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -765,6 +765,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63e392241495472a8ac97d58cceb0f96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canvas: {fileID: 7787792733695321080}
   _mainPanel: {fileID: 5515478026465821472}
   _headerText: {fileID: 1832816057451141307}
   _scoreText: {fileID: 830899356857520270}

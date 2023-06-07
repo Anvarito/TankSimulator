@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using ChobiAssets.PTM;
 
 namespace Infrastructure.TestMono
 {
@@ -10,6 +11,7 @@ namespace Infrastructure.TestMono
     
     public class GameOverBoard : MonoBehaviour
     {
+        [SerializeField] private Canvas _canvas;
         [SerializeField] private Image _mainPanel;
         [SerializeField] private TextMeshProUGUI _headerText;
         [SerializeField] private TextMeshProUGUI _scoreText;
@@ -26,8 +28,7 @@ namespace Infrastructure.TestMono
         [Header("Buttons")]
         [SerializeField] private Button _restartButton;
         [SerializeField] private Button _menuButton;
-
-        private void Awake()
+        public void Awake()
         {
             _restartButton.onClick.AddListener(RestartClick);
             _menuButton.onClick.AddListener(MenuClick);
