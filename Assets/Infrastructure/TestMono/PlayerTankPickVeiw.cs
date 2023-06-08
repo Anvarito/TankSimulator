@@ -1,37 +1,77 @@
+using Infrastructure.Services.StaticData;
+using Infrastructure.Services.StaticData.Tank;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerTankPickVeiw : MonoBehaviour
 {
+    [SerializeField] private GameObject _namePanel;
+    [SerializeField] private TextMeshProUGUI _readyText;
+    [SerializeField] private TextMeshProUGUI _nameText;
     [SerializeField] private TankPickerUIHelper _tankPickerUIHelper;
-    [SerializeField] private Image _faceImage;
 
-    [SerializeField] private Sprite _tank1;
-    [SerializeField] private Sprite _tank2;
-    [SerializeField] private Sprite _tank3;
+    private GameObject _choiseTank;
+    private Transform _spawnPoint;
+    private float _rotateAmount = 0;
 
-    private int _choiseIndex = 0;
-
-    private void Awake()
+    public void Initing(int playerIndex)
     {
-        _tankPickerUIHelper.OnRight.AddListener(MoveToRight);
-        _tankPickerUIHelper.OnLeft.AddListener(MoveToLeft);
+        SetNotReady();
+
+        _spawnPoint = playerIndex == 0 ? GameObject.Find("Player1DemoPoint").transform : GameObject.Find("Player2DemoPoint").transform;
+
+        if (playerIndex == 1)
+            Destroy(GameObject.Find("Player2ConnectHelp"));
+
+        SetUIposition();
+    }
+    private void SetUIposition()
+    {
+        Vector3 pos = Camera.main.WorldToScreenPoint(_spawnPoint.position);
+        transform.position = new Vector3(pos.x, Screen.height / 2, 0);
+    }
+    public void ShowTank(TankConfig tank)
+    {
+        if (_choiseTank != null)
+            Destroy(_choiseTank.gameObject);
+
+        _choiseTank = Instantiate(tank.PrefabEmpty, _spawnPoint.position, _spawnPoint.rotation);
+        _nameText.text = tank.Name;
     }
 
-    private void MoveToLeft()
+    internal void Submit()
     {
-       // print("Left");
-        _choiseIndex--;
-
+        SetReady();
+        _namePanel.SetActive(false);
     }
 
-    private void MoveToRight()
-    {
-        //print("Right");
-        _choiseIndex++;
 
+    public void Rotate(float amount)
+    {
+        _rotateAmount = amount;
     }
+    private void Update()
+    {
+        if (_choiseTank == null)
+            return;
+
+        _choiseTank.transform.Rotate(0, -_rotateAmount * 0.4f, 0);
+    }
+
+    private void SetReady()
+    {
+        _readyText.text = "Игрок готов!";
+        _readyText.color = Color.green;
+    }
+
+    private void SetNotReady()
+    {
+        _readyText.text = "Выберите танк";
+        _readyText.color = Color.red;
+    }
+
 }

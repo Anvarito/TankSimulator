@@ -1297,17 +1297,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 413740d98fd0b2748bf101b883e8b4ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _readyText: {fileID: 246089611620794764}
-  _nameText: {fileID: 2128736181642994970}
-  _namePanel: {fileID: 4385696307505369087}
+  _playerTankPickVeiw: {fileID: 6623010918361956138}
   _inputModule: {fileID: 7087562972570238423}
   OnTankChoise:
-    m_PersistentCalls:
-      m_Calls: []
-  OnLeft:
-    m_PersistentCalls:
-      m_Calls: []
-  OnRight:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &6623010918361956138
@@ -1322,8 +1314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55e8e6c39d67b24468dc7d5d869dafeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _namePanel: {fileID: 4385696307505369087}
+  _readyText: {fileID: 246089611620794764}
+  _nameText: {fileID: 2128736181642994970}
   _tankPickerUIHelper: {fileID: 7526422784938722493}
-  _faceImage: {fileID: 0}
-  _tank1: {fileID: 21300000, guid: 876c0dafbd4af2a4ab15a3306b0f8919, type: 3}
-  _tank2: {fileID: 21300000, guid: 0ac55f9f886d827408c102bdf33c5ff7, type: 3}
-  _tank3: {fileID: 21300000, guid: f06e1a48aecc34043bf874ce86d4796b, type: 3}

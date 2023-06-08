@@ -11,29 +11,19 @@ using Infrastructure.Services.StaticData.Tank;
 using TMPro;
 public class TankPickerUIHelper : UIHelper
 {
-    [SerializeField] private TextMeshProUGUI _readyText;
-    [SerializeField] private TextMeshProUGUI _nameText;
-    [SerializeField] private GameObject _namePanel;
+    [SerializeField] private PlayerTankPickVeiw _playerTankPickVeiw;
     [SerializeField] private InputSystemUIInputModule _inputModule;
-    private Infrastructure.Services.Input.PlayerConfiguration _playerConfiguration;
 
-    [HideInInspector] public UnityEvent OnTankChoise;
+    private Infrastructure.Services.Input.PlayerConfiguration _playerConfiguration;
     private IStaticDataService _staticDataService;
     private List<TankId> _tanksId = new List<TankId>();
-
     private int _choiseIndex = 0;
-    private GameObject _choiseTank;
-    private Transform _spawnPoint;
-    private float _rotateAmount = 0;
 
-    [HideInInspector] public UnityEvent OnLeft;
-    [HideInInspector] public UnityEvent OnRight;
+    [HideInInspector] public UnityEvent OnTankChoise;
 
     public void Start()
     {
         base.Start();
-        SetNotReady();
-
         AddListeners();
     }
 
@@ -50,57 +40,38 @@ public class TankPickerUIHelper : UIHelper
             _tanksId.Add(tankId.Key);
         }
 
-        _spawnPoint = playerConfiguration.PlayerIndex == 0 ? GameObject.Find("Player1DemoPoint").transform : GameObject.Find("Player2DemoPoint").transform;
-
-        if (playerConfiguration.PlayerIndex == 1)
-            Destroy(GameObject.Find("Player2ConnectHelp"));
-
-        ShowTank();
-
-        SetUIposition();
+        _playerTankPickVeiw.Initing( playerConfiguration.PlayerIndex);
+        _playerTankPickVeiw.ShowTank(_staticDataService.ForTank(_tanksId[_choiseIndex]));
     }
 
-    private void SetUIposition()
-    {
-        Vector3 pos = Camera.main.WorldToScreenPoint(_choiseTank.transform.position);
-        transform.position = new Vector3(pos.x, Screen.height / 2, 0);
-    }
+    
 
     private void AddListeners()
     {
         _inputModule.move.action.performed += Move;
         _inputModule.submit.action.performed += Submit;
-        _inputModule.scrollWheel.action.performed += Rotate;
-        _inputModule.scrollWheel.action.canceled += StopRotate;
+        _inputModule.scrollWheel.action.performed += ScrollMove;
+        _inputModule.scrollWheel.action.canceled += ScrollStop;
     }
 
-    private void StopRotate(InputAction.CallbackContext obj)
+    private void ScrollStop(InputAction.CallbackContext obj)
     {
-        _rotateAmount = 0;
+        _playerTankPickVeiw.Rotate(0);
     }
 
-    private void Rotate(InputAction.CallbackContext input)
+    private void ScrollMove(InputAction.CallbackContext input)
     {
-        _rotateAmount = input.ReadValue<Vector2>().x;
-    }
-
-    private void Update()
-    {
-        if (_choiseTank == null)
-            return;
-
-        _choiseTank.transform.Rotate(0, -_rotateAmount * 0.4f ,0);
+        _playerTankPickVeiw.Rotate(input.ReadValue<Vector2>().x);
     }
 
     private void Submit(InputAction.CallbackContext input)
     {
-        SetReady();
         RemoveListeners();
-
-        _namePanel.SetActive(false);
 
         _playerConfiguration.IsReady = true;
         _playerConfiguration.PrefabPath = _staticDataService.ForTank(_tanksId[_choiseIndex]).PrefabPath;
+
+        _playerTankPickVeiw.Submit();
 
         OnTankChoise?.Invoke();
     }
@@ -110,26 +81,16 @@ public class TankPickerUIHelper : UIHelper
         if (input.ReadValue<Vector2>().x == -1)
         {
             _choiseIndex = ClampIndex(--_choiseIndex);
-            ShowTank();
-            OnRight?.Invoke();
+            _playerTankPickVeiw.ShowTank(_staticDataService.ForTank(_tanksId[_choiseIndex]));
         }
         else if (input.ReadValue<Vector2>().x == 1)
         {
             _choiseIndex = ClampIndex(++_choiseIndex);
-            ShowTank();
-            OnLeft?.Invoke();
+            _playerTankPickVeiw.ShowTank(_staticDataService.ForTank(_tanksId[_choiseIndex]));
         }
     }
 
-    private void ShowTank()
-    {
-        if (_choiseTank != null)
-            Destroy(_choiseTank.gameObject);
-
-        var tankCOnfig = _staticDataService.ForTank(_tanksId[_choiseIndex]);
-        _choiseTank = Instantiate(tankCOnfig.PrefabEmpty, _spawnPoint.position, _spawnPoint.rotation);
-        _nameText.text = tankCOnfig.Name;
-    }
+    
 
     private int ClampIndex(int index)
     {
@@ -145,18 +106,8 @@ public class TankPickerUIHelper : UIHelper
     {
         _inputModule.move.action.performed -= Move;
         _inputModule.submit.action.performed -= Submit;
-    }
-
-    private void SetReady()
-    {
-        _readyText.text = "Игрок готов!";
-        _readyText.color = Color.green;
-    }
-
-    private void SetNotReady()
-    {
-        _readyText.text = "Выберите танк";
-        _readyText.color = Color.red;
+        _inputModule.scrollWheel.action.performed -= ScrollMove;
+        _inputModule.scrollWheel.action.canceled -= ScrollStop;
     }
 
 
