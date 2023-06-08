@@ -14,4 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Tanks:
   - TankId: 0
-    Prefab: {fileID: 0}
+    PrefabPath: Tanks/Nona 9S
+    PrefabEmpty: {fileID: 6716286561939620575, guid: af10f0447e92d6040baf0f7b34a77ae3, type: 3}
+    Name: Nona 2S
+    Description: Battle Tank
+  - TankId: 1
+    PrefabPath: Tanks/Nona SVK
+    PrefabEmpty: {fileID: 1712048425407400889, guid: de21ba40075442847895da23e4b9ce0d, type: 3}
+    Name: Nona SVK
+    Description: Battle Tank
+  - TankId: 2
+    PrefabPath: Tanks/Vena
+    PrefabEmpty: {fileID: 5831650344577248825, guid: f02f532b4e0680148adde785d29c60a5, type: 3}
+    Name: Vena 2S31
+    Description: Battle Tank

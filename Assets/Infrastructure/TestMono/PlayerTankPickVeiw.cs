@@ -23,14 +23,14 @@ public class PlayerTankPickVeiw : MonoBehaviour
 
     private void MoveToLeft()
     {
-        print("Left");
+       // print("Left");
         _choiseIndex--;
 
     }
 
     private void MoveToRight()
     {
-        print("Right");
+        //print("Right");
         _choiseIndex++;
 
     }

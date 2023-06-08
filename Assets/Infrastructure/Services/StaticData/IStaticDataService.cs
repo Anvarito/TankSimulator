@@ -13,5 +13,6 @@ namespace Infrastructure.Services.StaticData
         GamemodeConfig ForMode(GamemodeId id);
         Dictionary<LevelId, LevelConfig> Levels { get; }
         Dictionary<GamemodeId, GamemodeConfig> Mods { get; }
+        Dictionary<TankId, TankConfig> Tanks{ get; }
     }
 }

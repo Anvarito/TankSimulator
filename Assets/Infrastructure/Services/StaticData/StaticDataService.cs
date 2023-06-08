@@ -19,12 +19,12 @@ namespace Infrastructure.Services.StaticData
 
         private const string ModsDataPath = "StaticData/ModsData";
 
-        private Dictionary<TankId, TankConfig> _tanks;
+        public Dictionary<TankId, TankConfig> Tanks { get; private set; }
 
 
         public void LoadAllStaticData()
         {
-            _tanks = Resources
+            Tanks = Resources
                 .Load<TanksStaticData>(TankDataPath)
                 .Tanks
                 .ToDictionary(x => x.TankId, x => x);
@@ -44,7 +44,7 @@ namespace Infrastructure.Services.StaticData
         }
 
         public TankConfig ForTank(TankId id) =>
-            _tanks.TryGetValue(id, out TankConfig config)
+            Tanks.TryGetValue(id, out TankConfig config)
                 ? config
                 : null;
 

@@ -51,22 +51,10 @@ namespace Infrastructure.StateMachine
             _inputService.ConnectToInputs(tankPickerUI, individually: true);
 
             _inputFactory.TankPickerUIHelpers.Last().OnTankChoise.AddListener(PickTank);
-            //_inputFactory.TankPickerUIHelpers.Last().OnSecondTank += PickSecondTank;
         }
 
-        //private void PickSecondTank(Infrastructure.Services.Input.PlayerConfiguration playerConfiguration)
-        //{
-        //    playerConfiguration.IsReady = true;
-        //    playerConfiguration.TankIndex = 1;
-
-        //    EnterNextStateIfReady();
-        //}
-
-        private void PickTank(Infrastructure.Services.Input.PlayerConfiguration playerConfiguration)
+        private void PickTank()
         {
-            playerConfiguration.IsReady = true;
-            playerConfiguration.TankIndex = 0;
-
             EnterNextStateIfReady();
         }
 

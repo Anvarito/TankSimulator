@@ -91,7 +91,7 @@ namespace Infrastructure.Services.Input
 
         public bool IsReady { get; set; }
         
-        public int TankIndex { get; set; }
+        public string PrefabPath { get; set; }
 
         public PlayerConfiguration(PlayerInput pi)
         {
