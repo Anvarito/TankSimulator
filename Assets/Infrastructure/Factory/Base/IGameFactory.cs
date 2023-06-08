@@ -26,6 +26,7 @@ namespace Infrastructure.Factory.Base
 
         MainMenuUIHelper MainMenuUIHelper { get; }
         GameObject CreateMainMenu();
+        GamemodeMapHelper CreateMapModeChoiseUI();
     }
 
     public interface IEnemyFactory : IGameFactory

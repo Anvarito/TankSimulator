@@ -1,18 +1,20 @@
-using System;
 using System.Collections.Generic;
 using ChobiAssets.PTM;
 using Infrastructure.Assets;
 using Infrastructure.Factory.Base;
 using Infrastructure.Services.Input;
+using Infrastructure.Services.Progress;
+using Infrastructure.Services.StaticData;
 using Infrastructure.TestMono;
 using UnityEngine;
-using Random = System.Random;
 
 namespace Infrastructure.Factory
 {
     public class PlayerFactory : GameFactory, IPlayerFactory
     {
         private readonly IInputService _inputService;
+        private readonly IProgressService _progressService;
+        private readonly IStaticDataService _dataService;
         public List<PlayerUiParts> PlayerParts { get; } = new List<PlayerUiParts>();
         public MainMenuUIHelper MainMenuUIHelper { get; private set; }
         public GameOverBoard GameBoard => _gameOverBoard;
@@ -21,10 +23,11 @@ namespace Infrastructure.Factory
 
         private List<ID_Settings_CS> _enemysID = new List<ID_Settings_CS>();
 
-        public PlayerFactory(IAssetLoader assetLoader, IInputService inputService) : base(assetLoader)
+        public PlayerFactory(IAssetLoader assetLoader, IInputService inputService, IProgressService progressService, IStaticDataService dataService) : base(assetLoader)
         {
             _inputService = inputService;
-
+            _progressService = progressService;
+            _dataService = dataService;
         }
 
         public void CreatePlayers(TeamSeparator teamSeparator)
@@ -54,6 +57,13 @@ namespace Infrastructure.Factory
 
         public GameObject CreateMainMenu() =>
             RegisterMainMenuUIHelper(InstantiateRegistered(AssetPaths.MainMenu));
+
+        public GamemodeMapHelper CreateMapModeChoiseUI()
+        {
+            GamemodeMapHelper helper = InstantiateRegistered(AssetPaths.MapModeMenu).GetComponentInChildren<GamemodeMapHelper>();
+            helper.Construct(_progressService,_dataService);
+            return helper;
+        }
 
 
         private void InitedRegisteredTank(GameObject playerTank, Services.Input.PlayerConfiguration config)

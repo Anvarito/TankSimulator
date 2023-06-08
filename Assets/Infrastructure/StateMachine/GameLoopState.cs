@@ -37,7 +37,7 @@ namespace Infrastructure.StateMachine
             Debug.Log($"Entered {this.GetType().Name}");
 
             RegisterDamageManagers();
-
+            
             _gameTimeCoroutine = _coroutineRunner.StartCoroutine(GameTimer(GameTime));
         }
 

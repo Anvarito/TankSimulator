@@ -1,8 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
-using UnityEngine.AI;
-using System;
-using System.Collections.Generic;
 using UnityEngine.Events;
 
 namespace ChobiAssets.PTM

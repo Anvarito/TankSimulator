@@ -7,6 +7,7 @@ using Infrastructure.Services;
 using Infrastructure.Services.Input;
 using Infrastructure.Services.Progress;
 using Infrastructure.Services.SaveLoad;
+using Infrastructure.Services.StaticData;
 using UnityEngine;
 
 namespace Infrastructure.StateMachine
@@ -34,18 +35,22 @@ namespace Infrastructure.StateMachine
             Debug.Log($"Entered {this.GetType().Name}");
 
             _sceneLoader.Load(Initial, EnterLoadLevelState);
+            
             // RegisterServices();
+            _services.Single<IStaticDataService>().LoadAllStaticData();
         }
 
         public void Exit()
         {
         }
 
-        private void EnterLoadLevelState() =>
+        private void EnterLoadLevelState() => 
             _gameStateMachine.Enter<SetupFirstInputState>();
 
         private void RegisterServices()
         {
+            _services.RegisterSingle<IStaticDataService>(new StaticDataService());
+            
             _services.RegisterSingle<IProgressService>(new ProgressService());
             _services.RegisterSingle<IAssetLoader>(new AssetLoader());
 
@@ -54,9 +59,15 @@ namespace Infrastructure.StateMachine
             _services.Single<IFactories>().Add<IInputFactory>(new InputFactory(_services.Single<IAssetLoader>()));
 
             _services.RegisterSingle<IInputService>(new InputService(_gameStateMachine,
-                _services.Single<IFactories>()));
+                _services.Single<IFactories>(), _services.Single<IStaticDataService>()));
             
-            _services.Single<IFactories>().Add<IPlayerFactory>(new PlayerFactory(_services.Single<IAssetLoader>(), _services.Single<IInputService>()));
+            _services.Single<IFactories>().Add<IPlayerFactory>(
+                new PlayerFactory(
+                    _services.Single<IAssetLoader>(), 
+                    _services.Single<IInputService>(),
+                    _services.Single<IProgressService>(),
+                    _services.Single<IStaticDataService>()
+                    ));
 
             _services.RegisterSingle<ISaveLoadService>(new SaveLoadService(_services.Single<IProgressService>(),
                 _services.Single<IFactories>()));

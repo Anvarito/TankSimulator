@@ -13,19 +13,20 @@ namespace Infrastructure.StateMachine
         private readonly Dictionary<Type, IExitableState> _states;
         private IExitableState _activeState;
 
-        public GameStateMachine(SceneLoader sceneLoader, ServiceLocator serviceLocator, ICoroutineRunner coroutineRunner)
+        public GameStateMachine(SceneLoader sceneLoader, ServiceLocator services, ICoroutineRunner coroutineRunner)
         {
             _states = new Dictionary<Type, IExitableState>()
             {
-                [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader, serviceLocator),
-                [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader, serviceLocator.Single<IFactories>()),
-                [typeof(LoadProgressState)] = new LoadProgressState(this, serviceLocator.Single<IProgressService>(), serviceLocator.Single<ISaveLoadService>()), 
-                [typeof(GameLoopState)] = new GameLoopState(this, coroutineRunner,serviceLocator.Single<IFactories>()),
-                [typeof(VictoryState)] = new VictoryState(this, serviceLocator.Single<IFactories>()),
-                [typeof(GameOverState)] = new GameOverState(this, serviceLocator.Single<IFactories>()),
-                [typeof(MenuState)] = new MenuState(this,sceneLoader,serviceLocator.Single<IInputService>(),serviceLocator.Single<IFactories>()),
-                [typeof(SetupPlayersState)] = new SetupPlayersState(this,sceneLoader,serviceLocator.Single<IInputService>(),serviceLocator.Single<IFactories>()),
-                [typeof(SetupFirstInputState)] = new SetupFirstInputState(this,sceneLoader,serviceLocator.Single<IInputService>(),serviceLocator.Single<IFactories>()),
+                [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader, services),
+                [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader, services.Single<IFactories>()),
+                [typeof(LoadProgressState)] = new LoadProgressState(this, services.Single<IProgressService>(), services.Single<ISaveLoadService>()), 
+                [typeof(GameLoopState)] = new GameLoopState(this, coroutineRunner,services.Single<IFactories>()),
+                [typeof(VictoryState)] = new VictoryState(this, services.Single<IFactories>()),
+                [typeof(GameOverState)] = new GameOverState(this, services.Single<IFactories>()),
+                [typeof(MenuState)] = new MenuState(this,sceneLoader,services.Single<IInputService>(),services.Single<IFactories>()),
+                [typeof(SetupPlayersState)] = new SetupPlayersState(this,sceneLoader,services.Single<IInputService>(),services.Single<IFactories>()),
+                [typeof(SetupFirstInputState)] = new SetupFirstInputState(this,sceneLoader,services.Single<IInputService>(),services.Single<IFactories>()),
+                [typeof(ChooseLevelModeState)] = new ChooseLevelModeState(this,sceneLoader,services.Single<IProgressService>(), services.Single<IFactories>()),
             };
         }
 

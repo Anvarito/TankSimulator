@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using Infrastructure.Assets;
 using Infrastructure.Factory.Base;
 using Infrastructure.Factory.Compose;
 using Infrastructure.StateMachine;
+using Infrastructure.TestMono;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
 
@@ -20,15 +18,17 @@ namespace Infrastructure.Services.Input
 
         private readonly GameStateMachine _gameStateMachine;
 
+        private StaticData.IStaticDataService _staticDataService;
         private readonly IInputFactory _inputFactory;
         private readonly Transform _choseCanvas;
         private PlayerInputManager _inputManager;
         private static int currentIndex = 0;
 
-        public InputService(GameStateMachine gameStateMachine, IFactories factories)
+        public InputService(GameStateMachine gameStateMachine, IFactories factories, StaticData.IStaticDataService staticDataService)
         {
             _gameStateMachine = gameStateMachine;
             _inputFactory = factories.Single<IInputFactory>();
+            _staticDataService = staticDataService;
 
             var inputManager = _inputFactory.CreatePlayerInputManager();
             _inputManager = inputManager.GetComponent<PlayerInputManager>();
@@ -41,7 +41,7 @@ namespace Infrastructure.Services.Input
             {
                 if (NextPlayerExist()) ResetPlayerIndex();
                 PlayerConfigs[currentIndex].Input.uiInputModule = uiInputModule.GetComponentInChildren<InputSystemUIInputModule>();
-                uiInputModule.GetComponentInChildren<TankPickerUIHelper>().Construct(PlayerConfigs[currentIndex]);
+                uiInputModule.GetComponentInChildren<TankPickerUIHelper>().Construct(PlayerConfigs[currentIndex], _staticDataService);
                 currentIndex += 1;
             }
             else

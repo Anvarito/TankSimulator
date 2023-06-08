@@ -5,6 +5,7 @@ using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
 using UnityEngine.UI;
+using Infrastructure.Services.StaticData;
 
 public class TankPickerUIHelper : UIHelper
 {
@@ -17,7 +18,7 @@ public class TankPickerUIHelper : UIHelper
 
     [HideInInspector] public UnityEvent<Infrastructure.Services.Input.PlayerConfiguration> OnTankChoise;
     //private UnityEvent OnSecondTankButton => _secondTankButton.onClick;
-
+    private IStaticDataService _staticDataService;
     [HideInInspector] public UnityEvent OnLeft;
     [HideInInspector] public UnityEvent OnRight;
 
@@ -25,15 +26,18 @@ public class TankPickerUIHelper : UIHelper
     {
         base.Start();
         SetNotReady();
-        
+
         AddListeners();
     }
 
-    public void OnDestroy() => 
+    public void OnDestroy() =>
         RemoveListeners();
 
-    public void Construct(Infrastructure.Services.Input.PlayerConfiguration playerConfiguration) => 
+    public void Construct(Infrastructure.Services.Input.PlayerConfiguration playerConfiguration, IStaticDataService staticDataService)
+    {
+        _staticDataService = staticDataService;
         _playerConfiguration = playerConfiguration;
+    }
 
     private void AddListeners()
     {
@@ -66,7 +70,7 @@ public class TankPickerUIHelper : UIHelper
         {
             OnLeft?.Invoke();
         }
-        
+
     }
 
     private void RemoveListeners()
@@ -95,6 +99,6 @@ public class TankPickerUIHelper : UIHelper
         _readyText.text = "Player not ready";
         _readyText.color = Color.red;
     }
-    
-    
+
+
 }
