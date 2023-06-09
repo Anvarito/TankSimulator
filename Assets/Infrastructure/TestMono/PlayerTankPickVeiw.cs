@@ -14,6 +14,11 @@ public class PlayerTankPickVeiw : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _nameText;
     [SerializeField] private TankPickerUIHelper _tankPickerUIHelper;
 
+    [Space(10)]
+    [Header("Colors")]
+    [SerializeField] private Color _notReadyColor;
+    [SerializeField] private Color _readyColor;
+
     private GameObject _choiseTank;
     private Transform _spawnPoint;
     private float _rotateAmount = 0;
@@ -33,6 +38,7 @@ public class PlayerTankPickVeiw : MonoBehaviour
     {
         Vector3 pos = Camera.main.WorldToScreenPoint(_spawnPoint.position);
         transform.position = new Vector3(pos.x, Screen.height / 2, 0);
+        transform.localScale = Vector3.one;
     }
     public void ShowTank(TankConfig tank)
     {
@@ -65,13 +71,13 @@ public class PlayerTankPickVeiw : MonoBehaviour
     private void SetReady()
     {
         _readyText.text = "Игрок готов!";
-        _readyText.color = Color.green;
+        _readyText.color = _readyColor;
     }
 
     private void SetNotReady()
     {
         _readyText.text = "Выберите танк";
-        _readyText.color = Color.red;
+        _readyText.color = _notReadyColor;
     }
 
 }

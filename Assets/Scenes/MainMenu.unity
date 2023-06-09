@@ -295,7 +295,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &958380907
 GameObject:
@@ -625,6 +625,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 688750759171074806, guid: f02f532b4e0680148adde785d29c60a5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 688750759171074806, guid: f02f532b4e0680148adde785d29c60a5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 688750759171074806, guid: f02f532b4e0680148adde785d29c60a5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 688750759171074806, guid: f02f532b4e0680148adde785d29c60a5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.45434442
+      objectReference: {fileID: 0}
+    - target: {fileID: 688750759171074806, guid: f02f532b4e0680148adde785d29c60a5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.8908261
+      objectReference: {fileID: 0}
+    - target: {fileID: 688750759171074806, guid: f02f532b4e0680148adde785d29c60a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -125.954
+      objectReference: {fileID: 0}
     - target: {fileID: 1632999051558233575, guid: f02f532b4e0680148adde785d29c60a5, type: 3}
       propertyPath: m_Name
       value: EmptyVena
