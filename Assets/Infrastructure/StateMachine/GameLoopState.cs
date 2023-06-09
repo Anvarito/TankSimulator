@@ -18,8 +18,10 @@ namespace Infrastructure.StateMachine
         private readonly ICoroutineRunner _coroutineRunner;
         private readonly IPlayerFactory _playerFactory;
         private readonly IEnemyFactory _enemyFactory;
+        private int _countEnemys = 0;
 
-        private int _enemyDestroyed;
+        private int _allEnemyDestroyed;
+        private int _playerEnemyDestroyed;
         private int _playerDestroyed;
         private Coroutine _gameTimeCoroutine;
 
@@ -30,6 +32,13 @@ namespace Infrastructure.StateMachine
 
             _playerFactory = factories.Single<IPlayerFactory>();
             _enemyFactory = factories.Single<IEnemyFactory>();
+
+            //TEMP!!!!
+            foreach(var i in _enemyFactory.EnemyDamageManagers)
+            {
+                if (i.GetComponentInParent<ID_Settings_CS>().Relationship != _playerFactory.PlayerParts[0].IdSettings.Relationship)
+                    _countEnemys++;
+            }
         }
 
         public void Enter()
@@ -61,16 +70,21 @@ namespace Infrastructure.StateMachine
         }
 
         private void GameOver() =>
-            _gameStateMachine.Enter<GameOverState, float>(_enemyDestroyed * _pointForEnemy);
+            _gameStateMachine.Enter<GameOverState, float>(_allEnemyDestroyed * _pointForEnemy);
 
 
         private void EnemyDestroyed(ID_Settings_CS _killerID)
         {
-            if (IsEnemiesDestroyed()) _gameStateMachine.Enter<VictoryState, float>(_enemyDestroyed * _pointForEnemy);
+            //TEMP
+            if (_killerID.Relationship == _playerFactory.PlayerParts[0].IdSettings.Relationship
+                || _killerID.Relationship == _playerFactory.PlayerParts[1]?.IdSettings.Relationship)
+                _playerEnemyDestroyed++;
+
+            if (IsEnemiesDestroyed()) _gameStateMachine.Enter<VictoryState, float>(_playerEnemyDestroyed * _pointForEnemy);
         }
 
         private bool IsEnemiesDestroyed() =>
-            ++_enemyDestroyed == _enemyFactory.EnemyDamageManagers.Count;
+            ++_allEnemyDestroyed == _countEnemys;
 
         private void RegisterDamageManagers()
         {
@@ -79,7 +93,12 @@ namespace Infrastructure.StateMachine
 
             foreach (DamageReciviersManager enemyDamageManager in _enemyFactory.EnemyDamageManagers)
             {
-                enemyDamageManager.OnTankDestroyed.AddListener(EnemyDestroyed);
+                //TEMP
+                if (enemyDamageManager.GetComponentInParent<ID_Settings_CS>().Relationship != _playerFactory.PlayerParts[0].IdSettings.Relationship)
+                {
+                    _countEnemys++;
+                    enemyDamageManager.OnTankDestroyed.AddListener(EnemyDestroyed);
+                }
             }
         }
 

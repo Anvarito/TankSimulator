@@ -56871,7 +56871,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tankID: 1
-  _relationship: 0
+  _relationship: 1
   _playerType: 1
 --- !u!114 &1083484181407159628
 MonoBehaviour:

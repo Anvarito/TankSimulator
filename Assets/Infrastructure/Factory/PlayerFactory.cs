@@ -35,8 +35,11 @@ namespace Infrastructure.Factory
             //at = Shuffle(at);
             foreach (Services.Input.PlayerConfiguration config in _inputService.PlayerConfigs)
             {
-                GameObject player = InstantiateRegistered(config.PrefabPath, teamSeparator.GetPoint(EPlayerType.Player, ERelationship.TeamB).transform.position);
-                PlayerParts.Add(RegisterUiWatchers(player));
+                ERelationship team = ERelationship.TeamA;
+                GameObject player = InstantiateRegistered(config.PrefabPath, teamSeparator.GetPoint(EPlayerType.Player, team).transform.position);
+                var uiWatcher = RegisterUiWatchers(player);
+                uiWatcher.IdSettings.SetRelationship(team);
+                PlayerParts.Add(uiWatcher);
                 InitedRegisteredTank(player, config);
             }
         }
