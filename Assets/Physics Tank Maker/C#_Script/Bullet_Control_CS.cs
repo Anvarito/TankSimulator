@@ -53,7 +53,7 @@ namespace ChobiAssets.PTM
             // Set the collision detection mode.
             This_Rigidbody.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
 
-            //Destroy(this.gameObject, Life_Time);
+            Destroy(this.gameObject, 5);
         }
 
 
@@ -129,23 +129,11 @@ namespace ChobiAssets.PTM
                     Instantiate(Impact_Object, This_Transform.position, Quaternion.identity);
                     Destroy(this.gameObject);
                 }
-                else
-                { // The hit part has not been destroyed.
-                    // Create the ricochet object.
-                    if (Ricochet_Object)
-                    {
-                        Instantiate(Ricochet_Object, This_Transform.position, Quaternion.identity, hitObject.transform);
-                    }
-                }
-
             }
             else
-            { // The hit object does not have "Damage_Control_##_##_CS" script. >> It should not be a breakable object.
-                // Create the impact object.
-                if (Impact_Object)
-                {
-                    Instantiate(Impact_Object, This_Transform.position, Quaternion.identity);
-                }
+            { // The hit part has not been destroyed.
+              // Create the ricochet object.
+                Instantiate(Ricochet_Object, This_Transform.position, Quaternion.identity, hitObject.transform);
             }
         }
 

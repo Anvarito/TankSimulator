@@ -875,9 +875,10 @@ MonoBehaviour:
     Turret: {fileID: 2568345802968967883}
     blowOff: 1
     mass: 200
-    destroyedEffect: {fileID: 11400004, guid: 2fe457cefafcb1242b30f81a15f53360, type: 3}
+    DestroyedEffect: {fileID: 11400004, guid: 2fe457cefafcb1242b30f81a15f53360, type: 3}
   _bodyExplosionProps:
-    Destroyed_Effect: {fileID: 100004, guid: d5cf1068eb9224446a79deb00e60a2e5, type: 3}
+    SmokeEffectPrefab: {fileID: 115512132488211677, guid: 41bf89bca6cb77b4c9ac6a177b2e3f03, type: 3}
+    Destroyed_Effect: {fileID: 198917022394846920, guid: e1b08032bec16ba4eb1ae23cbd572664, type: 3}
     Destroyed_Effect_Offset: {x: 0, y: 0, z: 0}
 --- !u!82 &2568345801201787443
 AudioSource:

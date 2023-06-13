@@ -52,7 +52,7 @@ MonoBehaviour:
   Type: 0
   This_Transform: {fileID: 4498786755513422}
   This_Rigidbody: {fileID: 54414218098899862}
-  Impact_Object: {fileID: 100002, guid: 72030033b64967e4bbec5567f3b85265, type: 3}
+  Impact_Object: {fileID: 8998232435418788253, guid: 98e1dfbedc89ee749a5ed7af729b0796, type: 3}
   Ricochet_Object: {fileID: 100002, guid: a51a6509c21644941812537f2bbaaff1, type: 3}
   Explosion_Object: {fileID: 0}
   Explosion_Force: 0
