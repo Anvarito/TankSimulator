@@ -76,9 +76,8 @@ namespace Infrastructure.StateMachine
         private void EnemyDestroyed(ID_Settings_CS _killerID)
         {
             //TEMP
-            if (_killerID.Relationship == _playerFactory.PlayerParts[0].IdSettings.Relationship
-                || _killerID.Relationship == _playerFactory.PlayerParts[1]?.IdSettings.Relationship)
-                _playerEnemyDestroyed++;
+            //if (_killerID.Relationship == _playerFactory.PlayerParts[0].IdSettings.Relationship)
+            //    _playerEnemyDestroyed++;
 
             if (IsEnemiesDestroyed()) _gameStateMachine.Enter<VictoryState, float>(_playerEnemyDestroyed * _pointForEnemy);
         }

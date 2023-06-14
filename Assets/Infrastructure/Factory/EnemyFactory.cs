@@ -29,6 +29,7 @@ namespace Infrastructure.Factory
                 Vector3 point = spawnPoint.transform.position;
 
                 GameObject enemy = _assetLoader.Instantiate(AssetPaths.Enemy, point);
+                enemy.name += "_" + relationship.ToString();
                 ID_Settings_CS enemyID = enemy.GetComponentInChildren<ID_Settings_CS>();
                 enemyID.SetRelationship(relationship);
                 EnemyDamageManagers.Add(enemy.GetComponentInChildren<DamageReciviersManager>());
