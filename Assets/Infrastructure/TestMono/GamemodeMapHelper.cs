@@ -50,13 +50,13 @@ namespace Infrastructure.TestMono
         {
             _mapDrop.options.Clear();
             foreach (LevelId id in _dataService.Levels.Keys)
-                _mapDrop.options.Add(new TMP_Dropdown.OptionData(_dataService.Levels[id].Scene.name));
+                _mapDrop.options.Add(new TMP_Dropdown.OptionData(_dataService.Levels[id].Scene));
         }
 
         private void InvokeAction()
         {
             _progress.Progress.WorldData.Mode = _dataService.Mods.ToList()[_modeDrop.value].Key;
-            _progress.Progress.WorldData.Level = _dataService.Levels.ToList()[_mapDrop.value].Value.Scene.name;
+            _progress.Progress.WorldData.Level = _dataService.Levels.ToList()[_mapDrop.value].Value.Scene;
             OnContinueClick?.Invoke();
         }
     }
