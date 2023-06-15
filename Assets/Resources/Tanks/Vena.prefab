@@ -39039,8 +39039,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Torque: 5000
   Max_Speed: 36.3
-  Turn_Brake_Drag: 5000
-  Switch_Direction_Lag: 0
+  Turn_Brake_Drag: 500
+  Switch_Direction_Lag: 0.5
   Allow_Pivot_Turn: 0
   Pivot_Turn_Rate: 0.3
   Acceleration_Flag: 1
@@ -39129,7 +39129,7 @@ MonoBehaviour:
   Parking_Brake_Velocity: 0.5
   Parking_Brake_Angular_Velocity: 0.1
   Use_AntiSlip: 1
-  Ray_Distance: 1
+  Ray_Distance: 1.5
   AntiSlip_Min_Speed: 32
   AntiSlip_Max_Speed: 64
   Use_Downforce: 1

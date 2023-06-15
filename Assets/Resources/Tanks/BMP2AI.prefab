@@ -613,7 +613,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d07bc1cd2cd16004b84860fddab4cc0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Torque: 5000
+  Torque: 15000
   Max_Speed: 15.3
   Turn_Brake_Drag: 100
   Switch_Direction_Lag: 0.5
@@ -621,7 +621,7 @@ MonoBehaviour:
   Pivot_Turn_Rate: 0.3
   Acceleration_Flag: 1
   Acceleration_Time: 6
-  Deceleration_Time: 0.01
+  Deceleration_Time: 3
   Acceleration_Curve:
     serializedVersion: 2
     m_Curve:
@@ -704,8 +704,8 @@ MonoBehaviour:
   Max_Slope_Angle: 35
   Parking_Brake_Velocity: 0.5
   Parking_Brake_Angular_Velocity: 0.1
-  Use_AntiSlip: 0
-  Ray_Distance: 1.2
+  Use_AntiSlip: 1
+  Ray_Distance: 1.5
   AntiSlip_Min_Speed: 2
   AntiSlip_Max_Speed: 32
   Use_Downforce: 1
@@ -737,8 +737,8 @@ MonoBehaviour:
   Sync_Speed_Rate: 0
   Actual_Speed_Offset_Rate: 1
   Actual_Speed_Tolerance_Rate: 0.2
-  Support_Turning: 0
-  Support_Turning_Force: 10000
+  Support_Turning: 1
+  Support_Turning_Force: 8000
   inputType: 0
   Stop_Flag: 1
   L_Input_Rate: 0

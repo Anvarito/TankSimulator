@@ -7,6 +7,6 @@ namespace Infrastructure.Services.StaticData.Level
     public class LevelConfig
     {
         public LevelId LevelId;
-        public string Scene;
+        public string SceneName;
     }
 }
