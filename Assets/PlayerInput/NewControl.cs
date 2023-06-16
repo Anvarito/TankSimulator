@@ -50,7 +50,7 @@ public partial class @NewControl: IInputActionCollection2, IDisposable
                     ""type"": ""Value"",
                     ""id"": ""334621fb-09e1-4c8d-b43d-37a56ac6d074"",
                     ""expectedControlType"": ""Vector2"",
-                    ""processors"": ""StickDeadzone(max=1),NormalizeVector2"",
+                    ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
                 },
