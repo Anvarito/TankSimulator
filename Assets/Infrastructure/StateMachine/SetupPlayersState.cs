@@ -14,6 +14,8 @@ namespace Infrastructure.StateMachine
         private readonly SceneLoader _sceneLoader;
         private readonly IInputService _inputService;
         private readonly IInputFactory _inputFactory;
+        
+        private Transform _canvas;
 
         public SetupPlayersState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, IInputService inputService,
             IFactories factories)
@@ -33,16 +35,19 @@ namespace Infrastructure.StateMachine
 
         public void Exit()
         {
+            _inputFactory.TankPickerUIHelpers.Last().OnFirstTank -= PickFirstTank;
+            _inputFactory.TankPickerUIHelpers.Last().OnSecondTank -= PickSecondTank;
+            _inputService.OnPlayerJoined -= () => CreatePicker(_canvas);
         }
 
         private void onLoad()
         {
-            Transform canvas = _inputFactory.CreatePickerCanvas();
+            _canvas = _inputFactory.CreatePickerCanvas();
             _inputService.ResetPlayerIndex();
 
-            CreatePicker(canvas);
+            CreatePicker(_canvas);
             _inputService.OnPlayerJoined += () =>
-                CreatePicker(canvas);
+                CreatePicker(_canvas);
         }
 
         private void CreatePicker(Transform canvas)
