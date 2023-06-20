@@ -8,7 +8,8 @@ namespace Infrastructure.Data
     public class WorldData
     {
         public PositionOnLevel PositionOnLevel;
-        public GamemodeId Mode; 
+        public GamemodeId ModeId; 
+        public LevelId LevelId; 
         public string Level;
 
         public WorldData(string initialLevel)

@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Infrastructure.Gizmos_Debug;
-using Infrastructure.Services.StaticData.WaypointsPack;
+using Infrastructure.Services.StaticData.Waypoints;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 namespace Infrastructure.Editor.Inspector
@@ -25,6 +26,8 @@ namespace Infrastructure.Editor.Inspector
 
                 foreach (WaypointsVisualDebug pack in packs)
                     data.Packs.Add(CompositeConfig(pack));
+                
+                EditorUtility.SetDirty(data);
             }
 
             if (GUILayout.Button("Load"))
@@ -52,6 +55,8 @@ namespace Infrastructure.Editor.Inspector
 
                 foreach (WaypointPackConfig packConfig in data.Packs)
                     InstantiatePack(packConfig, tempParent);
+                
+                EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
             }
         }
 

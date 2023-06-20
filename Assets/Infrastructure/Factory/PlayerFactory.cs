@@ -1,10 +1,12 @@
 using System.Collections.Generic;
+using System.Linq;
 using ChobiAssets.PTM;
 using Infrastructure.Assets;
 using Infrastructure.Factory.Base;
 using Infrastructure.Services.Input;
 using Infrastructure.Services.Progress;
 using Infrastructure.Services.StaticData;
+using Infrastructure.Services.StaticData.SpawnPoints;
 using Infrastructure.TestMono;
 using UnityEngine;
 
@@ -30,14 +32,15 @@ namespace Infrastructure.Factory
             _dataService = dataService;
         }
 
-        public void CreatePlayers(TeamSeparator teamSeparator)
+        public void CreatePlayers(List<SpawnPointConfig> points)
         {
             //at = Shuffle(at);
-            foreach (Services.Input.PlayerConfiguration config in _inputService.PlayerConfigs)
+            
+            foreach (var configWithPoint in _inputService.PlayerConfigs.Zip(points, (n, m) => new { Config = n, Point = m }))
             {
-                GameObject player = InstantiateRegistered(AssetPaths.PlayerTank, teamSeparator.GetPoint(EPlayerType.Player, ERelationship.TeamA).transform.position);
+                GameObject player = InstantiateRegistered(AssetPaths.PlayerTank, configWithPoint.Point.Position);
                 PlayerParts.Add(RegisterUiWatchers(player));
-                InitedRegisteredTank(player, config);
+                InitedRegisteredTank(player, configWithPoint.Config);
             }
         }
 

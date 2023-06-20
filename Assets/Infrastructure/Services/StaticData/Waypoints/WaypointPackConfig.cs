@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Infrastructure.Services.StaticData.WaypointsPack
+namespace Infrastructure.Services.StaticData.Waypoints
 {
     [Serializable]
     public class WaypointPackConfig

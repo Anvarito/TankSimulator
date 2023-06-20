@@ -1,5 +1,5 @@
 using System.Linq;
-using Infrastructure.Services.StaticData.WaypointsPack;
+using Infrastructure.Services.StaticData.Waypoints;
 using UnityEngine;
 
 namespace Infrastructure.Gizmos_Debug

@@ -2,17 +2,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using ChobiAssets.PTM;
-using Infrastructure.Gizmos_Debug;
-using Infrastructure.Services.StaticData.Level;
 using Infrastructure.Services.StaticData.SpawnPoints;
-using Infrastructure.Services.StaticData.WaypointsPack;
+using Infrastructure.TestMono;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Infrastructure.Editor.Inspector
 {
     [CustomEditor(typeof(SpawnPointPackData))]
-    public class CustomSpawnPoint : UnityEditor.Editor
+    public class CustomSpawnPointPack : UnityEditor.Editor
     {
         public override void OnInspectorGUI()
         {
@@ -21,13 +21,15 @@ namespace Infrastructure.Editor.Inspector
 
             if (GUILayout.Button("Save"))
             {
-                SpawnPoint[] spawnPoints = FindObjectsOfType<SpawnPoint>();
+                SpawnMarker[] spawnPoints = FindObjectsOfType<SpawnMarker>();
 
                 data.PackConfig.PointsConfigs ??= new List<SpawnPointConfig>();
                 data.PackConfig.PointsConfigs.Clear();
 
-                foreach (SpawnPoint point in spawnPoints)
+                foreach (SpawnMarker point in spawnPoints)
                     data.PackConfig.PointsConfigs.Add(CompositeConfig(point));
+                
+                EditorUtility.SetDirty(data);
             }
 
             if (GUILayout.Button("Load"))
@@ -42,10 +44,10 @@ namespace Infrastructure.Editor.Inspector
 
                 try
                 {
-                    SpawnPoint[] points = FindObjectsOfType<SpawnPoint>();
+                    SpawnMarker[] points = FindObjectsOfType<SpawnMarker>();
                     tempParent = points?.First().transform.parent;
 
-                    foreach (SpawnPoint point in points)
+                    foreach (SpawnMarker point in points)
                         DestroyImmediate(point.gameObject);
                 }
                 catch (Exception e)
@@ -55,34 +57,41 @@ namespace Infrastructure.Editor.Inspector
 
                 foreach (SpawnPointConfig packConfig in data.PackConfig.PointsConfigs)
                     InstantiatePack(packConfig, tempParent);
+                
+                
+                EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
             }
         }
 
         private static void InstantiatePack(SpawnPointConfig pointConfig, Transform tempParent)
         {
             string name = Enum.GetName(typeof(EPlayerType), pointConfig.ActorType);
-            name += "SpawnPoint";
+            name += "SpawnMarker";
             name += Enum.GetName(typeof(ERelationship), pointConfig.Team);
             
             GameObject packObject = new GameObject(name);
             packObject.transform.SetParent(tempParent);
             packObject.transform.position = pointConfig.Position;
 
-            SpawnPoint spawnPoint = packObject.AddComponent<SpawnPoint>();
+            packObject.AddComponent<UniqueId>().Id = pointConfig.UniqueId;
+            
+            SpawnMarker spawnMarker = packObject.AddComponent<SpawnMarker>();
 
-            spawnPoint.ActorType = pointConfig.ActorType;
-            spawnPoint.Relationship = pointConfig.Team;
-            spawnPoint.WaypointsPackId = pointConfig.WaypointsPackId;
+            spawnMarker.ActorType = pointConfig.ActorType;
+            spawnMarker.Relationship = pointConfig.Team;
+            spawnMarker.WaypointsPackId = pointConfig.WaypointsPackId;
         }
 
-        private static SpawnPointConfig CompositeConfig(SpawnPoint point)
+        private static SpawnPointConfig CompositeConfig(SpawnMarker marker)
         {
             SpawnPointConfig config = new SpawnPointConfig();
 
-            config.Position = point.GetComponent<Transform>().position;
-            config.Team = point.Relationship;
-            config.ActorType = point.ActorType;
-            config.WaypointsPackId = point.WaypointsPackId;
+            config.Position = marker.GetComponent<Transform>().position;
+            config.UniqueId = marker.GetComponent<UniqueId>().Id;
+            
+            config.Team = marker.Relationship;
+            config.ActorType = marker.ActorType;
+            config.WaypointsPackId = marker.WaypointsPackId;
 
             return config;
         }

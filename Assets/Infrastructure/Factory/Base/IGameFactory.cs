@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using ChobiAssets.PTM;
 using Infrastructure.Services.Progress;
+using Infrastructure.Services.StaticData.SpawnPoints;
 using Infrastructure.TestMono;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -19,7 +20,7 @@ namespace Infrastructure.Factory.Base
         List<PlayerUiParts> PlayerParts { get; }
         GameOverBoard GameBoard { get; }
 
-        void CreatePlayers(TeamSeparator separator);
+        void CreatePlayers(List<SpawnPointConfig> points);
         void CreateTankUiSpawners(List<DamageReciviersManager> enemyDamageList);
         void CreateHud();
 
@@ -32,8 +33,8 @@ namespace Infrastructure.Factory.Base
     public interface IEnemyFactory : IGameFactory
     {
         List<DamageReciviersManager> EnemyDamageManagers { get; }
-        void CreateEnemies(TeamSeparator separator);
         public void CreateGameController();
+        void CreateEnemy(SpawnPointConfig config);
     }
     
     internal interface IInputFactory : IGameFactory

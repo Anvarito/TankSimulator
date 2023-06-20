@@ -55,7 +55,7 @@ namespace Infrastructure.StateMachine
             _services.RegisterSingle<IAssetLoader>(new AssetLoader());
 
             _services.RegisterSingle<IFactories>(new Factories());
-            _services.Single<IFactories>().Add<IEnemyFactory>(new EnemyFactory(_services.Single<IAssetLoader>()));
+            _services.Single<IFactories>().Add<IEnemyFactory>(new EnemyFactory(_services.Single<IAssetLoader>(), _services.Single<IStaticDataService>()));
             _services.Single<IFactories>().Add<IInputFactory>(new InputFactory(_services.Single<IAssetLoader>()));
 
             _services.RegisterSingle<IInputService>(new InputService(_gameStateMachine,

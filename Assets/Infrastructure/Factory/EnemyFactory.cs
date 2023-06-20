@@ -1,40 +1,54 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using ChobiAssets.PTM;
 using Infrastructure.Assets;
 using Infrastructure.Factory.Base;
+using Infrastructure.Services.StaticData;
+using Infrastructure.Services.StaticData.SpawnPoints;
+using Infrastructure.Services.StaticData.Waypoints;
 using UnityEngine;
 
 namespace Infrastructure.Factory
 {
     public class EnemyFactory : GameFactory, IEnemyFactory
     {
+        private readonly IStaticDataService _dataService;
         public List<DamageReciviersManager> EnemyDamageManagers { get; } = new List<DamageReciviersManager>();
 
-        public EnemyFactory(IAssetLoader assetLoader) : base(assetLoader)
+        public EnemyFactory(IAssetLoader assetLoader, IStaticDataService dataService) : base(assetLoader)
         {
+            _dataService = dataService;
         }
-
-        public void CreateEnemies(TeamSeparator teamSeparator) =>
-            InstantiateRegistered(teamSeparator);
 
         public void CreateGameController() =>
             InstantiateRegistered(AssetPaths.TankController);
 
-        private void InstantiateRegistered(TeamSeparator teamSeparator)
+        public void CreateEnemy(SpawnPointConfig config)
         {
-            for(int i = 0; i < teamSeparator.EnemysCount(); i ++)
-            {
-                ERelationship relationship = i % 2 == 0 ? ERelationship.TeamA : ERelationship.TeamB;
-                SpawnPoint spawnPoint = teamSeparator.GetPoint(EPlayerType.AI, relationship);
-                Vector3 point = spawnPoint.transform.position;
-
-                GameObject enemy = _assetLoader.Instantiate(AssetPaths.Enemy, point);
-                ID_Settings_CS enemyID = enemy.GetComponentInChildren<ID_Settings_CS>();
-                enemyID.SetRelationship(relationship);
-                EnemyDamageManagers.Add(enemy.GetComponentInChildren<DamageReciviersManager>());
+            GameObject enemy = _assetLoader.Instantiate(AssetPaths.Enemy, config.Position);
+            ID_Settings_CS enemyID = enemy.GetComponentInChildren<ID_Settings_CS>();
+            enemyID.SetRelationship(config.Team);
+            EnemyDamageManagers.Add(enemy.GetComponentInChildren<DamageReciviersManager>());
                 
-                enemy.GetComponentInChildren<AI_Settings_CS>().WayPoint_Pack = spawnPoint.WayPointsPack;
+            enemy.GetComponentInChildren<AI_Settings_CS>().WayPoint_Pack =
+                CreateWaypoints(_dataService.ForWaypoints(config.WaypointsPackId));
+        }
+
+        private GameObject CreateWaypoints(WaypointPackConfig waypointPack)
+        {
+            string name = Enum.GetName(typeof(WaypointsPackId), waypointPack.PackId);
+
+            GameObject packObject = new GameObject(name);
+
+            foreach (var point in waypointPack.Points.Select((value, index) => new { position = value, index }))
+            {
+                Transform pointObject = new GameObject("Waypoint " + point.index).transform;
+                pointObject.position = point.position;
+                pointObject.SetParent(packObject.transform);
             }
+
+            return packObject;
         }
     }
 }

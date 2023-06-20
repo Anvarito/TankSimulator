@@ -1,4 +1,4 @@
-namespace Infrastructure.Services.StaticData.WaypointsPack
+namespace Infrastructure.Services.StaticData.Waypoints
 {
     public enum WaypointsPackId
     {
