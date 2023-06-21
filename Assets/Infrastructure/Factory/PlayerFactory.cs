@@ -45,10 +45,12 @@ namespace Infrastructure.Factory
             
             foreach (var configWithPoint in _inputService.PlayerConfigs.Zip(points, (n, m) => new { Config = n, Point = m }))
             {
-                GameObject player = InstantiateRegistered(AssetPaths.PlayerTank, configWithPoint.Point.Position);
-                PlayerParts.Add(RegisterUiWatchers(player));
+                GameObject player = InstantiateRegistered(configWithPoint.Config.PrefabPath, configWithPoint.Point.Position);
+                PlayerUiParts registerUiWatchers = RegisterUiWatchers(player);
+                
+                PlayerParts.Add(registerUiWatchers);
 
-                uiWatcher.IdSettings.SetRelationship(ERelationship.TeamA;);
+                registerUiWatchers.IdSettings.SetRelationship(ERelationship.TeamA);
                 
                 InitedRegisteredTank(player, configWithPoint.Config);
             }

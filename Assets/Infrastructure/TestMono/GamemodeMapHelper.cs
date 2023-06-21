@@ -58,7 +58,7 @@ namespace Infrastructure.TestMono
             _progress.Progress.WorldData.ModeId = _dataService.Mods.ToList()[_modeDrop.value].Key;
             _progress.Progress.WorldData.LevelId = _dataService.Levels.ToList()[_mapDrop.value].Key;
             
-            _progress.Progress.WorldData.Level = _dataService.Levels.ToList()[_mapDrop.value].Value.Scene.name;
+            _progress.Progress.WorldData.Level = _dataService.Levels.ToList()[_mapDrop.value].Value.SceneName;
             OnContinueClick?.Invoke();
         }
     }

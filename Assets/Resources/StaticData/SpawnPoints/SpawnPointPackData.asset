@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: SpawnPointPackData
   m_EditorClassIdentifier: 
   PackConfig:
-    PackId: 1
-    LevelId: 2
+    PackId: 2
+    LevelId: 3
     PointsConfigs:
     - UniqueId: MinimalTest_2c2f03cf-e710-4a2f-a319-1a2b26bfb059
       ActorType: 0

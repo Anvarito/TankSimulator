@@ -13,5 +13,15 @@ MonoBehaviour:
   m_Name: ModsData
   m_EditorClassIdentifier: 
   Config:
+  - ModeId: 2
+    PlayerCount: 1
+    Name: Survival
+  - ModeId: 4
+    PlayerCount: 2
+    Name: VersusLupa
   - ModeId: 1
-    Name: Simple
+    PlayerCount: 1
+    Name: Coopliza
+  - ModeId: 3
+    PlayerCount: 1
+    Name: DeathPidor
