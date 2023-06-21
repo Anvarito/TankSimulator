@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 namespace Infrastructure.Services.StaticData.Gamemodes
 {
@@ -6,6 +7,9 @@ namespace Infrastructure.Services.StaticData.Gamemodes
     public class GamemodeConfig
     {
         public GamemodeId ModeId;
+
+        [Range(1,2)]
+        public int PlayerCount;
         public string Name;
     }
 
