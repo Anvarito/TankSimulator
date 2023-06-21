@@ -3,6 +3,7 @@ using Infrastructure.Factory.Compose;
 using Infrastructure.Factory.Base;
 using System;
 using Infrastructure.Services.Progress;
+using Infrastructure.Services.Input;
 
 namespace Infrastructure.StateMachine
 {
@@ -11,17 +12,20 @@ namespace Infrastructure.StateMachine
         private readonly GameStateMachine _gameStateMachine;
         private readonly IPlayerFactory _playerFactory;
         private readonly IProgressService _progressService;
-        public GameOverState(GameStateMachine gameStateMachine, IFactories factories, IProgressService progressService)
+        private readonly IInputService _inputService;
+        public GameOverState(GameStateMachine gameStateMachine, IFactories factories, IProgressService progressService, IInputService inputService)
         {
             _gameStateMachine = gameStateMachine;
             _progressService = progressService;
             _playerFactory = factories.Single<IPlayerFactory>();
+            _inputService = inputService;
 
         }
         public void Enter(float score)
         {
             Debug.Log($"Entered {this.GetType().Name}");
-
+            _inputService.ResetPlayerIndex();
+            _inputService.ConnectToInputs(_playerFactory.GameBoard.transform.root.gameObject, true);
             _playerFactory.GameBoard.ShowDefeatPanel(score);
             _playerFactory.GameBoard.OnExitMenu += Menu;
             _playerFactory.GameBoard.OnRestart += Restart;

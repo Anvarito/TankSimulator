@@ -24,7 +24,7 @@ namespace Infrastructure.StateMachine
                 [typeof(LoadProgressState)] = new LoadProgressState(this, services.Single<IProgressService>(), services.Single<ISaveLoadService>()), 
                 [typeof(GameLoopState)] = new GameLoopState(this, coroutineRunner,services.Single<IFactories>()),
                 [typeof(VictoryState)] = new VictoryState(this, services.Single<IFactories>()),
-                [typeof(GameOverState)] = new GameOverState(this, services.Single<IFactories>(), services.Single<IProgressService>()),
+                [typeof(GameOverState)] = new GameOverState(this, services.Single<IFactories>(), services.Single<IProgressService>(), services.Single<IInputService>()),
                 [typeof(MenuState)] = new MenuState(this,sceneLoader,services.Single<IInputService>(),services.Single<IFactories>()),
                 [typeof(SetupPlayersState)] = new SetupPlayersState(this,sceneLoader,services.Single<IInputService>(),services.Single<IFactories>()),
                 [typeof(SetupFirstInputState)] = new SetupFirstInputState(this,sceneLoader,services.Single<IInputService>(),services.Single<IFactories>()),
