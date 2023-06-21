@@ -20,17 +20,15 @@ namespace Infrastructure.StateMachine
             Debug.Log($"Entered {this.GetType().Name}");
 
             _playerFactory.GameBoard.ShowDefeatPanel(score);
-            _playerFactory.GameBoard.OnPressContinue += Menu;
+            _playerFactory.GameBoard.OnRestart += Menu;
         }
 
-        private void Menu()
-        {
-
-        }
+        private void Menu() =>
+            _gameStateMachine.Enter<ResetState>();
 
         public void Exit()
         {
-            
+            _playerFactory.GameBoard.OnRestart -= Menu;
         }
     }
 }

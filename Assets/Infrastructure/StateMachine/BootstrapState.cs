@@ -50,7 +50,7 @@ namespace Infrastructure.StateMachine
         private void RegisterServices()
         {
             _services.RegisterSingle<IStaticDataService>(new StaticDataService());
-            
+
             _services.RegisterSingle<IProgressService>(new ProgressService());
             _services.RegisterSingle<IAssetLoader>(new AssetLoader());
 

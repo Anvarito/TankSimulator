@@ -30,6 +30,13 @@ namespace Infrastructure.Factory
             _dataService = dataService;
         }
 
+        public override void CleanUp()
+        {
+            base.CleanUp();
+            PlayerParts.Clear();
+            _enemysID.Clear();
+        }
+
         public void CreatePlayers(TeamSeparator teamSeparator)
         {
             //at = Shuffle(at);

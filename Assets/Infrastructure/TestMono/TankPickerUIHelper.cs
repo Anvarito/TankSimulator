@@ -27,8 +27,11 @@ public class TankPickerUIHelper : UIHelper
         AddListeners();
     }
 
-    public void OnDestroy() =>
+    public void OnDestroy()
+    {
+        _tanksId.Clear();
         RemoveListeners();
+    }
 
     public void Construct(Infrastructure.Services.Input.PlayerConfiguration playerConfiguration, IStaticDataService staticDataService)
     {

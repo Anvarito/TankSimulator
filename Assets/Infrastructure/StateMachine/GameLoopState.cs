@@ -34,7 +34,7 @@ namespace Infrastructure.StateMachine
             _enemyFactory = factories.Single<IEnemyFactory>();
 
             //TEMP!!!!
-            foreach(var i in _enemyFactory.EnemyDamageManagers)
+            foreach (var i in _enemyFactory.EnemyDamageManagers)
             {
                 if (i.GetComponentInParent<ID_Settings_CS>().Relationship != _playerFactory.PlayerParts[0].IdSettings.Relationship)
                     _countEnemys++;
@@ -46,7 +46,7 @@ namespace Infrastructure.StateMachine
             Debug.Log($"Entered {this.GetType().Name}");
 
             RegisterDamageManagers();
-            
+
             _gameTimeCoroutine = _coroutineRunner.StartCoroutine(GameTimer(GameTime));
         }
 
@@ -55,6 +55,10 @@ namespace Infrastructure.StateMachine
             UnregisterDamageManagers();
 
             _coroutineRunner.StopCoroutine(_gameTimeCoroutine);
+
+            _allEnemyDestroyed = 0;
+            _playerEnemyDestroyed = 0;
+            _playerDestroyed = 0;
         }
 
         private IEnumerator<WaitForSeconds> GameTimer(float time)

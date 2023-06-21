@@ -22,7 +22,7 @@ namespace Infrastructure.StateMachine
             Debug.Log($"Entered {this.GetType().Name}");
             
             _playerFactory.GameBoard.ShowVictoryPanel(score);
-            _playerFactory.GameBoard.OnPressContinue += Menu;
+            _playerFactory.GameBoard.OnRestart += Menu;
 
             SetupMenu();
         }
@@ -34,11 +34,11 @@ namespace Infrastructure.StateMachine
         }
 
         private void Menu() => 
-            _gameStateMachine.Enter<MenuState>();
+            _gameStateMachine.Enter<ResetState>();
 
         public void Exit()
         {
-            _playerFactory.GameBoard.OnPressContinue -= Menu;
+            _playerFactory.GameBoard.OnRestart -= Menu;
         }
     }
 }

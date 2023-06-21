@@ -12,6 +12,7 @@ namespace Infrastructure.Services.StaticData
         public Dictionary<LevelId, LevelConfig> Levels { get; private set; }
 
         public Dictionary<GamemodeId, GamemodeConfig> Mods { get; private set; }
+        public Dictionary<TankId, TankConfig> Tanks { get; private set; }
 
         private const string LevelDataPath = "StaticData/Levels";
 
@@ -19,7 +20,6 @@ namespace Infrastructure.Services.StaticData
 
         private const string ModsDataPath = "StaticData/ModsData";
 
-        public Dictionary<TankId, TankConfig> Tanks { get; private set; }
 
 
         public void LoadAllStaticData()
@@ -57,5 +57,9 @@ namespace Infrastructure.Services.StaticData
             Mods.TryGetValue(id, out GamemodeConfig config)
                 ? config
                 : null;
+
+        public void CleanUp()
+        {
+        }
     }
 }

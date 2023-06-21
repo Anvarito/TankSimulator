@@ -17,7 +17,7 @@ namespace Infrastructure.Factory.Base
             _assetLoader = assetLoader;
         }
 
-        public void CleanUp()
+        public virtual void CleanUp()
         {
             ProgressReaders.Clear();
             ProgressWriters.Clear();

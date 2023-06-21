@@ -81,6 +81,18 @@ namespace Infrastructure.Services.Input
 
         private bool NextPlayerExist() => 
             currentIndex + 1 > PlayerConfigs.Count;
+
+        public void CleanUp()
+        {
+            foreach (var i in PlayerConfigs)
+            {
+                GameObject.Destroy(i.Input.gameObject);
+            }
+
+            ResetPlayerIndex();
+
+            PlayerConfigs.Clear();
+        }
     }
 
 

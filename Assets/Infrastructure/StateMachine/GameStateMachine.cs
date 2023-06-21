@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
+using Infrastructure.Factory.Base;
 using Infrastructure.Factory.Compose;
 using Infrastructure.Services;
 using Infrastructure.Services.Input;
 using Infrastructure.Services.Progress;
 using Infrastructure.Services.SaveLoad;
+using Infrastructure.Services.StaticData;
 
 namespace Infrastructure.StateMachine
 {
@@ -27,6 +29,7 @@ namespace Infrastructure.StateMachine
                 [typeof(SetupPlayersState)] = new SetupPlayersState(this,sceneLoader,services.Single<IInputService>(),services.Single<IFactories>()),
                 [typeof(SetupFirstInputState)] = new SetupFirstInputState(this,sceneLoader,services.Single<IInputService>(),services.Single<IFactories>()),
                 [typeof(ChooseLevelModeState)] = new ChooseLevelModeState(this,sceneLoader,services.Single<IProgressService>(), services.Single<IFactories>()),
+                [typeof(ResetState)] = new ResetState(this, services.Single<IFactories>(), services.Single<IInputService>(), services.Single<IProgressService>()),
             };
         }
 

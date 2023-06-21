@@ -14,6 +14,12 @@ namespace Infrastructure.Factory
         {
         }
 
+        public override void CleanUp()
+        {
+            base.CleanUp();
+            EnemyDamageManagers.Clear();
+        }
+
         public void CreateEnemies(TeamSeparator teamSeparator) =>
             InstantiateRegistered(teamSeparator);
 

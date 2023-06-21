@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using ChobiAssets.PTM;
+using UnityEngine.Events;
 
 namespace Infrastructure.TestMono
 {
@@ -30,6 +31,8 @@ namespace Infrastructure.TestMono
         [Header("Buttons")]
         [SerializeField] private Button _restartButton;
         [SerializeField] private Button _menuButton;
+
+        public UnityAction OnRestart;
         public void Awake()
         {
             _restartButton.onClick.AddListener(RestartClick);
@@ -40,9 +43,10 @@ namespace Infrastructure.TestMono
         {
         }
 
+        [ContextMenu("Restart")]
         private void RestartClick()
         {
-            OnPressContinue?.Invoke();
+            OnRestart?.Invoke();
         }
 
         public void ShowVictoryPanel(float score)
@@ -66,6 +70,5 @@ namespace Infrastructure.TestMono
             _scoreText.text = _originText + "\n" + score;
         }
 
-        public Action OnPressContinue;
     }
 }
