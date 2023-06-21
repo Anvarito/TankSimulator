@@ -32,6 +32,7 @@ namespace Infrastructure.TestMono
         [SerializeField] private Button _restartButton;
         [SerializeField] private Button _menuButton;
 
+        public UnityAction OnExitMenu;
         public UnityAction OnRestart;
         public void Awake()
         {
@@ -41,6 +42,7 @@ namespace Infrastructure.TestMono
 
         private void MenuClick()
         {
+            OnExitMenu?.Invoke();
         }
 
         [ContextMenu("Restart")]

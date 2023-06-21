@@ -22,7 +22,7 @@ namespace Infrastructure.StateMachine
             Debug.Log($"Entered {this.GetType().Name}");
             
             _playerFactory.GameBoard.ShowVictoryPanel(score);
-            _playerFactory.GameBoard.OnRestart += Menu;
+            _playerFactory.GameBoard.OnExitMenu += Menu;
 
             SetupMenu();
         }
@@ -38,7 +38,7 @@ namespace Infrastructure.StateMachine
 
         public void Exit()
         {
-            _playerFactory.GameBoard.OnRestart -= Menu;
+            _playerFactory.GameBoard.OnExitMenu -= Menu;
         }
     }
 }
