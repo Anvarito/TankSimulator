@@ -15,7 +15,10 @@ namespace Infrastructure.Services.StaticData
         GamemodeConfig ForMode(GamemodeId id);
         Dictionary<LevelId, LevelConfig> Levels { get; }
         Dictionary<GamemodeId, GamemodeConfig> Mods { get; }
+        
         List<SpawnPointConfig> ForLevelAndMode(LevelId id1, GamemodeId id2);
         WaypointPackConfig ForWaypoints(WaypointsPackId configWaypointsPackId);
+
+        Dictionary<TankId, TankConfig> Tanks{ get; }
     }
 }

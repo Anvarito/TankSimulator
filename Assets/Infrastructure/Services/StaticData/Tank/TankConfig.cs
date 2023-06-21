@@ -7,6 +7,9 @@ namespace Infrastructure.Services.StaticData.Tank
     public class TankConfig
     {
         public TankId TankId;
-        public GameObject Prefab;
+        public string PrefabPath;
+        public GameObject PrefabEmpty;
+        public string Name = "Tank";
+        public string Description = "Battle Tank";
     }
 }

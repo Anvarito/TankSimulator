@@ -9,7 +9,7 @@ namespace ChobiAssets.PTM
         private InputAction _lookAction;
         private PlayerInput _playerInput;
         private InputAction _resetTurretAction;
-
+        private Vector2 _rotateInput;
         public Camera_Rotation_Input_02_For_Single_Stick_Drive_CS(PlayerInput playerInput, InputAction lookAction, InputAction resetTurretAction)
         {
             _lookAction = lookAction;
@@ -32,23 +32,7 @@ namespace ChobiAssets.PTM
         {
             if (_lookAction.name == obj.action.name)
             {
-                // Check the main camera is enabled.
-                if (rotationScript.Main_Camera.enabled == false)
-                {
-                    // Do not rotate.
-                    rotationScript.Horizontal_Input = 0.0f;
-                    rotationScript.Vertical_Input = 0.0f;
-                    return;
-                }
-
-                // Rotation.
-                multiplier = Mathf.Lerp(0.1f, rotationScript.RotationMultiplier, rotationScript.Main_Camera.fieldOfView / 15.0f); // Change the rotation speed according to the FOV of the main camera.
-
-                var vertical = obj.action.ReadValue<Vector2>().y;
-                var horizontal = obj.action.ReadValue<Vector2>().x;
-
-                rotationScript.Horizontal_Input = horizontal * multiplier;
-                rotationScript.Vertical_Input = vertical * multiplier * 0.5f;
+                _rotateInput = obj.action.ReadValue<Vector2>();
             }
         }
 
@@ -61,29 +45,24 @@ namespace ChobiAssets.PTM
 
         public override void Get_Input()
         {
-            //// Check the main camera is enabled.
-            //if (rotationScript.Main_Camera.enabled == false)
-            //{
-            //    // Do not rotate.
-            //    rotationScript.Horizontal_Input = 0.0f;
-            //    rotationScript.Vertical_Input = 0.0f;
-            //    return;
-            //}
 
-            //// Look forward.
-            //if (Input.GetKeyDown(General_Settings_CS.Camera_Look_Forward_Pad_Button))
-            //{
-            //    rotationScript.Look_At_Target(rotationScript.BodyTransform.position + rotationScript.BodyTransform.forward * 64.0f);
-            //}
+            // Check the main camera is enabled.
+            if (rotationScript.Main_Camera.enabled == false)
+            {
+                // Do not rotate.
+                rotationScript.Horizontal_Input = 0.0f;
+                rotationScript.Vertical_Input = 0.0f;
+                return;
+            }
 
-            //// Rotation.
-            //multiplier = Mathf.Lerp(0.1f, rotationScript.RotationMultiplier, rotationScript.Main_Camera.fieldOfView / 15.0f); // Change the rotation speed according to the FOV of the main camera.
+            // Rotation.
+            multiplier = Mathf.Lerp(0.1f, rotationScript.RotationMultiplier, rotationScript.Main_Camera.fieldOfView / 15.0f); // Change the rotation speed according to the FOV of the main camera.
 
-            //var vertical = _lookAction.ReadValue<Vector2>().y;
-            //var horizontal = _lookAction.ReadValue<Vector2>().x;
+            var vertical = _rotateInput.y;
+            var horizontal = _rotateInput.x;
 
-            //rotationScript.Horizontal_Input = horizontal * multiplier;
-            //rotationScript.Vertical_Input = vertical * multiplier * 0.5f;
+            rotationScript.Horizontal_Input = horizontal * multiplier;
+            rotationScript.Vertical_Input = vertical * multiplier * 0.5f;
         }
 
     }

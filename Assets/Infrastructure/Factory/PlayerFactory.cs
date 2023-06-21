@@ -32,6 +32,13 @@ namespace Infrastructure.Factory
             _dataService = dataService;
         }
 
+        public override void CleanUp()
+        {
+            base.CleanUp();
+            PlayerParts.Clear();
+            _enemysID.Clear();
+        }
+
         public void CreatePlayers(List<SpawnPointConfig> points)
         {
             //at = Shuffle(at);
@@ -40,6 +47,9 @@ namespace Infrastructure.Factory
             {
                 GameObject player = InstantiateRegistered(AssetPaths.PlayerTank, configWithPoint.Point.Position);
                 PlayerParts.Add(RegisterUiWatchers(player));
+
+                uiWatcher.IdSettings.SetRelationship(ERelationship.TeamA;);
+                
                 InitedRegisteredTank(player, configWithPoint.Config);
             }
         }
@@ -88,14 +98,14 @@ namespace Infrastructure.Factory
         private PlayerUiParts RegisterUiWatchers(GameObject gameObject)
         {
             var player = new PlayerUiParts();
-            player.Aiming = gameObject.GetComponentInChildren<Aiming_Control_CS>();
-            player.BulletGenerator = gameObject.GetComponentInChildren<Bullet_Generator_CS>();
-            player.CannonFire = gameObject.GetComponentInChildren<Cannon_Fire_CS>();
-            player.GunCamera = gameObject.GetComponentInChildren<Gun_Camera_CS>();
-            player.DamageReceiver = gameObject.GetComponentInChildren<DamageReciviersManager>();
-            player.DriveControl = gameObject.GetComponentInChildren<Drive_Control_CS>();
-            player.CameraView = gameObject.GetComponentInChildren<CameraViewSetup>();
-            player.IdSettings = gameObject.GetComponentInChildren<ID_Settings_CS>();
+            player.Aiming =              gameObject.GetComponentInChildren<Aiming_Control_CS>();
+            player.BulletGenerator =     gameObject.GetComponentInChildren<Bullet_Generator_CS>();
+            player.CannonFire =          gameObject.GetComponentInChildren<Cannon_Fire_CS>();
+            player.GunCamera =           gameObject.GetComponentInChildren<Gun_Camera_CS>();
+            player.DamageReceiver =      gameObject.GetComponentInChildren<DamageReciviersManager>();
+            player.DriveControl =        gameObject.GetComponentInChildren<Drive_Control_CS>();
+            player.CameraView =          gameObject.GetComponentInChildren<CameraViewSetup>();
+            player.IdSettings =          gameObject.GetComponentInChildren<ID_Settings_CS>();
             return player;
         }
 

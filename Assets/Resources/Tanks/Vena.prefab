@@ -38702,7 +38702,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2390085117305452651}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.019, z: 2.783}
+  m_LocalPosition: {x: 0, y: -0.019, z: 3.041}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -39039,8 +39039,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Torque: 5000
   Max_Speed: 36.3
-  Turn_Brake_Drag: 5000
-  Switch_Direction_Lag: 0
+  Turn_Brake_Drag: 500
+  Switch_Direction_Lag: 0.5
   Allow_Pivot_Turn: 0
   Pivot_Turn_Rate: 0.3
   Acceleration_Flag: 1
@@ -39129,7 +39129,7 @@ MonoBehaviour:
   Parking_Brake_Velocity: 0.5
   Parking_Brake_Angular_Velocity: 0.1
   Use_AntiSlip: 1
-  Ray_Distance: 1
+  Ray_Distance: 1.5
   AntiSlip_Min_Speed: 32
   AntiSlip_Max_Speed: 64
   Use_Downforce: 1
@@ -39299,9 +39299,10 @@ MonoBehaviour:
     Turret: {fileID: 2390085116945829775}
     blowOff: 1
     mass: 200
-    destroyedEffect: {fileID: 11400004, guid: 2fe457cefafcb1242b30f81a15f53360, type: 3}
+    DestroyedEffect: {fileID: 11400004, guid: 2fe457cefafcb1242b30f81a15f53360, type: 3}
   _bodyExplosionProps:
-    Destroyed_Effect: {fileID: 100004, guid: d5cf1068eb9224446a79deb00e60a2e5, type: 3}
+    SmokeEffectPrefab: {fileID: 115512132488211677, guid: 41bf89bca6cb77b4c9ac6a177b2e3f03, type: 3}
+    Destroyed_Effect: {fileID: 198917022394846920, guid: e1b08032bec16ba4eb1ae23cbd572664, type: 3}
     Destroyed_Effect_Offset: {x: 0, y: 0, z: 0}
 --- !u!82 &2390085117309224823
 AudioSource:
@@ -48242,7 +48243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tankID: 1
-  _relationship: 0
+  _relationship: 1
   _playerType: 1
 --- !u!114 &2390085117803253463
 MonoBehaviour:
@@ -50798,6 +50799,7 @@ GameObject:
   - component: {fileID: 2390085117933263105}
   - component: {fileID: 2390085117933263231}
   - component: {fileID: 2390085117933263230}
+  - component: {fileID: 6853718037367592741}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: Untagged
@@ -50900,6 +50902,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Main_Camera: {fileID: 2390085117933263229}
+--- !u!114 &6853718037367592741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2390085117933263228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 1
+  m_Antialiasing: 1
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1 &2390085117951192708
 GameObject:
   m_ObjectHideFlags: 0

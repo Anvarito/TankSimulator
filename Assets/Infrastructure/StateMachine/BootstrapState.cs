@@ -50,7 +50,7 @@ namespace Infrastructure.StateMachine
         private void RegisterServices()
         {
             _services.RegisterSingle<IStaticDataService>(new StaticDataService());
-            
+
             _services.RegisterSingle<IProgressService>(new ProgressService());
             _services.RegisterSingle<IAssetLoader>(new AssetLoader());
 
@@ -59,7 +59,7 @@ namespace Infrastructure.StateMachine
             _services.Single<IFactories>().Add<IInputFactory>(new InputFactory(_services.Single<IAssetLoader>()));
 
             _services.RegisterSingle<IInputService>(new InputService(_gameStateMachine,
-                _services.Single<IFactories>()));
+                _services.Single<IFactories>(), _services.Single<IStaticDataService>()));
             
             _services.Single<IFactories>().Add<IPlayerFactory>(
                 new PlayerFactory(
@@ -75,10 +75,12 @@ namespace Infrastructure.StateMachine
 
         private static void ClearLog()
         {
+#if UNITY_EDITOR
             var assembly = Assembly.GetAssembly(typeof(UnityEditor.ActiveEditorTracker));
             var type = assembly.GetType("UnityEditor.LogEntries");
             var method = type.GetMethod("Clear");
             method?.Invoke(new object(), null);
+#endif
         }
     }
 }

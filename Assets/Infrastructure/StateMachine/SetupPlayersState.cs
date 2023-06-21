@@ -35,9 +35,8 @@ namespace Infrastructure.StateMachine
 
         public void Exit()
         {
-            _inputFactory.TankPickerUIHelpers.Last().OnFirstTank -= PickFirstTank;
-            _inputFactory.TankPickerUIHelpers.Last().OnSecondTank -= PickSecondTank;
-            _inputService.OnPlayerJoined -= () => CreatePicker(_canvas);
+            _inputFactory.TankPickerUIHelpers.Last().OnTankChoise.RemoveListener(PickTank);
+            _inputService.OnPlayerJoined -= CreatePicker;
         }
 
         private void onLoad()
@@ -45,33 +44,21 @@ namespace Infrastructure.StateMachine
             _canvas = _inputFactory.CreatePickerCanvas();
             _inputService.ResetPlayerIndex();
 
-            CreatePicker(_canvas);
-            _inputService.OnPlayerJoined += () =>
-                CreatePicker(_canvas);
+            CreatePicker();
+            _inputService.OnPlayerJoined += CreatePicker;
         }
 
-        private void CreatePicker(Transform canvas)
+
+        private void CreatePicker()
         {
-            GameObject tankPickerUI = _inputFactory.CreateTankPickerUI(canvas);
+            GameObject tankPickerUI = _inputFactory.CreateTankPickerUI(_canvas);
             _inputService.ConnectToInputs(tankPickerUI, individually: true);
 
-            _inputFactory.TankPickerUIHelpers.Last().OnFirstTank += PickFirstTank;
-            _inputFactory.TankPickerUIHelpers.Last().OnSecondTank += PickSecondTank;
+            _inputFactory.TankPickerUIHelpers.Last().OnTankChoise.AddListener(PickTank);
         }
 
-        private void PickSecondTank(Infrastructure.Services.Input.PlayerConfiguration playerConfiguration)
+        private void PickTank()
         {
-            playerConfiguration.IsReady = true;
-            playerConfiguration.TankIndex = 1;
-
-            EnterNextStateIfReady();
-        }
-
-        private void PickFirstTank(Infrastructure.Services.Input.PlayerConfiguration playerConfiguration)
-        {
-            playerConfiguration.IsReady = true;
-            playerConfiguration.TankIndex = 0;
-
             EnterNextStateIfReady();
         }
 

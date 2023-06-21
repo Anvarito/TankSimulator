@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Infrastructure.Factory.Base;
 using Infrastructure.Factory.Compose;
 using Infrastructure.Services;
 using Infrastructure.Services.Input;
@@ -23,11 +24,12 @@ namespace Infrastructure.StateMachine
                 [typeof(LoadProgressState)] = new LoadProgressState(this, services.Single<IProgressService>(), services.Single<ISaveLoadService>()), 
                 [typeof(GameLoopState)] = new GameLoopState(this, coroutineRunner,services.Single<IFactories>()),
                 [typeof(VictoryState)] = new VictoryState(this, services.Single<IFactories>()),
-                [typeof(GameOverState)] = new GameOverState(this),
+                [typeof(GameOverState)] = new GameOverState(this, services.Single<IFactories>(), services.Single<IProgressService>()),
                 [typeof(MenuState)] = new MenuState(this,sceneLoader,services.Single<IInputService>(),services.Single<IFactories>()),
                 [typeof(SetupPlayersState)] = new SetupPlayersState(this,sceneLoader,services.Single<IInputService>(),services.Single<IFactories>()),
                 [typeof(SetupFirstInputState)] = new SetupFirstInputState(this,sceneLoader,services.Single<IInputService>(),services.Single<IFactories>()),
                 [typeof(ChooseLevelModeState)] = new ChooseLevelModeState(this,sceneLoader,services.Single<IProgressService>(), services.Single<IFactories>()),
+                [typeof(ResetState)] = new ResetState(this, services.Single<IFactories>(), services.Single<IInputService>(), services.Single<IProgressService>()),
             };
         }
 

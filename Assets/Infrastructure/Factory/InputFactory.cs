@@ -15,7 +15,11 @@ namespace Infrastructure.Factory
         public InputFactory(IAssetLoader assetLoader) : base(assetLoader)
         {
         }
-
+        public override void CleanUp()
+        {
+            base.CleanUp();
+            TankPickerUIHelpers.Clear();
+        }
         public GameObject CreatePlayerInputManager() =>
             _assetLoader.Instantiate(AssetPaths.PlayerInputManager);
         

@@ -40,24 +40,24 @@ public class PlayerInMenu : MonoBehaviour
         }
     }
 
-    //Call from unity event in inspector
-    public void SelectTank(int tankIndex)
-    {
-        if(!inputEnabled) { return; }
+    ////Call from unity event in inspector
+    //public void SelectTank(int tankIndex)
+    //{
+    //    if(!inputEnabled) { return; }
 
-        PlayerConfigurationManager.Instance.SetPlayerTank(playerIndex, tankIndex);
-        readyPanel.SetActive(true);
-        readyButton.interactable = true;
-        menuPanel.SetActive(false);
-        readyButton.Select();
-    }
+    //    PlayerConfigurationManager.Instance.SetPlayerTank(playerIndex, tankIndex);
+    //    readyPanel.SetActive(true);
+    //    readyButton.interactable = true;
+    //    menuPanel.SetActive(false);
+    //    readyButton.Select();
+    //}
 
-    //Call from unity event in inspector
-    public void ReadyPlayer()
-    {
-        if (!inputEnabled) { return; }
+    ////Call from unity event in inspector
+    //public void ReadyPlayer()
+    //{
+    //    if (!inputEnabled) { return; }
 
-        PlayerConfigurationManager.Instance.ReadyPlayer(playerIndex);
-        readyButton.gameObject.SetActive(false);
-    }
+    //    PlayerConfigurationManager.Instance.ReadyPlayer(playerIndex);
+    //    readyButton.gameObject.SetActive(false);
+    //}
 }

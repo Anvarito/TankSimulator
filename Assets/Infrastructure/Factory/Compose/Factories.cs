@@ -11,6 +11,10 @@ namespace Infrastructure.Factory.Compose
         public void Add<TFactory>(TFactory factory) where TFactory : IGameFactory =>
             All.Add(typeof(TFactory), factory);
 
+        public void CleanUp()
+        {
+        }
+
         public TFactory Single<TFactory>() where TFactory : class, IGameFactory =>
             All[typeof(TFactory)] as TFactory;
     }

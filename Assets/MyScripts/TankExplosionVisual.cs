@@ -12,12 +12,13 @@ public class TurretDamageControlProp
 
     public bool blowOff;
     public float mass;
-    public Particle_Control_CS destroyedEffect;
+    public Particle_Control_CS DestroyedEffect;
 }
 [System.Serializable]
-public struct BodyExplosionProp
+public class BodyExplosionProp
 {
-    public GameObject Destroyed_Effect;
+    public ParticleSystem SmokeEffectPrefab;
+    public ParticleSystem Destroyed_Effect;
     public Vector3 Destroyed_Effect_Offset;
 }
 public class TankExplosionVisual : MonoBehaviour
@@ -25,7 +26,6 @@ public class TankExplosionVisual : MonoBehaviour
     [SerializeField] private DamageReciviersManager _damageReciviersManager;
     [SerializeField] private TurretDamageControlProp _turretProps;
     [SerializeField] private BodyExplosionProp _bodyExplosionProps;
-
     void Start()
     {
         _damageReciviersManager.OnTankDestroyed.AddListener(TankDestroy);
@@ -34,12 +34,7 @@ public class TankExplosionVisual : MonoBehaviour
     private void TankDestroy(ID_Settings_CS bulletInitiatorID)
     {
         TurretDestroyProcess();
-        BodyDestroyProcess();
-    }
-
-    private void BodyDestroyProcess()
-    {
-        CreateDestroyedEffect();
+        StartCoroutine(BodyExplosionSeqence());
         CreateNavMeshObstacle();
         StartCoroutine(Disable_MainBody_Constraints());
     }
@@ -48,7 +43,7 @@ public class TankExplosionVisual : MonoBehaviour
     {
         // Create the destroyed effect.
 
-            Instantiate(_turretProps.destroyedEffect, _turretProps.Turret.TurretMesh.position, _turretProps.Turret.TurretMesh.rotation, _turretProps.Turret.TurretMesh);
+        Instantiate(_turretProps.DestroyedEffect, _turretProps.Turret.transform.position, Quaternion.identity, _turretProps.Turret.TurretMesh);
 
         // Send Message to "Damage_Control_01_Turret_CS", "Turret_Horizontal_CS", "Cannon_Vertical_CS", "Cannon_Fire_CS", "Gun_Camera_CS", "Recoil_Brake_CS", "Sound_Control_Motor_CS".
         //_turretProps.turretBaseTransform.BroadcastMessage("Turret_Destroyed_Linkage", SendMessageOptions.DontRequireReceiver);
@@ -77,20 +72,18 @@ public class TankExplosionVisual : MonoBehaviour
         addForceOffset.z = Random.Range(-4.0f, 4.0f);
         turretRigidbody.AddForceAtPosition(_turretProps.Turret.TurretMesh.up * Random.Range(_turretProps.mass * 5.0f, _turretProps.mass * 15.0f), _turretProps.Turret.TurretMesh.position + addForceOffset, ForceMode.Impulse);
         _turretProps.Turret.TurretMesh.parent = null;
-        // Change the hierarchy.
-        //Turret_Props[index].turretBaseTransform.parent = bodyTransform.parent; // Make it a child of the top object.
     }
 
-    private void CreateDestroyedEffect()
+    private IEnumerator BodyExplosionSeqence()
     {
-        var Destroyed_Effect = _bodyExplosionProps.Destroyed_Effect;
-        var Destroyed_Effect_Offset = _bodyExplosionProps.Destroyed_Effect_Offset;
+        ParticleSystem Destroyed_Effect = _bodyExplosionProps.Destroyed_Effect;
+        Vector3 Destroyed_Effect_Offset = _bodyExplosionProps.Destroyed_Effect_Offset;
+        //Vector3 pos = transform.position + (transform.right * Destroyed_Effect_Offset.x) + (transform.up * Destroyed_Effect_Offset.y) + (transform.forward * Destroyed_Effect_Offset.z);
+        Instantiate(Destroyed_Effect, transform.position, transform.rotation, transform);
 
-        if (Destroyed_Effect)
-        {
-            Vector3 pos = transform.position + (transform.right * Destroyed_Effect_Offset.x) + (transform.up * Destroyed_Effect_Offset.y) + (transform.forward * Destroyed_Effect_Offset.z);
-            Instantiate(Destroyed_Effect, pos, transform.rotation, transform);
-        }
+        yield return new WaitForSeconds(Destroyed_Effect.main.duration * 0.5f);
+        ParticleSystem smoke_Effect = _bodyExplosionProps.SmokeEffectPrefab;
+        Instantiate(smoke_Effect, transform.position, transform.rotation, transform);
     }
 
     private void CreateNavMeshObstacle()

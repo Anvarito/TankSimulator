@@ -35,6 +35,12 @@ namespace Infrastructure.Factory
                 CreateWaypoints(_dataService.ForWaypoints(config.WaypointsPackId));
         }
 
+        public override void CleanUp()
+        {
+            base.CleanUp();
+            EnemyDamageManagers.Clear();
+        }
+
         private GameObject CreateWaypoints(WaypointPackConfig waypointPack)
         {
             string name = Enum.GetName(typeof(WaypointsPackId), waypointPack.PackId);

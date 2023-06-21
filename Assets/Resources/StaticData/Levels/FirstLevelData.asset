@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: FirstLevelData
   m_EditorClassIdentifier: 
   Config:
-    LevelId: 2
-    Scene: {fileID: 102900000, guid: a0dee0841ec281845a14fbcf468359e9, type: 3}
+    LevelId: 3
+    SceneName: MinimalTest

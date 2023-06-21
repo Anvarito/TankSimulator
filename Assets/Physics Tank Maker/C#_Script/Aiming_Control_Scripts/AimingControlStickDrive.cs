@@ -11,7 +11,6 @@ namespace ChobiAssets.PTM
         private InputAction _lookAction;
         private InputAction _resetTurretAction;
         private PlayerInput _playerInput;
-        private bool _isRotated;
         private InputAction _rotateValueAction;
 
         public AimingControlStickDrive(PlayerInput playerInput, InputAction resetTurretAction, InputAction lookAction)
@@ -59,13 +58,7 @@ namespace ChobiAssets.PTM
             {
                 if (obj.performed)
                 {
-                    _isRotated = true;
-
                     _rotateValueAction = obj.action;
-                }
-                else if (obj.canceled)
-                {
-                    _isRotated = false;
                 }
             }
         }

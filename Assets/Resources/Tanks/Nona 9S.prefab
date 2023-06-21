@@ -56871,7 +56871,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tankID: 1
-  _relationship: 0
+  _relationship: 1
   _playerType: 1
 --- !u!114 &1083484181407159628
 MonoBehaviour:
@@ -70681,7 +70681,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Torque: 5000
-  Max_Speed: 7
+  Max_Speed: 15
   Turn_Brake_Drag: 200
   Switch_Direction_Lag: 0
   Allow_Pivot_Turn: 0
@@ -70772,7 +70772,7 @@ MonoBehaviour:
   Parking_Brake_Velocity: 0.5
   Parking_Brake_Angular_Velocity: 0.1
   Use_AntiSlip: 1
-  Ray_Distance: 1
+  Ray_Distance: 1.2
   AntiSlip_Min_Speed: 32
   AntiSlip_Max_Speed: 64
   Use_Downforce: 1
@@ -70942,9 +70942,10 @@ MonoBehaviour:
     Turret: {fileID: 1083484180671757753}
     blowOff: 1
     mass: 200
-    destroyedEffect: {fileID: 11400004, guid: 2fe457cefafcb1242b30f81a15f53360, type: 3}
+    DestroyedEffect: {fileID: 11400004, guid: 2fe457cefafcb1242b30f81a15f53360, type: 3}
   _bodyExplosionProps:
-    Destroyed_Effect: {fileID: 100004, guid: d5cf1068eb9224446a79deb00e60a2e5, type: 3}
+    SmokeEffectPrefab: {fileID: 115512132488211677, guid: 41bf89bca6cb77b4c9ac6a177b2e3f03, type: 3}
+    Destroyed_Effect: {fileID: 198917022394846920, guid: e1b08032bec16ba4eb1ae23cbd572664, type: 3}
     Destroyed_Effect_Offset: {x: 0, y: 0, z: 0}
 --- !u!114 &4776892662931364782
 MonoBehaviour:
@@ -87559,6 +87560,7 @@ GameObject:
   - component: {fileID: 5869663220618537860}
   - component: {fileID: 5869663220618537862}
   - component: {fileID: 5869663220618537863}
+  - component: {fileID: 6951072559701924015}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: Untagged
@@ -87661,6 +87663,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Main_Camera: {fileID: 5869663220618537880}
+--- !u!114 &6951072559701924015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5869663220618537881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 1
+  m_Antialiasing: 1
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1 &5869663220939908590
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class AimMarkerPresenter : UIPresenterBase
 {
     [SerializeField] private Image _aimMarker;
+    [SerializeField] private Color _normalColor;
 
     public void SetLinks(Image aimMarker)
     {
@@ -18,7 +19,7 @@ public class AimMarkerPresenter : UIPresenterBase
 
     public void ChangeColorMarker(bool hasTarget)
     {
-        _aimMarker.color = hasTarget ? Color.red : Color.white;
+        _aimMarker.color = hasTarget ? Color.red : _normalColor;
     }
     /*
     public void AimMarkerControl(Vector3 targetPosition)

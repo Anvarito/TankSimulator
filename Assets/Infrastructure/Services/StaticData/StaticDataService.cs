@@ -15,6 +15,7 @@ namespace Infrastructure.Services.StaticData
         public Dictionary<LevelId, LevelConfig> Levels { get; private set; }
 
         public Dictionary<GamemodeId, GamemodeConfig> Mods { get; private set; }
+        public Dictionary<TankId, TankConfig> Tanks { get; private set; }
 
         private const string SpawnPointsDataPath = "StaticData/SpawnPoints";
 
@@ -26,7 +27,6 @@ namespace Infrastructure.Services.StaticData
 
         private const string ModsDataPath = "StaticData/ModsData";
 
-        private Dictionary<TankId, TankConfig> _tanks;
 
         private Dictionary<string, List<SpawnPointConfig>> _spawnPoints;
         private Dictionary<WaypointsPackId, WaypointPackConfig> _waypoints;
@@ -34,7 +34,7 @@ namespace Infrastructure.Services.StaticData
 
         public void LoadAllStaticData()
         {
-            _tanks = Resources
+            Tanks = Resources
                 .Load<TanksStaticData>(TankDataPath)
                 .Tanks
                 .ToDictionary(x => x.TankId, x => x);
@@ -65,7 +65,7 @@ namespace Infrastructure.Services.StaticData
         }
 
         public TankConfig ForTank(TankId id) =>
-            _tanks.TryGetValue(id, out TankConfig config)
+            Tanks.TryGetValue(id, out TankConfig config)
                 ? config
                 : null;
 
@@ -95,5 +95,9 @@ namespace Infrastructure.Services.StaticData
 
         private string HashForTwoId(LevelId id1, GamemodeId id2) =>
             Enum.GetName(typeof(LevelId), id1) + Enum.GetName(typeof(GamemodeId), id2);
+            
+        public void CleanUp()
+        {
+        }
     }
 }
