@@ -18,6 +18,7 @@ namespace Infrastructure.Factory
         private readonly IProgressService _progressService;
         private readonly IStaticDataService _dataService;
         public List<PlayerUiParts> PlayerParts { get; } = new List<PlayerUiParts>();
+        private List<GameObject> Players = new List<GameObject>();
         public MainMenuUIHelper MainMenuUIHelper { get; private set; }
         public GameOverBoard GameBoard => _gameOverBoard;
 
@@ -35,7 +36,14 @@ namespace Infrastructure.Factory
         public override void CleanUp()
         {
             base.CleanUp();
+
+            foreach(var i in Players)
+            {
+                GameObject.Destroy(i.gameObject);
+            }
+
             PlayerParts.Clear();
+
             _enemysID.Clear();
         }
 
@@ -46,6 +54,7 @@ namespace Infrastructure.Factory
             foreach (var configWithPoint in _inputService.PlayerConfigs.Zip(points, (n, m) => new { Config = n, Point = m }))
             {
                 GameObject player = InstantiateRegistered(configWithPoint.Config.PrefabPath, configWithPoint.Point.Position);
+                Players.Add(player);
                 PlayerUiParts registerUiWatchers = RegisterUiWatchers(player);
                 
                 PlayerParts.Add(registerUiWatchers);

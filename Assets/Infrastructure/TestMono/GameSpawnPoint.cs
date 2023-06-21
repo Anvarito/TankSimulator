@@ -15,10 +15,6 @@ namespace Infrastructure.TestMono
 
         private void Start()
         {
-            transform.position = _config.Position;
-
-            if (_config.ActorType == EPlayerType.AI)
-                _enemyFactory.CreateEnemy(_config);
             //
             // if (_config.ActorType == EPlayerType.Player)
             //     _playerFactory.CratePlayer(_config);
@@ -29,6 +25,16 @@ namespace Infrastructure.TestMono
             _config = config;
             _playerFactory = factories.Single<IPlayerFactory>();
             _enemyFactory = factories.Single<IEnemyFactory>();
+
+            CreateEnemy();
+        }
+
+        private void CreateEnemy()
+        {
+            transform.position = _config.Position;
+
+            if (_config.ActorType == EPlayerType.AI)
+                _enemyFactory.CreateEnemy(_config);
         }
     }
 }

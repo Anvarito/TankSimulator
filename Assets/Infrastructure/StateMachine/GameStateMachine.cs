@@ -20,7 +20,7 @@ namespace Infrastructure.StateMachine
             _states = new Dictionary<Type, IExitableState>()
             {
                 [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader, services),
-                [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader,services.Single<IProgressService>(),services.Single<IStaticDataService>(), services.Single<IFactories>()),
+                [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader,services.Single<IProgressService>(),services.Single<IStaticDataService>(), services.Single<IFactories>(), services.Single<ITrashRemoveService>()),
                 [typeof(LoadProgressState)] = new LoadProgressState(this, services.Single<IProgressService>(), services.Single<ISaveLoadService>()), 
                 [typeof(GameLoopState)] = new GameLoopState(this, coroutineRunner,services.Single<IFactories>()),
                 [typeof(VictoryState)] = new VictoryState(this, services.Single<IFactories>()),

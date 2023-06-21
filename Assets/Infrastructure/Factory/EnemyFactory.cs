@@ -38,6 +38,12 @@ namespace Infrastructure.Factory
         public override void CleanUp()
         {
             base.CleanUp();
+
+            foreach(var i in EnemyDamageManagers)
+            {
+                GameObject.Destroy(i.transform.root.gameObject);
+            }
+
             EnemyDamageManagers.Clear();
         }
 

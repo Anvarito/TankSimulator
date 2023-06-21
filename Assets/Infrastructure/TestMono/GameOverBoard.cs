@@ -48,6 +48,7 @@ namespace Infrastructure.TestMono
         [ContextMenu("Restart")]
         private void RestartClick()
         {
+            HidePanel();
             OnRestart?.Invoke();
         }
 
@@ -70,6 +71,11 @@ namespace Infrastructure.TestMono
             _headerText.color = _colorHeaderlDefeat;
             _mainPanel.color = _colorPanelDefeat;
             _scoreText.text = _originText + "\n" + score;
+        }
+
+        private void HidePanel()
+        {
+            _mainPanel.gameObject.SetActive(false);
         }
 
     }

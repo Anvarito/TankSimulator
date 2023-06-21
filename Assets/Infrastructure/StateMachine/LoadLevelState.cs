@@ -11,7 +11,8 @@ using UnityEngine;
 
 namespace Infrastructure.StateMachine
 {
-    public class LoadLevelState : IPayloadedState<string>
+    public class LoadLevelState
+        : IPayloadedState<string>
     {
         private const string PlayerInitialPoint = "PlayerInitialPoint";
         private const string EnemyInitialPoint = "EnemyInitialPoint";
@@ -21,18 +22,19 @@ namespace Infrastructure.StateMachine
         private readonly IProgressService _progress;
         private readonly IStaticDataService _dataService;
         private readonly IFactories _factories;
+        private readonly ITrashRemoveService _trashRemoveService;
         private readonly IEnemyFactory _enemyFactory;
         private readonly IPlayerFactory _playerFactory;
         // private readonly IProgressService _progressService;
 
-        public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader,IProgressService progress, IStaticDataService dataService, IFactories factories)
+        public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader,IProgressService progress, IStaticDataService dataService, IFactories factories, ITrashRemoveService trashRemoveService)
         {
             _gameStateMachine = gameStateMachine;
             _sceneLoader = sceneLoader;
             _progress = progress;
             _dataService = dataService;
             _factories = factories;
-
+            _trashRemoveService = trashRemoveService;
             _playerFactory = factories.Single<IPlayerFactory>();
             _enemyFactory = factories.Single<IEnemyFactory>();
         }
@@ -71,6 +73,8 @@ namespace Infrastructure.StateMachine
         private void InitGameLevel()
         {
             //TeamSeparator teamSeparator = Object.FindObjectOfType<TeamSeparator>();
+            _trashRemoveService.LaunchRemove();
+
             CreateSpawners();
 
 

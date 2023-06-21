@@ -35,7 +35,7 @@ namespace Infrastructure.StateMachine
             Debug.Log($"Entered {this.GetType().Name}");
 
             _sceneLoader.Load(Initial, EnterLoadLevelState);
-            
+
             // RegisterServices();
             _services.Single<IStaticDataService>().LoadAllStaticData();
         }
@@ -44,7 +44,7 @@ namespace Infrastructure.StateMachine
         {
         }
 
-        private void EnterLoadLevelState() => 
+        private void EnterLoadLevelState() =>
             _gameStateMachine.Enter<SetupFirstInputState>();
 
         private void RegisterServices()
@@ -60,10 +60,10 @@ namespace Infrastructure.StateMachine
 
             _services.RegisterSingle<IInputService>(new InputService(_gameStateMachine,
                 _services.Single<IFactories>(), _services.Single<IStaticDataService>()));
-            
+
             _services.Single<IFactories>().Add<IPlayerFactory>(
                 new PlayerFactory(
-                    _services.Single<IAssetLoader>(), 
+                    _services.Single<IAssetLoader>(),
                     _services.Single<IInputService>(),
                     _services.Single<IProgressService>(),
                     _services.Single<IStaticDataService>()
@@ -71,6 +71,8 @@ namespace Infrastructure.StateMachine
 
             _services.RegisterSingle<ISaveLoadService>(new SaveLoadService(_services.Single<IProgressService>(),
                 _services.Single<IFactories>()));
+
+            _services.RegisterSingle<ITrashRemoveService>(new TrashRemoveService());
         }
 
         private static void ClearLog()
