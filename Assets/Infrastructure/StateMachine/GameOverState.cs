@@ -9,6 +9,8 @@ namespace Infrastructure.StateMachine
 {
     public class GameOverState : IPayloadedState<float>
     {
+        private string _reloadScene = "ReloadScene";
+
         private readonly GameStateMachine _gameStateMachine;
         private readonly IPlayerFactory _playerFactory;
         private readonly IProgressService _progressService;
@@ -32,7 +34,7 @@ namespace Infrastructure.StateMachine
         }
 
         private void Restart() =>
-           _gameStateMachine.Enter<LoadLevelState, string>(_progressService.Progress.WorldData.Level);
+           _gameStateMachine.Enter<ReloadState, string>(_reloadScene);
 
         private void Menu() =>
             _gameStateMachine.Enter<ResetState>();

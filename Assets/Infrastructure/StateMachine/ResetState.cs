@@ -12,11 +12,11 @@ namespace Infrastructure.StateMachine
     public class ResetState : IState
     {
         private GameStateMachine _gameStateMachine;
-        IPlayerFactory _playerFactory;
-        IEnemyFactory _enemyFactory;
-        IInputFactory _inputFactory;
-        IInputService _inputService;
-        IProgressService _progressService;
+        private IPlayerFactory _playerFactory;
+        private IEnemyFactory _enemyFactory;
+        private IInputFactory _inputFactory;
+        private IInputService _inputService;
+        private IProgressService _progressService;
         public ResetState(GameStateMachine gameStateMachine, IFactories factories, IInputService inputService, IProgressService progressService)
         {
             _playerFactory = factories.Single<IPlayerFactory>();
