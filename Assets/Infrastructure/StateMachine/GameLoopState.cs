@@ -74,14 +74,14 @@ namespace Infrastructure.StateMachine
         }
 
         private void GameOver() =>
-            _gameStateMachine.Enter<GameOverState, float>(_allEnemyDestroyed * _pointForEnemy);
+            _gameStateMachine.Enter<DefeatState, float>(_allEnemyDestroyed * _pointForEnemy);
 
 
         private void EnemyDestroyed(ID_Settings_CS _killerID)
         {
             //TEMP
-            //if (_killerID.Relationship == _playerFactory.PlayerParts[0].IdSettings.Relationship)
-            //    _playerEnemyDestroyed++;
+            if (_killerID.PlayerType == EPlayerType.Player)
+                _playerEnemyDestroyed++;
 
             if (IsEnemiesDestroyed()) _gameStateMachine.Enter<VictoryState, float>(_playerEnemyDestroyed * _pointForEnemy);
         }
