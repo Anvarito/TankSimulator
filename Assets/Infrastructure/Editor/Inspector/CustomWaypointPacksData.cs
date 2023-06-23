@@ -1,8 +1,8 @@
+using Infrastructure.Gizmos_Debug;
+using Infrastructure.Services.StaticData.Waypoints;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Infrastructure.Gizmos_Debug;
-using Infrastructure.Services.StaticData.Waypoints;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
@@ -18,17 +18,10 @@ namespace Infrastructure.Editor.Inspector
             WaypointPacksData data = (WaypointPacksData)target;
 
             if (GUILayout.Button("Save"))
-            {
-                WaypointsVisualDebug[] packs = FindObjectsOfType<WaypointsVisualDebug>();
+                SaveAdd(data);
 
-                data.Packs ??= new List<WaypointPackConfig>();
-                data.Packs.Clear();
-
-                foreach (WaypointsVisualDebug pack in packs)
-                    data.Packs.Add(CompositeConfig(pack));
-                
-                EditorUtility.SetDirty(data);
-            }
+            if (GUILayout.Button("Add"))
+                SaveAdd(data, add: true);
 
             if (GUILayout.Button("Load"))
             {
@@ -89,6 +82,18 @@ namespace Infrastructure.Editor.Inspector
             config.PackId = pack.PackId;
 
             return config;
+        }
+
+        private void SaveAdd(WaypointPacksData data, bool add = false) {
+            WaypointsVisualDebug[] packs = FindObjectsOfType<WaypointsVisualDebug>();
+
+            data.Packs ??= new List<WaypointPackConfig>();
+            if (!add) data.Packs.Clear();
+
+            foreach (WaypointsVisualDebug pack in packs)
+                data.Packs.Add(CompositeConfig(pack));
+
+            EditorUtility.SetDirty(data);
         }
     }
 }

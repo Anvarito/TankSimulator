@@ -87,7 +87,7 @@ namespace Infrastructure.Editor.Inspector
             SpawnPointConfig config = new SpawnPointConfig();
 
             config.Position = marker.GetComponent<Transform>().position;
-            config.UniqueId = marker.GetComponent<UniqueId>().Id;
+            //config.UniqueId = marker.GetComponent<UniqueId>().Id;
             
             config.Team = marker.Relationship;
             config.ActorType = marker.ActorType;

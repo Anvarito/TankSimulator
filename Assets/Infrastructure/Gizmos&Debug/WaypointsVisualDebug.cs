@@ -31,5 +31,10 @@ namespace Infrastructure.Gizmos_Debug
             Gizmos.DrawSphere(children.First().position, Radius);
             Gizmos.DrawLine(children.First().position, children.Last().position);
         }
+
+        private void OnValidate()
+        {
+            gameObject.name = "WayPoint_" + PackId.ToString();
+        }
     }
 }

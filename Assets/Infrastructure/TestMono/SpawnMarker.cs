@@ -14,8 +14,6 @@ namespace Infrastructure.TestMono
         public EPlayerType ActorType;
         public WaypointsPackId WaypointsPackId;
 
-        public GameObject WayPointsPack;
-
         private static Dictionary<ERelationship, Color> _colors = new Dictionary<ERelationship, Color>()
         {
             [ERelationship.TeamA] = Color.green,
