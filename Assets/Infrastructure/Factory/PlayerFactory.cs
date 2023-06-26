@@ -30,7 +30,8 @@ namespace Infrastructure.Factory
         private readonly List<ID_Settings_CS> _enemysID = new List<ID_Settings_CS>();
 
 
-        public PlayerFactory(IAssetLoader assetLoader, IInputService inputService, IProgressService progressService, IStaticDataService dataService) : base(assetLoader)
+        public PlayerFactory(IAssetLoader assetLoader, IInputService inputService, IProgressService progressService,
+            IStaticDataService dataService) : base(assetLoader)
         {
             _inputService = inputService;
             _progressService = progressService;
@@ -41,7 +42,7 @@ namespace Infrastructure.Factory
         {
             base.CleanUp();
 
-            foreach(var i in _players)
+            foreach (var i in _players)
             {
                 Object.Destroy(i.gameObject);
             }
@@ -53,20 +54,43 @@ namespace Infrastructure.Factory
 
         public void CreatePlayers(List<SpawnPointConfig> points)
         {
-            //at = Shuffle(at);
             
-            foreach (var configWithPoint in _inputService.PlayerConfigs.Zip(points, (n, m) => new { Config = n, Point = m }))
+            foreach (PlayerConfiguration config in _inputService.PlayerConfigs)
             {
-                GameObject player = InstantiateRegistered(configWithPoint.Config.PrefabPath, configWithPoint.Point.Position);
+                var filteredPoints = points.Where(x => x.Team == config.Team);
+                SpawnPointConfig selectedPoint = filteredPoints.First();
+                points.Remove(selectedPoint);
+                
+                GameObject player = InstantiateRegistered(config.PrefabPath,
+                    selectedPoint.Position);
                 _players.Add(player);
                 PlayerUiParts registerUiWatchers = RegisterUiWatchers(player);
                 registerUiWatchers.DamageReceiver.OnTankDestroyed.AddListener(PlayerDestroyed);
-                
+
                 PlayerParts.Add(registerUiWatchers);
 
                 registerUiWatchers.IdSettings.SetRelationship(ERelationship.TeamA);
-                InitedRegisteredTank(player, configWithPoint.Config);
+                InitedRegisteredTank(player, config);
             }
+            
+            
+            // foreach (var configWithPoint in _inputService.PlayerConfigs.Zip(points,
+            //              (n, m) => new { Config = n, Point = m }))
+            // {
+            //     if (configWithPoint.Point.Team == configWithPoint.Config.Team)
+            //     {
+            //         GameObject player = InstantiateRegistered(configWithPoint.Config.PrefabPath,
+            //             configWithPoint.Point.Position);
+            //         _players.Add(player);
+            //         PlayerUiParts registerUiWatchers = RegisterUiWatchers(player);
+            //         registerUiWatchers.DamageReceiver.OnTankDestroyed.AddListener(PlayerDestroyed);
+            //
+            //         PlayerParts.Add(registerUiWatchers);
+            //
+            //         registerUiWatchers.IdSettings.SetRelationship(ERelationship.TeamA);
+            //         InitedRegisteredTank(player, configWithPoint.Config);
+            //     }
+            // }
         }
 
         public void CreateTankUiSpawners(List<DamageReceiversManager> enemyDamageManagers)
@@ -88,12 +112,13 @@ namespace Infrastructure.Factory
 
         public GamemodeMapHelper CreateMapModeChoiseUI()
         {
-            GamemodeMapHelper helper = InstantiateRegistered(AssetPaths.MapModeMenu).GetComponentInChildren<GamemodeMapHelper>();
-            helper.Construct(_progressService,_dataService, _inputService);
+            GamemodeMapHelper helper = InstantiateRegistered(AssetPaths.MapModeMenu)
+                .GetComponentInChildren<GamemodeMapHelper>();
+            helper.Construct(_progressService, _dataService, _inputService);
             return helper;
         }
 
-        private void PlayerDestroyed(ID_Settings_CS killerId) => 
+        private void PlayerDestroyed(ID_Settings_CS killerId) =>
             OnPlayerDestroyed?.Invoke();
 
 
@@ -116,21 +141,22 @@ namespace Infrastructure.Factory
         private PlayerUiParts RegisterUiWatchers(GameObject gameObject)
         {
             var player = new PlayerUiParts();
-            player.Aiming =              gameObject.GetComponentInChildren<Aiming_Control_CS>();
-            player.BulletGenerator =     gameObject.GetComponentInChildren<Bullet_Generator_CS>();
-            player.CannonFire =          gameObject.GetComponentInChildren<Cannon_Fire_CS>();
-            player.GunCamera =           gameObject.GetComponentInChildren<Gun_Camera_CS>();
-            player.DamageReceiver =      gameObject.GetComponentInChildren<DamageReceiversManager>();
-            player.DriveControl =        gameObject.GetComponentInChildren<Drive_Control_CS>();
-            player.CameraView =          gameObject.GetComponentInChildren<CameraViewSetup>();
-            player.IdSettings =          gameObject.GetComponentInChildren<ID_Settings_CS>();
+            player.Aiming = gameObject.GetComponentInChildren<Aiming_Control_CS>();
+            player.BulletGenerator = gameObject.GetComponentInChildren<Bullet_Generator_CS>();
+            player.CannonFire = gameObject.GetComponentInChildren<Cannon_Fire_CS>();
+            player.GunCamera = gameObject.GetComponentInChildren<Gun_Camera_CS>();
+            player.DamageReceiver = gameObject.GetComponentInChildren<DamageReceiversManager>();
+            player.DriveControl = gameObject.GetComponentInChildren<Drive_Control_CS>();
+            player.CameraView = gameObject.GetComponentInChildren<CameraViewSetup>();
+            player.IdSettings = gameObject.GetComponentInChildren<ID_Settings_CS>();
             return player;
         }
 
         private void InitializeUiWatchers(PlayerUiParts parts, GameObject uiSpawner)
         {
             RecivierUIManager recivierUIManager = uiSpawner.GetComponent<RecivierUIManager>();
-            recivierUIManager.Initialize(parts.Aiming, parts.BulletGenerator, parts.CannonFire, parts.GunCamera, parts.DamageReceiver, parts.DriveControl, parts.CameraView, _enemysID, parts.IdSettings);
+            recivierUIManager.Initialize(parts.Aiming, parts.BulletGenerator, parts.CannonFire, parts.GunCamera,
+                parts.DamageReceiver, parts.DriveControl, parts.CameraView, _enemysID, parts.IdSettings);
         }
 
         //private GameObject[] Shuffle(GameObject[] at)

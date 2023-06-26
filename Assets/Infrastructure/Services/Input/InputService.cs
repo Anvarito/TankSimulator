@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using ChobiAssets.PTM;
 using Infrastructure.Factory.Base;
 using Infrastructure.Factory.Compose;
 using Infrastructure.StateMachine;
@@ -110,6 +111,7 @@ namespace Infrastructure.Services.Input
         public bool IsReady { get; set; }
         
         public string PrefabPath { get; set; }
+        public ERelationship Team { get; set; }
 
         public PlayerConfiguration(PlayerInput pi)
         {

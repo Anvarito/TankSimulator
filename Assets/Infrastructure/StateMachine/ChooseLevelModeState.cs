@@ -3,6 +3,7 @@ using System.Linq;
 using ChobiAssets.PTM;
 using Infrastructure.Factory.Base;
 using Infrastructure.Factory.Compose;
+using Infrastructure.Services.Input;
 using Infrastructure.Services.Progress;
 using Infrastructure.Services.StaticData.Gamemodes;
 using Infrastructure.Services.StaticData.Level;
@@ -16,14 +17,16 @@ namespace Infrastructure.StateMachine
         private readonly GameStateMachine _gameStateMachine;
         private readonly SceneLoader _sceneLoader;
         private readonly IProgressService _progressService;
+        private readonly IInputService _inputService;
         private readonly IPlayerFactory _playerFactory;
 
         public ChooseLevelModeState(GameStateMachine gameStateMachine, SceneLoader sceneLoader,
-            IProgressService progressService, IFactories factories)
+            IProgressService progressService, IInputService inputService, IFactories factories)
         {
             _gameStateMachine = gameStateMachine;
             _sceneLoader = sceneLoader;
             _progressService = progressService;
+            _inputService = inputService;
             _playerFactory = factories.Single<IPlayerFactory>();
         }
 
@@ -59,15 +62,13 @@ namespace Infrastructure.StateMachine
         }
 
         private void SetPlayerInSameTeam() =>
-            _progressService.Progress.WorldData.Teams =
-                Enumerable.Range(1, 2).Select(x => ERelationship.TeamA).ToList();
+            _inputService.PlayerConfigs.ForEach(x => x.Team = ERelationship.TeamA);
 
-        private void SetPlayersInDifferentTeams() =>
-            _progressService.Progress.WorldData.Teams = new List<ERelationship>()
-            {
-                ERelationship.TeamA,
-                ERelationship.TeamB
-            };
+        private void SetPlayersInDifferentTeams()
+        {
+            _inputService.PlayerConfigs.First().Team = ERelationship.TeamB;
+            _inputService.PlayerConfigs.Last().Team = ERelationship.TeamA;
+        }
 
         private bool IsPLayersInDifferentTeams() => 
             IsVersusMode() || IsDeathMatchMode();
