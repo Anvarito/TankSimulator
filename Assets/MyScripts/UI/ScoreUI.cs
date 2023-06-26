@@ -9,11 +9,8 @@ public class ScoreUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _text;
     private ID_Settings_CS _selfID;
-    internal void UpdateScore(float score, ChobiAssets.PTM.ID_Settings_CS killer)
+    internal void UpdateScore(float score)
     {
-        if (_selfID != killer)
-            return;
-
         _text.text = score.ToString();
     }
 

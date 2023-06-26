@@ -84,6 +84,10 @@ namespace Infrastructure.Factory
 
         private void EnemyDestroyed(ID_Settings_CS killerID)
         {
+            //TEMP
+            if (killerID == null)
+                return;
+
             if (killerID.PlayerType == EPlayerType.Player)
                 OnEnemyDestroyed?.Invoke(killerID);
         }

@@ -9,6 +9,7 @@ internal class ScoreAndTimerReciever : UIRecivierBase
     private ITimerService _timerService;
     private IScoreCounter _scoreCounter;
     ScoreAndTimerPresenter _scoreAndTimerPresenter;
+    private int _index = 0;
     internal void Init(ITimerService timerService, IScoreCounter scoreCounter, Gun_Camera_CS gunCamera, CameraViewSetup cameraView, ID_Settings_CS selfID)
     {
         _timerService = timerService;
@@ -16,6 +17,8 @@ internal class ScoreAndTimerReciever : UIRecivierBase
         _gunCamera = gunCamera;
         _cameraSetup = cameraView;
         InitialUIRecivier();
+
+        _index = _scoreCounter.GetIndexPlayer(selfID);
 
         _scoreAndTimerPresenter = _spawnedPresenter as ScoreAndTimerPresenter;
         _scoreAndTimerPresenter.SetCamera(_cameraSetup.GetCamera());
@@ -28,9 +31,13 @@ internal class ScoreAndTimerReciever : UIRecivierBase
     {
         _scoreCounter.OnEnemiesDestroyed -= EnemiesDestroyed;
     }
-    private void EnemiesDestroyed(ID_Settings_CS killer)
+    private void EnemiesDestroyed(int playerIndex)
     {
-        _scoreAndTimerPresenter.ScoreUI.UpdateScore(_scoreCounter.Score, killer);
+        if (playerIndex != _index)
+            return;
+
+        float score = playerIndex == 0 ? _scoreCounter.ScorePlayerOne : _scoreCounter.ScorePlayerTwo;
+        _scoreAndTimerPresenter.ScoreUI.UpdateScore(score);
     }
 
     private void Update()

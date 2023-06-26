@@ -25,7 +25,6 @@ namespace Infrastructure.Factory.Base
         void CreateTankUiSpawners(List<DamageReceiversManager> enemyDamageList);
         void CreateHud();
 
-
         MainMenuUIHelper MainMenuUIHelper { get; }
         Action OnPlayerDestroyed { get; set; }
         int PlayerCount { get; }
