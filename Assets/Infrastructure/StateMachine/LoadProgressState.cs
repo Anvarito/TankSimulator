@@ -21,8 +21,6 @@ namespace Infrastructure.StateMachine
 
         public void Enter()
         {
-            Debug.Log($"Entered {this.GetType().Name}");
-            
             LoadProgressOrCreateNew();
 
             _gameStateMachine.Enter<MenuState>();

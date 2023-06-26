@@ -16,7 +16,7 @@ namespace Infrastructure.TestMono
         [SerializeField] private Image _mainPanel;
         [SerializeField] private TextMeshProUGUI _headerText;
         [SerializeField] private TextMeshProUGUI _scoreText;
-        [SerializeField] private string _originText = "Вы набрали: ";
+        [SerializeField] private string _originText = "пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ: ";
 
         [Space(10)]
         [Header("Colors")]
@@ -56,7 +56,7 @@ namespace Infrastructure.TestMono
         {
             Debug.Log($"Score: {score}");
             _mainPanel.gameObject.SetActive(true);
-            _headerText.text = "Победа!";
+            _headerText.text = "пїЅпїЅпїЅпїЅпїЅпїЅ!";
             _headerText.color = _colorHeaderVictory;
             _mainPanel.color = _colorPanelVictory;
             _scoreText.text = _originText + "\n" + score;
@@ -67,16 +67,13 @@ namespace Infrastructure.TestMono
         {
             Debug.Log($"Score: {score}");
             _mainPanel.gameObject.SetActive(true);
-            _headerText.text = "Поражение!";
+            _headerText.text = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!";
             _headerText.color = _colorHeaderlDefeat;
             _mainPanel.color = _colorPanelDefeat;
             _scoreText.text = _originText + "\n" + score;
         }
 
-        private void HidePanel()
-        {
+        private void HidePanel() => 
             _mainPanel.gameObject.SetActive(false);
-        }
-
     }
 }

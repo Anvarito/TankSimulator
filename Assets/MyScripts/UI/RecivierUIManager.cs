@@ -26,7 +26,7 @@ public class RecivierUIManager : MonoBehaviour
         Bullet_Generator_CS bulletGenerator,
         Cannon_Fire_CS cannonFire,
         Gun_Camera_CS gunCamera,
-        DamageReciviersManager damageReceiver,
+        DamageReceiversManager damageReceiver,
         Drive_Control_CS driveControl,
         CameraViewSetup cameraView,
         List<ID_Settings_CS> enemysID,

@@ -23,8 +23,6 @@ namespace Infrastructure.StateMachine
 
         public void Enter()
         {
-            Debug.Log($"Entered {this.GetType().Name}");
-            
             _sceneLoader.Load(Intro,onLoad);
             _inputService.OnPlayerJoined += EnterChooseLevelModeState;
         }

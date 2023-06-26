@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
 
 namespace ChobiAssets.PTM
 {
@@ -20,7 +21,7 @@ namespace ChobiAssets.PTM
         [SerializeField] private Turret_Horizontal_CS turret_Horizontal_CS;
         [SerializeField] private Cannon_Vertical_CS cannon_Vertical_CS;
         [SerializeField] private Aiming_Control_CS aiming_Control_CS;
-        [SerializeField] private DamageReciviersManager _damageReciviersManager;
+        [FormerlySerializedAs("damageReceiviersManager")] [FormerlySerializedAs("_damageReciviersManager")] [SerializeField] private DamageReceiversManager damageReceiversManager;
 
 
         public float WayPoint_Radius = 10.0f;
@@ -107,9 +108,9 @@ namespace ChobiAssets.PTM
             // Broadcast this reference to all the tank parts from the top object.
             transform.parent.parent.BroadcastMessage("Get_AI_CS", this, SendMessageOptions.DontRequireReceiver);
 
-            _damageReciviersManager.OnBodyDamaged.AddListener(TankDamaged);
-            _damageReciviersManager.OnTurretDamaged.AddListener(TankDamaged);
-            _damageReciviersManager.OnTrackDamaged.AddListener(TrackDamaged);
+            damageReceiversManager.OnBodyDamaged.AddListener(TankDamaged);
+            damageReceiversManager.OnTurretDamaged.AddListener(TankDamaged);
+            damageReceiversManager.OnTrackDamaged.AddListener(TrackDamaged);
         }
 
         void Start()

@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using Infrastructure.Services.Input;
 using Infrastructure.Services.Progress;
 using Infrastructure.Services.StaticData;
 using Infrastructure.Services.StaticData.Gamemodes;
@@ -19,13 +20,15 @@ namespace Infrastructure.TestMono
         [SerializeField] private TMP_Dropdown _modeDrop;
         private IStaticDataService _dataService;
         private IProgressService _progress;
+        private IInputService _inputService;
 
         private void OnDestroy() =>
-            _continueButton.onClick.RemoveListener(InvokeAction);
+            _continueButton.onClick.RemoveListener(ContinueAction);
 
 
-        public void Construct(IProgressService progress, IStaticDataService dataService)
+        public void Construct(IProgressService progress, IStaticDataService dataService, IInputService inputService)
         {
+            _inputService = inputService;
             _progress = progress;
             _dataService = dataService;
             Initialize();
@@ -33,7 +36,7 @@ namespace Infrastructure.TestMono
 
         private void Initialize()
         {
-            _continueButton.onClick.AddListener(InvokeAction);
+            _continueButton.onClick.AddListener(ContinueAction);
 
             InitLevelDropdown();
             InitModsDropdown();
@@ -43,7 +46,10 @@ namespace Infrastructure.TestMono
         {
             _modeDrop.options.Clear();
             foreach (GamemodeId id in _dataService.Mods.Keys)
-                _modeDrop.options.Add(new TMP_Dropdown.OptionData(_dataService.Mods[id].Name));
+            {
+                if (_dataService.Mods[id].PlayerCount <= _inputService.PlayerConfigs.Count)
+                    _modeDrop.options.Add(new TMP_Dropdown.OptionData(_dataService.Mods[id].Name));
+            }
         }
 
         private void InitLevelDropdown()
@@ -53,11 +59,11 @@ namespace Infrastructure.TestMono
                 _mapDrop.options.Add(new TMP_Dropdown.OptionData(_dataService.Levels[id].SceneName));
         }
 
-        private void InvokeAction()
+        private void ContinueAction()
         {
             _progress.Progress.WorldData.ModeId = _dataService.Mods.ToList()[_modeDrop.value].Key;
             _progress.Progress.WorldData.LevelId = _dataService.Levels.ToList()[_mapDrop.value].Key;
-            
+
             _progress.Progress.WorldData.Level = _dataService.Levels.ToList()[_mapDrop.value].Value.SceneName;
             OnContinueClick?.Invoke();
         }

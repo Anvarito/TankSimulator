@@ -34,7 +34,7 @@ namespace ChobiAssets.PTM
             }
 
             // Apply the "Defence_Multiplier" to the hit points in the "Damage_Control_Center_CS".
-            var damageControlCenterScript = GetComponentInChildren<DamageReciviersManager>();
+            var damageControlCenterScript = GetComponentInChildren<DamageReceiversManager>();
             if (damageControlCenterScript)
             {
                 //damageControlCenterScript.MainBody_HP *= Defence_Multiplier;

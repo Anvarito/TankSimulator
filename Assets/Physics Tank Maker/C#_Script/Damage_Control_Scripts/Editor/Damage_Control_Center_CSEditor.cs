@@ -3,7 +3,7 @@
 namespace ChobiAssets.PTM
 {
 
-    [CustomEditor(typeof(DamageReciviersManager))]
+    [CustomEditor(typeof(DamageReceiversManager))]
     public class Damage_Control_Center_CSEditor : Editor
     {
         /*

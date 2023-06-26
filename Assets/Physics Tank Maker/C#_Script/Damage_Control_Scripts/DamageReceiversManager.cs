@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace ChobiAssets.PTM
@@ -16,7 +17,7 @@ namespace ChobiAssets.PTM
     //}
 
 
-    public class DamageReciviersManager : MonoBehaviour
+    public class DamageReceiversManager : MonoBehaviour
     {
         /* 
 		 * This script is attached to the "MainBody" in the tank.
@@ -53,6 +54,9 @@ namespace ChobiAssets.PTM
         {
             Initialize();
         }
+
+        private void OnDestroy() => 
+            OnTankDestroyed.RemoveAllListeners();
 
         void Initialize()
         {

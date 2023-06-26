@@ -19,8 +19,6 @@ namespace Infrastructure.StateMachine
         
         public void Enter(float score)
         {
-            Debug.Log($"Entered {this.GetType().Name}");
-            
             _playerFactory.GameBoard.ShowVictoryPanel(score);
             _playerFactory.GameBoard.OnExitMenu += Menu;
 

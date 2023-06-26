@@ -4,9 +4,13 @@ using Infrastructure.Factory.Base;
 using Infrastructure.Factory.Compose;
 using Infrastructure.Services;
 using Infrastructure.Services.Input;
+using Infrastructure.Services.KillCounter;
 using Infrastructure.Services.Progress;
 using Infrastructure.Services.SaveLoad;
+using Infrastructure.Services.Score;
 using Infrastructure.Services.StaticData;
+using Infrastructure.Services.Timer;
+using UnityEngine;
 
 namespace Infrastructure.StateMachine
 {
@@ -19,16 +23,16 @@ namespace Infrastructure.StateMachine
         {
             _states = new Dictionary<Type, IExitableState>()
             {
-                [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader, services),
-                [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader,services.Single<IProgressService>(),services.Single<IStaticDataService>(), services.Single<IFactories>(), services.Single<ITrashRemoveService>()),
-                [typeof(LoadProgressState)] = new LoadProgressState(this, services.Single<IProgressService>(), services.Single<ISaveLoadService>()), 
-                [typeof(GameLoopState)] = new GameLoopState(this, coroutineRunner,services.Single<IFactories>()),
+                [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader, coroutineRunner, services),
+                [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader, services.Single<IProgressService>(), services.Single<IStaticDataService>(), services.Single<IFactories>(), services.Single<ITrashRemoveService>()),
+                [typeof(LoadProgressState)] = new LoadProgressState(this, services.Single<IProgressService>(), services.Single<ISaveLoadService>()),
+                [typeof(GameLoopState)] = new GameLoopState(this, services.Single<ITimerService>(), services.Single<IKillCounter>(), services.Single<IScoreCounter>(), services.Single<IProgressService>(), services.Single<IStaticDataService>()),
                 [typeof(VictoryState)] = new VictoryState(this, services.Single<IFactories>()),
                 [typeof(GameOverState)] = new GameOverState(this, services.Single<IFactories>(), services.Single<IProgressService>()),
-                [typeof(MenuState)] = new MenuState(this,sceneLoader,services.Single<IInputService>(),services.Single<IFactories>()),
-                [typeof(SetupPlayersState)] = new SetupPlayersState(this,sceneLoader,services.Single<IInputService>(),services.Single<IFactories>()),
-                [typeof(SetupFirstInputState)] = new SetupFirstInputState(this,sceneLoader,services.Single<IInputService>(),services.Single<IFactories>()),
-                [typeof(ChooseLevelModeState)] = new ChooseLevelModeState(this,sceneLoader,services.Single<IProgressService>(), services.Single<IFactories>()),
+                [typeof(MenuState)] = new MenuState(this, sceneLoader, services.Single<IInputService>(), services.Single<IFactories>()),
+                [typeof(SetupPlayersState)] = new SetupPlayersState(this, sceneLoader, services.Single<IInputService>(), services.Single<IFactories>()),
+                [typeof(SetupFirstInputState)] = new SetupFirstInputState(this, sceneLoader, services.Single<IInputService>(), services.Single<IFactories>()),
+                [typeof(ChooseLevelModeState)] = new ChooseLevelModeState(this, sceneLoader, services.Single<IProgressService>(), services.Single<IFactories>()),
                 [typeof(ResetState)] = new ResetState(this, services.Single<IFactories>(), services.Single<IInputService>(), services.Single<IProgressService>()),
             };
         }
@@ -37,9 +41,11 @@ namespace Infrastructure.StateMachine
         {
             IState state = ChangeState<TState>();
             state.Enter();
+
+            LogState<TState>();
         }
 
-        public void Enter<TState,TPayload>(TPayload payload) where TState : class, IPayloadedState<TPayload>
+        public void Enter<TState, TPayload>(TPayload payload) where TState : class, IPayloadedState<TPayload>
         {
             IPayloadedState<TPayload> state = ChangeState<TState>();
             state.Enter(payload);
@@ -58,10 +64,13 @@ namespace Infrastructure.StateMachine
             return _states[typeof(TState)] as TState;
         }
 
-        public bool InSetupPlayersState() => 
+        public bool InSetupPlayersState() =>
             _activeState is SetupPlayersState;
 
-        public bool InSetupInputState() => 
+        public bool InSetupInputState() =>
             _activeState is SetupFirstInputState;
+
+        private void LogState<TState>() where TState : class, IExitableState =>
+            Debug.Log($"Entered {typeof(TState).Name}");
     }
 }

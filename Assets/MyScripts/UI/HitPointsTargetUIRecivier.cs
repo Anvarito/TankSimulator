@@ -8,7 +8,7 @@ public class HitPointsTargetUIRecivier : UIRecivierBase
     private EActiveCameraType _currentCameraType;
 
     private Aiming_Control_CS _aimingControl;
-    private DamageReciviersManager _targetDamageReciviers;
+    private DamageReceiversManager _targetDamageReceivers;
     private Transform _targetTransform;
     public void Init(Aiming_Control_CS aimingControl, Gun_Camera_CS gunCamera, CameraViewSetup cameraSetup)
     {
@@ -42,20 +42,20 @@ public class HitPointsTargetUIRecivier : UIRecivierBase
         {
             if (_targetTransform != aimTransform)
             {
-                if (_targetDamageReciviers)
+                if (_targetDamageReceivers)
                     Unsubscribe();
 
                 _hitPointsTargetUI.Show(aimTransform);
 
                 _targetTransform = aimTransform;
-                _targetDamageReciviers = aimTransform.GetComponentInParent<DamageReciviersManager>();
+                _targetDamageReceivers = aimTransform.GetComponentInParent<DamageReceiversManager>();
 
                 Subcribe();
 
-                float alphaBodyHP = _targetDamageReciviers.BodyDamageRecivier.CurentHP / _targetDamageReciviers.BodyDamageRecivier.MaxHP;
-                float alphaTurretHP = _targetDamageReciviers.TurretDamageRecivier.CurentHP / _targetDamageReciviers.TurretDamageRecivier.MaxHP;
-                float alphaRTrackHP = _targetDamageReciviers.TrackDamageRecivier.RightTrack.CurrentHP / _targetDamageReciviers.TrackDamageRecivier.RightTrack.MaxHP;
-                float alphaLTrackHP = _targetDamageReciviers.TrackDamageRecivier.LeftTrack.CurrentHP / _targetDamageReciviers.TrackDamageRecivier.LeftTrack.MaxHP;
+                float alphaBodyHP = _targetDamageReceivers.BodyDamageRecivier.CurentHP / _targetDamageReceivers.BodyDamageRecivier.MaxHP;
+                float alphaTurretHP = _targetDamageReceivers.TurretDamageRecivier.CurentHP / _targetDamageReceivers.TurretDamageRecivier.MaxHP;
+                float alphaRTrackHP = _targetDamageReceivers.TrackDamageRecivier.RightTrack.CurrentHP / _targetDamageReceivers.TrackDamageRecivier.RightTrack.MaxHP;
+                float alphaLTrackHP = _targetDamageReceivers.TrackDamageRecivier.LeftTrack.CurrentHP / _targetDamageReceivers.TrackDamageRecivier.LeftTrack.MaxHP;
 
                 _hitPointsTargetUI.Refresh(alphaBodyHP, alphaTurretHP, alphaRTrackHP, alphaLTrackHP);
             }
@@ -73,22 +73,22 @@ public class HitPointsTargetUIRecivier : UIRecivierBase
 
     private void Subcribe()
     {
-        _targetDamageReciviers.OnTurretDamaged.AddListener(TurretDamaged);
-        _targetDamageReciviers.OnBodyDamaged.AddListener(BodyDamaged);
+        _targetDamageReceivers.OnTurretDamaged.AddListener(TurretDamaged);
+        _targetDamageReceivers.OnBodyDamaged.AddListener(BodyDamaged);
 
-        _targetDamageReciviers.OnTrackDamaged.AddListener(TrackDamaged);
-        _targetDamageReciviers.OnTrackRestore.AddListener(TrackRestore);
-        _targetDamageReciviers.OnTrackBreach.AddListener(TrackBreach);
+        _targetDamageReceivers.OnTrackDamaged.AddListener(TrackDamaged);
+        _targetDamageReceivers.OnTrackRestore.AddListener(TrackRestore);
+        _targetDamageReceivers.OnTrackBreach.AddListener(TrackBreach);
     }
 
     private void Unsubscribe()
     {
-        _targetDamageReciviers.OnTurretDamaged.RemoveListener(TurretDamaged);
-        _targetDamageReciviers.OnBodyDamaged.RemoveListener(BodyDamaged);
+        _targetDamageReceivers.OnTurretDamaged.RemoveListener(TurretDamaged);
+        _targetDamageReceivers.OnBodyDamaged.RemoveListener(BodyDamaged);
 
-        _targetDamageReciviers.OnTrackDamaged.RemoveListener(TrackDamaged);
-        _targetDamageReciviers.OnTrackRestore.RemoveListener(TrackRestore);
-        _targetDamageReciviers.OnTrackBreach.RemoveListener(TrackBreach);
+        _targetDamageReceivers.OnTrackDamaged.RemoveListener(TrackDamaged);
+        _targetDamageReceivers.OnTrackRestore.RemoveListener(TrackRestore);
+        _targetDamageReceivers.OnTrackBreach.RemoveListener(TrackBreach);
     }
 
     private void TrackBreach(TrackDamageRecivier arg0)

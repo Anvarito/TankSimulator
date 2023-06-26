@@ -43,7 +43,6 @@ namespace Infrastructure.StateMachine
 
         public void Exit()
         {
-            Debug.Log($"Exit {this.GetType().Name}");
         }
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Infrastructure.Services.StaticData.Gamemodes
 {
@@ -11,6 +12,20 @@ namespace Infrastructure.Services.StaticData.Gamemodes
         [Range(1,2)]
         public int PlayerCount;
         public string Name;
+        
+        [FormerlySerializedAs("EnemiesSpawnsPeriodicaly")] public bool EnemiesSpawnsPeriodically;
+        public float EnemiesCooldownSpawn;
+
+        public bool PlayersSpawnsPeriodicaly;
+        public float PlayersCooldownSpawn;
+
+        public bool IsGameOverTimerEnabled;
+        public float GameTime;
+
+        public float PointsForKillingEnemy;
+        public float PointsForKillingAllies;
+
+        public float CooldownRange;
     }
 
 }

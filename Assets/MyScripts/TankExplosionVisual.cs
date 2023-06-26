@@ -2,6 +2,7 @@ using System.Collections;
 using ChobiAssets.PTM;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
 
 [System.Serializable]
 public class TurretDamageControlProp
@@ -23,12 +24,12 @@ public class BodyExplosionProp
 }
 public class TankExplosionVisual : MonoBehaviour
 {
-    [SerializeField] private DamageReciviersManager _damageReciviersManager;
+    [FormerlySerializedAs("damageReceiviersManager")] [FormerlySerializedAs("_damageReciviersManager")] [SerializeField] private DamageReceiversManager damageReceiversManager;
     [SerializeField] private TurretDamageControlProp _turretProps;
     [SerializeField] private BodyExplosionProp _bodyExplosionProps;
     void Start()
     {
-        _damageReciviersManager.OnTankDestroyed.AddListener(TankDestroy);
+        damageReceiversManager.OnTankDestroyed.AddListener(TankDestroy);
     }
 
     private void TankDestroy(ID_Settings_CS bulletInitiatorID)
