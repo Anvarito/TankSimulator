@@ -41,7 +41,13 @@ namespace Infrastructure.Services.Input
             {
                 if (NextPlayerExist()) ResetPlayerIndex();
                 PlayerConfigs[currentIndex].Input.uiInputModule = uiInputModule.GetComponentInChildren<InputSystemUIInputModule>();
-                uiInputModule.GetComponentInChildren<TankPickerUIHelper>().Construct(PlayerConfigs[currentIndex], _staticDataService);
+
+                if(uiInputModule.TryGetComponent(out TankPickerUIHelper tankPickerUIHelper))
+                {
+                    tankPickerUIHelper.Construct(PlayerConfigs[currentIndex], _staticDataService);
+                }
+
+                //uiInputModule.GetComponentInChildren<TankPickerUIHelper>().Construct(PlayerConfigs[currentIndex], _staticDataService);
                 currentIndex += 1;
             }
             else

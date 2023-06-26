@@ -28,12 +28,13 @@ namespace Infrastructure.StateMachine
                 [typeof(LoadProgressState)] = new LoadProgressState(this, services.Single<IProgressService>(), services.Single<ISaveLoadService>()),
                 [typeof(GameLoopState)] = new GameLoopState(this, services.Single<ITimerService>(), services.Single<IKillCounter>(), services.Single<IScoreCounter>(), services.Single<IProgressService>(), services.Single<IStaticDataService>()),
                 [typeof(VictoryState)] = new VictoryState(this, services.Single<IFactories>()),
-                [typeof(GameOverState)] = new GameOverState(this, services.Single<IFactories>(), services.Single<IProgressService>()),
-                [typeof(MenuState)] = new MenuState(this, sceneLoader, services.Single<IInputService>(), services.Single<IFactories>()),
-                [typeof(SetupPlayersState)] = new SetupPlayersState(this, sceneLoader, services.Single<IInputService>(), services.Single<IFactories>()),
-                [typeof(SetupFirstInputState)] = new SetupFirstInputState(this, sceneLoader, services.Single<IInputService>(), services.Single<IFactories>()),
-                [typeof(ChooseLevelModeState)] = new ChooseLevelModeState(this, sceneLoader, services.Single<IProgressService>(), services.Single<IFactories>()),
+                [typeof(DefeatState)] = new DefeatState(this, services.Single<IFactories>(), services.Single<IProgressService>(), services.Single<IInputService>()),
+                [typeof(MenuState)] = new MenuState(this,sceneLoader,services.Single<IInputService>(),services.Single<IFactories>()),
+                [typeof(SetupPlayersState)] = new SetupPlayersState(this,sceneLoader,services.Single<IInputService>(),services.Single<IFactories>()),
+                [typeof(SetupFirstInputState)] = new SetupFirstInputState(this,sceneLoader,services.Single<IInputService>(),services.Single<IFactories>()),
+                [typeof(ChooseLevelModeState)] = new ChooseLevelModeState(this,sceneLoader,services.Single<IProgressService>(), services.Single<IFactories>()),
                 [typeof(ResetState)] = new ResetState(this, services.Single<IFactories>(), services.Single<IInputService>(), services.Single<IProgressService>()),
+                [typeof(ReloadState)] = new ReloadState(this, services.Single<IFactories>(), services.Single<IInputService>(), sceneLoader, services.Single<IProgressService>()),
             };
         }
 
