@@ -8,7 +8,7 @@ public class KillPointCounter : MonoBehaviour
 
     void Start()
     {
-        DamageReciviersManager[] all = GetComponents<DamageReciviersManager>();
+        DamageReceiversManager[] all = GetComponents<DamageReceiversManager>();
         foreach (var a in all)
         {
             a.OnTankDestroyed.AddListener(TankDestroyed);

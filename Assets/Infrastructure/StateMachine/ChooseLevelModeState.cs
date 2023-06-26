@@ -1,6 +1,11 @@
+using System.Collections.Generic;
+using System.Linq;
+using ChobiAssets.PTM;
 using Infrastructure.Factory.Base;
 using Infrastructure.Factory.Compose;
 using Infrastructure.Services.Progress;
+using Infrastructure.Services.StaticData.Gamemodes;
+using Infrastructure.Services.StaticData.Level;
 
 namespace Infrastructure.StateMachine
 {
@@ -13,7 +18,8 @@ namespace Infrastructure.StateMachine
         private readonly IProgressService _progressService;
         private readonly IPlayerFactory _playerFactory;
 
-        public ChooseLevelModeState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, IProgressService progressService, IFactories factories)
+        public ChooseLevelModeState(GameStateMachine gameStateMachine, SceneLoader sceneLoader,
+            IProgressService progressService, IFactories factories)
         {
             _gameStateMachine = gameStateMachine;
             _sceneLoader = sceneLoader;
@@ -21,7 +27,7 @@ namespace Infrastructure.StateMachine
             _playerFactory = factories.Single<IPlayerFactory>();
         }
 
-        public void Enter() => 
+        public void Enter() =>
             _sceneLoader.Load(LevelModeChoise, OnLoad);
 
         public void Exit()
@@ -34,7 +40,42 @@ namespace Infrastructure.StateMachine
             helper.OnContinueClick += Continue;
         }
 
-        private void Continue() => 
-            _gameStateMachine.Enter<LoadLevelState,string>(_progressService.Progress.WorldData.Level);
+        private void Continue()
+        {
+            SetupPlayerTeams();
+            _gameStateMachine.Enter<LoadLevelState, string>(_progressService.Progress.WorldData.Level);
+        }
+
+        private void SetupPlayerTeams()
+        {
+            if (IsPLayersInDifferentTeams())
+            {
+                SetPlayersInDifferentTeams();
+            }
+            else
+            {
+                SetPlayerInSameTeam();
+            }
+        }
+
+        private void SetPlayerInSameTeam() =>
+            _progressService.Progress.WorldData.Teams =
+                Enumerable.Range(1, 2).Select(x => ERelationship.TeamA).ToList();
+
+        private void SetPlayersInDifferentTeams() =>
+            _progressService.Progress.WorldData.Teams = new List<ERelationship>()
+            {
+                ERelationship.TeamA,
+                ERelationship.TeamB
+            };
+
+        private bool IsPLayersInDifferentTeams() => 
+            IsVersusMode() || IsDeathMatchMode();
+
+        private bool IsDeathMatchMode() => 
+            _progressService.Progress.WorldData.ModeId == GamemodeId.DeathMatch;
+
+        private bool IsVersusMode() => 
+            _progressService.Progress.WorldData.ModeId == GamemodeId.Versus;
     }
 }

@@ -63,7 +63,7 @@ namespace ChobiAssets.PTM
         }
         protected override void InstantiateCanvas()
         {
-            _spawnedPresenter = Instantiate(_presenterPrefab);
+            _spawnedPresenter = Instantiate(GetPrefabPresenter);
             _markerCanvasUIHelper = _spawnedPresenter as ActorPointerUIHelper;
             _canvas = _markerCanvasUIHelper.GetCanvas();
             _mainCamera = _cameraSetup.GetCamera();

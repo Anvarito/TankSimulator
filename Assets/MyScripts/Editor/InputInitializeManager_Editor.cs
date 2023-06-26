@@ -52,7 +52,7 @@ public class InputInitializeManager_Editor : Editor
         EditorGUILayout.Space();
         EditorGUILayout.HelpBox("Main links", MessageType.None, true);
         IDSettings_prop.objectReferenceValue = EditorGUILayout.ObjectField("ID Settings", IDSettings_prop.objectReferenceValue, typeof(ID_Settings_CS), true);
-        DamageManager_prop.objectReferenceValue = EditorGUILayout.ObjectField("Damage reciviers manager", DamageManager_prop.objectReferenceValue, typeof(DamageReciviersManager), true);
+        DamageManager_prop.objectReferenceValue = EditorGUILayout.ObjectField("Damage reciviers manager", DamageManager_prop.objectReferenceValue, typeof(DamageReceiversManager), true);
 
         _actionMapProp.objectReferenceValue = EditorGUILayout.ObjectField("Player imput", _actionMapProp.objectReferenceValue, typeof(UnityEngine.InputSystem.InputActionMap), true);
 

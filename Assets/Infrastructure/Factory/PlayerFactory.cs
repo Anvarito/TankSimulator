@@ -1,45 +1,60 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using ChobiAssets.PTM;
 using Infrastructure.Assets;
 using Infrastructure.Factory.Base;
 using Infrastructure.Services.Input;
+using Infrastructure.Services.KillCounter;
 using Infrastructure.Services.Progress;
+using Infrastructure.Services.Score;
 using Infrastructure.Services.StaticData;
 using Infrastructure.Services.StaticData.SpawnPoints;
+using Infrastructure.Services.Timer;
 using Infrastructure.TestMono;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Infrastructure.Factory
 {
     public class PlayerFactory : GameFactory, IPlayerFactory
     {
+        public Action OnPlayerDestroyed { get; set; }
+        public int PlayerCount => PlayerParts.Count;
+        public List<PlayerUiParts> PlayerParts { get; } = new List<PlayerUiParts>();
+        public MainMenuUIHelper MainMenuUIHelper { get; private set; }
+        public GameOverBoard GameBoard { get; private set; }
+        public ScoreUI ScoreBoard { get; private set; }
+        public TimerUI TimerBoard { get; private set; }
+
         private readonly IInputService _inputService;
         private readonly IProgressService _progressService;
         private readonly IStaticDataService _dataService;
-        public List<PlayerUiParts> PlayerParts { get; } = new List<PlayerUiParts>();
-        private List<GameObject> Players = new List<GameObject>();
-        public MainMenuUIHelper MainMenuUIHelper { get; private set; }
-        public GameOverBoard GameBoard => _gameOverBoard;
+        private readonly ITimerService _timer;
 
-        private GameOverBoard _gameOverBoard;
+        private readonly IScoreCounter _scoreCounter;
 
-        private List<ID_Settings_CS> _enemysID = new List<ID_Settings_CS>();
+        private readonly List<GameObject> _players = new List<GameObject>();
+        private readonly List<ID_Settings_CS> _enemysID = new List<ID_Settings_CS>();
 
-        public PlayerFactory(IAssetLoader assetLoader, IInputService inputService, IProgressService progressService, IStaticDataService dataService) : base(assetLoader)
+
+        public PlayerFactory(IAssetLoader assetLoader, IInputService inputService, IProgressService progressService, IStaticDataService dataService, ITimerService timer, IScoreCounter scoreCounter) : base(assetLoader)
         {
+            _scoreCounter = scoreCounter;
+
             _inputService = inputService;
             _progressService = progressService;
             _dataService = dataService;
+            _timer = timer;
         }
 
         public override void CleanUp()
         {
             base.CleanUp();
 
-            foreach(var i in Players)
+            foreach(var i in _players)
             {
-                GameObject.Destroy(i.gameObject);
+                Object.Destroy(i.gameObject);
             }
 
             PlayerParts.Clear();
@@ -54,30 +69,33 @@ namespace Infrastructure.Factory
             foreach (var configWithPoint in _inputService.PlayerConfigs.Zip(points, (n, m) => new { Config = n, Point = m }))
             {
                 GameObject player = InstantiateRegistered(configWithPoint.Config.PrefabPath, configWithPoint.Point.Position);
-                Players.Add(player);
+                _players.Add(player);
                 PlayerUiParts registerUiWatchers = RegisterUiWatchers(player);
+                registerUiWatchers.DamageReceiver.OnTankDestroyed.AddListener(PlayerDestroyed);
                 
                 PlayerParts.Add(registerUiWatchers);
 
                 registerUiWatchers.IdSettings.SetRelationship(ERelationship.TeamA);
-                
                 InitedRegisteredTank(player, configWithPoint.Config);
             }
         }
 
-        public void CreateTankUiSpawners(List<DamageReciviersManager> enemyDamageManagers)
+        public void CreateTankUiSpawners(List<DamageReceiversManager> enemyDamageManagers)
         {
-            for (int i = 0; i < enemyDamageManagers.Count; i++)
+            foreach (DamageReceiversManager damageReceivers in enemyDamageManagers)
             {
-                _enemysID.Add(enemyDamageManagers[i].GetComponentInParent<ID_Settings_CS>());
+                _enemysID.Add(damageReceivers.GetComponentInParent<ID_Settings_CS>());
             }
 
             foreach (PlayerUiParts part in PlayerParts)
                 InitializeUiWatchers(part, InstantiateRegistered(AssetPaths.TankUiSpawner));
         }
 
-        public void CreateHud() =>
-            _gameOverBoard = InstantiateRegistered(AssetPaths.Hud).GetComponentInChildren<GameOverBoard>();
+        public void CreateHud()
+        {
+            var hud = InstantiateRegistered(AssetPaths.Hud);
+            GameBoard = hud.GetComponentInChildren<GameOverBoard>();
+        }
 
         public GameObject CreateMainMenu() =>
             RegisterMainMenuUIHelper(InstantiateRegistered(AssetPaths.MainMenu));
@@ -85,9 +103,12 @@ namespace Infrastructure.Factory
         public GamemodeMapHelper CreateMapModeChoiseUI()
         {
             GamemodeMapHelper helper = InstantiateRegistered(AssetPaths.MapModeMenu).GetComponentInChildren<GamemodeMapHelper>();
-            helper.Construct(_progressService,_dataService);
+            helper.Construct(_progressService,_dataService, _inputService);
             return helper;
         }
+
+        private void PlayerDestroyed(ID_Settings_CS killerId) => 
+            OnPlayerDestroyed?.Invoke();
 
 
         private void InitedRegisteredTank(GameObject playerTank, Services.Input.PlayerConfiguration config)
@@ -113,7 +134,7 @@ namespace Infrastructure.Factory
             player.BulletGenerator =     gameObject.GetComponentInChildren<Bullet_Generator_CS>();
             player.CannonFire =          gameObject.GetComponentInChildren<Cannon_Fire_CS>();
             player.GunCamera =           gameObject.GetComponentInChildren<Gun_Camera_CS>();
-            player.DamageReceiver =      gameObject.GetComponentInChildren<DamageReciviersManager>();
+            player.DamageReceiver =      gameObject.GetComponentInChildren<DamageReceiversManager>();
             player.DriveControl =        gameObject.GetComponentInChildren<Drive_Control_CS>();
             player.CameraView =          gameObject.GetComponentInChildren<CameraViewSetup>();
             player.IdSettings =          gameObject.GetComponentInChildren<ID_Settings_CS>();
@@ -123,7 +144,7 @@ namespace Infrastructure.Factory
         private void InitializeUiWatchers(PlayerUiParts parts, GameObject uiSpawner)
         {
             RecivierUIManager recivierUIManager = uiSpawner.GetComponent<RecivierUIManager>();
-            recivierUIManager.Initialize(parts.Aiming, parts.BulletGenerator, parts.CannonFire, parts.GunCamera, parts.DamageReceiver, parts.DriveControl, parts.CameraView, _enemysID, parts.IdSettings);
+            recivierUIManager.Initialize(parts.Aiming, parts.BulletGenerator, parts.CannonFire, parts.GunCamera, parts.DamageReceiver, parts.DriveControl, parts.CameraView, _enemysID, parts.IdSettings, _timer, _scoreCounter);
         }
 
         //private GameObject[] Shuffle(GameObject[] at)

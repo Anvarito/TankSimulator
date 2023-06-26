@@ -67,7 +67,7 @@ namespace ChobiAssets.PTM
 			turretScript.objectReferenceValue = EditorGUILayout.ObjectField ("Turret_Horizontal_CS script", turretScript.objectReferenceValue, typeof(Turret_Horizontal_CS), true);
 			cannonScript.objectReferenceValue = EditorGUILayout.ObjectField ("Cannon_Vertical_CS script", cannonScript.objectReferenceValue, typeof(Cannon_Vertical_CS), true);
 			aimingScript.objectReferenceValue = EditorGUILayout.ObjectField ("Aiming_Control_CS script", aimingScript.objectReferenceValue, typeof(Aiming_Control_CS), true);
-			damageRecProp.objectReferenceValue = EditorGUILayout.ObjectField ("DamageReciviersManager script", damageRecProp.objectReferenceValue, typeof(DamageReciviersManager), true);
+			damageRecProp.objectReferenceValue = EditorGUILayout.ObjectField ("DamageReceiversManager script", damageRecProp.objectReferenceValue, typeof(DamageReceiversManager), true);
 
 			EditorGUILayout.Space ();
 			EditorGUILayout.HelpBox ("Drive settings", MessageType.None, true);

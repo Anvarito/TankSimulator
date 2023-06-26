@@ -790,6 +790,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _scorePlanePrefab: {fileID: 7927417963609900673, guid: 3d606aa799b1bf845af2c17fda0eb53c, type: 3}
   _scorePanel: {fileID: 4922282346341979573}
+  _maxShowLeaders: 7
   _canvas: {fileID: 7787792733695321080}
   _mainPanel: {fileID: 5515478026465821472}
   _headerText: {fileID: 1832816057451141307}

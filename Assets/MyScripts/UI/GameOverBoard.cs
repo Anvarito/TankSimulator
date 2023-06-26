@@ -31,7 +31,7 @@ namespace Infrastructure.TestMono
         [SerializeField] private Image _mainPanel;
         [SerializeField] private TextMeshProUGUI _headerText;
         //[SerializeField] private TextMeshProUGUI _scoreText;
-        [SerializeField] private string _originText = "Вы набрали: ";
+        [SerializeField] private string _originText = "пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ: ";
 
         [Space(10)]
         [Header("Colors")]
@@ -76,7 +76,7 @@ namespace Infrastructure.TestMono
             ShowLeaderList(scoreList, playerReference);
 
             _mainPanel.gameObject.SetActive(true);
-            _headerText.text = "Победа!";
+            _headerText.text = "пїЅпїЅпїЅпїЅпїЅпїЅ!";
             _headerText.color = _colorHeaderVictory;
             _mainPanel.color = _colorPanelVictory;
             //_scoreText.text = _originText + "\n" + score;
@@ -90,7 +90,7 @@ namespace Infrastructure.TestMono
             ShowLeaderList(scoreList, playerReference);
 
             _mainPanel.gameObject.SetActive(true);
-            _headerText.text = "Поражение!";
+            _headerText.text = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!";
             _headerText.color = _colorHeaderlDefeat;
             _mainPanel.color = _colorPanelDefeat;
             //_scoreText.text = _originText + "\n" + score;
@@ -106,7 +106,7 @@ namespace Infrastructure.TestMono
 
             for(int i =0; i < _maxShowLeaders - _scoreHolders.Count; i++)
             {
-                ScoreHolder scoreHolder = new ScoreHolder("Пусто", 0);
+                ScoreHolder scoreHolder = new ScoreHolder("пїЅпїЅпїЅпїЅпїЅ", 0);
                 _scoreHolders.Add(scoreHolder);
             }
 
@@ -136,10 +136,7 @@ namespace Infrastructure.TestMono
                     }
         }
 
-        private void HidePanel()
-        {
+        private void HidePanel() => 
             _mainPanel.gameObject.SetActive(false);
-        }
-
     }
 }

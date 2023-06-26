@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using ChobiAssets.PTM;
 using Infrastructure.Services.Progress;
@@ -21,18 +22,22 @@ namespace Infrastructure.Factory.Base
         GameOverBoard GameBoard { get; }
 
         void CreatePlayers(List<SpawnPointConfig> points);
-        void CreateTankUiSpawners(List<DamageReciviersManager> enemyDamageList);
+        void CreateTankUiSpawners(List<DamageReceiversManager> enemyDamageList);
         void CreateHud();
 
 
         MainMenuUIHelper MainMenuUIHelper { get; }
+        Action OnPlayerDestroyed { get; set; }
+        int PlayerCount { get; }
         GameObject CreateMainMenu();
         GamemodeMapHelper CreateMapModeChoiseUI();
     }
 
     public interface IEnemyFactory : IGameFactory
     {
-        List<DamageReciviersManager> EnemyDamageManagers { get; }
+        List<DamageReceiversManager> EnemyDamageManagers { get; }
+        Action<ID_Settings_CS> OnEnemyDestroyed { get; set; }
+        int EnemiesCount { get; }
         public void CreateGameController();
         void CreateEnemy(SpawnPointConfig config);
     }

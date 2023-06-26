@@ -25,7 +25,7 @@ namespace ChobiAssets.PTM
         Color initialColor;
         //float previousRightTrackHP;
         int flashCancelID;
-        //DamageReciviersManager damageScript;
+        //DamageReceiversManager damageScript;
         //Image[] bodyBarImages;
         //Image[] turretBarImages;
 

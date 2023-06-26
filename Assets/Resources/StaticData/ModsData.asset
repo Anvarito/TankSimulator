@@ -16,12 +16,48 @@ MonoBehaviour:
   - ModeId: 2
     PlayerCount: 1
     Name: Survival
+    EnemiesSpawnsPeriodically: 0
+    EnemiesCooldownSpawn: 0
+    PlayersSpawnsPeriodicaly: 0
+    PlayersCooldownSpawn: 0
+    IsGameOverTimerEnabled: 0
+    GameTime: 5
+    PointsForKillingEnemy: 100
+    PointsForKillingAllies: -100
+    CooldownRange: 0
   - ModeId: 4
     PlayerCount: 2
     Name: VersusLupa
+    EnemiesSpawnsPeriodically: 0
+    EnemiesCooldownSpawn: 0
+    PlayersSpawnsPeriodicaly: 0
+    PlayersCooldownSpawn: 0
+    IsGameOverTimerEnabled: 0
+    GameTime: 0
+    PointsForKillingEnemy: 0
+    PointsForKillingAllies: 0
+    CooldownRange: 0
   - ModeId: 1
     PlayerCount: 1
     Name: Coopliza
+    EnemiesSpawnsPeriodically: 0
+    EnemiesCooldownSpawn: 0
+    PlayersSpawnsPeriodicaly: 0
+    PlayersCooldownSpawn: 0
+    IsGameOverTimerEnabled: 0
+    GameTime: 0
+    PointsForKillingEnemy: 0
+    PointsForKillingAllies: 0
+    CooldownRange: 0
   - ModeId: 3
     PlayerCount: 1
     Name: DeathPidor
+    EnemiesSpawnsPeriodically: 0
+    EnemiesCooldownSpawn: 0
+    PlayersSpawnsPeriodicaly: 0
+    PlayersCooldownSpawn: 0
+    IsGameOverTimerEnabled: 0
+    GameTime: 0
+    PointsForKillingEnemy: 0
+    PointsForKillingAllies: 0
+    CooldownRange: 0

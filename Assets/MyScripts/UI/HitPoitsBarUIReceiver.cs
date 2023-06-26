@@ -4,7 +4,7 @@ public class HitPoitsBarUIReceiver : UIRecivierBase
 {
 
     private HitPointsUIPresenter _hitPointsUI;
-    private DamageReciviersManager _damageManager;
+    private DamageReceiversManager _damageManager;
     protected override void Subscribes()
     {
         base.Subscribes();
@@ -15,7 +15,7 @@ public class HitPoitsBarUIReceiver : UIRecivierBase
         _damageManager.OnTrackRestore.AddListener(TrackRestore);
         _damageManager.OnTrackBreach.AddListener(TrackBreach);
     }
-    public void Init(DamageReciviersManager damageManager, Gun_Camera_CS gunCamera, CameraViewSetup cameraSetup)
+    public void Init(DamageReceiversManager damageManager, Gun_Camera_CS gunCamera, CameraViewSetup cameraSetup)
     {
         _damageManager = damageManager;
         _gunCamera = gunCamera;

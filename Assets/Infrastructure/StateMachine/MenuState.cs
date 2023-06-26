@@ -27,12 +27,8 @@ namespace Infrastructure.StateMachine
             _playerFactory = factories.Single<IPlayerFactory>();
         }
 
-        public void Enter()
-        {
-            Debug.Log($"Entered {this.GetType().Name}");
-            
+        public void Enter() => 
             _sceneLoader.Load(MainMenu, onLoad);
-        }
 
         public void Exit() => 
             UnregisterButtonsEvents(_playerFactory.MainMenuUIHelper);
@@ -62,9 +58,6 @@ namespace Infrastructure.StateMachine
 
         private void ContinueGame()
         {
-            Debug.Log("Continue button pressed");
-            // if (_progressService.Progress.StateType is GameLoopState)
-            // _gameStateMachine.Enter<LoadLevelState,string>(_progressService.Progress.WorldData.PositionOnLevel.Level);
         }
 
         private void StartNewGame() => 

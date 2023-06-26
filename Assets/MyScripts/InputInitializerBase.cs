@@ -4,7 +4,7 @@ using UnityEngine;
 public class InputInitializerBase : MonoBehaviour
 {
     [Header("Main links")]
-    [SerializeField] protected DamageReciviersManager _damageManager;
+    [SerializeField] protected DamageReceiversManager _damageManager;
     [SerializeField] protected Turret_Finishing_CS _turret_Finishing;
 
     [Space(30)]

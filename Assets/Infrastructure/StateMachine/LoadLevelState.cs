@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using ChobiAssets.PTM;
@@ -5,6 +6,8 @@ using Infrastructure.Factory.Base;
 using Infrastructure.Factory.Compose;
 using Infrastructure.Services.Progress;
 using Infrastructure.Services.StaticData;
+using Infrastructure.Services.StaticData.Gamemodes;
+using Infrastructure.Services.StaticData.Level;
 using Infrastructure.Services.StaticData.SpawnPoints;
 using Infrastructure.TestMono;
 using UnityEngine;
@@ -25,9 +28,12 @@ namespace Infrastructure.StateMachine
         private readonly ITrashRemoveService _trashRemoveService;
         private readonly IEnemyFactory _enemyFactory;
         private readonly IPlayerFactory _playerFactory;
-        // private readonly IProgressService _progressService;
 
-        public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader,IProgressService progress, IStaticDataService dataService, IFactories factories, ITrashRemoveService trashRemoveService)
+        private List<SpawnPointConfig> _configs;
+        private GamemodeConfig _modeConfig;
+
+        public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, IProgressService progress,
+            IStaticDataService dataService, IFactories factories, ITrashRemoveService trashRemoveService)
         {
             _gameStateMachine = gameStateMachine;
             _sceneLoader = sceneLoader;
@@ -41,63 +47,54 @@ namespace Infrastructure.StateMachine
 
         public void Enter(string payload)
         {
-            Debug.Log($"Entered {this.GetType().Name}");
-            
+
             _playerFactory.CleanUp();
             _enemyFactory.CleanUp();
-            
+
             _sceneLoader.Load(name: payload, OnLoaded);
         }
 
         private void OnLoaded()
         {
+            FetchModeData();
             InitGameLevel();
-            // InformProgressReaders();
-            
+
             _gameStateMachine.Enter<GameLoopState>();
         }
 
-        public void Exit()
-        {
-        }
+        public void Exit() =>
+            _configs.Clear();
 
-        // private void InformProgressReaders()
-        // {
-        //     foreach (IProgressReader progress in _playerFactory.ProgressReaders) 
-        //         progress.LoadProgress(_progressService.Progress);
-        //     
-        //     foreach (IProgressReader progress in _enemyFactory.ProgressReaders) 
-        //         progress.LoadProgress(_progressService.Progress);
-        // }
+        private void FetchModeData() => 
+            _modeConfig = _dataService.ForMode(_progress.Progress.WorldData.ModeId);
 
         private void InitGameLevel()
         {
-            //TeamSeparator teamSeparator = Object.FindObjectOfType<TeamSeparator>();
             _trashRemoveService.LaunchRemove();
 
-            CreateSpawners();
+            _configs = _dataService.ForLevelAndMode(_progress.Progress.WorldData.LevelId,
+                _progress.Progress.WorldData.ModeId);
 
+            List<SpawnPointConfig> enemySpawnPoints = _configs.Where(x => x.ActorType != EPlayerType.Player).ToList();
+            CreateSpawners(enemySpawnPoints);
+
+            List<SpawnPointConfig> playerPoints =
+                _configs.Where(x => x.ActorType != EPlayerType.AI && x.Team == ERelationship.TeamA).ToList();
+            CreatePlayers(playerPoints);
 
             _enemyFactory.CreateGameController();
-            //
-            // CreatePlayers(teamSeparator);
         }
 
-        private void CreateSpawners()
+        private void CreateSpawners(List<SpawnPointConfig> spawnPointConfigs)
         {
-            List<SpawnPointConfig> configs = _dataService.ForLevelAndMode(_progress.Progress.WorldData.LevelId, _progress.Progress.WorldData.ModeId);
-
             GameObject parent = new GameObject("Spawners");
-            
-            foreach (SpawnPointConfig enemyConfig in configs.Where(x => x.ActorType != EPlayerType.Player))
+
+            foreach (SpawnPointConfig enemyConfig in spawnPointConfigs)
             {
                 GameSpawnPoint point = new GameObject("SpawnPoint").AddComponent<GameSpawnPoint>();
                 point.transform.SetParent(parent.transform);
-                point.Construct(_factories, enemyConfig);
+                point.Construct(_factories, enemyConfig, _modeConfig);
             }
-
-            var playerPoints = configs.Where(x => x.ActorType != EPlayerType.AI && x.Team == ERelationship.TeamA).ToList();
-            CreatePlayers(playerPoints);
         }
 
         private void CreatePlayers(List<SpawnPointConfig> spawnPointConfigs)
