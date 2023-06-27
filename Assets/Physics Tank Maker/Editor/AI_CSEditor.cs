@@ -36,7 +36,7 @@ namespace ChobiAssets.PTM
 			turretScript = serializedObject.FindProperty("turret_Horizontal_CS");
 			cannonScript = serializedObject.FindProperty("cannon_Vertical_CS");
 			aimingScript = serializedObject.FindProperty("aiming_Control_CS");
-			damageRecProp = serializedObject.FindProperty("_damageReciviersManager");
+			damageRecProp = serializedObject.FindProperty("damageReceiversManager");
 
 			WayPoint_RadiusProp = serializedObject.FindProperty ("WayPoint_Radius");
 			Pivot_Turn_AngleProp = serializedObject.FindProperty ("Pivot_Turn_Angle");

@@ -30,6 +30,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Intro.unity
     guid: b01da1db86126814bafc97632524543a
   - enabled: 1
+    path: Assets/Scenes/Summer.unity
+    guid: 8ba781273b6c954419af3ad1d7998197
+  - enabled: 1
     path: Assets/Scenes/LevelModeChoise.unity
     guid: e333c1e199369ae40a2a85b7234d762d
   m_configObjects: {}

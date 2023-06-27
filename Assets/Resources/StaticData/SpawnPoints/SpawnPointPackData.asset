@@ -16,183 +16,43 @@ MonoBehaviour:
     PackId: 2
     LevelId: 3
     PointsConfigs:
-    - UniqueId: MinimalTest_2c2f03cf-e710-4a2f-a319-1a2b26bfb059
+    - UniqueId: 
       ActorType: 0
       Team: 1
-      WaypointsPackId: 3
-      Position: {x: -281.2, y: 15.5, z: 1917}
-    - UniqueId: MinimalTest_d6da2fcd-d060-427a-bb65-3b6e4894021b
-      ActorType: 1
-      Team: 1
-      WaypointsPackId: 0
-      Position: {x: -354.7, y: 13.040009, z: 1919.1001}
-    - UniqueId: MinimalTest_f0335c35-3377-4c9c-8e97-7567ac85f62b
+      WaypointsPackId: 8
+      Position: {x: 130.2, y: 3.4, z: 139.4}
+    - UniqueId: 
       ActorType: 0
-      Team: 0
-      WaypointsPackId: 2
-      Position: {x: 478.79782, y: 15.5, z: 1864.5552}
-    - UniqueId: MinimalTest_927e20d3-889b-42b4-8b81-b4d08d52d201
-      ActorType: 1
       Team: 1
-      WaypointsPackId: 0
-      Position: {x: -355.1, y: 13.040009, z: 1659.5}
-    - UniqueId: MinimalTest_a8db9c4d-bb69-4e4e-ba03-3dbf7f969bb2
-      ActorType: 0
-      Team: 0
-      WaypointsPackId: 2
-      Position: {x: 500.99783, y: 15.5, z: 1872.7551}
-    - UniqueId: MinimalTest_6c2f0caf-71c7-476f-a879-0d9bc71fc27a
+      WaypointsPackId: 7
+      Position: {x: 129.1, y: 6.3, z: 755.8}
+    - UniqueId: 
       ActorType: 1
       Team: 0
-      WaypointsPackId: 0
-      Position: {x: 492, y: 13.040009, z: 1599.6001}
-    - UniqueId: MinimalTest_97c87ea2-4934-4af8-819d-545f832c3a0a
-      ActorType: 0
-      Team: 0
-      WaypointsPackId: 1
-      Position: {x: 492.2, y: 15.5, z: 1759.3}
-    - UniqueId: MinimalTest_d0ecd819-85c1-42a0-a73d-4a2ee265a270
-      ActorType: 0
-      Team: 0
-      WaypointsPackId: 1
-      Position: {x: 462.8, y: 15.5, z: 1762.3}
-    - UniqueId: MinimalTest_61b769f8-ed32-466c-a961-6fe317b00f7b
-      ActorType: 0
-      Team: 0
-      WaypointsPackId: 1
-      Position: {x: 474, y: 15.5, z: 1748.2}
-    - UniqueId: MinimalTest_0f588dcf-bd76-40aa-87e5-40fb6f8a0069
+      WaypointsPackId: 5
+      Position: {x: 716.2, y: 5.4, z: 111.3}
+    - UniqueId: 
       ActorType: 0
       Team: 1
-      WaypointsPackId: 3
-      Position: {x: -304.3, y: 15.5, z: 1684.4001}
-    - UniqueId: MinimalTest_c295440c-c757-4c7a-90c5-e2c547be3fe1
+      WaypointsPackId: 7
+      Position: {x: 120.50001, y: 6.3, z: 687.49994}
+    - UniqueId: 
+      ActorType: 0
+      Team: 1
+      WaypointsPackId: 8
+      Position: {x: 129.2, y: 5.2, z: 172.3}
+    - UniqueId: 
       ActorType: 1
       Team: 0
-      WaypointsPackId: 0
-      Position: {x: 492.39996, y: 13.040009, z: 2008.1001}
-    - UniqueId: MinimalTest_7f294388-b97e-4cb1-b8dd-f9d65374c744
+      WaypointsPackId: 6
+      Position: {x: 729.2, y: 7.2, z: 627.3}
+    - UniqueId: 
       ActorType: 0
       Team: 1
-      WaypointsPackId: 3
-      Position: {x: -283.10004, y: 15.5, z: 1942.8}
-    - UniqueId: MinimalTest_01880ae8-0bd1-48f8-aec1-0fcac92735ed
+      WaypointsPackId: 8
+      Position: {x: 136.1, y: 3.9, z: 158.6}
+    - UniqueId: 
       ActorType: 0
       Team: 1
-      WaypointsPackId: 3
-      Position: {x: -285.80002, y: 15.5, z: 1893.4001}
-    - UniqueId: MinimalTest_5c4d2981-e2c3-4bd9-ac42-c47c81caa0f1
-      ActorType: 0
-      Team: 0
-      WaypointsPackId: 1
-      Position: {x: 480.7, y: 15.5, z: 1723.8}
-    - UniqueId: MinimalTest_2465d9f5-d561-43c3-8641-706861167963
-      ActorType: 0
-      Team: 0
-      WaypointsPackId: 1
-      Position: {x: 453, y: 15.5, z: 1730.8}
-    - UniqueId: MinimalTest_a013c721-2430-4b3b-871e-b6f4ce9d9424
-      ActorType: 0
-      Team: 1
-      WaypointsPackId: 3
-      Position: {x: -305.2, y: 15.5, z: 1899.1001}
-    - UniqueId: MinimalTest_69d0b784-868b-4e67-b2ad-2f900765a66a
-      ActorType: 0
-      Team: 0
-      WaypointsPackId: 2
-      Position: {x: 467.6, y: 15.5, z: 1819.5}
-    - UniqueId: MinimalTest_1c0c5326-c8df-4108-a2fc-48521cc39bcf
-      ActorType: 0
-      Team: 1
-      WaypointsPackId: 4
-      Position: {x: -300.8, y: 15.5, z: 1640.5002}
-    - UniqueId: MinimalTest_d9b1ec7b-bbea-4b0a-ab33-c75cc6f5e93e
-      ActorType: 0
-      Team: 0
-      WaypointsPackId: 2
-      Position: {x: 474.2, y: 15.5, z: 1841.7}
-    - UniqueId: MinimalTest_afb9a617-652a-4125-8656-314ca91149f4
-      ActorType: 0
-      Team: 1
-      WaypointsPackId: 4
-      Position: {x: -277.2, y: 15.5, z: 1654.4001}
-    - UniqueId: MinimalTest_8dd7c7d1-be7d-4b66-964a-5c82c22fb744
-      ActorType: 0
-      Team: 1
-      WaypointsPackId: 4
-      Position: {x: -328.5, y: 15.5, z: 1647.5002}
-    - UniqueId: MinimalTest_92c78f30-a3bf-4ae7-abf5-c524c226ba72
-      ActorType: 0
-      Team: 0
-      WaypointsPackId: 2
-      Position: {x: 487.2, y: 15.5, z: 1829.1001}
-    - UniqueId: MinimalTest_3b3269e3-cef9-4048-9753-39cb19cd30eb
-      ActorType: 0
-      Team: 0
-      WaypointsPackId: 1
-      Position: {x: 504.3, y: 15.5, z: 1737.7}
-    - UniqueId: MinimalTest_d830555c-5894-40ea-93b3-f5181a484ff3
-      ActorType: 0
-      Team: 1
-      WaypointsPackId: 4
-      Position: {x: -289.3, y: 15.5, z: 1676.0002}
-    - UniqueId: MinimalTest_c859dcc7-9529-4902-926a-7c2bdf0fbd65
-      ActorType: 0
-      Team: 0
-      WaypointsPackId: 2
-      Position: {x: 501.3, y: 15.5, z: 1850.8}
-    - UniqueId: MinimalTest_74123ecf-c7d0-4118-b904-cdcc653ae46c
-      ActorType: 0
-      Team: 0
-      WaypointsPackId: 1
-      Position: {x: 502.1, y: 15.5, z: 1776.7}
-    - UniqueId: MinimalTest_bec6cbcd-1eb6-41e7-b72a-cf644ced941e
-      ActorType: 0
-      Team: 1
-      WaypointsPackId: 3
-      Position: {x: -322.30002, y: 15.5, z: 1886}
-    - UniqueId: MinimalTest_7e859a83-5b5e-43c5-a862-5bb3fb191b20
-      ActorType: 0
-      Team: 1
-      WaypointsPackId: 4
-      Position: {x: -307.5, y: 15.5, z: 1664.9001}
-    - UniqueId: MinimalTest_0575b225-2e58-4513-b522-ed8bb46c8c0b
-      ActorType: 0
-      Team: 1
-      WaypointsPackId: 4
-      Position: {x: -279.4, y: 15.5, z: 1693.4001}
-    - UniqueId: MinimalTest_addaa079-c41b-4e17-bc07-d57467e04326
-      ActorType: 0
-      Team: 0
-      WaypointsPackId: 2
-      Position: {x: 503.2, y: 15.5, z: 1825}
-    - UniqueId: MinimalTest_ae092dae-3631-4e66-9909-2eaaefc41e2f
-      ActorType: 0
-      Team: 1
-      WaypointsPackId: 3
-      Position: {x: -316.80002, y: 15.5, z: 1911.5}
-    - UniqueId: MinimalTest_a9e22940-006d-4a0d-bce1-cd41f3dbecd0
-      ActorType: 0
-      Team: 0
-      WaypointsPackId: 1
-      Position: {x: 458.39783, y: 15.5, z: 1858.655}
-    - UniqueId: MinimalTest_01085b1c-b13c-4f41-aafe-2477b9dcdb26
-      ActorType: 0
-      Team: 1
-      WaypointsPackId: 4
-      Position: {x: -318.7, y: 15.5, z: 1679.0002}
-    - UniqueId: MinimalTest_eed7757c-ee1f-49a3-b299-00f267dcb2fe
-      ActorType: 0
-      Team: 1
-      WaypointsPackId: 3
-      Position: {x: -310.2, y: 15.5, z: 1933.7}
-    - UniqueId: MinimalTest_87b000a4-b2ad-4f3f-9b5f-8bf379ec635c
-      ActorType: 0
-      Team: 1
-      WaypointsPackId: 3
-      Position: {x: -297.2, y: 15.5, z: 1921.1001}
-    - UniqueId: MinimalTest_16c7d8e0-a7ba-493a-b88b-9a1e255f4e7a
-      ActorType: 0
-      Team: 0
-      WaypointsPackId: 1
-      Position: {x: 477.2, y: 15.5, z: 1767.7}
+      WaypointsPackId: 7
+      Position: {x: 118.5, y: 6.3, z: 722.49994}
