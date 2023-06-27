@@ -19,7 +19,7 @@ namespace Infrastructure.Data
             {
                 float min = Leaders.Min(x => x.Points);
                 if (min < scoreHolder.Points && Leaders.Count > Constants.MaxLeaderBoardCount)
-                    Leaders.Remove(Leaders.SingleOrDefault(x => x.Points == min));
+                    Leaders.Remove(Leaders.Where(x => x.Points == min).First());
             }
 
             Leaders.Add(scoreHolder);
@@ -30,7 +30,7 @@ namespace Infrastructure.Data
             var count = Leaders.Count;
             for (int i = 0; i < count - 1; i++)
             for (int j = 0; j < count - i - 1; j++)
-                if (Leaders[j].Points > Leaders[j + 1].Points)
+                if (Leaders[j].Points < Leaders[j + 1].Points)
                     (Leaders[j], Leaders[j + 1]) = (Leaders[j + 1], Leaders[j]);
         }
     }

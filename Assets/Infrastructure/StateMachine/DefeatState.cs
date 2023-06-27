@@ -33,21 +33,10 @@ namespace Infrastructure.StateMachine
             _inputService.ResetPlayerIndex();
             _inputService.ConnectToInputs(_playerFactory.GameBoard.transform.root.gameObject, true);
 
-            // _progress.Progress.Leaders = new Dictionary<string, float>()
-            // {
-            //     ["Van Darkholm"] = 1000,
-            //     ["Хуепутало"] = 300,
-            //     ["ГЛИНОМЕС"] = 1500,
-            //     ["Вася"] = 500,
-            //     ["какшкин102"] = 300,
-            //     ["блядища"] = 1100,
-            // };
-
             ScoreHolder playerScore = new ScoreHolder("Player " + UnityEngine.Random.Range(0, 99), score);
             _progress.Progress.Leaders.Add(playerScore);
             
             _saveLoadService.SaveProgress();
-            // _saveLoadService.SaveProgress();
             
             _playerFactory.GameBoard.ShowDefeatPanel(_progress.Progress.Leaders, playerScore);
             _playerFactory.GameBoard.OnExitMenu += Menu;

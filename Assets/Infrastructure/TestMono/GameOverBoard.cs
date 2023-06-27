@@ -21,39 +21,41 @@ namespace Infrastructure.TestMono
             Points = points;
         }
     }
+
     public class GameOverBoard : MonoBehaviour
     {
-        
         [SerializeField] private ScorePlane _scorePlanePrefab;
         [SerializeField] private Transform _scorePanel;
-        [SerializeField] private int _maxShowLeaders ;
+        [SerializeField] private int _maxShowLeaders;
 
-        [Space(10)]
-        [SerializeField] private Canvas _canvas;
+        [Space(10)] [SerializeField] private Canvas _canvas;
         [SerializeField] private Image _mainPanel;
+
         [SerializeField] private TextMeshProUGUI _headerText;
+
         //[SerializeField] private TextMeshProUGUI _scoreText;
         [SerializeField] private string _originText = "�� �������: ";
 
-        [Space(10)]
-        [Header("Colors")]
-        [SerializeField] private Color _colorPanelVictory;
+        [Space(10)] [Header("Colors")] [SerializeField]
+        private Color _colorPanelVictory;
+
         [SerializeField] private Color _colorHeaderVictory;
 
 
         [SerializeField] private Color _colorPanelDefeat;
         [SerializeField] private Color _colorHeaderlDefeat;
 
-        [Space(10)]
-        [Header("Buttons")]
-        [SerializeField] private Button _restartButton;
+        [Space(10)] [Header("Buttons")] [SerializeField]
+        private Button _restartButton;
+
         [SerializeField] private Button _menuButton;
 
-        private int MaxShowLeaders => Mathf.Min(7, _scoreHolders.Count);
+        private int MaxShowLeaders => Mathf.Min(_maxShowLeaders, 10);
         private List<ScoreHolder> _scoreHolders = new List<ScoreHolder>();
 
         public UnityAction OnExitMenu;
         public UnityAction OnRestart;
+
         public void Awake()
         {
             _restartButton.onClick.AddListener(RestartClick);
@@ -101,38 +103,40 @@ namespace Infrastructure.TestMono
 
         private void ShowLeaderList(LeadersHolder scoreList, ScoreHolder playerReference)
         {
-            foreach (var scoreHolder in scoreList.Leaders) 
+            FillUpScoreList(scoreList);
+
+            scoreList.Sort();
+
+            CreateScoreSigns(playerReference);
+        }
+
+        private void FillUpScoreList(LeadersHolder scoreList)
+        {
+            foreach (var scoreHolder in scoreList.Leaders)
                 _scoreHolders.Add(scoreHolder);
 
-            for(int i =0; i < MaxShowLeaders - _scoreHolders.Count; i++)
+            int count = _scoreHolders.Count;
+            
+            for (int i = 0; i < _maxShowLeaders - count; i++)
             {
-                ScoreHolder scoreHolder = new ScoreHolder("�����", 0);
+                ScoreHolder scoreHolder = new ScoreHolder("------", 0);
                 _scoreHolders.Add(scoreHolder);
             }
+        }
 
-            BubbleSortList();
-
-            for (int i = MaxShowLeaders - 1; i >= 0; i--)
+        private void CreateScoreSigns(ScoreHolder playerReference)
+        {
+            foreach (var leader in _scoreHolders)
             {
-               var current = _scoreHolders.Count - MaxShowLeaders + i;
                 ScorePlane scorePlane = Instantiate(_scorePlanePrefab, _scorePanel);
-                scorePlane.SetData(_scoreHolders[current]);
-                if (_scoreHolders[current].Name == playerReference.Name)
+                scorePlane.SetData(leader);
+                
+                if (leader.Name == playerReference.Name)
                     scorePlane.Hightlight();
             }
-
         }
 
-        public void BubbleSortList()
-        {
-            var count = _scoreHolders.Count;
-            for (int i = 0; i < count - 1; i++)
-                for (int j = 0; j < count - i - 1; j++)
-                    if (_scoreHolders[j].Points > _scoreHolders[j + 1].Points)
-                        (_scoreHolders[j], _scoreHolders[j + 1]) = (_scoreHolders[j + 1], _scoreHolders[j]);
-        }
-
-        private void HidePanel() => 
+        private void HidePanel() =>
             _mainPanel.gameObject.SetActive(false);
     }
 }
