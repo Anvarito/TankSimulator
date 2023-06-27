@@ -21,10 +21,10 @@ MonoBehaviour:
     CooldownRange: 20
     PlayersSpawnsPeriodicaly: 0
     PlayersCooldownSpawn: 0
-    IsGameOverTimerEnabled: 0
-    GameTime: 0.1
-    PointsForKillingEnemy: 0
-    PointsForKillingAllies: 0
+    IsGameOverTimerEnabled: 1
+    GameTime: 5
+    PointsForKillingEnemy: 100
+    PointsForKillingAllies: -25
   - ModeId: 4
     PlayerCount: 2
     Name: VersusLupa

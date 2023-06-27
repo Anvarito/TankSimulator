@@ -5,9 +5,11 @@ using TMPro;
 using ChobiAssets.PTM;
 using UnityEngine.Events;
 using System.Collections.Generic;
+using Infrastructure.Data;
 
 namespace Infrastructure.TestMono
 {
+    [Serializable]
     public class ScoreHolder
     {
         public string Name;
@@ -24,7 +26,7 @@ namespace Infrastructure.TestMono
         
         [SerializeField] private ScorePlane _scorePlanePrefab;
         [SerializeField] private Transform _scorePanel;
-        [SerializeField] private int _maxShowLeaders = 7;
+        [SerializeField] private int _maxShowLeaders ;
 
         [Space(10)]
         [SerializeField] private Canvas _canvas;
@@ -47,6 +49,7 @@ namespace Infrastructure.TestMono
         [SerializeField] private Button _restartButton;
         [SerializeField] private Button _menuButton;
 
+        private int MaxShowLeaders => Mathf.Min(7, _scoreHolders.Count);
         private List<ScoreHolder> _scoreHolders = new List<ScoreHolder>();
 
         public UnityAction OnExitMenu;
@@ -69,42 +72,39 @@ namespace Infrastructure.TestMono
             OnRestart?.Invoke();
         }
 
-        public void ShowVictoryPanel(Dictionary<string, float> scoreList, ScoreHolder playerReference)
+        public void ShowVictoryPanel(LeadersHolder leadersHolder, ScoreHolder playerReference)
         {
             Debug.Log($"Score: {playerReference}");
 
-            ShowLeaderList(scoreList, playerReference);
+            ShowLeaderList(leadersHolder, playerReference);
 
             _mainPanel.gameObject.SetActive(true);
-            _headerText.text = "������!";
+            _headerText.text = "Победа!";
             _headerText.color = _colorHeaderVictory;
             _mainPanel.color = _colorPanelVictory;
             //_scoreText.text = _originText + "\n" + score;
         }
 
 
-        public void ShowDefeatPanel(Dictionary<string, float> scoreList, ScoreHolder playerReference)
+        public void ShowDefeatPanel(LeadersHolder leadersHolder, ScoreHolder playerReference)
         {
             Debug.Log($"Score: {playerReference}");
 
-            ShowLeaderList(scoreList, playerReference);
+            ShowLeaderList(leadersHolder, playerReference);
 
             _mainPanel.gameObject.SetActive(true);
-            _headerText.text = "���������!";
+            _headerText.text = "Поражение!";
             _headerText.color = _colorHeaderlDefeat;
             _mainPanel.color = _colorPanelDefeat;
             //_scoreText.text = _originText + "\n" + score;
         }
 
-        private void ShowLeaderList(Dictionary<string, float> scoreList, ScoreHolder playerReference)
+        private void ShowLeaderList(LeadersHolder scoreList, ScoreHolder playerReference)
         {
-            foreach (var i in scoreList)
-            {
-                ScoreHolder scoreHolder = new ScoreHolder(i.Key, i.Value);
+            foreach (var scoreHolder in scoreList.Leaders) 
                 _scoreHolders.Add(scoreHolder);
-            }
 
-            for(int i =0; i < _maxShowLeaders - _scoreHolders.Count; i++)
+            for(int i =0; i < MaxShowLeaders - _scoreHolders.Count; i++)
             {
                 ScoreHolder scoreHolder = new ScoreHolder("�����", 0);
                 _scoreHolders.Add(scoreHolder);
@@ -112,9 +112,9 @@ namespace Infrastructure.TestMono
 
             BubbleSortList();
 
-            for (int i = _maxShowLeaders - 1; i >= 0; i--)
+            for (int i = MaxShowLeaders - 1; i >= 0; i--)
             {
-               var current = _scoreHolders.Count - _maxShowLeaders + i;
+               var current = _scoreHolders.Count - MaxShowLeaders + i;
                 ScorePlane scorePlane = Instantiate(_scorePlanePrefab, _scorePanel);
                 scorePlane.SetData(_scoreHolders[current]);
                 if (_scoreHolders[current].Name == playerReference.Name)
@@ -129,11 +129,7 @@ namespace Infrastructure.TestMono
             for (int i = 0; i < count - 1; i++)
                 for (int j = 0; j < count - i - 1; j++)
                     if (_scoreHolders[j].Points > _scoreHolders[j + 1].Points)
-                    {
-                        var tempVar = _scoreHolders[j];
-                        _scoreHolders[j] = _scoreHolders[j + 1];
-                        _scoreHolders[j + 1] = tempVar;
-                    }
+                        (_scoreHolders[j], _scoreHolders[j + 1]) = (_scoreHolders[j + 1], _scoreHolders[j]);
         }
 
         private void HidePanel() => 
