@@ -7,18 +7,18 @@ namespace Infrastructure.Services.Timer
     public class TimerService : ITimerService
     {
         public bool IsPaused { get; private set; }
-        
+
         private readonly ICoroutineRunner _coroutineRunner;
         private Coroutine _timerCoroutine;
         private Action _currentOnTimerEnd;
-        private float _currentSeconds;
+        public float CurrentSeconds { get; private set; }
 
         public TimerService(ICoroutineRunner coroutineRunner) =>
             _coroutineRunner = coroutineRunner;
 
         public void StartTimer(float seconds, Action onTimerEnd)
         {
-            _currentSeconds = seconds;
+            CurrentSeconds = seconds;
             _currentOnTimerEnd = onTimerEnd;
             _timerCoroutine = _coroutineRunner.StartCoroutine(Timer());
         }
@@ -27,7 +27,7 @@ namespace Infrastructure.Services.Timer
         {
             _coroutineRunner.StopCoroutine(_timerCoroutine);
             IsPaused = false;
-            _currentSeconds = 0;
+            CurrentSeconds = 0;
             _currentOnTimerEnd = null;
         }
 
@@ -35,7 +35,7 @@ namespace Infrastructure.Services.Timer
         {
             if (IsPaused)
             {
-                if (_currentSeconds > 0)
+                if (CurrentSeconds > 0)
                 {
                     _coroutineRunner.StartCoroutine(Timer());
                     IsPaused = !IsPaused;
@@ -47,7 +47,7 @@ namespace Infrastructure.Services.Timer
             }
             else
             {
-                if (_currentSeconds > 0)
+                if (CurrentSeconds > 0)
                 {
                     _coroutineRunner.StopCoroutine(_timerCoroutine);
                     IsPaused = !IsPaused;
@@ -60,9 +60,9 @@ namespace Infrastructure.Services.Timer
 
         private IEnumerator<WaitForSeconds> Timer()
         {
-            while (_currentSeconds > 0)
+            while (CurrentSeconds > 0)
             {
-                _currentSeconds -= Time.deltaTime;
+                CurrentSeconds -= Time.deltaTime;
                 yield return null;
             }
 

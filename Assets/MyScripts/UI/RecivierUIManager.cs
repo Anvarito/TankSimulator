@@ -1,13 +1,10 @@
 using System.Collections.Generic;
 using ChobiAssets.PTM;
+using Infrastructure.Services.KillCounter;
+using Infrastructure.Services.Score;
+using Infrastructure.Services.Timer;
 using UnityEngine;
 
-[System.Serializable]
-public struct ColorsHolder
-{
-    public Color mainColor;
-    public Color secondaryColor;
-}
 public class RecivierUIManager : MonoBehaviour
 {
     [Header("Reciviers")]
@@ -19,9 +16,8 @@ public class RecivierUIManager : MonoBehaviour
     [SerializeField] private SpeedIndicatorRecivier _speedRecivier;
     [SerializeField] private PositionActorsMarkerRecivier _positionActorsRecivier;
     [SerializeField] private HitPointsTargetUIRecivier _hitPointsTargetRecivier;
+    [SerializeField] private ScoreAndTimerReciever _scoreAndTimerReciever;
 
-    [Space(10)]
-    [SerializeField] private ColorsHolder _colorsHolder;
     internal void Initialize(Aiming_Control_CS aiming,
         Bullet_Generator_CS bulletGenerator,
         Cannon_Fire_CS cannonFire,
@@ -30,7 +26,9 @@ public class RecivierUIManager : MonoBehaviour
         Drive_Control_CS driveControl,
         CameraViewSetup cameraView,
         List<ID_Settings_CS> enemysID,
-        ID_Settings_CS idSettings)
+        ID_Settings_CS idSettings,
+        ITimerService timerService,
+        IScoreCounter scoreCounter)
     {
         _aimMarkerRecivier.Init(aiming, gunCamera, cameraView);
         _leadMarkerRecivier.Init(aiming, bulletGenerator, gunCamera, cameraView);
@@ -40,6 +38,7 @@ public class RecivierUIManager : MonoBehaviour
         _speedRecivier.Init(driveControl, gunCamera, cameraView);
         _positionActorsRecivier.Init(idSettings, enemysID, gunCamera, cameraView);
         _hitPointsTargetRecivier.Init(aiming, gunCamera, cameraView);
+        _scoreAndTimerReciever.Init(timerService, scoreCounter, gunCamera, cameraView, idSettings);
 
         damageReceiver.OnTankDestroyed.AddListener(TankDestroyed);
     }
@@ -54,5 +53,6 @@ public class RecivierUIManager : MonoBehaviour
         _speedRecivier.PlayerDestoryed();
         _positionActorsRecivier.PlayerDestoryed();
         _hitPointsTargetRecivier.PlayerDestoryed();
+        _scoreAndTimerReciever.PlayerDestoryed();
     }
 }

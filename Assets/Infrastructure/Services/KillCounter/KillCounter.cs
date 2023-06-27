@@ -1,4 +1,5 @@
 using System;
+using ChobiAssets.PTM;
 using Infrastructure.Factory.Base;
 using Infrastructure.Factory.Compose;
 using Infrastructure.Services.Progress;
@@ -11,7 +12,7 @@ namespace Infrastructure.Services.KillCounter
     {
         private readonly IProgressService _progressService;
         private readonly IStaticDataService _dataService;
-        public Action OnEnemiesDestroyed { get; set; }
+        public Action<ID_Settings_CS> OnEnemiesDestroyed { get; set; }
         public Action OnPlayersDestroyed { get; set; }
 
         public int PlayersDestroyed { get; private set; }
@@ -51,10 +52,10 @@ namespace Infrastructure.Services.KillCounter
         private bool IsVersus() => 
             _progressService.Progress.WorldData.ModeId == GamemodeId.Versus;
 
-        private void HandleEnemyDestroy()
+        private void HandleEnemyDestroy(ID_Settings_CS killer)
         {
             if (AllEnemiesDestroyed())
-                OnEnemiesDestroyed?.Invoke();
+                OnEnemiesDestroyed?.Invoke(killer);
         }
 
         private bool AllPlayersDestroyed() =>

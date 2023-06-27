@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 1224471283}
   - component: {fileID: 4713451948404591603}
   - component: {fileID: 6740176055343302917}
+  - component: {fileID: 4745493937928915301}
   - component: {fileID: 288517704285420636}
   m_Layer: 0
   m_Name: UIReseivers
@@ -148,6 +149,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _presenterPrefab: {fileID: 114579197361180434, guid: a025a74fd8b47854688c77fa9728a595, type: 3}
   _leadMarkerResivier: {fileID: 331844288142114373}
+--- !u!114 &4745493937928915301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1815802135084448772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be2db8f526305ee4dbf54a2a0c54fde0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _presenterPrefab: {fileID: 6373817761294055043, guid: 5a45c4391d3302d4d856154eccb5b4f0, type: 3}
 --- !u!114 &288517704285420636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,6 +182,4 @@ MonoBehaviour:
   _speedRecivier: {fileID: 1224471283}
   _positionActorsRecivier: {fileID: 4713451948404591603}
   _hitPointsTargetRecivier: {fileID: 6740176055343302917}
-  _colorsHolder:
-    mainColor: {r: 1, g: 1, b: 1, a: 1}
-    secondaryColor: {r: 0, g: 0.003921569, b: 1, a: 0.77254903}
+  _scoreAndTimerReciever: {fileID: 4745493937928915301}

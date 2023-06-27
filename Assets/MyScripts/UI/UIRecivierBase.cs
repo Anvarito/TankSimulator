@@ -4,11 +4,13 @@ using ChobiAssets.PTM;
 
 public abstract class UIRecivierBase : MonoBehaviour
 {
-    [SerializeField] protected UIPresenterBase _presenterPrefab;
+    [SerializeField] private UIPresenterBase _presenterPrefab;
      protected UIPresenterBase _spawnedPresenter;
 
     protected Gun_Camera_CS _gunCamera;
     protected CameraViewSetup _cameraSetup;
+
+    protected UIPresenterBase GetPrefabPresenter => _presenterPrefab;
 
     protected void InitialUIRecivier()
     {

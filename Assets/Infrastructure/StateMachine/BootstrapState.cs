@@ -70,19 +70,23 @@ namespace Infrastructure.StateMachine
             _services.RegisterSingle<IInputService>(new InputService(_gameStateMachine,
                 _services.Single<IFactories>(), _services.Single<IStaticDataService>()));
 
+            _services.RegisterSingle<IScoreCounter>(new ScoreCounter(_services.Single<IFactories>(), _services.Single<IProgressService>(), _services.Single<IStaticDataService>()));
+
             _services.Single<IFactories>().Add<IPlayerFactory>(
                 new PlayerFactory(
                     _services.Single<IAssetLoader>(),
                     _services.Single<IInputService>(),
                     _services.Single<IProgressService>(),
-                    _services.Single<IStaticDataService>()
+                    _services.Single<IStaticDataService>(),
+                    _services.Single<ITimerService>(),
+                    _services.Single<IScoreCounter>()
                     ));
+
+            _services.RegisterSingle<IKillCounter>(new KillCounter(_services.Single<IFactories>()));
 
             _services.RegisterSingle<ISaveLoadService>(new SaveLoadService(_services.Single<IProgressService>(),
                 _services.Single<IFactories>()));
 
-            _services.RegisterSingle<IKillCounter>(new KillCounter(_services.Single<IFactories>(), _services.Single<IProgressService>()));
-            _services.RegisterSingle<IScoreCounter>(new ScoreCounter(_services.Single<IFactories>(), _services.Single<IProgressService>(), _services.Single<IStaticDataService>()));
             
             _services.RegisterSingle<ITrashRemoveService>(new TrashRemoveService());
             

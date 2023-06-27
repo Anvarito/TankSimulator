@@ -25,7 +25,6 @@ namespace Infrastructure.Factory.Base
         void CreateTankUiSpawners(List<DamageReceiversManager> enemyDamageList);
         void CreateHud();
 
-
         MainMenuUIHelper MainMenuUIHelper { get; }
         Action OnPlayerDestroyed { get; set; }
         int PlayerCount { get; }
@@ -36,7 +35,7 @@ namespace Infrastructure.Factory.Base
     public interface IEnemyFactory : IGameFactory
     {
         List<DamageReceiversManager> EnemyDamageManagers { get; }
-        Action OnEnemyDestroyed { get; set; }
+        Action<ID_Settings_CS> OnEnemyDestroyed { get; set; }
         int EnemiesCount { get; }
         public void CreateGameController();
         void CreateEnemy(SpawnPointConfig config);

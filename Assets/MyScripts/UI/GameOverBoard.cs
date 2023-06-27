@@ -32,9 +32,8 @@ namespace Infrastructure.TestMono
         [SerializeField] private Image _mainPanel;
 
         [SerializeField] private TextMeshProUGUI _headerText;
-
-        //[SerializeField] private TextMeshProUGUI _scoreText;
-        [SerializeField] private string _originText = "�� �������: ";
+        [SerializeField] private string _victoreTextHeader;
+        [SerializeField] private string _defeatHederText;
 
         [Space(10)] [Header("Colors")] [SerializeField]
         private Color _colorPanelVictory;
@@ -81,7 +80,7 @@ namespace Infrastructure.TestMono
             ShowLeaderList(leadersHolder, playerReference);
 
             _mainPanel.gameObject.SetActive(true);
-            _headerText.text = "Победа!";
+            _headerText.text = _victoreTextHeader;
             _headerText.color = _colorHeaderVictory;
             _mainPanel.color = _colorPanelVictory;
             //_scoreText.text = _originText + "\n" + score;
@@ -95,7 +94,7 @@ namespace Infrastructure.TestMono
             ShowLeaderList(leadersHolder, playerReference);
 
             _mainPanel.gameObject.SetActive(true);
-            _headerText.text = "Поражение!";
+            _headerText.text = _defeatHederText;
             _headerText.color = _colorHeaderlDefeat;
             _mainPanel.color = _colorPanelDefeat;
             //_scoreText.text = _originText + "\n" + score;

@@ -17,7 +17,7 @@ namespace Infrastructure.Factory
     public class EnemyFactory : GameFactory, IEnemyFactory
     {
         public List<DamageReceiversManager> EnemyDamageManagers { get; } = new List<DamageReceiversManager>();
-        public Action OnEnemyDestroyed { get; set; }
+        public Action<ID_Settings_CS> OnEnemyDestroyed { get; set; }
         public int EnemiesCount { get; private set; }
 
         private readonly IStaticDataService _dataService;
@@ -75,21 +75,23 @@ namespace Infrastructure.Factory
 
         private void RegisterDamageManager(DamageReceiversManager enemyDamageManager, ID_Settings_CS settingsCs)
         {
-            if (_progress.Progress.WorldData.Teams.All(x=>x!= settingsCs.Relationship))
+            if (_progress.Progress.WorldData.Teams.All(x => x != settingsCs.Relationship))
             {
                 EnemiesCount++;
                 enemyDamageManager.OnTankDestroyed.AddListener(EnemyDestroyed);
             }
         }
 
-        private void EnemyDestroyed(ID_Settings_CS _killerID) => 
-            OnEnemyDestroyed?.Invoke();
+        private void EnemyDestroyed(ID_Settings_CS killerID)
+        {
+            OnEnemyDestroyed?.Invoke(killerID);
+        }
 
 
-        private GameObject GetWaypointPack(SpawnPointConfig config) => 
+        private GameObject GetWaypointPack(SpawnPointConfig config) =>
             _waypoints[config.WaypointsPackId];
 
-        private void CreateWaypointsPack(SpawnPointConfig config) => 
+        private void CreateWaypointsPack(SpawnPointConfig config) =>
             _waypoints.Add(config.WaypointsPackId, CreateWaypointObjects(_dataService.ForWaypoints(config.WaypointsPackId)));
 
         private GameObject CreateWaypointObjects(WaypointPackConfig waypointPack)

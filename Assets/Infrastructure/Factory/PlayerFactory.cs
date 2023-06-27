@@ -5,9 +5,12 @@ using ChobiAssets.PTM;
 using Infrastructure.Assets;
 using Infrastructure.Factory.Base;
 using Infrastructure.Services.Input;
+using Infrastructure.Services.KillCounter;
 using Infrastructure.Services.Progress;
+using Infrastructure.Services.Score;
 using Infrastructure.Services.StaticData;
 using Infrastructure.Services.StaticData.SpawnPoints;
+using Infrastructure.Services.Timer;
 using Infrastructure.TestMono;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -25,17 +28,22 @@ namespace Infrastructure.Factory
         private readonly IInputService _inputService;
         private readonly IProgressService _progressService;
         private readonly IStaticDataService _dataService;
+        private readonly ITimerService _timer;
+        private readonly IScoreCounter _scoreCounter;
+
 
         private readonly List<GameObject> _players = new List<GameObject>();
         private readonly List<ID_Settings_CS> _enemysID = new List<ID_Settings_CS>();
 
 
-        public PlayerFactory(IAssetLoader assetLoader, IInputService inputService, IProgressService progressService,
-            IStaticDataService dataService) : base(assetLoader)
+        public PlayerFactory(IAssetLoader assetLoader, IInputService inputService, IProgressService progressService, IStaticDataService dataService, ITimerService timer, IScoreCounter scoreCounter) : base(assetLoader)
         {
+
             _inputService = inputService;
             _progressService = progressService;
             _dataService = dataService;
+            _timer = timer;
+            _scoreCounter = scoreCounter;
         }
 
         public override void CleanUp()
@@ -55,6 +63,9 @@ namespace Infrastructure.Factory
         public void CreatePlayers(List<SpawnPointConfig> points)
         {
             
+            //at = Shuffle(at);
+            Dictionary<ID_Settings_CS, int> _indexById = new Dictionary<ID_Settings_CS, int>();
+
             foreach (PlayerConfiguration config in _inputService.PlayerConfigs)
             {
                 var filteredPoints = points.Where(x => x.Team == config.Team);
@@ -70,28 +81,14 @@ namespace Infrastructure.Factory
                 PlayerParts.Add(registerUiWatchers);
 
                 registerUiWatchers.IdSettings.SetRelationship(ERelationship.TeamA);
-                InitedRegisteredTank(player, config);
+                InitedRegisteredTank(player, configWithPoint.Config);
+
+                _scoreCounter.AddPlayerIndex(registerUiWatchers.IdSettings, configWithPoint.Config.PlayerIndex);
             }
-            
-            
-            // foreach (var configWithPoint in _inputService.PlayerConfigs.Zip(points,
-            //              (n, m) => new { Config = n, Point = m }))
-            // {
-            //     if (configWithPoint.Point.Team == configWithPoint.Config.Team)
-            //     {
-            //         GameObject player = InstantiateRegistered(configWithPoint.Config.PrefabPath,
-            //             configWithPoint.Point.Position);
-            //         _players.Add(player);
-            //         PlayerUiParts registerUiWatchers = RegisterUiWatchers(player);
-            //         registerUiWatchers.DamageReceiver.OnTankDestroyed.AddListener(PlayerDestroyed);
-            //
-            //         PlayerParts.Add(registerUiWatchers);
-            //
-            //         registerUiWatchers.IdSettings.SetRelationship(ERelationship.TeamA);
-            //         InitedRegisteredTank(player, configWithPoint.Config);
-            //     }
-            // }
+
         }
+
+
 
         public void CreateTankUiSpawners(List<DamageReceiversManager> enemyDamageManagers)
         {
@@ -104,16 +101,18 @@ namespace Infrastructure.Factory
                 InitializeUiWatchers(part, InstantiateRegistered(AssetPaths.TankUiSpawner));
         }
 
-        public void CreateHud() =>
-            GameBoard = InstantiateRegistered(AssetPaths.Hud).GetComponentInChildren<GameOverBoard>();
+        public void CreateHud()
+        {
+            var hud = InstantiateRegistered(AssetPaths.Hud);
+            GameBoard = hud.GetComponentInChildren<GameOverBoard>();
+        }
 
         public GameObject CreateMainMenu() =>
             RegisterMainMenuUIHelper(InstantiateRegistered(AssetPaths.MainMenu));
 
         public GamemodeMapHelper CreateMapModeChoiseUI()
         {
-            GamemodeMapHelper helper = InstantiateRegistered(AssetPaths.MapModeMenu)
-                .GetComponentInChildren<GamemodeMapHelper>();
+            GamemodeMapHelper helper = InstantiateRegistered(AssetPaths.MapModeMenu).GetComponentInChildren<GamemodeMapHelper>();
             helper.Construct(_progressService, _dataService, _inputService);
             return helper;
         }
@@ -155,8 +154,7 @@ namespace Infrastructure.Factory
         private void InitializeUiWatchers(PlayerUiParts parts, GameObject uiSpawner)
         {
             RecivierUIManager recivierUIManager = uiSpawner.GetComponent<RecivierUIManager>();
-            recivierUIManager.Initialize(parts.Aiming, parts.BulletGenerator, parts.CannonFire, parts.GunCamera,
-                parts.DamageReceiver, parts.DriveControl, parts.CameraView, _enemysID, parts.IdSettings);
+            recivierUIManager.Initialize(parts.Aiming, parts.BulletGenerator, parts.CannonFire, parts.GunCamera, parts.DamageReceiver, parts.DriveControl, parts.CameraView, _enemysID, parts.IdSettings, _timer, _scoreCounter);
         }
 
         //private GameObject[] Shuffle(GameObject[] at)

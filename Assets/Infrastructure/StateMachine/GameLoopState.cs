@@ -53,11 +53,11 @@ namespace Infrastructure.StateMachine
         }
 
         private void GameOver() =>
-            _gameStateMachine.Enter<DefeatState, float>(_scoreCounter.Score);
-
-        private void Victory() =>
-            _gameStateMachine.Enter<VictoryState, float>(_scoreCounter.Score);
-
+            _gameStateMachine.Enter<DefeatState, float>(_scoreCounter.ScorePlayerOne);
+        
+        private void Victory(ID_Settings_CS killer) =>
+            _gameStateMachine.Enter<VictoryState, float>(_scoreCounter.ScorePlayerOne);
+        
 
         private void RegisterKillCounter()
         {
