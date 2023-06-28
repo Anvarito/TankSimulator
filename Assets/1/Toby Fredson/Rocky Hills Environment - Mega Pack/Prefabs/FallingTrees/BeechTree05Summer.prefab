@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 205449835557709322}
   m_Layer: 0
   m_Name: BeechTree05Summer
-  m_TagString: Untagged
+  m_TagString: Tree
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 227591058219028238}
   m_Layer: 0
   m_Name: BeecthTree05Summer_BillboardRenderer
-  m_TagString: Untagged
+  m_TagString: Tree
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -152,7 +152,7 @@ GameObject:
   - component: {fileID: 1059371771}
   m_Layer: 0
   m_Name: BeecthTree05Summer_afsTREE_xmvcb _xlod00_xlp
-  m_TagString: Untagged
+  m_TagString: Tree
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -259,7 +259,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _collider: {fileID: 136019156661852846}
-  _lODGroup: {fileID: 205449835557709322}
   _speed: 60
 --- !u!1 &1636230034147300
 GameObject:
@@ -275,7 +274,7 @@ GameObject:
   - component: {fileID: 193913605858128136}
   m_Layer: 0
   m_Name: BeecthTree05Summer_afsTREE_xmvcb _xlod01_xlp
-  m_TagString: Untagged
+  m_TagString: Tree
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

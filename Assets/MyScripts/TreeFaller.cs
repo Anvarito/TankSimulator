@@ -5,11 +5,10 @@ using UnityEngine;
 public class TreeFaller : MonoBehaviour
 {
     public Collider _collider;
-    public LODGroup _lODGroup;
     Vector3 axisRotate;
     private bool _isCollide = false;
     private GameObject _ref;
-    public float _speed = 2;
+    public float _speed = 60;
     float _accumAngle = 0;
     void Start()
     {
@@ -22,11 +21,7 @@ public class TreeFaller : MonoBehaviour
         if (_isCollide)
         {
             _accumAngle += _speed * Time.deltaTime;
-            foreach(LOD i in _lODGroup.GetLODs())
-            {
-                i.renderers[0].transform.RotateAround(transform.position, axisRotate, -_speed * Time.deltaTime);
-            }
-            print(_accumAngle);
+            transform.parent.RotateAround(transform.position, axisRotate, -_speed * Time.deltaTime);
             if (_accumAngle > 100)
                 Destroy(transform.parent.gameObject);
                 //ResetAll();
