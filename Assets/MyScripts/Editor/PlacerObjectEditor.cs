@@ -27,7 +27,7 @@ public class PlacerObjectEditor : Editor
     void OnSceneGUI()
     {
         Transform container = _container.objectReferenceValue as Transform;
-        if (Event.current.keyCode == KeyCode.LeftShift)
+        if (Event.current.keyCode == KeyCode.R)
         {
 
             if (Event.current.rawType != EventType.KeyDown)
