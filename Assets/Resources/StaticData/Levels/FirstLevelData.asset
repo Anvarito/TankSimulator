@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: FirstLevelData
   m_EditorClassIdentifier: 
   Config:
-    LevelId: 3
+    LevelId: 0
     SceneName: MinimalTest
