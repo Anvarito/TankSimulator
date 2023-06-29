@@ -46,8 +46,8 @@ MonoBehaviour:
     PlayersSpawnsPeriodicaly: 0
     PlayersCooldownSpawn: 0
     IsGameOverTimerEnabled: 0
-    GameTime: 0
-    PointsForKillingEnemy: 0
+    GameTime: 5
+    PointsForKillingEnemy: 100
     PointsForKillingAllies: 0
   - ModeId: 3
     PlayerCount: 1
