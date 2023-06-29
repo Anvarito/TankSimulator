@@ -59,7 +59,7 @@ MonoBehaviour:
     - UniqueId: 
       ActorType: 1
       Team: 0
-      WaypointsPackId: 5
+      WaypointsPackId: 0
       Position: {x: 716.2, y: 5.4, z: 111.3}
     - UniqueId: 
       ActorType: 0
@@ -74,7 +74,7 @@ MonoBehaviour:
     - UniqueId: 
       ActorType: 1
       Team: 0
-      WaypointsPackId: 6
+      WaypointsPackId: 0
       Position: {x: 729.2, y: 7.2, z: 627.3}
     - UniqueId: 
       ActorType: 0
