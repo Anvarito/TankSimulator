@@ -62,12 +62,18 @@ namespace Infrastructure.Factory
 
         public void CreatePlayers(List<SpawnPointConfig> points)
         {
+            
             //at = Shuffle(at);
             Dictionary<ID_Settings_CS, int> _indexById = new Dictionary<ID_Settings_CS, int>();
 
-            foreach (var configWithPoint in _inputService.PlayerConfigs.Zip(points, (n, m) => new { Config = n, Point = m }))
+            foreach (PlayerConfiguration config in _inputService.PlayerConfigs)
             {
-                GameObject player = InstantiateRegistered(configWithPoint.Config.PrefabPath, configWithPoint.Point.Position);
+                var filteredPoints = points.Where(x => x.Team == config.Team);
+                SpawnPointConfig selectedPoint = filteredPoints.First();
+                points.Remove(selectedPoint);
+                
+                GameObject player = InstantiateRegistered(config.PrefabPath,
+                    selectedPoint.Position);
                 _players.Add(player);
                 PlayerUiParts registerUiWatchers = RegisterUiWatchers(player);
                 registerUiWatchers.DamageReceiver.OnTankDestroyed.AddListener(PlayerDestroyed);
@@ -75,9 +81,9 @@ namespace Infrastructure.Factory
                 PlayerParts.Add(registerUiWatchers);
 
                 registerUiWatchers.IdSettings.SetRelationship(ERelationship.TeamA);
-                InitedRegisteredTank(player, configWithPoint.Config);
-
-                _scoreCounter.AddPlayerIndex(registerUiWatchers.IdSettings, configWithPoint.Config.PlayerIndex);
+                InitedRegisteredTank(player, config);
+                
+                _scoreCounter.AddPlayerIndex(registerUiWatchers.IdSettings, config.PlayerIndex);
             }
 
         }

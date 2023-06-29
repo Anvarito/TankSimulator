@@ -18,6 +18,7 @@ namespace Infrastructure.Data
         public WorldData(string initialLevel)
         {
             PositionOnLevel = new PositionOnLevel(initialLevel, null);
+            Teams = new List<ERelationship>();
         }
 
     }

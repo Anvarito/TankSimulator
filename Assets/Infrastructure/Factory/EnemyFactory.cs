@@ -26,7 +26,8 @@ namespace Infrastructure.Factory
         private Dictionary<WaypointsPackId, GameObject> _waypoints = new();
 
 
-        public EnemyFactory(IAssetLoader assetLoader, IStaticDataService dataService, IProgressService progress) : base(assetLoader)
+        public EnemyFactory(IAssetLoader assetLoader, IStaticDataService dataService, IProgressService progress) :
+            base(assetLoader)
         {
             _dataService = dataService;
             _progress = progress;
@@ -84,7 +85,11 @@ namespace Infrastructure.Factory
 
         private void EnemyDestroyed(ID_Settings_CS killerID)
         {
-            OnEnemyDestroyed?.Invoke(killerID);
+            if (killerID == null)
+                return;
+            
+            if (killerID.PlayerType == EPlayerType.Player)
+                OnEnemyDestroyed?.Invoke(killerID);
         }
 
 
@@ -92,7 +97,8 @@ namespace Infrastructure.Factory
             _waypoints[config.WaypointsPackId];
 
         private void CreateWaypointsPack(SpawnPointConfig config) =>
-            _waypoints.Add(config.WaypointsPackId, CreateWaypointObjects(_dataService.ForWaypoints(config.WaypointsPackId)));
+            _waypoints.Add(config.WaypointsPackId,
+                CreateWaypointObjects(_dataService.ForWaypoints(config.WaypointsPackId)));
 
         private GameObject CreateWaypointObjects(WaypointPackConfig waypointPack)
         {

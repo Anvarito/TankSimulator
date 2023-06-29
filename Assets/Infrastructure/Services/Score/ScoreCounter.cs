@@ -16,7 +16,7 @@ namespace Infrastructure.Services.Score
         public float ScorePlayerTwo { get; private set; }
         public Action<int> OnEnemiesDestroyed { get; set; }
 
-        private Dictionary<ID_Settings_CS, int> _indexById = new Dictionary<ID_Settings_CS, int>();
+        private readonly Dictionary<ID_Settings_CS, int> _indexById = new Dictionary<ID_Settings_CS, int>();
 
         private readonly IProgressService _progress;
         private readonly IStaticDataService _dataService;
@@ -65,18 +65,12 @@ namespace Infrastructure.Services.Score
             OnEnemiesDestroyed?.Invoke(indexKiller);
         }
 
-        public void AddPlayerIndex(ID_Settings_CS id, int index)
-        {
+        public void AddPlayerIndex(ID_Settings_CS id, int index) => 
             _indexById.Add(id, index);
-        }
-        public int GetIndexPlayer(ID_Settings_CS player)
-        {
-            if (_indexById.TryGetValue(player, out int index))
-            {
-                return index;
-            }
 
-            return -1;
-        }
+        public int GetIndexPlayer(ID_Settings_CS player) =>
+            _indexById.TryGetValue(player, out int index)
+                ? index
+                : -1;
     }
 }

@@ -90,7 +90,7 @@ namespace Infrastructure.Services.StaticData
 
         private List<SpawnPointConfig> ForSpawnPointConfigs(string hash) =>
             _spawnPoints.TryGetValue(hash, out List<SpawnPointConfig> configs)
-                ? configs
+                ? configs.ToList()
                 : null;
 
         private string HashForTwoId(LevelId id1, GamemodeId id2) =>

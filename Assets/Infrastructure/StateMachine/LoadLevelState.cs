@@ -78,8 +78,7 @@ namespace Infrastructure.StateMachine
             List<SpawnPointConfig> enemySpawnPoints = _configs.Where(x => x.ActorType != EPlayerType.Player).ToList();
             CreateSpawners(enemySpawnPoints);
 
-            List<SpawnPointConfig> playerPoints =
-                _configs.Where(x => x.ActorType != EPlayerType.AI && x.Team == ERelationship.TeamA).ToList();
+            List<SpawnPointConfig> playerPoints = _configs.Where(x => x.ActorType != EPlayerType.AI).ToList();
             CreatePlayers(playerPoints);
 
             _enemyFactory.CreateGameController();

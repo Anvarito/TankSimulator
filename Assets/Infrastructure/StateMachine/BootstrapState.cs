@@ -82,7 +82,7 @@ namespace Infrastructure.StateMachine
                     _services.Single<IScoreCounter>()
                     ));
 
-            _services.RegisterSingle<IKillCounter>(new KillCounter(_services.Single<IFactories>()));
+            _services.RegisterSingle<IKillCounter>(new KillCounter(_services.Single<IFactories>(), _services.Single<IProgressService>()));
 
             _services.RegisterSingle<ISaveLoadService>(new SaveLoadService(_services.Single<IProgressService>(),
                 _services.Single<IFactories>()));

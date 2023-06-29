@@ -15,6 +15,7 @@ namespace Infrastructure.Services.StaticData.Gamemodes
         
         [FormerlySerializedAs("EnemiesSpawnsPeriodicaly")] public bool EnemiesSpawnsPeriodically;
         public float EnemiesCooldownSpawn;
+        public float CooldownRange;
 
         public bool PlayersSpawnsPeriodicaly;
         public float PlayersCooldownSpawn;
@@ -25,7 +26,6 @@ namespace Infrastructure.Services.StaticData.Gamemodes
         public float PointsForKillingEnemy;
         public float PointsForKillingAllies;
 
-        public float CooldownRange;
     }
 
 }

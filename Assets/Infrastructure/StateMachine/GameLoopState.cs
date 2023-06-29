@@ -1,8 +1,4 @@
-using System.Collections.Generic;
 using ChobiAssets.PTM;
-using Infrastructure.Factory;
-using Infrastructure.Factory.Base;
-using Infrastructure.Factory.Compose;
 using Infrastructure.Services.KillCounter;
 using Infrastructure.Services.Progress;
 using Infrastructure.Services.Score;
@@ -15,8 +11,6 @@ namespace Infrastructure.StateMachine
 {
     public class GameLoopState : IState
     {
-        private const float _pointForEnemy = 100f;
-
         private readonly GameStateMachine _gameStateMachine;
         private readonly ICoroutineRunner _coroutineRunner;
         private readonly ITimerService _timer;
@@ -30,7 +24,8 @@ namespace Infrastructure.StateMachine
         private int _playerDestroyed;
         private Coroutine _gameTimeCoroutine;
 
-        public GameLoopState(GameStateMachine gameStateMachine, ITimerService timer, IKillCounter killCounter, IScoreCounter scoreCounter, IProgressService progress, IStaticDataService dataService)
+        public GameLoopState(GameStateMachine gameStateMachine, ITimerService timer, IKillCounter killCounter,
+            IScoreCounter scoreCounter, IProgressService progress, IStaticDataService dataService)
         {
             _gameStateMachine = gameStateMachine;
             _timer = timer;
@@ -45,7 +40,8 @@ namespace Infrastructure.StateMachine
             RegisterKillCounter();
 
             GamemodeConfig modeConfig = _dataService.ForMode(_progress.Progress.WorldData.ModeId);
-            _timer.StartTimer(modeConfig.GameTime * Constants.SecondInMinute, GameOver);
+            if (modeConfig.IsGameOverTimerEnabled)
+                _timer.StartTimer(modeConfig.GameTime * Constants.SecondInMinute, GameOver);
             _scoreCounter.LoadData();
         }
 
@@ -55,7 +51,6 @@ namespace Infrastructure.StateMachine
 
             if (!_timer.IsPaused)
                 _timer.PauseTimer();
-
         }
 
         private void GameOver() =>

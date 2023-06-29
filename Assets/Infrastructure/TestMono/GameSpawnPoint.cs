@@ -14,7 +14,7 @@ namespace Infrastructure.TestMono
         private IPlayerFactory _playerFactory;
         private GamemodeConfig _modeConfig;
         private SpawnPointConfig _config;
-        
+
         public void Construct(IFactories factories, SpawnPointConfig config, GamemodeConfig gamemodeConfig)
         {
             _modeConfig = gamemodeConfig;
@@ -29,9 +29,9 @@ namespace Infrastructure.TestMono
         {
             while (true)
             {
-                CreateEnemy();
                 float cooldown = Random.Range(cooldownSpawn - cooldownRange, cooldownSpawn + cooldownRange);
                 yield return new WaitForSeconds(cooldown);
+                CreateEnemy();
             }
         }
 
@@ -40,10 +40,12 @@ namespace Infrastructure.TestMono
             transform.position = _config.Position;
 
             if (_config.ActorType == EPlayerType.AI)
+            {
                 _enemyFactory.CreateEnemy(_config);
 
-            if (_modeConfig.EnemiesSpawnsPeriodically)
-                StartCoroutine(SpawnEnemyPeriodically(_modeConfig.EnemiesCooldownSpawn, _modeConfig.CooldownRange));
+                if (_modeConfig.EnemiesSpawnsPeriodically)
+                    StartCoroutine(SpawnEnemyPeriodically(_modeConfig.EnemiesCooldownSpawn, _modeConfig.CooldownRange));
+            }
         }
     }
 }
