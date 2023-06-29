@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Infrastructure.TestMono;
-using System;
 
 public class ScorePlane : MonoBehaviour
 {
@@ -21,7 +18,7 @@ public class ScorePlane : MonoBehaviour
     public void SetData(ScoreHolder scoreHolder)
     {
         ScoreHolder = scoreHolder;
-        _text.text = scoreHolder.Name.ToUpper() + ": " + scoreHolder.Points.ToString() + " очков";
+        _text.text = scoreHolder.Name.ToUpper() + ": " + scoreHolder.Points.ToString() + " РѕС‡РєРѕРІ";
     }
 
     internal void Hightlight()

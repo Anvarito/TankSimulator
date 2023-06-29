@@ -1,5 +1,6 @@
 using ChobiAssets.PTM;
 using Infrastructure.Services.KillCounter;
+using Infrastructure.Services.Music;
 using Infrastructure.Services.Progress;
 using Infrastructure.Services.Score;
 using Infrastructure.Services.StaticData;
@@ -18,6 +19,7 @@ namespace Infrastructure.StateMachine
         private readonly IScoreCounter _scoreCounter;
         private readonly IProgressService _progress;
         private readonly IStaticDataService _dataService;
+        private readonly IAudioService _audioService;
 
         private int _allEnemyDestroyed;
         private int _playerEnemyDestroyed;
@@ -25,7 +27,7 @@ namespace Infrastructure.StateMachine
         private Coroutine _gameTimeCoroutine;
 
         public GameLoopState(GameStateMachine gameStateMachine, ITimerService timer, IKillCounter killCounter,
-            IScoreCounter scoreCounter, IProgressService progress, IStaticDataService dataService)
+            IScoreCounter scoreCounter, IProgressService progress, IStaticDataService dataService, IAudioService audioService)
         {
             _gameStateMachine = gameStateMachine;
             _timer = timer;
@@ -33,10 +35,13 @@ namespace Infrastructure.StateMachine
             _scoreCounter = scoreCounter;
             _progress = progress;
             _dataService = dataService;
+            _audioService = audioService;
         }
 
         public void Enter()
         {
+            // _audioService.PlayMusic(MusicId.Test);
+            
             RegisterKillCounter();
 
             GamemodeConfig modeConfig = _dataService.ForMode(_progress.Progress.WorldData.ModeId);

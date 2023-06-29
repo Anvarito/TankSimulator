@@ -11,11 +11,13 @@ namespace Infrastructure.Assets
         public const string EnemyTank = "General/AI Enemy";
         public const string TankUiSpawner = "General/UIReseivers";
         public const string MapModeMenu = "UI/GamemodeMapMenu";
-        public static string MainMenu = "General/MainMenu";
-        public static string PlayerInput = "Infrastructure/PlayerInput";
-        public static string PlayerInputManager = "Infrastructure/PlayerInputManager";
-        public static string PlsPressButtonPanel = "General/PleasePress";
-        public static string PlayerInMenu = "General/PlayerInMenu";
-        public static string TankPickerCanvas = "General/TankPicker";
+        public const string MusicSource = "Audio/MusicSource";
+        public const string SoundSource = "Audio/SoundSource";
+        public const string MainMenu = "General/MainMenu";
+        public const string PlayerInput = "Infrastructure/PlayerInput";
+        public const string PlayerInputManager = "Infrastructure/PlayerInputManager";
+        public const string PlsPressButtonPanel = "General/PleasePress";
+        public const string PlayerInMenu = "General/PlayerInMenu";
+        public const string TankPickerCanvas = "General/TankPicker";
     }
 }

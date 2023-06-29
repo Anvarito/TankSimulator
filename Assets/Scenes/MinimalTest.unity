@@ -202,7 +202,6 @@ MonoBehaviour:
   Relationship: 0
   ActorType: 1
   WaypointsPackId: 0
-  WayPointsPack: {fileID: 0}
 --- !u!1 &34593046
 GameObject:
   m_ObjectHideFlags: 0
@@ -366,7 +365,6 @@ MonoBehaviour:
   Relationship: 1
   ActorType: 1
   WaypointsPackId: 0
-  WayPointsPack: {fileID: 0}
 --- !u!1 &63728462
 GameObject:
   m_ObjectHideFlags: 0
@@ -507,7 +505,7 @@ GameObject:
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &216882294
 Transform:
   m_ObjectHideFlags: 0
@@ -539,7 +537,6 @@ MonoBehaviour:
   Relationship: 0
   ActorType: 0
   WaypointsPackId: 0
-  WayPointsPack: {fileID: 709130564}
 --- !u!1 &225158452
 GameObject:
   m_ObjectHideFlags: 0
@@ -556,7 +553,7 @@ GameObject:
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &225158453
 Transform:
   m_ObjectHideFlags: 0
@@ -588,7 +585,6 @@ MonoBehaviour:
   Relationship: 1
   ActorType: 0
   WaypointsPackId: 0
-  WayPointsPack: {fileID: 418249665}
 --- !u!1 &234024368
 GameObject:
   m_ObjectHideFlags: 0
@@ -636,7 +632,7 @@ GameObject:
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &243990025
 Transform:
   m_ObjectHideFlags: 0
@@ -668,7 +664,6 @@ MonoBehaviour:
   Relationship: 1
   ActorType: 0
   WaypointsPackId: 0
-  WayPointsPack: {fileID: 711458774}
 --- !u!1 &264637926
 GameObject:
   m_ObjectHideFlags: 0
@@ -685,7 +680,7 @@ GameObject:
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &264637927
 Transform:
   m_ObjectHideFlags: 0
@@ -717,7 +712,6 @@ MonoBehaviour:
   Relationship: 1
   ActorType: 0
   WaypointsPackId: 0
-  WayPointsPack: {fileID: 711458774}
 --- !u!1 &280633543
 GameObject:
   m_ObjectHideFlags: 0
@@ -765,7 +759,7 @@ GameObject:
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &319794061
 Transform:
   m_ObjectHideFlags: 0
@@ -797,7 +791,6 @@ MonoBehaviour:
   Relationship: 1
   ActorType: 0
   WaypointsPackId: 0
-  WayPointsPack: {fileID: 418249665}
 --- !u!1 &347037662
 GameObject:
   m_ObjectHideFlags: 0
@@ -845,7 +838,7 @@ GameObject:
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &369535863
 Transform:
   m_ObjectHideFlags: 0
@@ -877,7 +870,6 @@ MonoBehaviour:
   Relationship: 0
   ActorType: 0
   WaypointsPackId: 0
-  WayPointsPack: {fileID: 1708811674}
 --- !u!1 &382808799
 GameObject:
   m_ObjectHideFlags: 0
@@ -925,7 +917,7 @@ GameObject:
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &394686974
 Transform:
   m_ObjectHideFlags: 0
@@ -957,7 +949,6 @@ MonoBehaviour:
   Relationship: 0
   ActorType: 0
   WaypointsPackId: 0
-  WayPointsPack: {fileID: 1708811674}
 --- !u!1 &404649916
 GameObject:
   m_ObjectHideFlags: 0
@@ -974,7 +965,7 @@ GameObject:
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &404649917
 Transform:
   m_ObjectHideFlags: 0
@@ -1006,7 +997,6 @@ MonoBehaviour:
   Relationship: 1
   ActorType: 0
   WaypointsPackId: 0
-  WayPointsPack: {fileID: 711458774}
 --- !u!1 &418249665
 GameObject:
   m_ObjectHideFlags: 0
@@ -1016,8 +1006,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 418249666}
+  - component: {fileID: 418249667}
   m_Layer: 0
-  m_Name: WayPointPackB1
+  m_Name: WayPoint_MinimalSceneA1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1049,6 +1040,20 @@ Transform:
   m_Father: {fileID: 765939636}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &418249667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 418249665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e79c75a4caeafef4d8adef81f8c7c6db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enabled: 1
+  PackId: 1
 --- !u!1 &423490813
 GameObject:
   m_ObjectHideFlags: 0
@@ -1127,7 +1132,7 @@ GameObject:
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &504163257
 Transform:
   m_ObjectHideFlags: 0
@@ -1159,7 +1164,6 @@ MonoBehaviour:
   Relationship: 0
   ActorType: 0
   WaypointsPackId: 0
-  WayPointsPack: {fileID: 709130564}
 --- !u!1 &538015218
 GameObject:
   m_ObjectHideFlags: 0
@@ -1270,7 +1274,6 @@ MonoBehaviour:
   Relationship: 1
   ActorType: 1
   WaypointsPackId: 0
-  WayPointsPack: {fileID: 0}
 --- !u!1 &594112568
 GameObject:
   m_ObjectHideFlags: 0
@@ -1287,7 +1290,7 @@ GameObject:
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &594112569
 Transform:
   m_ObjectHideFlags: 0
@@ -1319,7 +1322,6 @@ MonoBehaviour:
   Relationship: 1
   ActorType: 0
   WaypointsPackId: 0
-  WayPointsPack: {fileID: 711458774}
 --- !u!1 &620760736
 GameObject:
   m_ObjectHideFlags: 0
@@ -1367,7 +1369,7 @@ GameObject:
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &633758787
 Transform:
   m_ObjectHideFlags: 0
@@ -1399,7 +1401,6 @@ MonoBehaviour:
   Relationship: 0
   ActorType: 0
   WaypointsPackId: 0
-  WayPointsPack: {fileID: 709130564}
 --- !u!1 &636083443
 GameObject:
   m_ObjectHideFlags: 0
@@ -1416,7 +1417,7 @@ GameObject:
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &636083444
 Transform:
   m_ObjectHideFlags: 0
@@ -1448,7 +1449,6 @@ MonoBehaviour:
   Relationship: 1
   ActorType: 0
   WaypointsPackId: 0
-  WayPointsPack: {fileID: 418249665}
 --- !u!1 &654897252
 GameObject:
   m_ObjectHideFlags: 0
@@ -1465,7 +1465,7 @@ GameObject:
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &654897253
 Transform:
   m_ObjectHideFlags: 0
@@ -1497,7 +1497,6 @@ MonoBehaviour:
   Relationship: 1
   ActorType: 0
   WaypointsPackId: 0
-  WayPointsPack: {fileID: 711458774}
 --- !u!1 &662458080
 GameObject:
   m_ObjectHideFlags: 0
@@ -1545,7 +1544,7 @@ GameObject:
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &676805097
 Transform:
   m_ObjectHideFlags: 0
@@ -1577,7 +1576,6 @@ MonoBehaviour:
   Relationship: 0
   ActorType: 0
   WaypointsPackId: 0
-  WayPointsPack: {fileID: 709130564}
 --- !u!1 &709130564
 GameObject:
   m_ObjectHideFlags: 0
@@ -1587,8 +1585,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 709130565}
+  - component: {fileID: 709130566}
   m_Layer: 0
-  m_Name: WayPointPackA2
+  m_Name: WayPoint_MinimalSceneB2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1621,6 +1620,20 @@ Transform:
   m_Father: {fileID: 765939636}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &709130566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 709130564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e79c75a4caeafef4d8adef81f8c7c6db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enabled: 1
+  PackId: 4
 --- !u!1 &711458774
 GameObject:
   m_ObjectHideFlags: 0
@@ -1630,8 +1643,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 711458775}
+  - component: {fileID: 711458776}
   m_Layer: 0
-  m_Name: WayPointPackB2
+  m_Name: WayPoint_MinimalSceneA2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1663,6 +1677,20 @@ Transform:
   m_Father: {fileID: 765939636}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &711458776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 711458774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e79c75a4caeafef4d8adef81f8c7c6db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enabled: 1
+  PackId: 2
 --- !u!1 &755282126
 GameObject:
   m_ObjectHideFlags: 0
@@ -1679,7 +1707,7 @@ GameObject:
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &755282127
 Transform:
   m_ObjectHideFlags: 0
@@ -1711,7 +1739,6 @@ MonoBehaviour:
   Relationship: 0
   ActorType: 0
   WaypointsPackId: 0
-  WayPointsPack: {fileID: 1708811674}
 --- !u!1 &765939635
 GameObject:
   m_ObjectHideFlags: 0
@@ -1763,7 +1790,7 @@ GameObject:
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &781996235
 Transform:
   m_ObjectHideFlags: 0
@@ -1795,7 +1822,6 @@ MonoBehaviour:
   Relationship: 1
   ActorType: 0
   WaypointsPackId: 0
-  WayPointsPack: {fileID: 418249665}
 --- !u!1 &786344308
 GameObject:
   m_ObjectHideFlags: 0
@@ -2272,7 +2298,7 @@ GameObject:
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1040355577
 Transform:
   m_ObjectHideFlags: 0
@@ -2304,7 +2330,6 @@ MonoBehaviour:
   Relationship: 1
   ActorType: 0
   WaypointsPackId: 0
-  WayPointsPack: {fileID: 418249665}
 --- !u!1 &1102948297
 GameObject:
   m_ObjectHideFlags: 0
@@ -2321,7 +2346,7 @@ GameObject:
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1102948298
 Transform:
   m_ObjectHideFlags: 0
@@ -2353,7 +2378,6 @@ MonoBehaviour:
   Relationship: 1
   ActorType: 0
   WaypointsPackId: 0
-  WayPointsPack: {fileID: 418249665}
 --- !u!1001 &1144370274
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2555,7 +2579,7 @@ GameObject:
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1305295467
 Transform:
   m_ObjectHideFlags: 0
@@ -2587,7 +2611,6 @@ MonoBehaviour:
   Relationship: 0
   ActorType: 0
   WaypointsPackId: 0
-  WayPointsPack: {fileID: 709130564}
 --- !u!1 &1311090619
 GameObject:
   m_ObjectHideFlags: 0
@@ -2604,7 +2627,7 @@ GameObject:
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1311090620
 Transform:
   m_ObjectHideFlags: 0
@@ -2636,7 +2659,6 @@ MonoBehaviour:
   Relationship: 0
   ActorType: 0
   WaypointsPackId: 0
-  WayPointsPack: {fileID: 1708811674}
 --- !u!1 &1325968397
 GameObject:
   m_ObjectHideFlags: 0
@@ -2653,7 +2675,7 @@ GameObject:
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1325968398
 Transform:
   m_ObjectHideFlags: 0
@@ -2685,7 +2707,6 @@ MonoBehaviour:
   Relationship: 1
   ActorType: 0
   WaypointsPackId: 0
-  WayPointsPack: {fileID: 711458774}
 --- !u!1 &1346310840
 GameObject:
   m_ObjectHideFlags: 0
@@ -2702,7 +2723,7 @@ GameObject:
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1346310841
 Transform:
   m_ObjectHideFlags: 0
@@ -2734,7 +2755,6 @@ MonoBehaviour:
   Relationship: 1
   ActorType: 0
   WaypointsPackId: 0
-  WayPointsPack: {fileID: 418249665}
 --- !u!1 &1350877279
 GameObject:
   m_ObjectHideFlags: 0
@@ -2782,7 +2802,7 @@ GameObject:
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1372604484
 Transform:
   m_ObjectHideFlags: 0
@@ -2814,7 +2834,6 @@ MonoBehaviour:
   Relationship: 0
   ActorType: 0
   WaypointsPackId: 0
-  WayPointsPack: {fileID: 1708811674}
 --- !u!1 &1417543389
 GameObject:
   m_ObjectHideFlags: 0
@@ -2893,7 +2912,7 @@ GameObject:
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1446733029
 Transform:
   m_ObjectHideFlags: 0
@@ -2925,7 +2944,6 @@ MonoBehaviour:
   Relationship: 0
   ActorType: 0
   WaypointsPackId: 0
-  WayPointsPack: {fileID: 709130564}
 --- !u!1 &1475638253
 GameObject:
   m_ObjectHideFlags: 0
@@ -3190,7 +3208,7 @@ GameObject:
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1686308201
 Transform:
   m_ObjectHideFlags: 0
@@ -3222,7 +3240,6 @@ MonoBehaviour:
   Relationship: 0
   ActorType: 0
   WaypointsPackId: 0
-  WayPointsPack: {fileID: 1708811674}
 --- !u!1 &1698879115
 GameObject:
   m_ObjectHideFlags: 0
@@ -3239,7 +3256,7 @@ GameObject:
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1698879116
 Transform:
   m_ObjectHideFlags: 0
@@ -3271,7 +3288,6 @@ MonoBehaviour:
   Relationship: 1
   ActorType: 0
   WaypointsPackId: 0
-  WayPointsPack: {fileID: 711458774}
 --- !u!1 &1708811674
 GameObject:
   m_ObjectHideFlags: 0
@@ -3281,8 +3297,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1708811675}
+  - component: {fileID: 1708811676}
   m_Layer: 0
-  m_Name: WayPointPackA1
+  m_Name: WayPoint_MinimalSceneB1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3315,6 +3332,20 @@ Transform:
   m_Father: {fileID: 765939636}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1708811676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1708811674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e79c75a4caeafef4d8adef81f8c7c6db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enabled: 1
+  PackId: 3
 --- !u!1 &1851896941
 GameObject:
   m_ObjectHideFlags: 0
@@ -3331,7 +3362,7 @@ GameObject:
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1851896942
 Transform:
   m_ObjectHideFlags: 0
@@ -3363,7 +3394,6 @@ MonoBehaviour:
   Relationship: 0
   ActorType: 0
   WaypointsPackId: 0
-  WayPointsPack: {fileID: 1708811674}
 --- !u!1 &1862860564
 GameObject:
   m_ObjectHideFlags: 0
@@ -3412,7 +3442,6 @@ MonoBehaviour:
   Relationship: 0
   ActorType: 1
   WaypointsPackId: 0
-  WayPointsPack: {fileID: 0}
 --- !u!1 &1884567342
 GameObject:
   m_ObjectHideFlags: 0
@@ -3490,7 +3519,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1917113781
 Transform:
   m_ObjectHideFlags: 0
@@ -3558,7 +3587,7 @@ GameObject:
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1937449829
 Transform:
   m_ObjectHideFlags: 0
@@ -3590,7 +3619,6 @@ MonoBehaviour:
   Relationship: 1
   ActorType: 0
   WaypointsPackId: 0
-  WayPointsPack: {fileID: 711458774}
 --- !u!1 &1967466574
 GameObject:
   m_ObjectHideFlags: 0
@@ -3607,7 +3635,7 @@ GameObject:
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1967466575
 Transform:
   m_ObjectHideFlags: 0
@@ -3639,7 +3667,6 @@ MonoBehaviour:
   Relationship: 0
   ActorType: 0
   WaypointsPackId: 0
-  WayPointsPack: {fileID: 709130564}
 --- !u!1 &1971175965
 GameObject:
   m_ObjectHideFlags: 0
@@ -3656,7 +3683,7 @@ GameObject:
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1971175966
 Transform:
   m_ObjectHideFlags: 0
@@ -3688,7 +3715,6 @@ MonoBehaviour:
   Relationship: 0
   ActorType: 0
   WaypointsPackId: 0
-  WayPointsPack: {fileID: 1708811674}
 --- !u!1 &1984892919
 GameObject:
   m_ObjectHideFlags: 0
@@ -3736,7 +3762,7 @@ GameObject:
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2040344557
 Transform:
   m_ObjectHideFlags: 0
@@ -3768,7 +3794,6 @@ MonoBehaviour:
   Relationship: 0
   ActorType: 0
   WaypointsPackId: 0
-  WayPointsPack: {fileID: 709130564}
 --- !u!1 &2088790033
 GameObject:
   m_ObjectHideFlags: 0
@@ -3785,7 +3810,7 @@ GameObject:
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2088790034
 Transform:
   m_ObjectHideFlags: 0
@@ -3817,4 +3842,3 @@ MonoBehaviour:
   Relationship: 1
   ActorType: 0
   WaypointsPackId: 0
-  WayPointsPack: {fileID: 418249665}

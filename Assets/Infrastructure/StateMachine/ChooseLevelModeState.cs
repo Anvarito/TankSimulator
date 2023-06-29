@@ -6,7 +6,6 @@ using Infrastructure.Factory.Compose;
 using Infrastructure.Services.Input;
 using Infrastructure.Services.Progress;
 using Infrastructure.Services.StaticData.Gamemodes;
-using Infrastructure.Services.StaticData.Level;
 
 namespace Infrastructure.StateMachine
 {

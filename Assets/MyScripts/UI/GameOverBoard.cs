@@ -2,7 +2,6 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using ChobiAssets.PTM;
 using UnityEngine.Events;
 using System.Collections.Generic;
 using Infrastructure.Data;
@@ -102,10 +101,10 @@ namespace Infrastructure.TestMono
 
         private void ShowLeaderList(LeadersHolder scoreList, ScoreHolder playerReference)
         {
-            FillUpScoreList(scoreList);
-
             scoreList.Sort();
-
+            
+            FillUpScoreList(scoreList);
+            
             CreateScoreSigns(playerReference);
         }
 

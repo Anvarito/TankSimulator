@@ -1,10 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Infrastructure.Factory.Base;
 using Infrastructure.Services.Input;
 using Infrastructure.Services.Progress;
-using Infrastructure.Services.StaticData;
 using Infrastructure.Factory.Compose;
 
 namespace Infrastructure.StateMachine

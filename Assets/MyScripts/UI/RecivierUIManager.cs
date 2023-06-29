@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using ChobiAssets.PTM;
-using Infrastructure.Services.KillCounter;
 using Infrastructure.Services.Score;
 using Infrastructure.Services.Timer;
 using UnityEngine;

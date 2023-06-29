@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using ChobiAssets.PTM;
-using Infrastructure.Factory;
 using Infrastructure.Factory.Base;
 using Infrastructure.Factory.Compose;
 using Infrastructure.Services.Progress;
@@ -35,8 +34,13 @@ namespace Infrastructure.Services.Score
         public void LoadData() =>
             _modeConfig = _dataService.ForMode(_progress.Progress.WorldData.ModeId);
 
-        public void CleanUp() =>
-            RemoveListenerOnEnemyDestroyed();
+        public void CleanUp()
+        {
+            ScorePlayerOne = 0;
+            ScorePlayerTwo = 0;
+            
+            // RemoveListenerOnEnemyDestroyed();
+        }
 
         private void Setup() =>
             AddListenerOnEnemyDestroy();

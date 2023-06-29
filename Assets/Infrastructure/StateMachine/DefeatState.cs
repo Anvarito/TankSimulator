@@ -1,7 +1,5 @@
-using UnityEngine;
 using Infrastructure.Factory.Compose;
 using Infrastructure.Factory.Base;
-using System;
 using Infrastructure.Services.Progress;
 using Infrastructure.Services.Input;
 using System.Collections.Generic;

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using ChobiAssets.PTM;
+using Infrastructure.Components;
 using Infrastructure.Services.StaticData.SpawnPoints;
 using Infrastructure.TestMono;
 using UnityEngine;
