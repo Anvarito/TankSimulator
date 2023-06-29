@@ -53,7 +53,7 @@ namespace Infrastructure.Services.StaticData
             _spawnPoints = Resources
                 .LoadAll<SpawnPointPackData>(SpawnPointsDataPath)
                 .Select(x => x.PackConfig)
-                .ToDictionary(x => HashForTwoId(x.LevelId, x.PackId), x => x.PointsConfigs);
+                .ToDictionary(x => HashForTwoId(x.LevelId, x.PackId), x => x.PointsConfigs.ToList());
 
             _waypoints = Resources
                 .Load<WaypointPacksData>(WaypointsDataPath)

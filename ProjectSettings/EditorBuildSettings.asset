@@ -30,6 +30,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Intro.unity
     guid: b01da1db86126814bafc97632524543a
   - enabled: 1
+    path: Assets/Scenes/Winter.unity
+    guid: f14cd7dec8cc2ba4681d90124d8e5bbf
+  - enabled: 1
+    path: Assets/Scenes/Summer.unity
+    guid: 8ba781273b6c954419af3ad1d7998197
+  - enabled: 1
     path: Assets/Scenes/LevelModeChoise.unity
     guid: e333c1e199369ae40a2a85b7234d762d
+  - enabled: 1
+    path: Assets/Scenes/ReloadScene.unity
+    guid: d212a212ea551b641af1ad840f1afe41
   m_configObjects: {}

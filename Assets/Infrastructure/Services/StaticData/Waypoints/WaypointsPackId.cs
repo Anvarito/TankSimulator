@@ -12,5 +12,10 @@ namespace Infrastructure.Services.StaticData.Waypoints
         SummerSceneA2 = 6,
         SummerSceneB1 = 7,
         SummerSceneB2 = 8,
+
+        WinterSceneA1 = 9,
+        WinterSceneA2 = 10,
+        WinterSceneB1 = 11,
+        WinterSceneB2 = 12,
     }
 }

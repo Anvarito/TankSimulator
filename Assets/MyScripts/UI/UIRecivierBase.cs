@@ -38,8 +38,8 @@ public abstract class UIRecivierBase : MonoBehaviour
         Destroy(_spawnedPresenter.gameObject);
 
         _gunCamera.OnSwitchCamera.RemoveListener(SwitchCamera);
-
         DestroyUI();
+        Destroy(this);
     }
     protected abstract void DestroyUI();
 }
