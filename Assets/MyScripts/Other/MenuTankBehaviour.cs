@@ -17,7 +17,6 @@ public class MenuTankBehaviour : MonoBehaviour
     private void Update()
     {
         _sinTurret = Mathf.Sin(Time.time * _speed) * _amplitude;
-        print(_sinTurret);
         Quaternion result = _startRot * Quaternion.Euler(0, _sinTurret, 0);
         _turret.rotation = result;
     }
