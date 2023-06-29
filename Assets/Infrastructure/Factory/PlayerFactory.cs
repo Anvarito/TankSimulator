@@ -81,9 +81,9 @@ namespace Infrastructure.Factory
                 PlayerParts.Add(registerUiWatchers);
 
                 registerUiWatchers.IdSettings.SetRelationship(ERelationship.TeamA);
-                InitedRegisteredTank(player, configWithPoint.Config);
-
-                _scoreCounter.AddPlayerIndex(registerUiWatchers.IdSettings, configWithPoint.Config.PlayerIndex);
+                InitedRegisteredTank(player, config);
+                
+                _scoreCounter.AddPlayerIndex(registerUiWatchers.IdSettings, config.PlayerIndex);
             }
 
         }

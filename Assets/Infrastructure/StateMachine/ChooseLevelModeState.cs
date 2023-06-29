@@ -54,10 +54,12 @@ namespace Infrastructure.StateMachine
             if (IsPLayersInDifferentTeams())
             {
                 SetPlayersInDifferentTeams();
+                SetPlayersInDifferentTeamsProgress();
             }
             else
             {
                 SetPlayerInSameTeam();
+                SetPlayerInSameTeamProgress();
             }
         }
 
@@ -78,5 +80,17 @@ namespace Infrastructure.StateMachine
 
         private bool IsVersusMode() => 
             _progressService.Progress.WorldData.ModeId == GamemodeId.Versus;
+        
+        
+        private void SetPlayerInSameTeamProgress() =>
+            _progressService.Progress.WorldData.Teams =
+                Enumerable.Range(1, 2).Select(x => ERelationship.TeamA).ToList();
+
+        private void SetPlayersInDifferentTeamsProgress() =>
+            _progressService.Progress.WorldData.Teams = new List<ERelationship>()
+            {
+                ERelationship.TeamA,
+                ERelationship.TeamB
+            };
     }
 }

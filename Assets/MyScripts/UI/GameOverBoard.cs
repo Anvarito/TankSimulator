@@ -125,11 +125,12 @@ namespace Infrastructure.TestMono
 
         private void CreateScoreSigns(ScoreHolder playerReference)
         {
-            foreach (var leader in _scoreHolders)
+            for (var index = 0; index < _maxShowLeaders; index++)
             {
+                var leader = _scoreHolders[index];
                 ScorePlane scorePlane = Instantiate(_scorePlanePrefab, _scorePanel);
                 scorePlane.SetData(leader);
-                
+
                 if (leader.Name == playerReference.Name)
                     scorePlane.Hightlight();
             }

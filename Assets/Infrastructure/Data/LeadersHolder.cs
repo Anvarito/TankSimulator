@@ -18,8 +18,8 @@ namespace Infrastructure.Data
             if (Leaders.Count > 0)
             {
                 float min = Leaders.Min(x => x.Points);
-                if (min < scoreHolder.Points && Leaders.Count > Constants.MaxLeaderBoardCount)
-                    Leaders.Remove(Leaders.Where(x => x.Points == min).First());
+                if (min <= scoreHolder.Points && Leaders.Count >= Constants.MaxLeaderBoardCount)
+                    Leaders.Remove(Leaders.First(x => x.Points == min));
             }
 
             Leaders.Add(scoreHolder);
