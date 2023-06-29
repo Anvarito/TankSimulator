@@ -13,6 +13,7 @@ public class PlayerTankPickVeiw : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _readyText;
     [SerializeField] private TextMeshProUGUI _nameText;
     [SerializeField] private TankPickerUIHelper _tankPickerUIHelper;
+    [SerializeField] private GameObject _hoistPrefab;
 
     [Space(10)]
     [Header("Colors")]
@@ -46,6 +47,9 @@ public class PlayerTankPickVeiw : MonoBehaviour
             Destroy(_choiseTank.gameObject);
 
         _choiseTank = Instantiate(tank.PrefabEmpty, _spawnPoint.position, _spawnPoint.rotation);
+        GameObject hoist = Instantiate(_hoistPrefab, _choiseTank.transform);
+        hoist.transform.localPosition = Vector3.zero;
+        hoist.transform.localRotation = Quaternion.identity;
         _nameText.text = tank.Name;
     }
 

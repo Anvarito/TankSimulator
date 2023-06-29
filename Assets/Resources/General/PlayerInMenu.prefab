@@ -1396,6 +1396,7 @@ MonoBehaviour:
   _readyText: {fileID: 246089611620794764}
   _nameText: {fileID: 2128736181642994970}
   _tankPickerUIHelper: {fileID: 7526422784938722493}
+  _hoistPrefab: {fileID: 3971034963737267798, guid: 9dfe8a19186542f43b9de272f9fc5aa4, type: 3}
   _notReadyColor: {r: 0.9607843, g: 0.5411765, b: 0.56078434, a: 1}
   _readyColor: {r: 0, g: 1, b: 0.52156866, a: 1}
 --- !u!1 &8952432852823788046
