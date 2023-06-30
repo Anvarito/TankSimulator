@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Infrastructure.Assets;
 using Infrastructure.Components;
 using Infrastructure.Factory.Base;
+using Infrastructure.Services.Audio;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,9 +13,10 @@ namespace Infrastructure.Factory
         public PlayerInputManager PlayerInputManager { get; }
         public List<TankPickerUIHelper> TankPickerUIHelpers { get; private set; } = new List<TankPickerUIHelper>();
 
-        public InputFactory(IAssetLoader assetLoader) : base(assetLoader)
+        public InputFactory(IAudioService audioService, IAssetLoader assetLoader) : base(audioService, assetLoader)
         {
         }
+        
         public override void CleanUp()
         {
             base.CleanUp();

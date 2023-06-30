@@ -28,10 +28,10 @@ namespace Infrastructure.Services.KillCounter
             _enemyFactory = factories.Single<IEnemyFactory>();
             _playerFactory = factories.Single<IPlayerFactory>();
             
-            Setup();
+            Subscribe();
         }
 
-        private void Setup()
+        private void Subscribe()
         {
             _enemyFactory.OnEnemyDestroyed += HandleEnemyDestroy;
             _playerFactory.OnPlayerDestroyed += HandlePlayerDestroy;

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Infrastructure.Assets;
+using Infrastructure.Services.Audio;
 using Infrastructure.Services.Progress;
 using UnityEngine;
 
@@ -9,14 +10,16 @@ namespace Infrastructure.Factory.Base
     {
         public List<IProgressReader> ProgressReaders { get; } = new List<IProgressReader>();
         public List<IProgressWriter> ProgressWriters { get; } = new List<IProgressWriter>();
-        
+
+        private readonly IAudioService _audioService;
         protected readonly IAssetLoader _assetLoader;
 
-        protected GameFactory(IAssetLoader assetLoader)
+        protected GameFactory(IAudioService audioService, IAssetLoader assetLoader)
         {
+            _audioService = audioService;
             _assetLoader = assetLoader;
         }
-
+        
         public virtual void CleanUp()
         {
             ProgressReaders.Clear();
@@ -27,6 +30,7 @@ namespace Infrastructure.Factory.Base
         {
             GameObject gameObject = _assetLoader.Instantiate(path, at: position);
             RegisterProgressWatchers(gameObject);
+            ConstructAudioEmitters(gameObject);
             return gameObject;
         }
 
@@ -34,7 +38,22 @@ namespace Infrastructure.Factory.Base
         {
             GameObject gameObject = _assetLoader.Instantiate(path);
             RegisterProgressWatchers(gameObject);
+            ConstructAudioEmitters(gameObject);
             return gameObject;
+        }
+        
+        protected TComponent InstantiateRegistered<TComponent>(string path) where TComponent : MonoBehaviour
+        {
+            TComponent component = _assetLoader.Instantiate<TComponent>(path);
+            RegisterProgressWatchers(component.gameObject);
+            ConstructAudioEmitters(component.gameObject);
+            return component;
+        }
+
+        private void ConstructAudioEmitters(GameObject componentGameObject)
+        {
+            foreach (IAudioEmitter audioEmiter in componentGameObject.GetComponentsInChildren<IAudioEmitter>())
+                audioEmiter.Construct(_audioService);
         }
 
         private void RegisterProgressWatchers(GameObject player)

@@ -1,5 +1,5 @@
 using System;
-using Infrastructure.Services.Music;
+using Infrastructure.Services.Audio;
 using UnityEngine;
 
 namespace Infrastructure.Services.StaticData.Audio

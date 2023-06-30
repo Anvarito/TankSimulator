@@ -2380,7 +2380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b98d7cb425166c44876ff90824ccf4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageReciviersManager: {fileID: 2257801135510657006}
+  damageReceiversManager: {fileID: 2257801135510657006}
   _turretProps:
     Barel: {fileID: 2257801136288365311}
     Canon: {fileID: 2257801136948326040}
@@ -2401,7 +2401,7 @@ AudioSource:
   m_GameObject: {fileID: 2257801135510656993}
   m_Enabled: 0
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1541663215262907516, guid: b4a2f61919242c64fb4fd348c74eb250, type: 2}
   m_audioClip: {fileID: 8300000, guid: 7aedf46d0c7f8d8468d76f92c201d7d6, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -15118,7 +15118,7 @@ AudioSource:
   m_GameObject: {fileID: 2257801136411515174}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1541663215262907516, guid: b4a2f61919242c64fb4fd348c74eb250, type: 2}
   m_audioClip: {fileID: 8300000, guid: 152276e7f391445468f04b1f6cfd5829, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.5
@@ -16630,7 +16630,7 @@ AudioSource:
   m_GameObject: {fileID: 2257801136947666714}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1541663215262907516, guid: b4a2f61919242c64fb4fd348c74eb250, type: 2}
   m_audioClip: {fileID: 8300000, guid: 982a973ac9253a949b35029434c95e98, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1

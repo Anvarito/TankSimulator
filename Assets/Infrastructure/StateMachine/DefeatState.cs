@@ -3,6 +3,7 @@ using Infrastructure.Factory.Base;
 using Infrastructure.Services.Progress;
 using Infrastructure.Services.Input;
 using System.Collections.Generic;
+using Infrastructure.Services.Audio;
 using Infrastructure.Services.SaveLoad;
 using Infrastructure.TestMono;
 
@@ -17,17 +18,21 @@ namespace Infrastructure.StateMachine
         private readonly IProgressService _progress;
         private readonly IInputService _inputService;
         private readonly ISaveLoadService _saveLoadService;
+        private readonly IAudioService _audioService;
 
-        public DefeatState(GameStateMachine gameStateMachine, IFactories factories, IProgressService progress, IInputService inputService, ISaveLoadService saveLoadService)
+        public DefeatState(GameStateMachine gameStateMachine, IFactories factories, IProgressService progress, IInputService inputService, ISaveLoadService saveLoadService, IAudioService audioService)
         {
             _gameStateMachine = gameStateMachine;
             _progress = progress;
             _playerFactory = factories.Single<IPlayerFactory>();
             _inputService = inputService;
             _saveLoadService = saveLoadService;
+            _audioService = audioService;
         }
         public void Enter(float score)
         {
+            _audioService.PlaySound(SoundId.SadTrombone);
+            
             _inputService.ResetPlayerIndex();
             _inputService.ConnectToInputs(_playerFactory.GameBoard.transform.root.gameObject, true);
 

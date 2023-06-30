@@ -4,9 +4,9 @@ using Infrastructure.Factory;
 using Infrastructure.Factory.Base;
 using Infrastructure.Factory.Compose;
 using Infrastructure.Services;
+using Infrastructure.Services.Audio;
 using Infrastructure.Services.Input;
 using Infrastructure.Services.KillCounter;
-using Infrastructure.Services.Music;
 using Infrastructure.Services.Progress;
 using Infrastructure.Services.SaveLoad;
 using Infrastructure.Services.Score;
@@ -69,18 +69,20 @@ namespace Infrastructure.StateMachine
             _services.RegisterSingle<IFactories>(new Factories());
             
             _services.Single<IFactories>().Add<IAudioFactory>((new AudioFactory(_services.Single<IAssetLoader>())));
-            _services.Single<IFactories>().Add<IInputFactory>(new InputFactory(_services.Single<IAssetLoader>()));
-            _services.Single<IFactories>().Add<IEnemyFactory>(new EnemyFactory(_services.Single<IAssetLoader>(), _services.Single<IStaticDataService>(), _services.Single<IProgressService>()));
+            _services.RegisterSingle<IAudioService>(new AudioService(_services.Single<IFactories>(), _services.Single<IStaticDataService>()));
+            
+            _services.Single<IFactories>().Add<IInputFactory>(new InputFactory(_services.Single<IAudioService>(),_services.Single<IAssetLoader>()));
+            _services.Single<IFactories>().Add<IEnemyFactory>(new EnemyFactory(_services.Single<IAudioService>(),_services.Single<IAssetLoader>(), _services.Single<IStaticDataService>(), _services.Single<IProgressService>()));
 
 
             _services.RegisterSingle<IInputService>(new InputService(_gameStateMachine,
                 _services.Single<IFactories>(), _services.Single<IStaticDataService>()));
 
             _services.RegisterSingle<IScoreCounter>(new ScoreCounter(_services.Single<IFactories>(), _services.Single<IProgressService>(), _services.Single<IStaticDataService>()));
-            _services.RegisterSingle<IAudioService>(new AudioService(_services.Single<IFactories>(), _services.Single<IStaticDataService>()));
 
             _services.Single<IFactories>().Add<IPlayerFactory>(
                 new PlayerFactory(
+                    _services.Single<IAudioService>(),
                     _services.Single<IAssetLoader>(),
                     _services.Single<IInputService>(),
                     _services.Single<IProgressService>(),

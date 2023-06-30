@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdf0cac8d8cf4ae9a657cadb0f8cead9, type: 3}
   m_Name: SoundsData
   m_EditorClassIdentifier: 
-  Configs: []
+  Configs:
+  - SoundId: 2
+    Track: {fileID: 8300000, guid: d5837beae6858654da6a7f60217faa68, type: 3}

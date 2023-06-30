@@ -5,6 +5,7 @@ using ChobiAssets.PTM;
 using Infrastructure.Assets;
 using Infrastructure.Components;
 using Infrastructure.Factory.Base;
+using Infrastructure.Services.Audio;
 using Infrastructure.Services.Input;
 using Infrastructure.Services.Progress;
 using Infrastructure.Services.Score;
@@ -36,7 +37,7 @@ namespace Infrastructure.Factory
         private readonly List<ID_Settings_CS> _enemysID = new List<ID_Settings_CS>();
 
 
-        public PlayerFactory(IAssetLoader assetLoader, IInputService inputService, IProgressService progressService, IStaticDataService dataService, ITimerService timer, IScoreCounter scoreCounter) : base(assetLoader)
+        public PlayerFactory(IAudioService audioService, IAssetLoader assetLoader, IInputService inputService, IProgressService progressService, IStaticDataService dataService, ITimerService timer, IScoreCounter scoreCounter) : base(audioService, assetLoader)
         {
 
             _inputService = inputService;
@@ -62,18 +63,13 @@ namespace Infrastructure.Factory
 
         public void CreatePlayers(List<SpawnPointConfig> points)
         {
-            
-            //at = Shuffle(at);
-            Dictionary<ID_Settings_CS, int> _indexById = new Dictionary<ID_Settings_CS, int>();
-
             foreach (PlayerConfiguration config in _inputService.PlayerConfigs)
             {
                 var filteredPoints = points.Where(x => x.Team == config.Team);
                 SpawnPointConfig selectedPoint = filteredPoints.First();
                 points.Remove(selectedPoint);
                 
-                GameObject player = InstantiateRegistered(config.PrefabPath,
-                    selectedPoint.Position);
+                GameObject player = InstantiateRegistered(config.PrefabPath, selectedPoint.Position);
                 _players.Add(player);
                 PlayerUiParts registerUiWatchers = RegisterUiWatchers(player);
                 registerUiWatchers.DamageReceiver.OnTankDestroyed.AddListener(PlayerDestroyed);
@@ -85,7 +81,6 @@ namespace Infrastructure.Factory
                 
                 _scoreCounter.AddPlayerIndex(registerUiWatchers.IdSettings, config.PlayerIndex);
             }
-
         }
 
 

@@ -3,6 +3,7 @@ using System.Linq;
 using ChobiAssets.PTM;
 using Infrastructure.Factory.Base;
 using Infrastructure.Factory.Compose;
+using Infrastructure.Services.Audio;
 using Infrastructure.Services.Input;
 using Infrastructure.Services.Progress;
 using Infrastructure.Services.StaticData.Gamemodes;
@@ -17,15 +18,17 @@ namespace Infrastructure.StateMachine
         private readonly SceneLoader _sceneLoader;
         private readonly IProgressService _progressService;
         private readonly IInputService _inputService;
+        private readonly IAudioService _audioService;
         private readonly IPlayerFactory _playerFactory;
 
         public ChooseLevelModeState(GameStateMachine gameStateMachine, SceneLoader sceneLoader,
-            IProgressService progressService, IInputService inputService, IFactories factories)
+            IProgressService progressService, IInputService inputService, IFactories factories, IAudioService audioService)
         {
             _gameStateMachine = gameStateMachine;
             _sceneLoader = sceneLoader;
             _progressService = progressService;
             _inputService = inputService;
+            _audioService = audioService;
             _playerFactory = factories.Single<IPlayerFactory>();
         }
 

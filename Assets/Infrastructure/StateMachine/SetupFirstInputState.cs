@@ -1,5 +1,6 @@
 using Infrastructure.Factory.Base;
 using Infrastructure.Factory.Compose;
+using Infrastructure.Services.Audio;
 using Infrastructure.Services.Input;
 
 namespace Infrastructure.StateMachine
@@ -10,13 +11,15 @@ namespace Infrastructure.StateMachine
         private readonly GameStateMachine _gameStateMachine;
         private readonly SceneLoader _sceneLoader;
         private readonly IInputService _inputService;
+        private readonly IAudioService _audioService;
         private readonly IInputFactory _inputFactory;
 
-        public SetupFirstInputState(GameStateMachine gameStateMachine, SceneLoader sceneLoader,IInputService inputService, IFactories factories)
+        public SetupFirstInputState(GameStateMachine gameStateMachine, SceneLoader sceneLoader,IInputService inputService, IFactories factories, IAudioService audioService)
         {
             _gameStateMachine = gameStateMachine;
             _sceneLoader = sceneLoader;
             _inputService = inputService;
+            _audioService = audioService;
             _inputFactory = factories.Single<IInputFactory>();
         }
 
@@ -35,7 +38,10 @@ namespace Infrastructure.StateMachine
 
         private void EnterChooseLevelModeState() => 
             _gameStateMachine.Enter<LoadProgressState>();
-        private void onLoad() => 
+        private void onLoad()
+        {
+            _audioService.PlayMusic(MusicId.MenuRockCalm);
             _inputFactory.CretePleasePressButtonPanel();
+        }
     }
 }

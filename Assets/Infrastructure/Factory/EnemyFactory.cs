@@ -4,6 +4,7 @@ using System.Linq;
 using ChobiAssets.PTM;
 using Infrastructure.Assets;
 using Infrastructure.Factory.Base;
+using Infrastructure.Services.Audio;
 using Infrastructure.Services.Input;
 using Infrastructure.Services.Progress;
 using Infrastructure.Services.StaticData;
@@ -26,8 +27,7 @@ namespace Infrastructure.Factory
         private Dictionary<WaypointsPackId, GameObject> _waypoints = new();
 
 
-        public EnemyFactory(IAssetLoader assetLoader, IStaticDataService dataService, IProgressService progress) :
-            base(assetLoader)
+        public EnemyFactory(IAudioService audioService, IAssetLoader assetLoader, IStaticDataService dataService, IProgressService progress) : base(audioService, assetLoader)
         {
             _dataService = dataService;
             _progress = progress;

@@ -47,13 +47,13 @@ namespace Infrastructure.StateMachine
             _enemyFactory = factories.Single<IEnemyFactory>();
         }
 
-        public void Enter(string payload)
+        public void Enter(string levelName)
         {
             _scoreCounter.CleanUp();
             _playerFactory.CleanUp();
             _enemyFactory.CleanUp();
 
-            _sceneLoader.Load(name: payload, OnLoaded);
+            _sceneLoader.Load(name: levelName, OnLoaded);
         }
 
         private void OnLoaded()

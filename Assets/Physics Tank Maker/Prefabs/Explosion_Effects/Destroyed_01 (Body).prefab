@@ -9374,6 +9374,7 @@ GameObject:
   - component: {fileID: 11400004}
   - component: {fileID: 10800000}
   - component: {fileID: 8200002}
+  - component: {fileID: -2221157549236685278}
   m_Layer: 0
   m_Name: Destroyed_01 (Body)
   m_TagString: Untagged
@@ -14144,7 +14145,7 @@ AudioSource:
   m_GameObject: {fileID: 100004}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1541663215262907516, guid: b4a2f61919242c64fb4fd348c74eb250, type: 2}
   m_audioClip: {fileID: 8300000, guid: 6b83b7122186dad43865f27c804f1ff0, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.742
@@ -14231,6 +14232,26 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &-2221157549236685278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!1 &8676235873207372089
 GameObject:
   m_ObjectHideFlags: 0

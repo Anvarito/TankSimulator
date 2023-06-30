@@ -1,6 +1,6 @@
 using ChobiAssets.PTM;
+using Infrastructure.Services.Audio;
 using Infrastructure.Services.KillCounter;
-using Infrastructure.Services.Music;
 using Infrastructure.Services.Progress;
 using Infrastructure.Services.Score;
 using Infrastructure.Services.StaticData;
@@ -40,7 +40,7 @@ namespace Infrastructure.StateMachine
 
         public void Enter()
         {
-            // _audioService.PlayMusic(MusicId.Test);
+            _audioService.PlayMusic(MusicId.Test);
             
             RegisterKillCounter();
 
@@ -52,6 +52,8 @@ namespace Infrastructure.StateMachine
 
         public void Exit()
         {
+            _audioService.StopMusic();
+            
             UnregisterKillCounter();
 
             if (!_timer.IsPaused)

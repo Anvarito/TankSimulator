@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using Infrastructure.Factory.Compose;
 using Infrastructure.Services;
+using Infrastructure.Services.Audio;
 using Infrastructure.Services.Input;
 using Infrastructure.Services.KillCounter;
-using Infrastructure.Services.Music;
 using Infrastructure.Services.Progress;
 using Infrastructure.Services.SaveLoad;
 using Infrastructure.Services.Score;
@@ -28,11 +28,11 @@ namespace Infrastructure.StateMachine
                 [typeof(LoadProgressState)] = new LoadProgressState(this, services.Single<IProgressService>(), services.Single<ISaveLoadService>()),
                 [typeof(GameLoopState)] = new GameLoopState(this, services.Single<ITimerService>(), services.Single<IKillCounter>(), services.Single<IScoreCounter>(), services.Single<IProgressService>(), services.Single<IStaticDataService>(), services.Single<IAudioService>()),
                 [typeof(VictoryState)] = new VictoryState(this, services.Single<IFactories>(), services.Single<IProgressService>(), services.Single<ISaveLoadService>()),
-                [typeof(DefeatState)] = new DefeatState(this, services.Single<IFactories>(), services.Single<IProgressService>(), services.Single<IInputService>(), services.Single<ISaveLoadService>()),
+                [typeof(DefeatState)] = new DefeatState(this, services.Single<IFactories>(), services.Single<IProgressService>(), services.Single<IInputService>(), services.Single<ISaveLoadService>(), services.Single<IAudioService>()),
                 [typeof(MenuState)] = new MenuState(this,sceneLoader,services.Single<IInputService>(),services.Single<IFactories>()),
                 [typeof(SetupPlayersState)] = new SetupPlayersState(this,sceneLoader,services.Single<IInputService>(),services.Single<IFactories>()),
-                [typeof(SetupFirstInputState)] = new SetupFirstInputState(this,sceneLoader,services.Single<IInputService>(),services.Single<IFactories>()),
-                [typeof(ChooseLevelModeState)] = new ChooseLevelModeState(this,sceneLoader,services.Single<IProgressService>(), services.Single<IInputService>(), services.Single<IFactories>()),
+                [typeof(SetupFirstInputState)] = new SetupFirstInputState(this,sceneLoader,services.Single<IInputService>(),services.Single<IFactories>(), services.Single<IAudioService>()),
+                [typeof(ChooseLevelModeState)] = new ChooseLevelModeState(this,sceneLoader,services.Single<IProgressService>(), services.Single<IInputService>(), services.Single<IFactories>(), services.Single<IAudioService>()),
                 [typeof(ResetState)] = new ResetState(this, services.Single<IFactories>(), services.Single<IInputService>(), services.Single<IProgressService>()),
                 [typeof(ReloadState)] = new ReloadState(this, services.Single<IFactories>(), services.Single<IInputService>(), sceneLoader, services.Single<IProgressService>()),
             };
