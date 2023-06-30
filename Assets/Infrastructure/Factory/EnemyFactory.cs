@@ -19,6 +19,7 @@ namespace Infrastructure.Factory
         public List<DamageReceiversManager> EnemyDamageManagers { get; } = new List<DamageReceiversManager>();
         public Action<ID_Settings_CS> OnEnemyDestroyed { get; set; }
         public int EnemiesCount { get; private set; }
+        public Action<ID_Settings_CS> OnEnemyCreate { get ; set ; }
 
         private readonly IStaticDataService _dataService;
         private readonly IProgressService _progress;
@@ -64,6 +65,8 @@ namespace Infrastructure.Factory
             EnemyDamageManagers.Add(damageReceiversManager);
 
             SetupEnemyWaypoints(config, enemy);
+
+            OnEnemyCreate?.Invoke(enemyID);
         }
 
         private void SetupEnemyWaypoints(SpawnPointConfig config, GameObject enemy)

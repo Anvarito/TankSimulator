@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using System;
 
 namespace ChobiAssets.PTM
 {
@@ -72,6 +73,7 @@ namespace ChobiAssets.PTM
 
         }
 
+
         protected override void SwitchCamera(EActiveCameraType activeCamera)
         {
             base.SwitchCamera(activeCamera);
@@ -90,10 +92,15 @@ namespace ChobiAssets.PTM
                 if (idScript == _IDSettings)
                     continue;
 
-                Drive_Control_CS currentActor = idScript.GetComponentInChildren<Drive_Control_CS>();
-                _driveControlList.Add(currentActor);
-                Receive_ID_Script(idScript, currentActor);
+                AddNewBot(idScript);
             }
+        }
+
+        public void AddNewBot(ID_Settings_CS newBot)
+        {
+            Drive_Control_CS currentActor = newBot.GetComponentInChildren<Drive_Control_CS>();
+            _driveControlList.Add(currentActor);
+            Receive_ID_Script(newBot, currentActor);
         }
 
         void Receive_ID_Script(ID_Settings_CS idSetting, Drive_Control_CS driveControl)

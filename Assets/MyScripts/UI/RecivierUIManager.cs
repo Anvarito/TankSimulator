@@ -42,6 +42,11 @@ public class RecivierUIManager : MonoBehaviour
         damageReceiver.OnTankDestroyed.AddListener(TankDestroyed);
     }
 
+    public void AddNewEnemyToPositionActorsUI(ID_Settings_CS newBot)
+    {
+        _positionActorsRecivier.AddNewBot(newBot);
+    }
+
     private void TankDestroyed(ID_Settings_CS killerID)
     {
         _aimMarkerRecivier.PlayerDestoryed();

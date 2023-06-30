@@ -1,4 +1,6 @@
 using ChobiAssets.PTM;
+using Infrastructure.Factory.Base;
+using Infrastructure.Factory.Compose;
 using Infrastructure.Services.KillCounter;
 using Infrastructure.Services.Music;
 using Infrastructure.Services.Progress;
@@ -6,6 +8,7 @@ using Infrastructure.Services.Score;
 using Infrastructure.Services.StaticData;
 using Infrastructure.Services.StaticData.Gamemodes;
 using Infrastructure.Services.Timer;
+using System;
 using UnityEngine;
 
 namespace Infrastructure.StateMachine
@@ -19,15 +22,14 @@ namespace Infrastructure.StateMachine
         private readonly IScoreCounter _scoreCounter;
         private readonly IProgressService _progress;
         private readonly IStaticDataService _dataService;
+        private readonly IPlayerFactory _playerFactory;
+        private readonly IEnemyFactory _enemyFactory;
         private readonly IAudioService _audioService;
 
-        private int _allEnemyDestroyed;
-        private int _playerEnemyDestroyed;
-        private int _playerDestroyed;
-        private Coroutine _gameTimeCoroutine;
+        
 
         public GameLoopState(GameStateMachine gameStateMachine, ITimerService timer, IKillCounter killCounter,
-            IScoreCounter scoreCounter, IProgressService progress, IStaticDataService dataService, IAudioService audioService)
+            IScoreCounter scoreCounter, IProgressService progress, IStaticDataService dataService, IAudioService audioService, IFactories factories)
         {
             _gameStateMachine = gameStateMachine;
             _timer = timer;
@@ -35,6 +37,8 @@ namespace Infrastructure.StateMachine
             _scoreCounter = scoreCounter;
             _progress = progress;
             _dataService = dataService;
+            _playerFactory = factories.Single<IPlayerFactory>();
+            _enemyFactory = factories.Single<IEnemyFactory>();
             _audioService = audioService;
         }
 
@@ -48,6 +52,13 @@ namespace Infrastructure.StateMachine
             if (modeConfig.IsGameOverTimerEnabled)
                 _timer.StartTimer(modeConfig.GameTime * Constants.SecondInMinute, GameOver);
             _scoreCounter.LoadData();
+
+            _enemyFactory.OnEnemyCreate += NewEnemyCreate;
+        }
+
+        private void NewEnemyCreate(ID_Settings_CS newEnemy)
+        {
+            _playerFactory.RecivierUIManager.AddNewEnemyToPositionActorsUI(newEnemy);
         }
 
         public void Exit()
