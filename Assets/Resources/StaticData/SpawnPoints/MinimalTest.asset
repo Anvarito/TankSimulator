@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MinimalTest
   m_EditorClassIdentifier: 
   PackConfig:
-    PackId: 2
+    PackId: 1
     LevelId: 0
     PointsConfigs:
     - UniqueId: 
