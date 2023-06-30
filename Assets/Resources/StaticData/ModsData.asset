@@ -17,8 +17,8 @@ MonoBehaviour:
     PlayerCount: 1
     Name: Survival
     EnemiesSpawnsPeriodically: 1
-    EnemiesCooldownSpawn: 56.09
-    CooldownRange: 10.5
+    EnemiesCooldownSpawn: 15
+    CooldownRange: 2
     PlayersSpawnsPeriodicaly: 0
     PlayersCooldownSpawn: 0
     IsGameOverTimerEnabled: 1
