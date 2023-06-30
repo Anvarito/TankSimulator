@@ -70863,7 +70863,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0122f0ade4e0f6c4e8e707a4405ec477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageReciviersSettings: {fileID: 11400000, guid: 6556806b57d42a4459fea267f67ef15a, type: 2}
+  _damageReciviersSettings: {fileID: 11400000, guid: 08bc67a03672f894a91bfb357968f11d, type: 2}
   _turretDamages: {fileID: 1083484181698501402}
   _mainBodyDamages: {fileID: 1083484181796028778}
   _damageTrackRecivier: {fileID: 1083484180282324980}

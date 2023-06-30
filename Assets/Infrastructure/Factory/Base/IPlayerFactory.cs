@@ -12,7 +12,7 @@ namespace Infrastructure.Factory.Base
     {
         List<PlayerUiParts> PlayerParts { get; }
         GameOverBoard GameBoard { get; }
-
+        RecivierUIManager RecivierUIManager { get; }
         void CreatePlayers(List<SpawnPointConfig> points);
         void CreateTankUiSpawners(List<DamageReceiversManager> enemyDamageList);
         void CreateHud();
