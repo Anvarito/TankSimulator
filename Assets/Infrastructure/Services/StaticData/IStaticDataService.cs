@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using Infrastructure.Services.Music;
+using Infrastructure.Services.StaticData.Audio;
 using Infrastructure.Services.StaticData.Gamemodes;
 using Infrastructure.Services.StaticData.Level;
 using Infrastructure.Services.StaticData.SpawnPoints;
@@ -20,5 +22,7 @@ namespace Infrastructure.Services.StaticData
         WaypointPackConfig ForWaypoints(WaypointsPackId configWaypointsPackId);
 
         Dictionary<TankId, TankConfig> Tanks{ get; }
+        MusicConfig ForMusic(MusicId id);
+        SoundConfig ForSounds(SoundId id);
     }
 }

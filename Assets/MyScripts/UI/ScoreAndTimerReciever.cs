@@ -1,6 +1,4 @@
-﻿using System;
-using ChobiAssets.PTM;
-using Infrastructure.Services.KillCounter;
+﻿using ChobiAssets.PTM;
 using Infrastructure.Services.Score;
 using Infrastructure.Services.Timer;
 

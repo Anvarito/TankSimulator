@@ -6,12 +6,12 @@ using Infrastructure.Factory.Compose;
 using Infrastructure.Services;
 using Infrastructure.Services.Input;
 using Infrastructure.Services.KillCounter;
+using Infrastructure.Services.Music;
 using Infrastructure.Services.Progress;
 using Infrastructure.Services.SaveLoad;
 using Infrastructure.Services.Score;
 using Infrastructure.Services.StaticData;
 using Infrastructure.Services.Timer;
-using UnityEngine;
 
 namespace Infrastructure.StateMachine
 {
@@ -43,6 +43,9 @@ namespace Infrastructure.StateMachine
 
             // RegisterServices();
             _services.Single<IStaticDataService>().LoadAllStaticData();
+            
+            _services.Single<IFactories>().Single<IAudioFactory>().CreateMusicSource();
+            _services.Single<IFactories>().Single<IAudioFactory>().CreateSoundSource();
         }
 
         public void Exit()
@@ -54,8 +57,9 @@ namespace Infrastructure.StateMachine
 
         private void RegisterServices()
         {
-            _services.RegisterSingle<ITimerService>(new TimerService(_coroutineRunner));
             
+            _services.RegisterSingle<ITimerService>(new TimerService(_coroutineRunner));
+
             _services.RegisterSingle<IStaticDataService>(new StaticDataService());
             _services.Single<IStaticDataService>().LoadAllStaticData();
 
@@ -63,14 +67,17 @@ namespace Infrastructure.StateMachine
             _services.RegisterSingle<IAssetLoader>(new AssetLoader());
 
             _services.RegisterSingle<IFactories>(new Factories());
-            _services.Single<IFactories>().Add<IEnemyFactory>(new EnemyFactory(_services.Single<IAssetLoader>(), _services.Single<IStaticDataService>(), _services.Single<IProgressService>()));
+            
+            _services.Single<IFactories>().Add<IAudioFactory>((new AudioFactory(_services.Single<IAssetLoader>())));
             _services.Single<IFactories>().Add<IInputFactory>(new InputFactory(_services.Single<IAssetLoader>()));
+            _services.Single<IFactories>().Add<IEnemyFactory>(new EnemyFactory(_services.Single<IAssetLoader>(), _services.Single<IStaticDataService>(), _services.Single<IProgressService>()));
 
 
             _services.RegisterSingle<IInputService>(new InputService(_gameStateMachine,
                 _services.Single<IFactories>(), _services.Single<IStaticDataService>()));
 
             _services.RegisterSingle<IScoreCounter>(new ScoreCounter(_services.Single<IFactories>(), _services.Single<IProgressService>(), _services.Single<IStaticDataService>()));
+            _services.RegisterSingle<IAudioService>(new AudioService(_services.Single<IFactories>(), _services.Single<IStaticDataService>()));
 
             _services.Single<IFactories>().Add<IPlayerFactory>(
                 new PlayerFactory(

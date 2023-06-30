@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Infrastructure.Services.Music;
+using Infrastructure.Services.StaticData.Audio;
 using Infrastructure.Services.StaticData.Gamemodes;
 using Infrastructure.Services.StaticData.Level;
 using Infrastructure.Services.StaticData.SpawnPoints;
@@ -13,23 +15,22 @@ namespace Infrastructure.Services.StaticData
     public class StaticDataService : IStaticDataService
     {
         public Dictionary<LevelId, LevelConfig> Levels { get; private set; }
-
         public Dictionary<GamemodeId, GamemodeConfig> Mods { get; private set; }
         public Dictionary<TankId, TankConfig> Tanks { get; private set; }
 
         private const string SpawnPointsDataPath = "StaticData/SpawnPoints";
-
         private const string WaypointsDataPath = "StaticData/Waypoints/WaypointPacksData";
-
         private const string LevelDataPath = "StaticData/Levels";
-
         private const string TankDataPath = "StaticData/TanksData";
-
         private const string ModsDataPath = "StaticData/ModsData";
+        private const string MusicDataPath = "StaticData/Audio/MusicData";
+        private const string SoundsDataPath = "StaticData/Audio/SoundsData";
 
 
         private Dictionary<string, List<SpawnPointConfig>> _spawnPoints;
         private Dictionary<WaypointsPackId, WaypointPackConfig> _waypoints;
+        private Dictionary<MusicId, MusicConfig> _music;
+        private Dictionary<SoundId, SoundConfig> _sounds;
 
 
         public void LoadAllStaticData()
@@ -38,7 +39,6 @@ namespace Infrastructure.Services.StaticData
                 .Load<TanksStaticData>(TankDataPath)
                 .Tanks
                 .ToDictionary(x => x.TankId, x => x);
-
 
             Levels = Resources
                 .LoadAll<LevelStaticData>(LevelDataPath)
@@ -60,9 +60,29 @@ namespace Infrastructure.Services.StaticData
                 .Packs
                 .ToDictionary(x => x.PackId, x => x);
 
+            _music = Resources
+                .Load<MusicStaticData>(MusicDataPath)
+                .Configs
+                .ToDictionary(x => x.MusicId, x => x);
+
+            _sounds = Resources
+                .Load<SoundStaticData>(SoundsDataPath)
+                .Configs
+                .ToDictionary(x => x.SoundId, x => x);
+            
 
             Debug.Log("Static data loaded");
         }
+
+        public SoundConfig ForSounds(SoundId id) =>
+            _sounds.TryGetValue(id, out SoundConfig config)
+                ? config
+                : null;
+
+        public MusicConfig ForMusic(MusicId id) =>
+            _music.TryGetValue(id, out MusicConfig config)
+                ? config
+                : null;
 
         public TankConfig ForTank(TankId id) =>
             Tanks.TryGetValue(id, out TankConfig config)
@@ -95,7 +115,7 @@ namespace Infrastructure.Services.StaticData
 
         private string HashForTwoId(LevelId id1, GamemodeId id2) =>
             Enum.GetName(typeof(LevelId), id1) + Enum.GetName(typeof(GamemodeId), id2);
-            
+
         public void CleanUp()
         {
         }

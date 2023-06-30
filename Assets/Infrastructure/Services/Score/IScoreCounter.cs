@@ -1,7 +1,5 @@
 using System;
-using System.Collections.Generic;
 using ChobiAssets.PTM;
-using Infrastructure.Factory;
 
 namespace Infrastructure.Services.Score
 {

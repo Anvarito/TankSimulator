@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using ChobiAssets.PTM;
 using Infrastructure.Assets;
+using Infrastructure.Components;
 using Infrastructure.Factory.Base;
 using Infrastructure.Services.Input;
-using Infrastructure.Services.KillCounter;
 using Infrastructure.Services.Progress;
 using Infrastructure.Services.Score;
 using Infrastructure.Services.StaticData;
@@ -79,8 +79,7 @@ namespace Infrastructure.Factory
                 registerUiWatchers.DamageReceiver.OnTankDestroyed.AddListener(PlayerDestroyed);
 
                 PlayerParts.Add(registerUiWatchers);
-
-                registerUiWatchers.IdSettings.SetRelationship(ERelationship.TeamA);
+                registerUiWatchers.IdSettings.SetRelationship(selectedPoint.Team);
                 InitedRegisteredTank(player, config);
                 
                 _scoreCounter.AddPlayerIndex(registerUiWatchers.IdSettings, config.PlayerIndex);

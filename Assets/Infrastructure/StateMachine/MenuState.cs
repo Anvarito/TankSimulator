@@ -1,9 +1,8 @@
+using Infrastructure.Components;
 using Infrastructure.Factory.Base;
 using Infrastructure.Factory.Compose;
 using Infrastructure.Services.Input;
 using Infrastructure.Services.Progress;
-using Infrastructure.TestMono;
-using UnityEngine;
 
 namespace Infrastructure.StateMachine
 {

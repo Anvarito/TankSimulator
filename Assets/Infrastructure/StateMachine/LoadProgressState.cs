@@ -1,7 +1,6 @@
 using Infrastructure.Data;
 using Infrastructure.Services.Progress;
 using Infrastructure.Services.SaveLoad;
-using UnityEngine;
 
 namespace Infrastructure.StateMachine
 {

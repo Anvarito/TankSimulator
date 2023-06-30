@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Angar.meta
 guid: 312ccb5c891b96c4f8577bd311299387
+========
+guid: b25dd60205c0bd340923f41cfa204d4a
+>>>>>>>> Dev:Assets/Resources/Audio.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

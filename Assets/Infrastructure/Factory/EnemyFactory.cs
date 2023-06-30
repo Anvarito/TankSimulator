@@ -88,7 +88,7 @@ namespace Infrastructure.Factory
             if (killerID == null)
                 return;
             
-            if (killerID.PlayerType == EPlayerType.Player)
+            // if (killerID.PlayerType == EPlayerType.Player)
                 OnEnemyDestroyed?.Invoke(killerID);
         }
 

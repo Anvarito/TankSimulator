@@ -1,7 +1,6 @@
 using Infrastructure.Factory.Base;
 using Infrastructure.Factory.Compose;
 using Infrastructure.Services.Input;
-using UnityEngine;
 
 namespace Infrastructure.StateMachine
 {

@@ -1,15 +1,15 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using ChobiAssets.PTM;
+using Infrastructure.Components;
 using Infrastructure.Factory.Base;
 using Infrastructure.Factory.Compose;
+using Infrastructure.Services;
 using Infrastructure.Services.Progress;
+using Infrastructure.Services.Score;
 using Infrastructure.Services.StaticData;
 using Infrastructure.Services.StaticData.Gamemodes;
-using Infrastructure.Services.StaticData.Level;
 using Infrastructure.Services.StaticData.SpawnPoints;
-using Infrastructure.TestMono;
 using UnityEngine;
 
 namespace Infrastructure.StateMachine
@@ -26,6 +26,7 @@ namespace Infrastructure.StateMachine
         private readonly IStaticDataService _dataService;
         private readonly IFactories _factories;
         private readonly ITrashRemoveService _trashRemoveService;
+        private readonly IScoreCounter _scoreCounter;
         private readonly IEnemyFactory _enemyFactory;
         private readonly IPlayerFactory _playerFactory;
 
@@ -33,7 +34,7 @@ namespace Infrastructure.StateMachine
         private GamemodeConfig _modeConfig;
 
         public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, IProgressService progress,
-            IStaticDataService dataService, IFactories factories, ITrashRemoveService trashRemoveService)
+            IStaticDataService dataService, IFactories factories, ITrashRemoveService trashRemoveService, IScoreCounter scoreCounter)
         {
             _gameStateMachine = gameStateMachine;
             _sceneLoader = sceneLoader;
@@ -41,13 +42,14 @@ namespace Infrastructure.StateMachine
             _dataService = dataService;
             _factories = factories;
             _trashRemoveService = trashRemoveService;
+            _scoreCounter = scoreCounter;
             _playerFactory = factories.Single<IPlayerFactory>();
             _enemyFactory = factories.Single<IEnemyFactory>();
         }
 
         public void Enter(string payload)
         {
-
+            _scoreCounter.CleanUp();
             _playerFactory.CleanUp();
             _enemyFactory.CleanUp();
 
