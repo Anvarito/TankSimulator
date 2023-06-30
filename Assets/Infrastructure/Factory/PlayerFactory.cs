@@ -92,10 +92,8 @@ namespace Infrastructure.Factory
 
         public void CreateTankUiSpawners(List<DamageReceiversManager> enemyDamageManagers)
         {
-            foreach (DamageReceiversManager damageReceivers in enemyDamageManagers)
-            {
-                _enemysID.Add(damageReceivers.GetComponentInParent<ID_Settings_CS>());
-            }
+            _enemysID.AddRange(PlayerParts.Select(x => x.IdSettings));
+            _enemysID.AddRange(enemyDamageManagers.Select(x => x.GetComponentInParent<ID_Settings_CS>()));
 
             foreach (PlayerUiParts part in PlayerParts)
                 InitializeUiWatchers(part, InstantiateRegistered(AssetPaths.TankUiSpawner));

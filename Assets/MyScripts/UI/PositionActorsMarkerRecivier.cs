@@ -87,6 +87,9 @@ namespace ChobiAssets.PTM
         {
             foreach (var idScript in _enemysID)
             {
+                if (idScript == _IDSettings)
+                    continue;
+
                 Drive_Control_CS currentActor = idScript.GetComponentInChildren<Drive_Control_CS>();
                 _driveControlList.Add(currentActor);
                 Receive_ID_Script(idScript, currentActor);
@@ -172,18 +175,6 @@ namespace ChobiAssets.PTM
                 Vector3 finalPos = _mainCamera.WorldToScreenPoint(worlsPoint);
                 finalPos.z = 0;
                 currentMarkerProp.ArrowImage.rectTransform.position = finalPos;
-                //Debug.DrawLine(new Vector3(_mainCamera.pixelHeight / 2, _mainCamera.pixelWidth / 2), currentMarkerProp.ArrowImage.rectTransform.position, Color.blue);
-                //var screenPoint = _mainCamera.WorldToScreenPoint(worlsPoint);
-                //RectTransformUtility.ScreenPointToLocalPointInRectangle(_canvasRect, screenPoint, _mainCamera, out localPoint);
-                //currentMarkerProp.ArrowImage.rectTransform.anchoredPosition = localPoint;
-
-                //Vector2 adjustedPosition = _mainCamera.WorldToScreenPoint(worlsPoint);
-
-                //adjustedPosition.x *= _canvasRect.rect.width / (float)_mainCamera.pixelWidth;
-                //adjustedPosition.y *= _canvasRect.rect.height / (float)_mainCamera.pixelHeight;
-
-                //// set it
-                //currentMarkerProp.ArrowImage.rectTransform.anchoredPosition = adjustedPosition;
 
                 currentMarkerProp.ArrowImage.rectTransform.localRotation = SetRotationByIndex(indexPlane);
             }

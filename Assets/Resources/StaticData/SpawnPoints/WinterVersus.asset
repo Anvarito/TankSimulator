@@ -15,4 +15,14 @@ MonoBehaviour:
   PackConfig:
     PackId: 4
     LevelId: 3
-    PointsConfigs: []
+    PointsConfigs:
+    - UniqueId: 
+      ActorType: 1
+      Team: 0
+      WaypointsPackId: 5
+      Position: {x: 40.100006, y: 33.06, z: 911.2}
+    - UniqueId: 
+      ActorType: 1
+      Team: 1
+      WaypointsPackId: 6
+      Position: {x: 374.5, y: 35.25, z: 537.2}
