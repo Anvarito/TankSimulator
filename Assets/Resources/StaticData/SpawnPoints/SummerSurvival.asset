@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e90052befb004761ae0233956e9b2ee0, type: 3}
+  m_Name: SummerSurvival
+  m_EditorClassIdentifier: 
+  PackConfig:
+    PackId: 2
+    LevelId: 1
+    PointsConfigs:
+    - UniqueId: 
+      ActorType: 0
+      Team: 1
+      WaypointsPackId: 8
+      Position: {x: 125.9, y: 3.4, z: 133.1}
+    - UniqueId: 
+      ActorType: 0
+      Team: 1
+      WaypointsPackId: 7
+      Position: {x: 129.1, y: 6.3, z: 755.8}
+    - UniqueId: 
+      ActorType: 0
+      Team: 1
+      WaypointsPackId: 8
+      Position: {x: 88.36, y: 6.12, z: 254.46}
+    - UniqueId: 
+      ActorType: 1
+      Team: 0
+      WaypointsPackId: 5
+      Position: {x: 746, y: 3.99, z: 610}
+    - UniqueId: 
+      ActorType: 0
+      Team: 1
+      WaypointsPackId: 8
+      Position: {x: 114, y: 5.2, z: 297.9}
+    - UniqueId: 
+      ActorType: 0
+      Team: 1
+      WaypointsPackId: 7
+      Position: {x: 120.50001, y: 6.3, z: 687.49994}
+    - UniqueId: 
+      ActorType: 0
+      Team: 1
+      WaypointsPackId: 8
+      Position: {x: 114, y: 5.2, z: 194.4}
+    - UniqueId: 
+      ActorType: 0
+      Team: 1
+      WaypointsPackId: 7
+      Position: {x: 146.3, y: 6.3, z: 648.00006}
+    - UniqueId: 
+      ActorType: 0
+      Team: 1
+      WaypointsPackId: 7
+      Position: {x: 137.70001, y: 12, z: 579.7}
+    - UniqueId: 
+      ActorType: 0
+      Team: 1
+      WaypointsPackId: 7
+      Position: {x: 135.7, y: 12, z: 614.7}
+    - UniqueId: 
+      ActorType: 1
+      Team: 0
+      WaypointsPackId: 6
+      Position: {x: 743.03, y: 5.5, z: 630.18}
+    - UniqueId: 
+      ActorType: 0
+      Team: 1
+      WaypointsPackId: 8
+      Position: {x: 107, y: 3.9, z: 158.7}
+    - UniqueId: 
+      ActorType: 0
+      Team: 1
+      WaypointsPackId: 8
+      Position: {x: 107, y: 3.9, z: 262.2}
+    - UniqueId: 
+      ActorType: 0
+      Team: 1
+      WaypointsPackId: 7
+      Position: {x: 118.5, y: 6.3, z: 722.49994}

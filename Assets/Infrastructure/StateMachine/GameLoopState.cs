@@ -58,7 +58,7 @@ namespace Infrastructure.StateMachine
 
         private void NewEnemyCreate(ID_Settings_CS newEnemy)
         {
-            _playerFactory.RecivierUIManager.AddNewEnemyToPositionActorsUI(newEnemy);
+            _playerFactory.AddNewEnemyToPositionActorsUI(newEnemy);
         }
 
         public void Exit()
