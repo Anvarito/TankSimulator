@@ -26,5 +26,10 @@ namespace Infrastructure.Assets
             TComponent hudPrefab = Resources.Load<TComponent>(path);
             return Object.Instantiate<TComponent>(hudPrefab);
         }
+        public TComponent Instantiate<TComponent>(string path, Vector3 at) where TComponent : MonoBehaviour
+        {
+            TComponent hudPrefab = Resources.Load<TComponent>(path);
+            return Object.Instantiate<TComponent>(hudPrefab, at, Quaternion.identity);
+        }
     }
 }

@@ -11,40 +11,43 @@ namespace Infrastructure.Components
     public class GameSpawnPoint : MonoBehaviour
     {
         private IEnemyFactory _enemyFactory;
-        private IPlayerFactory _playerFactory;
         private GamemodeConfig _modeConfig;
-        private SpawnPointConfig _config;
+        private SpawnPointConfig _spawnConfig;
+
+        private DamageReceiversManager _currentEnemy;
 
         public void Construct(IFactories factories, SpawnPointConfig config, GamemodeConfig gamemodeConfig)
         {
             _modeConfig = gamemodeConfig;
-            _config = config;
-            _playerFactory = factories.Single<IPlayerFactory>();
+            _spawnConfig = config;
             _enemyFactory = factories.Single<IEnemyFactory>();
 
+            transform.position = _spawnConfig.Position;
             CreateEnemy();
+        }
+
+        private void EnemyDestroyed(ID_Settings_CS killer)
+        {
+            _currentEnemy.OnTankDestroyed.RemoveListener(EnemyDestroyed);
+            _currentEnemy = null;
+
+            if (_modeConfig.EnemiesSpawnsPeriodically)
+                StartCoroutine(SpawnEnemyPeriodically(_modeConfig.EnemiesCooldownSpawn, _modeConfig.CooldownRange));
         }
 
         private IEnumerator SpawnEnemyPeriodically(float cooldownSpawn, float cooldownRange)
         {
-            while (true)
-            {
-                float cooldown = Random.Range(cooldownSpawn - cooldownRange, cooldownSpawn + cooldownRange);
-                yield return new WaitForSeconds(cooldown);
-                CreateEnemy();
-            }
+            float cooldown = Random.Range(cooldownSpawn - cooldownRange, cooldownSpawn + cooldownRange);
+            yield return new WaitForSeconds(cooldown);
+            CreateEnemy();
         }
 
         private void CreateEnemy()
         {
-            transform.position = _config.Position;
-
-            if (_config.ActorType == EPlayerType.AI)
+            if (_spawnConfig.ActorType == EPlayerType.AI)
             {
-                _enemyFactory.CreateEnemy(_config);
-
-                if (_modeConfig.EnemiesSpawnsPeriodically)
-                    StartCoroutine(SpawnEnemyPeriodically(_modeConfig.EnemiesCooldownSpawn, _modeConfig.CooldownRange));
+                _currentEnemy = _enemyFactory.CreateEnemy(_spawnConfig);
+                _currentEnemy.OnTankDestroyed.AddListener(EnemyDestroyed);
             }
         }
     }

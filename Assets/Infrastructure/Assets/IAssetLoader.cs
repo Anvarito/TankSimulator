@@ -8,5 +8,6 @@ namespace Infrastructure.Assets
         GameObject Instantiate(string path, Vector3 at);
         GameObject Instantiate(string path);
         TComponent Instantiate<TComponent>(string path) where TComponent : MonoBehaviour;
+        TComponent Instantiate<TComponent>(string path, Vector3 at) where TComponent : MonoBehaviour;
     }
 }
