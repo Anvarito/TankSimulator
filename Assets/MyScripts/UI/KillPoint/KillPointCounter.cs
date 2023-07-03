@@ -15,7 +15,7 @@ public class KillPointCounter : MonoBehaviour
         }
     }
 
-    private void TankDestroyed(ID_Settings_CS killerID)
+    private void TankDestroyed(ID_Settings_CS tankId, ID_Settings_CS killerID)
     {
         if (killerID != null)
             print(killerID.transform.name + " kill another one tank");

@@ -53,7 +53,7 @@ namespace Infrastructure.StateMachine
         }
 
         private void EnterLoadLevelState() =>
-            _gameStateMachine.Enter<SetupFirstInputState>();
+            _gameStateMachine.Enter<LoadProgressState>();
 
         private void RegisterServices()
         {

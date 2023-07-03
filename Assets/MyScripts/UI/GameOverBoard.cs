@@ -4,6 +4,8 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Events;
 using System.Collections.Generic;
+using System.Linq;
+using ChobiAssets.PTM;
 using Infrastructure.Data;
 
 namespace Infrastructure.TestMono
@@ -29,10 +31,13 @@ namespace Infrastructure.TestMono
 
         [Space(10)] [SerializeField] private Canvas _canvas;
         [SerializeField] private Image _mainPanel;
+        
 
         [SerializeField] private TextMeshProUGUI _headerText;
         [SerializeField] private string _victoreTextHeader;
         [SerializeField] private string _defeatHederText;
+        [SerializeField] private string _teamAHeaderText;
+        [SerializeField] private string _teamBHeaderText;
 
         [Space(10)] [Header("Colors")] [SerializeField]
         private Color _colorPanelVictory;
@@ -42,6 +47,8 @@ namespace Infrastructure.TestMono
 
         [SerializeField] private Color _colorPanelDefeat;
         [SerializeField] private Color _colorHeaderlDefeat;
+        [SerializeField] private Color _colorPanelTeam;
+        [SerializeField] private Color _colorHeaderTeam;
 
         [Space(10)] [Header("Buttons")] [SerializeField]
         private Button _restartButton;
@@ -69,42 +76,74 @@ namespace Infrastructure.TestMono
         private void RestartClick()
         {
             HidePanel();
+            ShowScore();
             OnRestart?.Invoke();
         }
 
-        public void ShowVictoryPanel(LeadersHolder leadersHolder, ScoreHolder playerReference)
+        public void ShowVictoryPanel(List<ID_Settings_CS> playersSettings, LeadersHolder leadersHolder,
+            ScoreHolder playerReference, bool team = false)
         {
             Debug.Log($"Score: {playerReference}");
+            if (team)
+            {
+                List<ERelationship> playerTeams = playersSettings.Select(x => x.Relationship).ToList();
+                playerTeams.Add(ERelationship.TeamB);
+                ERelationship winTeam = playerTeams.First();
 
-            ShowLeaderList(leadersHolder, playerReference);
+                _headerText.text = winTeam == ERelationship.TeamA ? _teamAHeaderText : _teamBHeaderText;
+                _headerText.color = _colorHeaderTeam;
+                _mainPanel.color = _colorPanelTeam;
+                HideScore();
+            }
+            else
+            {
+                ShowLeaderList(leadersHolder, playerReference);
+
+                _headerText.text = _victoreTextHeader;
+                _headerText.color = _colorHeaderVictory;
+                _mainPanel.color = _colorPanelVictory;
+            }
 
             _mainPanel.gameObject.SetActive(true);
-            _headerText.text = _victoreTextHeader;
-            _headerText.color = _colorHeaderVictory;
-            _mainPanel.color = _colorPanelVictory;
             //_scoreText.text = _originText + "\n" + score;
         }
 
 
-        public void ShowDefeatPanel(LeadersHolder leadersHolder, ScoreHolder playerReference)
+        public void ShowDefeatPanel(List<ID_Settings_CS> playersSettings, LeadersHolder leadersHolder,
+            ScoreHolder playerReference, bool team = false)
         {
             Debug.Log($"Score: {playerReference}");
 
-            ShowLeaderList(leadersHolder, playerReference);
+            if (team)
+            {
+                List<ERelationship> playerTeams = playersSettings.Select(x => x.Relationship).ToList();
+                playerTeams.Add(ERelationship.TeamB);
+                ERelationship winTeam = playerTeams.First();
+                
+
+                _headerText.text = winTeam == ERelationship.TeamA ? _teamAHeaderText : _teamBHeaderText;
+                _headerText.color = _colorHeaderTeam;
+                _mainPanel.color = _colorPanelTeam;
+                HideScore();
+            }
+            else
+            {
+                ShowLeaderList(leadersHolder, playerReference);
+
+                _headerText.text = _defeatHederText;
+                _headerText.color = _colorHeaderlDefeat;
+                _mainPanel.color = _colorPanelDefeat;
+            }
 
             _mainPanel.gameObject.SetActive(true);
-            _headerText.text = _defeatHederText;
-            _headerText.color = _colorHeaderlDefeat;
-            _mainPanel.color = _colorPanelDefeat;
-            //_scoreText.text = _originText + "\n" + score;
         }
 
         private void ShowLeaderList(LeadersHolder scoreList, ScoreHolder playerReference)
         {
             scoreList.Sort();
-            
+
             FillUpScoreList(scoreList);
-            
+
             CreateScoreSigns(playerReference);
         }
 
@@ -114,7 +153,7 @@ namespace Infrastructure.TestMono
                 _scoreHolders.Add(scoreHolder);
 
             int count = _scoreHolders.Count;
-            
+
             for (int i = 0; i < _maxShowLeaders - count; i++)
             {
                 ScoreHolder scoreHolder = new ScoreHolder("------", 0);
@@ -135,6 +174,12 @@ namespace Infrastructure.TestMono
             }
         }
 
+        private void HideScore() =>
+            _scorePanel.gameObject.SetActive(false);
+
+        private void ShowScore() =>
+            _scorePanel.gameObject.SetActive(true);
+        
         private void HidePanel() =>
             _mainPanel.gameObject.SetActive(false);
     }

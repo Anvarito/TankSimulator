@@ -22,6 +22,7 @@ internal class ScoreAndTimerReciever : UIRecivierBase
         _scoreAndTimerPresenter.SetCamera(_cameraSetup.GetCamera());
 
         _scoreAndTimerPresenter.ScoreUI.Init(selfID);
+        _scoreAndTimerPresenter.TeamUI.Init(selfID);
         _scoreCounter.OnEnemiesDestroyed += EnemiesDestroyed;
     }
 

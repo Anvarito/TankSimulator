@@ -32,7 +32,7 @@ public class TankExplosionVisual : MonoBehaviour
         damageReceiversManager.OnTankDestroyed.AddListener(TankDestroy);
     }
 
-    private void TankDestroy(ID_Settings_CS bulletInitiatorID)
+    private void TankDestroy(ID_Settings_CS tankId, ID_Settings_CS bulletInitiatorID)
     {
         TurretDestroyProcess();
         StartCoroutine(BodyExplosionSeqence());
