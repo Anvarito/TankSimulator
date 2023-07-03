@@ -47,7 +47,7 @@ public class RecivierUIManager : MonoBehaviour
         _positionActorsRecivier.AddNewBot(newBot);
     }
 
-    private void TankDestroyed(ID_Settings_CS killerID)
+    private void TankDestroyed(ID_Settings_CS tankId, ID_Settings_CS killerID)
     {
         _aimMarkerRecivier.PlayerDestoryed();
         _leadMarkerRecivier.PlayerDestoryed();

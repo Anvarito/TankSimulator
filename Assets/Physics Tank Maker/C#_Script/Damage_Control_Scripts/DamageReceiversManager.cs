@@ -43,7 +43,7 @@ namespace ChobiAssets.PTM
         [HideInInspector] public UnityEvent<TrackDamageRecivier> OnTrackBreach;
         [HideInInspector] public UnityEvent<TrackDamageRecivier> OnTrackRestore;
 
-        [HideInInspector] public UnityEvent<ID_Settings_CS> OnTankDestroyed; //id at kill initiator
+        [HideInInspector] public UnityEvent<ID_Settings_CS,ID_Settings_CS> OnTankDestroyed; //id at kill initiator
 
         public DamageTurret TurretDamageRecivier => _turretDamages;
         public DamageBodyRecivier BodyDamageRecivier => _mainBodyDamages;
@@ -143,7 +143,7 @@ namespace ChobiAssets.PTM
             _turretDamages.OnDamaged.RemoveListener(TurretDamage);
             _mainBodyDamages.OnDamaged.RemoveListener(BodyDamage);
 
-            OnTankDestroyed?.Invoke(bulletInitiatorID);
+            OnTankDestroyed?.Invoke(GetComponentInParent<ID_Settings_CS>(),bulletInitiatorID);
         }
 
         public bool Receive_Damage(float damage, int type, int index)

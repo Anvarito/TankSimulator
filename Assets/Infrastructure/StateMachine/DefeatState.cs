@@ -3,8 +3,10 @@ using Infrastructure.Factory.Base;
 using Infrastructure.Services.Progress;
 using Infrastructure.Services.Input;
 using System.Collections.Generic;
+using System.Linq;
 using Infrastructure.Services.Audio;
 using Infrastructure.Services.SaveLoad;
+using Infrastructure.Services.StaticData.Gamemodes;
 using Infrastructure.TestMono;
 
 namespace Infrastructure.StateMachine
@@ -41,7 +43,7 @@ namespace Infrastructure.StateMachine
             
             _saveLoadService.SaveProgress();
             
-            _playerFactory.GameBoard.ShowDefeatPanel(_progress.Progress.Leaders, playerScore);
+            _playerFactory.GameBoard.ShowDefeatPanel(_playerFactory.PlayersSettings,_progress.Progress.Leaders, playerScore, _progress.Progress.WorldData.ModeId == GamemodeId.Versus);
             _playerFactory.GameBoard.OnExitMenu += Menu;
             _playerFactory.GameBoard.OnRestart += Restart;
         }

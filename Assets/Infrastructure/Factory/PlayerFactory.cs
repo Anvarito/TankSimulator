@@ -22,7 +22,9 @@ namespace Infrastructure.Factory
     {
         public Action OnPlayerDestroyed { get; set; }
         public int PlayerCount => PlayerParts.Count;
-        public List<PlayerUiParts> PlayerParts { get; } = new List<PlayerUiParts>();
+        public List<PlayerUiParts> PlayerParts { get; } = new();
+        public List<ID_Settings_CS> PlayersSettings { get;} = new();
+        public List<ID_Settings_CS> EnemysID { get; } = new();
         public MainMenuUIHelper MainMenuUIHelper { get; private set; }
         public GameOverBoard GameBoard { get; private set; }
 
@@ -33,10 +35,6 @@ namespace Infrastructure.Factory
         private readonly IStaticDataService _dataService;
         private readonly ITimerService _timer;
         private readonly IScoreCounter _scoreCounter;
-
-
-        private readonly List<GameObject> _players = new List<GameObject>();
-        private readonly List<ID_Settings_CS> _enemysID = new List<ID_Settings_CS>();
 
 
         public PlayerFactory(IAudioService audioService, IAssetLoader assetLoader, IInputService inputService, IProgressService progressService, IStaticDataService dataService, ITimerService timer, IScoreCounter scoreCounter) : base(audioService, assetLoader)
@@ -53,14 +51,15 @@ namespace Infrastructure.Factory
         {
             base.CleanUp();
 
-            foreach (var i in _players)
+            foreach (var i in PlayersSettings)
             {
-                Object.Destroy(i.gameObject);
+                // Object.Destroy(i.gameObject);
             }
+            PlayersSettings.Clear();
 
             PlayerParts.Clear();
 
-            _enemysID.Clear();
+            EnemysID.Clear();
         }
 
         public void CreatePlayers(List<SpawnPointConfig> points)
@@ -72,7 +71,7 @@ namespace Infrastructure.Factory
                 points.Remove(selectedPoint);
                 
                 GameObject player = InstantiateRegistered(config.PrefabPath, selectedPoint.Position);
-                _players.Add(player);
+                PlayersSettings.Add(player.GetComponentInChildren<ID_Settings_CS>());
                 PlayerUiParts registerUiWatchers = RegisterUiWatchers(player);
                 registerUiWatchers.DamageReceiver.OnTankDestroyed.AddListener(PlayerDestroyed);
 
@@ -88,8 +87,8 @@ namespace Infrastructure.Factory
 
         public void CreateTankUiSpawners(List<DamageReceiversManager> enemyDamageManagers)
         {
-            _enemysID.AddRange(PlayerParts.Select(x => x.IdSettings));
-            _enemysID.AddRange(enemyDamageManagers.Select(x => x.GetComponentInParent<ID_Settings_CS>()));
+            EnemysID.AddRange(PlayerParts.Select(x => x.IdSettings));
+            EnemysID.AddRange(enemyDamageManagers.Select(x => x.GetComponentInParent<ID_Settings_CS>()));
 
             foreach (PlayerUiParts part in PlayerParts)
                 InitializeUiWatchers(part, InstantiateRegistered(AssetPaths.TankUiSpawner));
@@ -111,8 +110,11 @@ namespace Infrastructure.Factory
             return helper;
         }
 
-        private void PlayerDestroyed(ID_Settings_CS killerId) =>
+        private void PlayerDestroyed(ID_Settings_CS playerId,ID_Settings_CS killerId)
+        {
+            PlayersSettings.Remove(playerId);
             OnPlayerDestroyed?.Invoke();
+        }
 
 
         private void InitedRegisteredTank(GameObject playerTank, Services.Input.PlayerConfiguration config)
@@ -150,7 +152,7 @@ namespace Infrastructure.Factory
         private void InitializeUiWatchers(PlayerUiParts parts, GameObject uiSpawner)
         {
             RecivierUIManager = uiSpawner.GetComponent<RecivierUIManager>();
-            RecivierUIManager.Initialize(parts.Aiming, parts.BulletGenerator, parts.CannonFire, parts.GunCamera, parts.DamageReceiver, parts.DriveControl, parts.CameraView, _enemysID, parts.IdSettings, _timer, _scoreCounter);
+            RecivierUIManager.Initialize(parts.Aiming, parts.BulletGenerator, parts.CannonFire, parts.GunCamera, parts.DamageReceiver, parts.DriveControl, parts.CameraView, EnemysID, parts.IdSettings, _timer, _scoreCounter);
         }
 
         //private GameObject[] Shuffle(GameObject[] at)

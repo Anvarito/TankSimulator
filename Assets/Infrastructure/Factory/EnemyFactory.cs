@@ -86,7 +86,7 @@ namespace Infrastructure.Factory
             }
         }
 
-        private void EnemyDestroyed(ID_Settings_CS killerID)
+        private void EnemyDestroyed(ID_Settings_CS enemyId,ID_Settings_CS killerID)
         {
             if (killerID == null)
                 return;

@@ -5,6 +5,7 @@ using Infrastructure.TestMono;
 using System.Collections.Generic;
 using Infrastructure.Services.Progress;
 using Infrastructure.Services.SaveLoad;
+using Infrastructure.Services.StaticData.Gamemodes;
 using UnityEngine;
 
 namespace Infrastructure.StateMachine
@@ -50,7 +51,7 @@ namespace Infrastructure.StateMachine
             
             _saveLoadService.SaveProgress();
 
-            _playerFactory.GameBoard.ShowVictoryPanel(_progress.Progress.Leaders, playerScore);
+            _playerFactory.GameBoard.ShowVictoryPanel(_playerFactory.PlayersSettings,_progress.Progress.Leaders, playerScore,_progress.Progress.WorldData.ModeId == GamemodeId.Versus);
             _playerFactory.GameBoard.OnExitMenu += Menu;
         }
 

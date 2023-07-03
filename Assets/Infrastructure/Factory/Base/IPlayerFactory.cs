@@ -20,6 +20,8 @@ namespace Infrastructure.Factory.Base
         MainMenuUIHelper MainMenuUIHelper { get; }
         Action OnPlayerDestroyed { get; set; }
         int PlayerCount { get; }
+        List<ID_Settings_CS> EnemysID { get; }
+        List<ID_Settings_CS> PlayersSettings { get; }
         GameObject CreateMainMenu();
         GamemodeMapHelper CreateMapModeChoiseUI();
     }

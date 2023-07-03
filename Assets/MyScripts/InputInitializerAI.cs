@@ -10,9 +10,9 @@ public class InputInitializerAI : InputInitializerBase
     {
         Initialize();
     }
-    protected override void TankDestroyed(ID_Settings_CS bulletInitiatorID)
+    protected override void TankDestroyed(ID_Settings_CS tankId, ID_Settings_CS bulletInitiatorID)
     {
-        base.TankDestroyed(bulletInitiatorID);
+        base.TankDestroyed(tankId, bulletInitiatorID);
         ai_core_script.TankDestroyed();
     }
 
