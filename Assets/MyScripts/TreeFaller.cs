@@ -42,7 +42,8 @@ public class TreeFaller : MonoBehaviour
         if (_isCollide)
             return;
 
-        if (collision.gameObject.layer == Layer_Settings_CS.Body_Layer)
+        if (collision.gameObject.layer == Layer_Settings_CS.Body_Layer
+            || collision.gameObject.layer == Layer_Settings_CS.Bullet_Layer)
         {
             _colisionPoint = collision.contacts[0].point;
             Lauch();

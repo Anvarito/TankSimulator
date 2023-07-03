@@ -245,7 +245,7 @@ GameObject:
   - component: {fileID: 6621108839996920173}
   - component: {fileID: 5314589296160574490}
   - component: {fileID: 8914284500450346787}
-  - component: {fileID: 6690762375466539650}
+  - component: {fileID: 3030389188945323998}
   m_Layer: 0
   m_Name: Telephone_Booth_LOD0
   m_TagString: Untagged
@@ -319,7 +319,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6690762375466539650
+--- !u!65 &3030389188945323998
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

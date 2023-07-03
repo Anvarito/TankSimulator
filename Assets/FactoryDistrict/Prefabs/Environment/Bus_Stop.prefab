@@ -94,7 +94,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3491084835994671315}
-  - component: {fileID: 7257459990177038974}
+  - component: {fileID: 978077978486239211}
   m_Layer: 0
   m_Name: Bus_Stop_Collider
   m_TagString: Untagged
@@ -117,7 +117,7 @@ Transform:
   m_Father: {fileID: 8259330675699703939}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &7257459990177038974
+--- !u!64 &978077978486239211
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,7 +130,7 @@ MeshCollider:
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: -1522658519372120842, guid: 78eb4d11aa3bc7e479b46d713638ec03, type: 3}
+  m_Mesh: {fileID: 0}
 --- !u!1 &6851175490969831231
 GameObject:
   m_ObjectHideFlags: 0

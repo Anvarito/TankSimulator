@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 8332240984905892534}
   - component: {fileID: 4903798301419851027}
   - component: {fileID: 7199353491014007257}
-  - component: {fileID: 7179426954635664133}
   - component: {fileID: 3500707257112739036}
+  - component: {fileID: 5856486621046888198}
   m_Layer: 0
   m_Name: Fence_Blue_02
   m_TagString: Untagged
@@ -30,6 +30,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -53,6 +54,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -83,19 +85,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7179426954635664133
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8712707894358054924}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.05013959, y: 0.74494493, z: 2}
-  m_Center: {x: 0.00000064074993, y: 0.37247252, z: -1}
 --- !u!205 &3500707257112739036
 LODGroup:
   m_ObjectHideFlags: 0
@@ -115,3 +104,16 @@ LODGroup:
     renderers:
     - renderer: {fileID: 7199353491014007257}
   m_Enabled: 1
+--- !u!65 &5856486621046888198
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8712707894358054924}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.05013959, y: 0.74494493, z: 2}
+  m_Center: {x: 0.000023528934, y: 0.37247252, z: -1.0000153}
