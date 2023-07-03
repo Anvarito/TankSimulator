@@ -12,5 +12,7 @@ namespace Infrastructure.Factory
         public Drive_Control_CS DriveControl { get; set; }
         public CameraViewSetup CameraView { get; set; }
         public ID_Settings_CS IdSettings{ get; set; }
+        public RecivierUIManager RecivierUIManager { get; set; }
+
     }
 }

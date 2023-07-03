@@ -37,10 +37,14 @@ namespace Infrastructure.Factory
         public void CreateGameController() =>
             InstantiateRegistered(AssetPaths.TankController);
 
-        public void CreateEnemy(SpawnPointConfig config)
+        public DamageReceiversManager CreateEnemy(SpawnPointConfig config)
         {
-            GameObject enemy = _assetLoader.Instantiate(AssetPaths.Enemy, config.Position);
-            SetupEnemy(config, enemy);
+            ID_Settings_CS enemy = _assetLoader.Instantiate<ID_Settings_CS>(AssetPaths.Enemy, config.Position);
+            DamageReceiversManager damageReceiversManager = enemy.GetComponentInChildren<DamageReceiversManager>();
+
+            SetupEnemy(config, enemy, damageReceiversManager);
+
+            return damageReceiversManager;
         }
 
         public override void CleanUp()
@@ -56,17 +60,15 @@ namespace Infrastructure.Factory
             _waypoints.Clear();
         }
 
-        private void SetupEnemy(SpawnPointConfig config, GameObject enemy)
+        private void SetupEnemy(SpawnPointConfig config, ID_Settings_CS enemyId, DamageReceiversManager damageReceiversManager)
         {
-            ID_Settings_CS enemyID = enemy.GetComponentInChildren<ID_Settings_CS>();
-            enemyID.SetRelationship(config.Team);
-            DamageReceiversManager damageReceiversManager = enemy.GetComponentInChildren<DamageReceiversManager>();
-            RegisterDamageManager(damageReceiversManager, enemyID);
+            enemyId.SetRelationship(config.Team);
+            RegisterDamageManager(damageReceiversManager, enemyId);
             EnemyDamageManagers.Add(damageReceiversManager);
 
-            SetupEnemyWaypoints(config, enemy);
+            SetupEnemyWaypoints(config, enemyId.gameObject);
 
-            OnEnemyCreate?.Invoke(enemyID);
+            OnEnemyCreate?.Invoke(enemyId);
         }
 
         private void SetupEnemyWaypoints(SpawnPointConfig config, GameObject enemy)
