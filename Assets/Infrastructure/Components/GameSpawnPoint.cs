@@ -26,7 +26,7 @@ namespace Infrastructure.Components
             CreateEnemy();
         }
 
-        private void EnemyDestroyed(ID_Settings_CS killer)
+        private void EnemyDestroyed(ID_Settings_CS victim,ID_Settings_CS killer)
         {
             _currentEnemy.OnTankDestroyed.RemoveListener(EnemyDestroyed);
             _currentEnemy = null;
