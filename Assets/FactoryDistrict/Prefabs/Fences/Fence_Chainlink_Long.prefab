@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4000010321234698}
   - component: {fileID: 33000010845712110}
   - component: {fileID: 23000012843866350}
-  - component: {fileID: 65000010603123596}
   m_Layer: 0
   m_Name: Fence_Chainlink_Long_LOD1
   m_TagString: Untagged
@@ -85,19 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &65000010603123596
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000010148820758}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 4.069807, y: 2.2631605, z: 0.07127564}
-  m_Center: {x: -2, y: 1.0560426, z: 0}
 --- !u!1 &1000010285453826
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,7 +184,8 @@ GameObject:
   - component: {fileID: 4000010656380242}
   - component: {fileID: 33000010955382544}
   - component: {fileID: 23000011810456794}
-  - component: {fileID: 65000011351298610}
+  - component: {fileID: 2231857626451131665}
+  - component: {fileID: 6720638716323530635}
   m_Layer: 0
   m_Name: Fence_Chainlink_Long_LOD0
   m_TagString: Untagged
@@ -272,7 +259,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &65000011351298610
+--- !u!65 &2231857626451131665
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -284,4 +271,20 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 4.0749555, y: 2.2631605, z: 0.07127564}
-  m_Center: {x: -1.9999998, y: 1.0560426, z: 0}
+  m_Center: {x: -2.0000074, y: 1.0560426, z: -0.0000076293945}
+--- !u!114 &6720638716323530635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000011260216592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 136e51099fdfe7a4583f0feb13877918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  root: {fileID: 4000012003622766}
+  _collider: {fileID: 2231857626451131665}
+  DebugCallider: {fileID: 0}
+  _speed: 60

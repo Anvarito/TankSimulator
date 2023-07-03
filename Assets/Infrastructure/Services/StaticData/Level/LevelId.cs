@@ -4,7 +4,7 @@ namespace Infrastructure.Services.StaticData.Level
     {
         Unknown = 0,
         Summer = 1,
-        Town = 2,
+        Factory = 2,
         Winter = 3,
     }
 }

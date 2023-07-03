@@ -63,7 +63,7 @@ GameObject:
   - component: {fileID: 4649161624706208}
   - component: {fileID: 33175627758616442}
   - component: {fileID: 23360689013270680}
-  - component: {fileID: 64837816500127878}
+  - component: {fileID: 8024061956928280654}
   m_Layer: 0
   m_Name: Intersection_T_2x2_lane
   m_TagString: Untagged
@@ -138,8 +138,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64837816500127878
-MeshCollider:
+--- !u!65 &8024061956928280654
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -148,7 +148,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: b5679ae4556943b48a84c259241cbbe4, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 16.034386, y: 0.44864258, z: 16.054258}
+  m_Center: {x: -0.009933951, y: -0.07395996, z: -0.0000038146964}

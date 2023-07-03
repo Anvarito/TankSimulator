@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e90052befb004761ae0233956e9b2ee0, type: 3}
+  m_Name: FactoryCoop
+  m_EditorClassIdentifier: 
+  PackConfig:
+    PackId: 1
+    LevelId: 2
+    PointsConfigs:
+    - UniqueId: 
+      ActorType: 0
+      Team: 1
+      WaypointsPackId: 16
+      Position: {x: -235.5, y: 2.0201538, z: -17.400017}
+    - UniqueId: 
+      ActorType: 0
+      Team: 1
+      WaypointsPackId: 16
+      Position: {x: -223.6, y: 2.0201492, z: 44.999985}
+    - UniqueId: 
+      ActorType: 0
+      Team: 1
+      WaypointsPackId: 16
+      Position: {x: -224.20001, y: 2.0201495, z: 78.499985}
+    - UniqueId: 
+      ActorType: 0
+      Team: 1
+      WaypointsPackId: 16
+      Position: {x: -222.1, y: 2.0201488, z: 60.89998}
+    - UniqueId: 
+      ActorType: 0
+      Team: 1
+      WaypointsPackId: 15
+      Position: {x: -23.100006, y: 2.0200741, z: 262.36}
+    - UniqueId: 
+      ActorType: 0
+      Team: 1
+      WaypointsPackId: 15
+      Position: {x: -28.11, y: 2.020076, z: 271.51}
+    - UniqueId: 
+      ActorType: 0
+      Team: 1
+      WaypointsPackId: 15
+      Position: {x: -39.199997, y: 2.02008, z: 296.5}
+    - UniqueId: 
+      ActorType: 0
+      Team: 1
+      WaypointsPackId: 15
+      Position: {x: -47.300003, y: 2.0200832, z: 290.09998}
+    - UniqueId: 
+      ActorType: 0
+      Team: 1
+      WaypointsPackId: 16
+      Position: {x: -201.1, y: 2.020141, z: 36.999985}
+    - UniqueId: 
+      ActorType: 0
+      Team: 1
+      WaypointsPackId: 15
+      Position: {x: -44.100006, y: 2.020082, z: 251.39998}
+    - UniqueId: 
+      ActorType: 1
+      Team: 0
+      WaypointsPackId: 0
+      Position: {x: 144.1, y: 2.0200114, z: -132.70001}
+    - UniqueId: 
+      ActorType: 1
+      Team: 0
+      WaypointsPackId: 0
+      Position: {x: 175, y: 2.01, z: -76.000015}

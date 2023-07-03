@@ -43,7 +43,8 @@ GameObject:
   - component: {fileID: 4911077246335440}
   - component: {fileID: 33843078243142102}
   - component: {fileID: 23280667353055648}
-  - component: {fileID: 65959802124191848}
+  - component: {fileID: 8012100482349610594}
+  - component: {fileID: 3355569364889991556}
   m_Layer: 0
   m_Name: Fence_Wood_Short_Enclosed
   m_TagString: Untagged
@@ -116,7 +117,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &65959802124191848
+--- !u!65 &8012100482349610594
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -127,5 +128,20 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.6477985, y: 0.08156982, z: 1.4337561}
-  m_Center: {x: -1.2500001, y: -0.04078491, z: 0.5998998}
+  m_Size: {x: 2.6477978, y: 1.4337558, z: 0.08156982}
+  m_Center: {x: -1.2499846, y: 0.5998997, z: 0.04078491}
+--- !u!114 &3355569364889991556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1513947883928402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 136e51099fdfe7a4583f0feb13877918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  root: {fileID: 4000010040380348}
+  _collider: {fileID: 8012100482349610594}
+  _speed: 80
