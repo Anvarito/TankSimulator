@@ -14,11 +14,15 @@ namespace Infrastructure.Data
         public LevelId LevelId; 
         public string Level;
         public List<ERelationship> Teams;
+        public float MusicVolume;
+        public float SoundsVolume;
 
         public WorldData(string initialLevel)
         {
             PositionOnLevel = new PositionOnLevel(initialLevel, null);
             Teams = new List<ERelationship>();
+            MusicVolume = 10;
+            SoundsVolume = 10;
         }
 
     }

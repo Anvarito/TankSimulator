@@ -8,11 +8,14 @@ namespace Infrastructure.Services.Audio
 {
     public class AudioService : IAudioService
     {
-        private const string AudioMixerPath = "/Audio/Master";
+        private const string AudioMixerPath = "Audio/Master";
         private const string MusicVolume = "MusicVolume";
         private const string SoundVolume = "SoundVolume";
         
-        private const int MixerCoef = 80;
+        private const int MusicMax = -6;
+        private const int SoundsMax = 6;
+        private const int MixerCoef = -50;
+        private const int MinMixerVolume = -80;
 
         private readonly IAudioFactory _audioFactory;
         private readonly IStaticDataService _dataService;
@@ -32,11 +35,19 @@ namespace Infrastructure.Services.Audio
         public void PlaySound(SoundId id) => 
             _audioFactory.SoundsSource.Play(_dataService.ForSounds(id));
 
-        public void ChangeMusicVolume(float volume) => 
-            _mixer.SetFloat(MusicVolume, volume * MixerCoef - MixerCoef);
+        public void ChangeMusicVolume(float volume)
+        {
+            float mixerVolume = (MusicMax - MixerCoef) * (volume / 10 - 1) + MusicMax;
+            mixerVolume = mixerVolume <= MixerCoef ? MinMixerVolume : mixerVolume;
+            _mixer.SetFloat(MusicVolume, mixerVolume);
+        }
 
-        public void ChangeSoundVolume(float volume) => 
-            _mixer.SetFloat(SoundVolume, volume * MixerCoef - MixerCoef);
+        public void ChangeSoundVolume(float volume)
+        {
+            float mixerVolume = (SoundsMax - MixerCoef) * (volume / 10 - 1) + SoundsMax;
+            mixerVolume = mixerVolume <= MixerCoef ? MinMixerVolume : mixerVolume;
+            _mixer.SetFloat(SoundVolume, mixerVolume);
+        }
 
         public void StopMusic() => 
             _audioFactory.MusicSource.Stop();

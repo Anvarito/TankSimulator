@@ -2,6 +2,7 @@ using Infrastructure.Factory.Base;
 using Infrastructure.Factory.Compose;
 using Infrastructure.Services.Audio;
 using Infrastructure.Services.Input;
+using Infrastructure.Services.Progress;
 
 namespace Infrastructure.StateMachine
 {
@@ -10,14 +11,16 @@ namespace Infrastructure.StateMachine
         private const string Intro = "Intro";
         private readonly GameStateMachine _gameStateMachine;
         private readonly SceneLoader _sceneLoader;
+        private readonly IProgressService _progress;
         private readonly IInputService _inputService;
         private readonly IAudioService _audioService;
         private readonly IInputFactory _inputFactory;
 
-        public SetupFirstInputState(GameStateMachine gameStateMachine, SceneLoader sceneLoader,IInputService inputService, IFactories factories, IAudioService audioService)
+        public SetupFirstInputState(GameStateMachine gameStateMachine, SceneLoader sceneLoader,IProgressService progress,IInputService inputService, IFactories factories, IAudioService audioService)
         {
             _gameStateMachine = gameStateMachine;
             _sceneLoader = sceneLoader;
+            _progress = progress;
             _inputService = inputService;
             _audioService = audioService;
             _inputFactory = factories.Single<IInputFactory>();
@@ -37,10 +40,14 @@ namespace Infrastructure.StateMachine
         }
 
         private void EnterChooseLevelModeState() => 
-            _gameStateMachine.Enter<LoadProgressState>();
+            _gameStateMachine.Enter<MenuState>();
         private void onLoad()
         {
+            _audioService.ChangeMusicVolume(_progress.Progress.WorldData.MusicVolume);
+            _audioService.ChangeSoundVolume(_progress.Progress.WorldData.SoundsVolume);
+            
             _audioService.PlayMusic(MusicId.MenuRockCalm);
+            
             _inputFactory.CretePleasePressButtonPanel();
         }
     }

@@ -22,7 +22,7 @@ namespace Infrastructure.StateMachine
         {
             LoadProgressOrCreateNew();
 
-            _gameStateMachine.Enter<MenuState>();
+            _gameStateMachine.Enter<SetupFirstInputState>();
         }
 
         public void Exit()
