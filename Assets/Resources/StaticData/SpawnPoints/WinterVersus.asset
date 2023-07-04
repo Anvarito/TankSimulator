@@ -20,7 +20,7 @@ MonoBehaviour:
       ActorType: 1
       Team: 1
       WaypointsPackId: 6
-      Position: {x: 45.799988, y: 35.3, z: 821.80005}
+      Position: {x: 409.09998, y: 33.55, z: 544.10004}
     - UniqueId: 
       ActorType: 1
       Team: 0
