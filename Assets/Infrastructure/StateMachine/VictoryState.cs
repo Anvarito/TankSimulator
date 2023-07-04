@@ -1,27 +1,32 @@
+using System;
 using Infrastructure.Factory.Base;
 using Infrastructure.Factory.Compose;
 using Infrastructure.Services.Input;
 using Infrastructure.TestMono;
-using System.Collections.Generic;
+using Infrastructure.Data;
 using Infrastructure.Services.Progress;
 using Infrastructure.Services.SaveLoad;
 using Infrastructure.Services.StaticData.Gamemodes;
+using Infrastructure.Services.Timer;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Infrastructure.StateMachine
 {
     public class VictoryState : IPayloadedState<float>
     {
         private readonly GameStateMachine _gameStateMachine;
+        private readonly ITimerService _timerService;
         private readonly IProgressService _progress;
         private readonly ISaveLoadService _saveLoadService;
         private readonly IPlayerFactory _playerFactory;
         private readonly IInputService _inputService;
 
 
-        public VictoryState(GameStateMachine gameStateMachine, IInputService inputService,IFactories factories, IProgressService progress, ISaveLoadService saveLoadService)
+        public VictoryState(GameStateMachine gameStateMachine,ITimerService timerService, IInputService inputService,IFactories factories, IProgressService progress, ISaveLoadService saveLoadService)
         {
             _gameStateMachine = gameStateMachine;
+            _timerService = timerService;
             _inputService = inputService;
             _progress = progress;
             _saveLoadService = saveLoadService;
@@ -30,27 +35,47 @@ namespace Infrastructure.StateMachine
         
         public void Enter(float score)
         {
-            Debug.Log($"Entered {this.GetType().Name}");
-
+            _timerService.StopTimer();
+            
             _inputService.ResetPlayerIndex();
             _inputService.ConnectToInputs(_playerFactory.GameBoard.transform.root.gameObject, true);
 
             ScoreHolder playerScore = new ScoreHolder("Player " + Random.Range(0,99), score);
-            _progress.Progress.Leaders.Add(playerScore);
+            LeadersHolder leaderList = new LeadersHolder();
+            leaderList = SetupLeadersHolder(playerScore, leaderList);
             
             _saveLoadService.SaveProgress();
 
-            _playerFactory.GameBoard.ShowVictoryPanel(_playerFactory.PlayersSettings,_progress.Progress.Leaders, playerScore,_progress.Progress.WorldData.ModeId == GamemodeId.Versus);
+            _playerFactory.GameBoard.ShowVictoryPanel(_playerFactory.PlayersSettings, leaderList, playerScore,_progress.Progress.WorldData.ModeId == GamemodeId.Versus);
             _playerFactory.GameBoard.OnExitMenu += Menu;
         }
 
 
+        public void Exit() => 
+            _playerFactory.GameBoard.OnExitMenu -= Menu;
+
         private void Menu() => 
             _gameStateMachine.Enter<ResetState>();
 
-        public void Exit()
+        private LeadersHolder SetupLeadersHolder(ScoreHolder playerScore, LeadersHolder copyList)
         {
-            _playerFactory.GameBoard.OnExitMenu -= Menu;
+            switch (_progress.Progress.WorldData.ModeId)
+            {
+                case GamemodeId.Coop:
+                    _progress.Progress.LeadersСoop.Add(playerScore);
+                    copyList = _progress.Progress.LeadersСoop;
+                    break;
+                case GamemodeId.Survival:
+                    _progress.Progress.LeadersSurvival.Add(playerScore);
+                    copyList = _progress.Progress.LeadersSurvival;
+                    break;
+                case GamemodeId.Versus:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            return copyList;
         }
     }
 }

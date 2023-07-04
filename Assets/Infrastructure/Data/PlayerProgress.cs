@@ -6,12 +6,14 @@ namespace Infrastructure.Data
     public class PlayerProgress
     {
         public WorldData WorldData;
-        public LeadersHolder Leaders;
+        public LeadersHolder LeadersСoop;
+        public LeadersHolder LeadersSurvival;
 
         public PlayerProgress(string initialLevel)
         {
             WorldData = new WorldData(initialLevel);
-            Leaders = new LeadersHolder();
+            LeadersСoop = new LeadersHolder();
+            LeadersSurvival = new LeadersHolder();
         }
     }
 }

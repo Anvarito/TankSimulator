@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PackConfig:
     PackId: 1
-    LevelId: 2
+    LevelId: 1
     PointsConfigs:
     - UniqueId: 
       ActorType: 0

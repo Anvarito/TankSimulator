@@ -50,15 +50,10 @@ namespace Infrastructure.StateMachine
 
             GamemodeConfig modeConfig = _dataService.ForMode(_progress.Progress.WorldData.ModeId);
             if (modeConfig.IsGameOverTimerEnabled)
-                _timer.StartTimer(modeConfig.GameTime * Constants.SecondInMinute, GameOver);
+                _timer.StartTimer(modeConfig.GameTime * Constants.SecondInMinute, Victory);
             _scoreCounter.LoadData();
 
             _enemyFactory.OnEnemyCreate += NewEnemyCreate;
-        }
-
-        private void NewEnemyCreate(ID_Settings_CS newEnemy)
-        {
-            _playerFactory.AddNewEnemyToPositionActorsUI(newEnemy);
         }
 
         public void Exit()
@@ -67,16 +62,19 @@ namespace Infrastructure.StateMachine
             
             UnregisterKillCounter();
 
-            if (!_timer.IsPaused)
-                _timer.PauseTimer();
+            // if (!_timer.IsPaused)
+            //     _timer.PauseTimer();
         }
 
-        private void GameOver() =>
-            _gameStateMachine.Enter<DefeatState, float>(_scoreCounter.ScorePlayerOne);
-        
-        private void Victory(ID_Settings_CS killer) =>
-            _gameStateMachine.Enter<VictoryState, float>(_scoreCounter.ScorePlayerOne);
-        
+        private void NewEnemyCreate(ID_Settings_CS newEnemy) => 
+            _playerFactory.AddNewEnemyToPositionActorsUI(newEnemy);
+
+        private void GameOver() => 
+            _gameStateMachine.Enter<DefeatState, float>(Score());
+
+        private void Victory() =>
+            _gameStateMachine.Enter<VictoryState, float>(Score());
+
 
         private void RegisterKillCounter()
         {
@@ -88,6 +86,27 @@ namespace Infrastructure.StateMachine
         {
             _killCounter.OnEnemiesDestroyed -= Victory;
             _killCounter.OnPlayersDestroyed -= GameOver;
+        }
+
+        private float Score()
+        {
+            float score = 0;
+            switch (_progress.Progress.WorldData.ModeId)
+            {
+                case GamemodeId.Coop:
+                    score = _scoreCounter.ScorePlayerOne + _scoreCounter.ScorePlayerTwo;
+                    break;
+                case GamemodeId.Survival:
+                    score = Mathf.Max(_scoreCounter.ScorePlayerOne, _scoreCounter.ScorePlayerTwo);
+                    break;
+                case GamemodeId.Versus:
+                    score = 0;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            return score;
         }
     }
 }

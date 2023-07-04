@@ -12,7 +12,7 @@ namespace Infrastructure.Services.KillCounter
     {
         private readonly IProgressService _progressService;
         private readonly IStaticDataService _dataService;
-        public Action<ID_Settings_CS> OnEnemiesDestroyed { get; set; }
+        public Action OnEnemiesDestroyed { get; set; }
         public Action OnPlayersDestroyed { get; set; }
 
         public int PlayersDestroyed { get; private set; }
@@ -55,7 +55,7 @@ namespace Infrastructure.Services.KillCounter
         private void HandleEnemyDestroy(ID_Settings_CS killer)
         {
             if (AllEnemiesDestroyed())
-                OnEnemiesDestroyed?.Invoke(killer);
+                OnEnemiesDestroyed?.Invoke();
         }
 
         private bool AllPlayersDestroyed() =>
@@ -64,7 +64,10 @@ namespace Infrastructure.Services.KillCounter
         private bool AllEnemiesDestroyed() =>
             ++EnemiesDestroyed >= _enemyFactory.EnemiesCount;
 
-        public void CleanUp() => 
-            Unsubscribe();
+        public void CleanUp()
+        {
+            PlayersDestroyed = 0;
+            EnemiesDestroyed = 0;
+        }
     }
 }

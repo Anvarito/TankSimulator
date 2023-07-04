@@ -27,14 +27,14 @@ namespace Infrastructure.StateMachine
                 [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader, services.Single<IProgressService>(), services.Single<IStaticDataService>(), services.Single<IFactories>(), services.Single<ITrashRemoveService>(), services.Single<IScoreCounter>()),
                 [typeof(LoadProgressState)] = new LoadProgressState(this, services.Single<IProgressService>(), services.Single<ISaveLoadService>()),
                 [typeof(GameLoopState)] = new GameLoopState(this, services.Single<ITimerService>(), services.Single<IKillCounter>(), services.Single<IScoreCounter>(), services.Single<IProgressService>(), services.Single<IStaticDataService>(), services.Single<IAudioService>(), services.Single<IFactories>()),
-                [typeof(VictoryState)] = new VictoryState(this,services.Single<IInputService>(), services.Single<IFactories>(), services.Single<IProgressService>(), services.Single<ISaveLoadService>()),
-                [typeof(DefeatState)] = new DefeatState(this, services.Single<IFactories>(), services.Single<IProgressService>(), services.Single<IInputService>(), services.Single<ISaveLoadService>(), services.Single<IAudioService>()),
+                [typeof(VictoryState)] = new VictoryState(this,services.Single<ITimerService>(),services.Single<IInputService>(), services.Single<IFactories>(), services.Single<IProgressService>(), services.Single<ISaveLoadService>()),
+                [typeof(DefeatState)] = new DefeatState(this, services.Single<IFactories>(), services.Single<ITimerService>(), services.Single<IProgressService>(), services.Single<IInputService>(), services.Single<ISaveLoadService>(), services.Single<IAudioService>()),
                 [typeof(MenuState)] = new MenuState(this,sceneLoader,services.Single<IAudioService>(),services.Single<IProgressService>(),services.Single<ISaveLoadService>(),services.Single<IInputService>(),services.Single<IFactories>()),
                 [typeof(SetupPlayersState)] = new SetupPlayersState(this,sceneLoader,services.Single<IInputService>(),services.Single<IFactories>()),
                 [typeof(SetupFirstInputState)] = new SetupFirstInputState(this,sceneLoader,services.Single<IProgressService>(),services.Single<IInputService>(),services.Single<IFactories>(), services.Single<IAudioService>()),
                 [typeof(ChooseLevelModeState)] = new ChooseLevelModeState(this,sceneLoader,services.Single<IProgressService>(), services.Single<IInputService>(), services.Single<IFactories>(), services.Single<IAudioService>()),
                 [typeof(ResetState)] = new ResetState(this, services.Single<IFactories>(), services.Single<IInputService>(), services.Single<IProgressService>()),
-                [typeof(ReloadState)] = new ReloadState(this, services.Single<IFactories>(), services.Single<IInputService>(), sceneLoader, services.Single<IProgressService>()),
+                [typeof(ReloadState)] = new ReloadState(this, services.Single<IKillCounter>(), services.Single<IFactories>(), services.Single<IInputService>(), sceneLoader, services.Single<IProgressService>()),
             };
         }
 
@@ -50,6 +50,8 @@ namespace Infrastructure.StateMachine
         {
             IPayloadedState<TPayload> state = ChangeState<TState>();
             state.Enter(payload);
+            
+            LogState<TState>();
         }
 
         private TState ChangeState<TState>() where TState : class, IExitableState

@@ -83,7 +83,7 @@ namespace Infrastructure.TestMono
         public void ShowVictoryPanel(List<ID_Settings_CS> playersSettings, LeadersHolder leadersHolder,
             ScoreHolder playerReference, bool team = false)
         {
-            Debug.Log($"Score: {playerReference}");
+            Debug.Log($"Score: {playerReference.Points}");
             if (team)
             {
                 List<ERelationship> playerTeams = playersSettings.Select(x => x.Relationship).ToList();
