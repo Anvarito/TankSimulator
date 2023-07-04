@@ -10706,7 +10706,6 @@ GameObject:
   - component: {fileID: 1681998902911476714}
   - component: {fileID: 1681998902911476704}
   - component: {fileID: 2116156752405473813}
-  - component: {fileID: 8952987132885624799}
   m_Layer: 11
   m_Name: MainBody
   m_TagString: Untagged
@@ -10735,6 +10734,7 @@ Transform:
   - {fileID: 1681998903017437588}
   - {fileID: 1681998904182074185}
   - {fileID: 1681998903581814851}
+  - {fileID: 1974397675551911340}
   m_Father: {fileID: 1681998902222452677}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10783,13 +10783,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d07bc1cd2cd16004b84860fddab4cc0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Torque: 15000
-  Max_Speed: 15.3
+  Torque: 129630
+  Max_Speed: 20.4
   Turn_Brake_Drag: 100
-  Switch_Direction_Lag: 0.5
+  Switch_Direction_Lag: 0.36
   Allow_Pivot_Turn: 0
   Pivot_Turn_Rate: 0.3
-  Acceleration_Flag: 1
+  Acceleration_Flag: 0
   Acceleration_Time: 6
   Deceleration_Time: 3
   Acceleration_Curve:
@@ -10875,11 +10875,11 @@ MonoBehaviour:
   Parking_Brake_Velocity: 0.5
   Parking_Brake_Angular_Velocity: 0.1
   Use_AntiSlip: 1
-  Ray_Distance: 1.5
-  AntiSlip_Min_Speed: 2
-  AntiSlip_Max_Speed: 32
+  Ray_Distance: 1.4
+  AntiSlip_Min_Speed: 2.2
+  AntiSlip_Max_Speed: 6.2
   Use_Downforce: 1
-  Downforce: 25000
+  Downforce: 82437
   Downforce_Curve:
     serializedVersion: 2
     m_Curve:
@@ -10969,7 +10969,7 @@ MonoBehaviour:
   _damageReciviersSettings: {fileID: 11400000, guid: 6556806b57d42a4459fea267f67ef15a, type: 2}
   _turretDamages: {fileID: 1681998903017437590}
   _mainBodyDamages: {fileID: 1681998902911476710}
-  _damageTrackRecivier: {fileID: 0}
+  _damageTrackRecivier: {fileID: 7094838694573887387}
   OnTurretDamaged:
     m_PersistentCalls:
       m_Calls: []
@@ -11240,20 +11240,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -3684862921731361762, guid: 56b61633d7f5a0342aecb12bda915851, type: 3}
---- !u!64 &8952987132885624799
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1681998902911476706}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -3450834287858769315, guid: 56b61633d7f5a0342aecb12bda915851, type: 3}
 --- !u!1 &1681998903017437591
 GameObject:
   m_ObjectHideFlags: 0
@@ -14277,6 +14263,7 @@ GameObject:
   - component: {fileID: 5272551407678563511}
   - component: {fileID: 5272551407678563508}
   - component: {fileID: 5272551407678563509}
+  - component: {fileID: 6919742371442149168}
   m_Layer: 0
   m_Name: Gun_Camera
   m_TagString: Untagged
@@ -14292,7 +14279,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5272551407678563504}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0595, y: 0, z: 1.487}
+  m_LocalPosition: {x: -0.0595, y: 0, z: 1.55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14366,6 +14353,39 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &6919742371442149168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5272551407678563504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1 &5599744253451284650
 GameObject:
   m_ObjectHideFlags: 0
@@ -19754,6 +19774,64 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!1 &7333322150933485893
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1974397675551911340}
+  - component: {fileID: 7094838694573887387}
+  m_Layer: 0
+  m_Name: Tracks
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1974397675551911340
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7333322150933485893}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 22.949448, y: 4.6847215, z: -0.07696915}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1681998902911476705}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7094838694573887387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7333322150933485893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bfd97a0233c1c34385bef68b17b8ae9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _driveWheels:
+  - {fileID: 1681998903769214604}
+  - {fileID: 4413845811842498096}
+  - {fileID: 8106993629677189660}
+  - {fileID: 4562380299007102287}
+  OnTrackDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTrackDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTrackRestored:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7682617988831255643
 GameObject:
   m_ObjectHideFlags: 0

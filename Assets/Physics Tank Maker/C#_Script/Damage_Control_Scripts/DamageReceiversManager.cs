@@ -136,14 +136,22 @@ namespace ChobiAssets.PTM
         private void TankDestroyed(ID_Settings_CS bulletInitiatorID)
         {
             isDead = true;
+            FullBreakTank();
+            OnTankDestroyed?.Invoke(GetComponentInParent<ID_Settings_CS>(),bulletInitiatorID);
+        }
+
+        public void FullBreakTank()
+        {
+            GetComponent<Drive_Control_CS>().enabled = false;
+            GetComponent<Aiming_Control_CS>().enabled = false;
+            GetComponentInChildren<Gun_Camera_CS>().DisableInput();
+
             if (_damageTrackRecivier) _damageTrackRecivier.FullBreak();
 
             _turretDamages.OnDestroyed.RemoveListener(TurretDestroy);
             _mainBodyDamages.OnDestroyed.RemoveListener(BodyDestroy);
             _turretDamages.OnDamaged.RemoveListener(TurretDamage);
             _mainBodyDamages.OnDamaged.RemoveListener(BodyDamage);
-
-            OnTankDestroyed?.Invoke(GetComponentInParent<ID_Settings_CS>(),bulletInitiatorID);
         }
 
         public bool Receive_Damage(float damage, int type, int index)

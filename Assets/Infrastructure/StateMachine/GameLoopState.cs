@@ -26,7 +26,7 @@ namespace Infrastructure.StateMachine
         private readonly IEnemyFactory _enemyFactory;
         private readonly IAudioService _audioService;
 
-        
+
 
         public GameLoopState(GameStateMachine gameStateMachine, ITimerService timer, IKillCounter killCounter,
             IScoreCounter scoreCounter, IProgressService progress, IStaticDataService dataService, IAudioService audioService, IFactories factories)
@@ -45,7 +45,7 @@ namespace Infrastructure.StateMachine
         public void Enter()
         {
             _audioService.PlayMusic(MusicId.Test);
-            
+
             RegisterKillCounter();
 
             GamemodeConfig modeConfig = _dataService.ForMode(_progress.Progress.WorldData.ModeId);
@@ -64,19 +64,33 @@ namespace Infrastructure.StateMachine
         public void Exit()
         {
             _audioService.StopMusic();
-            
+
             UnregisterKillCounter();
 
             if (!_timer.IsPaused)
                 _timer.PauseTimer();
         }
 
-        private void GameOver() =>
+        private void GameOver()
+        {
             _gameStateMachine.Enter<DefeatState, float>(_scoreCounter.ScorePlayerOne);
-        
-        private void Victory(ID_Settings_CS killer) =>
+            BreakAllPlayers();
+        }
+
+        private void Victory(ID_Settings_CS killer)
+        {
             _gameStateMachine.Enter<VictoryState, float>(_scoreCounter.ScorePlayerOne);
-        
+            BreakAllPlayers();
+        }
+
+
+        private void BreakAllPlayers()
+        {
+            foreach (var part in _playerFactory.PlayerParts)
+            {
+                part.DamageReceiver.FullBreakTank();
+            }
+        }
 
         private void RegisterKillCounter()
         {
