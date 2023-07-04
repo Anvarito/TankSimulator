@@ -22,7 +22,7 @@ public class TreeFaller : MonoBehaviour
             rotateObj = root;
 
         if (_collider == null)
-            _collider.GetComponent<Collider>();
+            _collider = GetComponent<Collider>();
     }
 
     // Update is called once per frame

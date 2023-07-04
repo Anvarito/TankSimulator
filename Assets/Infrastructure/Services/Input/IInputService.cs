@@ -10,5 +10,7 @@ namespace Infrastructure.Services.Input
         Action OnPlayerJoined { get; set; }
         List<PlayerConfiguration> PlayerConfigs { get; }
         void ResetPlayerIndex();
+
+        void ResetToDefault();
     }
 }

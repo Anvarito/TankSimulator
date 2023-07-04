@@ -144,7 +144,8 @@ namespace ChobiAssets.PTM
         {
             GetComponent<Drive_Control_CS>().enabled = false;
             GetComponent<Aiming_Control_CS>().enabled = false;
-            GetComponentInChildren<Gun_Camera_CS>().DisableInput();
+
+            GetComponentInChildren<Gun_Camera_CS>()?.DisableInput();
 
             if (_damageTrackRecivier) _damageTrackRecivier.FullBreak();
 

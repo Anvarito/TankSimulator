@@ -30,12 +30,17 @@ namespace Infrastructure.StateMachine
                 [typeof(VictoryState)] = new VictoryState(this,services.Single<IInputService>(), services.Single<IFactories>(), services.Single<IProgressService>(), services.Single<ISaveLoadService>()),
                 [typeof(DefeatState)] = new DefeatState(this, services.Single<IFactories>(), services.Single<IProgressService>(), services.Single<IInputService>(), services.Single<ISaveLoadService>(), services.Single<IAudioService>()),
                 [typeof(MenuState)] = new MenuState(this,sceneLoader,services.Single<IAudioService>(),services.Single<IProgressService>(),services.Single<ISaveLoadService>(),services.Single<IInputService>(),services.Single<IFactories>()),
-                [typeof(SetupPlayersState)] = new SetupPlayersState(this,sceneLoader,services.Single<IInputService>(),services.Single<IFactories>()),
+                [typeof(SetupPlayersState)] = new SetupPlayersState(this,sceneLoader,services.Single<IInputService>(),services.Single<IFactories>(), services.Single<IProgressService>()),
                 [typeof(SetupFirstInputState)] = new SetupFirstInputState(this,sceneLoader,services.Single<IProgressService>(),services.Single<IInputService>(),services.Single<IFactories>(), services.Single<IAudioService>()),
                 [typeof(ChooseLevelModeState)] = new ChooseLevelModeState(this,sceneLoader,services.Single<IProgressService>(), services.Single<IInputService>(), services.Single<IFactories>(), services.Single<IAudioService>()),
                 [typeof(ResetState)] = new ResetState(this, services.Single<IFactories>(), services.Single<IInputService>(), services.Single<IProgressService>()),
                 [typeof(ReloadState)] = new ReloadState(this, services.Single<IFactories>(), services.Single<IInputService>(), sceneLoader, services.Single<IProgressService>()),
             };
+        }
+
+        internal void Enter<T1, T2>(object setupTankMain)
+        {
+            throw new NotImplementedException();
         }
 
         public void Enter<TState>() where TState : class, IState

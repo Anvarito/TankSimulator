@@ -98,6 +98,15 @@ public partial class @NewControl: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Press"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ReturnMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""4205e80e-fa0b-42af-a269-1ab11e1b1ae2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -419,6 +428,28 @@ public partial class @NewControl: IInputActionCollection2, IDisposable
                     ""action"": ""ZoomOut"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3405f806-e92c-4590-9f46-97dfc0906df8"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ReturnMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d6e95418-c968-4636-af45-ad72f0b785a6"",
+                    ""path"": ""<Keyboard>/backspace"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ReturnMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -435,6 +466,7 @@ public partial class @NewControl: IInputActionCollection2, IDisposable
         m_TankMovement_Switch = m_TankMovement.FindAction("Switch", throwIfNotFound: true);
         m_TankMovement_ZoomIn = m_TankMovement.FindAction("ZoomIn", throwIfNotFound: true);
         m_TankMovement_ZoomOut = m_TankMovement.FindAction("ZoomOut", throwIfNotFound: true);
+        m_TankMovement_ReturnMenu = m_TankMovement.FindAction("ReturnMenu", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -504,6 +536,7 @@ public partial class @NewControl: IInputActionCollection2, IDisposable
     private readonly InputAction m_TankMovement_Switch;
     private readonly InputAction m_TankMovement_ZoomIn;
     private readonly InputAction m_TankMovement_ZoomOut;
+    private readonly InputAction m_TankMovement_ReturnMenu;
     public struct TankMovementActions
     {
         private @NewControl m_Wrapper;
@@ -516,6 +549,7 @@ public partial class @NewControl: IInputActionCollection2, IDisposable
         public InputAction @Switch => m_Wrapper.m_TankMovement_Switch;
         public InputAction @ZoomIn => m_Wrapper.m_TankMovement_ZoomIn;
         public InputAction @ZoomOut => m_Wrapper.m_TankMovement_ZoomOut;
+        public InputAction @ReturnMenu => m_Wrapper.m_TankMovement_ReturnMenu;
         public InputActionMap Get() { return m_Wrapper.m_TankMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -549,6 +583,9 @@ public partial class @NewControl: IInputActionCollection2, IDisposable
             @ZoomOut.started += instance.OnZoomOut;
             @ZoomOut.performed += instance.OnZoomOut;
             @ZoomOut.canceled += instance.OnZoomOut;
+            @ReturnMenu.started += instance.OnReturnMenu;
+            @ReturnMenu.performed += instance.OnReturnMenu;
+            @ReturnMenu.canceled += instance.OnReturnMenu;
         }
 
         private void UnregisterCallbacks(ITankMovementActions instance)
@@ -577,6 +614,9 @@ public partial class @NewControl: IInputActionCollection2, IDisposable
             @ZoomOut.started -= instance.OnZoomOut;
             @ZoomOut.performed -= instance.OnZoomOut;
             @ZoomOut.canceled -= instance.OnZoomOut;
+            @ReturnMenu.started -= instance.OnReturnMenu;
+            @ReturnMenu.performed -= instance.OnReturnMenu;
+            @ReturnMenu.canceled -= instance.OnReturnMenu;
         }
 
         public void RemoveCallbacks(ITankMovementActions instance)
@@ -604,5 +644,6 @@ public partial class @NewControl: IInputActionCollection2, IDisposable
         void OnSwitch(InputAction.CallbackContext context);
         void OnZoomIn(InputAction.CallbackContext context);
         void OnZoomOut(InputAction.CallbackContext context);
+        void OnReturnMenu(InputAction.CallbackContext context);
     }
 }
