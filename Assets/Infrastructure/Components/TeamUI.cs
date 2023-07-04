@@ -3,9 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using ChobiAssets.PTM;
 using TMPro;
-using UnityEditor.UIElements;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class TeamUI : MonoBehaviour

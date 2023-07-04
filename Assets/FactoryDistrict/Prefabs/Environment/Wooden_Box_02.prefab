@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 67740356566271473}
   - component: {fileID: 3225546394906052470}
   - component: {fileID: 5953683204824966751}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Wooden_Box_02_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &67740356566271473
 Transform:
@@ -95,12 +95,12 @@ GameObject:
   - component: {fileID: 5675381900144567260}
   - component: {fileID: 761050330186153611}
   - component: {fileID: 8717564645225706508}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Wooden_Box_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &619559879673304237
 Transform:
@@ -191,12 +191,12 @@ GameObject:
   - component: {fileID: 5352343867485654212}
   - component: {fileID: 5356868842402736975}
   - component: {fileID: 663770793141023715}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Wooden_Box_02_Lid_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &5352343867485654212
 Transform:
@@ -275,12 +275,12 @@ GameObject:
   - component: {fileID: 2116752626252074760}
   - component: {fileID: 8283837867884414898}
   - component: {fileID: 6103722734585325897}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Wooden_Box_02_Lid_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2116752626252074760
 Transform:
@@ -358,12 +358,12 @@ GameObject:
   - component: {fileID: 3727430669484275957}
   - component: {fileID: 4150310424716815229}
   - component: {fileID: 1457750441806137510}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Wooden_Box_02_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &3727430669484275957
 Transform:
@@ -441,12 +441,12 @@ GameObject:
   - component: {fileID: 893346029977023166}
   - component: {fileID: 5769306124493375932}
   - component: {fileID: 7808118322843776725}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Wooden_Box_02_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &893346029977023166
 Transform:

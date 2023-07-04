@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 23000013881495026}
   - component: {fileID: 2882191209969510827}
   - component: {fileID: 8784027959362441471}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Lumber_Plywood_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}

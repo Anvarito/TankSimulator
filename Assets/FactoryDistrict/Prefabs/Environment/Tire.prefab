@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6313424210452890444}
   - component: {fileID: 597468717475025127}
   - component: {fileID: 6612594568589305536}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Tire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 1242421023313928995}
   - component: {fileID: 5914706644376343968}
   - component: {fileID: 6684759061268882731}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Tire_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -187,7 +187,7 @@ GameObject:
   - component: {fileID: 6441710621088164810}
   - component: {fileID: 1851477557832962397}
   - component: {fileID: 3585306380009520625}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Tire_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 3742242730499456647}
   - component: {fileID: 2332384864167537198}
   - component: {fileID: 2998665923353432739}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Tire_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

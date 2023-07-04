@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7515789604065455171}
   - component: {fileID: 252555228737784876}
   - component: {fileID: 978143867012402910}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Bench_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 3077222014859525519}
   - component: {fileID: 3096466340398316016}
   - component: {fileID: 4647748779848702990}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Bench_01_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -187,7 +187,7 @@ GameObject:
   - component: {fileID: 3977115451111612262}
   - component: {fileID: 5526620126133702267}
   - component: {fileID: 8716852249838525982}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Bench_01_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 5870105854740400958}
   - component: {fileID: 4123412649645222597}
   - component: {fileID: 2432312908177468492}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Bench_01_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}

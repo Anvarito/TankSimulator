@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4000013904285082}
   - component: {fileID: 33000011968505284}
   - component: {fileID: 23000013943354212}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Pallet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 205000013973332458}
   - component: {fileID: 8063332852403840064}
   - component: {fileID: 5785657335168950361}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Pallet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,7 +182,7 @@ GameObject:
   - component: {fileID: 4000012417515644}
   - component: {fileID: 33000012063754128}
   - component: {fileID: 23000010104659158}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Pallet_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

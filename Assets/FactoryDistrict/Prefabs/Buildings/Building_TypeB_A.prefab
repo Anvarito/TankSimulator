@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 4966469071619994}
   - component: {fileID: 33472779710584088}
   - component: {fileID: 23202745152969670}
-  - component: {fileID: 64139944547023302}
+  - component: {fileID: 4168673708079102964}
   m_Layer: 0
   m_Name: Building_TypeB_A
   m_TagString: Untagged
@@ -122,7 +122,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64139944547023302
+--- !u!64 &4168673708079102964
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

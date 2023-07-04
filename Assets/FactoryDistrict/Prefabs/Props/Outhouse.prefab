@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4000011217549006}
   - component: {fileID: 33000013600480146}
   - component: {fileID: 23000012404894534}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Outhouse_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 205000012695901166}
   - component: {fileID: 6000781923619680856}
   - component: {fileID: 1340116934561891413}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Outhouse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -187,7 +187,7 @@ GameObject:
   - component: {fileID: 4000010658077170}
   - component: {fileID: 33000012622224014}
   - component: {fileID: 23000012703113004}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Outhouse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 4000010697510940}
   - component: {fileID: 33000012470335056}
   - component: {fileID: 23000010670656364}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Outhouse_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -20,6 +20,9 @@ public class TreeFaller : MonoBehaviour
             rotateObj = transform.parent;
         else
             rotateObj = root;
+
+        if (_collider == null)
+            _collider.GetComponent<Collider>();
     }
 
     // Update is called once per frame
