@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4000011884189966}
   - component: {fileID: 33000011552522046}
   - component: {fileID: 23000011706364496}
-  - component: {fileID: 64000010953964162}
+  - component: {fileID: 1730515555218755666}
   m_Layer: 0
   m_Name: Shelfing_Large
   m_TagString: Untagged
@@ -86,8 +86,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64000010953964162
-MeshCollider:
+--- !u!65 &1730515555218755666
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -96,10 +96,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: e44eb9c335466204ab45159d0d8da9a9, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 4.604448, y: 1.9108437, z: 4.8244243}
+  m_Center: {x: -2.245746, y: 0.89838666, z: 2.3975189}
 --- !u!1 &1000011025056774
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,7 +172,6 @@ GameObject:
   - component: {fileID: 4000012245433988}
   - component: {fileID: 33000013899363966}
   - component: {fileID: 23000012634413968}
-  - component: {fileID: 64000012490056324}
   m_Layer: 0
   m_Name: Shelfing_Large_LOD1
   m_TagString: Untagged
@@ -248,20 +246,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64000012490056324
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000012022306024}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300002, guid: e44eb9c335466204ab45159d0d8da9a9, type: 3}
 --- !u!1 &1000012476571662
 GameObject:
   m_ObjectHideFlags: 0
@@ -273,7 +257,6 @@ GameObject:
   - component: {fileID: 4000011685750122}
   - component: {fileID: 33000012394611760}
   - component: {fileID: 23000012087769732}
-  - component: {fileID: 64000011101794868}
   m_Layer: 0
   m_Name: Shelfing_Large_LOD2
   m_TagString: Untagged
@@ -348,17 +331,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64000011101794868
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000012476571662}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300004, guid: e44eb9c335466204ab45159d0d8da9a9, type: 3}

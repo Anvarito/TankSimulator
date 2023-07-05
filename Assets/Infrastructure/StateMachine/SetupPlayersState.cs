@@ -34,7 +34,9 @@ namespace Infrastructure.StateMachine
 
         public void Exit()
         {
-            _inputFactory.TankPickerUIHelpers.Last().OnTankChoise.RemoveListener(PickTank);
+            foreach (var i in _inputFactory.TankPickerUIHelpers)
+                i.OnTankChoise.RemoveListener(PickTank);
+
             _inputService.OnPlayerJoined -= CreatePicker;
         }
 
@@ -53,8 +55,7 @@ namespace Infrastructure.StateMachine
             GameObject tankPickerUI = _inputFactory.CreateTankPickerUI(_canvas);
             _inputService.ConnectToInputs(tankPickerUI, individually: true);
 
-            foreach (var i in _inputFactory.TankPickerUIHelpers)
-                i.OnTankChoise.AddListener(PickTank);
+            _inputFactory.TankPickerUIHelpers.Last().OnTankChoise.AddListener(PickTank);
         }
 
         private void PickTank()
