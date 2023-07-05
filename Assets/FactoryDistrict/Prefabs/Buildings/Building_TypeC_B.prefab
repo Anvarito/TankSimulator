@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4000011750210740}
   - component: {fileID: 205277623644018874}
+  - component: {fileID: 2037078749125495421}
   m_Layer: 0
   m_Name: Building_TypeC_B
   m_TagString: Untagged
@@ -52,6 +53,20 @@ LODGroup:
     renderers:
     - renderer: {fileID: 23023967490883510}
   m_Enabled: 1
+--- !u!64 &2037078749125495421
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000013153339082}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5284197191762621072, guid: b053eb6345d367c48a1643caf750a717, type: 3}
 --- !u!1 &1866871775774362
 GameObject:
   m_ObjectHideFlags: 0
@@ -63,8 +78,6 @@ GameObject:
   - component: {fileID: 4223162688936084}
   - component: {fileID: 33864114781062840}
   - component: {fileID: 23023967490883510}
-  - component: {fileID: 1821894454874033528}
-  - component: {fileID: 1684270708840129855}
   m_Layer: 0
   m_Name: Building_TypeC_B
   m_TagString: Untagged
@@ -144,29 +157,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1821894454874033528
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1866871775774362}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 17.194668, y: 16.042675, z: 25.1}
-  m_Center: {x: -0.04733467, y: 7.0213375, z: 0}
---- !u!65 &1684270708840129855
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1866871775774362}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 8.219799, y: 6.184266, z: 17.174475}
-  m_Center: {x: -12.4401, y: 2.0921326, z: 3.962778}
