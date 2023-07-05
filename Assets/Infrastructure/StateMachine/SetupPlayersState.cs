@@ -1,9 +1,11 @@
+using System;
 using System.Linq;
 using Infrastructure.Factory.Base;
 using Infrastructure.Factory.Compose;
 using Infrastructure.Services.Input;
 using Infrastructure.Services.Progress;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Infrastructure.StateMachine
 {
@@ -29,14 +31,27 @@ namespace Infrastructure.StateMachine
             _inputFactory = factories.Single<IInputFactory>();
         }
 
-        public void Enter(string sceneName) =>
+        public void Enter(string sceneName)
+        {
+            _inputService.PlayerConfigs.First().Input.onActionTriggered += OnBack;
             _sceneLoader.Load(sceneName, onLoad);
+        }
+
+        private void OnBack(InputAction.CallbackContext obj)
+        {
+            if(obj.performed && obj.action.name == "ReturnMenu")
+            {
+                _inputService.ResetToDefault();
+                _gameStateMachine.Enter<MenuState>();
+            }
+        }
 
         public void Exit()
         {
             foreach (var i in _inputFactory.TankPickerUIHelpers)
                 i.OnTankChoise.RemoveListener(PickTank);
 
+            _inputService.PlayerConfigs.First().Input.onActionTriggered -= OnBack;
             _inputService.OnPlayerJoined -= CreatePicker;
         }
 

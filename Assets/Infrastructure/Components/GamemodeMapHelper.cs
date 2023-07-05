@@ -56,7 +56,7 @@ namespace Infrastructure.Components
         {
             _mapDrop.options.Clear();
             foreach (LevelId id in _dataService.Levels.Keys)
-                _mapDrop.options.Add(new TMP_Dropdown.OptionData(_dataService.Levels[id].SceneName));
+                _mapDrop.options.Add(new TMP_Dropdown.OptionData(_dataService.Levels[id].InGameName));
         }
 
         private void ContinueAction()

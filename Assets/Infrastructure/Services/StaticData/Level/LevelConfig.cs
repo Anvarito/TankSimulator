@@ -7,5 +7,6 @@ namespace Infrastructure.Services.StaticData.Level
     {
         public LevelId LevelId;
         public string SceneName;
+        public string InGameName;
     }
 }

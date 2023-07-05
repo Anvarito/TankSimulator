@@ -9,13 +9,10 @@ public class AddCollider : MonoBehaviour
     {
         foreach (Transform i in transform)
         {
-            if (i.name.Contains("Road_2L"))
-            {
                 if (i.GetChild(0).gameObject.TryGetComponent(out BoxCollider boxCollider0))
                 {
-                    DestroyImmediate(boxCollider0);
+                    Destroy(boxCollider0);
                 }
-            }
         }
     }
 }
