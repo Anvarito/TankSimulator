@@ -67,7 +67,7 @@ GameObject:
   - component: {fileID: 8365697398238898806}
   - component: {fileID: 8386799668946547288}
   - component: {fileID: 8378787587483337890}
-  - component: {fileID: 7899477763687247227}
+  - component: {fileID: 1148474023611760176}
   m_Layer: 0
   m_Name: Smokestack_mdl
   m_TagString: Untagged
@@ -141,7 +141,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &7899477763687247227
+--- !u!136 &1148474023611760176
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -151,7 +151,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 9.1
-  m_Height: 244.65
+  m_Radius: 8.62
+  m_Height: 165.1
   m_Direction: 2
-  m_Center: {x: 0.0000014305115, y: 0.000008106232, z: 3.76}
+  m_Center: {x: 0.0000014305115, y: 0.0000004768371, z: 62.999992}
