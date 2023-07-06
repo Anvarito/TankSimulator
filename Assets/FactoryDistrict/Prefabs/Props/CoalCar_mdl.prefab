@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 4000011639351802}
   - component: {fileID: 33000011730016312}
   - component: {fileID: 23000010358223250}
-  - component: {fileID: 64000013298851094}
+  - component: {fileID: 5555091420301203541}
   m_Layer: 0
   m_Name: CoalCar_mdl
   m_TagString: Untagged
@@ -184,8 +184,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64000013298851094
-MeshCollider:
+--- !u!65 &5555091420301203541
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -194,10 +194,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: ef183400e69d20b4da244e6b6a07068c, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 3.265933, y: 12.416713, z: 3.8352737}
+  m_Center: {x: 0.047642887, y: 0.014358042, z: 1.1915399}
 --- !u!1 &1000013760675986
 GameObject:
   m_ObjectHideFlags: 0

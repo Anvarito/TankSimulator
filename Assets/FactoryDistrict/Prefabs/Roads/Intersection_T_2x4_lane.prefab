@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4000013859908584}
   - component: {fileID: 205770968386991242}
+  - component: {fileID: 1811197106801658288}
   m_Layer: 0
   m_Name: Intersection_T_2x4_lane
   m_TagString: Untagged
@@ -52,6 +53,20 @@ LODGroup:
     renderers:
     - renderer: {fileID: 23620828901483358}
   m_Enabled: 1
+--- !u!64 &1811197106801658288
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000010925778504}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 837368108217039730, guid: 7b8c46b2774f11d449db93f4b4457efa, type: 3}
 --- !u!1 &1627986121606728
 GameObject:
   m_ObjectHideFlags: 0
@@ -63,7 +78,6 @@ GameObject:
   - component: {fileID: 4751876844736136}
   - component: {fileID: 33440683716422548}
   - component: {fileID: 23620828901483358}
-  - component: {fileID: 64943375433317784}
   m_Layer: 0
   m_Name: Intersection_T_2x4_lane
   m_TagString: Untagged
@@ -138,17 +152,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64943375433317784
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1627986121606728}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 91f7950e7718a9847a5e5c23925ddd62, type: 3}

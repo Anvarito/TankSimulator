@@ -10,7 +10,7 @@ namespace ChobiAssets.PTM
         private PlayerInput _playerInput;
         private InputAction _resetTurretAction;
         private Vector2 _rotateInput;
-        public Camera_Rotation_Input_02_For_Single_Stick_Drive_CS(PlayerInput playerInput, InputAction lookAction, InputAction resetTurretAction)
+        public Camera_Rotation_Input_02_For_Single_Stick_Drive_CS(PlayerInput playerInput, InputAction lookAction, InputAction resetTurretAction )
         {
             _lookAction = lookAction;
             _playerInput = playerInput;
@@ -56,13 +56,13 @@ namespace ChobiAssets.PTM
             }
 
             // Rotation.
-            multiplier = Mathf.Lerp(0.1f, rotationScript.RotationMultiplier, rotationScript.Main_Camera.fieldOfView / 15.0f); // Change the rotation speed according to the FOV of the main camera.
-
+            //multiplier = Mathf.Lerp(0.1f, rotationScript.RotationMultiplier, rotationScript.Main_Camera.fieldOfView / 15.0f); // Change the rotation speed according to the FOV of the main camera.
+            multiplier = 25;
             var vertical = _rotateInput.y;
             var horizontal = _rotateInput.x;
 
-            rotationScript.Horizontal_Input = horizontal * multiplier;
-            rotationScript.Vertical_Input = vertical * multiplier * 0.5f;
+            rotationScript.Horizontal_Input = horizontal * multiplier * Time.deltaTime;
+            rotationScript.Vertical_Input = vertical * multiplier * 0.5f * Time.deltaTime;
         }
 
     }

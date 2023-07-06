@@ -12,10 +12,11 @@ namespace ChobiAssets.PTM
         public const int Bullet_Layer = 12; // for bullet.
         public const int Armor_Collider_Layer = 13; // for "Armor_Collider" and "Track_Collider".
         public const int Extra_Collider_Layer = 14; // for Extra Collier.
+        public const int Props_Layer = 15; // for Extra Collier.
 
         // Layer Mask settings.
         public const int Layer_Mask = ~((1 << 2) + (1 << Reinforce_Layer) + (1 << Bullet_Layer) + (1 << Extra_Collider_Layer)); // Ignore "Layer 2(Ignore Ray)", "Reinforce_Layer", "Bullet_Layer", "Extra_Collider_Layer".
-        public const int Aiming_Layer_Mask = ~((1 << 2) + (1 << Wheels_Layer) + (1 << Reinforce_Layer) + (1 << Bullet_Layer) + (1 << Extra_Collider_Layer)); // Ignore "Layer 2(Ignore Ray)", "Wheels_Layer", "Reinforce_Layer", "Bullet_Layer", "Extra_Collider_Layer".
+        public const int Aiming_Layer_Mask = ~((1 << 2) + (1 << Wheels_Layer) + (1 << Reinforce_Layer) + (1 << Bullet_Layer) + (1 << Extra_Collider_Layer) + (1 << Props_Layer)); // Ignore "Layer 2(Ignore Ray)", "Wheels_Layer", "Reinforce_Layer", "Bullet_Layer", "Extra_Collider_Layer", "Prop_layer".
         public const int Anti_Slipping_Layer_Mask = ~((1 << 2) + (1 << Reinforce_Layer) + (1 << Body_Layer) + (1 << Extra_Collider_Layer)); // Ignore "Layer 2(Ignore Ray)", "Reinforce_Layer", "Body_Layer", "Extra_Collider_Layer".
         public const int Detect_Body_Layer_Mask = 1 << Body_Layer; // Hit only "Body_Layer". (Used for detecting a tank)
 

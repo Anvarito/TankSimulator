@@ -44,12 +44,9 @@ namespace ChobiAssets.PTM
             // Get the "Drive_Control_CS".
             controlScript = GetComponentInParent<Drive_Control_CS>();
 
-            foreach(Transform driveWheel in transform)
+            foreach (Drive_Wheel_CS driveWheel in gameObject.GetComponentsInChildren<Drive_Wheel_CS>())
             {
-                if(driveWheel.TryGetComponent(out Drive_Wheel_CS drive_Wheel))
-                {
-                    _driveWheels.Add(drive_Wheel);
-                }
+                _driveWheels.Add(driveWheel);
             }
             // Set the "maxAngVelocity".
             maxAngVelocity = Mathf.Deg2Rad * ((controlScript.Max_Speed / (2.0f * Radius * Mathf.PI)) * 360.0f);
@@ -63,7 +60,7 @@ namespace ChobiAssets.PTM
             else
                 _isLeftBroken = false;
 
-            foreach(var i in _driveWheels)
+            foreach (var i in _driveWheels)
             {
                 i.Track_Repaired_Linkage(!track.IsRightSide);
             }
@@ -123,7 +120,7 @@ namespace ChobiAssets.PTM
             ControllDriweWheels();
         }
 
-        
+
 
         void ControllDriweWheels()
         {

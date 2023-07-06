@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4000013680062572}
   - component: {fileID: 33000013493530082}
   - component: {fileID: 23000010322677564}
-  - component: {fileID: 65000011158950614}
+  - component: {fileID: 1393526945442567526}
   m_Layer: 0
   m_Name: ConcreteBlock
   m_TagString: Untagged
@@ -84,7 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &65000011158950614
+--- !u!65 &1393526945442567526
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,5 +95,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 2.0000007, z: 1.0535735}
-  m_Center: {x: -0.5, y: -1.0000004, z: 0.52678674}
+  m_Size: {x: 1, y: 1.0535738, z: 2.0000012}
+  m_Center: {x: -0.5, y: 0.5267869, z: 1.0000006}

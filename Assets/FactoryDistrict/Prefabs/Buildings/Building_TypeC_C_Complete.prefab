@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1116386266927332170}
   - component: {fileID: 1087800411630435410}
   - component: {fileID: 1098121419429332412}
-  - component: {fileID: 1120678057009959414}
   m_Layer: 0
   m_Name: Building_TypeC_C_Complete
   m_TagString: Untagged
@@ -93,20 +92,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1120678057009959414
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1110201246778151958}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 60c22ac423697254fb58a01c4247f40f, type: 3}
 --- !u!1 &1111581660535750542
 GameObject:
   m_ObjectHideFlags: 0
@@ -116,6 +101,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1108054686109910334}
+  - component: {fileID: 896241192781885362}
   m_Layer: 0
   m_Name: Building_TypeC_C_Complete
   m_TagString: Untagged
@@ -139,3 +125,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &896241192781885362
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111581660535750542}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 9183456119185526493, guid: 31bdf6dd3915df946b94fb933eb32ff0, type: 3}

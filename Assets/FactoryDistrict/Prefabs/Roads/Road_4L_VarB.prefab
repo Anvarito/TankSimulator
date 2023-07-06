@@ -10,12 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4000014161012416}
   - component: {fileID: 205615744147334596}
+  - component: {fileID: 3842685059951416947}
   m_Layer: 0
   m_Name: Road_4L_VarB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4000014161012416
 Transform:
@@ -52,6 +53,20 @@ LODGroup:
     renderers:
     - renderer: {fileID: 23936675560070890}
   m_Enabled: 1
+--- !u!64 &3842685059951416947
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000013749634430}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8550855537315158779, guid: 83508eb4a789ef5499e2603fcdd83762, type: 3}
 --- !u!1 &1299455653192888
 GameObject:
   m_ObjectHideFlags: 0
@@ -63,13 +78,12 @@ GameObject:
   - component: {fileID: 4024977008605280}
   - component: {fileID: 33128330113458490}
   - component: {fileID: 23936675560070890}
-  - component: {fileID: 64023009533601854}
   m_Layer: 0
   m_Name: Road_4L_VarB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4024977008605280
 Transform:
@@ -138,17 +152,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64023009533601854
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1299455653192888}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: c10479a7dc0cc9848b948822587c30c0, type: 3}

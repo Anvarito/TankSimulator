@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using ChobiAssets.PTM;
@@ -7,12 +8,15 @@ using Infrastructure.Services.Audio;
 using Infrastructure.Services.Input;
 using Infrastructure.Services.Progress;
 using Infrastructure.Services.StaticData.Gamemodes;
+using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Infrastructure.StateMachine
 {
     public class ChooseLevelModeState : IState
     {
         private const string LevelModeChoise = "LevelModeChoise";
+        private const string SetupTankMain = "SetupTankRoman";
 
         private readonly GameStateMachine _gameStateMachine;
         private readonly SceneLoader _sceneLoader;
@@ -30,13 +34,26 @@ namespace Infrastructure.StateMachine
             _inputService = inputService;
             _audioService = audioService;
             _playerFactory = factories.Single<IPlayerFactory>();
+
         }
 
-        public void Enter() =>
+        private void OnBack(InputAction.CallbackContext obj)
+        {
+            if (obj.performed && obj.action.name == "ReturnMenu")
+            {
+                _gameStateMachine.Enter<SetupPlayersState, string>(SetupTankMain);
+            }
+        }
+
+        public void Enter()
+        {
             _sceneLoader.Load(LevelModeChoise, OnLoad);
+            _inputService.PlayerConfigs.First().Input.onActionTriggered += OnBack;
+        }
 
         public void Exit()
         {
+            _inputService.PlayerConfigs.First().Input.onActionTriggered -= OnBack;
         }
 
         private void OnLoad()
@@ -74,16 +91,16 @@ namespace Infrastructure.StateMachine
             _inputService.PlayerConfigs.Last().Team = ERelationship.TeamA;
         }
 
-        private bool IsPLayersInDifferentTeams() => 
+        private bool IsPLayersInDifferentTeams() =>
             IsVersusMode() || IsDeathMatchMode();
 
-        private bool IsDeathMatchMode() => 
+        private bool IsDeathMatchMode() =>
             _progressService.Progress.WorldData.ModeId == GamemodeId.DeathMatch;
 
-        private bool IsVersusMode() => 
+        private bool IsVersusMode() =>
             _progressService.Progress.WorldData.ModeId == GamemodeId.Versus;
-        
-        
+
+
         private void SetPlayerInSameTeamProgress() =>
             _progressService.Progress.WorldData.Teams =
                 Enumerable.Range(1, 2).Select(x => ERelationship.TeamA).ToList();

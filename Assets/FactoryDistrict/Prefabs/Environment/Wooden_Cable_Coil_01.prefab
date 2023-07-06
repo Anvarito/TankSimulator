@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6336735805380913158}
   - component: {fileID: 2588843154913437165}
   - component: {fileID: 6196316201373674125}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Wooden_Cable_Coil_01_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 6263256322239997722}
   - component: {fileID: 1013139872337391153}
   - component: {fileID: 4537744748060013420}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Wooden_Cable_Coil_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -187,7 +187,7 @@ GameObject:
   - component: {fileID: 3514514122650731319}
   - component: {fileID: 8327107945611417833}
   - component: {fileID: 7480045035862615945}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Wooden_Cable_Coil_01_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 1721517235169603674}
   - component: {fileID: 8412589457693313238}
   - component: {fileID: 167400271701793491}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Wooden_Cable_Coil_01_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4000014109793160}
   - component: {fileID: 205389761751651420}
+  - component: {fileID: 1765478338417721146}
   m_Layer: 0
   m_Name: Building_TypeC_D
   m_TagString: Untagged
@@ -52,6 +53,20 @@ LODGroup:
     renderers:
     - renderer: {fileID: 23750083073372624}
   m_Enabled: 1
+--- !u!64 &1765478338417721146
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000011478409822}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 996860627646671422, guid: 502b49d39d1fc824d9483b6c21536f6e, type: 3}
 --- !u!1 &1767362098330698
 GameObject:
   m_ObjectHideFlags: 0

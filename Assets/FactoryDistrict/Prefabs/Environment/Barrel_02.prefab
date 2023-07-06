@@ -10,7 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 851974158943457027}
   - component: {fileID: 5586942191859513458}
-  m_Layer: 0
+  - component: {fileID: 3929900641277175473}
+  - component: {fileID: 5465185819516244413}
+  m_Layer: 15
   m_Name: Barrel_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,6 +29,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5445985260834002835}
   - {fileID: 6862286205165928495}
@@ -61,6 +64,36 @@ LODGroup:
     renderers:
     - renderer: {fileID: 759133083529578682}
   m_Enabled: 1
+--- !u!54 &3929900641277175473
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43067146071397817}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!136 &5465185819516244413
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43067146071397817}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.31001687
+  m_Height: 0.90017056
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.4500848, z: 0}
 --- !u!1 &3199628247079278118
 GameObject:
   m_ObjectHideFlags: 0
@@ -72,8 +105,7 @@ GameObject:
   - component: {fileID: 5445985260834002835}
   - component: {fileID: 2667203972200954999}
   - component: {fileID: 4208008694358222394}
-  - component: {fileID: 3233479600627587751}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Barrel_02_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,6 +122,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 851974158943457027}
   m_RootOrder: 0
@@ -113,6 +146,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -143,19 +177,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3233479600627587751
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3199628247079278118}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.62115103, y: 0.9011634, z: 0.621151}
-  m_Center: {x: 0, y: 0.4505817, z: 0}
 --- !u!1 &3553300040532892377
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,7 +188,7 @@ GameObject:
   - component: {fileID: 774280243233785243}
   - component: {fileID: 7660940785499025704}
   - component: {fileID: 759133083529578682}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Barrel_02_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -184,6 +205,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 851974158943457027}
   m_RootOrder: 2
@@ -207,6 +229,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -248,7 +271,7 @@ GameObject:
   - component: {fileID: 6862286205165928495}
   - component: {fileID: 5844256389205678484}
   - component: {fileID: 6049511414716575040}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Barrel_02_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -265,6 +288,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 851974158943457027}
   m_RootOrder: 1
@@ -288,6 +312,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1

@@ -47,7 +47,7 @@ namespace ChobiAssets.PTM
         //public UnityEvent OnDisableGunCam;
         public UnityEvent<float> OnFOVchange;
 
-        private bool _isTankDestroyed;
+        private bool _disableToogle;
         public UnityEvent<EActiveCameraType> OnSwitchCamera;
         //      void Start()
         //{
@@ -132,7 +132,7 @@ namespace ChobiAssets.PTM
 
         void Update()
         {
-            if (isSelected == false || _isTankDestroyed)
+            if (isSelected == false || _disableToogle)
             {
                 return;
             }
@@ -148,7 +148,7 @@ namespace ChobiAssets.PTM
 
         public void Switch_Mode(EActiveCameraType mode)
         { // Called from "Gun_Camera_Input_##_###".
-            if (_isTankDestroyed)
+            if (_disableToogle)
             {
                 DisableGunCamera();
                 return;
@@ -187,6 +187,12 @@ namespace ChobiAssets.PTM
             }
 
             OnSwitchCamera?.Invoke(mode);
+        }
+
+        internal void DisableInput()
+        {
+            Switch_Mode(EActiveCameraType.MainCamera);
+            _disableToogle = true;
         }
 
         private void EnableGunCamera()
@@ -257,7 +263,7 @@ namespace ChobiAssets.PTM
                 Switch_Mode(EActiveCameraType.MainCamera); // Off
             }
 
-            _isTankDestroyed = true;
+            _disableToogle = true;
             inputScript.DissableInput();
         }
 

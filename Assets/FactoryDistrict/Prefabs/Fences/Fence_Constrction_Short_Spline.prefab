@@ -43,7 +43,8 @@ GameObject:
   - component: {fileID: 4225902467286324}
   - component: {fileID: 33210372448169216}
   - component: {fileID: 23579116872794474}
-  - component: {fileID: 65112411782353886}
+  - component: {fileID: 4537397919565277365}
+  - component: {fileID: 975020295577908359}
   m_Layer: 0
   m_Name: Fence_Constrction_Short_Spline
   m_TagString: Untagged
@@ -117,7 +118,23 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &65112411782353886
+--- !u!114 &4537397919565277365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131737144512606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 136e51099fdfe7a4583f0feb13877918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  root: {fileID: 4000011521489536}
+  _collider: {fileID: 975020295577908359}
+  DebugCallider: {fileID: 0}
+  _speed: 60
+--- !u!65 &975020295577908359
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -128,5 +145,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.0149927, y: 1.343411, z: 0.12129459}
-  m_Center: {x: -1.4925044, y: 0.5424825, z: 0.0012448117}
+  m_Size: {x: 3.014992, y: 1.343411, z: 0.12129456}
+  m_Center: {x: -1.4925154, y: 0.5424823, z: 0.001237182}

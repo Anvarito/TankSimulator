@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4000010029188942}
   - component: {fileID: 33000012497970780}
   - component: {fileID: 23000012933089832}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Oil_Drum_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 4000012832480842}
   - component: {fileID: 33000010403703162}
   - component: {fileID: 23000010439640780}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Oil_Drum_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 4000011235195168}
   - component: {fileID: 33000010416332574}
   - component: {fileID: 23000012918050940}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Oil_Drum
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -261,7 +261,7 @@ GameObject:
   - component: {fileID: 205000012613075382}
   - component: {fileID: 2949592708546161556}
   - component: {fileID: 5208957400271522758}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Oil_Drum
   m_TagString: Untagged
   m_Icon: {fileID: 0}

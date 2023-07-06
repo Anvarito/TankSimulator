@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 6379042083056763583}
   - component: {fileID: 8009989965462293786}
   - component: {fileID: 5246064811594365392}
-  - component: {fileID: 5286086034276433902}
   - component: {fileID: 4948376567027112420}
+  - component: {fileID: 830034431390832063}
   m_Layer: 0
   m_Name: Switchyard_01
   m_TagString: Untagged
@@ -30,6 +30,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -53,6 +54,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -86,19 +88,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5286086034276433902
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6038544619764815877}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 4.42052, y: 4.6001434, z: 6.121208}
-  m_Center: {x: -2, y: 2.3000717, z: -3}
 --- !u!205 &4948376567027112420
 LODGroup:
   m_ObjectHideFlags: 0
@@ -118,3 +107,16 @@ LODGroup:
     renderers:
     - renderer: {fileID: 5246064811594365392}
   m_Enabled: 1
+--- !u!65 &830034431390832063
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6038544619764815877}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.420521, y: 4.6001434, z: 6.1212096}
+  m_Center: {x: -2.0000005, y: 2.3000717, z: -3.0000122}

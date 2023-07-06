@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using ChobiAssets.PTM;
 using Infrastructure.Components;
 using Infrastructure.Factory.Base;
@@ -46,7 +47,7 @@ namespace Infrastructure.Services.Input
                 if (NextPlayerExist()) ResetPlayerIndex();
                 PlayerConfigs[currentIndex].Input.uiInputModule = uiInputModule.GetComponentInChildren<InputSystemUIInputModule>();
 
-                if(uiInputModule.TryGetComponent(out TankPickerUIHelper tankPickerUIHelper))
+                if (uiInputModule.TryGetComponent(out TankPickerUIHelper tankPickerUIHelper))
                 {
                     tankPickerUIHelper.Construct(PlayerConfigs[currentIndex], _staticDataService);
                 }
@@ -63,7 +64,7 @@ namespace Infrastructure.Services.Input
             }
         }
 
-        public void ResetPlayerIndex() => 
+        public void ResetPlayerIndex() =>
             currentIndex = 0;
 
         private void SetupControlSchema()
@@ -104,7 +105,7 @@ namespace Infrastructure.Services.Input
             (_gameStateMachine.InSetupInputState() && PlayerConfigs.Count < 1) ||
             (_gameStateMachine.InSetupPlayersState() && PlayerConfigs.Count < 2);
 
-        private bool NextPlayerExist() => 
+        private bool NextPlayerExist() =>
             currentIndex + 1 > PlayerConfigs.Count;
 
         public void CleanUp()
@@ -118,6 +119,22 @@ namespace Infrastructure.Services.Input
 
             PlayerConfigs.Clear();
         }
+
+        public void ResetToDefault()
+        {
+            if (PlayerConfigs.Count > 1)
+            {
+                GameObject.Destroy(PlayerConfigs[1].Input.gameObject);
+                PlayerConfigs.RemoveAt(1);
+            }
+
+            foreach(var i in PlayerConfigs)
+            {
+                i.IsReady = false;
+            }
+
+            ResetPlayerIndex();
+        }
     }
 
 
@@ -127,7 +144,7 @@ namespace Infrastructure.Services.Input
         public int PlayerIndex { get; private set; }
 
         public bool IsReady { get; set; }
-        
+
         public string PrefabPath { get; set; }
         public ERelationship Team { get; set; }
 

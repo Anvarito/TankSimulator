@@ -26,7 +26,6 @@ namespace Infrastructure.StateMachine
         private readonly IPlayerFactory _playerFactory;
         private readonly IEnemyFactory _enemyFactory;
 
-
         public GameLoopState(GameStateMachine gameStateMachine, IInputService inputService, ITimerService timer, IKillCounter killCounter,
             IScoreCounter scoreCounter, IProgressService progress, IStaticDataService dataService, IFactories factories)
         {
@@ -76,7 +75,6 @@ namespace Infrastructure.StateMachine
 
         private void Victory() =>
             _gameStateMachine.Enter<VictoryState, float>(Score());
-
 
         private void RegisterKillCounter()
         {

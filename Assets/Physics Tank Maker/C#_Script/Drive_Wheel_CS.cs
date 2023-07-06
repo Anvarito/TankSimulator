@@ -63,17 +63,20 @@ namespace ChobiAssets.PTM
 
             // Lock the wheels.
             This_Rigidbody.angularDrag = Mathf.Infinity;
+            //This_Rigidbody.constraints = RigidbodyConstraints.FreezeAll;
 
             // Store the radius of the SphereCollider.
             var sphereCollider = GetComponent<SphereCollider>();
-            storedSphereColliderRadius = sphereCollider.radius;
-
+            //storedSphereColliderRadius = sphereCollider.radius;
             // Resize the SphereCollider.
             var meshFilter = GetComponent<MeshFilter>();
             if (meshFilter && meshFilter.sharedMesh)
             {
                 sphereCollider.radius = meshFilter.sharedMesh.bounds.extents.x;
             }
+            Destroy(GetComponent<Stabilizer_CS>());
+            Destroy(GetComponent<Fix_Shaking_Rotation_CS>());
+           // Destroy(this);
 
             // Disable this script.
             //this.enabled = false;

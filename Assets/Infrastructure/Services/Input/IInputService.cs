@@ -11,5 +11,7 @@ namespace Infrastructure.Services.Input
         List<PlayerConfiguration> PlayerConfigs { get; }
         Action OnEscTriggered { get; set; }
         void ResetPlayerIndex();
+
+        void ResetToDefault();
     }
 }

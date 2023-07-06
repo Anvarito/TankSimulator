@@ -116,14 +116,14 @@ namespace ChobiAssets.PTM
             {
                 Vertical_Input = -Vertical_Input;
             }
-
+            /*
             // Adjust the input rate accoding to the current fps.
             if (Time.deltaTime != 0.0f)
             { // (Note.) Sometimes the delta time will be zero while scene transition. 
                 var currentDelta = Time.fixedDeltaTime / Time.deltaTime;
                 Horizontal_Input *= currentDelta;
                 Vertical_Input *= currentDelta;
-            }
+            }*/
         }
 
 

@@ -15,3 +15,4 @@ MonoBehaviour:
   Config:
     LevelId: 0
     SceneName: MinimalTest
+    InGameName: "\u0442\u0435\u0441\u0442"

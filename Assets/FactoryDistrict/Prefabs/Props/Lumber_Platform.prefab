@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 33000014213551096}
   - component: {fileID: 23000013770728508}
   - component: {fileID: 1013968201717973683}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Lumber_Platform_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 4000013876281254}
   - component: {fileID: 33000013203933300}
   - component: {fileID: 23000010869802736}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Lumber_Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -196,7 +196,7 @@ GameObject:
   - component: {fileID: 205000010539165410}
   - component: {fileID: 9091321973631590284}
   - component: {fileID: 6442225125589066635}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Lumber_Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}

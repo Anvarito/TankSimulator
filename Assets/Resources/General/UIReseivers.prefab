@@ -132,8 +132,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _presenterPrefab: {fileID: 6651287836362072409, guid: 8c642c3a9320fd6489ab4cd2f4144227, type: 3}
-  Friend_Color: {r: 0, g: 0, b: 1, a: 0.4627451}
-  Hostile_Color: {r: 1, g: 0, b: 0, a: 0.4745098}
+  Friend_Color: {r: 1, g: 0, b: 0, a: 1}
+  Hostile_Color: {r: 0, g: 0.07796383, b: 1, a: 1}
   Show_Always: 1
 --- !u!114 &6740176055343302917
 MonoBehaviour:
