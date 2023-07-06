@@ -9,7 +9,7 @@ public class TreeFaller : MonoBehaviour
     public float _speed = 60;
 
     private bool _isCollide = false;
-    private Vector3 _colisionPoint;
+    private Vector3 _colisionDirection;
     private float _accumAngle = 0;
     private Transform rotateObj;
     private Vector3 axisRotate;
@@ -48,7 +48,8 @@ public class TreeFaller : MonoBehaviour
         if (collision.gameObject.layer == Layer_Settings_CS.Body_Layer
             || collision.gameObject.layer == Layer_Settings_CS.Bullet_Layer)
         {
-            _colisionPoint = collision.contacts[0].point;
+            //_colisionPoint = collision.contacts[0].point;
+            _colisionDirection = collision.transform.forward;
             Lauch();
         }
     }
@@ -56,18 +57,18 @@ public class TreeFaller : MonoBehaviour
     [ContextMenu("Launch")]
     public void DebugLaunch()
     {
-        _colisionPoint = DebugCallider.transform.position;
+        _colisionDirection = DebugCallider.transform.forward;
         Lauch();
     }
     public void Lauch()
     {
-        Vector3 RotatedObject = new Vector3(rotateObj.position.x, _colisionPoint.y, rotateObj.position.z);
-        Vector3 toCenter = RotatedObject - _colisionPoint;
-        axisRotate = Vector3.Cross(toCenter, Vector3.up).normalized;
+        Vector3 RotatedObject = new Vector3(rotateObj.position.x, _colisionDirection.y, rotateObj.position.z);
+        //Vector3 toCenter = RotatedObject - _colisionPoint;
+        axisRotate = Vector3.Cross(_colisionDirection, Vector3.up).normalized;
 
-        //Debug.DrawRay(_colisionPoint, toCenter, Color.red, 100);
-        //Debug.DrawLine(toCenter + _colisionPoint, toCenter + _colisionPoint + Vector3.up, Color.blue, 100);
-        //Debug.DrawLine(toCenter + _colisionPoint, _colisionPoint + toCenter + axisRotate, Color.yellow, 100);
+        //Debug.DrawRay(_colisionDirection, toCenter, Color.red, 100);
+        //Debug.DrawLine(_colisionDirection, _colisionDirection + Vector3.up, Color.blue, 100);
+        //Debug.DrawLine(_colisionDirection, _colisionDirection + axisRotate, Color.yellow, 100);
 
         _isCollide = true;
         _collider.enabled = false;
