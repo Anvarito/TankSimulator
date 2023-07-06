@@ -32,17 +32,13 @@ namespace Infrastructure.StateMachine
                 [typeof(MenuState)] = new MenuState(this,sceneLoader,services.Single<IAudioService>(),services.Single<IProgressService>(),services.Single<ISaveLoadService>(),services.Single<IInputService>(),services.Single<IFactories>()),
                 [typeof(SetupPlayersState)] = new SetupPlayersState(this,sceneLoader,services.Single<IInputService>(),services.Single<IFactories>(), services.Single<IProgressService>()),
                 [typeof(SetupFirstInputState)] = new SetupFirstInputState(this,sceneLoader,services.Single<IProgressService>(),services.Single<IInputService>(),services.Single<IFactories>(), services.Single<IAudioService>()),
-                [typeof(ChooseLevelModeState)] = new ChooseLevelModeState(this,sceneLoader,services.Single<IProgressService>(), services.Single<IInputService>(), services.Single<IFactories>(), services.Single<IAudioService>()),
+                [typeof(ChooseLevelModeState)] = new ChooseLevelModeState(this,sceneLoader,services.Single<IProgressService>(), services.Single<IInputService>(), services.Single<IFactories>()),
                 [typeof(ResetState)] = new ResetState(this, services.Single<IFactories>(), services.Single<IInputService>(), services.Single<IProgressService>()),
                 [typeof(ReloadState)] = new ReloadState(this, services.Single<IKillCounter>(), services.Single<IFactories>(), services.Single<IInputService>(), sceneLoader, services.Single<IProgressService>()),
                 [typeof(PauseState)] = new PauseState(this,services.Single<ISaveLoadService>(),services.Single<IProgressService>(),services.Single<IAudioService>(),services.Single<ITimerService>(),services.Single<IInputService>() , services.Single<IFactories>()),
             };
         }
 
-        internal void Enter<T1, T2>(object setupTankMain)
-        {
-            throw new NotImplementedException();
-        }
 
         public void Enter<TState>() where TState : class, IState
         {
