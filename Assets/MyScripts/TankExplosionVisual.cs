@@ -1,5 +1,6 @@
 using System.Collections;
 using ChobiAssets.PTM;
+using Infrastructure;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Serialization;
@@ -73,6 +74,17 @@ public class TankExplosionVisual : MonoBehaviour
         addForceOffset.z = Random.Range(-4.0f, 4.0f);
         turretRigidbody.AddForceAtPosition(_turretProps.Turret.TurretMesh.up * Random.Range(_turretProps.mass * 5.0f, _turretProps.mass * 15.0f), _turretProps.Turret.TurretMesh.position + addForceOffset, ForceMode.Impulse);
         _turretProps.Turret.TurretMesh.parent = null;
+
+        StartCoroutine(DestroyTurret(turretRigidbody.gameObject));
+    }
+
+    private IEnumerator DestroyTurret(GameObject turret)
+    {
+        float entTime = Time.time + Constants.DestroyDelay;
+        while (entTime > Time.time)
+            yield return null;
+
+        Destroy(turret);
     }
 
     private IEnumerator BodyExplosionSeqence()

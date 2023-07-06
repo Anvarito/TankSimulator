@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using Infrastructure;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace ChobiAssets.PTM
@@ -61,6 +63,8 @@ namespace ChobiAssets.PTM
         {
             InitializingAllDamageReciviers();
             SubscribeResiviers();
+
+            OnTankDestroyed.AddListener(DestroyWithDelay);
         }
         private void InitializingAllDamageReciviers()
         {
@@ -145,6 +149,24 @@ namespace ChobiAssets.PTM
 
             OnTankDestroyed?.Invoke(GetComponentInParent<ID_Settings_CS>(),bulletInitiatorID);
         }
+
+        private void DestroyWithDelay(ID_Settings_CS victim, ID_Settings_CS killer)
+        {
+            OnTankDestroyed.RemoveListener(DestroyWithDelay);
+
+            StartCoroutine(DestroyCoroutine(Constants.DestroyDelay));
+        }
+
+        private IEnumerator DestroyCoroutine(float destroyDelay)
+        {
+            var endTime = Time.time + destroyDelay;
+            while (endTime > Time.time)
+                yield return null;
+            
+            Destroy(transform.parent.gameObject);
+            
+        }
+
 
         public bool Receive_Damage(float damage, int type, int index)
         { // Called from "Damage_Control_##_##_CS" scripts in the tank.
