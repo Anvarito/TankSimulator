@@ -17,6 +17,11 @@ public class PlayerTankPickVeiw : MonoBehaviour
     [SerializeField] private GameObject _hoistPrefab;
 
     [Space(10)]
+    [Header("Info")]
+    [SerializeField] private TextMeshProUGUI _tankInfo;
+    [SerializeField] private RectTransform _content;
+
+    [Space(10)]
     [Header("Colors")]
     [SerializeField] private Color _notReadyColor;
     [SerializeField] private Color _readyColor;
@@ -24,6 +29,7 @@ public class PlayerTankPickVeiw : MonoBehaviour
     private GameObject _choiseTank;
     private Transform _spawnPoint;
     private float _rotateAmount = 0;
+    private float _scrollAmount;
 
     public void Initing(int playerIndex)
     {
@@ -52,6 +58,9 @@ public class PlayerTankPickVeiw : MonoBehaviour
         hoist.transform.localPosition = Vector3.zero;
         hoist.transform.localRotation = Quaternion.identity;
         _nameText.text = tank.Name;
+
+        _content.localPosition = Vector3.zero;
+        _tankInfo.text = tank.Description;
     }
 
     internal void Submit()
@@ -65,12 +74,19 @@ public class PlayerTankPickVeiw : MonoBehaviour
     {
         _rotateAmount = amount;
     }
+
+    internal void ScrollInfo(float amount)
+    {
+        _scrollAmount = amount;
+    }
+
     private void Update()
     {
         if (_choiseTank == null)
             return;
 
         _choiseTank.transform.Rotate(0, -_rotateAmount * 0.4f, 0);
+        _content.localPosition += new Vector3(0, _scrollAmount,0);
     }
 
     private void SetReady()

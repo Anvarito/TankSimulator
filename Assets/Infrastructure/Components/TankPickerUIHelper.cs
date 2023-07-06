@@ -59,11 +59,13 @@ namespace Infrastructure.Components
         private void ScrollStop(InputAction.CallbackContext obj)
         {
             _playerTankPickVeiw.Rotate(0);
+            _playerTankPickVeiw.ScrollInfo(0);
         }
 
         private void ScrollMove(InputAction.CallbackContext input)
         {
             _playerTankPickVeiw.Rotate(input.ReadValue<Vector2>().x);
+            _playerTankPickVeiw.ScrollInfo(input.ReadValue<Vector2>().y);
         }
 
         private void Submit(InputAction.CallbackContext input)
