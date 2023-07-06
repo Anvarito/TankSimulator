@@ -76,7 +76,7 @@ namespace ChobiAssets.PTM
             }
             Destroy(GetComponent<Stabilizer_CS>());
             Destroy(GetComponent<Fix_Shaking_Rotation_CS>());
-            Destroy(this);
+           // Destroy(this);
 
             // Disable this script.
             //this.enabled = false;

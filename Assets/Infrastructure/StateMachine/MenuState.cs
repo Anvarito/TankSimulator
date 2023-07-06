@@ -60,7 +60,7 @@ namespace Infrastructure.StateMachine
 
         private void RegisterButtonsEvents(MainMenuUIHelper mainMenu)
         {
-            mainMenu.OnContinueButtonPress.AddListener(ContinueGame);
+            //mainMenu.OnContinueButtonPress.AddListener(ContinueGame);
             mainMenu.OnOnNewGameButtonPress.AddListener(StartNewGame);
             mainMenu.OnMusicSlider.AddListener(ChangeMusicVolume);
             mainMenu.OnSoundsSlider.AddListener(ChangeSoundsVolume);
@@ -68,7 +68,7 @@ namespace Infrastructure.StateMachine
 
         private void UnregisterButtonsEvents(MainMenuUIHelper mainMenu)
         {
-            mainMenu.OnContinueButtonPress.RemoveListener(ContinueGame);
+            //mainMenu.OnContinueButtonPress.RemoveListener(ContinueGame);
             mainMenu.OnOnNewGameButtonPress.RemoveListener(StartNewGame);
             mainMenu.OnMusicSlider.RemoveListener(ChangeMusicVolume);
             mainMenu.OnSoundsSlider.RemoveListener(ChangeSoundsVolume);
