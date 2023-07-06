@@ -1,5 +1,4 @@
 using System;
-using ChobiAssets.PTM;
 
 namespace Infrastructure.Services.KillCounter
 {

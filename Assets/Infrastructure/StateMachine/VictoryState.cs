@@ -4,11 +4,11 @@ using Infrastructure.Factory.Compose;
 using Infrastructure.Services.Input;
 using Infrastructure.TestMono;
 using Infrastructure.Data;
+using Infrastructure.Services.Audio;
 using Infrastructure.Services.Progress;
 using Infrastructure.Services.SaveLoad;
 using Infrastructure.Services.StaticData.Gamemodes;
 using Infrastructure.Services.Timer;
-using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Infrastructure.StateMachine
@@ -16,6 +16,7 @@ namespace Infrastructure.StateMachine
     public class VictoryState : IPayloadedState<float>
     {
         private readonly GameStateMachine _gameStateMachine;
+        private readonly IAudioService _audioService;
         private readonly ITimerService _timerService;
         private readonly IProgressService _progress;
         private readonly ISaveLoadService _saveLoadService;
@@ -23,9 +24,10 @@ namespace Infrastructure.StateMachine
         private readonly IInputService _inputService;
 
 
-        public VictoryState(GameStateMachine gameStateMachine,ITimerService timerService, IInputService inputService,IFactories factories, IProgressService progress, ISaveLoadService saveLoadService)
+        public VictoryState(GameStateMachine gameStateMachine,IAudioService audioService,ITimerService timerService, IInputService inputService,IFactories factories, IProgressService progress, ISaveLoadService saveLoadService)
         {
             _gameStateMachine = gameStateMachine;
+            _audioService = audioService;
             _timerService = timerService;
             _inputService = inputService;
             _progress = progress;
@@ -35,8 +37,10 @@ namespace Infrastructure.StateMachine
         
         public void Enter(float score)
         {
+            _audioService.StopMusic();
             _timerService.StopTimer();
-            
+            _progress.Progress.WorldData.StartedLevel = false;
+
             _inputService.ResetPlayerIndex();
             _inputService.ConnectToInputs(_playerFactory.GameBoard.transform.root.gameObject, true);
 

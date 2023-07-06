@@ -52,6 +52,12 @@ namespace Infrastructure.Services.Audio
         public void StopMusic() => 
             _audioFactory.MusicSource.Stop();
 
+        public void PauseMusic() => 
+            _audioFactory.MusicSource.Pause();
+
+        public void StopSound() => 
+            _audioFactory.SoundsSource.Stop();
+
         public void CleanUp()
         {
         }

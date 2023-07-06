@@ -98,6 +98,15 @@ public partial class @NewControl: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Press"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Esc"",
+                    ""type"": ""Button"",
+                    ""id"": ""15633146-1cfe-4dba-8c90-80f7b2e28042"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -419,6 +428,28 @@ public partial class @NewControl: IInputActionCollection2, IDisposable
                     ""action"": ""ZoomOut"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a5ec0218-d930-4bf1-8345-dcca90069f63"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Esc"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a6287078-d255-4bfb-9cd5-19eeb3e79438"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Esc"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -435,6 +466,7 @@ public partial class @NewControl: IInputActionCollection2, IDisposable
         m_TankMovement_Switch = m_TankMovement.FindAction("Switch", throwIfNotFound: true);
         m_TankMovement_ZoomIn = m_TankMovement.FindAction("ZoomIn", throwIfNotFound: true);
         m_TankMovement_ZoomOut = m_TankMovement.FindAction("ZoomOut", throwIfNotFound: true);
+        m_TankMovement_Esc = m_TankMovement.FindAction("Esc", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -504,6 +536,7 @@ public partial class @NewControl: IInputActionCollection2, IDisposable
     private readonly InputAction m_TankMovement_Switch;
     private readonly InputAction m_TankMovement_ZoomIn;
     private readonly InputAction m_TankMovement_ZoomOut;
+    private readonly InputAction m_TankMovement_Esc;
     public struct TankMovementActions
     {
         private @NewControl m_Wrapper;
@@ -516,6 +549,7 @@ public partial class @NewControl: IInputActionCollection2, IDisposable
         public InputAction @Switch => m_Wrapper.m_TankMovement_Switch;
         public InputAction @ZoomIn => m_Wrapper.m_TankMovement_ZoomIn;
         public InputAction @ZoomOut => m_Wrapper.m_TankMovement_ZoomOut;
+        public InputAction @Esc => m_Wrapper.m_TankMovement_Esc;
         public InputActionMap Get() { return m_Wrapper.m_TankMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -549,6 +583,9 @@ public partial class @NewControl: IInputActionCollection2, IDisposable
             @ZoomOut.started += instance.OnZoomOut;
             @ZoomOut.performed += instance.OnZoomOut;
             @ZoomOut.canceled += instance.OnZoomOut;
+            @Esc.started += instance.OnEsc;
+            @Esc.performed += instance.OnEsc;
+            @Esc.canceled += instance.OnEsc;
         }
 
         private void UnregisterCallbacks(ITankMovementActions instance)
@@ -577,6 +614,9 @@ public partial class @NewControl: IInputActionCollection2, IDisposable
             @ZoomOut.started -= instance.OnZoomOut;
             @ZoomOut.performed -= instance.OnZoomOut;
             @ZoomOut.canceled -= instance.OnZoomOut;
+            @Esc.started -= instance.OnEsc;
+            @Esc.performed -= instance.OnEsc;
+            @Esc.canceled -= instance.OnEsc;
         }
 
         public void RemoveCallbacks(ITankMovementActions instance)
@@ -604,5 +644,6 @@ public partial class @NewControl: IInputActionCollection2, IDisposable
         void OnSwitch(InputAction.CallbackContext context);
         void OnZoomIn(InputAction.CallbackContext context);
         void OnZoomOut(InputAction.CallbackContext context);
+        void OnEsc(InputAction.CallbackContext context);
     }
 }

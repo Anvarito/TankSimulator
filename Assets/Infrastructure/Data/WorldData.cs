@@ -16,6 +16,7 @@ namespace Infrastructure.Data
         public List<ERelationship> Teams;
         public float MusicVolume;
         public float SoundsVolume;
+        public bool StartedLevel;
 
         public WorldData(string initialLevel)
         {

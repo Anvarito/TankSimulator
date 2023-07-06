@@ -73,7 +73,7 @@ namespace Infrastructure.StateMachine
             
             _services.Single<IFactories>().Add<IInputFactory>(new InputFactory(_services.Single<IAudioService>(),_services.Single<IAssetLoader>()));
             _services.Single<IFactories>().Add<IEnemyFactory>(new EnemyFactory(_services.Single<IAudioService>(),_services.Single<IAssetLoader>(), _services.Single<IStaticDataService>(), _services.Single<IProgressService>()));
-
+            _services.Single<IFactories>().Add<IWindowUIFactory>(new WindowUIFactory(_services.Single<IAudioService>(),_services.Single<IAssetLoader>()));
 
             _services.RegisterSingle<IInputService>(new InputService(_gameStateMachine,
                 _services.Single<IFactories>(), _services.Single<IStaticDataService>()));

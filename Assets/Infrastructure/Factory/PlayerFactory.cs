@@ -14,7 +14,6 @@ using Infrastructure.Services.StaticData.SpawnPoints;
 using Infrastructure.Services.Timer;
 using Infrastructure.TestMono;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 namespace Infrastructure.Factory
 {
@@ -23,7 +22,7 @@ namespace Infrastructure.Factory
         public Action OnPlayerDestroyed { get; set; }
         public int PlayerCount => PlayerParts.Count;
         public List<PlayerUiParts> PlayerParts { get; } = new();
-        public List<ID_Settings_CS> PlayersSettings { get;} = new();
+        public List<ID_Settings_CS> PlayersSettings { get; } = new();
         public List<ID_Settings_CS> EnemysID { get; } = new();
         public MainMenuUIHelper MainMenuUIHelper { get; private set; }
         public GameOverBoard GameBoard { get; private set; }
@@ -36,9 +35,10 @@ namespace Infrastructure.Factory
         private readonly IScoreCounter _scoreCounter;
 
 
-        public PlayerFactory(IAudioService audioService, IAssetLoader assetLoader, IInputService inputService, IProgressService progressService, IStaticDataService dataService, ITimerService timer, IScoreCounter scoreCounter) : base(audioService, assetLoader)
+        public PlayerFactory(IAudioService audioService, IAssetLoader assetLoader, IInputService inputService,
+            IProgressService progressService, IStaticDataService dataService, ITimerService timer,
+            IScoreCounter scoreCounter) : base(audioService, assetLoader)
         {
-
             _inputService = inputService;
             _progressService = progressService;
             _dataService = dataService;
@@ -54,6 +54,7 @@ namespace Infrastructure.Factory
             {
                 // Object.Destroy(i.gameObject);
             }
+
             PlayersSettings.Clear();
 
             PlayerParts.Clear();
@@ -83,7 +84,6 @@ namespace Infrastructure.Factory
         }
 
 
-
         public void CreateTankUiSpawners(List<DamageReceiversManager> enemyDamageManagers)
         {
             EnemysID.AddRange(PlayerParts.Select(x => x.IdSettings));
@@ -104,19 +104,20 @@ namespace Infrastructure.Factory
 
         public GamemodeMapHelper CreateMapModeChoiseUI()
         {
-            GamemodeMapHelper helper = InstantiateRegistered(AssetPaths.MapModeMenu).GetComponentInChildren<GamemodeMapHelper>();
+            GamemodeMapHelper helper = InstantiateRegistered(AssetPaths.MapModeMenu)
+                .GetComponentInChildren<GamemodeMapHelper>();
             helper.Construct(_progressService, _dataService, _inputService);
             return helper;
         }
 
-        private void PlayerDestroyed(ID_Settings_CS playerId,ID_Settings_CS killerId)
+        private void PlayerDestroyed(ID_Settings_CS playerId, ID_Settings_CS killerId)
         {
             PlayersSettings.Remove(playerId);
             OnPlayerDestroyed?.Invoke();
         }
 
 
-        private void InitedRegisteredTank(GameObject playerTank, Services.Input.PlayerConfiguration config)
+        private void InitedRegisteredTank(GameObject playerTank, PlayerConfiguration config)
         {
             int playerCount = _inputService.PlayerConfigs.Count;
             playerTank.GetComponent<CameraViewSetup>().SetupLayoutScreen(config.PlayerIndex, playerCount);
@@ -151,7 +152,9 @@ namespace Infrastructure.Factory
         private void InitializeUiWatchers(PlayerUiParts parts, GameObject uiSpawner)
         {
             parts.RecivierUIManager = uiSpawner.GetComponent<RecivierUIManager>();
-            parts.RecivierUIManager.Initialize(parts.Aiming, parts.BulletGenerator, parts.CannonFire, parts.GunCamera, parts.DamageReceiver, parts.DriveControl, parts.CameraView, EnemysID, parts.IdSettings, _timer, _scoreCounter);
+            parts.RecivierUIManager.Initialize(parts.Aiming, parts.BulletGenerator, parts.CannonFire, parts.GunCamera,
+                parts.DamageReceiver, parts.DriveControl, parts.CameraView, EnemysID, parts.IdSettings, _timer,
+                _scoreCounter);
         }
 
         public void AddNewEnemyToPositionActorsUI(ID_Settings_CS newEnemy)
@@ -161,19 +164,5 @@ namespace Infrastructure.Factory
                 PlayerParts[i].RecivierUIManager.AddNewEnemyToPositionActorsUI(newEnemy);
             }
         }
-
-
-        //private GameObject[] Shuffle(GameObject[] at)
-        //{
-        //    var random = new Random();
-        //    for (int i = at.Length - 1; i >= 1; i--)
-        //    {
-        //        int j = random.Next(i + 1);
-
-        //        (at[j], at[i]) = (at[i], at[j]);
-        //    }
-
-        //    return at;
-        //}
     }
 }

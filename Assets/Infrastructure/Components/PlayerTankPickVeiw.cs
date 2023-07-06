@@ -1,12 +1,7 @@
 using Infrastructure.Components;
-using Infrastructure.Services.StaticData;
 using Infrastructure.Services.StaticData.Tank;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerTankPickVeiw : MonoBehaviour
 {
@@ -75,13 +70,13 @@ public class PlayerTankPickVeiw : MonoBehaviour
 
     private void SetReady()
     {
-        _readyText.text = "Игрок готов!";
+        _readyText.text = "РРіСЂРѕРє РіРѕС‚РѕРІ!";
         _readyText.color = _readyColor;
     }
 
     private void SetNotReady()
     {
-        _readyText.text = "Выберите танк";
+        _readyText.text = "Р’С‹Р±РµСЂРёС‚Рµ С‚Р°РЅРє";
         _readyText.color = _notReadyColor;
     }
 

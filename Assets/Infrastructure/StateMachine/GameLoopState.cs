@@ -9,6 +9,7 @@ using Infrastructure.Services.StaticData;
 using Infrastructure.Services.StaticData.Gamemodes;
 using Infrastructure.Services.Timer;
 using System;
+using Infrastructure.Services.Input;
 using UnityEngine;
 
 namespace Infrastructure.StateMachine
@@ -16,6 +17,7 @@ namespace Infrastructure.StateMachine
     public class GameLoopState : IState
     {
         private readonly GameStateMachine _gameStateMachine;
+        private readonly IInputService _inputService;
         private readonly ICoroutineRunner _coroutineRunner;
         private readonly ITimerService _timer;
         private readonly IKillCounter _killCounter;
@@ -26,12 +28,14 @@ namespace Infrastructure.StateMachine
         private readonly IEnemyFactory _enemyFactory;
         private readonly IAudioService _audioService;
 
-        
 
-        public GameLoopState(GameStateMachine gameStateMachine, ITimerService timer, IKillCounter killCounter,
-            IScoreCounter scoreCounter, IProgressService progress, IStaticDataService dataService, IAudioService audioService, IFactories factories)
+        public GameLoopState(GameStateMachine gameStateMachine, IInputService inputService, ITimerService timer,
+            IKillCounter killCounter,
+            IScoreCounter scoreCounter, IProgressService progress, IStaticDataService dataService,
+            IAudioService audioService, IFactories factories)
         {
             _gameStateMachine = gameStateMachine;
+            _inputService = inputService;
             _timer = timer;
             _killCounter = killCounter;
             _scoreCounter = scoreCounter;
@@ -44,32 +48,35 @@ namespace Infrastructure.StateMachine
 
         public void Enter()
         {
-            _audioService.PlayMusic(MusicId.Test);
-            
-            RegisterKillCounter();
-
-            GamemodeConfig modeConfig = _dataService.ForMode(_progress.Progress.WorldData.ModeId);
-            if (modeConfig.IsGameOverTimerEnabled)
-                _timer.StartTimer(modeConfig.GameTime * Constants.SecondInMinute, Victory);
             _scoreCounter.LoadData();
+            TryStartTimer();
 
+            _inputService.OnEscTriggered += PauseGame;
             _enemyFactory.OnEnemyCreate += NewEnemyCreate;
+            RegisterKillCounter();
         }
 
         public void Exit()
         {
-            _audioService.StopMusic();
-            
+            _inputService.OnEscTriggered -= PauseGame;
+            _enemyFactory.OnEnemyCreate -= NewEnemyCreate;
             UnregisterKillCounter();
-
-            // if (!_timer.IsPaused)
-            //     _timer.PauseTimer();
         }
 
-        private void NewEnemyCreate(ID_Settings_CS newEnemy) => 
+        private void TryStartTimer()
+        {
+            GamemodeConfig modeConfig = _dataService.ForMode(_progress.Progress.WorldData.ModeId);
+            if (modeConfig.IsGameOverTimerEnabled && !_progress.Progress.WorldData.StartedLevel)
+                _timer.StartTimer(modeConfig.GameTime * Constants.SecondInMinute, Victory);
+        }
+
+        private void PauseGame() =>
+            _gameStateMachine.Enter<PauseState>();
+
+        private void NewEnemyCreate(ID_Settings_CS newEnemy) =>
             _playerFactory.AddNewEnemyToPositionActorsUI(newEnemy);
 
-        private void GameOver() => 
+        private void GameOver() =>
             _gameStateMachine.Enter<DefeatState, float>(Score());
 
         private void Victory() =>

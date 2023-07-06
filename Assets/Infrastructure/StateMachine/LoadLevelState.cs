@@ -5,6 +5,7 @@ using Infrastructure.Components;
 using Infrastructure.Factory.Base;
 using Infrastructure.Factory.Compose;
 using Infrastructure.Services;
+using Infrastructure.Services.Audio;
 using Infrastructure.Services.Progress;
 using Infrastructure.Services.Score;
 using Infrastructure.Services.StaticData;
@@ -22,6 +23,7 @@ namespace Infrastructure.StateMachine
 
         private readonly GameStateMachine _gameStateMachine;
         private readonly SceneLoader _sceneLoader;
+        private readonly IAudioService _audioService;
         private readonly IProgressService _progress;
         private readonly IStaticDataService _dataService;
         private readonly IFactories _factories;
@@ -33,11 +35,12 @@ namespace Infrastructure.StateMachine
         private List<SpawnPointConfig> _configs;
         private GamemodeConfig _modeConfig;
 
-        public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, IProgressService progress,
+        public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader,IAudioService audioService, IProgressService progress,
             IStaticDataService dataService, IFactories factories, ITrashRemoveService trashRemoveService, IScoreCounter scoreCounter)
         {
             _gameStateMachine = gameStateMachine;
             _sceneLoader = sceneLoader;
+            _audioService = audioService;
             _progress = progress;
             _dataService = dataService;
             _factories = factories;
@@ -52,20 +55,23 @@ namespace Infrastructure.StateMachine
             _scoreCounter.CleanUp();
             _playerFactory.CleanUp();
             _enemyFactory.CleanUp();
-
+            
             _sceneLoader.Load(name: levelName, OnLoaded);
         }
+
+        public void Exit() =>
+            _configs.Clear();
 
         private void OnLoaded()
         {
             FetchModeData();
             InitGameLevel();
-
+            
+            _audioService.PlayMusic(MusicId.Test);
+            
             _gameStateMachine.Enter<GameLoopState>();
         }
 
-        public void Exit() =>
-            _configs.Clear();
 
         private void FetchModeData() => 
             _modeConfig = _dataService.ForMode(_progress.Progress.WorldData.ModeId);
@@ -73,7 +79,12 @@ namespace Infrastructure.StateMachine
         private void InitGameLevel()
         {
             _trashRemoveService.LaunchRemove();
+            CreatePlayersAndEnemySpawners();
+            _enemyFactory.CreateGameController();
+        }
 
+        private void CreatePlayersAndEnemySpawners()
+        {
             _configs = _dataService.ForLevelAndMode(_progress.Progress.WorldData.LevelId,
                 _progress.Progress.WorldData.ModeId);
 
@@ -82,8 +93,6 @@ namespace Infrastructure.StateMachine
 
             List<SpawnPointConfig> playerPoints = _configs.Where(x => x.ActorType != EPlayerType.AI).ToList();
             CreatePlayers(playerPoints);
-
-            _enemyFactory.CreateGameController();
         }
 
         private void CreateSpawners(List<SpawnPointConfig> spawnPointConfigs)

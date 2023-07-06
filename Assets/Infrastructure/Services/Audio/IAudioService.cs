@@ -8,5 +8,7 @@ namespace Infrastructure.Services.Audio
         void ChangeMusicVolume(float volume);
         void ChangeSoundVolume(float volume);
         void StopMusic();
+        void PauseMusic();
+        void StopSound();
     }
 }

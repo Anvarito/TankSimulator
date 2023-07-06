@@ -1,7 +1,5 @@
 ﻿//Coded for Unity 5.6 or higher
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [ExecuteInEditMode]

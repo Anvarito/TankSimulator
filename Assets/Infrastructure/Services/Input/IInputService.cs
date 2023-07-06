@@ -9,6 +9,7 @@ namespace Infrastructure.Services.Input
         void ConnectToInputs(GameObject uiInputModule, bool individually = false);
         Action OnPlayerJoined { get; set; }
         List<PlayerConfiguration> PlayerConfigs { get; }
+        Action OnEscTriggered { get; set; }
         void ResetPlayerIndex();
     }
 }

@@ -11,6 +11,7 @@ namespace Infrastructure.Factory.Base
         Action<ID_Settings_CS> OnEnemyDestroyed { get; set; }
         Action<ID_Settings_CS> OnEnemyCreate { get; set; }
         int EnemiesCount { get; }
+        Game_Controller_CS Controller { get; }
         public void CreateGameController();
         DamageReceiversManager CreateEnemy(SpawnPointConfig config);
     }

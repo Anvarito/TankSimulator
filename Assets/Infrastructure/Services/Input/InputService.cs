@@ -15,6 +15,7 @@ namespace Infrastructure.Services.Input
     public class InputService : IInputService
     {
         public Action OnPlayerJoined { get; set; }
+        public Action OnEscTriggered { get; set; }
         public List<PlayerConfiguration> PlayerConfigs { get; } = new List<PlayerConfiguration>();
 
         private readonly GameStateMachine _gameStateMachine;
@@ -24,6 +25,7 @@ namespace Infrastructure.Services.Input
         private readonly Transform _choseCanvas;
         private PlayerInputManager _inputManager;
         private static int currentIndex = 0;
+        private NewControl _controlSchema;
 
         public InputService(GameStateMachine gameStateMachine, IFactories factories, StaticData.IStaticDataService staticDataService)
         {
@@ -34,6 +36,7 @@ namespace Infrastructure.Services.Input
             var inputManager = _inputFactory.CreatePlayerInputManager();
             _inputManager = inputManager.GetComponent<PlayerInputManager>();
             _inputManager.onPlayerJoined += HandlePlayerJoin;
+            SetupControlSchema();
         }
 
         public void ConnectToInputs(GameObject uiInputModule, bool individually = false)
@@ -62,6 +65,21 @@ namespace Infrastructure.Services.Input
 
         public void ResetPlayerIndex() => 
             currentIndex = 0;
+
+        private void SetupControlSchema()
+        {
+            _controlSchema = new NewControl();
+            _controlSchema.Enable();
+            SubscribeEscAction();
+        }
+
+        private void SubscribeEscAction() =>
+            _controlSchema.TankMovement.Esc.performed += TriggerEscAction;
+
+        private void TriggerEscAction(InputAction.CallbackContext context)
+        {
+            if (context.performed) OnEscTriggered?.Invoke();
+        }
 
 
         private void HandlePlayerJoin(PlayerInput pi)

@@ -4,7 +4,6 @@ using Infrastructure.Factory.Base;
 using Infrastructure.Services.Progress;
 using Infrastructure.Services.Input;
 using System.Collections.Generic;
-using System.Linq;
 using Infrastructure.Data;
 using Infrastructure.Services.Audio;
 using Infrastructure.Services.SaveLoad;
@@ -41,8 +40,10 @@ namespace Infrastructure.StateMachine
 
         public void Enter(float score)
         {
+            _audioService.StopMusic();
             _audioService.PlaySound(SoundId.SadTrombone);
             _timerService.StopTimer();
+            _progress.Progress.WorldData.StartedLevel = false;
 
             _inputService.ResetPlayerIndex();
             _inputService.ConnectToInputs(_playerFactory.GameBoard.transform.root.gameObject, true);

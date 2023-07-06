@@ -54,10 +54,10 @@ namespace ChobiAssets.PTM
             }
             
             // Disable the pause canvas.
-            if (Pause_Canvas)
-            {
-                Pause_Canvas.enabled = false;
-            }
+            // if (Pause_Canvas)
+            // {
+            //     Pause_Canvas.enabled = false;
+            // }
         }
 
 
@@ -147,10 +147,10 @@ namespace ChobiAssets.PTM
             }
 
             // Control the pause canvas.
-            if (Pause_Canvas)
-            {
-                Pause_Canvas.enabled = isPaused;
-            }
+            // if (Pause_Canvas)
+            // {
+            //     Pause_Canvas.enabled = isPaused;
+            // }
 
             // Send "Pause" message to all the tank parts via "ID_Settings_CS" attached to the tanks.
             for (int i = 0; i < idScriptsList.Count; i++)

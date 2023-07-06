@@ -19,5 +19,6 @@ namespace Infrastructure.Assets
         public const string PlsPressButtonPanel = "General/PleasePress";
         public const string PlayerInMenu = "General/PlayerInMenu";
         public const string TankPickerCanvas = "General/TankPicker";
+        public const string PauseMenu = "UI/PauseMenu";
     }
 }

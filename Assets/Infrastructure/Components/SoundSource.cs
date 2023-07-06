@@ -6,7 +6,8 @@ namespace Infrastructure.Components
     public class SoundSource : MonoBehaviour
     {
         [SerializeField] private AudioSource _source;
-        
+        [SerializeField] private bool IsPaused;
+
         private void Awake() => 
             DontDestroyOnLoad(this);
 
@@ -16,10 +17,17 @@ namespace Infrastructure.Components
             _source.Play();
         }
 
-        public void Pause() => 
-            _source.Pause();
+        public void Pause()
+        {
+            if (IsPaused)
+                _source.Play();
+            else
+                _source.Pause();
+            
+            IsPaused = !IsPaused;
+        }
 
         public void Stop() =>
-            _source.Stop();
+            _source?.Stop();
     }
 }
