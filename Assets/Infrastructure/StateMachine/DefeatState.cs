@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Infrastructure.Factory.Compose;
 using Infrastructure.Factory.Base;
 using Infrastructure.Services.Progress;
@@ -10,6 +11,7 @@ using Infrastructure.Services.SaveLoad;
 using Infrastructure.Services.StaticData.Gamemodes;
 using Infrastructure.Services.Timer;
 using Infrastructure.TestMono;
+using UnityEngine;
 
 namespace Infrastructure.StateMachine
 {
@@ -19,29 +21,46 @@ namespace Infrastructure.StateMachine
         
         private Dictionary<string, float> _scoreList;
         private readonly GameStateMachine _gameStateMachine;
+        private readonly ICoroutineRunner _coroutineRunner;
         private readonly ITimerService _timerService;
         private readonly IPlayerFactory _playerFactory;
         private readonly IProgressService _progress;
         private readonly IInputService _inputService;
         private readonly ISaveLoadService _saveLoadService;
         private readonly IAudioService _audioService;
+        private readonly IEnemyFactory _enemyFactory;
 
-        public DefeatState(GameStateMachine gameStateMachine, IFactories factories, ITimerService timerService, IProgressService progress,
+        public DefeatState(GameStateMachine gameStateMachine,ICoroutineRunner coroutineRunner, IFactories factories, ITimerService timerService, IProgressService progress,
             IInputService inputService, ISaveLoadService saveLoadService, IAudioService audioService)
         {
             _gameStateMachine = gameStateMachine;
+            _coroutineRunner = coroutineRunner;
             _timerService = timerService;
             _progress = progress;
             _playerFactory = factories.Single<IPlayerFactory>();
+            _enemyFactory = factories.Single<IEnemyFactory>();
             _inputService = inputService;
             _saveLoadService = saveLoadService;
             _audioService = audioService;
         }
 
-        public void Enter(float score)
+        public void Enter(float score) => 
+            _coroutineRunner.StartCoroutine(WithDelay(score));
+
+        public void Exit()
         {
+            _playerFactory.GameBoard.OnExitMenu -= Menu;
+            _playerFactory.GameBoard.OnRestart -= Restart;
+        }
+
+        private IEnumerator WithDelay(float score)
+        {
+            float endTime = Time.time + Constants.GameOverDelay;
+            while (endTime>Time.time)
+                yield return null;
+
             _audioService.StopMusic();
-            _audioService.PlaySound(SoundId.SadTrombone);
+            _enemyFactory.Controller.Pause();
             _timerService.StopTimer();
             _progress.Progress.WorldData.StartedLevel = false;
 
@@ -58,12 +77,6 @@ namespace Infrastructure.StateMachine
             _playerFactory.GameBoard.ShowDefeatPanel(_playerFactory.PlayersSettings, leadersList, playerScore, IsVersus());
             _playerFactory.GameBoard.OnExitMenu += Menu;
             _playerFactory.GameBoard.OnRestart += Restart;
-        }
-
-        public void Exit()
-        {
-            _playerFactory.GameBoard.OnExitMenu -= Menu;
-            _playerFactory.GameBoard.OnRestart -= Restart;
         }
 
         private LeadersHolder SetupLeadersHolder(ScoreHolder playerScore, LeadersHolder copyList)

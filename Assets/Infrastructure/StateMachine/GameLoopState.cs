@@ -1,5 +1,4 @@
 using ChobiAssets.PTM;
-using Infrastructure.Services.Audio;
 using Infrastructure.Factory.Base;
 using Infrastructure.Factory.Compose;
 using Infrastructure.Services.KillCounter;
@@ -26,13 +25,10 @@ namespace Infrastructure.StateMachine
         private readonly IStaticDataService _dataService;
         private readonly IPlayerFactory _playerFactory;
         private readonly IEnemyFactory _enemyFactory;
-        private readonly IAudioService _audioService;
 
 
-        public GameLoopState(GameStateMachine gameStateMachine, IInputService inputService, ITimerService timer,
-            IKillCounter killCounter,
-            IScoreCounter scoreCounter, IProgressService progress, IStaticDataService dataService,
-            IAudioService audioService, IFactories factories)
+        public GameLoopState(GameStateMachine gameStateMachine, IInputService inputService, ITimerService timer, IKillCounter killCounter,
+            IScoreCounter scoreCounter, IProgressService progress, IStaticDataService dataService, IFactories factories)
         {
             _gameStateMachine = gameStateMachine;
             _inputService = inputService;
@@ -43,7 +39,6 @@ namespace Infrastructure.StateMachine
             _dataService = dataService;
             _playerFactory = factories.Single<IPlayerFactory>();
             _enemyFactory = factories.Single<IEnemyFactory>();
-            _audioService = audioService;
         }
 
         public void Enter()

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Infrastructure.Factory.Base;
 using Infrastructure.Factory.Compose;
 using Infrastructure.Services.Input;
@@ -9,6 +10,7 @@ using Infrastructure.Services.Progress;
 using Infrastructure.Services.SaveLoad;
 using Infrastructure.Services.StaticData.Gamemodes;
 using Infrastructure.Services.Timer;
+using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Infrastructure.StateMachine
@@ -16,28 +18,46 @@ namespace Infrastructure.StateMachine
     public class VictoryState : IPayloadedState<float>
     {
         private readonly GameStateMachine _gameStateMachine;
+        private readonly ICoroutineRunner _coroutineRunner;
         private readonly IAudioService _audioService;
         private readonly ITimerService _timerService;
         private readonly IProgressService _progress;
         private readonly ISaveLoadService _saveLoadService;
         private readonly IPlayerFactory _playerFactory;
         private readonly IInputService _inputService;
+        private readonly IEnemyFactory _enemyFactory;
 
 
-        public VictoryState(GameStateMachine gameStateMachine,IAudioService audioService,ITimerService timerService, IInputService inputService,IFactories factories, IProgressService progress, ISaveLoadService saveLoadService)
+        public VictoryState(GameStateMachine gameStateMachine, ICoroutineRunner coroutineRunner,IAudioService audioService,ITimerService timerService, IInputService inputService,IFactories factories, IProgressService progress, ISaveLoadService saveLoadService)
         {
             _gameStateMachine = gameStateMachine;
+            _coroutineRunner = coroutineRunner;
             _audioService = audioService;
             _timerService = timerService;
             _inputService = inputService;
             _progress = progress;
             _saveLoadService = saveLoadService;
             _playerFactory = factories.Single<IPlayerFactory>();
+            _enemyFactory = factories.Single<IEnemyFactory>();
         }
         
-        public void Enter(float score)
+        public void Enter(float score) => 
+            _coroutineRunner.StartCoroutine(WithDelay(score));
+        
+        public void Exit() => 
+            _playerFactory.GameBoard.OnExitMenu -= Menu;
+
+        private void Menu() => 
+            _gameStateMachine.Enter<ResetState>();
+
+        private IEnumerator WithDelay(float score)
         {
+            float endTime = Time.time + Constants.GameOverDelay;
+            while (endTime > Time.time)
+                yield return null;
+            
             _audioService.StopMusic();
+            _enemyFactory.Controller.Pause();
             _timerService.StopTimer();
             _progress.Progress.WorldData.StartedLevel = false;
 
@@ -53,13 +73,6 @@ namespace Infrastructure.StateMachine
             _playerFactory.GameBoard.ShowVictoryPanel(_playerFactory.PlayersSettings, leaderList, playerScore,_progress.Progress.WorldData.ModeId == GamemodeId.Versus);
             _playerFactory.GameBoard.OnExitMenu += Menu;
         }
-
-
-        public void Exit() => 
-            _playerFactory.GameBoard.OnExitMenu -= Menu;
-
-        private void Menu() => 
-            _gameStateMachine.Enter<ResetState>();
 
         private LeadersHolder SetupLeadersHolder(ScoreHolder playerScore, LeadersHolder copyList)
         {
