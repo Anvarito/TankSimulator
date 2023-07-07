@@ -40,7 +40,7 @@ namespace Infrastructure.Factory
 
         public DamageReceiversManager CreateEnemy(SpawnPointConfig config)
         {
-            ID_Settings_CS enemy = _assetLoader.Instantiate<ID_Settings_CS>(AssetPaths.Enemy, config.Position);
+            ID_Settings_CS enemy = _assetLoader.Instantiate<ID_Settings_CS>(AssetPaths.StrykerDragon, config.Position);
             DamageReceiversManager damageReceiversManager = enemy.GetComponentInChildren<DamageReceiversManager>();
 
             SetupEnemy(config, enemy, damageReceiversManager);

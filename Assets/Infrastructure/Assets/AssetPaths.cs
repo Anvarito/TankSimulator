@@ -4,7 +4,8 @@ namespace Infrastructure.Assets
     {
         public const string Player = "General/Player";
         public const string Hud = "General/Hud";
-        public const string Enemy = "Tanks/BMP2AI";
+        public const string BMP2 = "Tanks/BMP2AI";
+        public const string StrykerDragon = "Tanks/StrykerDragonAI";
         public const string PlayerTank = "Tanks/BMP 2";
         public const string PlayerTank1 = "Tanks/Nona 9S";
         public const string TankController = "General/Game_Controller";
