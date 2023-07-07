@@ -7,10 +7,10 @@ public class AddCollider : MonoBehaviour
     {
         foreach (Transform i in transform)
         {
-                if (i.GetChild(0).gameObject.TryGetComponent(out BoxCollider boxCollider0))
-                {
-                    Destroy(boxCollider0);
-                }
+            if (i.GetChild(0).gameObject.TryGetComponent(out TreeFaller boxCollider0))
+            {
+                boxCollider0._isFreeFall = false;
+            }
         }
     }
 }
