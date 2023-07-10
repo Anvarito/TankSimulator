@@ -10,6 +10,7 @@ namespace Infrastructure.Assets
         public const string Bradley = "Tanks/M2_BRADLEY_AI";
 
         public const string Vena = "Tanks/Vena_AI";
+        public const string Nona9S = "Tanks/Nona 9S_AI";
 
         public const string PlayerTank = "Tanks/BMP 2";
         public const string PlayerTank1 = "Tanks/Nona 9S";

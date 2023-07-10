@@ -40,7 +40,7 @@ MonoBehaviour:
       ActorType: 0
       Team: 0
       WaypointsPackId: 8
-      Position: {x: 638.5, y: 5.2, z: 297.9}
+      Position: {x: 638.5, y: 14.3, z: 297.9}
     - UniqueId: 
       ActorType: 0
       Team: 1
@@ -60,27 +60,22 @@ MonoBehaviour:
       ActorType: 0
       Team: 0
       WaypointsPackId: 7
-      Position: {x: 662.2, y: 7, z: 579.7}
+      Position: {x: 662.2, y: 16.87, z: 579.7}
     - UniqueId: 
       ActorType: 0
       Team: 0
       WaypointsPackId: 7
-      Position: {x: 660.2, y: 8.76, z: 614.7}
+      Position: {x: 660.2, y: 18.630001, z: 614.7}
     - UniqueId: 
       ActorType: 1
       Team: 0
       WaypointsPackId: 6
-      Position: {x: 743.03, y: 5.5, z: 630.18}
+      Position: {x: 710.6, y: 8.69, z: 114.8}
     - UniqueId: 
       ActorType: 0
       Team: 1
       WaypointsPackId: 8
       Position: {x: 107, y: 3.9, z: 158.7}
-    - UniqueId: 
-      ActorType: 0
-      Team: 0
-      WaypointsPackId: 8
-      Position: {x: 631.5, y: 3.9, z: 177.4}
     - UniqueId: 
       ActorType: 0
       Team: 1

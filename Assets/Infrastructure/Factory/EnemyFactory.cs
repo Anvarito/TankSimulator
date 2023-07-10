@@ -66,11 +66,11 @@ namespace Infrastructure.Factory
 
         private string GetRandomAllyPath()
         {
-            int random = UnityEngine.Random.Range(0, 1);
+            int random = UnityEngine.Random.Range(0, 2);
             switch (random)
             {
                 case 0:
-                    return AssetPaths.Vena;
+                    return AssetPaths.Nona9S;
                 default:
                     return AssetPaths.Vena;
             }
