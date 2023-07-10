@@ -4,8 +4,11 @@ namespace Infrastructure.Assets
     {
         public const string Player = "General/Player";
         public const string Hud = "General/Hud";
+
         public const string BMP2 = "Tanks/BMP2AI";
         public const string StrykerDragon = "Tanks/StrykerDragonAI";
+        public const string Bradley = "Tanks/M2_BRADLEY_AI";
+
         public const string PlayerTank = "Tanks/BMP 2";
         public const string PlayerTank1 = "Tanks/Nona 9S";
         public const string TankController = "General/Game_Controller";
@@ -21,5 +24,6 @@ namespace Infrastructure.Assets
         public const string PlayerInMenu = "General/PlayerInMenu";
         public const string TankPickerCanvas = "General/TankPicker";
         public const string PauseMenu = "UI/PauseMenu";
+
     }
 }
