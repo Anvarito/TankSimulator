@@ -89,6 +89,12 @@ namespace ChobiAssets.PTM
                 }
                 for (int j = 0; j < teamB.Count; j++)
                 {
+                    if(teamB[j].Body_Transform == null)
+                    {
+                        teamB.RemoveAt(j);
+                        continue;
+                    }
+
                     if (teamB[j].Body_Transform.root.tag == "Finish")
                     { // The target is alredy destroyed.
                         continue;
