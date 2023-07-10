@@ -103,8 +103,11 @@ namespace Infrastructure.StateMachine
         private bool IsVersus() => 
             _progress.Progress.WorldData.ModeId == GamemodeId.Versus;
 
-        private void Restart() =>
+        private void Restart()
+        {
+            _enemyFactory.Controller.Pause();
             _gameStateMachine.Enter<ReloadState, string>(ReloadScene);
+        }
 
         private void Menu() =>
             _gameStateMachine.Enter<ResetState>();
