@@ -18,7 +18,9 @@ public class ScorePlane : MonoBehaviour
     public void SetData(ScoreHolder scoreHolder)
     {
         ScoreHolder = scoreHolder;
-        _text.text = scoreHolder.Name.ToUpper() + ": " + scoreHolder.Points.ToString() + " очков";
+        string rank = $"<sprite={Mathf.Min(12,(int)(scoreHolder.Points/100)%13-1)}> ";
+        if (scoreHolder.Points == 0) rank = "";
+        _text.text = rank + scoreHolder.Name.ToUpper() + ": " + scoreHolder.Points.ToString() + " очков";
     }
 
     internal void Hightlight()
