@@ -33,7 +33,7 @@ public class TreeFaller : MonoBehaviour
             _accumAngle += _speed * Time.deltaTime;
 
             Quaternion rotation = Quaternion.AngleAxis(-_speed * Time.deltaTime, axisRotate);
-            rotateObj.transform.rotation *= rotation;
+            rotateObj.transform.localRotation *= rotation;
             //print(_accumAngle);
             if (_accumAngle > 100)
                 Destroy(rotateObj.gameObject);
@@ -49,7 +49,8 @@ public class TreeFaller : MonoBehaviour
             || collision.gameObject.layer == Layer_Settings_CS.Bullet_Layer)
         {
             //_colisionPoint = collision.contacts[0].point;
-            _colisionDirection = collision.transform.forward;
+            // _colisionDirection = collision.transform.forward;
+            _colisionDirection = -collision.impulse;
             Lauch();
         }
     }
