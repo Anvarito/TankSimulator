@@ -17,8 +17,8 @@ MonoBehaviour:
     PlayerCount: 1
     Name: "\u0412\u044B\u0436\u0438\u0432\u0430\u043D\u0438\u0435"
     EnemiesSpawnsPeriodically: 1
-    EnemiesCooldownSpawn: 2
-    CooldownRange: 0
+    EnemiesCooldownSpawn: 30
+    CooldownRange: 2
     PlayersSpawnsPeriodicaly: 0
     PlayersCooldownSpawn: 0
     IsGameOverTimerEnabled: 1

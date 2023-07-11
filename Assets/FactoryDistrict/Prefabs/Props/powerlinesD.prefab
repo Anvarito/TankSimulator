@@ -157,8 +157,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   root: {fileID: 4000013283613504}
   _collider: {fileID: 0}
-  DebugCallider: {fileID: 0}
   _speed: 60
+  _isFreeFall: 0
 --- !u!65 &6566346400353066207
 BoxCollider:
   m_ObjectHideFlags: 0

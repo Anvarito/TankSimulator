@@ -40,12 +40,41 @@ namespace Infrastructure.Factory
 
         public DamageReceiversManager CreateEnemy(SpawnPointConfig config)
         {
-            ID_Settings_CS enemy = _assetLoader.Instantiate<ID_Settings_CS>(AssetPaths.Enemy, config.Position);
+            var path = config.Team == ERelationship.TeamA ? GetRandomAllyPath() : GetRandomEnemyPath();
+            ID_Settings_CS enemy = _assetLoader.Instantiate<ID_Settings_CS>(path, config.Position);
             DamageReceiversManager damageReceiversManager = enemy.GetComponentInChildren<DamageReceiversManager>();
 
             SetupEnemy(config, enemy, damageReceiversManager);
 
             return damageReceiversManager;
+        }
+
+        private string GetRandomEnemyPath()
+        {
+            int random = UnityEngine.Random.Range(0, 3);
+            switch (random)
+            {
+                case 0:
+                    return AssetPaths.StrykerDragon;
+                case 1:
+                    return AssetPaths.Bradley;
+                default:
+                    return AssetPaths.BMP2;
+            }
+                
+        }
+
+        private string GetRandomAllyPath()
+        {
+            int random = UnityEngine.Random.Range(0, 2);
+            switch (random)
+            {
+                case 0:
+                    return AssetPaths.Nona9S;
+                default:
+                    return AssetPaths.Vena;
+            }
+
         }
 
         public override void CleanUp()

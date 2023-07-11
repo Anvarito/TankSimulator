@@ -136,6 +136,7 @@ MonoBehaviour:
   root: {fileID: 4000010973677064}
   _collider: {fileID: 2727759006111500512}
   _speed: 60
+  _isFreeFall: 0
 --- !u!65 &2727759006111500512
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -891,6 +892,7 @@ MonoBehaviour:
   root: {fileID: 4000010393392386}
   _collider: {fileID: 8157221082646371435}
   _speed: 60
+  _isFreeFall: 0
 --- !u!1 &1000013868306996
 GameObject:
   m_ObjectHideFlags: 0
@@ -1191,6 +1193,7 @@ MonoBehaviour:
   root: {fileID: 4000010877339366}
   _collider: {fileID: 1610313651240558366}
   _speed: 60
+  _isFreeFall: 0
 --- !u!1 &1000014243048316
 GameObject:
   m_ObjectHideFlags: 0

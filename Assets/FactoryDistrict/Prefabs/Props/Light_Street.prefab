@@ -257,3 +257,4 @@ MonoBehaviour:
   _collider: {fileID: 7856945997516683173}
   DebugCallider: {fileID: 0}
   _speed: 60
+  _isFreeFall: 0

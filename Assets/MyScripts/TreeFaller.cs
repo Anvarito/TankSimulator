@@ -5,8 +5,9 @@ public class TreeFaller : MonoBehaviour
 {
     public Transform root;
     public Collider _collider;
-    public GameObject DebugCallider;
     public float _speed = 60;
+
+    public bool _isFreeFall = true;
 
     private bool _isCollide = false;
     private Vector3 _colisionDirection;
@@ -28,12 +29,12 @@ public class TreeFaller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_isCollide)
+        if (_isCollide && !_isFreeFall)
         {
             _accumAngle += _speed * Time.deltaTime;
 
             Quaternion rotation = Quaternion.AngleAxis(-_speed * Time.deltaTime, axisRotate);
-            rotateObj.transform.localRotation *= rotation;
+            rotateObj.transform.rotation *= rotation;
             //print(_accumAngle);
             if (_accumAngle > 100)
                 Destroy(rotateObj.gameObject);
@@ -48,39 +49,29 @@ public class TreeFaller : MonoBehaviour
         if (collision.gameObject.layer == Layer_Settings_CS.Body_Layer
             || collision.gameObject.layer == Layer_Settings_CS.Bullet_Layer)
         {
-            //_colisionPoint = collision.contacts[0].point;
-            // _colisionDirection = collision.transform.forward;
-            _colisionDirection = -collision.impulse;
-            Lauch();
+            if (!_isFreeFall)
+            {
+                _colisionDirection = (collision.contacts[0].point - collision.transform.position).normalized;
+                axisRotate = Vector3.Cross(_colisionDirection, rotateObj.up);
+                _collider.enabled = false;
+
+                Debug.DrawLine(collision.transform.position, collision.transform.position + _colisionDirection, Color.red, 100);
+                Debug.DrawLine(collision.contacts[0].point, collision.contacts[0].point + rotateObj.up, Color.blue, 100);
+                Debug.DrawLine(collision.contacts[0].point, collision.contacts[0].point + axisRotate, Color.green, 100);
+            }
+            else
+            {
+                Transform parent = rotateObj;
+                transform.parent = null;
+                Destroy(parent.gameObject);
+                gameObject.layer = 15;
+                Rigidbody rb = gameObject.AddComponent<Rigidbody>();
+                Destroy(gameObject, 5);
+            }
+
+            print(Vector3.Dot(collision.transform.forward, rotateObj.forward));
+
+            _isCollide = true;
         }
     }
-
-    [ContextMenu("Launch")]
-    public void DebugLaunch()
-    {
-        _colisionDirection = DebugCallider.transform.forward;
-        Lauch();
-    }
-    public void Lauch()
-    {
-        Vector3 RotatedObject = new Vector3(rotateObj.position.x, _colisionDirection.y, rotateObj.position.z);
-        //Vector3 toCenter = RotatedObject - _colisionPoint;
-        axisRotate = Vector3.Cross(_colisionDirection, Vector3.up).normalized;
-
-        //Debug.DrawRay(_colisionDirection, toCenter, Color.red, 100);
-        //Debug.DrawLine(_colisionDirection, _colisionDirection + Vector3.up, Color.blue, 100);
-        //Debug.DrawLine(_colisionDirection, _colisionDirection + axisRotate, Color.yellow, 100);
-
-        _isCollide = true;
-        _collider.enabled = false;
-    }
-
-    [ContextMenu("Reset")]
-    public void ResetAll()
-    {
-        _isCollide = false;
-        _accumAngle = 0;
-        rotateObj.transform.rotation = Quaternion.Euler(Vector3.zero);
-    }
-
 }
