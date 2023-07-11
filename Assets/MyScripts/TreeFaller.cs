@@ -60,7 +60,7 @@ public class TreeFaller : MonoBehaviour
             }
             else
             {
-                Transform parent = transform.parent;
+                Transform parent = rotateObj;
                 transform.parent = null;
                 Destroy(parent.gameObject);
                 gameObject.layer = 15;

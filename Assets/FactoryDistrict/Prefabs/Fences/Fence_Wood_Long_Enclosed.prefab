@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 33613918975112076}
   - component: {fileID: 23866808137897336}
   - component: {fileID: 65914093168977806}
+  - component: {fileID: 6479114460466114313}
   m_Layer: 0
   m_Name: Fence_Wood_Long_Enclosed
   m_TagString: Untagged
@@ -129,3 +130,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 7.6477995, y: 1.4333029, z: 0.10085398}
   m_Center: {x: -3.750001, y: 0.5996733, z: 0.05042699}
+--- !u!114 &6479114460466114313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1982420733434954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 136e51099fdfe7a4583f0feb13877918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  root: {fileID: 4000013151002398}
+  _collider: {fileID: 65914093168977806}
+  _speed: 60
+  _isFreeFall: 1
