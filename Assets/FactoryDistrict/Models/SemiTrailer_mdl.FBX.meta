@@ -1,111 +1,280 @@
 fileFormatVersion: 2
 guid: b4d247b02d777314098d5cf66c75f7f1
-timeCreated: 1479948774
-licenseType: Store
 ModelImporter:
-  serializedVersion: 19
-  fileIDToRecycleName:
-    100000: //RootNode
-    100002: SemiTrailer_mdl
-    100004: SemiTrailer_mdl_LOD1
-    100006: SemiTrailer_mdl_LOD2
-    100008: SemiTrailer_mdl_LOD3
-    100010: SemiTrailer_mdl_LOD4
-    100012: SemiTrailer_LOD0 SemiTrailer_mdl Props
-    100014: SemiTrailer_LOD1 SemiTrailer_mdl Props
-    100016: SemiTrailer_LOD2 SemiTrailer_mdl Props
-    100018: SemiTrailer_LOD3 SemiTrailer_mdl Props
-    100020: SemiTrailer_LOD4 SemiTrailer_mdl Props
-    100022: SemiTrailer_LOD0
-    100024: SemiTrailer_LOD1
-    100026: SemiTrailer_LOD2
-    100028: SemiTrailer_LOD3
-    100030: SemiTrailer_LOD4
-    400000: //RootNode
-    400002: SemiTrailer_mdl
-    400004: SemiTrailer_mdl_LOD1
-    400006: SemiTrailer_mdl_LOD2
-    400008: SemiTrailer_mdl_LOD3
-    400010: SemiTrailer_mdl_LOD4
-    400012: SemiTrailer_LOD0 SemiTrailer_mdl Props
-    400014: SemiTrailer_LOD1 SemiTrailer_mdl Props
-    400016: SemiTrailer_LOD2 SemiTrailer_mdl Props
-    400018: SemiTrailer_LOD3 SemiTrailer_mdl Props
-    400020: SemiTrailer_LOD4 SemiTrailer_mdl Props
-    400022: SemiTrailer_LOD0
-    400024: SemiTrailer_LOD1
-    400026: SemiTrailer_LOD2
-    400028: SemiTrailer_LOD3
-    400030: SemiTrailer_LOD4
-    2300000: //RootNode
-    2300002: SemiTrailer_mdl
-    2300004: SemiTrailer_mdl_LOD1
-    2300006: SemiTrailer_mdl_LOD2
-    2300008: SemiTrailer_mdl_LOD3
-    2300010: SemiTrailer_mdl_LOD4
-    2300012: SemiTrailer_LOD0 SemiTrailer_mdl Props
-    2300014: SemiTrailer_LOD1 SemiTrailer_mdl Props
-    2300016: SemiTrailer_LOD2 SemiTrailer_mdl Props
-    2300018: SemiTrailer_LOD3 SemiTrailer_mdl Props
-    2300020: SemiTrailer_LOD4 SemiTrailer_mdl Props
-    2300022: SemiTrailer_LOD0
-    2300024: SemiTrailer_LOD1
-    2300026: SemiTrailer_LOD2
-    2300028: SemiTrailer_LOD3
-    2300030: SemiTrailer_LOD4
-    3300000: //RootNode
-    3300002: SemiTrailer_mdl
-    3300004: SemiTrailer_mdl_LOD1
-    3300006: SemiTrailer_mdl_LOD2
-    3300008: SemiTrailer_mdl_LOD3
-    3300010: SemiTrailer_mdl_LOD4
-    3300012: SemiTrailer_LOD0 SemiTrailer_mdl Props
-    3300014: SemiTrailer_LOD1 SemiTrailer_mdl Props
-    3300016: SemiTrailer_LOD2 SemiTrailer_mdl Props
-    3300018: SemiTrailer_LOD3 SemiTrailer_mdl Props
-    3300020: SemiTrailer_LOD4 SemiTrailer_mdl Props
-    3300022: SemiTrailer_LOD0
-    3300024: SemiTrailer_LOD1
-    3300026: SemiTrailer_LOD2
-    3300028: SemiTrailer_LOD3
-    3300030: SemiTrailer_LOD4
-    4300000: SemiTrailer_mdl
-    4300002: SemiTrailer_mdl_LOD3
-    4300004: SemiTrailer_mdl_LOD2
-    4300006: SemiTrailer_mdl_LOD1
-    4300008: SemiTrailer_mdl_LOD4
-    4300010: SemiTrailer_LOD4 SemiTrailer_mdl Props
-    4300012: SemiTrailer_LOD3 SemiTrailer_mdl Props
-    4300014: SemiTrailer_LOD2 SemiTrailer_mdl Props
-    4300016: SemiTrailer_LOD1 SemiTrailer_mdl Props
-    4300018: SemiTrailer_LOD0 SemiTrailer_mdl Props
-    4300020: SemiTrailer_LOD0
-    4300022: SemiTrailer_LOD1
-    4300024: SemiTrailer_LOD2
-    4300026: SemiTrailer_LOD3
-    4300028: SemiTrailer_LOD4
-    9500000: //RootNode
-    20500000: //RootNode
+  serializedVersion: 21300
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: //RootNode
+  - first:
+      1: 100002
+    second: SemiTrailer_mdl
+  - first:
+      1: 100004
+    second: SemiTrailer_mdl_LOD1
+  - first:
+      1: 100006
+    second: SemiTrailer_mdl_LOD2
+  - first:
+      1: 100008
+    second: SemiTrailer_mdl_LOD3
+  - first:
+      1: 100010
+    second: SemiTrailer_mdl_LOD4
+  - first:
+      1: 100012
+    second: SemiTrailer_LOD0 SemiTrailer_mdl Props
+  - first:
+      1: 100014
+    second: SemiTrailer_LOD1 SemiTrailer_mdl Props
+  - first:
+      1: 100016
+    second: SemiTrailer_LOD2 SemiTrailer_mdl Props
+  - first:
+      1: 100018
+    second: SemiTrailer_LOD3 SemiTrailer_mdl Props
+  - first:
+      1: 100020
+    second: SemiTrailer_LOD4 SemiTrailer_mdl Props
+  - first:
+      1: 100022
+    second: SemiTrailer_LOD0
+  - first:
+      1: 100024
+    second: SemiTrailer_LOD1
+  - first:
+      1: 100026
+    second: SemiTrailer_LOD2
+  - first:
+      1: 100028
+    second: SemiTrailer_LOD3
+  - first:
+      1: 100030
+    second: SemiTrailer_LOD4
+  - first:
+      4: 400000
+    second: //RootNode
+  - first:
+      4: 400002
+    second: SemiTrailer_mdl
+  - first:
+      4: 400004
+    second: SemiTrailer_mdl_LOD1
+  - first:
+      4: 400006
+    second: SemiTrailer_mdl_LOD2
+  - first:
+      4: 400008
+    second: SemiTrailer_mdl_LOD3
+  - first:
+      4: 400010
+    second: SemiTrailer_mdl_LOD4
+  - first:
+      4: 400012
+    second: SemiTrailer_LOD0 SemiTrailer_mdl Props
+  - first:
+      4: 400014
+    second: SemiTrailer_LOD1 SemiTrailer_mdl Props
+  - first:
+      4: 400016
+    second: SemiTrailer_LOD2 SemiTrailer_mdl Props
+  - first:
+      4: 400018
+    second: SemiTrailer_LOD3 SemiTrailer_mdl Props
+  - first:
+      4: 400020
+    second: SemiTrailer_LOD4 SemiTrailer_mdl Props
+  - first:
+      4: 400022
+    second: SemiTrailer_LOD0
+  - first:
+      4: 400024
+    second: SemiTrailer_LOD1
+  - first:
+      4: 400026
+    second: SemiTrailer_LOD2
+  - first:
+      4: 400028
+    second: SemiTrailer_LOD3
+  - first:
+      4: 400030
+    second: SemiTrailer_LOD4
+  - first:
+      23: 2300000
+    second: //RootNode
+  - first:
+      23: 2300002
+    second: SemiTrailer_mdl
+  - first:
+      23: 2300004
+    second: SemiTrailer_mdl_LOD1
+  - first:
+      23: 2300006
+    second: SemiTrailer_mdl_LOD2
+  - first:
+      23: 2300008
+    second: SemiTrailer_mdl_LOD3
+  - first:
+      23: 2300010
+    second: SemiTrailer_mdl_LOD4
+  - first:
+      23: 2300012
+    second: SemiTrailer_LOD0 SemiTrailer_mdl Props
+  - first:
+      23: 2300014
+    second: SemiTrailer_LOD1 SemiTrailer_mdl Props
+  - first:
+      23: 2300016
+    second: SemiTrailer_LOD2 SemiTrailer_mdl Props
+  - first:
+      23: 2300018
+    second: SemiTrailer_LOD3 SemiTrailer_mdl Props
+  - first:
+      23: 2300020
+    second: SemiTrailer_LOD4 SemiTrailer_mdl Props
+  - first:
+      23: 2300022
+    second: SemiTrailer_LOD0
+  - first:
+      23: 2300024
+    second: SemiTrailer_LOD1
+  - first:
+      23: 2300026
+    second: SemiTrailer_LOD2
+  - first:
+      23: 2300028
+    second: SemiTrailer_LOD3
+  - first:
+      23: 2300030
+    second: SemiTrailer_LOD4
+  - first:
+      33: 3300000
+    second: //RootNode
+  - first:
+      33: 3300002
+    second: SemiTrailer_mdl
+  - first:
+      33: 3300004
+    second: SemiTrailer_mdl_LOD1
+  - first:
+      33: 3300006
+    second: SemiTrailer_mdl_LOD2
+  - first:
+      33: 3300008
+    second: SemiTrailer_mdl_LOD3
+  - first:
+      33: 3300010
+    second: SemiTrailer_mdl_LOD4
+  - first:
+      33: 3300012
+    second: SemiTrailer_LOD0 SemiTrailer_mdl Props
+  - first:
+      33: 3300014
+    second: SemiTrailer_LOD1 SemiTrailer_mdl Props
+  - first:
+      33: 3300016
+    second: SemiTrailer_LOD2 SemiTrailer_mdl Props
+  - first:
+      33: 3300018
+    second: SemiTrailer_LOD3 SemiTrailer_mdl Props
+  - first:
+      33: 3300020
+    second: SemiTrailer_LOD4 SemiTrailer_mdl Props
+  - first:
+      33: 3300022
+    second: SemiTrailer_LOD0
+  - first:
+      33: 3300024
+    second: SemiTrailer_LOD1
+  - first:
+      33: 3300026
+    second: SemiTrailer_LOD2
+  - first:
+      33: 3300028
+    second: SemiTrailer_LOD3
+  - first:
+      33: 3300030
+    second: SemiTrailer_LOD4
+  - first:
+      43: 4300000
+    second: SemiTrailer_mdl
+  - first:
+      43: 4300002
+    second: SemiTrailer_mdl_LOD3
+  - first:
+      43: 4300004
+    second: SemiTrailer_mdl_LOD2
+  - first:
+      43: 4300006
+    second: SemiTrailer_mdl_LOD1
+  - first:
+      43: 4300008
+    second: SemiTrailer_mdl_LOD4
+  - first:
+      43: 4300010
+    second: SemiTrailer_LOD4 SemiTrailer_mdl Props
+  - first:
+      43: 4300012
+    second: SemiTrailer_LOD3 SemiTrailer_mdl Props
+  - first:
+      43: 4300014
+    second: SemiTrailer_LOD2 SemiTrailer_mdl Props
+  - first:
+      43: 4300016
+    second: SemiTrailer_LOD1 SemiTrailer_mdl Props
+  - first:
+      43: 4300018
+    second: SemiTrailer_LOD0 SemiTrailer_mdl Props
+  - first:
+      43: 4300020
+    second: SemiTrailer_LOD0
+  - first:
+      43: 4300022
+    second: SemiTrailer_LOD1
+  - first:
+      43: 4300024
+    second: SemiTrailer_LOD2
+  - first:
+      43: 4300026
+    second: SemiTrailer_LOD3
+  - first:
+      43: 4300028
+    second: SemiTrailer_LOD4
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      205: 20500000
+    second: //RootNode
+  externalObjects: {}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
+    extraUserProperties:
+    - '#BAKERY{"meshName":["SemiTrailer_LOD0","SemiTrailer_LOD1","SemiTrailer_LOD2","SemiTrailer_LOD3","SemiTrailer_LOD4"],"padding":[139,141,143,145,148],"unwrapper":[0,0,0,0,0]}'
     clipAnimations: []
     isReadable: 1
   meshes:
@@ -118,25 +287,47 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 0
     importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    nodeNameCollisionStrategy: 0
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 1
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -146,11 +337,18 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
