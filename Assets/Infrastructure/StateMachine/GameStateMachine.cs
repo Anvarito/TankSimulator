@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Infrastructure.Assets;
 using Infrastructure.Factory.Compose;
 using Infrastructure.Services;
 using Infrastructure.Services.Audio;
@@ -24,7 +25,7 @@ namespace Infrastructure.StateMachine
             _states = new Dictionary<Type, IExitableState>()
             {
                 [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader, coroutineRunner, services),
-                [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader, services.Single<IAudioService>(), services.Single<IProgressService>(), services.Single<IStaticDataService>(), services.Single<IFactories>(), services.Single<ITrashRemoveService>(), services.Single<IScoreCounter>()),
+                [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader,services.Single<IAudioService>(), services.Single<IProgressService>(), services.Single<IStaticDataService>(), services.Single<IFactories>(), services.Single<ITrashRemoveService>(), services.Single<IScoreCounter>()),
                 [typeof(LoadProgressState)] = new LoadProgressState(this, services.Single<IProgressService>(), services.Single<ISaveLoadService>()),
                 [typeof(GameLoopState)] = new GameLoopState(this, services.Single<IInputService>(), services.Single<ITimerService>(), services.Single<IKillCounter>(), services.Single<IScoreCounter>(), services.Single<IProgressService>(), services.Single<IStaticDataService>(), services.Single<IFactories>()),
                 [typeof(VictoryState)] = new VictoryState(this, coroutineRunner,services.Single<IAudioService>(),services.Single<ITimerService>(),services.Single<IInputService>(), services.Single<IFactories>(), services.Single<IProgressService>(), services.Single<ISaveLoadService>()),

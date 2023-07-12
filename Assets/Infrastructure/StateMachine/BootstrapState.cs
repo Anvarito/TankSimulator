@@ -64,7 +64,7 @@ namespace Infrastructure.StateMachine
             _services.Single<IStaticDataService>().LoadAllStaticData();
 
             _services.RegisterSingle<IProgressService>(new ProgressService());
-            _services.RegisterSingle<IAssetLoader>(new AssetLoader());
+            _services.RegisterSingle<IAssetLoader>(new AssetLoader(_coroutineRunner));
 
             _services.RegisterSingle<IFactories>(new Factories());
             
