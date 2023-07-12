@@ -26,7 +26,8 @@ namespace Infrastructure.StateMachine
         private readonly IPlayerFactory _playerFactory;
         private readonly IEnemyFactory _enemyFactory;
 
-        public GameLoopState(GameStateMachine gameStateMachine, IInputService inputService, ITimerService timer, IKillCounter killCounter,
+        public GameLoopState(GameStateMachine gameStateMachine, IInputService inputService, ITimerService timer,
+            IKillCounter killCounter,
             IScoreCounter scoreCounter, IProgressService progress, IStaticDataService dataService, IFactories factories)
         {
             _gameStateMachine = gameStateMachine;
@@ -61,7 +62,10 @@ namespace Infrastructure.StateMachine
         {
             GamemodeConfig modeConfig = _dataService.ForMode(_progress.Progress.WorldData.ModeId);
             if (modeConfig.IsGameOverTimerEnabled && !_progress.Progress.WorldData.StartedLevel)
+            {
                 _timer.StartTimer(modeConfig.GameTime * Constants.SecondInMinute, Victory);
+                _progress.Progress.WorldData.StartedLevel = true;
+            }
         }
 
         private void PauseGame() =>

@@ -17,6 +17,8 @@ namespace Infrastructure.StateMachine
 {
     public class VictoryState : IPayloadedState<float>
     {
+        private const string ReloadScene = "ReloadScene";
+        
         private readonly GameStateMachine _gameStateMachine;
         private readonly ICoroutineRunner _coroutineRunner;
         private readonly IAudioService _audioService;
@@ -50,6 +52,12 @@ namespace Infrastructure.StateMachine
         private void Menu() => 
             _gameStateMachine.Enter<ResetState>();
 
+        private void Restart()
+        {
+            _enemyFactory.Controller.Pause();
+            _gameStateMachine.Enter<ReloadState, string>(ReloadScene);
+        }
+        
         private IEnumerator WithDelay(float score)
         {
             float endTime = Time.time + Constants.GameOverDelay;
@@ -72,6 +80,7 @@ namespace Infrastructure.StateMachine
 
             _playerFactory.GameBoard.ShowVictoryPanel(_playerFactory.PlayersSettings, leaderList, playerScore,_progress.Progress.WorldData.ModeId == GamemodeId.Versus);
             _playerFactory.GameBoard.OnExitMenu += Menu;
+            _playerFactory.GameBoard.OnRestart += Restart;
         }
 
         private LeadersHolder SetupLeadersHolder(ScoreHolder playerScore, LeadersHolder copyList)

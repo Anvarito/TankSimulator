@@ -29,7 +29,7 @@ public class PauseMenu : UIHelper, IAudioEmitter
 
     void Start()
     {
-        _audioService.PlaySound(SoundId.SadTrombone);
+        // _audioService.PlaySound(SoundId.SadTrombone);
 
         RegisterActions();
     }
