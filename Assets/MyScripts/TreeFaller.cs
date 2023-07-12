@@ -35,6 +35,7 @@ public class TreeFaller : MonoBehaviour
 
             Quaternion rotation = Quaternion.AngleAxis(-_speed * Time.deltaTime, axisRotate);
             rotateObj.transform.rotation *= rotation;
+            //print(_accumAngle);
             if (_accumAngle > 100)
                 Destroy(rotateObj.gameObject);
         }

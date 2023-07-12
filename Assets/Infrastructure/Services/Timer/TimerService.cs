@@ -25,7 +25,8 @@ namespace Infrastructure.Services.Timer
 
         public void StopTimer()
         {
-            _coroutineRunner.StopCoroutine(_timerCoroutine);
+            if (_timerCoroutine != null)
+                _coroutineRunner.StopCoroutine(_timerCoroutine);
             IsPaused = false;
             CurrentSeconds = 0;
             _currentOnTimerEnd = null;
