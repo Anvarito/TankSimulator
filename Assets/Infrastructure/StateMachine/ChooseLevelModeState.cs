@@ -38,7 +38,7 @@ namespace Infrastructure.StateMachine
         {
             if (obj.performed && obj.action.name == "ReturnMenu")
             {
-                _gameStateMachine.Enter<SetupPlayersState, string>(SetupTankMain);
+                Back();
             }
         }
 
@@ -57,12 +57,18 @@ namespace Infrastructure.StateMachine
         {
             var helper = _playerFactory.CreateMapModeChoiseUI();
             helper.OnContinueClick += Continue;
+            helper.OnBackClick += Back;
         }
 
         private void Continue()
         {
             SetupPlayerTeams();
             _gameStateMachine.Enter<LoadLevelState, string>(_progressService.Progress.WorldData.Level);
+        }
+
+        private void Back()
+        {
+            _gameStateMachine.Enter<SetupPlayersState, string>(SetupTankMain);
         }
 
         private void SetupPlayerTeams()
@@ -89,10 +95,7 @@ namespace Infrastructure.StateMachine
         }
 
         private bool IsPLayersInDifferentTeams() =>
-            IsVersusMode() || IsDeathMatchMode();
-
-        private bool IsDeathMatchMode() =>
-            _progressService.Progress.WorldData.ModeId == GamemodeId.DeathMatch;
+            IsVersusMode();
 
         private bool IsVersusMode() =>
             _progressService.Progress.WorldData.ModeId == GamemodeId.Versus;

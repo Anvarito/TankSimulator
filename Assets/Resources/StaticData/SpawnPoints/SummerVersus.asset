@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SummerVersus
   m_EditorClassIdentifier: 
   PackConfig:
-    PackId: 4
+    PackId: 3
     LevelId: 1
     PointsConfigs:
     - UniqueId: 

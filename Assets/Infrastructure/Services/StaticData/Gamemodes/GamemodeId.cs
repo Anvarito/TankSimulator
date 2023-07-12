@@ -5,7 +5,6 @@ namespace Infrastructure.Services.StaticData.Gamemodes
         Unknown = 0,
         Coop = 1,
         Survival = 2,
-        DeathMatch = 3,
-        Versus = 4,
+        Versus = 3
     }
 }
