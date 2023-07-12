@@ -29,6 +29,7 @@ namespace Infrastructure.Components
         private void EnemyDestroyed(ID_Settings_CS victim,ID_Settings_CS killer)
         {
             _currentEnemy.OnTankDestroyed.RemoveListener(EnemyDestroyed);
+            _enemyFactory.Controller.Remove_ID(victim);
             _currentEnemy = null;
 
             if (_modeConfig.EnemiesSpawnsPeriodically)
@@ -48,6 +49,7 @@ namespace Infrastructure.Components
             {
                 _currentEnemy = _enemyFactory.CreateEnemy(_spawnConfig);
                 _currentEnemy.OnTankDestroyed.AddListener(EnemyDestroyed);
+                _enemyFactory.Controller.Receive_ID_Script(_currentEnemy.GetComponentInParent<ID_Settings_CS>());
             }
         }
     }

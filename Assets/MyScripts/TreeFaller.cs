@@ -69,7 +69,7 @@ public class TreeFaller : MonoBehaviour
                 Destroy(gameObject, 5);
             }
 
-            print(Vector3.Dot(collision.transform.forward, rotateObj.forward));
+            // print(Vector3.Dot(collision.transform.forward, rotateObj.forward));
 
             _isCollide = true;
         }

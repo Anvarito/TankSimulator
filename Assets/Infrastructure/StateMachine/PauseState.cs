@@ -92,11 +92,17 @@ namespace Infrastructure.StateMachine
             _pauseMenu.OnSoundVolumeChange -= HandleSoundsVolumeChange;
         }
 
-        private void HandleSoundsVolumeChange(float volume) => 
+        private void HandleSoundsVolumeChange(float volume)
+        {
+            _progress.Progress.WorldData.SoundsVolume = volume;
             _audioService.ChangeSoundVolume(volume);
+        }
 
-        private void HandleMusicVolumeChange(float volume) => 
+        private void HandleMusicVolumeChange(float volume)
+        {
+            _progress.Progress.WorldData.MusicVolume = volume;
             _audioService.ChangeMusicVolume(volume);
+        }
 
         private void UnpauseGame() => 
             _gameStateMachine.Enter<GameLoopState>();

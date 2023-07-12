@@ -35,8 +35,10 @@ namespace Infrastructure.StateMachine
         private List<SpawnPointConfig> _configs;
         private GamemodeConfig _modeConfig;
 
-        public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader,IAudioService audioService, IProgressService progress,
-            IStaticDataService dataService, IFactories factories, ITrashRemoveService trashRemoveService, IScoreCounter scoreCounter)
+        public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, IAudioService audioService,
+            IProgressService progress,
+            IStaticDataService dataService, IFactories factories, ITrashRemoveService trashRemoveService,
+            IScoreCounter scoreCounter)
         {
             _gameStateMachine = gameStateMachine;
             _sceneLoader = sceneLoader;
@@ -55,7 +57,7 @@ namespace Infrastructure.StateMachine
             _scoreCounter.CleanUp();
             _playerFactory.CleanUp();
             _enemyFactory.CleanUp();
-            
+
             _sceneLoader.Load(name: levelName, OnLoaded);
         }
 
@@ -66,21 +68,21 @@ namespace Infrastructure.StateMachine
         {
             FetchModeData();
             InitGameLevel();
-            
+
             _audioService.PlayMusic(MusicId.Test);
-            
+
             _gameStateMachine.Enter<GameLoopState>();
         }
 
 
-        private void FetchModeData() => 
+        private void FetchModeData() =>
             _modeConfig = _dataService.ForMode(_progress.Progress.WorldData.ModeId);
 
         private void InitGameLevel()
         {
             _trashRemoveService.LaunchRemove();
-            CreatePlayersAndEnemySpawners();
             _enemyFactory.CreateGameController();
+            CreatePlayersAndEnemySpawners();
         }
 
         private void CreatePlayersAndEnemySpawners()
@@ -112,6 +114,12 @@ namespace Infrastructure.StateMachine
             _playerFactory.CreatePlayers(spawnPointConfigs);
             _playerFactory.CreateTankUiSpawners(_enemyFactory.EnemyDamageManagers);
             _playerFactory.CreateHud();
+
+            // _playerFactory.OnPlayerDestroyed += RemovePlayerFromController;
+            _playerFactory.PlayersSettings.ForEach(x => _enemyFactory.Controller.Receive_ID_Script(x));
         }
+
+        private void RemovePlayerFromController(ID_Settings_CS victim, ID_Settings_CS killer) => 
+            _enemyFactory.Controller.Remove_ID(victim);
     }
 }
