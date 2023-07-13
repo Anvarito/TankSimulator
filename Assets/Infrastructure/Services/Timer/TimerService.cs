@@ -65,7 +65,8 @@ namespace Infrastructure.Services.Timer
             while (CurrentSeconds > 0)
             {
                 CurrentSeconds -= Time.deltaTime;
-                yield return null;
+                yield return new WaitForSeconds(Time.deltaTime);
+                if (IsPaused) yield break;
             }
 
             _currentOnTimerEnd?.Invoke();
