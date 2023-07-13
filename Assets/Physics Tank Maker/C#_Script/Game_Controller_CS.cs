@@ -61,7 +61,7 @@ namespace ChobiAssets.PTM
         }
 
 
-        void Receive_ID_Script(ID_Settings_CS idScript)
+        public void Receive_ID_Script(ID_Settings_CS idScript)
         { // Called from "ID_Settings_CS" in tanks in the scene, when the tank is spawned.
 
             // Store the "ID_Settings_CS".

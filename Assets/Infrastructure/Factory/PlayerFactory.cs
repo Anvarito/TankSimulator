@@ -19,7 +19,7 @@ namespace Infrastructure.Factory
 {
     public class PlayerFactory : GameFactory, IPlayerFactory
     {
-        public Action OnPlayerDestroyed { get; set; }
+        public event Action<ID_Settings_CS, ID_Settings_CS> OnPlayerDestroyed;
         public int PlayerCount => PlayerParts.Count;
         public List<PlayerUiParts> PlayerParts { get; } = new();
         public List<ID_Settings_CS> PlayersSettings { get; } = new();
@@ -113,7 +113,7 @@ namespace Infrastructure.Factory
         private void PlayerDestroyed(ID_Settings_CS playerId, ID_Settings_CS killerId)
         {
             PlayersSettings.Remove(playerId);
-            OnPlayerDestroyed?.Invoke();
+            OnPlayerDestroyed?.Invoke(playerId, killerId);
         }
 
 

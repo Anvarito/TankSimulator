@@ -43,7 +43,7 @@ namespace Infrastructure.Services.KillCounter
             _playerFactory.OnPlayerDestroyed += HandlePlayerDestroy;
         }
 
-        private void HandlePlayerDestroy()
+        private void HandlePlayerDestroy(ID_Settings_CS victim, ID_Settings_CS killer)
         {
             if (AllPlayersDestroyed() || IsVersus())
                 OnPlayersDestroyed?.Invoke();

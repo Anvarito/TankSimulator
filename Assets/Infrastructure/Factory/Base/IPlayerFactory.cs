@@ -17,7 +17,7 @@ namespace Infrastructure.Factory.Base
         void CreateHud();
 
         MainMenuUIHelper MainMenuUIHelper { get; }
-        Action OnPlayerDestroyed { get; set; }
+        event Action<ID_Settings_CS, ID_Settings_CS> OnPlayerDestroyed;
         int PlayerCount { get; }
         List<ID_Settings_CS> EnemysID { get; }
         List<ID_Settings_CS> PlayersSettings { get; }

@@ -29,6 +29,7 @@ namespace Infrastructure.Services.Timer
                 _coroutineRunner.StopCoroutine(_timerCoroutine);
             IsPaused = false;
             CurrentSeconds = 0;
+            _timerCoroutine = null;
             _currentOnTimerEnd = null;
         }
 
