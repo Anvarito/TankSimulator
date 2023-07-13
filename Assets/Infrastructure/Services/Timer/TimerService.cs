@@ -11,7 +11,6 @@ namespace Infrastructure.Services.Timer
         private readonly ICoroutineRunner _coroutineRunner;
         private Coroutine _timerCoroutine;
         private Action _currentOnTimerEnd;
-        private IEnumerator<WaitForSeconds> _timerNumerator;
         public float CurrentSeconds { get; private set; }
 
         public TimerService(ICoroutineRunner coroutineRunner) =>
@@ -21,8 +20,7 @@ namespace Infrastructure.Services.Timer
         {
             CurrentSeconds = seconds;
             _currentOnTimerEnd = onTimerEnd;
-            _timerNumerator = Timer();
-            _timerCoroutine = _coroutineRunner.StartCoroutine(_timerNumerator);
+            _timerCoroutine = _coroutineRunner.StartCoroutine(Timer());
         }
 
         public void StopTimer()
@@ -32,7 +30,6 @@ namespace Infrastructure.Services.Timer
             IsPaused = false;
             CurrentSeconds = 0;
             _timerCoroutine = null;
-            _timerNumerator = null;
             _currentOnTimerEnd = null;
         }
 
@@ -42,7 +39,7 @@ namespace Infrastructure.Services.Timer
             {
                 if (CurrentSeconds > 0)
                 {
-                    _coroutineRunner.StartCoroutine(_timerNumerator);
+                    _coroutineRunner.StartCoroutine(Timer());
                     IsPaused = !IsPaused;
                 }
                 else
@@ -68,7 +65,8 @@ namespace Infrastructure.Services.Timer
             while (CurrentSeconds > 0)
             {
                 CurrentSeconds -= Time.deltaTime;
-                yield return null;
+                yield return new WaitForSeconds(Time.deltaTime);
+                if (IsPaused) yield break;
             }
 
             _currentOnTimerEnd?.Invoke();

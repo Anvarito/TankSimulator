@@ -53,7 +53,7 @@ namespace Infrastructure.StateMachine
             _enemyFactory.Controller.Pause();
             _timerService.PauseTimer();
             
-            _saveLoadService.SaveProgress();
+            // _saveLoadService.SaveProgress();
             
             Unsubscribe();
             _windowFactory.DestroyPauseMenu();
