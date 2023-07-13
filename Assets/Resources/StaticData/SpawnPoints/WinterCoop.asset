@@ -17,37 +17,37 @@ MonoBehaviour:
     LevelId: 3
     PointsConfigs:
     - UniqueId: 
+      ActorType: 1
+      Team: 1
+      WaypointsPackId: 6
+      Position: {x: 55, y: 33.55, z: 892.60004}
+    - UniqueId: 
       ActorType: 0
       Team: 1
+      WaypointsPackId: 11
+      Position: {x: 422.3, y: 39.2, z: 599.4}
+    - UniqueId: 
+      ActorType: 0
+      Team: 0
       WaypointsPackId: 12
-      Position: {x: 384.8, y: 39.6, z: 649.60004}
+      Position: {x: 58.299988, y: 40.5, z: 550.2}
     - UniqueId: 
       ActorType: 0
       Team: 1
       WaypointsPackId: 12
-      Position: {x: 427.8, y: 37.31, z: 513.5}
+      Position: {x: 385.3, y: 40.34, z: 544.4}
     - UniqueId: 
       ActorType: 1
       Team: 0
       WaypointsPackId: 5
-      Position: {x: 64.399994, y: 33.06, z: 903.10004}
-    - UniqueId: 
-      ActorType: 0
-      Team: 1
-      WaypointsPackId: 11
-      Position: {x: 434.5, y: 39.2, z: 728.7}
-    - UniqueId: 
-      ActorType: 1
-      Team: 0
-      WaypointsPackId: 6
-      Position: {x: 68.79999, y: 35.3, z: 826.7}
-    - UniqueId: 
-      ActorType: 0
-      Team: 1
-      WaypointsPackId: 11
-      Position: {x: 445.3, y: 30.9, z: 868}
+      Position: {x: 74.5, y: 29.44, z: 921.60004}
     - UniqueId: 
       ActorType: 0
       Team: 1
       WaypointsPackId: 12
-      Position: {x: 445.3, y: 40.5, z: 588.10004}
+      Position: {x: 432.3, y: 39.6, z: 697.4}
+    - UniqueId: 
+      ActorType: 0
+      Team: 1
+      WaypointsPackId: 11
+      Position: {x: 425.3, y: 38.12, z: 907.4}

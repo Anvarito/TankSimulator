@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e90052befb004761ae0233956e9b2ee0, type: 3}
+  m_Name: PoligonSurvival
+  m_EditorClassIdentifier: 
+  PackConfig:
+    PackId: 2
+    LevelId: 4
+    PointsConfigs:
+    - UniqueId: 
+      ActorType: 1
+      Team: 0
+      WaypointsPackId: 0
+      Position: {x: 476.29782, y: 13.040009, z: 1927.9551}
+    - UniqueId: 
+      ActorType: 0
+      Team: 1
+      WaypointsPackId: 4
+      Position: {x: -307.5, y: 15.5, z: 1664.9001}
+    - UniqueId: 
+      ActorType: 0
+      Team: 1
+      WaypointsPackId: 3
+      Position: {x: -310.2, y: 15.5, z: 1933.7}
+    - UniqueId: 
+      ActorType: 0
+      Team: 1
+      WaypointsPackId: 3
+      Position: {x: -322.30002, y: 15.5, z: 1886}
+    - UniqueId: 
+      ActorType: 0
+      Team: 1
+      WaypointsPackId: 4
+      Position: {x: -279.4, y: 15.5, z: 1693.4001}
+    - UniqueId: 
+      ActorType: 0
+      Team: 1
+      WaypointsPackId: 3
+      Position: {x: -316.80002, y: 15.5, z: 1911.5}
+    - UniqueId: 
+      ActorType: 0
+      Team: 1
+      WaypointsPackId: 3
+      Position: {x: -281.2, y: 15.5, z: 1917}
+    - UniqueId: 
+      ActorType: 0
+      Team: 1
+      WaypointsPackId: 4
+      Position: {x: -304.3, y: 15.5, z: 1684.4001}
+    - UniqueId: 
+      ActorType: 0
+      Team: 1
+      WaypointsPackId: 3
+      Position: {x: -283.10004, y: 15.5, z: 1942.8}
+    - UniqueId: 
+      ActorType: 0
+      Team: 1
+      WaypointsPackId: 4
+      Position: {x: -318.7, y: 15.5, z: 1679.0002}
+    - UniqueId: 
+      ActorType: 0
+      Team: 1
+      WaypointsPackId: 4
+      Position: {x: -289.3, y: 15.5, z: 1676.0002}
+    - UniqueId: 
+      ActorType: 0
+      Team: 1
+      WaypointsPackId: 4
+      Position: {x: -300.8, y: 15.5, z: 1640.5002}
+    - UniqueId: 
+      ActorType: 0
+      Team: 1
+      WaypointsPackId: 3
+      Position: {x: -305.2, y: 15.5, z: 1899.1001}
+    - UniqueId: 
+      ActorType: 0
+      Team: 1
+      WaypointsPackId: 4
+      Position: {x: -328.5, y: 15.5, z: 1647.5002}
+    - UniqueId: 
+      ActorType: 0
+      Team: 1
+      WaypointsPackId: 3
+      Position: {x: -285.80002, y: 15.5, z: 1893.4001}
+    - UniqueId: 
+      ActorType: 1
+      Team: 0
+      WaypointsPackId: 0
+      Position: {x: 474.29782, y: 13.040009, z: 1669.9551}
+    - UniqueId: 
+      ActorType: 0
+      Team: 1
+      WaypointsPackId: 3
+      Position: {x: -297.2, y: 15.5, z: 1921.1001}
+    - UniqueId: 
+      ActorType: 0
+      Team: 1
+      WaypointsPackId: 4
+      Position: {x: -277.2, y: 15.5, z: 1654.4001}

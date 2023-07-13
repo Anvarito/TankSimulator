@@ -20,6 +20,11 @@ namespace Infrastructure.Components
             [ERelationship.TeamB] = Color.red,
         };
 
+        private void OnValidate()
+        {
+            transform.name = ActorType.ToString() + "_" + Relationship.ToString();
+        }
+
         public void OnDrawGizmos()
         {
             if (!EnabledGizmo) return;
