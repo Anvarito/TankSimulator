@@ -165,8 +165,8 @@ Transform:
   m_GameObject: {fileID: 1000010593959994}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4000010656380242}
   - {fileID: 4000010321234698}
@@ -286,5 +286,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   root: {fileID: 4000012003622766}
   _collider: {fileID: 2231857626451131665}
-  DebugCallider: {fileID: 0}
   _speed: 60
+  _isFreeFall: 1

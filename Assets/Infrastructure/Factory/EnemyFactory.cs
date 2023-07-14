@@ -83,6 +83,9 @@ namespace Infrastructure.Factory
 
             foreach (var i in EnemyDamageManagers)
             {
+                if (i == null)
+                    continue;
+
                 Object.Destroy(i.transform.root.gameObject);
             }
 
