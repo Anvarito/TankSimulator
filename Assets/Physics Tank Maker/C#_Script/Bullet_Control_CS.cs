@@ -101,8 +101,7 @@ namespace ChobiAssets.PTM
             }
 
             // Get the "Damage_Control_##_##_CS" script in the hit object.
-            var damageble = hitObject.GetComponent<IDamageble>();
-            if (damageble != null)
+            if (hitObject.TryGetComponent(out IDamageble damageble))
             { // The hit object has "Damage_Control_##_##_CS" script. >> It should be a breakable object.
 
                 // Calculate the hit damage.
