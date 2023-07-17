@@ -61,11 +61,12 @@ namespace Infrastructure.StateMachine
         private void TryStartTimer()
         {
             GamemodeConfig modeConfig = _dataService.ForMode(_progress.Progress.WorldData.ModeId);
-            if (modeConfig.IsGameOverTimerEnabled && !_progress.Progress.WorldData.StartedLevel)
+            if (modeConfig != null && modeConfig.IsGameOverTimerEnabled && !_progress.Progress.WorldData.StartedLevel)
             {
                 _timer.StartTimer(modeConfig.GameTime * Constants.SecondInMinute, Victory);
-                _progress.Progress.WorldData.StartedLevel = true;
             }
+
+            _progress.Progress.WorldData.StartedLevel = true;
         }
 
         private void PauseGame() =>
@@ -104,6 +105,7 @@ namespace Infrastructure.StateMachine
                     score = Mathf.Max(_scoreCounter.ScorePlayerOne, _scoreCounter.ScorePlayerTwo);
                     break;
                 case GamemodeId.Versus:
+                case GamemodeId.Training:
                     score = 0;
                     break;
                 default:

@@ -92,6 +92,7 @@ namespace Infrastructure.StateMachine
                     copyList = _progress.Progress.LeadersSurvival;
                     break;
                 case GamemodeId.Versus:
+                case GamemodeId.Training:
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

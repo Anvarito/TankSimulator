@@ -20,9 +20,6 @@ namespace Infrastructure.StateMachine
     public class LoadLevelState
         : IPayloadedState<string>
     {
-        private const string PlayerInitialPoint = "PlayerInitialPoint";
-        private const string EnemyInitialPoint = "EnemyInitialPoint";
-
         private readonly GameStateMachine _gameStateMachine;
         private readonly SceneLoader _sceneLoader;
         private readonly IAudioService _audioService;

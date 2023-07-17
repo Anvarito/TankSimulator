@@ -19,7 +19,7 @@ namespace Infrastructure.Factory
     {
         public List<DamageReceiversManager> EnemyDamageManagers { get; } = new List<DamageReceiversManager>();
         public Action<ID_Settings_CS> OnEnemyDestroyed { get; set; }
-        public Action<ID_Settings_CS> OnEnemyCreate { get ; set ; }
+        public Action<ID_Settings_CS> OnEnemyCreate { get; set; }
         public int EnemiesCount { get; private set; }
         public Game_Controller_CS Controller { get; private set; }
 
@@ -61,7 +61,7 @@ namespace Infrastructure.Factory
                 default:
                     return AssetPaths.BMP2;
             }
-                
+
         }
 
         private string GetRandomAllyPath()
@@ -99,17 +99,26 @@ namespace Infrastructure.Factory
             RegisterDamageManager(damageReceiversManager, enemyId);
             EnemyDamageManagers.Add(damageReceiversManager);
 
-            SetupEnemyWaypoints(config, enemyId.gameObject);
+            SetupEnemyWaypoints(config, enemyId.GetComponentInChildren<AI_Settings_CS>());
+            SetupEnemyAgression(enemyId.GetComponentInChildren<AI_Settings_CS>());
 
             OnEnemyCreate?.Invoke(enemyId);
         }
 
-        private void SetupEnemyWaypoints(SpawnPointConfig config, GameObject enemy)
+        private void SetupEnemyAgression(AI_Settings_CS AIsettings)
+        {
+            AIsettings.No_Attack = _progress.Progress.WorldData.ModeId == Services.StaticData.Gamemodes.GamemodeId.Training;
+        }
+
+        private void SetupEnemyWaypoints(SpawnPointConfig config, AI_Settings_CS AIsettings)
         {
             if (!_waypoints.ContainsKey(config.WaypointsPackId))
                 CreateWaypointsPack(config);
 
-            enemy.GetComponentInChildren<AI_Settings_CS>().WayPoint_Pack = GetWaypointPack(config);
+            if (_progress.Progress.WorldData.ModeId != Services.StaticData.Gamemodes.GamemodeId.Training)
+                AIsettings.WayPoint_Pack = GetWaypointPack(config);
+            else
+                AIsettings.WayPoint_Pack = null;
         }
 
         private void RegisterDamageManager(DamageReceiversManager enemyDamageManager, ID_Settings_CS settingsCs)
@@ -121,13 +130,13 @@ namespace Infrastructure.Factory
             }
         }
 
-        private void EnemyDestroyed(ID_Settings_CS enemyId,ID_Settings_CS killerID)
+        private void EnemyDestroyed(ID_Settings_CS enemyId, ID_Settings_CS killerID)
         {
             if (killerID == null)
                 return;
-            
+
             // if (killerID.PlayerType == EPlayerType.Player)
-                OnEnemyDestroyed?.Invoke(killerID);
+            OnEnemyDestroyed?.Invoke(killerID);
         }
 
 
@@ -140,6 +149,9 @@ namespace Infrastructure.Factory
 
         private GameObject CreateWaypointObjects(WaypointPackConfig waypointPack)
         {
+            if (waypointPack == null)
+                return null;
+
             string name = Enum.GetName(typeof(WaypointsPackId), waypointPack.PackId);
 
             GameObject packObject = new GameObject(name);

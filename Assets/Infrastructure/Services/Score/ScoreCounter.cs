@@ -54,7 +54,7 @@ namespace Infrastructure.Services.Score
 
         private void AddScore(ID_Settings_CS killer)
         {
-            if (killer == null || killer.PlayerType != EPlayerType.Player)
+            if (_modeConfig.ModeId == GamemodeId.Training || killer == null || killer.PlayerType != EPlayerType.Player)
                 return;
 
             int indexKiller = GetIndexPlayer(killer);

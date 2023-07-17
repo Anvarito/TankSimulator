@@ -64,17 +64,19 @@ namespace Infrastructure.StateMachine
         {
             //mainMenu.OnContinueButtonPress.AddListener(ContinueGame);
             mainMenu.OnOnNewGameButtonPress.AddListener(StartNewGame);
+            mainMenu.OnTrainButtonPress.AddListener(TrainLaunch);
             mainMenu.OnExitButtonPress.AddListener(ExitGame);
             mainMenu.OnMusicSlider.AddListener(ChangeMusicVolume);
             mainMenu.OnSoundsSlider.AddListener(ChangeSoundsVolume);
         }
 
-       
+        
 
         private void UnregisterButtonsEvents(MainMenuUIHelper mainMenu)
         {
             //mainMenu.OnContinueButtonPress.RemoveListener(ContinueGame);
             mainMenu.OnOnNewGameButtonPress.RemoveListener(StartNewGame);
+            mainMenu.OnTrainButtonPress.RemoveListener(TrainLaunch);
             mainMenu.OnExitButtonPress.RemoveListener(ExitGame);
             mainMenu.OnMusicSlider.RemoveListener(ChangeMusicVolume);
             mainMenu.OnSoundsSlider.RemoveListener(ChangeSoundsVolume);
@@ -82,6 +84,10 @@ namespace Infrastructure.StateMachine
 
         private void ContinueGame()
         {
+        }
+        private void TrainLaunch()
+        {
+            _gameStateMachine.Enter<LaunchTrainingLevel>();
         }
         private void ExitGame()
         {

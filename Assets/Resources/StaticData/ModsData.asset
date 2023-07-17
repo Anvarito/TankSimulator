@@ -49,3 +49,15 @@ MonoBehaviour:
     GameTime: 0
     PointsForKillingEnemy: 0
     PointsForKillingAllies: 0
+  - ModeId: 4
+    PlayerCount: 2
+    Name: Training
+    EnemiesSpawnsPeriodically: 1
+    EnemiesCooldownSpawn: 5
+    CooldownRange: 0
+    PlayersSpawnsPeriodicaly: 0
+    PlayersCooldownSpawn: 0
+    IsGameOverTimerEnabled: 0
+    GameTime: 0
+    PointsForKillingEnemy: 0
+    PointsForKillingAllies: 0
