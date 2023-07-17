@@ -35,8 +35,8 @@ namespace Infrastructure.StateMachine
                 [typeof(LaunchTrainingLevel)] = new LaunchTrainingLevel(this, services.Single<IInputService>(), services.Single<IStaticDataService>(),  services.Single<IProgressService>()),
                 [typeof(SetupFirstInputState)] = new SetupFirstInputState(this,sceneLoader,services.Single<IProgressService>(),services.Single<IInputService>(),services.Single<IFactories>(), services.Single<IAudioService>()),
                 [typeof(ChooseLevelModeState)] = new ChooseLevelModeState(this,sceneLoader,services.Single<IProgressService>(), services.Single<IInputService>(), services.Single<IFactories>()),
-                [typeof(ResetState)] = new ResetState(this, services.Single<IFactories>(), services.Single<IInputService>(), services.Single<IProgressService>()),
-                [typeof(ReloadState)] = new ReloadState(this, services.Single<IKillCounter>(), services.Single<IFactories>(), services.Single<IInputService>(), sceneLoader, services.Single<IProgressService>()),
+                [typeof(ResetState)] = new ResetState(this, services.Single<IFactories>(), services.Single<IInputService>(), services.Single<IProgressService>(), services.Single<ITimerService>()),
+                [typeof(ReloadState)] = new ReloadState(this, services.Single<IKillCounter>(), services.Single<IFactories>(), services.Single<IInputService>(), sceneLoader, services.Single<IProgressService>(), services.Single<ITimerService>()),
                 [typeof(PauseState)] = new PauseState(this,services.Single<ISaveLoadService>(),services.Single<IProgressService>(),services.Single<IAudioService>(),services.Single<ITimerService>(),services.Single<IInputService>() , services.Single<IFactories>()),
             };
         }

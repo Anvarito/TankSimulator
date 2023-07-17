@@ -61,12 +61,12 @@ namespace Infrastructure.StateMachine
         private void TryStartTimer()
         {
             GamemodeConfig modeConfig = _dataService.ForMode(_progress.Progress.WorldData.ModeId);
-            if (modeConfig != null && modeConfig.IsGameOverTimerEnabled && !_progress.Progress.WorldData.StartedLevel)
+            if (modeConfig.IsGameOverTimerEnabled && !_progress.Progress.WorldData.StartedLevel)
             {
                 _timer.StartTimer(modeConfig.GameTime * Constants.SecondInMinute, Victory);
+                _progress.Progress.WorldData.StartedLevel = true;
             }
 
-            _progress.Progress.WorldData.StartedLevel = true;
         }
 
         private void PauseGame() =>

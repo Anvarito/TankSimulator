@@ -3,6 +3,7 @@ using Infrastructure.Factory.Compose;
 using Infrastructure.Services.Input;
 using Infrastructure.Services.KillCounter;
 using Infrastructure.Services.Progress;
+using Infrastructure.Services.Timer;
 using UnityEngine;
 
 namespace Infrastructure.StateMachine
@@ -16,15 +17,17 @@ namespace Infrastructure.StateMachine
         private IPlayerFactory _playerFactory;
         private IEnemyFactory _enemyFactory;
         private IInputFactory _inputFactory;
+        private ITimerService _timerService;
         private IInputService _inputService;
         private IProgressService _progressService;
-        public ReloadState(GameStateMachine gameStateMachine,IKillCounter killCounter, IFactories factories, IInputService inputService, SceneLoader sceneLoader, IProgressService progressService)
+        public ReloadState(GameStateMachine gameStateMachine,IKillCounter killCounter, IFactories factories, IInputService inputService, SceneLoader sceneLoader, IProgressService progressService, ITimerService timerService)
         {
             _sceneLoader = sceneLoader;
 
             _playerFactory = factories.Single<IPlayerFactory>();
             _enemyFactory = factories.Single<IEnemyFactory>();
             _inputFactory = factories.Single<IInputFactory>();
+            _timerService = timerService;
 
             _inputService = inputService;
             _progressService = progressService;
@@ -39,7 +42,7 @@ namespace Infrastructure.StateMachine
             _enemyFactory.CleanUp();
             _inputFactory.CleanUp();
             _killCounter.CleanUp();
-            
+            _timerService.CleanUp();
             //_inputService.CleanUp();
             _progressService.CleanUp();
 
