@@ -16,19 +16,15 @@ namespace Infrastructure.StateMachine
     class LaunchTrainingLevel : IState
     {
         private GameStateMachine _gameStateMachine;
-        private SceneLoader _sceneLoader;
         private IInputService _inputServise;
-        private IFactories _factories;
         private IProgressService _progressService;
         private IStaticDataService _staticDataService;
 
         private const string TrainLevel = "Poligon";
 
-        public LaunchTrainingLevel(GameStateMachine gameStateMachine, SceneLoader sceneLoader, IInputService inputService, IStaticDataService staticDataService, IFactories factories, IProgressService progressService)
+        public LaunchTrainingLevel(GameStateMachine gameStateMachine, IInputService inputService, IStaticDataService staticDataService, IProgressService progressService)
         {
             _gameStateMachine = gameStateMachine;
-            _sceneLoader = sceneLoader;
-            _factories = factories;
             _progressService = progressService;
             _staticDataService = staticDataService;
             _inputServise = inputService;
