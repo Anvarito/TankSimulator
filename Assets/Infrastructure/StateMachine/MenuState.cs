@@ -1,3 +1,4 @@
+using System;
 using Infrastructure.Components;
 using Infrastructure.Factory.Base;
 using Infrastructure.Factory.Compose;
@@ -5,6 +6,7 @@ using Infrastructure.Services.Audio;
 using Infrastructure.Services.Input;
 using Infrastructure.Services.Progress;
 using Infrastructure.Services.SaveLoad;
+using UnityEngine;
 
 namespace Infrastructure.StateMachine
 {
@@ -62,14 +64,18 @@ namespace Infrastructure.StateMachine
         {
             //mainMenu.OnContinueButtonPress.AddListener(ContinueGame);
             mainMenu.OnOnNewGameButtonPress.AddListener(StartNewGame);
+            mainMenu.OnExitButtonPress.AddListener(ExitGame);
             mainMenu.OnMusicSlider.AddListener(ChangeMusicVolume);
             mainMenu.OnSoundsSlider.AddListener(ChangeSoundsVolume);
         }
+
+       
 
         private void UnregisterButtonsEvents(MainMenuUIHelper mainMenu)
         {
             //mainMenu.OnContinueButtonPress.RemoveListener(ContinueGame);
             mainMenu.OnOnNewGameButtonPress.RemoveListener(StartNewGame);
+            mainMenu.OnExitButtonPress.RemoveListener(ExitGame);
             mainMenu.OnMusicSlider.RemoveListener(ChangeMusicVolume);
             mainMenu.OnSoundsSlider.RemoveListener(ChangeSoundsVolume);
         }
@@ -77,7 +83,11 @@ namespace Infrastructure.StateMachine
         private void ContinueGame()
         {
         }
-
+        private void ExitGame()
+        {
+            Debug.Log("Quit game");
+            Application.Quit();
+        }
         private void StartNewGame()
         {
             _saveLoadService.SaveProgress();

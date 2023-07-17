@@ -37,10 +37,10 @@ namespace ChobiAssets.PTM
             Move();
 
             // Quit
-            if (General_Settings_CS.Allow_Instant_Quit && Input.GetKeyDown(General_Settings_CS.Quit_Key))
-            {
-                Application.Quit();
-            }
+            //if (General_Settings_CS.Allow_Instant_Quit && Input.GetKeyDown(General_Settings_CS.Quit_Key))
+            //{
+            //    Application.Quit();
+            //}
         }
 
 
