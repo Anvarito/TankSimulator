@@ -3817,7 +3817,7 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 1ee2769d2fd874941b31219c93a7e0c9, type: 3}
     MapDesription: "\u041F\u043E\u043B\u0438\u0433\u043E\u043D"
   - name: "\u041B\u0435\u0442\u043E"
-    _mapSprite: {fileID: 21300000, guid: 1026c7663e39e144ca584bbadff06996, type: 3}
+    _mapSprite: {fileID: 21300000, guid: 759186e18b90c6a4fb3a5f8428cc05c3, type: 3}
     _modsSprites:
     - {fileID: 21300000, guid: efb24d6e8f4c8b3409ed1378f9eeedab, type: 3}
     - {fileID: 21300000, guid: 00fef7e87ce81e04b882039c235682c2, type: 3}
