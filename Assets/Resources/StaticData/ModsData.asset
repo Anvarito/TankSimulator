@@ -53,7 +53,7 @@ MonoBehaviour:
     PlayerCount: 2
     Name: Training
     EnemiesSpawnsPeriodically: 1
-    EnemiesCooldownSpawn: 5
+    EnemiesCooldownSpawn: 20
     CooldownRange: 0
     PlayersSpawnsPeriodicaly: 0
     PlayersCooldownSpawn: 0

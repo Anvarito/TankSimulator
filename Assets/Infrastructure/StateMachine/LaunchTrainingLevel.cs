@@ -38,6 +38,7 @@ namespace Infrastructure.StateMachine
         {
             _progressService.Progress.WorldData.ModeId = Services.StaticData.Gamemodes.GamemodeId.Training;
             _progressService.Progress.WorldData.LevelId = Services.StaticData.Level.LevelId.Training;
+            _progressService.Progress.WorldData.Level = TrainLevel;
 
             var playerConfiguration = _inputServise.PlayerConfigs.First();
             playerConfiguration.IsReady = true;
