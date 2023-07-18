@@ -21,7 +21,7 @@ namespace Infrastructure.Services.StaticData
         private const string SpawnPointsDataPath = "StaticData/SpawnPoints";
         private const string WaypointsDataPath = "StaticData/Waypoints/WaypointPacksData";
         private const string LevelDataPath = "StaticData/Levels";
-        private const string TankDataPath = "StaticData/TanksData";
+        private const string TankDataPath = "StaticData/TanksData/TanksData";
         private const string ModsDataPath = "StaticData/ModsData";
         private const string MusicDataPath = "StaticData/Audio/MusicData";
         private const string SoundsDataPath = "StaticData/Audio/SoundsData";

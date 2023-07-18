@@ -1,7 +1,9 @@
+using System.Collections;
 using Infrastructure.Components;
 using Infrastructure.Services.StaticData.Tank;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerTankPickVeiw : MonoBehaviour
 {
@@ -55,7 +57,8 @@ public class PlayerTankPickVeiw : MonoBehaviour
         _nameText.text = tank.Name;
 
         _content.localPosition = Vector3.zero;
-        _tankInfo.text = tank.Description;
+        _tankInfo.richText = true;
+        _tankInfo.text = tank.Description.text.Replace("\\n", "\n");
     }
 
     internal void Submit()
