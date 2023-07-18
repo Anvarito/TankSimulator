@@ -81,10 +81,10 @@ namespace Infrastructure.Factory
         {
             base.CleanUp();
 
-            foreach (var i in EnemyDamageManagers)
-            {
-                Object.Destroy(i.transform.root.gameObject);
-            }
+            // foreach (var i in EnemyDamageManagers)
+            // {
+            //     Object.Destroy(i.transform.root.gameObject);
+            // }
 
             EnemyDamageManagers.Clear();
             _waypoints.Clear();

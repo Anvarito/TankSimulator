@@ -46,18 +46,18 @@ namespace Infrastructure.StateMachine
         public void Enter(float score) => 
             _coroutineRunner.StartCoroutine(WithDelay(score));
         
-        public void Exit() => 
+        public void Exit()
+        {
             _playerFactory.GameBoard.OnExitMenu -= Menu;
+            _enemyFactory.Controller.Pause();
+        }
 
         private void Menu() => 
             _gameStateMachine.Enter<ResetState>();
 
-        private void Restart()
-        {
-            _enemyFactory.Controller.Pause();
+        private void Restart() => 
             _gameStateMachine.Enter<ReloadState, string>(ReloadScene);
-        }
-        
+
         private IEnumerator WithDelay(float score)
         {
             float endTime = Time.time + Constants.GameOverDelay;

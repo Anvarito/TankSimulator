@@ -9,6 +9,7 @@ using Infrastructure.StateMachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
+using Object = UnityEngine.Object;
 
 
 namespace Infrastructure.Services.Input
@@ -110,10 +111,8 @@ namespace Infrastructure.Services.Input
 
         public void CleanUp()
         {
-            foreach (var i in PlayerConfigs)
-            {
-                GameObject.Destroy(i.Input.gameObject);
-            }
+            foreach (var i in PlayerConfigs) 
+                Object.Destroy(i.Input.gameObject);
 
             ResetPlayerIndex();
 
