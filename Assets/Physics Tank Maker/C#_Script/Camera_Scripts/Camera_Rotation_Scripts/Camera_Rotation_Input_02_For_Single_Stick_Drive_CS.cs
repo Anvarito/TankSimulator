@@ -3,14 +3,15 @@ using UnityEngine.InputSystem;
 
 namespace ChobiAssets.PTM
 {
-
     public class Camera_Rotation_Input_02_For_Single_Stick_Drive_CS : Camera_Rotation_Input_00_Base_CS
     {
         private InputAction _lookAction;
         private PlayerInput _playerInput;
         private InputAction _resetTurretAction;
         private Vector2 _rotateInput;
-        public Camera_Rotation_Input_02_For_Single_Stick_Drive_CS(PlayerInput playerInput, InputAction lookAction, InputAction resetTurretAction )
+
+        public Camera_Rotation_Input_02_For_Single_Stick_Drive_CS(PlayerInput playerInput, InputAction lookAction,
+            InputAction resetTurretAction)
         {
             _lookAction = lookAction;
             _playerInput = playerInput;
@@ -24,7 +25,8 @@ namespace ChobiAssets.PTM
             if (_resetTurretAction.name == obj.action.name)
             {
                 // Look forward.
-                rotationScript.Look_At_Target(rotationScript.BodyTransform.position + rotationScript.BodyTransform.forward * 64.0f);
+                rotationScript.Look_At_Target(rotationScript.BodyTransform.position +
+                                              rotationScript.BodyTransform.forward * 64.0f);
             }
         }
 
@@ -33,6 +35,7 @@ namespace ChobiAssets.PTM
             if (_lookAction.name == obj.action.name)
             {
                 _rotateInput = obj.action.ReadValue<Vector2>();
+                _rotateInput = obj.control.device == Mouse.current ? _rotateInput / 75 : _rotateInput;
             }
         }
 
@@ -45,7 +48,6 @@ namespace ChobiAssets.PTM
 
         public override void Get_Input()
         {
-
             // Check the main camera is enabled.
             if (rotationScript.Main_Camera.enabled == false)
             {
@@ -64,7 +66,5 @@ namespace ChobiAssets.PTM
             rotationScript.Horizontal_Input = horizontal * multiplier * Time.deltaTime;
             rotationScript.Vertical_Input = vertical * multiplier * 0.5f * Time.deltaTime;
         }
-
     }
-
 }

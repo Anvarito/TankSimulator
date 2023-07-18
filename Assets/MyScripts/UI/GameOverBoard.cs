@@ -167,7 +167,7 @@ namespace Infrastructure.TestMono
             {
                 var leader = _scoreHolders[index];
                 ScorePlane scorePlane = Instantiate(_scorePlanePrefab, _scorePanel);
-                scorePlane.SetData(leader);
+                scorePlane.SetData(leader, index + 1);
 
                 if (leader.Name == playerReference.Name)
                     scorePlane.Hightlight();

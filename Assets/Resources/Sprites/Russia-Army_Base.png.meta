@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 859f7c7d207d21a49949f72649e640ae
+guid: 5c99ed5618ba51947a017626d8f46cff
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,295 +117,316 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Russia-Army_Base 2_0
+      name: Russia-Army_Base_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1932
+        width: 356
+        height: 138
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a25a9a219b2bdb4dbf571983407aff6
+      internalID: -105762263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Russia-Army_Base_1
       rect:
         serializedVersion: 2
         x: 0
         y: 1794
         width: 356
         height: 138
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8bde9746f0c887c4c84f7aeeb187575e
-      internalID: 695022496
+      spriteID: 9c35cd7614333684586392e8a0fd49ab
+      internalID: -1630485785
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Russia-Army_Base 2_1
+      name: Russia-Army_Base_2
       rect:
         serializedVersion: 2
         x: 0
         y: 1656
         width: 356
         height: 138
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c36449b14a11a9844b1869df623fec13
-      internalID: -1949607126
+      spriteID: c7a0b0894252dbd45807177e00789e2f
+      internalID: 1134427881
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Russia-Army_Base 2_2
+      name: Russia-Army_Base_3
       rect:
         serializedVersion: 2
         x: 0
         y: 1518
         width: 356
         height: 138
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f4fc3c4c40d988647bc9af946481ad7e
-      internalID: 998354618
+      spriteID: a837b55c48907af4e9960c957b2f8bde
+      internalID: -1363784537
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Russia-Army_Base 2_3
+      name: Russia-Army_Base_4
       rect:
         serializedVersion: 2
         x: 0
         y: 1380
         width: 356
         height: 138
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8bcf825c3fa20964398828c931153417
-      internalID: -1023219041
+      spriteID: a50a8dfa82cbef844aee0ca134da2f1d
+      internalID: 813564317
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Russia-Army_Base 2_4
+      name: Russia-Army_Base_5
       rect:
         serializedVersion: 2
         x: 0
         y: 1242
         width: 356
         height: 138
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 80e43b92f490b99438f8541d2dcb9962
-      internalID: -1026832310
+      spriteID: 9c143b6055590304c924511f1b13c50c
+      internalID: -44529283
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Russia-Army_Base 2_5
+      name: Russia-Army_Base_6
       rect:
         serializedVersion: 2
         x: 0
         y: 1104
         width: 356
         height: 138
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d2543366dd2e9574f91640d3cdf9c644
-      internalID: -401783421
+      spriteID: 01c46fc793bb61042abbd9472c0169cc
+      internalID: 1921219273
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Russia-Army_Base 2_6
+      name: Russia-Army_Base_7
       rect:
         serializedVersion: 2
         x: 0
         y: 966
         width: 356
         height: 138
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 324e6de5a2ddae742bb5c8ec69d37ed2
-      internalID: -270902935
+      spriteID: b483c63c8eae92446a63a104bee40634
+      internalID: 522408146
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Russia-Army_Base 2_7
+      name: Russia-Army_Base_8
       rect:
         serializedVersion: 2
         x: 0
         y: 828
         width: 356
         height: 138
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 89a19a4ebbbaf614fa00e059578e3632
-      internalID: -471224803
+      spriteID: 77fb0cfe61d1a3d4f9d309a452d74120
+      internalID: -992264821
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Russia-Army_Base 2_8
+      name: Russia-Army_Base_9
       rect:
         serializedVersion: 2
         x: 0
         y: 690
         width: 356
         height: 138
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2c25614802ebe0f4199440ba8eb950e5
-      internalID: 85576623
+      spriteID: ee042978761be7144992fe4fefc3b878
+      internalID: 1063839979
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Russia-Army_Base 2_9
+      name: Russia-Army_Base_10
       rect:
         serializedVersion: 2
         x: 0
         y: 552
         width: 356
         height: 138
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6801e4cc91ed2c348a496fbf51be746e
-      internalID: 2089127794
+      spriteID: d35a075cfdbd2a849978ecde65b223cc
+      internalID: 928601597
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Russia-Army_Base 2_10
+      name: Russia-Army_Base_11
       rect:
         serializedVersion: 2
         x: 0
         y: 414
         width: 356
         height: 138
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d11d99471ee7f72499efa5971413680d
-      internalID: 701767404
+      spriteID: e93f7775866d63b4a91c5a4e980b013d
+      internalID: -1407640811
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Russia-Army_Base 2_11
+      name: Russia-Army_Base_12
       rect:
         serializedVersion: 2
         x: 0
         y: 276
         width: 356
         height: 138
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b60b8187c48569143946604264cc9dae
-      internalID: 1823097602
+      spriteID: 52cb88104412c3e4db5e1e9e15934e40
+      internalID: 55338109
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Russia-Army_Base 2_12
+      name: Russia-Army_Base_13
       rect:
         serializedVersion: 2
         x: 0
         y: 138
         width: 356
         height: 138
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5ca4fb9b647425f488f932df406037f0
-      internalID: -1812677005
+      spriteID: 413a86aa8e946d8479d85b1af88fa652
+      internalID: -1560730016
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Russia-Army_Base 2_13
+      name: Russia-Army_Base_14
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 356
         height: 138
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8a223dc590032a4498ac9b6fbbe12348
-      internalID: 1106406927
+      spriteID: c099aa54f76953d4ea99306b4db0c9af
+      internalID: -1068064319
       vertices: []
       indices: 
       edges: []
@@ -413,7 +434,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: f77648c7a3d4ae54d8e64d846cb47346
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -421,20 +442,21 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Russia-Army_Base 2_0: 695022496
-      Russia-Army_Base 2_1: -1949607126
-      Russia-Army_Base 2_10: 701767404
-      Russia-Army_Base 2_11: 1823097602
-      Russia-Army_Base 2_12: -1812677005
-      Russia-Army_Base 2_13: 1106406927
-      Russia-Army_Base 2_2: 998354618
-      Russia-Army_Base 2_3: -1023219041
-      Russia-Army_Base 2_4: -1026832310
-      Russia-Army_Base 2_5: -401783421
-      Russia-Army_Base 2_6: -270902935
-      Russia-Army_Base 2_7: -471224803
-      Russia-Army_Base 2_8: 85576623
-      Russia-Army_Base 2_9: 2089127794
+      Russia-Army_Base_0: -105762263
+      Russia-Army_Base_1: -1630485785
+      Russia-Army_Base_10: 928601597
+      Russia-Army_Base_11: -1407640811
+      Russia-Army_Base_12: 55338109
+      Russia-Army_Base_13: -1560730016
+      Russia-Army_Base_14: -1068064319
+      Russia-Army_Base_2: 1134427881
+      Russia-Army_Base_3: -1363784537
+      Russia-Army_Base_4: 813564317
+      Russia-Army_Base_5: -44529283
+      Russia-Army_Base_6: 1921219273
+      Russia-Army_Base_7: 522408146
+      Russia-Army_Base_8: -992264821
+      Russia-Army_Base_9: 1063839979
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

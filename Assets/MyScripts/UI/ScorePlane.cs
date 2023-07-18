@@ -15,13 +15,13 @@ public class ScorePlane : MonoBehaviour
     private bool _isHlight = false;
 
     public ScoreHolder ScoreHolder { get; private set; }
-    public void SetData(ScoreHolder scoreHolder)
+    public void SetData(ScoreHolder scoreHolder, int order)
     {
         ScoreHolder = scoreHolder;
-        string rank = $"<sprite={Mathf.Min(12,(int)(scoreHolder.Points/100)%13-1)}> ";
-        if (scoreHolder.Points == 0) rank = "";
-        if (scoreHolder.Points / 100 > 12) rank = $"<sprite={12}>"; 
-        _text.text = rank + scoreHolder.Name.ToUpper() + ": " + scoreHolder.Points.ToString() + " очков";
+        string rank = $"<sprite={(int)(scoreHolder.Points/100)%14}> ";
+        if (scoreHolder.Points / 100 > 13) rank = $"<sprite={13}>"; 
+        _text.text = $"{rank}Игрок{order}: {scoreHolder.Points} очков";
+        // _text.text = rank + scoreHolder.Name.ToUpper() + ": " + scoreHolder.Points.ToString() + " очков";
     }
 
     internal void Hightlight()
@@ -41,9 +41,7 @@ public class ScorePlane : MonoBehaviour
             if (alpha >= 1)
             {
                 _hlTimer = 0;
-                var tempColor = _currentColor;
-                _currentColor = _targetColor;
-                _targetColor = tempColor;
+                (_currentColor, _targetColor) = (_targetColor, _currentColor);
             }
         }
     }
