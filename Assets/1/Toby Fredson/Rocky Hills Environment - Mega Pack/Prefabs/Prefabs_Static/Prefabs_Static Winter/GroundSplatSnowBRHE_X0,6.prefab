@@ -239,6 +239,7 @@ GameObject:
   - component: {fileID: 4999846973949208}
   - component: {fileID: 33592228888753622}
   - component: {fileID: 23157102027559726}
+  - component: {fileID: 7740468645095948137}
   m_Layer: 0
   m_Name: GroundSplatSnowBRHE_X0,6_LOD0
   m_TagString: Untagged
@@ -311,3 +312,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7740468645095948137
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1814130272905458}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: e50e142b1508cda4e8374f8cdaf23fbc, type: 3}
