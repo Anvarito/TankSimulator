@@ -28,6 +28,7 @@ namespace Infrastructure.Services.Input
         private static int currentIndex = 0;
         private NewControl _controlSchema;
 
+        public NewControl Control => _controlSchema;
         public InputService(GameStateMachine gameStateMachine, IFactories factories, StaticData.IStaticDataService staticDataService)
         {
             _gameStateMachine = gameStateMachine;

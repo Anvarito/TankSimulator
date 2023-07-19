@@ -14,6 +14,7 @@ namespace Infrastructure.Components
         [SerializeField] private Button _exitButton;
         [SerializeField] private Slider _musicSlider;
         [SerializeField] private Slider _soundsSlider;
+        [SerializeField] private InfoScrolling _infoScrolling;
 
         public UnityEvent OnContinueButtonPress => _continueButton.onClick;
         public UnityEvent OnSettingsPress => _settingsButton.onClick;
@@ -25,5 +26,6 @@ namespace Infrastructure.Components
         public Slider SoundsSlider => _soundsSlider;
         public Slider.SliderEvent OnMusicSlider => _musicSlider.onValueChanged;
         public Slider.SliderEvent OnSoundsSlider => _soundsSlider.onValueChanged;
+        public InfoScrolling InfoScrolling => _infoScrolling;
     }
 }
