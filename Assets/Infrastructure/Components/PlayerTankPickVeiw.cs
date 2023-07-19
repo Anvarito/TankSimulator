@@ -12,6 +12,7 @@ public class PlayerTankPickVeiw : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _nameText;
     [SerializeField] private TankPickerUIHelper _tankPickerUIHelper;
     [SerializeField] private GameObject _hoistPrefab;
+    [SerializeField] private TextMeshProUGUI _playerName;
 
     [Space(10)]
     [Header("Info")]
@@ -38,6 +39,11 @@ public class PlayerTankPickVeiw : MonoBehaviour
             Destroy(GameObject.Find("Player2ConnectHelp"));
 
         SetUIposition();
+    }
+
+    public void SetName(string name)
+    {
+        _playerName.text = name;
     }
     private void SetUIposition()
     {
@@ -84,7 +90,7 @@ public class PlayerTankPickVeiw : MonoBehaviour
             return;
 
         _choiseTank.transform.Rotate(0, -_rotateAmount * 0.4f, 0);
-        _content.localPosition += new Vector3(0, _scrollAmount,0);
+        _content.localPosition += new Vector3(0, _scrollAmount, 0);
     }
 
     private void SetReady()

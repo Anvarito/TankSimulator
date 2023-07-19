@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Infrastructure.Services.StaticData;
 using Infrastructure.Services.StaticData.Tank;
@@ -94,7 +95,10 @@ namespace Infrastructure.Components
             }
         }
 
-    
+        internal void SetPlayerName(string playerName)
+        {
+            _playerTankPickVeiw.SetName(playerName);
+        }
 
         private int ClampIndex(int index)
         {

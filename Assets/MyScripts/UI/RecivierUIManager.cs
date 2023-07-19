@@ -27,7 +27,8 @@ public class RecivierUIManager : MonoBehaviour
         List<ID_Settings_CS> enemysID,
         ID_Settings_CS idSettings,
         ITimerService timerService,
-        IScoreCounter scoreCounter)
+        IScoreCounter scoreCounter,
+        string playerName)
     {
         _aimMarkerRecivier.Init(aiming, gunCamera, cameraView);
         _leadMarkerRecivier.Init(aiming, bulletGenerator, gunCamera, cameraView);

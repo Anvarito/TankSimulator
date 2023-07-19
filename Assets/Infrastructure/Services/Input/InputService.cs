@@ -149,6 +149,8 @@ namespace Infrastructure.Services.Input
         public string PrefabPath { get; set; }
         public ERelationship Team { get; set; }
 
+        public string PlayerName = "";
+
         public PlayerConfiguration(PlayerInput pi)
         {
             PlayerIndex = pi.playerIndex;
