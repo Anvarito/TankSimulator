@@ -30,5 +30,7 @@ namespace Infrastructure.Assets
         public const string TankPickerCanvas = "General/TankPicker";
         public const string PauseMenu = "UI/PauseMenu";
 
+        public const string NamesListPath = "Resources/General/Names.txt";
+
     }
 }

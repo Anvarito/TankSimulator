@@ -3,6 +3,7 @@ using System.Linq;
 using Infrastructure.Components;
 using Infrastructure.Factory.Base;
 using Infrastructure.Factory.Compose;
+using Infrastructure.Services;
 using Infrastructure.Services.Audio;
 using Infrastructure.Services.Input;
 using Infrastructure.Services.Progress;
@@ -26,7 +27,6 @@ namespace Infrastructure.StateMachine
         private readonly IInputService _inputService;
         private readonly IProgressService _progressService;
         private readonly IPlayerFactory _playerFactory;
-
 
         public MenuState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, IAudioService audioService, IProgressService progress, ISaveLoadService saveLoadService, IInputService inputService, IFactories factories)
         {

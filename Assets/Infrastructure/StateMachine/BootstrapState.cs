@@ -59,6 +59,7 @@ namespace Infrastructure.StateMachine
         {
             
             _services.RegisterSingle<ITimerService>(new TimerService(_coroutineRunner));
+            _services.RegisterSingle<INameRandomizer>(new NameRandomizator());
 
             _services.RegisterSingle<IStaticDataService>(new StaticDataService());
             _services.Single<IStaticDataService>().LoadAllStaticData();
