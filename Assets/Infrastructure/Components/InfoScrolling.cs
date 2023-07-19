@@ -21,7 +21,7 @@ public class InfoScrolling : MonoBehaviour
 
     internal void ScrollMove(float amount)
     {
-        _scrollAmount = amount;
+        _scrollAmount = amount * Time.deltaTime * 400;
 
     }
     private void Update()
