@@ -3,6 +3,7 @@ using Infrastructure.Services.Input;
 using Infrastructure.Services.Progress;
 using Infrastructure.Factory.Compose;
 using Infrastructure.Services.Timer;
+using Infrastructure.Services.KillCounter;
 
 namespace Infrastructure.StateMachine
 {
@@ -15,7 +16,9 @@ namespace Infrastructure.StateMachine
         private ITimerService _timerService;
         private IInputService _inputService;
         private IProgressService _progressService;
-        public ResetState(GameStateMachine gameStateMachine, IFactories factories, IInputService inputService, IProgressService progressService, ITimerService timerService)
+        private IKillCounter _killCounter;
+
+        public ResetState(GameStateMachine gameStateMachine, IFactories factories, IInputService inputService, IProgressService progressService, ITimerService timerService, IKillCounter killCounter)
         {
             _playerFactory = factories.Single<IPlayerFactory>();
             _enemyFactory = factories.Single<IEnemyFactory>();
@@ -23,6 +26,7 @@ namespace Infrastructure.StateMachine
             _timerService = timerService;
             _inputService = inputService;
             _progressService = progressService;
+            _killCounter = killCounter;
 
             _gameStateMachine = gameStateMachine;
         }
@@ -35,6 +39,7 @@ namespace Infrastructure.StateMachine
             _timerService.CleanUp();
             _inputService.CleanUp();
             _progressService.CleanUp();
+            _killCounter.CleanUp();
 
             _gameStateMachine.Enter<SetupFirstInputState>();
         }

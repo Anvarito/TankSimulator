@@ -38,7 +38,7 @@ public class RecivierUIManager : MonoBehaviour
         _speedRecivier.Init(driveControl, gunCamera, cameraView);
         _positionActorsRecivier.Init(idSettings, enemysID, gunCamera, cameraView);
         _hitPointsTargetRecivier.Init(aiming, gunCamera, cameraView);
-        _scoreAndTimerReciever.Init(timerService, scoreCounter, gunCamera, cameraView, idSettings);
+        _scoreAndTimerReciever.Init(timerService, scoreCounter, gunCamera, cameraView, idSettings, playerName);
 
         damageReceiver.OnTankDestroyed.AddListener(TankDestroyed);
     }

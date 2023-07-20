@@ -13,6 +13,7 @@ namespace Infrastructure.Services.Score
     {
         public float ScorePlayerOne { get; private set; }
         public float ScorePlayerTwo { get; private set; }
+        public List<float> Scores => new List<float> { ScorePlayerOne,ScorePlayerTwo};
         public Action<int> OnEnemiesDestroyed { get; set; }
 
         private readonly Dictionary<ID_Settings_CS, int> _indexById = new Dictionary<ID_Settings_CS, int>();
@@ -27,7 +28,7 @@ namespace Infrastructure.Services.Score
             _progress = progress;
             _dataService = dataService;
             _enemyFactory = factories.Single<IEnemyFactory>();
-
+            
             Setup();
         }
 

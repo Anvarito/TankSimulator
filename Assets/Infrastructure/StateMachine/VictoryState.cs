@@ -15,7 +15,7 @@ using Random = UnityEngine.Random;
 
 namespace Infrastructure.StateMachine
 {
-    public class VictoryState : IPayloadedState<float>
+    public class VictoryState : IPayloadedState<PlayerData>
     {
         private const string ReloadScene = "ReloadScene";
         
@@ -43,8 +43,8 @@ namespace Infrastructure.StateMachine
             _enemyFactory = factories.Single<IEnemyFactory>();
         }
         
-        public void Enter(float score) => 
-            _coroutineRunner.StartCoroutine(WithDelay(score));
+        public void Enter(PlayerData playerData) => 
+            _coroutineRunner.StartCoroutine(WithDelay(playerData));
         
         public void Exit() => 
             _playerFactory.GameBoard.OnExitMenu -= Menu;
@@ -58,7 +58,7 @@ namespace Infrastructure.StateMachine
             _gameStateMachine.Enter<ReloadState, string>(ReloadScene);
         }
         
-        private IEnumerator WithDelay(float score)
+        private IEnumerator WithDelay(PlayerData playerData)
         {
             float endTime = Time.time + Constants.GameOverDelay;
             while (endTime > Time.time)
@@ -72,16 +72,19 @@ namespace Infrastructure.StateMachine
             _inputService.ResetPlayerIndex();
             _inputService.ConnectToInputs(_playerFactory.GameBoard.transform.root.gameObject, true);
 
-            ScoreHolder playerScore = new ScoreHolder("Player " + Random.Range(0,99), score);
+            ScoreHolder playerScore = new ScoreHolder(playerData.Config.PlayerName, playerData.Score);
             LeadersHolder leaderList = new LeadersHolder();
             leaderList = SetupLeadersHolder(playerScore, leaderList);
             
             _saveLoadService.SaveProgress();
 
-            _playerFactory.GameBoard.ShowVictoryPanel(_playerFactory.PlayersSettings, leaderList, playerScore,_progress.Progress.WorldData.ModeId == GamemodeId.Versus);
+            _playerFactory.GameBoard.ShowVictoryPanel(_playerFactory.PlayersSettings, leaderList, playerScore, IsNotSurvival());
             _playerFactory.GameBoard.OnExitMenu += Menu;
             _playerFactory.GameBoard.OnRestart += Restart;
         }
+
+        private bool IsNotSurvival() =>
+           _progress.Progress.WorldData.ModeId != GamemodeId.Survival;
 
         private LeadersHolder SetupLeadersHolder(ScoreHolder playerScore, LeadersHolder copyList)
         {

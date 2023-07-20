@@ -81,10 +81,10 @@ namespace Infrastructure.TestMono
         }
 
         public void ShowVictoryPanel(List<ID_Settings_CS> playersSettings, LeadersHolder leadersHolder,
-            ScoreHolder playerReference, bool team = false)
+            ScoreHolder playerReference, bool isNotSurvival = false)
         {
             Debug.Log($"Score: {playerReference.Points}");
-            if (team)
+            if (isNotSurvival)
             {
                 List<ERelationship> playerTeams = playersSettings.Select(x => x.Relationship).ToList();
                 playerTeams.Add(ERelationship.TeamB);
@@ -110,11 +110,11 @@ namespace Infrastructure.TestMono
 
 
         public void ShowDefeatPanel(List<ID_Settings_CS> playersSettings, LeadersHolder leadersHolder,
-            ScoreHolder playerReference, bool team = false)
+            ScoreHolder playerReference, bool isNotSurvival = false)
         {
             Debug.Log($"Score: {playerReference}");
 
-            if (team)
+            if (isNotSurvival)
             {
                 List<ERelationship> playerTeams = playersSettings.Select(x => x.Relationship).ToList();
                 playerTeams.Add(ERelationship.TeamB);

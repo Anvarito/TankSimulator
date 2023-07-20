@@ -17,17 +17,17 @@ public class TeamUI : MonoBehaviour
     [SerializeField] private Color _teamAColor; 
     [SerializeField] private Color _teamBColor; 
     
-    public void Init(ID_Settings_CS selfID)
+    public void Init(ID_Settings_CS selfID, string name)
     {
         switch (selfID.Relationship)
         {
             case ERelationship.TeamA:
                 _teamText.color = _teamAColor;
-                _teamText.text = _teamAText;
+                _teamText.text = name;
                 break;
             case ERelationship.TeamB:
                 _teamText.color = _teamBColor;
-                _teamText.text = _teamBText;
+                _teamText.text = name;
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
