@@ -6,7 +6,9 @@ namespace ChobiAssets.PTM
 
     public class AimingControlStickDrive : Aiming_Control_Input_01_Mouse_Keyboard_CS
     {
-
+        private const float MouseAimMulti = 1 / 10f;
+        private float _currentAimMulti = 1;
+        
         bool dPadPressed;
         private InputAction _lookAction;
         private InputAction _resetTurretAction;
@@ -59,6 +61,7 @@ namespace ChobiAssets.PTM
                 if (obj.performed)
                 {
                     _rotateValueAction = obj.action;
+                    if (obj.control.device == Mouse.current) _currentAimMulti = MouseAimMulti;
                 }
             }
         }
@@ -72,9 +75,9 @@ namespace ChobiAssets.PTM
                 // Set the adjust angle.
                 var multiplier = Mathf.Lerp(0.05f, 1.0f, gunCameraScript.Gun_Camera.fieldOfView / 10.0f); // Set the multiplier according to the FOV.
 
-                var vertical = _rotateValueAction.ReadValue<Vector2>().y;
-                var horizontal = _rotateValueAction.ReadValue<Vector2>().x;
-
+                var vertical = _rotateValueAction.ReadValue<Vector2>().y * _currentAimMulti;
+                var horizontal = _rotateValueAction.ReadValue<Vector2>().x * _currentAimMulti;
+                
 
                 if (vertical != 0 || horizontal != 0)
                 {
@@ -156,7 +159,7 @@ namespace ChobiAssets.PTM
                 dPadPressed = false;
             }
             */
-
+            _currentAimMulti = 1;
         }
 
     }

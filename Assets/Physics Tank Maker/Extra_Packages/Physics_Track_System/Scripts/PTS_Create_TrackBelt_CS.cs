@@ -58,7 +58,7 @@ namespace ChobiAssets.PTS
         void Awake ()
 		{
 			if (Static_Flag) { // For creating Static_Track.
-				Cursor.lockState = CursorLockMode.None;
+				// Cursor.lockState = CursorLockMode.None;
 				Rigidbody parentRigidbody = transform.parent.GetComponent < Rigidbody > ();
 				parentRigidbody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
 				parentRigidbody.drag = 15.0f;

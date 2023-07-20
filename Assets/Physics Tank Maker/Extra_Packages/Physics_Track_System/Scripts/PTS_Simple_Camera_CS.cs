@@ -12,7 +12,7 @@ namespace ChobiAssets.PTS
 
 		void Awake ()
 		{
-			Cursor.lockState = CursorLockMode.Locked;
+			// Cursor.lockState = CursorLockMode.Locked;
 			thisTransform = transform;
 			childTransform = thisTransform.GetChild (0);
 			currentAngles = thisTransform.eulerAngles;
@@ -23,11 +23,11 @@ namespace ChobiAssets.PTS
 		{
 			// Switch Cursor mode.
 			if (Input.GetKeyDown (KeyCode.LeftShift) || Input.GetKeyDown (KeyCode.RightShift)) {
-				if (Cursor.lockState == CursorLockMode.Locked) {
-					Cursor.lockState = CursorLockMode.None;
-				} else {
-					Cursor.lockState = CursorLockMode.Locked;
-				}
+				// if (Cursor.lockState == CursorLockMode.Locked) {
+				// 	Cursor.lockState = CursorLockMode.None;
+				// } else {
+				// 	Cursor.lockState = CursorLockMode.Locked;
+				// }
 			}
 			//
 			if (Cursor.lockState == CursorLockMode.Locked) {

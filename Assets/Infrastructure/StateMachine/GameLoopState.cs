@@ -51,6 +51,9 @@ namespace Infrastructure.StateMachine
             _inputService.OnEscTriggered += PauseGame;
             _enemyFactory.OnEnemyCreate += NewEnemyCreate;
             RegisterKillCounter();
+
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
         }
 
         public void Exit()
@@ -58,6 +61,9 @@ namespace Infrastructure.StateMachine
             _inputService.OnEscTriggered -= PauseGame;
             _enemyFactory.OnEnemyCreate -= NewEnemyCreate;
             UnregisterKillCounter();
+
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
 
         private void TryStartTimer()

@@ -57,29 +57,29 @@ namespace ChobiAssets.PTM
 
         protected virtual void Set_Cursor_State()
         {
-            if (Show_Cursor_Forcibly == true)
-            {
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-                return;
-            }
-
-            switch (General_Settings_CS.Input_Type)
-            {
-                case 0: // Mouse + Keyboard (Stepwise)
-                case 1: // Mouse + Keyboard (Pressing)
-                    Cursor.lockState = CursorLockMode.Locked;
-                    Cursor.visible = false;
-                    break;
-
-                case 2: // Mouse + Keyboard (Legacy)
-                case 3: // GamePad (Single stick)
-                case 4: // GamePad (Twin sticks)
-                case 5: // GamePad (Triggers)
-                    Cursor.lockState = CursorLockMode.None;
-                    Cursor.visible = true;
-                    break;
-            }
+            // if (Show_Cursor_Forcibly == true)
+            // {
+            //     Cursor.lockState = CursorLockMode.None;
+            //     Cursor.visible = true;
+            //     return;
+            // }
+            //
+            // switch (General_Settings_CS.Input_Type)
+            // {
+            //     case 0: // Mouse + Keyboard (Stepwise)
+            //     case 1: // Mouse + Keyboard (Pressing)
+            //         Cursor.lockState = CursorLockMode.Locked;
+            //         Cursor.visible = false;
+            //         break;
+            //
+            //     case 2: // Mouse + Keyboard (Legacy)
+            //     case 3: // GamePad (Single stick)
+            //     case 4: // GamePad (Twin sticks)
+            //     case 5: // GamePad (Triggers)
+            //         Cursor.lockState = CursorLockMode.None;
+            //         Cursor.visible = true;
+            //         break;
+            // }
         }
 
     }

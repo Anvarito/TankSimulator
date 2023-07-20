@@ -36,9 +36,9 @@ namespace ChobiAssets.PTM
             // Enable the result canvas.
             eventControllerScript.Result_Canvas.enabled = true;
 
-            // Show cursor.
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+            // // Show cursor.
+            // Cursor.lockState = CursorLockMode.None;
+            // Cursor.visible = true;
 
             // End the event.
             Destroy(this.gameObject);

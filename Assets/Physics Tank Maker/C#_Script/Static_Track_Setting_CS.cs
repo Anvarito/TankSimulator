@@ -55,8 +55,8 @@ namespace ChobiAssets.PTM
                     Time.timeScale = 0.0f;
 
                     // Show the cursor.
-                    Cursor.lockState = CursorLockMode.None;
-                    Cursor.visible = true;
+                    // Cursor.lockState = CursorLockMode.None;
+                    // Cursor.visible = true;
                 }
             }
         }

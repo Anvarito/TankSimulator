@@ -35,7 +35,7 @@ namespace ChobiAssets.PTM
             if (_lookAction.name == obj.action.name)
             {
                 _rotateInput = obj.action.ReadValue<Vector2>();
-                _rotateInput = obj.control.device == Mouse.current ? _rotateInput / 75 : _rotateInput;
+                _rotateInput = obj.control.device == Mouse.current ? _rotateInput / 55 : _rotateInput;
             }
         }
 

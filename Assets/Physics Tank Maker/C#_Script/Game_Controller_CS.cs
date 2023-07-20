@@ -115,16 +115,16 @@ namespace ChobiAssets.PTM
 
         void Switch_Cursor(bool isVisible)
         {
-            if (isVisible)
-            {
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-            }
-            else
-            {
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-            }
+            // if (isVisible)
+            // {
+            //     Cursor.lockState = CursorLockMode.None;
+            //     Cursor.visible = true;
+            // }
+            // else
+            // {
+            //     Cursor.lockState = CursorLockMode.Locked;
+            //     Cursor.visible = false;
+            // }
         }
 
 
