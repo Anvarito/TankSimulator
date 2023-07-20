@@ -21,7 +21,7 @@ public class ScorePlane : MonoBehaviour
         ScoreHolder = scoreHolder;
         string rank = $"<sprite={(int)(scoreHolder.Points / 100 % 14)}> ";
         if (scoreHolder.Points == 0) rank = "";
-        if (scoreHolder.Points / 100 > 13) rank = $"<sprite={13}>";
+        if (scoreHolder.Points / 100 > 13) rank = $"<sprite={13}> ";
         _text.text = rank + scoreHolder.Name.ToUpper() + ": " + scoreHolder.Points.ToString() + " очков";
     }
 

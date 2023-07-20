@@ -80,10 +80,10 @@ MonoBehaviour:
   m_SpriteCharacterTable:
   - m_ElementType: 2
     m_Unicode: 65534
-    m_GlyphIndex: 0
+    m_GlyphIndex: 14
     m_Scale: 1
-    m_Name: Russia-Army_Base_0
-    m_HashCode: -978855840
+    m_Name: Russia-Army_Base_14
+    m_HashCode: 2057495733
   - m_ElementType: 2
     m_Unicode: 65534
     m_GlyphIndex: 1
@@ -92,64 +92,10 @@ MonoBehaviour:
     m_HashCode: -978855839
   - m_ElementType: 2
     m_Unicode: 65534
-    m_GlyphIndex: 2
+    m_GlyphIndex: 0
     m_Scale: 1
-    m_Name: Russia-Army_Base_2
-    m_HashCode: -978855838
-  - m_ElementType: 2
-    m_Unicode: 65534
-    m_GlyphIndex: 3
-    m_Scale: 1
-    m_Name: Russia-Army_Base_3
-    m_HashCode: -978855837
-  - m_ElementType: 2
-    m_Unicode: 65534
-    m_GlyphIndex: 4
-    m_Scale: 1
-    m_Name: Russia-Army_Base_4
-    m_HashCode: -978855836
-  - m_ElementType: 2
-    m_Unicode: 65534
-    m_GlyphIndex: 5
-    m_Scale: 1
-    m_Name: Russia-Army_Base_5
-    m_HashCode: -978855835
-  - m_ElementType: 2
-    m_Unicode: 65534
-    m_GlyphIndex: 6
-    m_Scale: 1
-    m_Name: Russia-Army_Base_6
-    m_HashCode: -978855834
-  - m_ElementType: 2
-    m_Unicode: 65534
-    m_GlyphIndex: 7
-    m_Scale: 1
-    m_Name: Russia-Army_Base_7
-    m_HashCode: -978855833
-  - m_ElementType: 2
-    m_Unicode: 65534
-    m_GlyphIndex: 8
-    m_Scale: 1
-    m_Name: Russia-Army_Base_8
-    m_HashCode: -978855832
-  - m_ElementType: 2
-    m_Unicode: 65534
-    m_GlyphIndex: 9
-    m_Scale: 1
-    m_Name: Russia-Army_Base_9
-    m_HashCode: -978855831
-  - m_ElementType: 2
-    m_Unicode: 65534
-    m_GlyphIndex: 10
-    m_Scale: 1
-    m_Name: Russia-Army_Base_10
-    m_HashCode: 2057495729
-  - m_ElementType: 2
-    m_Unicode: 65534
-    m_GlyphIndex: 11
-    m_Scale: 1
-    m_Name: Russia-Army_Base_11
-    m_HashCode: 2057495728
+    m_Name: Russia-Army_Base_0
+    m_HashCode: -978855840
   - m_ElementType: 2
     m_Unicode: 65534
     m_GlyphIndex: 12
@@ -158,24 +104,78 @@ MonoBehaviour:
     m_HashCode: 2057495731
   - m_ElementType: 2
     m_Unicode: 65534
+    m_GlyphIndex: 11
+    m_Scale: 1
+    m_Name: Russia-Army_Base_11
+    m_HashCode: 2057495728
+  - m_ElementType: 2
+    m_Unicode: 65534
+    m_GlyphIndex: 10
+    m_Scale: 1
+    m_Name: Russia-Army_Base_10
+    m_HashCode: 2057495729
+  - m_ElementType: 2
+    m_Unicode: 65534
+    m_GlyphIndex: 9
+    m_Scale: 1
+    m_Name: Russia-Army_Base_9
+    m_HashCode: -978855831
+  - m_ElementType: 2
+    m_Unicode: 65534
+    m_GlyphIndex: 8
+    m_Scale: 1
+    m_Name: Russia-Army_Base_8
+    m_HashCode: -978855832
+  - m_ElementType: 2
+    m_Unicode: 65534
+    m_GlyphIndex: 7
+    m_Scale: 1
+    m_Name: Russia-Army_Base_7
+    m_HashCode: -978855833
+  - m_ElementType: 2
+    m_Unicode: 65534
+    m_GlyphIndex: 6
+    m_Scale: 1
+    m_Name: Russia-Army_Base_6
+    m_HashCode: -978855834
+  - m_ElementType: 2
+    m_Unicode: 65534
+    m_GlyphIndex: 5
+    m_Scale: 1
+    m_Name: Russia-Army_Base_5
+    m_HashCode: -978855835
+  - m_ElementType: 2
+    m_Unicode: 65534
+    m_GlyphIndex: 4
+    m_Scale: 1
+    m_Name: Russia-Army_Base_4
+    m_HashCode: -978855836
+  - m_ElementType: 2
+    m_Unicode: 65534
+    m_GlyphIndex: 3
+    m_Scale: 1
+    m_Name: Russia-Army_Base_3
+    m_HashCode: -978855837
+  - m_ElementType: 2
+    m_Unicode: 65534
+    m_GlyphIndex: 2
+    m_Scale: 1
+    m_Name: Russia-Army_Base_2
+    m_HashCode: -978855838
+  - m_ElementType: 2
+    m_Unicode: 65534
     m_GlyphIndex: 13
     m_Scale: 1
     m_Name: Russia-Army_Base_13
     m_HashCode: 2057495730
-  - m_ElementType: 2
-    m_Unicode: 65534
-    m_GlyphIndex: 14
-    m_Scale: 1
-    m_Name: Russia-Army_Base_14
-    m_HashCode: 2057495733
   m_SpriteGlyphTable:
   - m_Index: 0
     m_Metrics:
       m_Width: 352
       m_Height: 136.53333
-      m_HorizontalBearingX: -352
-      m_HorizontalBearingY: 68.26666
-      m_HorizontalAdvance: 352
+      m_HorizontalBearingX: -450
+      m_HorizontalBearingY: 100
+      m_HorizontalAdvance: 0.09
     m_GlyphRect:
       m_X: 0
       m_Y: 1911
@@ -189,9 +189,9 @@ MonoBehaviour:
     m_Metrics:
       m_Width: 352
       m_Height: 136.53333
-      m_HorizontalBearingX: -352
-      m_HorizontalBearingY: 68.26666
-      m_HorizontalAdvance: 352
+      m_HorizontalBearingX: -450
+      m_HorizontalBearingY: 100
+      m_HorizontalAdvance: 0.09
     m_GlyphRect:
       m_X: 0
       m_Y: 1774
@@ -205,9 +205,9 @@ MonoBehaviour:
     m_Metrics:
       m_Width: 352
       m_Height: 136.53333
-      m_HorizontalBearingX: -352
-      m_HorizontalBearingY: 68.26666
-      m_HorizontalAdvance: 352
+      m_HorizontalBearingX: -450
+      m_HorizontalBearingY: 100
+      m_HorizontalAdvance: 0.09
     m_GlyphRect:
       m_X: 0
       m_Y: 1638
@@ -221,9 +221,9 @@ MonoBehaviour:
     m_Metrics:
       m_Width: 352
       m_Height: 136.53333
-      m_HorizontalBearingX: -352
-      m_HorizontalBearingY: 68.26666
-      m_HorizontalAdvance: 352
+      m_HorizontalBearingX: -450
+      m_HorizontalBearingY: 100
+      m_HorizontalAdvance: 0.09
     m_GlyphRect:
       m_X: 0
       m_Y: 1501
@@ -237,9 +237,9 @@ MonoBehaviour:
     m_Metrics:
       m_Width: 352
       m_Height: 136.53333
-      m_HorizontalBearingX: -352
-      m_HorizontalBearingY: 68.26666
-      m_HorizontalAdvance: 352
+      m_HorizontalBearingX: -450
+      m_HorizontalBearingY: 100
+      m_HorizontalAdvance: 0.09
     m_GlyphRect:
       m_X: 0
       m_Y: 1365
@@ -253,9 +253,9 @@ MonoBehaviour:
     m_Metrics:
       m_Width: 352
       m_Height: 136.53333
-      m_HorizontalBearingX: -352
-      m_HorizontalBearingY: 68.26666
-      m_HorizontalAdvance: 352
+      m_HorizontalBearingX: -450
+      m_HorizontalBearingY: 100
+      m_HorizontalAdvance: 0.09
     m_GlyphRect:
       m_X: 0
       m_Y: 1228
@@ -269,9 +269,9 @@ MonoBehaviour:
     m_Metrics:
       m_Width: 352
       m_Height: 136.53333
-      m_HorizontalBearingX: -352
-      m_HorizontalBearingY: 68.26666
-      m_HorizontalAdvance: 352
+      m_HorizontalBearingX: -450
+      m_HorizontalBearingY: 100
+      m_HorizontalAdvance: 0.09
     m_GlyphRect:
       m_X: 0
       m_Y: 1092
@@ -285,9 +285,9 @@ MonoBehaviour:
     m_Metrics:
       m_Width: 352
       m_Height: 136.53333
-      m_HorizontalBearingX: -352
-      m_HorizontalBearingY: 68.26666
-      m_HorizontalAdvance: 352
+      m_HorizontalBearingX: -450
+      m_HorizontalBearingY: 100
+      m_HorizontalAdvance: 0.09
     m_GlyphRect:
       m_X: 0
       m_Y: 955
@@ -301,9 +301,9 @@ MonoBehaviour:
     m_Metrics:
       m_Width: 352
       m_Height: 136.53333
-      m_HorizontalBearingX: -352
-      m_HorizontalBearingY: 68.26666
-      m_HorizontalAdvance: 352
+      m_HorizontalBearingX: -450
+      m_HorizontalBearingY: 100
+      m_HorizontalAdvance: 0.09
     m_GlyphRect:
       m_X: 0
       m_Y: 819
@@ -317,9 +317,9 @@ MonoBehaviour:
     m_Metrics:
       m_Width: 352
       m_Height: 136.53333
-      m_HorizontalBearingX: -352
-      m_HorizontalBearingY: 68.26666
-      m_HorizontalAdvance: 352
+      m_HorizontalBearingX: -450
+      m_HorizontalBearingY: 100
+      m_HorizontalAdvance: 0.09
     m_GlyphRect:
       m_X: 0
       m_Y: 682
@@ -333,9 +333,9 @@ MonoBehaviour:
     m_Metrics:
       m_Width: 352
       m_Height: 136.53333
-      m_HorizontalBearingX: -352
-      m_HorizontalBearingY: 68.26666
-      m_HorizontalAdvance: 352
+      m_HorizontalBearingX: -450
+      m_HorizontalBearingY: 100
+      m_HorizontalAdvance: 0.09
     m_GlyphRect:
       m_X: 0
       m_Y: 546
@@ -349,9 +349,9 @@ MonoBehaviour:
     m_Metrics:
       m_Width: 352
       m_Height: 136.53333
-      m_HorizontalBearingX: -352
-      m_HorizontalBearingY: 68.26666
-      m_HorizontalAdvance: 352
+      m_HorizontalBearingX: -450
+      m_HorizontalBearingY: 100
+      m_HorizontalAdvance: 0.09
     m_GlyphRect:
       m_X: 0
       m_Y: 409
@@ -365,9 +365,9 @@ MonoBehaviour:
     m_Metrics:
       m_Width: 352
       m_Height: 136.53333
-      m_HorizontalBearingX: -352
-      m_HorizontalBearingY: 68.26666
-      m_HorizontalAdvance: 352
+      m_HorizontalBearingX: -450
+      m_HorizontalBearingY: 100
+      m_HorizontalAdvance: 0.09
     m_GlyphRect:
       m_X: 0
       m_Y: 273
@@ -381,9 +381,9 @@ MonoBehaviour:
     m_Metrics:
       m_Width: 352
       m_Height: 136.53333
-      m_HorizontalBearingX: -352
-      m_HorizontalBearingY: 68.26666
-      m_HorizontalAdvance: 352
+      m_HorizontalBearingX: -450
+      m_HorizontalBearingY: 100
+      m_HorizontalAdvance: 0.09
     m_GlyphRect:
       m_X: 0
       m_Y: 136
@@ -397,9 +397,9 @@ MonoBehaviour:
     m_Metrics:
       m_Width: 352
       m_Height: 136.53333
-      m_HorizontalBearingX: -352
-      m_HorizontalBearingY: 68.26666
-      m_HorizontalAdvance: 352
+      m_HorizontalBearingX: -450
+      m_HorizontalBearingY: 100
+      m_HorizontalAdvance: 0.09
     m_GlyphRect:
       m_X: 0
       m_Y: 0

@@ -10,6 +10,7 @@ using Infrastructure.Services.Progress;
 using Infrastructure.Services.SaveLoad;
 using Infrastructure.Services.StaticData.Gamemodes;
 using Infrastructure.Services.Timer;
+using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -18,7 +19,7 @@ namespace Infrastructure.StateMachine
     public class VictoryState : IPayloadedState<PlayerData>
     {
         private const string ReloadScene = "ReloadScene";
-        
+
         private readonly GameStateMachine _gameStateMachine;
         private readonly ICoroutineRunner _coroutineRunner;
         private readonly IAudioService _audioService;
@@ -30,7 +31,9 @@ namespace Infrastructure.StateMachine
         private readonly IEnemyFactory _enemyFactory;
 
 
-        public VictoryState(GameStateMachine gameStateMachine, ICoroutineRunner coroutineRunner,IAudioService audioService,ITimerService timerService, IInputService inputService,IFactories factories, IProgressService progress, ISaveLoadService saveLoadService)
+        public VictoryState(GameStateMachine gameStateMachine, ICoroutineRunner coroutineRunner,
+            IAudioService audioService, ITimerService timerService, IInputService inputService, IFactories factories,
+            IProgressService progress, ISaveLoadService saveLoadService)
         {
             _gameStateMachine = gameStateMachine;
             _coroutineRunner = coroutineRunner;
@@ -42,29 +45,29 @@ namespace Infrastructure.StateMachine
             _playerFactory = factories.Single<IPlayerFactory>();
             _enemyFactory = factories.Single<IEnemyFactory>();
         }
-        
-        public void Enter(PlayerData playerData) => 
+
+        public void Enter(PlayerData playerData) =>
             _coroutineRunner.StartCoroutine(WithDelay(playerData));
-        
+
         public void Exit()
         {
             _playerFactory.GameBoard.OnExitMenu -= Menu;
             _enemyFactory.Controller.Pause();
         }
 
-        private void Menu() => 
+        private void Menu() =>
             _gameStateMachine.Enter<ResetState>();
 
-        private void Restart() => 
+        private void Restart() =>
             _gameStateMachine.Enter<ReloadState, string>(ReloadScene);
-        }
-        
+
+
         private IEnumerator WithDelay(PlayerData playerData)
         {
             float endTime = Time.time + Constants.GameOverDelay;
             while (endTime > Time.time)
                 yield return null;
-            
+
             _audioService.StopMusic();
             _enemyFactory.Controller.Pause();
             _timerService.StopTimer();
@@ -76,16 +79,17 @@ namespace Infrastructure.StateMachine
             ScoreHolder playerScore = new ScoreHolder(playerData.Config.PlayerName, playerData.Score);
             LeadersHolder leaderList = new LeadersHolder();
             leaderList = SetupLeadersHolder(playerScore, leaderList);
-            
+
             _saveLoadService.SaveProgress();
 
-            _playerFactory.GameBoard.ShowVictoryPanel(_playerFactory.PlayersSettings, leaderList, playerScore, IsNotSurvival());
+            _playerFactory.GameBoard.ShowVictoryPanel(_playerFactory.PlayersSettings, leaderList, playerScore,
+                IsNotSurvival());
             _playerFactory.GameBoard.OnExitMenu += Menu;
             _playerFactory.GameBoard.OnRestart += Restart;
         }
 
         private bool IsNotSurvival() =>
-           _progress.Progress.WorldData.ModeId != GamemodeId.Survival;
+            _progress.Progress.WorldData.ModeId != GamemodeId.Survival;
 
         private LeadersHolder SetupLeadersHolder(ScoreHolder playerScore, LeadersHolder copyList)
         {
