@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using Infrastructure.Assets;
 using UnityEngine;
 
@@ -19,7 +20,7 @@ namespace Infrastructure.Services
             string name = "";
             try
             {
-                string[] file = System.IO.File.ReadAllLines(Application.dataPath + "/" + AssetPaths.NamesListPath);
+                string[] file = System.IO.File.ReadAllLines(Application.dataPath + "/" + AssetPaths.NamesListPath, Encoding.UTF8);
                 int count = file.Length;
                 int randomIndex = UnityEngine.Random.Range(0, count);
                 name = file[randomIndex];
@@ -38,4 +39,6 @@ namespace Infrastructure.Services
 
         }
     }
+
+    
 }
