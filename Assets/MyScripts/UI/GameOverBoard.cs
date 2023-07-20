@@ -169,7 +169,7 @@ namespace Infrastructure.TestMono
                 ScorePlane scorePlane = Instantiate(_scorePlanePrefab, _scorePanel);
                 scorePlane.SetData(leader);
 
-                if (leader.Name == playerReference.Name)
+                if (leader.Equals(playerReference))
                     scorePlane.Hightlight();
             }
         }
