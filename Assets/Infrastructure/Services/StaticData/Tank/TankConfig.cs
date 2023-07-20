@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-
+using TMPro;
 namespace Infrastructure.Services.StaticData.Tank
 {
     [Serializable]
@@ -10,6 +10,6 @@ namespace Infrastructure.Services.StaticData.Tank
         public string PrefabPath;
         public GameObject PrefabEmpty;
         public string Name = "Tank";
-        public string Description = "Battle Tank";
+        public TextMeshProUGUI Description;
     }
 }

@@ -89,8 +89,8 @@ namespace Infrastructure.Factory
             EnemysID.AddRange(PlayerParts.Select(x => x.IdSettings));
             EnemysID.AddRange(enemyDamageManagers.Select(x => x.GetComponentInParent<ID_Settings_CS>()));
 
-            foreach (PlayerUiParts part in PlayerParts)
-                InitializeUiWatchers(part, InstantiateRegistered(AssetPaths.TankUiSpawner));
+            for (int i = 0; i < PlayerParts.Count; i++)
+                InitializeUiWatchers(PlayerParts[i], InstantiateRegistered(AssetPaths.TankUiSpawner), _inputService.PlayerConfigs[i].PlayerName);
         }
 
         public void CreateHud()
@@ -149,12 +149,12 @@ namespace Infrastructure.Factory
             return player;
         }
 
-        private void InitializeUiWatchers(PlayerUiParts parts, GameObject uiSpawner)
+        private void InitializeUiWatchers(PlayerUiParts parts, GameObject uiSpawner, string playerName)
         {
             parts.RecivierUIManager = uiSpawner.GetComponent<RecivierUIManager>();
             parts.RecivierUIManager.Initialize(parts.Aiming, parts.BulletGenerator, parts.CannonFire, parts.GunCamera,
                 parts.DamageReceiver, parts.DriveControl, parts.CameraView, EnemysID, parts.IdSettings, _timer,
-                _scoreCounter);
+                _scoreCounter, playerName);
         }
 
         public void AddNewEnemyToPositionActorsUI(ID_Settings_CS newEnemy)

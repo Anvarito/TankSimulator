@@ -143,7 +143,7 @@ namespace ChobiAssets.PTM
                     continue;
                 }
                 // Check the tank is selected now, or has been dead.
-                if (currentMarkerProp.Root_Transform.tag == Layer_Settings_CS.FinishTag)
+                if (currentMarkerProp.Root_Transform == null || currentMarkerProp.Root_Transform.tag == Layer_Settings_CS.FinishTag)
                 {
                     Remove_ID(currentActor);
                     continue;

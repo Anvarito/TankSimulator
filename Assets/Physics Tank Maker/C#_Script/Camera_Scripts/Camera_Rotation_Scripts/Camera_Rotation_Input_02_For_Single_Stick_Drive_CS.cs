@@ -59,7 +59,7 @@ namespace ChobiAssets.PTM
 
             // Rotation.
             //multiplier = Mathf.Lerp(0.1f, rotationScript.RotationMultiplier, rotationScript.Main_Camera.fieldOfView / 15.0f); // Change the rotation speed according to the FOV of the main camera.
-            multiplier = 25;
+            multiplier = 35;
             var vertical = _rotateInput.y;
             var horizontal = _rotateInput.x;
 

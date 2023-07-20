@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Infrastructure.Assets;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,7 +10,6 @@ namespace Infrastructure
     {
         private readonly ICoroutineRunner _coroutineRunner;
         private Coroutine _currentCoroutine;
-
         public SceneLoader(ICoroutineRunner coroutineRunner) =>
             _coroutineRunner = coroutineRunner;
 
@@ -25,9 +25,36 @@ namespace Infrastructure
             }
 
             AsyncOperation waitScene = SceneManager.LoadSceneAsync(sceneName);
-            onProgress?.Invoke(waitScene.progress);
+
             while (!waitScene.isDone)
+            {
+                onProgress?.Invoke(waitScene.progress);
                 yield return null;
+            }
+
+            //ResourceRequest additionalAsset = _assetLoader.InstantiateAsync("MapsAssets/" + sceneName + "Assets");
+
+            //if (additionalAsset != null)
+            //{
+            //    while (!additionalAsset.isDone)
+            //    {
+            //        onProgress?.Invoke(additionalAsset.progress);
+            //        yield return null;
+            //    }
+
+            //    _assetLoader.Instantiate(additionalAsset.asset as GameObject);
+            //}
+
+            ResourceRequest additionalAsset = Resources.LoadAsync("MapsAssets/" + sceneName + "Assets");
+
+            while (!additionalAsset.isDone)
+            {
+                onProgress?.Invoke(additionalAsset.progress);
+                yield return null;
+            }
+
+            if (additionalAsset.asset != null)
+                GameObject.Instantiate(additionalAsset.asset as GameObject);
 
             onLoaded?.Invoke();
         }

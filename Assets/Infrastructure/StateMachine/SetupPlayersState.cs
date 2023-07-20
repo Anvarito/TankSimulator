@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using Infrastructure.Factory.Base;
 using Infrastructure.Factory.Compose;
+using Infrastructure.Services;
 using Infrastructure.Services.Input;
 using Infrastructure.Services.Progress;
 using UnityEngine;
@@ -14,6 +15,7 @@ namespace Infrastructure.StateMachine
         private const string LevelName = "MinimalTest";
 
         private readonly GameStateMachine _gameStateMachine;
+        private readonly INameRandomizer _nameRandomizer;
         private readonly IProgressService _progressService;
         private readonly SceneLoader _sceneLoader;
         private readonly IInputService _inputService;
@@ -22,9 +24,10 @@ namespace Infrastructure.StateMachine
         private Transform _canvas;
 
         public SetupPlayersState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, IInputService inputService,
-            IFactories factories, IProgressService progressService)
+            IFactories factories, IProgressService progressService, INameRandomizer nameRandomizer)
         {
             _gameStateMachine = gameStateMachine;
+            _nameRandomizer = nameRandomizer;
             _progressService = progressService;
             _sceneLoader = sceneLoader;
             _inputService = inputService;
@@ -69,8 +72,10 @@ namespace Infrastructure.StateMachine
         {
             GameObject tankPickerUI = _inputFactory.CreateTankPickerUI(_canvas);
             _inputService.ConnectToInputs(tankPickerUI, individually: true);
+            _inputService.PlayerConfigs.Last().PlayerName = _nameRandomizer.GetRandomedName();
 
             _inputFactory.TankPickerUIHelpers.Last().OnTankChoise.AddListener(PickTank);
+            _inputFactory.TankPickerUIHelpers.Last().SetPlayerName(_inputService.PlayerConfigs.Last().PlayerName);
         }
 
         private void PickTank()

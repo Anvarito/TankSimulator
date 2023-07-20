@@ -12,6 +12,8 @@ namespace Infrastructure.Assets
         public const string Vena = "Tanks/Vena_AI";
         public const string Nona9S = "Tanks/Nona 9S_AI";
 
+        public const string FactoryAsset = "MapsAssets/FactoryAssets";
+
         public const string PlayerTank = "Tanks/BMP 2";
         public const string PlayerTank1 = "Tanks/Nona 9S";
         public const string TankController = "General/Game_Controller";
@@ -27,6 +29,8 @@ namespace Infrastructure.Assets
         public const string PlayerInMenu = "General/PlayerInMenu";
         public const string TankPickerCanvas = "General/TankPicker";
         public const string PauseMenu = "UI/PauseMenu";
+
+        public const string NamesListPath = "Resources/General/Names.txt";
 
     }
 }

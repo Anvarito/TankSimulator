@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using Infrastructure.TestMono;
+using System.Collections;
 
 public class ScorePlane : MonoBehaviour
 {
@@ -13,15 +14,15 @@ public class ScorePlane : MonoBehaviour
     private float _hlDur = 0.7f;
     private float _hlTimer = 0;
     private bool _isHlight = false;
-
+    private IEnumerator cor;
     public ScoreHolder ScoreHolder { get; private set; }
     public void SetData(ScoreHolder scoreHolder, int order)
     {
         ScoreHolder = scoreHolder;
-        string rank = $"<sprite={(int)(scoreHolder.Points/100)%14}> ";
-        if (scoreHolder.Points / 100 > 13) rank = $"<sprite={13}>"; 
-        _text.text = $"{rank}Игрок{order}: {scoreHolder.Points} очков";
-        // _text.text = rank + scoreHolder.Name.ToUpper() + ": " + scoreHolder.Points.ToString() + " очков";
+        string rank = $"<sprite={(int)(scoreHolder.Points / 100 % 14)}> ";
+        if (scoreHolder.Points == 0) rank = "";
+        if (scoreHolder.Points / 100 > 13) rank = $"<sprite={13}>";
+        _text.text = rank + scoreHolder.Name.ToUpper() + ": " + scoreHolder.Points.ToString() + " очков";
     }
 
     internal void Hightlight()

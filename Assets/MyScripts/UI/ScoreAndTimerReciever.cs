@@ -8,7 +8,7 @@ internal class ScoreAndTimerReciever : UIRecivierBase
     private IScoreCounter _scoreCounter;
     ScoreAndTimerPresenter _scoreAndTimerPresenter;
     private int _index = 0;
-    internal void Init(ITimerService timerService, IScoreCounter scoreCounter, Gun_Camera_CS gunCamera, CameraViewSetup cameraView, ID_Settings_CS selfID)
+    internal void Init(ITimerService timerService, IScoreCounter scoreCounter, Gun_Camera_CS gunCamera, CameraViewSetup cameraView, ID_Settings_CS selfID, string playerName)
     {
         _timerService = timerService;
         _scoreCounter = scoreCounter;
@@ -21,8 +21,8 @@ internal class ScoreAndTimerReciever : UIRecivierBase
         _scoreAndTimerPresenter = _spawnedPresenter as ScoreAndTimerPresenter;
         _scoreAndTimerPresenter.SetCamera(_cameraSetup.GetCamera());
 
-        _scoreAndTimerPresenter.ScoreUI.Init(selfID);
-        _scoreAndTimerPresenter.TeamUI.Init(selfID);
+        _scoreAndTimerPresenter.ScoreUI.Init();
+        _scoreAndTimerPresenter.TeamUI.Init(selfID, playerName);
         _scoreCounter.OnEnemiesDestroyed += EnemiesDestroyed;
     }
 

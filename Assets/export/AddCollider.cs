@@ -7,10 +7,25 @@ public class AddCollider : MonoBehaviour
     {
         foreach (Transform i in transform)
         {
-            if (i.GetChild(0).gameObject.TryGetComponent(out TreeFaller boxCollider0))
+            i.GetChild(0).GetComponent<MeshRenderer>().scaleInLightmap = 0.1f;
+            try
             {
-                boxCollider0._isFreeFall = false;
+                i.GetChild(1).GetComponent<MeshRenderer>().scaleInLightmap = 0.05f;
             }
+            catch
+            {
+
+            }
+            try
+            {
+
+            }
+            catch
+            {
+
+                i.GetChild(2).GetComponent<MeshRenderer>().scaleInLightmap = 0.025f;
+            }
+
         }
     }
 }

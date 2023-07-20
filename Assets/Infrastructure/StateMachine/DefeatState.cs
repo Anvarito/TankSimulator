@@ -15,7 +15,7 @@ using UnityEngine;
 
 namespace Infrastructure.StateMachine
 {
-    public class DefeatState : IPayloadedState<float>
+    public class DefeatState : IPayloadedState<PlayerData>
     {
         private const string ReloadScene = "ReloadScene";
         
@@ -44,8 +44,8 @@ namespace Infrastructure.StateMachine
             _audioService = audioService;
         }
 
-        public void Enter(float score) => 
-            _coroutineRunner.StartCoroutine(WithDelay(score));
+        public void Enter(PlayerData playerData) => 
+            _coroutineRunner.StartCoroutine(WithDelay(playerData));
 
         public void Exit()
         {
@@ -54,7 +54,7 @@ namespace Infrastructure.StateMachine
             _enemyFactory.Controller.Pause();
         }
 
-        private IEnumerator WithDelay(float score)
+        private IEnumerator WithDelay(PlayerData playerData)
         {
             float endTime = Time.time + Constants.GameOverDelay;
             while (endTime>Time.time)
@@ -68,14 +68,14 @@ namespace Infrastructure.StateMachine
             _inputService.ResetPlayerIndex();
             _inputService.ConnectToInputs(_playerFactory.GameBoard.transform.root.gameObject, true);
 
-            ScoreHolder playerScore = new ScoreHolder("Player " + UnityEngine.Random.Range(0, 99), score);
+            ScoreHolder playerScore = new ScoreHolder(playerData.Config.PlayerName, playerData.Score);
             LeadersHolder leadersList = new LeadersHolder();
             leadersList = SetupLeadersHolder(playerScore, leadersList);
             
             _saveLoadService.SaveProgress();
             
 
-            _playerFactory.GameBoard.ShowDefeatPanel(_playerFactory.PlayersSettings, leadersList, playerScore, IsVersus());
+            _playerFactory.GameBoard.ShowDefeatPanel(_playerFactory.PlayersSettings, leadersList, playerScore, IsNotSurvival());
             _playerFactory.GameBoard.OnExitMenu += Menu;
             _playerFactory.GameBoard.OnRestart += Restart;
         }
@@ -93,6 +93,7 @@ namespace Infrastructure.StateMachine
                     copyList = _progress.Progress.LeadersSurvival;
                     break;
                 case GamemodeId.Versus:
+                case GamemodeId.Training:
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -101,8 +102,8 @@ namespace Infrastructure.StateMachine
             return copyList;
         }
 
-        private bool IsVersus() => 
-            _progress.Progress.WorldData.ModeId == GamemodeId.Versus;
+        private bool IsNotSurvival() =>
+            _progress.Progress.WorldData.ModeId != GamemodeId.Survival;
 
         private void Restart() => 
             _gameStateMachine.Enter<ReloadState, string>(ReloadScene);

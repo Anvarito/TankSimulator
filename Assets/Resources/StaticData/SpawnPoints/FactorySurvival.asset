@@ -33,14 +33,14 @@ MonoBehaviour:
       Position: {x: -28.11, y: 6.200076, z: 271.51}
     - UniqueId: 
       ActorType: 0
-      Team: 0
+      Team: 1
       WaypointsPackId: 15
-      Position: {x: 146, y: 6.200011, z: -1.0000153}
+      Position: {x: 47.5, y: 6.200048, z: 164.89998}
     - UniqueId: 
       ActorType: 0
-      Team: 0
+      Team: 1
       WaypointsPackId: 16
-      Position: {x: 148.6, y: 6.20001, z: -73.60001}
+      Position: {x: -121.70001, y: 6.2001114, z: -73.60001}
     - UniqueId: 
       ActorType: 0
       Team: 1

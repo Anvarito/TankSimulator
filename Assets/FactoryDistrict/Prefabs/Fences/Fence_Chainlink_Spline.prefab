@@ -114,6 +114,7 @@ MonoBehaviour:
   root: {fileID: 4000013791244162}
   _collider: {fileID: 7851491715696682518}
   _speed: 80
+  _isFreeFall: 1
 --- !u!1 &1000011192180028
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,8 +196,8 @@ Transform:
   m_GameObject: {fileID: 1000012560614732}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: -0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4000014087088974}
   - {fileID: 4000011055127554}

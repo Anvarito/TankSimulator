@@ -91,11 +91,11 @@ namespace ChobiAssets.PTM
             //}
 
             // Quit.
-            if (General_Settings_CS.Allow_Instant_Quit && Input.GetKeyDown(General_Settings_CS.Quit_Key))
-            {
-                Application.Quit();
-                return;
-            }
+            //if (General_Settings_CS.Allow_Instant_Quit && Input.GetKeyDown(General_Settings_CS.Quit_Key))
+            //{
+            //    Application.Quit();
+            //    return;
+            //}
 
             // Cursor state.
             if (General_Settings_CS.Allow_Switch_Cursor && Input.GetKeyDown(General_Settings_CS.Switch_Cursor_Key))

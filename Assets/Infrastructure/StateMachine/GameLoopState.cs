@@ -10,6 +10,8 @@ using Infrastructure.Services.Timer;
 using System;
 using Infrastructure.Services.Input;
 using UnityEngine;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Infrastructure.StateMachine
 {
@@ -66,6 +68,7 @@ namespace Infrastructure.StateMachine
                 _timer.StartTimer(modeConfig.GameTime * Constants.SecondInMinute, Victory);
                 _progress.Progress.WorldData.StartedLevel = true;
             }
+
         }
 
         private void PauseGame() =>
@@ -75,10 +78,10 @@ namespace Infrastructure.StateMachine
             _playerFactory.AddNewEnemyToPositionActorsUI(newEnemy);
 
         private void GameOver() =>
-            _gameStateMachine.Enter<DefeatState, float>(Score());
+            _gameStateMachine.Enter<DefeatState, PlayerData>(Score());
 
         private void Victory() =>
-            _gameStateMachine.Enter<VictoryState, float>(Score());
+            _gameStateMachine.Enter<VictoryState, PlayerData>(Score());
 
         private void RegisterKillCounter()
         {
@@ -92,25 +95,26 @@ namespace Infrastructure.StateMachine
             _killCounter.OnPlayersDestroyed -= GameOver;
         }
 
-        private float Score()
+        private PlayerData Score()
         {
-            float score = 0;
-            switch (_progress.Progress.WorldData.ModeId)
-            {
-                case GamemodeId.Coop:
-                    score = _scoreCounter.ScorePlayerOne + _scoreCounter.ScorePlayerTwo;
-                    break;
+            PlayerData playerData;
+            switch (_progress.Progress.WorldData.ModeId) 
+            { 
                 case GamemodeId.Survival:
-                    score = Mathf.Max(_scoreCounter.ScorePlayerOne, _scoreCounter.ScorePlayerTwo);
-                    break;
-                case GamemodeId.Versus:
-                    score = 0;
+                    var playerDatas = _scoreCounter.Scores.Zip(_inputService.PlayerConfigs, (first, second) => new PlayerData() { Score = first, Config = second });
+                    playerData = playerDatas.First(x => x.Score == playerDatas.Max(x => x.Score));
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
 
-            return score;
+            return playerData;
         }
+    }
+
+    public class PlayerData
+    {
+        public float Score;
+        public PlayerConfiguration Config;
     }
 }

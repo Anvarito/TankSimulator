@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class TeamUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _teamText;
+    [SerializeField] private TextMeshProUGUI _nameText;
     [SerializeField] private Image _teamImage;
 
     [Tooltip("Text")]
@@ -17,16 +18,20 @@ public class TeamUI : MonoBehaviour
     [SerializeField] private Color _teamAColor; 
     [SerializeField] private Color _teamBColor; 
     
-    public void Init(ID_Settings_CS selfID)
+    public void Init(ID_Settings_CS selfID, string name)
     {
+        _nameText.text = name;
+
         switch (selfID.Relationship)
         {
             case ERelationship.TeamA:
                 _teamText.color = _teamAColor;
+                _nameText.color = _teamAColor;
                 _teamText.text = _teamAText;
                 break;
             case ERelationship.TeamB:
                 _teamText.color = _teamBColor;
+                _nameText.color = _teamBColor;
                 _teamText.text = _teamBText;
                 break;
             default:

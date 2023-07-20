@@ -45,7 +45,7 @@ namespace ChobiAssets.PTM
         [HideInInspector] public UnityEvent<TrackDamageRecivier> OnTrackBreach;
         [HideInInspector] public UnityEvent<TrackDamageRecivier> OnTrackRestore;
 
-        [HideInInspector] public UnityEvent<ID_Settings_CS,ID_Settings_CS> OnTankDestroyed; //id at kill initiator
+        [HideInInspector] public UnityEvent<ID_Settings_CS, ID_Settings_CS> OnTankDestroyed; //id at kill initiator
 
         public DamageTurret TurretDamageRecivier => _turretDamages;
         public DamageBodyRecivier BodyDamageRecivier => _mainBodyDamages;
@@ -56,7 +56,7 @@ namespace ChobiAssets.PTM
             Initialize();
         }
 
-        private void OnDestroy() => 
+        private void OnDestroy() =>
             OnTankDestroyed.RemoveAllListeners();
 
         void Initialize()
@@ -141,7 +141,7 @@ namespace ChobiAssets.PTM
         {
             isDead = true;
             FullBreakTank();
-            OnTankDestroyed?.Invoke(GetComponentInParent<ID_Settings_CS>(),bulletInitiatorID);
+            OnTankDestroyed?.Invoke(GetComponentInParent<ID_Settings_CS>(), bulletInitiatorID);
         }
 
         public void FullBreakTank()
@@ -163,7 +163,8 @@ namespace ChobiAssets.PTM
         {
             OnTankDestroyed.RemoveListener(DestroyWithDelay);
 
-            StartCoroutine(DestroyCoroutine(Constants.DestroyDelay));
+            if (victim.PlayerType == EPlayerType.AI)
+                StartCoroutine(DestroyCoroutine(Constants.DestroyDelay));
         }
 
         private IEnumerator DestroyCoroutine(float destroyDelay)
@@ -171,9 +172,9 @@ namespace ChobiAssets.PTM
             var endTime = Time.time + destroyDelay;
             while (endTime > Time.time)
                 yield return null;
-            
+
             Destroy(transform.parent.gameObject);
-            
+
         }
 
 

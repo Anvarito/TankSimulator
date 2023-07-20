@@ -6,5 +6,7 @@ namespace Infrastructure.Services.StaticData.Level
         Summer = 1,
         Factory = 2,
         Winter = 3,
+        Poligon = 4,
+        Training = 5
     }
 }

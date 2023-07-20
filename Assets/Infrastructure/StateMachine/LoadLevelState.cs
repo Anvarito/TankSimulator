@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using ChobiAssets.PTM;
+using Infrastructure.Assets;
 using Infrastructure.Components;
 using Infrastructure.Factory.Base;
 using Infrastructure.Factory.Compose;
@@ -18,9 +20,6 @@ namespace Infrastructure.StateMachine
     public class LoadLevelState
         : IPayloadedState<string>
     {
-        private const string PlayerInitialPoint = "PlayerInitialPoint";
-        private const string EnemyInitialPoint = "EnemyInitialPoint";
-
         private readonly GameStateMachine _gameStateMachine;
         private readonly SceneLoader _sceneLoader;
         private readonly IAudioService _audioService;
@@ -58,7 +57,12 @@ namespace Infrastructure.StateMachine
             _playerFactory.CleanUp();
             _enemyFactory.CleanUp();
 
-            _sceneLoader.Load(name: levelName, OnLoaded);
+            _sceneLoader.Load(name: levelName, OnLoaded, OnProgress);
+        }
+
+        private void OnProgress(float progress)
+        {
+            Debug.Log(progress);
         }
 
         public void Exit() =>

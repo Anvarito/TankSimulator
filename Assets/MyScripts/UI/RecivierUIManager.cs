@@ -27,7 +27,8 @@ public class RecivierUIManager : MonoBehaviour
         List<ID_Settings_CS> enemysID,
         ID_Settings_CS idSettings,
         ITimerService timerService,
-        IScoreCounter scoreCounter)
+        IScoreCounter scoreCounter,
+        string playerName)
     {
         _aimMarkerRecivier.Init(aiming, gunCamera, cameraView);
         _leadMarkerRecivier.Init(aiming, bulletGenerator, gunCamera, cameraView);
@@ -37,7 +38,7 @@ public class RecivierUIManager : MonoBehaviour
         _speedRecivier.Init(driveControl, gunCamera, cameraView);
         _positionActorsRecivier.Init(idSettings, enemysID, gunCamera, cameraView);
         _hitPointsTargetRecivier.Init(aiming, gunCamera, cameraView);
-        _scoreAndTimerReciever.Init(timerService, scoreCounter, gunCamera, cameraView, idSettings);
+        _scoreAndTimerReciever.Init(timerService, scoreCounter, gunCamera, cameraView, idSettings, playerName);
 
         damageReceiver.OnTankDestroyed.AddListener(TankDestroyed);
     }

@@ -1,10 +1,15 @@
+using System;
+using System.Linq;
 using Infrastructure.Components;
 using Infrastructure.Factory.Base;
 using Infrastructure.Factory.Compose;
+using Infrastructure.Services;
 using Infrastructure.Services.Audio;
 using Infrastructure.Services.Input;
 using Infrastructure.Services.Progress;
 using Infrastructure.Services.SaveLoad;
+using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Infrastructure.StateMachine
 {
@@ -12,9 +17,10 @@ namespace Infrastructure.StateMachine
     {
         private const string MainMenu = "MainMenu";
         private const string SetupTankMain = "SetupTankRoman";
-        
+
         private readonly GameStateMachine _gameStateMachine;
         private readonly SceneLoader _sceneLoader;
+        private InfoScrolling _infoScrolling;
         private readonly IAudioService _audioService;
         private readonly IProgressService _progress;
         private readonly ISaveLoadService _saveLoadService;
@@ -22,8 +28,7 @@ namespace Infrastructure.StateMachine
         private readonly IProgressService _progressService;
         private readonly IPlayerFactory _playerFactory;
 
-
-        public MenuState(GameStateMachine gameStateMachine, SceneLoader sceneLoader,IAudioService audioService,IProgressService progress, ISaveLoadService saveLoadService, IInputService inputService, IFactories factories)
+        public MenuState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, IAudioService audioService, IProgressService progress, ISaveLoadService saveLoadService, IInputService inputService, IFactories factories)
         {
             _gameStateMachine = gameStateMachine;
             _sceneLoader = sceneLoader;
@@ -34,11 +39,14 @@ namespace Infrastructure.StateMachine
             _playerFactory = factories.Single<IPlayerFactory>();
         }
 
-        public void Enter() => 
+        public void Enter() =>
             _sceneLoader.Load(MainMenu, onLoad);
 
-        public void Exit() => 
+        public void Exit()
+        {
             UnregisterButtonsEvents(_playerFactory.MainMenuUIHelper);
+            _inputService.PlayerConfigs.First().Input.onActionTriggered -= OnScroll;
+        }
 
         private void onLoad() =>
             SetupMenu();
@@ -49,7 +57,19 @@ namespace Infrastructure.StateMachine
             RegisterButtonsEvents(_playerFactory.MainMenuUIHelper);
             SetupVolumeSliders();
             _inputService.ConnectToInputs(_playerFactory.MainMenuUIHelper.gameObject);
-            
+
+            _inputService.PlayerConfigs.First().Input.onActionTriggered += OnScroll;
+        }
+
+        private void OnScroll(InputAction.CallbackContext input)
+        {
+            if (input.action.name == _inputService.Control.TankMovement.Look.name)
+            {
+                if (input.performed)
+                    _infoScrolling.ScrollMove(input.ReadValue<Vector2>().y);
+                else if (input.canceled)
+                    _infoScrolling.ScrollMove(0);
+            }
         }
 
         private void SetupVolumeSliders()
@@ -62,14 +82,21 @@ namespace Infrastructure.StateMachine
         {
             //mainMenu.OnContinueButtonPress.AddListener(ContinueGame);
             mainMenu.OnOnNewGameButtonPress.AddListener(StartNewGame);
+            mainMenu.OnTrainButtonPress.AddListener(TrainLaunch);
+            mainMenu.OnExitButtonPress.AddListener(ExitGame);
             mainMenu.OnMusicSlider.AddListener(ChangeMusicVolume);
             mainMenu.OnSoundsSlider.AddListener(ChangeSoundsVolume);
+            _infoScrolling = mainMenu.InfoScrolling;
         }
+
+
 
         private void UnregisterButtonsEvents(MainMenuUIHelper mainMenu)
         {
             //mainMenu.OnContinueButtonPress.RemoveListener(ContinueGame);
             mainMenu.OnOnNewGameButtonPress.RemoveListener(StartNewGame);
+            mainMenu.OnTrainButtonPress.RemoveListener(TrainLaunch);
+            mainMenu.OnExitButtonPress.RemoveListener(ExitGame);
             mainMenu.OnMusicSlider.RemoveListener(ChangeMusicVolume);
             mainMenu.OnSoundsSlider.RemoveListener(ChangeSoundsVolume);
         }
@@ -77,7 +104,15 @@ namespace Infrastructure.StateMachine
         private void ContinueGame()
         {
         }
-
+        private void TrainLaunch()
+        {
+            _gameStateMachine.Enter<LaunchTrainingLevel>();
+        }
+        private void ExitGame()
+        {
+            Debug.Log("Quit game");
+            Application.Quit();
+        }
         private void StartNewGame()
         {
             _saveLoadService.SaveProgress();

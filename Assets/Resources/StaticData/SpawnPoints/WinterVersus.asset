@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: WinterVersus
   m_EditorClassIdentifier: 
   PackConfig:
-    PackId: 4
+    PackId: 3
     LevelId: 3
     PointsConfigs:
     - UniqueId: 

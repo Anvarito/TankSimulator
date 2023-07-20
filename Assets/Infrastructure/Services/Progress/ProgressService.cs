@@ -8,6 +8,7 @@ namespace Infrastructure.Services.Progress
 
         public void CleanUp()
         {
+            Progress.WorldData.StartedLevel = false;
         }
     }
 }

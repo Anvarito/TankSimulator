@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 030d7871366a4ef4b7926c903c2a9bfc, type: 3}
+  m_Name: TanksData
+  m_EditorClassIdentifier: 
+  Tanks:
+  - TankId: 0
+    PrefabPath: Tanks/Nona 9S
+    PrefabEmpty: {fileID: 6716286561939620575, guid: af10f0447e92d6040baf0f7b34a77ae3, type: 3}
+    Name: "\u041D\u043E\u043D\u0430-\u0421"
+    Description: {fileID: 7259384293883358236, guid: f8adb5db0b5fc7a4d845043f92fefd24, type: 3}
+  - TankId: 1
+    PrefabPath: Tanks/Nona SVK
+    PrefabEmpty: {fileID: 1712048425407400889, guid: de21ba40075442847895da23e4b9ce0d, type: 3}
+    Name: "\u041D\u043E\u043D\u0430-\u0421\u0412\u041A"
+    Description: {fileID: 7259384293883358236, guid: e1d9f734763028c4c9e1f9dc16370f3b, type: 3}
+  - TankId: 2
+    PrefabPath: Tanks/Vena
+    PrefabEmpty: {fileID: 5831650344577248825, guid: f02f532b4e0680148adde785d29c60a5, type: 3}
+    Name: "\u0412\u0435\u043D\u0430 2\u042131"
+    Description: {fileID: 7259384293883358236, guid: 8a37c8f09ebd9f049b034b97e01aa9ee, type: 3}

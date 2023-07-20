@@ -14,7 +14,7 @@ namespace Infrastructure.Components
         private GamemodeConfig _modeConfig;
         private SpawnPointConfig _spawnConfig;
 
-        private DamageReceiversManager _currentEnemy;
+        private DamageReceiversManager _currentActor;
 
         public void Construct(IFactories factories, SpawnPointConfig config, GamemodeConfig gamemodeConfig)
         {
@@ -28,9 +28,9 @@ namespace Infrastructure.Components
 
         private void EnemyDestroyed(ID_Settings_CS victim,ID_Settings_CS killer)
         {
-            _currentEnemy.OnTankDestroyed.RemoveListener(EnemyDestroyed);
+            _currentActor.OnTankDestroyed.RemoveListener(EnemyDestroyed);
             _enemyFactory.Controller.Remove_ID(victim);
-            _currentEnemy = null;
+            _currentActor = null;
 
             if (_modeConfig.EnemiesSpawnsPeriodically)
                 StartCoroutine(SpawnEnemyPeriodically(_modeConfig.EnemiesCooldownSpawn, _modeConfig.CooldownRange));
@@ -47,9 +47,9 @@ namespace Infrastructure.Components
         {
             if (_spawnConfig.ActorType == EPlayerType.AI)
             {
-                _currentEnemy = _enemyFactory.CreateEnemy(_spawnConfig);
-                _currentEnemy.OnTankDestroyed.AddListener(EnemyDestroyed);
-                _enemyFactory.Controller.Receive_ID_Script(_currentEnemy.GetComponentInParent<ID_Settings_CS>());
+                _currentActor = _enemyFactory.CreateEnemy(_spawnConfig);
+                _currentActor.OnTankDestroyed.AddListener(EnemyDestroyed);
+                _enemyFactory.Controller.Receive_ID_Script(_currentActor.GetComponentInParent<ID_Settings_CS>());
             }
         }
     }
