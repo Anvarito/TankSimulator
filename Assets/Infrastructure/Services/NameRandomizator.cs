@@ -20,7 +20,7 @@ namespace Infrastructure.Services
             string name = "";
             try
             {
-                string[] file = System.IO.File.ReadAllLines(Application.dataPath + "/" + AssetPaths.NamesListPath, Encoding.UTF8);
+                string[] file = System.IO.File.ReadAllLines(Application.streamingAssetsPath + "/" + AssetPaths.NamesListPath, Encoding.UTF8);
                 int count = file.Length;
                 int randomIndex = UnityEngine.Random.Range(0, count);
                 name = file[randomIndex];

@@ -44,6 +44,7 @@ namespace Infrastructure.StateMachine
             _saveLoadService = saveLoadService;
             _playerFactory = factories.Single<IPlayerFactory>();
             _enemyFactory = factories.Single<IEnemyFactory>();
+
         }
 
         public void Enter(PlayerData playerData) =>

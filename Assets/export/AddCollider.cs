@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class AddCollider : MonoBehaviour
 {
+#if UNITY_EDITOR
     [ContextMenu("Create")]
     public void CreateCollider()
     {
@@ -28,4 +29,5 @@ public class AddCollider : MonoBehaviour
 
         }
     }
+#endif
 }

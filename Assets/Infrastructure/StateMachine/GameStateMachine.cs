@@ -39,6 +39,8 @@ namespace Infrastructure.StateMachine
                 [typeof(ReloadState)] = new ReloadState(this, services.Single<IKillCounter>(), services.Single<IFactories>(), services.Single<IInputService>(), sceneLoader, services.Single<IProgressService>(), services.Single<ITimerService>()),
                 [typeof(PauseState)] = new PauseState(this,services.Single<ISaveLoadService>(),services.Single<IProgressService>(),services.Single<IAudioService>(),services.Single<ITimerService>(),services.Single<IInputService>() , services.Single<IFactories>()),
             };
+
+
         }
 
 

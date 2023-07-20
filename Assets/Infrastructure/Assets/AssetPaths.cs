@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace Infrastructure.Assets
 {
     public class AssetPaths
@@ -30,7 +32,7 @@ namespace Infrastructure.Assets
         public const string TankPickerCanvas = "General/TankPicker";
         public const string PauseMenu = "UI/PauseMenu";
 
-        public const string NamesListPath = "Resources/General/Names.txt";
+        public const string NamesListPath = "Names.txt";
 
     }
 }
