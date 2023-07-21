@@ -15,3 +15,5 @@ MonoBehaviour:
   Configs:
   - SoundId: 2
     Track: {fileID: 8300000, guid: d5837beae6858654da6a7f60217faa68, type: 3}
+  - SoundId: 3
+    Track: {fileID: 8300000, guid: fd2a7033b18e82c47a3dacdbec000a90, type: 3}

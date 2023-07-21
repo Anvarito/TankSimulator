@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Configs:
   - MusicId: 1
-    Track: {fileID: 8300000, guid: 00271359236532a44ae9f96240420409, type: 3}
+    Track: {fileID: 8300000, guid: 35158ab618993a14f95ea895c2602008, type: 3}
   - MusicId: 2
     Track: {fileID: 8300000, guid: ca788665671cbcb4ea0dbedbe12713ce, type: 3}

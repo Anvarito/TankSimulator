@@ -77,14 +77,19 @@ namespace Infrastructure.StateMachine
             _inputService.ResetPlayerIndex();
             _inputService.ConnectToInputs(_playerFactory.GameBoard.transform.root.gameObject, true);
 
-            ScoreHolder playerScore = new ScoreHolder(playerData.Config.PlayerName, playerData.Score);
-            LeadersHolder leaderList = new LeadersHolder();
-            leaderList = SetupLeadersHolder(playerScore, leaderList);
+            if (playerData != null)
+            {
+                ScoreHolder playerScore = new ScoreHolder(playerData.Config.PlayerName, playerData.Score);
+                LeadersHolder leadersList = new LeadersHolder();
+                leadersList = SetupLeadersHolder(playerScore, leadersList);
+                _playerFactory.GameBoard.ShowPanelWithLeaders(leadersList, playerScore, true);
+            }
+            else
+            {
+                _playerFactory.GameBoard.ShowEmptyPanel(_playerFactory.PlayersSettings);
+            }
 
             _saveLoadService.SaveProgress();
-
-            _playerFactory.GameBoard.ShowVictoryPanel(_playerFactory.PlayersSettings, leaderList, playerScore,
-                IsNotSurvival());
             _playerFactory.GameBoard.OnExitMenu += Menu;
             _playerFactory.GameBoard.OnRestart += Restart;
         }
@@ -94,17 +99,23 @@ namespace Infrastructure.StateMachine
 
         private LeadersHolder SetupLeadersHolder(ScoreHolder playerScore, LeadersHolder copyList)
         {
-            switch (_progress.Progress.WorldData.ModeId)
+            switch (_progress.Progress.WorldData.LevelId)
             {
-                case GamemodeId.Coop:
-                    _progress.Progress.LeadersСoop.Add(playerScore);
-                    copyList = _progress.Progress.LeadersСoop;
+                case Services.StaticData.Level.LevelId.Factory:
+                    _progress.Progress.FactoryLeaders.Add(playerScore);
+                    copyList = _progress.Progress.FactoryLeaders;
                     break;
-                case GamemodeId.Survival:
-                    _progress.Progress.LeadersSurvival.Add(playerScore);
-                    copyList = _progress.Progress.LeadersSurvival;
+                case Services.StaticData.Level.LevelId.Poligon:
+                    _progress.Progress.PoligonLeaders.Add(playerScore);
+                    copyList = _progress.Progress.PoligonLeaders;
                     break;
-                case GamemodeId.Versus:
+                case Services.StaticData.Level.LevelId.Winter:
+                    _progress.Progress.WinterLeaders.Add(playerScore);
+                    copyList = _progress.Progress.WinterLeaders;
+                    break;
+                case Services.StaticData.Level.LevelId.Summer:
+                    _progress.Progress.SummerLeaders.Add(playerScore);
+                    copyList = _progress.Progress.SummerLeaders;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

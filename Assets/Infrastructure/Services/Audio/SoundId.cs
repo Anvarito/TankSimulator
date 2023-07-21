@@ -5,5 +5,6 @@ namespace Infrastructure.Services.Audio
         Unknown = 0,
         Test = 1,
         SadTrombone = 2,
+        FlameSound = 3
     }
 }

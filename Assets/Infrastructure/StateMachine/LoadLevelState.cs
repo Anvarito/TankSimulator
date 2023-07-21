@@ -73,7 +73,7 @@ namespace Infrastructure.StateMachine
             FetchModeData();
             InitGameLevel();
 
-            _audioService.PlayMusic(MusicId.Test);
+            _audioService.PlayMusic(MusicId.Battle1);
 
             _gameStateMachine.Enter<GameLoopState>();
         }

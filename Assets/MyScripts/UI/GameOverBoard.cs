@@ -31,7 +31,7 @@ namespace Infrastructure.TestMono
 
         [Space(10)] [SerializeField] private Canvas _canvas;
         [SerializeField] private Image _mainPanel;
-        
+
 
         [SerializeField] private TextMeshProUGUI _headerText;
         [SerializeField] private string _victoreTextHeader;
@@ -39,7 +39,9 @@ namespace Infrastructure.TestMono
         [SerializeField] private string _teamAHeaderText;
         [SerializeField] private string _teamBHeaderText;
 
-        [Space(10)] [Header("Colors")] [SerializeField]
+        [Space(10)]
+        [Header("Colors")]
+        [SerializeField]
         private Color _colorPanelVictory;
 
         [SerializeField] private Color _colorHeaderVictory;
@@ -50,7 +52,9 @@ namespace Infrastructure.TestMono
         [SerializeField] private Color _colorPanelTeam;
         [SerializeField] private Color _colorHeaderTeam;
 
-        [Space(10)] [Header("Buttons")] [SerializeField]
+        [Space(10)]
+        [Header("Buttons")]
+        [SerializeField]
         private Button _restartButton;
 
         [SerializeField] private Button _menuButton;
@@ -80,60 +84,28 @@ namespace Infrastructure.TestMono
             OnRestart?.Invoke();
         }
 
-        public void ShowVictoryPanel(List<ID_Settings_CS> playersSettings, LeadersHolder leadersHolder,
-            ScoreHolder playerReference, bool isNotSurvival = false)
+        public void ShowPanelWithLeaders(LeadersHolder leadersHolder,
+            ScoreHolder playerReference, bool isVictory = false)
         {
-            Debug.Log($"Score: {playerReference.Points}");
-            if (isNotSurvival)
-            {
-                List<ERelationship> playerTeams = playersSettings.Select(x => x.Relationship).ToList();
-                playerTeams.Add(ERelationship.TeamB);
-                ERelationship winTeam = playerTeams.First();
+            ShowLeaderList(leadersHolder, playerReference);
 
-                _headerText.text = winTeam == ERelationship.TeamA ? _teamAHeaderText : _teamBHeaderText;
-                _headerText.color = _colorHeaderTeam;
-                _mainPanel.color = _colorPanelTeam;
-                HideScore();
-            }
-            else
-            {
-                ShowLeaderList(leadersHolder, playerReference);
-
-                _headerText.text = _victoreTextHeader;
-                _headerText.color = _colorHeaderVictory;
-                _mainPanel.color = _colorPanelVictory;
-            }
+            _headerText.text = isVictory ? _victoreTextHeader : _defeatHederText;
+            _headerText.color = isVictory ? _colorHeaderVictory : _colorHeaderlDefeat;
+            _mainPanel.color = isVictory ? _colorPanelVictory : _colorPanelDefeat;
 
             _mainPanel.gameObject.SetActive(true);
-            //_scoreText.text = _originText + "\n" + score;
         }
 
-
-        public void ShowDefeatPanel(List<ID_Settings_CS> playersSettings, LeadersHolder leadersHolder,
-            ScoreHolder playerReference, bool isNotSurvival = false)
+        public void ShowEmptyPanel(List<ID_Settings_CS> playersSettings)
         {
-            Debug.Log($"Score: {playerReference}");
+            List<ERelationship> playerTeams = playersSettings.Select(x => x.Relationship).ToList();
+            playerTeams.Add(ERelationship.TeamB);
+            ERelationship winTeam = playerTeams.First();
 
-            if (isNotSurvival)
-            {
-                List<ERelationship> playerTeams = playersSettings.Select(x => x.Relationship).ToList();
-                playerTeams.Add(ERelationship.TeamB);
-                ERelationship winTeam = playerTeams.First();
-                
-
-                _headerText.text = winTeam == ERelationship.TeamA ? _teamAHeaderText : _teamBHeaderText;
-                _headerText.color = _colorHeaderTeam;
-                _mainPanel.color = _colorPanelTeam;
-                HideScore();
-            }
-            else
-            {
-                ShowLeaderList(leadersHolder, playerReference);
-
-                _headerText.text = _defeatHederText;
-                _headerText.color = _colorHeaderlDefeat;
-                _mainPanel.color = _colorPanelDefeat;
-            }
+            _headerText.text = winTeam == ERelationship.TeamA ? _teamAHeaderText : _teamBHeaderText;
+            _headerText.color = _colorHeaderTeam;
+            _mainPanel.color = _colorPanelTeam;
+            HideScore();
 
             _mainPanel.gameObject.SetActive(true);
         }
@@ -179,7 +151,7 @@ namespace Infrastructure.TestMono
 
         private void ShowScore() =>
             _scorePanel.gameObject.SetActive(true);
-        
+
         private void HidePanel() =>
             _mainPanel.gameObject.SetActive(false);
     }

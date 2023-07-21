@@ -53,6 +53,7 @@ namespace Infrastructure.StateMachine
 
         private void SetupMenu()
         {
+            _audioService.StopSound();
             _playerFactory.CreateMainMenu();
             RegisterButtonsEvents(_playerFactory.MainMenuUIHelper);
             SetupVolumeSliders();

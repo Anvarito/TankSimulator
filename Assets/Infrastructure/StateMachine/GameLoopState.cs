@@ -104,6 +104,7 @@ namespace Infrastructure.StateMachine
         private PlayerData Score()
         {
             PlayerData playerData;
+
             switch (_progress.Progress.WorldData.ModeId) 
             { 
                 case GamemodeId.Survival:
@@ -111,7 +112,7 @@ namespace Infrastructure.StateMachine
                     playerData = playerDatas.First(x => x.Score == playerDatas.Max(x => x.Score));
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException();
+                    return null;
             }
 
             return playerData;
