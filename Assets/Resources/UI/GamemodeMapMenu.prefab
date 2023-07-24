@@ -3646,7 +3646,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 313.53, y: -0.0038757324}
-  m_SizeDelta: {x: 646.6, y: 470.76}
+  m_SizeDelta: {x: 600.1525, y: 470.76}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &225553604150689619
 CanvasRenderer:
@@ -4087,7 +4087,7 @@ MonoBehaviour:
     \u2014 \u0432\u044B\u0438\u0433\u0440\u044B\u0432\u0430\u0435\u0442 \u0442\u043E\u0442,
     \u0443 \u043A\u043E\u0433\u043E \u043B\u0443\u0447\u0448\u0435 \u0441\u043E\u0445\u0440\u0430\u043D\u0438\u043B\u0430\u0441\u044C
     \u0431\u0440\u043E\u043D\u044F."
-  _mapsView: {fileID: 3749092501548929277}
+  _mapsView: {fileID: 5391017498736252363}
   _modsView: {fileID: 3292791133408842682}
   _modsText: {fileID: 5793882809840836020}
   _mapsText: {fileID: 6893310979397314646}
