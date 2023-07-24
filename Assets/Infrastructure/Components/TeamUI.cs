@@ -9,6 +9,7 @@ public class TeamUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _teamText;
     [SerializeField] private TextMeshProUGUI _nameText;
     [SerializeField] private Image _teamImage;
+    [SerializeField] private GameObject _panelName;
 
     [Tooltip("Text")]
     [SerializeField] private string _teamAText;
@@ -21,6 +22,7 @@ public class TeamUI : MonoBehaviour
     public void Init(ID_Settings_CS selfID, string name)
     {
         _nameText.text = name;
+        _panelName.SetActive(!name.Equals("") && !_panelName.activeSelf);
 
         switch (selfID.Relationship)
         {
