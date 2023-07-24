@@ -11,29 +11,29 @@ namespace ChobiAssets.PTM
         Other
     }
 
-	[ RequireComponent (typeof(Camera))]
-	public class Gun_Camera_CS : MonoBehaviour
-	{
-		/*
+    [RequireComponent(typeof(Camera))]
+    public class Gun_Camera_CS : MonoBehaviour
+    {
+        /*
 		 * This script is attached to the "Gun_Camera" under the "Barrel_Base" in the tank.
 		 * This script controls the gun camera used for aiming the target.
 		 * The main camera and the gun camera are switched by this script.
 		*/
 
 
-		// User options >>
-		public Camera Gun_Camera;
-		public Camera_Points_Manager_CS Camera_Manager_Script;
-		public float Minimum_FOV = 2.0f;
-		public float Maximum_FOV = 10.0f;
-		// << User options
+        // User options >>
+        public Camera Gun_Camera;
+        public Camera_Points_Manager_CS Camera_Manager_Script;
+        public float MinFov = 4.7f;
+        public float MaxFov = 10.0f;
+        // << User options
 
 
-		// Set by "inputType_Settings_CS".
-		public int inputType = 0;
+        // Set by "inputType_Settings_CS".
+        public int inputType = 0;
 
-		//Set by "Gun_Camera_Input_##_##_CS" scripts.
-		public float Zoom_Input;
+        //Set by "Gun_Camera_Input_##_##_CS" scripts.
+        public float Zoom_Input;
 
         Transform thisTransform;
         float targetFOV;
@@ -72,7 +72,7 @@ namespace ChobiAssets.PTM
             }
             //Gun_Camera.rect = new Rect(0.0f, 0.0f, 1.0f, 1.0f);
             Gun_Camera.enabled = false;
-            Gun_Camera.fieldOfView = Maximum_FOV;
+            Gun_Camera.fieldOfView = MaxFov;
             currentFOV = Gun_Camera.fieldOfView;
             targetFOV = currentFOV;
 
@@ -137,10 +137,10 @@ namespace ChobiAssets.PTM
                 return;
             }
 
-            inputScript.Get_Input();
 
             if (Gun_Camera.enabled)
             {
+                inputScript.Get_Input();
                 Zoom();
             }
         }
@@ -216,14 +216,14 @@ namespace ChobiAssets.PTM
         void Zoom()
         {
             targetFOV *= 1.0f + Zoom_Input;
-            targetFOV = Mathf.Clamp(targetFOV, Minimum_FOV, Maximum_FOV);
+            targetFOV = Mathf.Clamp(targetFOV, MinFov, MaxFov);
 
             if (currentFOV != targetFOV)
             {
                 currentFOV = Mathf.SmoothDamp(currentFOV, targetFOV, ref currentZoomVelocity, 2.0f * Time.deltaTime);
                 Gun_Camera.fieldOfView = currentFOV;
 
-                var alpha = (Gun_Camera.fieldOfView - Minimum_FOV) / (Maximum_FOV - Minimum_FOV);
+                var alpha = (Gun_Camera.fieldOfView - MinFov) / (MaxFov - MinFov);
                 alpha = 1 - alpha;
 
                 OnFOVchange?.Invoke(alpha);

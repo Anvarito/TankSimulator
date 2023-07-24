@@ -55773,7 +55773,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1083484181388781223}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 36e5525feff9a3340b849a3613dd51fd, type: 3}
   m_Name: 
@@ -87779,7 +87779,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Gun_Camera: {fileID: 5869663220578190905}
   Camera_Manager_Script: {fileID: 5869663220939908586}
-  Minimum_FOV: 2
+  Minimum_FOV: 4.7
   Maximum_FOV: 10
   inputType: 0
   Zoom_Input: 0

@@ -4682,7 +4682,7 @@ MonoBehaviour:
   m_MoveAction: {fileID: 4960099461062142584, guid: 2689d64a66172e548b7ef8cd989db6b9, type: 3}
   m_SubmitAction: {fileID: -3454095779916135593, guid: 2689d64a66172e548b7ef8cd989db6b9, type: 3}
   m_CancelAction: {fileID: 0}
-  m_LeftClickAction: {fileID: -785036315109089784, guid: 2689d64a66172e548b7ef8cd989db6b9, type: 3}
+  m_LeftClickAction: {fileID: 0}
   m_MiddleClickAction: {fileID: 0}
   m_RightClickAction: {fileID: 0}
   m_ScrollWheelAction: {fileID: 0}
