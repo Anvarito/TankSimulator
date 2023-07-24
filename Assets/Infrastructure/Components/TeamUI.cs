@@ -22,7 +22,7 @@ public class TeamUI : MonoBehaviour
     public void Init(ID_Settings_CS selfID, string name)
     {
         _nameText.text = name;
-        _panelName.SetActive(!name.Equals("") && !_panelName.activeSelf);
+        _panelName.SetActive(!name.Equals(""));
 
         switch (selfID.Relationship)
         {

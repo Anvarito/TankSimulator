@@ -8,7 +8,8 @@ public class ScoreUI : MonoBehaviour
     [SerializeField] private GameObject _panel;
     internal void UpdateScore(float score)
     {
-        _panel.SetActive(!_panel.activeSelf);
+        if (!_panel.activeSelf)
+            _panel.SetActive(true);
         _text.text = score.ToString();
     }
 
