@@ -5,6 +5,7 @@ using Infrastructure.Factory.Base;
 using Infrastructure.Services.Progress;
 using Infrastructure.Services.Input;
 using System.Collections.Generic;
+using System.Linq;
 using Infrastructure.Data;
 using Infrastructure.Services.Audio;
 using Infrastructure.Services.SaveLoad;
@@ -15,10 +16,10 @@ using UnityEngine;
 
 namespace Infrastructure.StateMachine
 {
-    public class DefeatState : IPayloadedState<PlayerData>
+    public class DefeatState : IPayloadedState<List<PlayerData>>
     {
         private const string ReloadScene = "ReloadScene";
-        
+
         private Dictionary<string, float> _scoreList;
         private readonly GameStateMachine _gameStateMachine;
         private readonly ICoroutineRunner _coroutineRunner;
@@ -30,7 +31,8 @@ namespace Infrastructure.StateMachine
         private readonly IAudioService _audioService;
         private readonly IEnemyFactory _enemyFactory;
 
-        public DefeatState(GameStateMachine gameStateMachine,ICoroutineRunner coroutineRunner, IFactories factories, ITimerService timerService, IProgressService progress,
+        public DefeatState(GameStateMachine gameStateMachine, ICoroutineRunner coroutineRunner, IFactories factories,
+            ITimerService timerService, IProgressService progress,
             IInputService inputService, ISaveLoadService saveLoadService, IAudioService audioService)
         {
             _gameStateMachine = gameStateMachine;
@@ -44,7 +46,7 @@ namespace Infrastructure.StateMachine
             _audioService = audioService;
         }
 
-        public void Enter(PlayerData playerData) => 
+        public void Enter(List<PlayerData> playerData) =>
             _coroutineRunner.StartCoroutine(WithDelay(playerData));
 
         public void Exit()
@@ -54,10 +56,10 @@ namespace Infrastructure.StateMachine
             _enemyFactory.Controller.Pause();
         }
 
-        private IEnumerator WithDelay(PlayerData playerData)
+        private IEnumerator WithDelay(List<PlayerData> playerData)
         {
             float endTime = Time.time + Constants.GameOverDelay;
-            while (endTime>Time.time)
+            while (endTime > Time.time)
                 yield return null;
 
             _audioService.StopMusic();
@@ -70,7 +72,8 @@ namespace Infrastructure.StateMachine
 
             if (playerData != null)
             {
-                ScoreHolder playerScore = new ScoreHolder(playerData.Config.PlayerName, playerData.Score);
+
+                var playerScore = playerData.Select(x => new ScoreHolder(x.Config.PlayerName, x.Score)).ToList();
                 LeadersHolder leadersList = new LeadersHolder();
                 leadersList = SetupLeadersHolder(playerScore, leadersList);
                 _playerFactory.GameBoard.ShowPanelWithLeaders(leadersList, playerScore, false);
@@ -85,7 +88,7 @@ namespace Infrastructure.StateMachine
             _playerFactory.GameBoard.OnRestart += Restart;
         }
 
-        private LeadersHolder SetupLeadersHolder(ScoreHolder playerScore, LeadersHolder copyList)
+        private LeadersHolder SetupLeadersHolder(List<ScoreHolder> playerScore, LeadersHolder copyList)
         {
             switch (_progress.Progress.WorldData.LevelId)
             {
@@ -115,7 +118,7 @@ namespace Infrastructure.StateMachine
         private bool IsNotSurvival() =>
             _progress.Progress.WorldData.ModeId != GamemodeId.Survival;
 
-        private void Restart() => 
+        private void Restart() =>
             _gameStateMachine.Enter<ReloadState, string>(ReloadScene);
 
         private void Menu() =>

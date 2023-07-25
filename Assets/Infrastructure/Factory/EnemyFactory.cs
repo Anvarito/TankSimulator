@@ -89,6 +89,7 @@ namespace Infrastructure.Factory
                 Object.Destroy(i.transform.root.gameObject);
             }
 
+            EnemiesCount = 0;
             EnemyDamageManagers.Clear();
             _waypoints.Clear();
         }
