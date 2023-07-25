@@ -10,7 +10,7 @@ namespace Infrastructure.Data
     {
         public List<ScoreHolder> Leaders;
 
-        public LeadersHolder() => 
+        public LeadersHolder() =>
             Leaders = new List<ScoreHolder>();
 
         public void Add(ScoreHolder scoreHolder)
@@ -23,6 +23,21 @@ namespace Infrastructure.Data
             }
 
             Leaders.Add(scoreHolder);
+        }
+
+        public void Add(List<ScoreHolder> scoreHolder)
+        {
+            if (Leaders.Count > 0)
+            {
+                for (int i = 0; i < scoreHolder.Count; i++)
+                {
+                    float min = Leaders.Min(x => x.Points);
+                    if (min <= scoreHolder[i].Points && Leaders.Count >= Constants.MaxLeaderBoardCount)
+                        Leaders.Remove(Leaders.First(x => x.Points == min));
+                }
+            }
+
+            Leaders.AddRange(scoreHolder);
         }
 
         public void Sort()

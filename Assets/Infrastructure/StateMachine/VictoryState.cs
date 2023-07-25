@@ -1,5 +1,7 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using Infrastructure.Factory.Base;
 using Infrastructure.Factory.Compose;
 using Infrastructure.Services.Input;
@@ -16,7 +18,7 @@ using Random = UnityEngine.Random;
 
 namespace Infrastructure.StateMachine
 {
-    public class VictoryState : IPayloadedState<PlayerData>
+    public class VictoryState : IPayloadedState<List<PlayerData>>
     {
         private const string ReloadScene = "ReloadScene";
 
@@ -47,7 +49,7 @@ namespace Infrastructure.StateMachine
 
         }
 
-        public void Enter(PlayerData playerData) =>
+        public void Enter(List<PlayerData> playerData) =>
             _coroutineRunner.StartCoroutine(WithDelay(playerData));
 
         public void Exit()
@@ -63,7 +65,7 @@ namespace Infrastructure.StateMachine
             _gameStateMachine.Enter<ReloadState, string>(ReloadScene);
 
 
-        private IEnumerator WithDelay(PlayerData playerData)
+        private IEnumerator WithDelay(List<PlayerData> playerData)
         {
             float endTime = Time.time + Constants.GameOverDelay;
             while (endTime > Time.time)
@@ -79,10 +81,10 @@ namespace Infrastructure.StateMachine
 
             if (playerData != null)
             {
-                ScoreHolder playerScore = new ScoreHolder(playerData.Config.PlayerName, playerData.Score);
+                var playerScore = playerData.Select(x => new ScoreHolder(x.Config.PlayerName, x.Score)).ToList();
                 LeadersHolder leadersList = new LeadersHolder();
                 leadersList = SetupLeadersHolder(playerScore, leadersList);
-                _playerFactory.GameBoard.ShowPanelWithLeaders(leadersList, playerScore, true);
+                _playerFactory.GameBoard.ShowPanelWithLeaders(leadersList, playerScore, false);
             }
             else
             {
@@ -97,7 +99,7 @@ namespace Infrastructure.StateMachine
         private bool IsNotSurvival() =>
             _progress.Progress.WorldData.ModeId != GamemodeId.Survival;
 
-        private LeadersHolder SetupLeadersHolder(ScoreHolder playerScore, LeadersHolder copyList)
+        private LeadersHolder SetupLeadersHolder(List<ScoreHolder> playerScore, LeadersHolder copyList)
         {
             switch (_progress.Progress.WorldData.LevelId)
             {

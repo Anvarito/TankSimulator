@@ -85,7 +85,7 @@ namespace Infrastructure.TestMono
         }
 
         public void ShowPanelWithLeaders(LeadersHolder leadersHolder,
-            ScoreHolder playerReference, bool isVictory = false)
+            List<ScoreHolder> playerReference, bool isVictory = false)
         {
             ShowLeaderList(leadersHolder, playerReference);
 
@@ -110,7 +110,7 @@ namespace Infrastructure.TestMono
             _mainPanel.gameObject.SetActive(true);
         }
 
-        private void ShowLeaderList(LeadersHolder scoreList, ScoreHolder playerReference)
+        private void ShowLeaderList(LeadersHolder scoreList, List<ScoreHolder> playerReference)
         {
             scoreList.Sort();
 
@@ -133,7 +133,7 @@ namespace Infrastructure.TestMono
             }
         }
 
-        private void CreateScoreSigns(ScoreHolder playerReference)
+        private void CreateScoreSigns(List<ScoreHolder> playerReference)
         {
             for (var index = 0; index < _maxShowLeaders; index++)
             {
@@ -141,7 +141,7 @@ namespace Infrastructure.TestMono
                 ScorePlane scorePlane = Instantiate(_scorePlanePrefab, _scorePanel);
                 scorePlane.SetData(leader, index + 1);
 
-                if (leader.Equals(playerReference))
+                if (playerReference.Any(x=>leader.Equals(x)))
                     scorePlane.Hightlight();
             }
         }

@@ -84,10 +84,10 @@ namespace Infrastructure.StateMachine
             _playerFactory.AddNewEnemyToPositionActorsUI(newEnemy);
 
         private void GameOver() =>
-            _gameStateMachine.Enter<DefeatState, PlayerData>(Score());
+            _gameStateMachine.Enter<DefeatState, List<PlayerData>>(PlayerNamesAndScore());
 
         private void Victory() =>
-            _gameStateMachine.Enter<VictoryState, PlayerData>(Score());
+            _gameStateMachine.Enter<VictoryState, List<PlayerData>>(PlayerNamesAndScore());
 
         private void RegisterKillCounter()
         {
@@ -101,15 +101,15 @@ namespace Infrastructure.StateMachine
             _killCounter.OnPlayersDestroyed -= GameOver;
         }
 
-        private PlayerData Score()
+        private List<PlayerData> PlayerNamesAndScore()
         {
-            PlayerData playerData;
+            List<PlayerData> playerData;
 
             switch (_progress.Progress.WorldData.ModeId) 
             { 
                 case GamemodeId.Survival:
-                    var playerDatas = _scoreCounter.Scores.Zip(_inputService.PlayerConfigs, (first, second) => new PlayerData() { Score = first, Config = second });
-                    playerData = playerDatas.First(x => x.Score == playerDatas.Max(x => x.Score));
+                    playerData = _scoreCounter.Scores.Zip(_inputService.PlayerConfigs, (first, second) => new PlayerData() { Score = first, Config = second }).ToList();
+                    // playerData = playerDatas.First(x => x.PlayerNamesAndScore == playerDatas.Max(x => x.PlayerNamesAndScore));
                     break;
                 default:
                     return null;
