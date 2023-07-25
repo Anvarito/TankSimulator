@@ -45,7 +45,8 @@ public class RecivierUIManager : MonoBehaviour
 
     public void AddNewEnemyToPositionActorsUI(ID_Settings_CS newBot)
     {
-        _positionActorsRecivier.AddNewBot(newBot);
+        if (_positionActorsRecivier != null)
+            _positionActorsRecivier.AddNewBot(newBot);
     }
 
     private void TankDestroyed(ID_Settings_CS tankId, ID_Settings_CS killerID)
