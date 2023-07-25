@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Infrastructure.Services.Loading;
 using ChobiAssets.PTM;
 using Infrastructure.Assets;
 using Infrastructure.Components;
@@ -30,14 +31,14 @@ namespace Infrastructure.StateMachine
         private readonly IScoreCounter _scoreCounter;
         private readonly IEnemyFactory _enemyFactory;
         private readonly IPlayerFactory _playerFactory;
-
+        private readonly ILoadingVisualizer _loadingVisualizer;
         private List<SpawnPointConfig> _configs;
         private GamemodeConfig _modeConfig;
 
         public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, IAudioService audioService,
             IProgressService progress,
             IStaticDataService dataService, IFactories factories, ITrashRemoveService trashRemoveService,
-            IScoreCounter scoreCounter)
+            IScoreCounter scoreCounter, ILoadingVisualizer loadingVisualizer)
         {
             _gameStateMachine = gameStateMachine;
             _sceneLoader = sceneLoader;
@@ -49,6 +50,7 @@ namespace Infrastructure.StateMachine
             _scoreCounter = scoreCounter;
             _playerFactory = factories.Single<IPlayerFactory>();
             _enemyFactory = factories.Single<IEnemyFactory>();
+            _loadingVisualizer = loadingVisualizer;
         }
 
         public void Enter(string levelName)
@@ -62,6 +64,7 @@ namespace Infrastructure.StateMachine
 
         private void OnProgress(float progress)
         {
+            _loadingVisualizer.ShowLoadbar(progress);
             Debug.Log(progress);
         }
 
@@ -70,6 +73,7 @@ namespace Infrastructure.StateMachine
 
         private void OnLoaded()
         {
+            _loadingVisualizer.HideLoadbar();
             FetchModeData();
             InitGameLevel();
 
