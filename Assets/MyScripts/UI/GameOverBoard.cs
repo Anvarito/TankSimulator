@@ -87,6 +87,8 @@ namespace Infrastructure.TestMono
         public void ShowPanelWithLeaders(LeadersHolder leadersHolder,
             List<ScoreHolder> playerReference, bool isVictory = false)
         {
+            _restartButton.Select();
+            
             ShowLeaderList(leadersHolder, playerReference);
 
             _headerText.text = isVictory ? _victoreTextHeader : _defeatHederText;
@@ -98,6 +100,8 @@ namespace Infrastructure.TestMono
 
         public void ShowEmptyPanel(List<ID_Settings_CS> playersSettings)
         {
+            _restartButton.Select();
+
             List<ERelationship> playerTeams = playersSettings.Select(x => x.Relationship).ToList();
             playerTeams.Add(ERelationship.TeamB);
             ERelationship winTeam = playerTeams.First();
