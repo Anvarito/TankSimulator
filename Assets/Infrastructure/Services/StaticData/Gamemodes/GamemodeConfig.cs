@@ -9,7 +9,7 @@ namespace Infrastructure.Services.StaticData.Gamemodes
     {
         public GamemodeId ModeId;
 
-        [Range(1,2)]
+        [Range(1,3)]
         public int PlayerCount;
         public string Name;
         

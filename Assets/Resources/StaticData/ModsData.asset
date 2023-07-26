@@ -50,7 +50,7 @@ MonoBehaviour:
     PointsForKillingEnemy: 0
     PointsForKillingAllies: 0
   - ModeId: 4
-    PlayerCount: 2
+    PlayerCount: 3
     Name: Training
     EnemiesSpawnsPeriodically: 1
     EnemiesCooldownSpawn: 20
