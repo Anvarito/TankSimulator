@@ -56,8 +56,8 @@ namespace Infrastructure.TestMono
         [Header("Buttons")]
         [SerializeField]
         private Button _restartButton;
-
-        [SerializeField] private Button _menuButton;
+        [SerializeField] 
+        private Button _menuButton;
 
         private int MaxShowLeaders => Mathf.Min(_maxShowLeaders, 10);
         private List<ScoreHolder> _scoreHolders = new List<ScoreHolder>();
@@ -96,6 +96,7 @@ namespace Infrastructure.TestMono
             _mainPanel.color = isVictory ? _colorPanelVictory : _colorPanelDefeat;
 
             _mainPanel.gameObject.SetActive(true);
+            _restartButton.Select();
         }
 
         public void ShowEmptyPanel(List<ID_Settings_CS> playersSettings)
@@ -110,8 +111,8 @@ namespace Infrastructure.TestMono
             _headerText.color = _colorHeaderTeam;
             _mainPanel.color = _colorPanelTeam;
             HideScore();
-
             _mainPanel.gameObject.SetActive(true);
+            _restartButton.Select();
         }
 
         private void ShowLeaderList(LeadersHolder scoreList, List<ScoreHolder> playerReference)

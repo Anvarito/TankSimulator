@@ -1198,11 +1198,11 @@ MonoBehaviour:
   m_MoveRepeatRate: 0.1
   m_XRTrackingOrigin: {fileID: 0}
   m_ActionsAsset: {fileID: -944628639613478452, guid: 2689d64a66172e548b7ef8cd989db6b9, type: 3}
-  m_PointAction: {fileID: -3058838179654763087, guid: 2689d64a66172e548b7ef8cd989db6b9, type: 3}
+  m_PointAction: {fileID: 0}
   m_MoveAction: {fileID: 4960099461062142584, guid: 2689d64a66172e548b7ef8cd989db6b9, type: 3}
-  m_SubmitAction: {fileID: -3581845624215329091, guid: 2689d64a66172e548b7ef8cd989db6b9, type: 3}
+  m_SubmitAction: {fileID: -3454095779916135593, guid: 2689d64a66172e548b7ef8cd989db6b9, type: 3}
   m_CancelAction: {fileID: 0}
-  m_LeftClickAction: {fileID: -4165824954398691331, guid: 2689d64a66172e548b7ef8cd989db6b9, type: 3}
+  m_LeftClickAction: {fileID: 0}
   m_MiddleClickAction: {fileID: 0}
   m_RightClickAction: {fileID: 0}
   m_ScrollWheelAction: {fileID: 0}
@@ -1394,7 +1394,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isForPanelsSwitching: 0
   panel: {fileID: 0}
-  disablePanel: []
   allowedDirections: 02000000
   onSelect:
     m_PersistentCalls:
@@ -1508,7 +1507,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isForPanelsSwitching: 0
   panel: {fileID: 0}
-  disablePanel: []
   allowedDirections: 02000000
   onSelect:
     m_PersistentCalls:
@@ -2284,6 +2282,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4779094467536840915}
   - component: {fileID: 4834576711069441136}
+  - component: {fileID: 4226006735301438155}
   m_Layer: 5
   m_Name: FullscreenToggle
   m_TagString: Untagged
@@ -2361,6 +2360,27 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &4226006735301438155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5849317871818416317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11ea11839767e3b4caa59578f4a50ab8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isForPanelsSwitching: 1
+  panel: {fileID: 5598821155451683107}
+  allowedDirections: 03000000
+  onSelect:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeselect:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6037662621913355182
 GameObject:
   m_ObjectHideFlags: 0
@@ -2735,7 +2755,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isForPanelsSwitching: 1
   panel: {fileID: 5598821155451683107}
-  disablePanel: []
   allowedDirections: 02000000
   onSelect:
     m_PersistentCalls:

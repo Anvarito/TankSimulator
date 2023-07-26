@@ -1,4 +1,5 @@
 using System.Reflection;
+using Assets.Infrastructure.Services.Loading;
 using Infrastructure.Assets;
 using Infrastructure.Factory;
 using Infrastructure.Factory.Base;
@@ -66,6 +67,7 @@ namespace Infrastructure.StateMachine
 
             _services.RegisterSingle<IProgressService>(new ProgressService());
             _services.RegisterSingle<IAssetLoader>(new AssetLoader(_coroutineRunner));
+            _services.RegisterSingle<ILoadingVisualizer>(new LoadingVisualizer(_services.Single<IAssetLoader>()));
 
             _services.RegisterSingle<IFactories>(new Factories());
             

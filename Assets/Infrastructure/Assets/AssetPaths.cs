@@ -33,6 +33,6 @@ namespace Infrastructure.Assets
         public const string PauseMenu = "UI/PauseMenu";
 
         public const string NamesListPath = "Names.txt";
-
+        public const string LoadingScreen = "UI/LoadScreen";
     }
 }

@@ -70798,15 +70798,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d07bc1cd2cd16004b84860fddab4cc0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Torque: 311231
-  Max_Speed: 28
-  Turn_Brake_Drag: 100
-  Switch_Direction_Lag: 0.36
+  Torque: 300000
+  Max_Speed: 30
+  Turn_Brake_Drag: 500
+  Switch_Direction_Lag: 0.5
   Allow_Pivot_Turn: 0
   Pivot_Turn_Rate: 0.3
   Acceleration_Flag: 0
-  Acceleration_Time: 6
-  Deceleration_Time: 3
+  Acceleration_Time: 5.3
+  Deceleration_Time: 0.5
   Acceleration_Curve:
     serializedVersion: 2
     m_Curve:
@@ -70890,11 +70890,11 @@ MonoBehaviour:
   Parking_Brake_Velocity: 0.5
   Parking_Brake_Angular_Velocity: 0.1
   Use_AntiSlip: 1
-  Ray_Distance: 1.3
-  AntiSlip_Min_Speed: 2.2
-  AntiSlip_Max_Speed: 6.2
+  Ray_Distance: 1.1
+  AntiSlip_Min_Speed: 32
+  AntiSlip_Max_Speed: 64
   Use_Downforce: 1
-  Downforce: 82437
+  Downforce: 75000
   Downforce_Curve:
     serializedVersion: 2
     m_Curve:
@@ -70919,7 +70919,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  Sync_Speed_Rate: 0
+  Sync_Speed_Rate: 1
   Actual_Speed_Offset_Rate: 1
   Actual_Speed_Tolerance_Rate: 0.2
   Support_Turning: 1
@@ -87779,8 +87779,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Gun_Camera: {fileID: 5869663220578190905}
   Camera_Manager_Script: {fileID: 5869663220939908586}
-  Minimum_FOV: 4.7
-  Maximum_FOV: 10
+  MinFov: 4.7
+  MaxFov: 10
   inputType: 0
   Zoom_Input: 0
   OnFOVchange:
