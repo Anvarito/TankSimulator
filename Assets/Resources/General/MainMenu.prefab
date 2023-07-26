@@ -902,6 +902,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isForPanelsSwitching: 0
   panel: {fileID: 0}
+  disablePanel: []
   allowedDirections: 02000000
   onSelect:
     m_PersistentCalls:
@@ -1467,11 +1468,11 @@ MonoBehaviour:
   m_MoveRepeatRate: 0.1
   m_XRTrackingOrigin: {fileID: 0}
   m_ActionsAsset: {fileID: -944628639613478452, guid: 2689d64a66172e548b7ef8cd989db6b9, type: 3}
-  m_PointAction: {fileID: 0}
+  m_PointAction: {fileID: -3058838179654763087, guid: 2689d64a66172e548b7ef8cd989db6b9, type: 3}
   m_MoveAction: {fileID: 4960099461062142584, guid: 2689d64a66172e548b7ef8cd989db6b9, type: 3}
-  m_SubmitAction: {fileID: -3454095779916135593, guid: 2689d64a66172e548b7ef8cd989db6b9, type: 3}
+  m_SubmitAction: {fileID: -3581845624215329091, guid: 2689d64a66172e548b7ef8cd989db6b9, type: 3}
   m_CancelAction: {fileID: 0}
-  m_LeftClickAction: {fileID: 0}
+  m_LeftClickAction: {fileID: -4165824954398691331, guid: 2689d64a66172e548b7ef8cd989db6b9, type: 3}
   m_MiddleClickAction: {fileID: 0}
   m_RightClickAction: {fileID: 0}
   m_ScrollWheelAction: {fileID: 0}
@@ -1726,7 +1727,7 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: 21300000, guid: 90be5cfa86ee9ab41b518e6ae7a18051, type: 3}
     m_PressedSprite: {fileID: 0}
     m_SelectedSprite: {fileID: 21300000, guid: 90be5cfa86ee9ab41b518e6ae7a18051, type: 3}
     m_DisabledSprite: {fileID: 0}
@@ -1815,6 +1816,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isForPanelsSwitching: 1
   panel: {fileID: 5846679428324832762}
+  disablePanel:
+  - {fileID: 5813693385188238847}
   allowedDirections: 02000000
   onSelect:
     m_PersistentCalls:
@@ -2173,7 +2176,7 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: 21300000, guid: 90be5cfa86ee9ab41b518e6ae7a18051, type: 3}
     m_PressedSprite: {fileID: 0}
     m_SelectedSprite: {fileID: 21300000, guid: 90be5cfa86ee9ab41b518e6ae7a18051, type: 3}
     m_DisabledSprite: {fileID: 0}
@@ -2263,7 +2266,6 @@ GameObject:
   - component: {fileID: 4532604760513784370}
   - component: {fileID: 4532604760513784371}
   - component: {fileID: 6788006667342879094}
-  - component: {fileID: 2792246939393197350}
   m_Layer: 5
   m_Name: NewGame
   m_TagString: Untagged
@@ -2359,7 +2361,7 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: 21300000, guid: 90be5cfa86ee9ab41b518e6ae7a18051, type: 3}
     m_PressedSprite: {fileID: 0}
     m_SelectedSprite: {fileID: 21300000, guid: 90be5cfa86ee9ab41b518e6ae7a18051, type: 3}
     m_DisabledSprite: {fileID: 0}
@@ -2415,26 +2417,6 @@ MonoBehaviour:
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
 --- !u!114 &6788006667342879094
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4532604760513784369}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreLayout: 0
-  m_MinWidth: -1
-  m_MinHeight: -1
-  m_PreferredWidth: -1
-  m_PreferredHeight: 60
-  m_FlexibleWidth: -1
-  m_FlexibleHeight: -1
-  m_LayoutPriority: 1
---- !u!114 &2792246939393197350
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2565,7 +2547,7 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: 21300000, guid: 90be5cfa86ee9ab41b518e6ae7a18051, type: 3}
     m_PressedSprite: {fileID: 0}
     m_SelectedSprite: {fileID: 21300000, guid: 90be5cfa86ee9ab41b518e6ae7a18051, type: 3}
     m_DisabledSprite: {fileID: 0}
@@ -2654,6 +2636,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isForPanelsSwitching: 1
   panel: {fileID: 5813693385188238847}
+  disablePanel:
+  - {fileID: 5846679428324832762}
   allowedDirections: 02000000
   onSelect:
     m_PersistentCalls:
@@ -2985,7 +2969,7 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: 21300000, guid: 90be5cfa86ee9ab41b518e6ae7a18051, type: 3}
     m_PressedSprite: {fileID: 0}
     m_SelectedSprite: {fileID: 21300000, guid: 90be5cfa86ee9ab41b518e6ae7a18051, type: 3}
     m_DisabledSprite: {fileID: 0}
@@ -3981,7 +3965,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1816450582113624548}
   - component: {fileID: 8128500657154614705}
-  - component: {fileID: 4485173759011730453}
   m_Layer: 5
   m_Name: FullscreenToggle
   m_TagString: Untagged
@@ -4059,27 +4042,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
---- !u!114 &4485173759011730453
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6675399004093202910}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11ea11839767e3b4caa59578f4a50ab8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isForPanelsSwitching: 1
-  panel: {fileID: 5813693385188238847}
-  allowedDirections: 03000000
-  onSelect:
-    m_PersistentCalls:
-      m_Calls: []
-  onDeselect:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &6687055213651576699
 GameObject:
   m_ObjectHideFlags: 0
@@ -4851,6 +4813,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isForPanelsSwitching: 0
   panel: {fileID: 0}
+  disablePanel: []
   allowedDirections: 02000000
   onSelect:
     m_PersistentCalls:

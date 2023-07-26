@@ -64,7 +64,7 @@ namespace Infrastructure.StateMachine
 
         private void OnScroll(InputAction.CallbackContext input)
         {
-            if (input.action.name == _inputService.Control.TankMovement.Look.name)
+            if (input.action.name == _inputService.Control.TankMovement.Look.name && !(input.control.device is Mouse))
             {
                 if (input.performed)
                     _infoScrolling.ScrollMove(input.ReadValue<Vector2>().y);

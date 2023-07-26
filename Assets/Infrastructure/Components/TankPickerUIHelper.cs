@@ -33,7 +33,8 @@ namespace Infrastructure.Components
             RemoveListeners();
         }
 
-        public void Construct(Infrastructure.Services.Input.PlayerConfiguration playerConfiguration, IStaticDataService staticDataService)
+        public void Construct(Infrastructure.Services.Input.PlayerConfiguration playerConfiguration,
+            IStaticDataService staticDataService)
         {
             _staticDataService = staticDataService;
             _playerConfiguration = playerConfiguration;
@@ -43,11 +44,10 @@ namespace Infrastructure.Components
                 _tanksId.Add(tankId.Key);
             }
 
-            _playerTankPickVeiw.Initing( playerConfiguration.PlayerIndex);
+            _playerTankPickVeiw.Initing(playerConfiguration.PlayerIndex);
             _playerTankPickVeiw.ShowTank(_staticDataService.ForTank(_tanksId[_choiseIndex]));
         }
 
-    
 
         private void AddListeners()
         {
@@ -65,8 +65,10 @@ namespace Infrastructure.Components
 
         private void ScrollMove(InputAction.CallbackContext input)
         {
-            _playerTankPickVeiw.Rotate(input.ReadValue<Vector2>().x);
-            _playerTankPickVeiw.ScrollInfo(input.ReadValue<Vector2>().y);
+            _playerTankPickVeiw.Rotate(input.control.device is Mouse
+                ? input.ReadValue<Vector2>().y / 10
+                : input.ReadValue<Vector2>().x);
+            _playerTankPickVeiw.ScrollInfo(input.control.device is Mouse ? 0 : input.ReadValue<Vector2>().y);
         }
 
         private void Submit(InputAction.CallbackContext input)
@@ -117,7 +119,5 @@ namespace Infrastructure.Components
             _inputModule.scrollWheel.action.performed -= ScrollMove;
             _inputModule.scrollWheel.action.canceled -= ScrollStop;
         }
-
-
     }
 }

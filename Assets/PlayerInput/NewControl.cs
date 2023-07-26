@@ -116,6 +116,42 @@ public partial class @NewControl: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pointer"",
+                    ""type"": ""Value"",
+                    ""id"": ""a6033053-8bf3-4f76-b71c-93f10d2b6c79"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""UI/GamepadSubmit"",
+                    ""type"": ""Button"",
+                    ""id"": ""0a327792-e5bc-43a8-bfaa-1ee283668186"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""UI/Scroll"",
+                    ""type"": ""Value"",
+                    ""id"": ""ffddbd4d-5e3c-4da0-880b-41b3ebd30b3d"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""UI/Mouse/Click"",
+                    ""type"": ""Button"",
+                    ""id"": ""1822b89f-91ca-41dc-b59a-43e4a3bc94dc"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -536,6 +572,72 @@ public partial class @NewControl: IInputActionCollection2, IDisposable
                     ""action"": ""ReturnMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""68e7d0fa-fefb-4115-bebd-eeeb6fd270cd"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Pointer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6566da3b-7d55-41a9-a99a-515d091e5cef"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""UI/GamepadSubmit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9a7f8614-a501-4606-b7db-b175ebe327cf"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UI/GamepadSubmit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""10aa2ad3-f36e-4335-8f4f-31e0487a5ed6"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UI/Scroll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0e01e408-4708-48e8-91c5-a3ff2deebee3"",
+                    ""path"": ""<Mouse>/scroll"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UI/Scroll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""47768ea3-0f1f-4895-90a6-4873cd120e46"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UI/Mouse/Click"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -582,6 +684,10 @@ public partial class @NewControl: IInputActionCollection2, IDisposable
         m_TankMovement_ZoomOut = m_TankMovement.FindAction("ZoomOut", throwIfNotFound: true);
         m_TankMovement_Esc = m_TankMovement.FindAction("Esc", throwIfNotFound: true);
         m_TankMovement_ReturnMenu = m_TankMovement.FindAction("ReturnMenu", throwIfNotFound: true);
+        m_TankMovement_Pointer = m_TankMovement.FindAction("Pointer", throwIfNotFound: true);
+        m_TankMovement_UIGamepadSubmit = m_TankMovement.FindAction("UI/GamepadSubmit", throwIfNotFound: true);
+        m_TankMovement_UIScroll = m_TankMovement.FindAction("UI/Scroll", throwIfNotFound: true);
+        m_TankMovement_UIMouseClick = m_TankMovement.FindAction("UI/Mouse/Click", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -653,6 +759,10 @@ public partial class @NewControl: IInputActionCollection2, IDisposable
     private readonly InputAction m_TankMovement_ZoomOut;
     private readonly InputAction m_TankMovement_Esc;
     private readonly InputAction m_TankMovement_ReturnMenu;
+    private readonly InputAction m_TankMovement_Pointer;
+    private readonly InputAction m_TankMovement_UIGamepadSubmit;
+    private readonly InputAction m_TankMovement_UIScroll;
+    private readonly InputAction m_TankMovement_UIMouseClick;
     public struct TankMovementActions
     {
         private @NewControl m_Wrapper;
@@ -667,6 +777,10 @@ public partial class @NewControl: IInputActionCollection2, IDisposable
         public InputAction @ZoomOut => m_Wrapper.m_TankMovement_ZoomOut;
         public InputAction @Esc => m_Wrapper.m_TankMovement_Esc;
         public InputAction @ReturnMenu => m_Wrapper.m_TankMovement_ReturnMenu;
+        public InputAction @Pointer => m_Wrapper.m_TankMovement_Pointer;
+        public InputAction @UIGamepadSubmit => m_Wrapper.m_TankMovement_UIGamepadSubmit;
+        public InputAction @UIScroll => m_Wrapper.m_TankMovement_UIScroll;
+        public InputAction @UIMouseClick => m_Wrapper.m_TankMovement_UIMouseClick;
         public InputActionMap Get() { return m_Wrapper.m_TankMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -706,6 +820,18 @@ public partial class @NewControl: IInputActionCollection2, IDisposable
             @ReturnMenu.started += instance.OnReturnMenu;
             @ReturnMenu.performed += instance.OnReturnMenu;
             @ReturnMenu.canceled += instance.OnReturnMenu;
+            @Pointer.started += instance.OnPointer;
+            @Pointer.performed += instance.OnPointer;
+            @Pointer.canceled += instance.OnPointer;
+            @UIGamepadSubmit.started += instance.OnUIGamepadSubmit;
+            @UIGamepadSubmit.performed += instance.OnUIGamepadSubmit;
+            @UIGamepadSubmit.canceled += instance.OnUIGamepadSubmit;
+            @UIScroll.started += instance.OnUIScroll;
+            @UIScroll.performed += instance.OnUIScroll;
+            @UIScroll.canceled += instance.OnUIScroll;
+            @UIMouseClick.started += instance.OnUIMouseClick;
+            @UIMouseClick.performed += instance.OnUIMouseClick;
+            @UIMouseClick.canceled += instance.OnUIMouseClick;
         }
 
         private void UnregisterCallbacks(ITankMovementActions instance)
@@ -740,6 +866,18 @@ public partial class @NewControl: IInputActionCollection2, IDisposable
             @ReturnMenu.started -= instance.OnReturnMenu;
             @ReturnMenu.performed -= instance.OnReturnMenu;
             @ReturnMenu.canceled -= instance.OnReturnMenu;
+            @Pointer.started -= instance.OnPointer;
+            @Pointer.performed -= instance.OnPointer;
+            @Pointer.canceled -= instance.OnPointer;
+            @UIGamepadSubmit.started -= instance.OnUIGamepadSubmit;
+            @UIGamepadSubmit.performed -= instance.OnUIGamepadSubmit;
+            @UIGamepadSubmit.canceled -= instance.OnUIGamepadSubmit;
+            @UIScroll.started -= instance.OnUIScroll;
+            @UIScroll.performed -= instance.OnUIScroll;
+            @UIScroll.canceled -= instance.OnUIScroll;
+            @UIMouseClick.started -= instance.OnUIMouseClick;
+            @UIMouseClick.performed -= instance.OnUIMouseClick;
+            @UIMouseClick.canceled -= instance.OnUIMouseClick;
         }
 
         public void RemoveCallbacks(ITankMovementActions instance)
@@ -787,5 +925,9 @@ public partial class @NewControl: IInputActionCollection2, IDisposable
         void OnZoomOut(InputAction.CallbackContext context);
         void OnEsc(InputAction.CallbackContext context);
         void OnReturnMenu(InputAction.CallbackContext context);
+        void OnPointer(InputAction.CallbackContext context);
+        void OnUIGamepadSubmit(InputAction.CallbackContext context);
+        void OnUIScroll(InputAction.CallbackContext context);
+        void OnUIMouseClick(InputAction.CallbackContext context);
     }
 }
