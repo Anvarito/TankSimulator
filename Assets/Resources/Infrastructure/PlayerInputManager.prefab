@@ -45,9 +45,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afc560b61352d494f970acac9426b142, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerInputManager: {fileID: 3251315749519025287}
-  _mainCanvas: {fileID: 0}
-  MaxPlayers: 2
 --- !u!114 &3251315749519025287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,7 +68,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_JoinAction:
-    m_UseReference: 0
+    m_UseReference: 1
     m_Action:
       m_Name: Join
       m_Type: 0
@@ -81,23 +78,15 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings:
       - m_Name: 
-        m_Id: 2df9fac7-134c-46fa-8fd1-054509689d4f
-        m_Path: <Gamepad>/buttonSouth
-        m_Interactions: 
-        m_Processors: 
-        m_Groups: 
-        m_Action: Join
-        m_Flags: 0
-      - m_Name: 
-        m_Id: c4fbdf5f-92ee-40bb-ab93-bd3a38b34c16
-        m_Path: <Keyboard>/enter
+        m_Id: 67fce26c-d8af-4ef2-b448-29e4241a7e80
+        m_Path: <Gamepad>/rightTrigger
         m_Interactions: 
         m_Processors: 
         m_Groups: 
         m_Action: Join
         m_Flags: 0
       m_Flags: 0
-    m_Reference: {fileID: 0}
+    m_Reference: {fileID: -3454095779916135593, guid: 2689d64a66172e548b7ef8cd989db6b9, type: 3}
   m_PlayerPrefab: {fileID: 3581871983662862249, guid: 43963f3968728ce4a9839ef26aa9579f, type: 3}
   m_SplitScreen: 0
   m_MaintainAspectRatioInSplitScreen: 1
