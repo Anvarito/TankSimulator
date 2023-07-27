@@ -542,8 +542,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6131ff0ab2bfcb74282c1b6ac8af5f7c, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 78900b2312ab47c4e9ebe345db938ca6, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -581,8 +581,8 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: 21300000, guid: ab26e3c84261b754cbba24ae772f4b24, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: 90be5cfa86ee9ab41b518e6ae7a18051, type: 3}
     m_SelectedSprite: {fileID: 21300000, guid: 90be5cfa86ee9ab41b518e6ae7a18051, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -1198,11 +1198,11 @@ MonoBehaviour:
   m_MoveRepeatRate: 0.1
   m_XRTrackingOrigin: {fileID: 0}
   m_ActionsAsset: {fileID: -944628639613478452, guid: 2689d64a66172e548b7ef8cd989db6b9, type: 3}
-  m_PointAction: {fileID: 0}
+  m_PointAction: {fileID: -3058838179654763087, guid: 2689d64a66172e548b7ef8cd989db6b9, type: 3}
   m_MoveAction: {fileID: 4960099461062142584, guid: 2689d64a66172e548b7ef8cd989db6b9, type: 3}
-  m_SubmitAction: {fileID: -3454095779916135593, guid: 2689d64a66172e548b7ef8cd989db6b9, type: 3}
+  m_SubmitAction: {fileID: -3581845624215329091, guid: 2689d64a66172e548b7ef8cd989db6b9, type: 3}
   m_CancelAction: {fileID: 0}
-  m_LeftClickAction: {fileID: 0}
+  m_LeftClickAction: {fileID: -4165824954398691331, guid: 2689d64a66172e548b7ef8cd989db6b9, type: 3}
   m_MiddleClickAction: {fileID: 0}
   m_RightClickAction: {fileID: 0}
   m_ScrollWheelAction: {fileID: 0}
@@ -1298,7 +1298,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2018526823617720093}
   - component: {fileID: 6350421938449645413}
-  - component: {fileID: 7088151610706500356}
   m_Layer: 5
   m_Name: 'Volume2 Slider '
   m_TagString: Untagged
@@ -1380,27 +1379,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &7088151610706500356
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4431216665244283400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11ea11839767e3b4caa59578f4a50ab8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isForPanelsSwitching: 0
-  panel: {fileID: 0}
-  allowedDirections: 02000000
-  onSelect:
-    m_PersistentCalls:
-      m_Calls: []
-  onDeselect:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &4842542365627430119
 GameObject:
   m_ObjectHideFlags: 0
@@ -1411,7 +1389,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8346702222729096307}
   - component: {fileID: 412504642458663189}
-  - component: {fileID: 3563486092467532113}
   m_Layer: 5
   m_Name: Volume1 Slider
   m_TagString: Untagged
@@ -1493,27 +1470,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &3563486092467532113
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4842542365627430119}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11ea11839767e3b4caa59578f4a50ab8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isForPanelsSwitching: 0
-  panel: {fileID: 0}
-  allowedDirections: 02000000
-  onSelect:
-    m_PersistentCalls:
-      m_Calls: []
-  onDeselect:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &4878306735939683370
 GameObject:
   m_ObjectHideFlags: 0
@@ -1582,8 +1538,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6131ff0ab2bfcb74282c1b6ac8af5f7c, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 78900b2312ab47c4e9ebe345db938ca6, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1621,8 +1577,8 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: 21300000, guid: ab26e3c84261b754cbba24ae772f4b24, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: 90be5cfa86ee9ab41b518e6ae7a18051, type: 3}
     m_SelectedSprite: {fileID: 21300000, guid: 90be5cfa86ee9ab41b518e6ae7a18051, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -2282,7 +2238,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4779094467536840915}
   - component: {fileID: 4834576711069441136}
-  - component: {fileID: 4226006735301438155}
   m_Layer: 5
   m_Name: FullscreenToggle
   m_TagString: Untagged
@@ -2360,27 +2315,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
---- !u!114 &4226006735301438155
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5849317871818416317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11ea11839767e3b4caa59578f4a50ab8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isForPanelsSwitching: 1
-  panel: {fileID: 5598821155451683107}
-  allowedDirections: 03000000
-  onSelect:
-    m_PersistentCalls:
-      m_Calls: []
-  onDeselect:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &6037662621913355182
 GameObject:
   m_ObjectHideFlags: 0
@@ -2486,8 +2420,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6131ff0ab2bfcb74282c1b6ac8af5f7c, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 78900b2312ab47c4e9ebe345db938ca6, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2525,8 +2459,8 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: 21300000, guid: ab26e3c84261b754cbba24ae772f4b24, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: 90be5cfa86ee9ab41b518e6ae7a18051, type: 3}
     m_SelectedSprite: {fileID: 21300000, guid: 90be5cfa86ee9ab41b518e6ae7a18051, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -2602,7 +2536,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.6745098}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2687,8 +2621,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6131ff0ab2bfcb74282c1b6ac8af5f7c, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 78900b2312ab47c4e9ebe345db938ca6, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2726,8 +2660,8 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: 21300000, guid: ab26e3c84261b754cbba24ae772f4b24, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: 90be5cfa86ee9ab41b518e6ae7a18051, type: 3}
     m_SelectedSprite: {fileID: 21300000, guid: 90be5cfa86ee9ab41b518e6ae7a18051, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -2755,6 +2689,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isForPanelsSwitching: 1
   panel: {fileID: 5598821155451683107}
+  disablePanel: []
   allowedDirections: 02000000
   onSelect:
     m_PersistentCalls:
