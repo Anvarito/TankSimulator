@@ -1,4 +1,3 @@
-using System;
 using System.Linq;
 using Infrastructure.Factory.Base;
 using Infrastructure.Factory.Compose;
@@ -36,7 +35,6 @@ namespace Infrastructure.StateMachine
 
         public void Enter(string sceneName)
         {
-            _inputService.PlayerConfigs.First().Input.onActionTriggered += OnBack;
             _sceneLoader.Load(sceneName, onLoad);
         }
 
@@ -64,7 +62,9 @@ namespace Infrastructure.StateMachine
             _inputService.ResetToDefault();
             _progressService.CleanUp();
             CreatePicker();
+            
             _inputService.OnPlayerJoined += CreatePicker;
+            _inputService.PlayerConfigs.First().Input.onActionTriggered += OnBack;
         }
 
 

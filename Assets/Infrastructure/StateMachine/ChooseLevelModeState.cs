@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using ChobiAssets.PTM;
@@ -7,7 +6,6 @@ using Infrastructure.Factory.Compose;
 using Infrastructure.Services.Input;
 using Infrastructure.Services.Progress;
 using Infrastructure.Services.StaticData.Gamemodes;
-using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Infrastructure.StateMachine
