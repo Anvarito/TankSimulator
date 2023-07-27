@@ -84,7 +84,7 @@ namespace Infrastructure.StateMachine
                 var playerScore = playerData.Select(x => new ScoreHolder(x.Config.PlayerName, x.Score)).ToList();
                 LeadersHolder leadersList = new LeadersHolder();
                 leadersList = SetupLeadersHolder(playerScore, leadersList);
-                _playerFactory.GameBoard.ShowPanelWithLeaders(leadersList, playerScore, false);
+                _playerFactory.GameBoard.ShowPanelWithLeaders(leadersList, playerScore, true);
             }
             else
             {
