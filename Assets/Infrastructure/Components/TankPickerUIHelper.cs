@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Infrastructure.Services.StaticData;
 using Infrastructure.Services.StaticData.Tank;
@@ -24,7 +25,7 @@ namespace Infrastructure.Components
         public void Start()
         {
             base.Start();
-            AddListeners();
+            StartCoroutine(ListenerCoroutine());
         }
 
         public void OnDestroy()
@@ -46,6 +47,12 @@ namespace Infrastructure.Components
 
             _playerTankPickVeiw.Initing(playerConfiguration.PlayerIndex);
             _playerTankPickVeiw.ShowTank(_staticDataService.ForTank(_tanksId[_choiseIndex]));
+        }
+
+        public IEnumerator ListenerCoroutine()
+        {
+            yield return new WaitForSeconds(1);
+            AddListeners();
         }
 
 
