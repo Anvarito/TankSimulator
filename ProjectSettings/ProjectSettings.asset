@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: Motoviliha
+  productName: ARTILLERIYA-MOTOVILIKHI
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -155,7 +155,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Standalone: com.DefaultCompany.Motoviliha
+    Standalone: com.DefaultCompany.ARTILLERIYA-MOTOVILIKHI
   buildNumber:
     Standalone: 0
     iPhone: 0
@@ -278,7 +278,7 @@ PlayerSettings:
       m_Height: 1024
       m_Kind: 0
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 6430675625be51d4ab38e4adbf3a7bd8, type: 3}
+      m_Icon: {fileID: 2800000, guid: 83812b1431d2011408f466e58b046d49, type: 3}
       m_Width: 512
       m_Height: 512
       m_Kind: 0
