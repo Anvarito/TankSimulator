@@ -39,7 +39,7 @@ namespace Infrastructure.Services.Timer
             {
                 if (CurrentSeconds > 0)
                 {
-                    _coroutineRunner.StartCoroutine(Timer());
+                    _timerCoroutine = _coroutineRunner.StartCoroutine(Timer());
                     IsPaused = !IsPaused;
                 }
                 else
