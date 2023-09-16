@@ -40,7 +40,7 @@ namespace Infrastructure.StateMachine
         }
 
         private void EnterChooseLevelModeState() => 
-            _gameStateMachine.Enter<MenuState>();
+            _gameStateMachine.Enter<IntroVideoState>();
         private void onLoad()
         {
             _audioService.ChangeMusicVolume(_progress.Progress.WorldData.MusicVolume);
