@@ -65,7 +65,6 @@ namespace Infrastructure.StateMachine
         private void OnProgress(float progress)
         {
             _loadingVisualizer.ShowLoadbar(progress);
-            Debug.Log(progress);
         }
 
         public void Exit() =>

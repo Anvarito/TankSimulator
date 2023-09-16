@@ -51,17 +51,20 @@ namespace Infrastructure.Factory
 
         private string GetRandomEnemyPath()
         {
-            int random = UnityEngine.Random.Range(0, 3);
-            switch (random)
+            int random = UnityEngine.Random.Range(0, 100);
+            if (random < 25)
+                return AssetPaths.BMP2;
+            else
             {
-                case 0:
-                    return AssetPaths.StrykerDragon;
-                case 1:
-                    return AssetPaths.Bradley;
-                default:
-                    return AssetPaths.BMP2;
+                random = UnityEngine.Random.Range(0, 2);
+                switch (random)
+                {
+                    case 0:
+                        return AssetPaths.StrykerDragon;
+                    default:
+                        return AssetPaths.Bradley;
+                }
             }
-
         }
 
         private string GetRandomAllyPath()
