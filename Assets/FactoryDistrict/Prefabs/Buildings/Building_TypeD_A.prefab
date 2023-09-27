@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4000014186620612
 Transform:
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1000013154457282}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.15, z: 0.8606778}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4113473503006310}
@@ -83,7 +83,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4113473503006310
 Transform:
@@ -138,14 +138,14 @@ MeshRenderer:
   - {fileID: 2100000, guid: 8f9354ee9c9e177418ce396cb9002158, type: 2}
   - {fileID: 2100000, guid: 69f4890053a278440a28c2459f390271, type: 2}
   - {fileID: 2100000, guid: b8398dfa26239b849a26fa3b5f1c5c88, type: 2}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: b8398dfa26239b849a26fa3b5f1c5c88, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
+  m_ScaleInLightmap: 0.25
   m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
