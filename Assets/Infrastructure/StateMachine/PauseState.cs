@@ -37,7 +37,7 @@ namespace Infrastructure.StateMachine
 
         public void Enter()
         {
-            _audioService.PauseMusic();
+            _audioService.Pause();
             _enemyFactory.Controller.Pause();
             _timerService.PauseTimer();
             
@@ -49,7 +49,7 @@ namespace Infrastructure.StateMachine
 
         public void Exit()
         {
-            _audioService.PauseMusic();
+            _audioService.Pause();
             _enemyFactory.Controller.Pause();
             _timerService.PauseTimer();
             

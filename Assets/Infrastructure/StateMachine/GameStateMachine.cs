@@ -34,7 +34,7 @@ namespace Infrastructure.StateMachine
                 [typeof(MenuState)] = new MenuState(this,sceneLoader,services.Single<IAudioService>(),services.Single<IProgressService>(),services.Single<ISaveLoadService>(),services.Single<IInputService>(),services.Single<IFactories>()),
                 [typeof(SetupPlayersState)] = new SetupPlayersState(this,sceneLoader,services.Single<IInputService>(),services.Single<IFactories>(), services.Single<IProgressService>(), services.Single<INameRandomizer>()),
                 [typeof(LaunchTrainingLevel)] = new LaunchTrainingLevel(this, services.Single<IInputService>(), services.Single<IStaticDataService>(),  services.Single<IProgressService>()),
-                [typeof(IntroVideoState)] = new IntroVideoState(this, sceneLoader, services.Single<IInputService>()),
+                [typeof(IntroVideoState)] = new IntroVideoState(this, sceneLoader, services.Single<IInputService>(), services.Single<IAudioService>()),
                 [typeof(SetupFirstInputState)] = new SetupFirstInputState(this,sceneLoader,services.Single<IProgressService>(),services.Single<IInputService>(),services.Single<IFactories>(), services.Single<IAudioService>()),
                 [typeof(ChooseLevelModeState)] = new ChooseLevelModeState(this,sceneLoader,services.Single<IProgressService>(), services.Single<IInputService>(), services.Single<IFactories>()),
                 [typeof(ResetState)] = new ResetState(this, services.Single<IFactories>(), services.Single<IInputService>(), services.Single<IProgressService>(), services.Single<ITimerService>(), services.Single<IKillCounter>()),

@@ -54,6 +54,7 @@ namespace Infrastructure.StateMachine
         private void SetupMenu()
         {
             _audioService.StopSound();
+            _audioService.PlayMusic(MusicId.MenuRockCalm);
             _playerFactory.CreateMainMenu();
             RegisterButtonsEvents(_playerFactory.MainMenuUIHelper);
             SetupVolumeSliders();

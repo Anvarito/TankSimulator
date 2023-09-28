@@ -1,3 +1,4 @@
+using Infrastructure.Components;
 using Infrastructure.Factory.Base;
 using Infrastructure.Factory.Compose;
 using Infrastructure.Services.StaticData;
@@ -29,8 +30,10 @@ namespace Infrastructure.Services.Audio
             _mixer = Resources.Load<AudioMixer>(AudioMixerPath);
         }
 
-        public void PlayMusic(MusicId id) => 
+        public void PlayMusic(MusicId id)
+        {
             _audioFactory.MusicSource.Play(_dataService.ForMusic(id));
+        }
 
         public void PlaySound(SoundId id) => 
             _audioFactory.SoundsSource.Play(_dataService.ForSounds(id));
@@ -52,8 +55,10 @@ namespace Infrastructure.Services.Audio
         public void StopMusic() => 
             _audioFactory.MusicSource.Stop();
 
-        public void PauseMusic() => 
+        public void Pause()
+        {
             _audioFactory.MusicSource.Pause();
+        }
 
         public void StopSound() => 
             _audioFactory.SoundsSource.Stop();
