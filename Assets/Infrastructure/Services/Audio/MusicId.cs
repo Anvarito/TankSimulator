@@ -5,5 +5,6 @@ namespace Infrastructure.Services.Audio
         Unknown = 0,
         Battle1 = 1,
         MenuRockCalm = 2,
+        MainTheme = 3
     }
 }

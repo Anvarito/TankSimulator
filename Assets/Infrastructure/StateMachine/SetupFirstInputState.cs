@@ -46,7 +46,7 @@ namespace Infrastructure.StateMachine
             _audioService.ChangeMusicVolume(_progress.Progress.WorldData.MusicVolume);
             _audioService.ChangeSoundVolume(_progress.Progress.WorldData.SoundsVolume);
             
-            _audioService.PlayMusic(MusicId.MenuRockCalm);
+            _audioService.PlayMusic(MusicId.MainTheme);
             _audioService.PlaySound(SoundId.FlameSound);
             
             _inputFactory.CretePleasePressButtonPanel();
