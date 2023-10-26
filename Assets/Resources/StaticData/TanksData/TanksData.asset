@@ -28,3 +28,18 @@ MonoBehaviour:
     PrefabEmpty: {fileID: 5831650344577248825, guid: f02f532b4e0680148adde785d29c60a5, type: 3}
     Name: "\u0412\u0435\u043D\u0430 2\u042131"
     Description: {fileID: 7259384293883358236, guid: 8a37c8f09ebd9f049b034b97e01aa9ee, type: 3}
+  - TankId: 3
+    PrefabPath: Tanks/Nona 9S WL
+    PrefabEmpty: {fileID: 6716286561939620575, guid: a589307b2e2787f45a6bdddbc00ca016, type: 3}
+    Name: "\u0412\u0435\u043D\u0430 2\u042131"
+    Description: {fileID: 7259384293883358236, guid: 8a37c8f09ebd9f049b034b97e01aa9ee, type: 3}
+  - TankId: 4
+    PrefabPath: Tanks/Nona SVK WL
+    PrefabEmpty: {fileID: 1712048425407400889, guid: 68e7244f968fdac41b81a4cd6c3b1e02, type: 3}
+    Name: "\u0412\u0435\u043D\u0430 2\u042131"
+    Description: {fileID: 7259384293883358236, guid: 8a37c8f09ebd9f049b034b97e01aa9ee, type: 3}
+  - TankId: 5
+    PrefabPath: Tanks/Vena WL
+    PrefabEmpty: {fileID: 5831650344577248825, guid: 8aec461850f84cf47903d09055d619e7, type: 3}
+    Name: "\u0412\u0435\u043D\u0430 2\u042131"
+    Description: {fileID: 7259384293883358236, guid: 8a37c8f09ebd9f049b034b97e01aa9ee, type: 3}
