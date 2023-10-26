@@ -72,6 +72,7 @@ namespace Infrastructure.StateMachine
                 yield return null;
 
             _audioService.StopMusic();
+            _audioService.PlayMusic(MusicId.WinnerTheme);
             _enemyFactory.Controller.Pause();
             _timerService.StopTimer();
             _progress.Progress.WorldData.StartedLevel = false;
